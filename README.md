@@ -1,11 +1,6 @@
 	Première concertation sur le projet
 
 
-
-
-
-
-
 Semblant de plan
 
 	- Analyse du travail des anciens
@@ -17,13 +12,14 @@ Semblant de plan
 
 Technologies à utiliser
 
-HTML : Pages web
-CSS : mise en page
-JAVASCRIPT et AJAX : Application dynamique
+	HTML : Pages web
+	CSS : mise en page
+	JAVASCRIPT (AJAX) : Application dynamique
 
 
 
 Questions pour le client
+
 	- Les points qui ont plu dans la base de données N-2
 	- demander s'il  y a un nom en particulier
 
@@ -46,8 +42,9 @@ Moyen de communication
 Idées de nom pour l'application
 
 Proposition de noms
-ITBooks
-IUTBooks
-ancien d'avant
-Easy recontact
-contactIT!
+
+	- ITBooks
+	- IUTBooks
+	- ancien d'avant
+	- Easy recontact
+	- contactIT!
