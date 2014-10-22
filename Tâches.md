@@ -17,7 +17,7 @@ Remarque : 10% de la durée de travail sera consacrée à l’analyse et 10% de 
   -	Analyse
     -	Etude de l’existant
     -	Etude approfondie des technologies à utiliser
-  -	Création/Finalisation de la base de données
+    -	Etude de la base de données
   -	Implémentation de la base de données
   -	Structure de l’application (Selon le modèle MVC)
   -	Définition de la charte graphique
