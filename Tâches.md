@@ -28,6 +28,7 @@ Remarque : 10% de la durée de travail sera consacrée à l’analyse et 10% de 
     -	Créer les modèles
     -	CRUD des différents modèles
     -	Créer les vues et contrôleurs
+  -	Tests
   -	Documentation
     -	Technique
     -	Utilisateur
