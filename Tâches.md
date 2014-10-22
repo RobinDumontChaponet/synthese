@@ -28,7 +28,8 @@ Remarque : 10% de la durée de travail sera consacrée à l’analyse et 10% de 
     -	Importation CSV
     -	Créer les modèles
     -	CRUD des différents modèles
-    -	Créer les vues et contrôleurs
+    -	Créer les vues
+    -	Créer les contrôleurs
   -	Tests
   -	Documentation
     -	Technique
