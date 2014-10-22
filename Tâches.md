@@ -4,7 +4,7 @@
 	Après avoir discuté entre nous, nous avons convenus qu’une durée jour-homme réalise était de 5heures de travail par personne par jour en moyenne.
 	
 - **Date de début du projet de synthèse** : 13 octobre 2014
-- **Date de fin du projet de synthèse :** 12 janvier 2014
+- **Date de fin du projet de synthèse :** 12 janvier 2015
 - **Durée du projet de synthèse (en jours) :** 91
 
 
