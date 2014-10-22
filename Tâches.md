@@ -18,14 +18,14 @@ Remarque : 10% de la durée de travail sera consacrée à l’analyse et 10% de 
     -	Etude de l’existant
     -	Etude approfondie des technologies à utiliser
     -	Etude de la base de données
-    -	Etude de la structure de l'application
+    -	Etude de la architecture de l'application
+    -	Etude interactions utilisateurs
   -	Rédaction du rapport intermédiaire
   -	Implémentation de la base de données
   -	Implementation de l'architecture de l’application (Selon le modèle MVC)
   -	Définition de la charte graphique
   -	Rédaction du cahier des charges définitif
   -	Programmation de l’application (Selon le modèle MVC)
-    -	Importation CSV
     -	Créer les modèles
     -	CRUD des différents modèles
     -	Créer les vues
