@@ -19,13 +19,25 @@ Remarque : 10% de la durée de travail sera consacrée à l’analyse et 10% de 
     -	Etude approfondie des technologies à utiliser
     -	Etude de la base de données
     -	Etude de la architecture de l'application
+	 -  Définition du design pattern
+	 -  Définition de l'arborescence
+	 -  UML : 
+	 	-  diagramme objet
+	 	-  diagramme de séquence
+	 	-  diagramme de classes
     -	Etude interactions utilisateurs
+    	-  Description des vues
+    	-  Sécurité
+    	-  Diagramme de cas d'utilisation
+    	-  Diagramme de flux
   -	Rédaction du rapport intermédiaire
   -	Implémentation de la base de données
   -	Implementation de l'architecture de l’application (Selon le modèle MVC)
   -	Définition de la charte graphique
   -	Rédaction du cahier des charges définitif
   -	Programmation de l’application (Selon le modèle MVC)
+    -	(Importation svg)
+    -	Gestion des droits utilisateurs
     -	Créer les modèles
     -	CRUD des différents modèles
     -	Créer les vues
