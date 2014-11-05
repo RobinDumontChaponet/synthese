@@ -18,6 +18,7 @@ Remarque : 10% de la durée de travail sera consacrée à l’analyse et 10% de 
     -	Etude de l’existant
     -	Etude approfondie des technologies à utiliser
     -	Etude de la base de données
+    -	Analyse fonctionnelle
     -	Etude de la architecture de l'application
 	 -  Définition du design pattern
 	 -  Définition de l'arborescence
