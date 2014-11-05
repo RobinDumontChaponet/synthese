@@ -1,4 +1,4 @@
-### Liste des tâches (Modifications possibles)
+### Liste des tâches (Modifications possibles et en cours !)
 
 **Jour-homme :** Unité de mesure correspondant au travail d’une personne pendant une journée.
 	Après avoir discuté entre nous, nous avons convenus qu’une durée jour-homme réalise était de 5heures de travail par personne par jour en moyenne.
