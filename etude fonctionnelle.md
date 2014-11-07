@@ -63,7 +63,7 @@ Fonctions
 	•	Faire une recherche avec les critères suivants :
 		•	Nom / Prenom (LIKE in SQL)	 -- Ex : [Pierrreeee Laroche]
 		•	Promo : Entre borne		 -- Ex : [1985] - [1989]
-		•	Diplôm			 	 -- Ex : [DUT Informatique]
+		•	Diplôme			 	 -- Ex : [DUT Informatique]
 		•	Spécialisation 			 -- Ex : []
 		•	Diplome PostDUT			 -- Ex : [Ingénieur informatique]
 		•	Etablissement PostDUT	 	 -- Ex : [Telecom Nancy]
