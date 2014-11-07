@@ -1,8 +1,11 @@
 À qui est destinée l'application ?
-	...
+	- Aux anciens étudiants du département
 
 Quel est l'environnement d'utilisation de l'application ?
-	...
+	- Une application web 
+	
+Quel est le contexte d'utilisation ?
+	- L'application doit être disponible chez soi comme à l'université sur des navigateurs internet
 
 Quelles contraintes doit satisfaire l'application ?
 	- sécurité
