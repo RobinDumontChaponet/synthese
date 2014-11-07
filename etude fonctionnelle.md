@@ -21,8 +21,6 @@ Quelles contraintes doit satisfaire l'application ?
 
 Fonctions
 
-	•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
-	
 	Utilisateurs
 		•	Connection des utilisateurs à l'aide d'identifiants
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
@@ -36,6 +34,12 @@ Fonctions
 		•	Données de formation post-dut
 		•	Données professionnelles et spécialisation sous forme de mots clés (lien avec base de données stage ?)	
 		•	Permettre une évolution des données.
+		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
+		
+	Tous
+	
+	Professeurs
+		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
 	
 	Evènements
 		•	Pouvoir gérer les évènements auxquels participent les anciens : journées portes ouvertes, journées PPP, conférence, cours, etc :
