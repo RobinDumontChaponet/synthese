@@ -36,12 +36,16 @@ Questions :
 		•	Connexion des utilisateurs à l'aide d'identifiants et mot de passe
 		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur si celui-ci est vide
 		•	Modification de son profil :
-			•	Nom marital
+			•	Nom d'usage
 			•	Adresse
 			•	Adresse mail
-			•	Diplômes
+			•	Diplômes et établissements
+				- Si ceux-ci ne sont pas dans la base de données -> AJOUT
 			•	Entreprises
+				- Si celle-ci n'est pas dans la base de données -> AJOUT
 			•	Mot de passe
+			•	Numéro de téléphone portable et fixe
+			•	Image de profil (pas celle du trombinoscope)
 	
 	Administrateur
 		•	Connexion de l'admninistrateur à l'aide d'identifiants et mot de passe
