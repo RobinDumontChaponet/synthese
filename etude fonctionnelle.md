@@ -1,3 +1,6 @@
+Questions :
+
+- Est-ce que les professeurs ont un profil accessible par les anciens/professeurs ? -> Anciens pourrait avoir envie de contacter un ancien
 
 
 **À qui est destinée l'application ?**
@@ -29,8 +32,8 @@
 		•	Affichage d'un profil
 		•	Recherche (détails catégorie "Recherche" plus bas)
 		
-	Ancien
-		•	Connexion des utilisateurs à l'aide d'identifiants
+	Anciens
+		•	Connexion des utilisateurs à l'aide d'identifiants et mot de passe
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
 		•	Envoie des identifiants à l'adresse mail associée dans la BDD
 		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur si celui-ci est vide
@@ -40,8 +43,10 @@
 			•	Adresse mail
 			•	Diplômes
 			•	Entreprises
+			•	Mot de passe
 	
 	Administrateur
+		•	Connexion de l'admninistrateur à l'aide d'identifiants et mot de passe
 		•	Pouvoir saisir et modifier un ancien et ses différentes données :
 			•	Données personnelles
 			•	Données de formation post-dut
@@ -51,6 +56,7 @@
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 		
 	Professeurs
+		•	Connexion des professeurs à l'aide d'identifiants et mot de passe
 		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 	
