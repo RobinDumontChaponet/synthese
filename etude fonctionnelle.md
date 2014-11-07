@@ -23,7 +23,7 @@ Fonctions
 
 	•	Permettre une gestion des utilisateurs (administrateur, professeur, anciens) avec des droits
 
-	Utilisateurs
+	Ancien
 		•	Connexion des utilisateurs à l'aide d'identifiants
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
 		•	Envoie des identifiants à l'adresse mail associée dans la BDD
@@ -33,7 +33,7 @@ Fonctions
 		•	Pouvoir saisir et modifier un ancien et ses différentes données :
 			•	Données personnelles
 			•	Données de formation post-dut
-			•	Données professionnelles et spécialisation sous forme de mots clés (lien avec base de données stage ?)	
+			•	Données professionnelles et spécialisation sous forme de mots clés
 		•	Permettre une évolution des données.
 		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
