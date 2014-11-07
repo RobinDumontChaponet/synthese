@@ -80,6 +80,6 @@ Questions :
 			•	Diplome PostDUT			 -- Ex : [Ingénieur informatique]
 			•	Etablissement PostDUT	 	 -- Ex : [Telecom Nancy]
 			•	Travail actuellement		 -- Ex : [X] ou [ ]
-		•	Pouvoir selectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux
+		•	Pouvoir selectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement)
 			•	Export des adresses mail
 			•	Envoi d'un mail
