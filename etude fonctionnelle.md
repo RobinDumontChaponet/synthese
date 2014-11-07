@@ -35,11 +35,11 @@ Fonctions
 		•	Données professionnelles et spécialisation sous forme de mots clés (lien avec base de données stage ?)	
 		•	Permettre une évolution des données.
 		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
+		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 		
-	Tous
-	
 	Professeurs
 		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
+		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 	
 	Evènements
 		•	Pouvoir gérer les évènements auxquels participent les anciens : journées portes ouvertes, journées PPP, conférence, cours, etc :
@@ -49,7 +49,5 @@ Fonctions
 		•	Gérer aussi le fait que certains anciens sont d’accord pour participer à des types d’évènements.
 	
 	
-	•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
+
 	•	Faire une recherche avec mots clés pour retrouver d’anciens étudiants par rapport à leur spécialisation et pouvoir les visualiser et/ou envoyer un mail 
-	•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
-	•	
