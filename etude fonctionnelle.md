@@ -31,15 +31,18 @@ Fonctions
 	
 	Administrateur
 		•	Pouvoir saisir et modifier un ancien et ses différentes données :
-		•	Données personnelles
-		•	Données de formation post-dut
-		•	Données professionnelles et spécialisation sous forme de mots clés (lien avec base de données stage ?)	
+			•	Données personnelles
+			•	Données de formation post-dut
+			•	Données professionnelles et spécialisation sous forme de mots clés (lien avec base de données stage ?)	
 		•	Permettre une évolution des données.
 		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 		
 	Professeurs
 		•	Pouvoir modifier un ancien et ses différentes données :
+			•	Données personnelles
+			•	Données de formation post-dut
+			•	Données professionnelles et spécialisation sous forme de mots clés (lien avec base de données stage ?)	
 		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 	
