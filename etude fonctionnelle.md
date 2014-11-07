@@ -27,8 +27,7 @@ Fonctions
 		•	Connexion des utilisateurs à l'aide d'identifiants
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
 		•	Envoie des identifiants à l'adresse mail associée dans la BDD
-		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur
- différents selon les profils.
+		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur différents selon les profils.
 	
 	Administrateur
 		•	Pouvoir saisir et modifier un ancien et ses différentes données :
