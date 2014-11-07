@@ -22,7 +22,7 @@ Quelles contraintes doit satisfaire l'application ?
 Fonctions
 
 	Utilisateurs
-		•	Connection des utilisateurs à l'aide d'identifiants
+		•	Connexion des utilisateurs à l'aide d'identifiants
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
 		•	Envoie des identifiants à l'adresse mail associée dans la BDD
 		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur
