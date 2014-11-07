@@ -1,3 +1,16 @@
+À qui est destinée l'application ?
+	...
+
+Quel est l'environnement d'utilisation de l'application ?
+	...
+
+Quelles contraintes doit satisfaire l'application ?
+	- sécurité
+	- ergonomie
+	- ...
+
+
+
 Début
 
 	•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
