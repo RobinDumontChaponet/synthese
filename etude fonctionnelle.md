@@ -19,7 +19,7 @@ Quelles contraintes doit satisfaire l'application ?
 
 
 
-Fonctions
+####Fonctions
 
 	•	Permettre une gestion des utilisateurs (administrateur, professeur, anciens) avec des droits
 
