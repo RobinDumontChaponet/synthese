@@ -32,6 +32,7 @@ Questions :
 		•	Affichage d'un profil
 		•	Affichage des évènements
 		•	Recherche d'un ancien (détails catégorie "Recherche d'un ancien" plus bas)
+		•	Recherche d'un évènement
 		•	Connexion à l'aide d'identifiants et mot de passe
 		
 	Anciens
@@ -57,6 +58,7 @@ Questions :
 		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs après importation CSV et confirmation de la validité des données et envoyé par mail aux anciens créés
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
+		•	Pouvoir ajouter/modifier des droits
 		
 	Professeurs
 		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
