@@ -14,13 +14,18 @@ Quelles contraintes doit satisfaire l'application ?
 
 	- sécurité
 	- ergonomie
-	- ...
+	- 
 
 
 
-Début
+
+Fonctions
 
 	•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
+	•	Connection des utilisateurs à l'aide d'identifiants
+	•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
+	•	Envoie des identifiants à l'adresse mail associée dans la BDD
+	•	
 	•	Permettre une gestion des utilisateurs (administrateur, professeur, anciens) avec des droits différents selon les profils.
 	•	Pouvoir saisir et modifier un ancien et ses différentes données :
 	•	Données personnelles
@@ -35,3 +40,4 @@ Début
 	•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 	•	Faire une recherche avec mots clés pour retrouver d’anciens étudiants par rapport à leur spécialisation et pouvoir les visualiser et/ou envoyer un mail 
 	•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
+	•	
