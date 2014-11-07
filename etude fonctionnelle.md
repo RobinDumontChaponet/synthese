@@ -1,6 +1,6 @@
 Questions :
 
-- Est-ce que les professeurs ont un profil accessible par les anciens/professeurs ? -> Anciens pourrait avoir envie de contacter un ancien
+- Est-ce que les professeurs ont un profil accessible par les anciens/professeurs ? -> Anciens pourrait avoir envie de contacter un professeurs
 
 
 **À qui est destinée l'application ?**
@@ -30,10 +30,11 @@ Questions :
 
 	Tous
 		•	Affichage d'un profil
-		•	Recherche (détails catégorie "Recherche" plus bas)
+		•	Affichage des évènements
+		•	Recherche d'un ancien (détails catégorie "Recherche d'un ancien" plus bas)
+		•	Connexion à l'aide d'identifiants et mot de passe
 		
 	Anciens
-		•	Connexion des utilisateurs à l'aide d'identifiants et mot de passe
 		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur si celui-ci est vide
 		•	Modification de son profil :
 			•	Nom d'usage
@@ -48,7 +49,6 @@ Questions :
 			•	Image de profil (pas celle du trombinoscope)
 	
 	Administrateur
-		•	Connexion de l'admninistrateur à l'aide d'identifiants et mot de passe
 		•	Pouvoir saisir et modifier un ancien et ses différentes données :
 			•	Données personnelles
 			•	Données de formation post-dut
@@ -59,7 +59,6 @@ Questions :
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 		
 	Professeurs
-		•	Connexion des professeurs à l'aide d'identifiants et mot de passe
 		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 	
@@ -70,7 +69,7 @@ Questions :
 		•	Participation des anciens
 		•	Gérer aussi le fait que certains anciens sont d’accord pour participer à des types d’évènements.
 	
-	Recherche
+	Recherche d'un ancien
 	•	Faire une recherche avec les critères suivants :
 		•	Nom / Prenom (LIKE in SQL)	 -- Ex : [Pierrreeee Laroche]
 		•	Promo : Entre borne		 -- Ex : [1985] - [1989]
