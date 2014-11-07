@@ -23,6 +23,10 @@ Fonctions
 
 	•	Permettre une gestion des utilisateurs (administrateur, professeur, anciens) avec des droits
 
+	Tous
+		•	Affichage d'un profil
+		•	Recherche (détails catégorie "Recherche" plus bas)
+		
 	Ancien
 		•	Connexion des utilisateurs à l'aide d'identifiants
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
