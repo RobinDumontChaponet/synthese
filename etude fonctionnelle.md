@@ -34,8 +34,6 @@ Questions :
 		
 	Anciens
 		•	Connexion des utilisateurs à l'aide d'identifiants et mot de passe
-		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
-		•	Envoie des identifiants à l'adresse mail associée dans la BDD
 		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur si celui-ci est vide
 		•	Modification de son profil :
 			•	Nom marital
@@ -53,6 +51,7 @@ Questions :
 			•	Données professionnelles et spécialisation sous forme de mots clés
 		•	Permettre une évolution des données.
 		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
+		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs après importation CSV et confirmation de la validité des données et envoyé par mail aux anciens créés
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 		
 	Professeurs
