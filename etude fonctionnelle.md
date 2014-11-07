@@ -12,8 +12,8 @@ Quel est le contexte d'utilisation ?
 
 Quelles contraintes doit satisfaire l'application ?
 
-	- sécurité
-	- ergonomie
+	- Sécurité
+	- Ergonomie
 	- 
 
 
@@ -27,7 +27,13 @@ Fonctions
 		•	Connexion des utilisateurs à l'aide d'identifiants
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs
 		•	Envoie des identifiants à l'adresse mail associée dans la BDD
-		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur différents selon les profils.
+		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur si celui-ci est vide
+		•	Modification de son profil :
+			•	Nom marital
+			•	Adresse
+			•	Adresse mail
+			•	Diplômes
+			•	Entreprises
 	
 	Administrateur
 		•	Pouvoir saisir et modifier un ancien et ses différentes données :
@@ -49,6 +55,15 @@ Fonctions
 		•	Participation des anciens
 		•	Gérer aussi le fait que certains anciens sont d’accord pour participer à des types d’évènements.
 	
-	
-
-	•	Faire une recherche avec mots clés pour retrouver d’anciens étudiants par rapport à leur spécialisation et pouvoir les visualiser et/ou envoyer un mail 
+	Recherche
+	•	Faire une recherche avec les critères suivants :
+		•	Nom / Prenom (LIKE in SQL)	 -- Ex : [Pierrreeee Laroche]
+		•	Promo : Entre borne		 -- Ex : [1985] - [1989]
+		•	Diplôm			 	 -- Ex : [DUT Informatique]
+		•	Spécialisation 			 -- Ex : []
+		•	Diplome PostDUT			 -- Ex : [Ingénieur informatique]
+		•	Etablissement PostDUT	 	 -- Ex : [Telecom Nancy]
+		•	Travail actuellement		 -- Ex : [X] ou [ ]
+	•	Pouvoir selectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux :
+		•	Export des adresses mail
+		•	Envoi d'un mail
