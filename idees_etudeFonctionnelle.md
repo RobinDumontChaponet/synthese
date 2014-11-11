@@ -15,7 +15,23 @@ Une des idées que l'on pourrait avoir est de permettre à l'administrateur de s
 Comment peut-on alors permettre à l'administrateur de se corriger ?
 
 
+II/ pré-rs (pré-réseau social)
+==============================
+
+Cette partie est de loin la plus importante et la plus longue. Effectivement, elle concerne la gestion des données ainsi que les éventuelles possibilités de participation des anciens, des professeurs et des administrateur à cette gestion. Plus précisemment, cette partie concerne les droits des différents profils d'ulisateurs, leur permission de compléter leurs informations, la possibilité qu'a un professeur d'ajouter un évenement, la passibilité qu'a un ancien de s'inscrire à un évenement. 
+
+### Classes métiers (Vous pouvez compléter cette liste)
+* personne (avec son nom, prenom, ...)
+* ancien (hérite de personne + ses propores attributs)
+* administrateur (hérite de personne + ses propres attributs)
+* evenement(avec son libelle, sa date, ...)
+* Ecoles, universités, etc post-DUT
+* Formations, spécialites, ...
+
+**Diagramme des classes à faire, les interactions avec les API utilisées doivent être modélisées**
+**Diagramme de séquence à faire également**
+
 III/ Réseau social
-=================
+==================
 
 Le réseau social est une interface qui permettra aux utilisateurs d'interagir entre eux, que ce soit pour des raisons personnelles ou autour d'un évenements organisé. Dans les deux cas, le réseau social ne peut se faire sans l'étape **"pré-rs"**. Effectivement, l'étape pré-rs aura pour but la gestion des données, leurs visiblités, les droits d'accès, etc. Si cette gestion n'est pas faite, le réseau social n'aura aucun sens. En d'autres termes, la partie *réseau social* aura pour but d'ajouter des fonctionnalités en plus par rapport à la *gestion des anciens*, des fonctionnalités dont le principal objectif et d'animer les interactions entre la communauté des anciens (discussions, messages, ...).
