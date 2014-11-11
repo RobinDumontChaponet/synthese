@@ -49,3 +49,14 @@ III/ Réseau social
 ==================
 
 Le réseau social est une interface qui permettra aux utilisateurs d'interagir entre eux, que ce soit pour des raisons personnelles ou autour d'un évenements organisé. Dans les deux cas, le réseau social ne peut se faire sans l'étape **"pré-rs"**. Effectivement, l'étape pré-rs aura pour but la gestion des données, leurs visiblités, les droits d'accès, etc. Si cette gestion n'est pas faite, le réseau social n'aura aucun sens. En d'autres termes, la partie *réseau social* aura pour but d'ajouter des fonctionnalités en plus par rapport à la *gestion des anciens*, des fonctionnalités dont le principal objectif et d'animer les interactions entre la communauté des anciens (discussions, messages, ...).
+
+
+Remarques et compléments sur le fichier synthese / etude fonctionnelle.md
+=========================================================================
+
+A qui est destinées l'application ? L'application est également destinées ax professeurs qui peuvent gérer les évenements et aux administrateurs qui peuvent gérer les droits et les données en général, d'où le fait que des vues seront conçues pour eux.
+
+Quel est l'environnement d'utilisation de l'application ? + Quel contexte d'utilisation ? sur navigateur mais sur mobile aussi ou non ?
+
+Quelles contraintes doit satisfaire l'application ? Pour la sécurtié, est-ce qu'il faut limiter l'accèsau site web à ceux qui ont un login. Par exemple, quand on veut se connecter en dehors de l'IUT à phpmyadmin, on doit s'identifier sur une alert. Est-ce qu'on doit faire la même chose ou non pour restreindre les données des anciens et les infos sur les évenements aux membre de l'IUT ?
+
