@@ -14,6 +14,8 @@ Il faudra donc dans un premier temps étudier la question du fichier CSV. Les qu
 Une des idées que l'on pourrait avoir est de permettre à l'administrateur de séléctionner tout d'abord les différents fichiers CSV s'il y en a plusieurs. Ensuite, on pourrait afficher les différents champs des fichiers CSV ensemble (en utilisant les séparateurs) et de permettre ensuite à l'administrateur de faire correspondre à chaque champs affiché à partir du fichier CSV un nom d'attribut de la base de donées. Enfin, l'administrateur va tout naturellement valider la correspondance ce qui va automatiquement remplir la base de données. **Cependant, une question vient à l'esprit, et si l'administrateur se trompe lors de la validation de la correspondance ? (confondre les noms et prénom, ou erreur de miss-click ...)**
 Comment peut-on alors permettre à l'administrateur de se corriger ?
 
+**Si quelqu'un a une idée, il peut compléter ici**
+
 
 II/ pré-rs (pré-réseau social)
 ==============================
@@ -28,13 +30,17 @@ Cette partie doit également permettre la recherche des anciens. J'ai tout simpl
 
 **Pour les autres fonctions de cette partie, ce qu'on a ici est bien je trouve (le sujet lui-même est assez clair), il faudra juste rédiger ça en donnant plus de détails : https://github.com/RobinDumontChaponet/synthese/blob/master/etude%20fonctionnelle.md**
 
-### Classes métiers (Vous pouvez compléter cette liste)
+### Classes métiers **Si quelqu'un a une idée, il peut compléter ici**
 * personne (avec son nom, prenom, ...)
 * ancien (hérite de personne + ses propores attributs)
 * administrateur (hérite de personne + ses propres attributs)
 * evenement(avec son libelle, sa date, ...)
 * Ecoles, universités, etc post-DUT
 * Formations, spécialites, ...
+
+Il serait intéressant pour les classes métier de faire comme ce qu'on a fait en COA, c'est-à-dire qu'en gros, pour chaque entité créer un objet métier et pour pour chaque association voir les cardinalités :
+- si cardinalité 11 0n ou 11 1n, alors représenter la clé étrangère par l'instanciation d'un objet dans un autre
+- si 0n 0n, alors créer une classe métier de l'asociation.
 
 **Diagramme des classes à faire, les interactions avec les API utilisées doivent être modélisées**
 **Diagramme de séquence à faire également**
