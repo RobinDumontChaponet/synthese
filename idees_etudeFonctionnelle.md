@@ -24,6 +24,9 @@ Cette partie doit également permettre la recherche des anciens. J'ai tout simpl
 *  Nom / Prenom (LIKE in SQL) -- Ex : [Pierrreeee Laroche] **Mais si on entre Pierrreeee, même en utilisant le like on ne va rien trouvé**
 *  Promo : Entre borne **(BETWEEN in SQL)** -- Ex : [1985] - [1989]
 *  Diplôme **(LIKE in SQL, on ne sait jamais si celui qui cherche n'entre qu'"informatique")** -- Ex : [DUT Informatique]
+*  Pour les autres points, on utilisera également le LIKE.
+
+**Pour les autres fonctions de cette partie, ce qu'on a ici est bien je trouve (le sujet lui-même est assez clair), il faudra juste rédiger ça en donnant plus de détails : https://github.com/RobinDumontChaponet/synthese/blob/master/etude%20fonctionnelle.md**
 
 ### Classes métiers (Vous pouvez compléter cette liste)
 * personne (avec son nom, prenom, ...)
