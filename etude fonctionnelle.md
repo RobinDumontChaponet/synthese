@@ -1,6 +1,6 @@
 Questions :
 
-- Est-ce que les professeurs ont un profil accessible par les anciens/professeurs ? -> Anciens pourrait avoir envie de contacter un professeurs
+- Est-ce que les professeurs ont un profil accessible par les anciens/professeurs ? -> Anciens pourrait avoir envie de contacter un professeur
 
 
 **À qui est destinée l'application ?**
