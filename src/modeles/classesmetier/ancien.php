@@ -62,7 +62,7 @@ class ancien
 
 //----------------------------------SETTERS
 
-public function setIdAncien($idAncien)
+	public function setIdAncien($idAncien)
 	{
 		$this->idAncien = $idAncien;
 	}
@@ -74,31 +74,31 @@ public function setIdAncien($idAncien)
 	{
 		$this->adresse2 = $adresse2;
 	}
-	public function getCodePostale($codePostale)
+	public function setCodePostale($codePostale)
 	{
 		$this->codePostale = $codePostale;
 	}
-	public function getVille($ville)
+	public function setVille($ville)
 	{
 		$this->ville = $ville;
 	}
-	public function getPays($pays)
+	public function setPays($pays)
 	{
 		$this->pays = $pays;
 	}
-	public function getMobile($mobile)
+	public function setMobile($mobile)
 	{
 		$this->mobile = $mobile;
 	}
-	public function getTelephone($telephone)
+	public function setTelephone($telephone)
 	{
 		$this->telephone = $telephone;
 	}
-	public function getImageProfil($imageProfil)
+	public function setImageProfil($imageProfil)
 	{
 		$this->imageProfil = $imageProfil;
 	}
-	public function getImageTrombi($imageTrombi)
+	public function setImageTrombi($imageTrombi)
 	{
 		$this->imageTrombi = $imageTrombi;
 	}
