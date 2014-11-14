@@ -17,6 +17,20 @@ class ancien
   public function ancien()
   {
   }
+  
+    public function ancien($idAncien, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+  {
+	$this->setIdAncien($idAncien);
+	$this->setAdresse1($adresse1);
+	$this->setAdresse2($adresse2);
+	$this->setCodePostale($codePostale);
+	$this->setVille($ville);
+	$this->setPays($pays);
+	$this->setMobile($mobile);
+	$this->setTelephone($telephone);
+	$this->setImageProfil($imageProfil);
+	$this->setImageTrombi($imageTrombi);
+  }
 
 //----------------------------------GETTERS
 	public function getIdAncien()
