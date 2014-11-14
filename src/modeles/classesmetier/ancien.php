@@ -78,15 +78,35 @@ class ancien
 
 	public function setIdAncien($idAncien)
 	{
-		$this->idAncien = $idAncien;
+		if(($idAncien != null) and ($idAncien > 0))
+		{
+			$this->idAncien = $idAncien;
+		}else
+		{
+			throw new Exception("Id ancien invalide");
+		}
 	}
 	public function setAdresse1($adresse1)
 	{
-		$this->adresse1 = $adresse1;
+		$adresse1Propre = trim($adresse1);
+		if(($adresse1Propre != null))
+		{
+			$this->adresse1 = $adresse1Propre;
+		}else
+		{
+			throw new Exception("Adresse 1 invalide");
+		}
 	}
 	public function setAdresse2($adresse2)
 	{
-		$this->adresse2 = $adresse2;
+		$adresse2Propre = trim($adresse2);
+		if(($adresse2Propre != null))
+		{
+			$this->adresse2 = $adresse2Propre;
+		}else
+		{
+			throw new Exception("Adresse 2 invalide");
+		}
 	}
 	public function setCodePostale($codePostale)
 	{
