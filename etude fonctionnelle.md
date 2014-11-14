@@ -1,11 +1,6 @@
-Questions :
-
-- Est-ce que les professeurs ont un profil accessible par les anciens/professeurs ? -> Anciens pourrait avoir envie de contacter un professeur
-
-
 **À qui est destinée l'application ?**
 
-	- Aux anciens étudiants du département
+	- Aux anciens étudiants du département et aux professeurs
 
 **Quel est l'environnement d'utilisation de l'application ?**
 
@@ -19,7 +14,6 @@ Questions :
 
 	- Sécurité
 	- Ergonomie
-	- 
 
 
 
@@ -28,14 +22,15 @@ Questions :
 
 	•	Permettre une gestion des utilisateurs (administrateur, professeur, anciens) avec des droits
 
-	Tous
+	Profils
+		•	Les profils sont les espaces où les informations des anciens ou des professeurs sont affichés
+
+	Anciens
 		•	Affichage d'un profil
 		•	Affichage des évènements
 		•	Recherche d'un ancien (détails catégorie "Recherche d'un ancien" plus bas)
 		•	Recherche d'un évènement
 		•	Connexion à l'aide d'identifiants et mot de passe
-		
-	Anciens
 		•	Permettre aux utilisateurs de renseigner le mail d'un autre utilisateur si celui-ci est vide
 		•	Modification de son profil :
 			•	Nom d'usage
@@ -48,19 +43,30 @@ Questions :
 			•	Mot de passe
 			•	Numéro de téléphone portable et fixe
 			•	Image de profil (pas celle du trombinoscope)
+			•	Recevoir la newsletter (dernières annonces) par mail
 	
 	Administrateur
-		•	Pouvoir saisir et modifier un ancien et ses différentes données :
+		•	Affichage d'un profil
+		•	Affichage des évènements
+		•	Recherche d'un ancien (détails catégorie "Recherche d'un ancien" plus bas)
+		•	Recherche d'un évènement
+		•	Connexion à l'aide d'identifiants et mot de passe
+		•	Pouvoir saisir, modifier ou supprimer un profil et ses différentes données :
 			•	Données personnelles
 			•	Données de formation post-dut
 			•	Données professionnelles et spécialisation sous forme de mots clés
-		•	Permettre une évolution des données.
 		•	Intégrer sous format csv l’ensemble de la promotion ainsi que les photos.
 		•	Génération des identifiants et mots de passe pour les nouveaux utilisateurs après importation CSV et confirmation de la validité des données et envoyé par mail aux anciens créés
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 		•	Pouvoir ajouter/modifier des droits
 		
+		
 	Professeurs
+		•	Affichage d'un profil
+		•	Affichage des évènements
+		•	Recherche d'un ancien (détails catégorie "Recherche d'un ancien" plus bas)
+		•	Recherche d'un évènement
+		•	Connexion à l'aide d'identifiants et mot de passe
 		•	Faire une recherche sur un évènement, récupérer les anciens qui sont concernés (ou pas) avec l’historique de leur participation.
 		•	Pouvoir envoyer des mails à l’ensemble des anciens, à une promo ciblée, à un ancien en particulier selon des critères.
 	
@@ -73,10 +79,11 @@ Questions :
 	
 	Recherche d'un ancien
 		•	Faire une recherche avec les critères suivants :
-			•	Nom / Prenom (LIKE in SQL)	 -- Ex : [Pierrreeee Laroche]
+			•	Prenom (LIKE in SQL)	 	 -- Ex : [Pier]
+			•	Nom (LIKE in SQL)		 -- Ex : [Laro]
 			•	Promo : Entre borne		 -- Ex : [1985] - [1989]
 			•	Diplôme			 	 -- Ex : [DUT Informatique]
-			•	Spécialisation 			 -- Ex : []
+			•	Spécialisation 			 -- Ex : [BDD]
 			•	Diplome PostDUT			 -- Ex : [Ingénieur informatique]
 			•	Etablissement PostDUT	 	 -- Ex : [Telecom Nancy]
 			•	Travail actuellement		 -- Ex : [X] ou [ ]
