@@ -98,7 +98,13 @@ class ancien extends Personne
 	}
 	public function setMobile($mobile)
 	{
-		$this->mobile = $mobile;
+		if(preg_match("regex", $mobile))
+		{
+			$this->mobile = $mobile;	
+		}else
+		{
+			throw new Exception("Numéro de telephone invalide");
+		}
 	}
 	public function setTelephone($telephone)
 	{
