@@ -1,4 +1,4 @@
-	public function setIdAncien($idAncien)
+	<?php public function setIdAncien($idAncien)
 	{
 		if(($idAncien != null) and ($idAncien > 0))
 		{
@@ -8,3 +8,4 @@
 			throw new Exception("Id ancien invalide");
 		}
 	}
+	?>
