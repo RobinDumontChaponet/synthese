@@ -1,8 +1,9 @@
 <?php
-class ancien
-{
 
-	private $idAncien;
+require_once("personne.class.php");
+
+class ancien extends Personne
+{
 	private $adresse1;
 	private $adresse2;
 	private $codePostale;
@@ -16,10 +17,12 @@ class ancien
 //----------------------------------Constructeurs
   public function ancien()
   {
+  	parent::Personne();
   }
   
-    public function ancien($idAncien, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+    public function ancien($id, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
+  	parent::Personne($id);
 	$this->setIdAncien($idAncien);
 	$this->setAdresse1($adresse1);
 	$this->setAdresse2($adresse2);
@@ -33,10 +36,6 @@ class ancien
   }
 
 //----------------------------------GETTERS
-	public function getIdAncien()
-	{
-		return $this->idAncien;
-	}
 	public function getAdresse1()
 	{
 		return $this->adresse1;
@@ -76,16 +75,7 @@ class ancien
 
 //----------------------------------SETTERS
 
-	public function setIdAncien($idAncien)
-	{
-		if(($idAncien != null) and ($idAncien > 0))
-		{
-			$this->idAncien = $idAncien;
-		}else
-		{
-			throw new Exception("Id ancien invalide");
-		}
-	}
+
 	public function setAdresse1($adresse1)
 	{
 		if(($adresse1 != null))
@@ -108,6 +98,10 @@ class ancien
 	}
 	public function setCodePostale($codePostale)
 	{
+		if((is_int($codePostale)) and (/*Condition format*/))
+		{
+		
+		}
 		$this->codePostale = $codePostale;
 	}
 	public function setVille($ville)
