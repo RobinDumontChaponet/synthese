@@ -78,35 +78,19 @@ class ancien extends Personne
 
 	public function setAdresse1($adresse1)
 	{
-		if(($adresse1 != null))
-		{
-			$this->adresse1 = trim($adresse1);
-		}else
-		{
-			throw new Exception("Adresse 1 invalide");
-		}
+		$this->adresse1 = trim($adresse1);
 	}
 	public function setAdresse2($adresse2)
 	{
-		if(($adresse2 != null))
-		{
-			$this->adresse2 = trim($adresse2);
-		}else
-		{
-			throw new Exception("Adresse 2 invalide");
-		}
+		$this->adresse2 = trim($adresse2);
 	}
 	public function setCodePostale($codePostale)
 	{
-		if((is_int($codePostale)) and (/*Condition format*/))
-		{
-		
-		}
 		$this->codePostale = $codePostale;
 	}
 	public function setVille($ville)
 	{
-		$this->ville = $ville;
+		$this->ville = trim($ville);
 	}
 	public function setPays($pays)
 	{
