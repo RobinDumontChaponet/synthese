@@ -47,4 +47,8 @@ Proposition de noms
 	- IUTBooks
 	- ancien d'avant
 	- Easy recontact
+<<<<<<< Updated upstream
 	- contactIT!
+=======
+	- contactIT!
+>>>>>>> Stashed changes
