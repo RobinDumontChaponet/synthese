@@ -88,10 +88,9 @@ class ancien
 	}
 	public function setAdresse1($adresse1)
 	{
-		$adresse1Propre = trim($adresse1);
-		if(($adresse1Propre != null))
+		if(($adresse1 != null))
 		{
-			$this->adresse1 = $adresse1Propre;
+			$this->adresse1 = trim($adresse1);
 		}else
 		{
 			throw new Exception("Adresse 1 invalide");
@@ -99,10 +98,9 @@ class ancien
 	}
 	public function setAdresse2($adresse2)
 	{
-		$adresse2Propre = trim($adresse2);
-		if(($adresse2Propre != null))
+		if(($adresse2 != null))
 		{
-			$this->adresse2 = $adresse2Propre;
+			$this->adresse2 = trim($adresse2);
 		}else
 		{
 			throw new Exception("Adresse 2 invalide");
