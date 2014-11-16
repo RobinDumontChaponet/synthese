@@ -3,13 +3,13 @@ class Specialisation
 {
   private $id;
   private $libelle;
-  private $specialisation
+  private $typeSpecialisation
   
-  public function __construct($id, $libelle, $specialisation)
+  public function __construct($id, $libelle, $typeSpecialisation)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
-      $this->setSpecialisation($specialisation);
+      $this->setSpecialisation($typeSpecialisation);
   }
   
 //--------------------------------------------Getters
@@ -23,9 +23,9 @@ class Specialisation
       return $this->libelle;
   }
   
-  public function getSpecialisation()
+  public function getTypeSpecialisation()
   {
-      return $this->specialisation;
+      return $this->typeSpecialisation;
   }
 //--------------------------------------------Setters
   public function setId($id)
@@ -50,11 +50,11 @@ class Specialisation
     }
   }
   
-  public function setSpecialisation($specialisation)
+  public function setTypeSpecialisation($typeSpecialisation)
   {
-    if($specialisation != null)
+    if($typeSpecialisation != null)
     {
-      $this->specialisation = $specialisation;
+      $this->typeSpecialisation = $typeSpecialisation;
     }else
     {
       throw new Exception("Spécialisation nulle");
@@ -63,7 +63,7 @@ class Specialisation
 //-------------------------------------------toString
   public function __toString()
   {
-    return "Id : ".$this->id." Libellé : ".$this->libelle;
+    return "Id : ".$this->id." Libellé : ".$this->libelle." Type spécialisation : ".$this->typeSpecialisation->toString();
   }
 }
 ?>
