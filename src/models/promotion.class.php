@@ -31,7 +31,7 @@ class Promotion{
       }
       else
       {
-          throw new Exception("Id incorrect");
+          throw new Exception("Id promotion incorrect");
       }
   }
   
@@ -40,6 +40,9 @@ class Promotion{
       if(preg_match("/^[0-9][0-9][0-9][0-9]$/", $annee))
       {
           $this->annee
+      }else
+      {
+        throw new Exception("Année promotion incorrecte");
       }
   }
   
