@@ -41,7 +41,7 @@ class CodeAPE
         $this->libelle = $libelleTraite;
     }else
     {
-        throw new Exception("Libellé diplome incorrect");
+        throw new Exception("Libellé ape incorrect");
     }
   }
 //-------------------------------------------toString
