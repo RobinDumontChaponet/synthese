@@ -5,7 +5,7 @@ class Promotion{
   private $id;
   private $annee;
   
-  public function Promotion($id, $annee)
+  public function __construct($id, $annee)
   {
       $this->setId($id);
       $this->setAnnee($annee);
@@ -48,7 +48,7 @@ class Promotion{
   
   
 //-----------------------------toString
-  public function toString()
+  public function __toString()
   {
       return "Id : ".$this->id." Annee : ".$this->annee;
   }
