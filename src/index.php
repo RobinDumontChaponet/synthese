@@ -19,7 +19,9 @@ if(!empty($_GET['requ']))
 	if(is_file('controllers/'.$_GET['requ'].'.php'))
 		$inc = get_include_contents('controllers/'.$_GET['requ'].'.php');
 	else {
-		header('HTTP/1.0 404 Not Found');
+		header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+		header("Status: 404 Not Found");
+		$_SERVER['REDIRECT_STATUS'] = 404;
 		$inc = get_include_contents('controllers/404.php');
 	}
 else
