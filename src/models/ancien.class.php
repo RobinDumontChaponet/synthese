@@ -15,9 +15,9 @@ class Ancien extends Personne
 	private $imageTrombi;
 
 //----------------------------------Constructeurs
-    public function Ancien($id, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+    public function Ancien($id, $nom, $nomPatrnymique, $prenom, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
-  	parent::Personne($id);
+  	parent::Personne($id, $nom, $nomPatronymique, $prenom);
 	$this->setIdAncien($idAncien);
 	$this->setAdresse1($adresse1);
 	$this->setAdresse2($adresse2);
