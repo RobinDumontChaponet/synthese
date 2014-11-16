@@ -15,17 +15,17 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	else {
 		include('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
-		/*try {
+		try {
 			$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=jozwicki2u_projetSynthese');
-			$statement = $connect->prepare("SELECT pwd FROM user");
+			$statement = $connect->prepare("SELECT mdp FROM compte");
 
 			$statement->execute();
 
-			$res = $statement->fetch(PDO::FETCH_OBJ)->pwd;
+			$res = $statement->fetch(PDO::FETCH_OBJ)->mdp;
 		} catch (PDOException $e) {
 			die("Error!: " . $e->getMessage() . "<br/>");
-		}*/
-		if (/*!validate_password($_POST['pwd'] , $res)*/ 0) {
+		}
+		if (!validate_password($_POST['pwd'] , $res)) {
 			$badinput=true;
 			sleep(1);
 		} else {
