@@ -8,7 +8,7 @@ class Personne
 	private $nomPatronymique;
 	private $prenom;
 	
-	public __construct($id, $nom, $nomPatronymique, $prenom)
+	public function __construct($id, $nom, $nomPatronymique, $prenom)
 	{
 		$this->setId($id);
 		$this->setNom($nom);
