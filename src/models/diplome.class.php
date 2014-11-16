@@ -6,7 +6,7 @@ abstract class Diplome
   private $id;
   private $libelle;
 
-  public function Diplome($id, $libelle)
+  public function __construct($id, $libelle)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
@@ -48,7 +48,7 @@ abstract class Diplome
     }
   }
 //-------------------------------------------toString
-  public function toString()
+  public function __toString()
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
