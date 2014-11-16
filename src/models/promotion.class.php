@@ -5,7 +5,7 @@ class Promotion{
   private $id;
   private $annee;
   
-  public function promotion($id, $annee)
+  public function Promotion($id, $annee)
   {
       $this->setId($id);
       $this->setAnnee($annee);
