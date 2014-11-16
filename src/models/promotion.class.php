@@ -1,5 +1,6 @@
 <?php
 
+class Promotion{
   
   private $id;
   private $annee;
@@ -49,4 +50,5 @@
       return "Id : ".$this->id." Annee : ".$this->annee;
   }
 
+}
 ?>
