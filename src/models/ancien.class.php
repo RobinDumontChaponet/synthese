@@ -15,11 +15,6 @@ class ancien extends Personne
 	private $imageTrombi;
 
 //----------------------------------Constructeurs
-  public function ancien()
-  {
-  	parent::Personne();
-  }
-  
     public function ancien($id, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
   	parent::Personne($id);
@@ -98,17 +93,23 @@ class ancien extends Personne
 	}
 	public function setMobile($mobile)
 	{
-		if(preg_match("regex", $mobile))
+		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		{
+			$this->mobile = $mobile;	
+		}else
+		{
+			throw new Exception("Numéro de mobile invalide");
+		}
+	}
+	public function setTelephone($telephone)
+	{
+		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
 		{
 			$this->mobile = $mobile;	
 		}else
 		{
 			throw new Exception("Numéro de telephone invalide");
 		}
-	}
-	public function setTelephone($telephone)
-	{
-		$this->telephone = $telephone;
 	}
 	public function setImageProfil($imageProfil)
 	{
@@ -117,6 +118,14 @@ class ancien extends Personne
 	public function setImageTrombi($imageTrombi)
 	{
 		$this->imageTrombi = $imageTrombi;
+	}
+	
+//--------------------------tostring
+	public function toString()
+	{
+		return "Id : ".$this->id." Adresse1 : ".$this->adresse1." Adresse2 : "$this->adresse2
+			." CP : "$this->codePostale." Ville : "$this->ville
+		      	." Pays : ".$this->pays." Mobile : "$this->mobile." Telephone : "$this->telephone;
 	}
 }
 ?>
