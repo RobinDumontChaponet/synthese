@@ -3,11 +3,13 @@ class Specialisation
 {
   private $id;
   private $libelle;
+  private $specialisation
   
-  public function __construct($id, $libelle)
+  public function __construct($id, $libelle, $specialisation)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
+      $this->setSpecialisation($specialisation);
   }
   
 //--------------------------------------------Getters
@@ -19,6 +21,11 @@ class Specialisation
   public function getLibelle()
   {
       return $this->libelle;
+  }
+  
+  public function getSpecialisation()
+  {
+      return $this->specialisation;
   }
 //--------------------------------------------Setters
   public function setId($id)
@@ -40,6 +47,17 @@ class Specialisation
     }else
     {
         throw new Exception("Libellé spécialisation incorrect");
+    }
+  }
+  
+  public function setSpecialisation($specialisation)
+  {
+    if($specialisation != null)
+    {
+      $this->specialisation = $specialisation;
+    }else
+    {
+      throw new Exception("Spécialisation nulle");
     }
   }
 //-------------------------------------------toString
