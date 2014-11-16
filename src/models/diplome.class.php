@@ -36,17 +36,17 @@ abstract class Diplome
     }
   }
 
-public function setLibelle($libelle)
-{
-  $libelleTraite = trim($libelle);
-  if(($libelleTraite != null) and ($libelleTraite != ""))
+  public function setLibelle($libelle)
   {
-      $this->libelle = $libelleTraite;
-  }else
-  {
-      throw new Exception("Libellé diplome incorrect");
+    $libelleTraite = trim($libelle);
+    if(($libelleTraite != null) and ($libelleTraite != ""))
+    {
+        $this->libelle = $libelleTraite;
+    }else
+    {
+        throw new Exception("Libellé diplome incorrect");
+    }
   }
-}
 //-------------------------------------------toString
   public function toString()
   {
