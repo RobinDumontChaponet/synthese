@@ -45,7 +45,7 @@ class Personne
 			$this->idAncien = $idAncien;
 		}else
 		{
-			throw new Exception("Id ancien invalide");
+			throw new Exception("Id personne invalide");
 		}
 	}
 	
@@ -69,7 +69,7 @@ class Personne
 			$this->nomPatronymique = strtoupper($nomPatronymiqueTraite);
 		}else
 		{
-			throw new Exception("Nom incorrect");
+			throw new Exception("Nom patronymique incorrect");
 		}	
 	}
 	
