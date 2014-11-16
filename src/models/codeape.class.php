@@ -25,7 +25,7 @@ class CodeAPE
 //--------------------------------------------Setters
   public function setId($code)
   {
-    if(($id != null))
+    if(($id != null) and ($code >= 0))
     {
         $this->id = $id;
     }else
