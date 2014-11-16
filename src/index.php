@@ -18,8 +18,10 @@ set_include_path(dirname(__FILE__).'/includes');
 if(!empty($_GET['requ']))
 	if(is_file('controllers/'.$_GET['requ'].'.php'))
 		$inc = get_include_contents('controllers/'.$_GET['requ'].'.php');
-	else
+	else {
+		header('HTTP/1.0 404 Not Found');
 		$inc = get_include_contents('controllers/404.php');
+	}
 else
 	$inc = get_include_contents('controllers/index.php');
 
