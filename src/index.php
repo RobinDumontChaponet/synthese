@@ -15,17 +15,17 @@ function get_include_contents($filename) {
 
 set_include_path(dirname(__FILE__).'/includes');
 
-if(!empty($_GET['requ']))
-	if(is_file('controllers/'.$_GET['requ'].'.php'))
-		$inc = get_include_contents('controllers/'.$_GET['requ'].'.php');
-	else {
-		header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-		header("Status: 404 Not Found");
-		$_SERVER['REDIRECT_STATUS'] = 404;
-		$inc = get_include_contents('controllers/404.php');
-	}
-else
-	$inc = get_include_contents('controllers/index.php');
+if(empty($_GET['requ']))
+	$_GET['requ']='index';
+
+if(is_file('controllers/'.$_GET['requ'].'.php'))
+	$inc = get_include_contents('controllers/'.$_GET['requ'].'.php');
+else {
+	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+	header("Status: 404 Not Found");
+	$_SERVER['REDIRECT_STATUS'] = 404;
+	$inc = get_include_contents('controllers/404.php');
+}
 
 include('transit.inc.php');
 
