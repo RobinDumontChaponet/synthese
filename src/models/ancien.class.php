@@ -15,7 +15,7 @@ class Ancien extends Personne
 	private $imageTrombi;
 
 //----------------------------------Constructeurs
-    public function Ancien($id, $nom, $nomPatrnymique, $prenom, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+    public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
   	parent::Personne($id, $nom, $nomPatronymique, $prenom);
 	$this->setIdAncien($idAncien);
@@ -121,11 +121,11 @@ class Ancien extends Personne
 	}
 	
 //--------------------------tostring
-	public function toString()
+	public function __toString()
 	{
-		return Personne::toString()." Adresse1 : ".$this->adresse1." Adresse2 : "$this->adresse2
-			." CP : "$this->codePostale." Ville : "$this->ville
-		      	." Pays : ".$this->pays." Mobile : "$this->mobile." Telephone : "$this->telephone;
+		return Personne::toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
+			." CP : ".$this->codePostale." Ville : ".$this->ville
+		      	." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone;
 	}
 }
 ?>
