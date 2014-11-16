@@ -30,6 +30,40 @@ class Compte
   }
 
 //------------------------------------------Setters
+  public function setId($id)
+  {
+    if(($id != null) and ($id > 0))
+    {
+      $this->id = $id;
+    }else
+    {
+      throw new Exception("Id compte incorrect");
+    }
+  }
+  
+  public function setNdc($ndc)
+  {
+    $ndcTraite = trim($ndc);
+    if(($ndcTraite != null) and ($ndcTraite != ""))
+    {
+      $this->ndc = $ndcTraite;
+    }else
+    {
+      throw new Exception("Nom de compte incorrect");
+    }
+  }
+  
+  public function setMdp($mdp)
+  {
+    $mdpTraite = trim($mdp);
+    if(($mdp != null) and ($mdp != ""))
+    {
+      $this->mdp = $mdpTraite;
+    }else
+    {
+      throw new Exception("Mot de passe incorrect");
+    }
+  }
 //------------------------------------------toString
 
   public function()
