@@ -48,10 +48,10 @@ public function setLibelle($libelle)
   }
 }
 //-------------------------------------------toString
-public function toString()
-{
-  return "Id : ".$this->id." Libellé : ".$this->libelle;
-}
+  public function toString()
+  {
+    return "Id : ".$this->id." Libellé : ".$this->libelle;
+  }
 
 }
 
