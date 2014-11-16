@@ -8,7 +8,7 @@ class Personne
 	private $nomPatronymique;
 	private $prenom;
 	
-	public Personne($id, $nom, $nomPatronymique, $prenom)
+	public __construct($id, $nom, $nomPatronymique, $prenom)
 	{
 		$this->setId($id);
 		$this->setNom($nom);
@@ -86,7 +86,7 @@ class Personne
 	}
 	
 //------------------------------tostring
-	public function toString()
+	public function __toString()
 	{
 		return "Id : ".$this->id." Nom : ".$this->nom." Nom patronymique : "
 			.$this->nomPatrnoymique." Prénom : ".$this->prenom;
