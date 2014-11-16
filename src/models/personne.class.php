@@ -10,10 +10,10 @@ class Personne
 	
 	public Personne($id, $nom, $nomPatronymique, $prenom)
 	{
-		$this->id = $id;
-		$this->nom = $nom;
-		$this->nomPatrnoymique = $nomPatronymique;
-		$this->prenom = $prenom;
+		$this->setId($id);
+		$this->setNom($nom);
+		$this->setNomPatronymique($nomPatronymique);
+		$this->setPrenom($prenom);
 	}
 
 //----------------------------------Getters
