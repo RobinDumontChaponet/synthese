@@ -38,13 +38,20 @@ class Droit
 
 public function setLibelle($libelle)
 {
-  if()
+  $libelleTraite = trim($libelle);
+  if(($libelleTraite != null) and ($libelleTraite != ""))
   {
+      $this->libelle = $libelleTraite;
   }else
   {
+      throw new Exception("Libellé droit incorrect");
   }
 }
 //-------------------------------------------toString
+public function toString()
+{
+  return "Id : ".$this->id." Libellé : ".$this->libelle;
+}
 
 }
 
