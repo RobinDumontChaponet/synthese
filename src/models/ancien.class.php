@@ -2,7 +2,7 @@
 
 require_once("personne.class.php");
 
-class ancien extends Personne
+class Ancien extends Personne
 {
 	private $adresse1;
 	private $adresse2;
@@ -15,7 +15,7 @@ class ancien extends Personne
 	private $imageTrombi;
 
 //----------------------------------Constructeurs
-    public function ancien($id, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+    public function Ancien($id, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
   	parent::Personne($id);
 	$this->setIdAncien($idAncien);
