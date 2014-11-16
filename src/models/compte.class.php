@@ -6,7 +6,7 @@ class Compte
   private $ndc;
   private $mdp;
 
-  public function Compte($id, $ndc, $mdp)
+  public function __construct($id, $ndc, $mdp)
   {
       $this->setId($id);
       $this->setNdc($ndc);
@@ -66,7 +66,7 @@ class Compte
   }
 //------------------------------------------toString
 
-  public function()
+  public function __toString()
   {
       return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp;
   }
