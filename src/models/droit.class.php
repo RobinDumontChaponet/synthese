@@ -6,7 +6,7 @@ class Droit
   private $id;
   private $libelle;
 
-  public function Droit($id, $libelle)
+  public function __construct($id, $libelle)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
@@ -48,7 +48,7 @@ public function setLibelle($libelle)
   }
 }
 //-------------------------------------------toString
-  public function toString()
+  public function __toString()
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
