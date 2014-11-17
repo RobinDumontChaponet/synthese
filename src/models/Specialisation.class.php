@@ -3,7 +3,7 @@ class Specialisation
 {
   private $id;
   private $libelle;
-  private $typeSpecialisation
+  private $typeSpecialisation;
   
   public function __construct($id, $libelle, $typeSpecialisation)
   {
