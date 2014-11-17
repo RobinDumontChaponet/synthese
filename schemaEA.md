@@ -8,14 +8,14 @@
 Remarques : (peut être les garder pour les faire valider par notre professionnel)
 ===========
 
-  - [ok] Entre spécialisation et type spécialisation, il faut une cardinalité 11 du côté de spécialisation (actuellement 0n)
+  - [fait] Entre spécialisation et type spécialisation, il faut une cardinalité 11 du côté de spécialisation (actuellement 0n)
 //Demandes de modif de Victor//
   - Une spé peut avoir plusieurs typeSpé ???
   - Un ancien peut avoir un seul parent 0/1 niveau Ancien -- Parents ??? Solution proposé : Table liant idParent et idAncien
   - Les parents peuvent avoir mail ?
 
-  - [ok] estSpecialise --> Ajouter idAncien et idSpe
-  - [ok] Ajouter idDepartement, idAncien et idDiplomeDUT à aEtudie
-  - Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
-  - Poste --> ajouter clé primaire à idPoste
-  - disposeDe --> AJOUT --> idPage, idDroit + idProfil
+  - [fait] estSpecialise --> Ajouter idAncien et idSpe
+  - [fait] Ajouter idDepartement, idAncien et idDiplomeDUT à aEtudie
+  - [fait] Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
+  - [fait] Poste --> ajouter clé primaire à idPoste
+  - [fait] disposeDe --> AJOUT --> idPage, idDroit + idProfil
