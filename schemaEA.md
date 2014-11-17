@@ -18,3 +18,4 @@ Remarques : (peut être les garder pour les faire valider par notre professionne
 - Ajouter idDepartement, idAncien et idDiplomeDUT à aEtudie
 - Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
 - Poste --> ajouter clé primaire à idPoste
+- disposeDe --> AJOUT --> idPage, idDroit + idProfil
