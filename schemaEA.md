@@ -1,9 +1,4 @@
-
-
-
-
-
-![schemaea](https://cloud.githubusercontent.com/assets/9157490/5057282/c3fa4b74-6cb6-11e4-9ce5-a7c56efb2fd9.jpg)
+![schemaea](https://cloud.githubusercontent.com/assets/9157490/5076908/0ef23648-6e9f-11e4-858e-6b0d66acfb7e.jpg)
 
 Remarques : (peut être les garder pour les faire valider par notre professionnel)
 ===========
