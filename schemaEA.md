@@ -12,8 +12,10 @@ Remarques : (peut être les garder pour les faire valider par notre professionne
 - //Demandes de modif de Victor//
 - Une spé peut avoir plusieurs typeSpé ???
 - Un ancien peut avoir un seul parent 0/1 niveau Ancien -- Parents ??? Solution proposé : Table liant idParent et idAncien
+- Les parents peuvent avoir mail ?
 
 - estSpecialise --> Ajouter idAncien et idSpe
 - Ajouter idDepartement, idAncien et idDiplomeDUT à aEtudie
 - Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
 - Poste --> ajouter clé primaire à idPoste
+-
