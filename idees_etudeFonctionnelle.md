@@ -61,8 +61,16 @@ III/ Réseau social
 
 Le réseau social est une interface qui permettra aux utilisateurs d'interagir entre eux, que ce soit pour des raisons personnelles ou autour d'un évenements organisé. Dans les deux cas, le réseau social ne peut se faire sans l'étape **"pré-rs"**. Effectivement, l'étape pré-rs aura pour but la gestion des données, leurs visiblités, les droits d'accès, etc. Si cette gestion n'est pas faite, le réseau social n'aura aucun sens. En d'autres termes, la partie *réseau social* aura pour but d'ajouter des fonctionnalités en plus par rapport à la *gestion des anciens*, des fonctionnalités dont le principal objectif et d'animer les interactions entre la communauté des anciens (discussions, messages, ...).
 
-Il a comme but premier de permettre aux personnes ayant été ou étant encore à l'iut de pouvoir communiquer ensemble. Cette communication se ferait par deux moyens : une messagerie et des groupes de discussions. La messagerie se ferait entre deux personnes ou un petit groupe de personnes. Les groupes de discussions concernerait les groupes plus importants. Il y a des groupes par défaut. Par exemple, un groupe comportant tout le monde. Dans ce groupe, il devrait y avoir des droits spécifiques. Tout le monde pourrait voir les posts mais que les administrateurs pourrait poster. Un système de commentaire sera en place et là tout le monde pourrait commenter. Un autre groupe serait possible par défaut regroupant les différentes promo. Plusieurs promos seraient disponible pour un seul étudiant : les redoublants. D'autres groupe de discussions sont possible à la demande des utilisateurs. Ils pourront en créer et y ajouter des personnes grâce au formulaire de recherche. 
-Tous les poste des différents groupes concernant une seule personne pourront se retrouver ordonnées par date dans une sorte de fil d'actualité.
+Il a comme but premier de permettre aux personnes ayant été ou étant encore à l'iut de pouvoir communiquer ensemble. Cette communication se ferait par deux moyens : une messagerie et des groupes de discussions. 
+La messagerie se ferait entre deux personnes ou un petit groupe de personnes. 
+Les groupes de discussions concernerait les groupes plus importants. 
+Il y a des groupes par défaut.
+Par exemple, un groupe comportant tout le monde. Dans ce groupe, tout le monde pourrait voir les posts mais que les administrateurs pourrait en poster. Un système de commentaire sera en place et là tout le monde pourrait commenter. 
+Un autre groupe serait possible par défaut regroupant les différentes promo. Plusieurs promos seraient disponible pour un seul étudiant : les redoublants. Dans ce groupe, tous les membres pourraient poster et commenter. 
+
+D'autres groupes de discussions sont possible à la demande des utilisateurs. Ils pourront en créer et y ajouter des personnes grâce au formulaire de recherche. 
+Tous les posts des différents groupes concernant une seule personne pourront se retrouver ordonnés par date dans une sorte de fil d'actualité.
+
 
 Les modifications de la base de données ne sont pas très importantes :
 - GROUPE(id_groupe, nom_groupe,permissions)
@@ -72,6 +80,17 @@ Les modifications de la base de données ne sont pas très importantes :
 - discussion(id_discussion,date_deb)
 - membre_discu(id_discussion,id_login)
 - message(id_message,date,id_login,message) 
+
+
+III/ Sécurité
+==================
+
+Tout le système doit être sécurisé à la fois contre les attaques extérieur mais également par les attaques intérieurs ou mauvaises utilisations. Il faut donc tout sécurisé.
+La première chose à considérer est donc la question : qui a le droit d'y accéder? Toutes les personnes ayant l'autorisation d'y acceder doivent avoir un compte utilisateur sur le site. Une personne qui n'en a pas ne peux y acceder.
+La seconde : Que peut-on faire avec un compte ?
+A chaque compte sera associé un type de profil. Chaque type de profil aura ses autorisations. Les autorisations seront définies en fonction des pages et des actions autorisées. Par exemple les professeurs pourront voir les profils des anciens étudiants mais ne pourront pas les modifier.
+Il y a un troisième point à prendre en compte. Même si la personne a une certaine autorisation, il faut dans certains cas controler ce que cette personne fait. Par exemple dans le groupe de discussion de la promotion, on permet aux anciens de publier mais on va controler ce qu'il écrit et ne pas le laisser écrire tout et n'importe quoi afin d'éviter des problèmes.
+
 
 Remarques et compléments sur le fichier synthese / etude fonctionnelle.md
 =========================================================================
