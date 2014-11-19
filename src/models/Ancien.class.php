@@ -1,6 +1,6 @@
 <?php
 
-require_once("personne.class.php");
+require_once("models/Personne.class.php");
 
 class Ancien extends Personne
 {
@@ -17,8 +17,7 @@ class Ancien extends Personne
 //----------------------------------Constructeurs
     public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
-  	parent::Personne($id, $nom, $nomPatronymique, $prenom);
-	$this->setIdAncien($idAncien);
+  	parent::__construct($id, $nom, $nomPatronymique, $prenom);
 	$this->setAdresse1($adresse1);
 	$this->setAdresse2($adresse2);
 	$this->setCodePostale($codePostale);
@@ -93,7 +92,7 @@ class Ancien extends Personne
 	}
 	public function setMobile($mobile)
 	{
-		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		if((preg_match("/^\+?\d+$/", $mobile)) or ($mobile==""))
 		{
 			$this->mobile = $mobile;	
 		}else
@@ -103,9 +102,9 @@ class Ancien extends Personne
 	}
 	public function setTelephone($telephone)
 	{
-		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		if((preg_match("/^\+?\d+$/", $telephone)) or ($telephone==""))
 		{
-			$this->mobile = $mobile;	
+			$this->telephone = $telephone;	
 		}else
 		{
 			throw new Exception("Numéro de telephone invalide");
@@ -123,7 +122,7 @@ class Ancien extends Personne
 //--------------------------tostring
 	public function __toString()
 	{
-		return Personne::toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
+		return Personne::__toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
 			." CP : ".$this->codePostale." Ville : ".$this->ville
 		      	." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone;
 	}
