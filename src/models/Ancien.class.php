@@ -18,7 +18,6 @@ class Ancien extends Personne
     public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
   	parent::__construct($id, $nom, $nomPatronymique, $prenom);
-	$this->setIdAncien($idAncien);
 	$this->setAdresse1($adresse1);
 	$this->setAdresse2($adresse2);
 	$this->setCodePostal($codePostal);
