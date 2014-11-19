@@ -65,6 +65,53 @@ class Parents
     return $this->telephone;
   }
 
+//----------------------------------------SETTERS----------------------------------------------
+  public function setAdresse1($adresse1)
+	{
+		$this->adresse1 = trim($adresse1);
+	}
+	
+	public function setAdresse2($adresse2)
+	{
+		$this->adresse2 = trim($adresse2);
+	}
+	
+	public function setCodePostale($codePostale)
+	{
+		$this->codePostale = $codePostale;
+	}
+	
+	public function setVille($ville)
+	{
+		$this->ville = trim($ville);
+	}
+	
+	public function setPays($pays)
+	{
+		$this->pays = trim($pays);
+	}
+	
+	public function setMobile($mobile)
+	{
+		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		{
+			$this->mobile = $mobile;	
+		}else
+		{
+			throw new Exception("Numéro de mobile invalide");
+		}
+	}
+	
+	public function setTelephone($telephone)
+	{
+		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		{
+			$this->mobile = $mobile;	
+		}else
+		{
+			throw new Exception("Numéro de telephone invalide");
+		}
+	}
 
 //-----------------------------------------toString-----------------------------------------
   public function __toString()
