@@ -108,7 +108,7 @@ class Personne
 	public function __toString()
 	{
 		return "Id : ".$this->id." Nom : ".$this->nom." Nom patronymique : "
-			.$this->nomPatronymique." Prénom : ".$this->prenom;
+			.$this->nomPatronymique." Prénom : ".$this->prenom." Mail : ".$this->mail;
 	}
 }
 	
