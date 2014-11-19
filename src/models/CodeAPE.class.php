@@ -6,7 +6,7 @@ class CodeAPE
   private $code;
   private $libelle;
 
-  public function __construct($id, $libelle)
+  public function __construct($code, $libelle)
   {
       $this->setCode($code);
       $this->setLibelle($libelle);
@@ -23,15 +23,9 @@ class CodeAPE
       return $this->libelle;
   }
 //--------------------------------------------Setters
-  public function setId($code)
+  public function setCode($code)
   {
-    if(($id != null) and ($code >= 0))
-    {
-        $this->id = $id;
-    }else
-    {
-        throw new Exception("Code ape incorrect");
-    }
+    $this->code = trim($code);
   }
   public function setLibelle($libelle)
   {
