@@ -1,6 +1,6 @@
 <?php
 
-require_once("personne.class.php");
+include_once(dirname(__FILE__)."/Personne.class.php");
 
 class Ancien extends Personne
 {
