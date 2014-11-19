@@ -14,3 +14,5 @@ Remarques : (peut être les garder pour les faire valider par notre professionne
   - [fait] Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
   - [fait] Poste --> ajouter clé primaire à idPoste
   - [fait] disposeDe --> AJOUT --> idPage, idDroit + idProfil
+
+- Dans la table Evenement, il n'y a pas de description de l'evenement, est-ce qu'il serait bien d'en mettre une ?
