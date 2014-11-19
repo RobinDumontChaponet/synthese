@@ -45,13 +45,23 @@ if($matches[1]) {
 	if($onload!='') $script.="\n".'<script type="text/javascript">window.onload=function(){'.$onload.'}</script>';
 }
 ?>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IE 7]>   <html class="lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IE 8]>   <html class="lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
   <head>
-    <title><?php echo $title; ?></title>
 	<meta charset="UTF-8">
+    <title><?php echo $title; ?></title>
+	<!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
+	<link rel="icon" href="style/favicon-96.png">
+	<meta name="msapplication-TileColor" content="#FFF">
+	<meta name="msapplication-TileImage" content="style/favicon-144.png">
+	<link rel="apple-touch-icon" href="style/favicon-152.png">
 	<link rel="stylesheet" type="text/css" href="style/reset.min.css">
 	<link rel="stylesheet" type="text/css" href="style/general.css">
 	<?php echo $link; ?>
+	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script type="text/javascript" src="script/polyShims.js"></script>
 	<script type="text/javascript" src="script/transit.js"></script>
 	<?php echo $script; ?>
