@@ -122,7 +122,7 @@ class Ancien extends Personne
 //--------------------------tostring
 	public function __toString()
 	{
-		return Personne::toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
+		return Personne::__toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
 			." CP : ".$this->codePostal." Ville : ".$this->ville
 		      	." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone;
 	}
