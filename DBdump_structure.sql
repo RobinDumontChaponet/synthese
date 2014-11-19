@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 195.83.142.10:3306
--- Généré le : Mar 18 Novembre 2014 à 17:54
+-- Généré le : Mer 19 Novembre 2014 à 18:09
 -- Version du serveur: 5.5.40
 -- Version de PHP: 5.3.10-1ubuntu3.15
 
@@ -25,30 +25,30 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `aEtudie`
 --
--- Création: Mar 18 Novembre 2014 à 16:48
+-- Création: Mer 19 Novembre 2014 à 17:03
 --
 
 CREATE TABLE IF NOT EXISTS `aEtudie` (
   `idPromo` int(50) NOT NULL,
   `idDerpartement` int(50) NOT NULL,
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idDiplomeDUT` int(50) NOT NULL,
-  PRIMARY KEY (`idPromo`,`idDerpartement`,`idAncien`,`idDiplomeDUT`),
+  PRIMARY KEY (`idPromo`,`idDerpartement`,`idPersonne`,`idDiplomeDUT`),
   KEY `idDerpartement` (`idDerpartement`),
-  KEY `idAncien` (`idAncien`),
-  KEY `idDiplomeDUT` (`idDiplomeDUT`)
+  KEY `idDiplomeDUT` (`idDiplomeDUT`),
+  KEY `idPersonne` (`idPersonne`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `aEtudie`:
---   `idDiplomeDUT`
---       `diplomeDUT` -> `idDiplomeDUT`
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
 --   `idPromo`
 --       `promotion` -> `idPromo`
 --   `idDerpartement`
 --       `departementIUT` -> `idDepartement`
---   `idAncien`
---       `ancien` -> `idAncien`
+--   `idDiplomeDUT`
+--       `diplomeDUT` -> `idDiplomeDUT`
 --
 
 -- --------------------------------------------------------
@@ -56,11 +56,10 @@ CREATE TABLE IF NOT EXISTS `aEtudie` (
 --
 -- Structure de la table `ancien`
 --
--- Création: Lun 17 Novembre 2014 à 19:39
+-- Création: Mer 19 Novembre 2014 à 16:54
 --
 
 CREATE TABLE IF NOT EXISTS `ancien` (
-  `idAncien` int(50) NOT NULL,
   `idPersonne` int(50) NOT NULL,
   `adresse1` varchar(50) DEFAULT NULL,
   `adresse2` varchar(50) DEFAULT NULL,
@@ -71,33 +70,28 @@ CREATE TABLE IF NOT EXISTS `ancien` (
   `telephone` varchar(10) DEFAULT NULL,
   `imageProfil` blob,
   `imageTrombi` blob,
-  PRIMARY KEY (`idAncien`)
+  PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS POUR LA TABLE `ancien`:
---   `idAncien`
---       `personne` -> `idPersonne`
---
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `aParticipe`
 --
--- Création: Lun 17 Novembre 2014 à 20:46
+-- Création: Mer 19 Novembre 2014 à 17:03
 --
 
 CREATE TABLE IF NOT EXISTS `aParticipe` (
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idEvenement` int(50) NOT NULL,
-  PRIMARY KEY (`idAncien`,`idEvenement`)
+  PRIMARY KEY (`idPersonne`,`idEvenement`),
+  KEY `idEvenement` (`idEvenement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `aParticipe`:
---   `idAncien`
---       `ancien` -> `idAncien`
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
 --   `idEvenement`
 --       `evenement` -> `idEvenement`
 --
@@ -130,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `compte` (
   `ndc` varchar(50) NOT NULL,
   `mdp` varchar(60) NOT NULL,
   PRIMARY KEY (`idCompte`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- RELATIONS POUR LA TABLE `compte`:
@@ -199,24 +193,26 @@ CREATE TABLE IF NOT EXISTS `diplomePostDUT` (
 --
 -- Structure de la table `disposeDe`
 --
--- Création: Lun 17 Novembre 2014 à 19:45
+-- Création: Mer 19 Novembre 2014 à 06:58
 --
 
 CREATE TABLE IF NOT EXISTS `disposeDe` (
   `idProfil` int(50) NOT NULL,
   `idDroit` int(50) NOT NULL,
   `idPage` int(50) NOT NULL,
-  PRIMARY KEY (`idProfil`,`idDroit`,`idPage`)
+  PRIMARY KEY (`idProfil`,`idDroit`,`idPage`),
+  KEY `idDroit` (`idDroit`),
+  KEY `idPage` (`idPage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `disposeDe`:
---   `idDroit`
---       `droits` -> `idDroit`
 --   `idPage`
 --       `page` -> `idPage`
 --   `idProfil`
 --       `typeProfil` -> `idProfil`
+--   `idDroit`
+--       `droits` -> `idDroit`
 --
 
 -- --------------------------------------------------------
@@ -281,22 +277,22 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
 --
 -- Structure de la table `estLie`
 --
--- Création: Mar 18 Novembre 2014 à 16:46
+-- Création: Mer 19 Novembre 2014 à 17:04
 --
 
 CREATE TABLE IF NOT EXISTS `estLie` (
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idParent` int(50) NOT NULL,
-  PRIMARY KEY (`idAncien`,`idParent`),
+  PRIMARY KEY (`idPersonne`,`idParent`),
   KEY `idParent` (`idParent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `estLie`:
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
 --   `idParent`
 --       `parents` -> `idParent`
---   `idAncien`
---       `ancien` -> `idAncien`
 --
 
 -- --------------------------------------------------------
@@ -304,19 +300,20 @@ CREATE TABLE IF NOT EXISTS `estLie` (
 --
 -- Structure de la table `estSpecialise`
 --
--- Création: Lun 17 Novembre 2014 à 18:35
+-- Création: Mer 19 Novembre 2014 à 17:03
 --
 
 CREATE TABLE IF NOT EXISTS `estSpecialise` (
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idSpe` int(50) NOT NULL,
-  PRIMARY KEY (`idAncien`,`idSpe`)
+  PRIMARY KEY (`idPersonne`,`idSpe`),
+  KEY `idSpe` (`idSpe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `estSpecialise`:
---   `idAncien`
---       `ancien` -> `idAncien`
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
 --   `idSpe`
 --       `specialisation` -> `idSpe`
 --
@@ -399,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `parents` (
 --
 -- Structure de la table `personne`
 --
--- Création: Lun 17 Novembre 2014 à 18:44
+-- Création: Mer 19 Novembre 2014 à 13:40
 --
 
 CREATE TABLE IF NOT EXISTS `personne` (
@@ -407,6 +404,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `idCompte` int(50) DEFAULT NULL,
   `nomUsage` varchar(50) NOT NULL,
   `nomPatronymique` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -422,27 +420,29 @@ CREATE TABLE IF NOT EXISTS `personne` (
 --
 -- Structure de la table `possede`
 --
--- Création: Lun 17 Novembre 2014 à 21:59
+-- Création: Mer 19 Novembre 2014 à 17:03
 --
 
 CREATE TABLE IF NOT EXISTS `possede` (
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idDiplomePost` int(50) NOT NULL,
   `idEtablissement` int(50) NOT NULL,
   `resultat` int(2) NOT NULL,
   `dateDeb` date NOT NULL,
   `dateFin` date NOT NULL,
-  PRIMARY KEY (`idAncien`,`idDiplomePost`,`idEtablissement`)
+  PRIMARY KEY (`idPersonne`,`idDiplomePost`,`idEtablissement`),
+  KEY `idDiplomePost` (`idDiplomePost`),
+  KEY `idEtablissement` (`idEtablissement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `possede`:
---   `idAncien`
---       `ancien` -> `idAncien`
---   `idDiplomePost`
---       `diplomePostDUT` -> `idDiplomePost`
 --   `idEtablissement`
 --       `etablissement` -> `idEtablissement`
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
+--   `idDiplomePost`
+--       `diplomePostDUT` -> `idDiplomePost`
 --
 
 -- --------------------------------------------------------
@@ -464,21 +464,22 @@ CREATE TABLE IF NOT EXISTS `poste` (
 --
 -- Structure de la table `prefere`
 --
--- Création: Lun 17 Novembre 2014 à 20:46
+-- Création: Mer 19 Novembre 2014 à 17:03
 --
 
 CREATE TABLE IF NOT EXISTS `prefere` (
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idTypeEvenement` int(50) NOT NULL,
-  PRIMARY KEY (`idAncien`,`idTypeEvenement`)
+  PRIMARY KEY (`idPersonne`,`idTypeEvenement`),
+  KEY `idTypeEvenement` (`idTypeEvenement`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `prefere`:
---   `idAncien`
---       `ancien` -> `idAncien`
 --   `idTypeEvenement`
 --       `typeEvenement` -> `idTypeEvenement`
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
 --
 
 -- --------------------------------------------------------
@@ -522,24 +523,26 @@ CREATE TABLE IF NOT EXISTS `specialisation` (
 --
 -- Structure de la table `travaille`
 --
--- Création: Lun 17 Novembre 2014 à 19:21
+-- Création: Mer 19 Novembre 2014 à 17:04
 --
 
 CREATE TABLE IF NOT EXISTS `travaille` (
-  `idAncien` int(50) NOT NULL,
+  `idPersonne` int(50) NOT NULL,
   `idPoste` int(50) NOT NULL,
   `idEntreprise` int(50) NOT NULL,
   `dateEmbaucheDeb` date NOT NULL,
   `dateEmbaucheFin` date DEFAULT NULL,
-  PRIMARY KEY (`idAncien`,`idPoste`,`idEntreprise`,`dateEmbaucheDeb`)
+  PRIMARY KEY (`idPersonne`,`idPoste`,`idEntreprise`,`dateEmbaucheDeb`),
+  KEY `idPoste` (`idPoste`),
+  KEY `idEntreprise` (`idEntreprise`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- RELATIONS POUR LA TABLE `travaille`:
---   `idAncien`
---       `ancien` -> `idAncien`
 --   `idEntreprise`
 --       `entreprise` -> `idEntreprise`
+--   `idPersonne`
+--       `ancien` -> `idPersonne`
 --   `idPoste`
 --       `poste` -> `idPoste`
 --
@@ -563,13 +566,14 @@ CREATE TABLE IF NOT EXISTS `typeEvenement` (
 --
 -- Structure de la table `typeProfil`
 --
--- Création: Lun 17 Novembre 2014 à 19:49
+-- Création: Mer 19 Novembre 2014 à 13:54
 --
 
 CREATE TABLE IF NOT EXISTS `typeProfil` (
   `idProfil` int(50) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idProfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -593,17 +597,62 @@ CREATE TABLE IF NOT EXISTS `typeSpecialisation` (
 -- Contraintes pour la table `aEtudie`
 --
 ALTER TABLE `aEtudie`
-  ADD CONSTRAINT `aEtudie_ibfk_4` FOREIGN KEY (`idDiplomeDUT`) REFERENCES `diplomeDUT` (`idDiplomeDUT`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `aEtudie_ibfk_5` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `aEtudie_ibfk_1` FOREIGN KEY (`idPromo`) REFERENCES `promotion` (`idPromo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `aEtudie_ibfk_2` FOREIGN KEY (`idDerpartement`) REFERENCES `departementIUT` (`idDepartement`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `aEtudie_ibfk_3` FOREIGN KEY (`idAncien`) REFERENCES `ancien` (`idAncien`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `aEtudie_ibfk_4` FOREIGN KEY (`idDiplomeDUT`) REFERENCES `diplomeDUT` (`idDiplomeDUT`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `aParticipe`
+--
+ALTER TABLE `aParticipe`
+  ADD CONSTRAINT `aParticipe_ibfk_3` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `aParticipe_ibfk_2` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`idEvenement`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `disposeDe`
+--
+ALTER TABLE `disposeDe`
+  ADD CONSTRAINT `disposeDe_ibfk_3` FOREIGN KEY (`idPage`) REFERENCES `page` (`idPage`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `disposeDe_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `typeProfil` (`idProfil`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `disposeDe_ibfk_2` FOREIGN KEY (`idDroit`) REFERENCES `droits` (`idDroit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `estLie`
 --
 ALTER TABLE `estLie`
-  ADD CONSTRAINT `estLie_ibfk_2` FOREIGN KEY (`idParent`) REFERENCES `parents` (`idParent`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `estLie_ibfk_1` FOREIGN KEY (`idAncien`) REFERENCES `ancien` (`idAncien`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `estLie_ibfk_3` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `estLie_ibfk_2` FOREIGN KEY (`idParent`) REFERENCES `parents` (`idParent`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `estSpecialise`
+--
+ALTER TABLE `estSpecialise`
+  ADD CONSTRAINT `estSpecialise_ibfk_3` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `estSpecialise_ibfk_2` FOREIGN KEY (`idSpe`) REFERENCES `specialisation` (`idSpe`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `possede`
+--
+ALTER TABLE `possede`
+  ADD CONSTRAINT `possede_ibfk_3` FOREIGN KEY (`idEtablissement`) REFERENCES `etablissement` (`idEtablissement`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `possede_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `possede_ibfk_2` FOREIGN KEY (`idDiplomePost`) REFERENCES `diplomePostDUT` (`idDiplomePost`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `prefere`
+--
+ALTER TABLE `prefere`
+  ADD CONSTRAINT `prefere_ibfk_2` FOREIGN KEY (`idTypeEvenement`) REFERENCES `typeEvenement` (`idTypeEvenement`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prefere_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`);
+
+--
+-- Contraintes pour la table `travaille`
+--
+ALTER TABLE `travaille`
+  ADD CONSTRAINT `travaille_ibfk_3` FOREIGN KEY (`idEntreprise`) REFERENCES `entreprise` (`idEntreprise`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `travaille_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `travaille_ibfk_2` FOREIGN KEY (`idPoste`) REFERENCES `poste` (`idPoste`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
