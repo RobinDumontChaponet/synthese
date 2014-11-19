@@ -35,7 +35,8 @@ class TypeEvenement
 		}
 	}
 	
-	public function setLibelle($libelle)
+	
+  public function setLibelle($libelle)
   {
     $libelleTraite = trim($libelle);
     if(($libelleTraite != null) and ($libelleTraite != ""))
