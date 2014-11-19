@@ -47,7 +47,7 @@ class Travaille
 //-------------------------------------------SETTERS------------------------------
   public function setIdEntreprise($id)
   {
-    if(($id != null) and ($id > 0))
+    if(($id != null) and ($id >= 0))
     {
         $this->id = $id;
     }else

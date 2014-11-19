@@ -66,6 +66,16 @@ class Parents
   }
 
 //----------------------------------------SETTERS----------------------------------------------
+   public function setId($id)
+   {
+   	if(($id != null) and ($id >= 0))
+   	{
+   		$this->id = $id;
+   	}else
+  	{
+   		throw new Exception("Id personne invalide");
+      	}
+   }
   public function setAdresse1($adresse1)
   {
 	$this->adresse1 = trim($adresse1);

@@ -27,7 +27,7 @@ abstract class Diplome
 
   public function setId($id)
   {
-    if(($id != null) and ($id > 0))
+    if(($id != null) and ($id >= 0))
     {
         $this->id = $id;
     }else
