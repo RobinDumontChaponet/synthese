@@ -1,5 +1,6 @@
 <?php
 $badAgents = array('Java','Jakarta', 'User-Agent', 'compatible ;', 'libwww, lwp-trivial', 'curl, PHP/', 'urllib', 'GT::WWW', 'Snoopy', 'MFC_Tear_Sample', 'HTTP::Lite', 'PHPCrawl', 'URI::Fetch', 'Zend_Http_Client', 'http client', 'PECL::HTTP');
+$bot=false;
 foreach($badAgents as $agent) {
     if(strpos($_SERVER['HTTP_USER_AGENT'],$agent) !== false)
         $bot=true;
@@ -16,7 +17,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 		include('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
 		try {
-			$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=jozwicki2u_projetSynthese');
+			$connect = connect();
 			$statement = $connect->prepare("SELECT mdp FROM compte");
 
 			$statement->execute();
