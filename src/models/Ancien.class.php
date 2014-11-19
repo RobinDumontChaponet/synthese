@@ -93,7 +93,7 @@ class Ancien extends Personne
 	}
 	public function setMobile($mobile)
 	{
-		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		if((preg_match("/^\+?\d+$/", $mobile)) or ($mobile==""))
 		{
 			$this->mobile = $mobile;	
 		}else
@@ -103,9 +103,9 @@ class Ancien extends Personne
 	}
 	public function setTelephone($telephone)
 	{
-		if((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		if((preg_match("/^\+?\d+$/", $telephone)) or ($telephone==""))
 		{
-			$this->mobile = $mobile;	
+			$this->telephone = $telephone;	
 		}else
 		{
 			throw new Exception("Numéro de telephone invalide");
