@@ -89,7 +89,7 @@ class Ancien extends Personne
 	}
 	public function setPays($pays)
 	{
-		$this->pays = $pays;
+		$this->pays = trim($pays);
 	}
 	public function setMobile($mobile)
 	{
