@@ -25,7 +25,7 @@ class Promotion{
 //---------------------------Setters
   public function($id)
   {
-      if(($id != null) and ($id > 0))
+      if(($id != null) and ($id >= 0))
       {
           $this->id = $id;
       }
