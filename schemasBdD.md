@@ -1,5 +1,7 @@
 ![schemaea](https://cloud.githubusercontent.com/assets/9157490/5077050/493779f2-6ea0-11e4-9b70-cf87a511ec92.jpg)
 
+![schema](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/db.png)
+
 Remarques :
 ===========
 
