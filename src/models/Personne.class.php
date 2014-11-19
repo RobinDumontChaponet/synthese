@@ -38,11 +38,11 @@ class Personne
 	}
 
 //----------------------------------Setters
-	public function setId($idAncien)
+	public function setId($id)
 	{
-		if(($idAncien != null) and ($idAncien > 0))
+		if(($id != null) and ($id > 0))
 		{
-			$this->idAncien = $idAncien;
+			$this->id = $id;
 		}else
 		{
 			throw new Exception("Id personne invalide");
