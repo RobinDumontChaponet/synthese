@@ -7,13 +7,15 @@ class Personne
 	private $nom;
 	private $nomPatronymique;
 	private $prenom;
+	private $mail;
 	
-	public function __construct($id, $nom, $nomPatronymique, $prenom)
+	public function __construct($id, $nom, $nomPatronymique, $prenom, $mail)
 	{
 		$this->setId($id);
 		$this->setNom($nom);
 		$this->setNomPatronymique($nomPatronymique);
 		$this->setPrenom($prenom);
+		$this->setMail($mail);
 	}
 
 //----------------------------------Getters
@@ -27,7 +29,7 @@ class Personne
 		return $this->nom;
 	}
 	
-	public function getNomPatroymique()
+	public function getNomPatronymique()
 	{
 		return $this->nomPatronymique;
 	}
@@ -35,6 +37,11 @@ class Personne
 	public function getPrenom()
 	{
 		return $this->prenom;
+	}
+	
+	public function getMail()
+	{
+		return $this->$mail;
 	}
 
 //----------------------------------Setters
@@ -82,6 +89,18 @@ class Personne
 		}else
 		{
 			throw new Exception("Prenom incorrect");
+		}
+	}
+	
+	public function setMail($mail)
+	{
+		$mailTraite = trim($mail);
+		if(($mailTraite != null) and (($mailTraite == "") or (preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite))))
+		{
+			$this->mail = $mailTraite;	
+		}else
+		{
+			throw new Exception("Mail incorrect !");
 		}
 	}
 	
