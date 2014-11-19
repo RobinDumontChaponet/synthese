@@ -17,7 +17,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 		include('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
 		try {
-			$connect = connect('mysql:host=infodb2.iut.univ-metz.fr;dbname=jozwicki2u_projetSynthese');
+			$connect = connect();
 			$statement = $connect->prepare("SELECT mdp FROM compte");
 
 			$statement->execute();
