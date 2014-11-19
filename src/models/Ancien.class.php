@@ -6,7 +6,7 @@ class Ancien extends Personne
 {
 	private $adresse1;
 	private $adresse2;
-	private $codePostale;
+	private $codePostal;
 	private $ville;
 	private $pays;
 	private $mobile;
@@ -15,13 +15,13 @@ class Ancien extends Personne
 	private $imageTrombi;
 
 //----------------------------------Constructeurs
-    public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+    public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
   {
-  	parent::Personne($id, $nom, $nomPatronymique, $prenom);
+  	parent::__construct($id, $nom, $nomPatronymique, $prenom);
 	$this->setIdAncien($idAncien);
 	$this->setAdresse1($adresse1);
 	$this->setAdresse2($adresse2);
-	$this->setCodePostale($codePostale);
+	$this->setCodePostal($codePostal);
 	$this->setVille($ville);
 	$this->setPays($pays);
 	$this->setMobile($mobile);
@@ -39,9 +39,9 @@ class Ancien extends Personne
 	{
 		return $this->adresse2;
 	}
-	public function getCodePostale()
+	public function getCodePostal()
 	{
-		return $this->codePostale;
+		return $this->codePostal;
 	}
 	public function getVille()
 	{
@@ -79,9 +79,9 @@ class Ancien extends Personne
 	{
 		$this->adresse2 = trim($adresse2);
 	}
-	public function setCodePostale($codePostale)
+	public function setCodePostal($codePostal)
 	{
-		$this->codePostale = $codePostale;
+		$this->codePostal = $codePostal;
 	}
 	public function setVille($ville)
 	{
@@ -124,7 +124,7 @@ class Ancien extends Personne
 	public function __toString()
 	{
 		return Personne::toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
-			." CP : ".$this->codePostale." Ville : ".$this->ville
+			." CP : ".$this->codePostal." Ville : ".$this->ville
 		      	." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone;
 	}
 }
