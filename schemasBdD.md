@@ -14,7 +14,7 @@ Remarques :
   - [fait] Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
   - [fait] Poste --> ajouter clé primaire à idPoste
   - [fait] disposeDe --> AJOUT --> idPage, idDroit + idProfil
-  - ajouter "libelle" dans "typeProfile".
+  - [fait] ajouter "libelle" dans "typeProfile".
   - peut-être ne pas mettre une taille de 50 pour les id mais quelque chose de plus réaliste (5 ?).
 
 - Dans la table Evenement, il n'y a pas de description de l'evenement, est-ce qu'il serait bien d'en mettre une ?
