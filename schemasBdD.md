@@ -1,4 +1,4 @@
-![schemaEA](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/schemaEA.jpg)
+![schemaEA](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/schemaEA.png)
 
 ![schema](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/db.png)
 
