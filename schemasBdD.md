@@ -1,20 +1,16 @@
-![schemaEA](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/schemaEA.jpg)
+![schemaEA](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/schemaEA.png)
 
 ![schema](https://raw.githubusercontent.com/RobinDumontChaponet/synthese/master/db.png)
 
 Remarques :
 ===========
 
-  - [fait] Entre spécialisation et type spécialisation, il faut une cardinalité 11 du côté de spécialisation (actuellement 0n)
-  - Une spé peut avoir plusieurs typeSpé ???
-  - Un ancien peut avoir un seul parent 0/1 niveau Ancien -- Parents ??? Solution proposé : Table liant idParent et idAncien
-  - Les parents peuvent avoir mail ?
-  - [fait] estSpecialise --> Ajouter idAncien et idSpe
-  - [fait] Ajouter idDepartement, idAncien et idDiplomeDUT à aEtudie
-  - [fait] Enlever "aEu" entre "ancien" et "DiplomeDUT" et l'attacher à "aEtudie"
-  - [fait] Poste --> ajouter clé primaire à idPoste
-  - [fait] disposeDe --> AJOUT --> idPage, idDroit + idProfil
-  - [fait] ajouter "libelle" dans "typeProfile".
-  - peut-être ne pas mettre une taille de 50 pour les id mais quelque chose de plus réaliste (5 ?).
-
-- Dans la table Evenement, il n'y a pas de description de l'evenement, est-ce qu'il serait bien d'en mettre une ?
+  - Enlever les clé étrangères des relations sur le Schéma E/A suivantes :
+		- estSpecialise
+		- aEtudie
+		- disposeDe
+  - Mettre idPoste de "Poste" en clé primaire auto incrémentée
+  - Dans la table Evenement, il n'y a pas de description de l'evenement, est-ce qu'il serait bien d'en mettre une ???????
+  - Refaire un screenshot de la DB car estLie à été supprimé dans la table (Schéma E/A ne change pas sur ce point)
+  
+  - Rechercher les différents APE et les mettre dans la DB au fur Elise (et à mesure)
