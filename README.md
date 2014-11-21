@@ -1,4 +1,15 @@
-	Première concertation sur le projet
+###BackLog
+- BdD [fait]
+- Pojo [presque fait]
+- DAO [presque fait]
+- CSV [presque fait]
+
+###BackLog pour la prochaine fois
+- [finir les "presques fait"]
+- rapport intermédiaire
+
+
+###Première concertation sur le projet
 
 
 Semblant de plan
