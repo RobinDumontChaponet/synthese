@@ -1,7 +1,7 @@
 <!--meta title="IUTbook | Importer promo .csv" css="style/csv.css" js="script/upload.js"-->
     <div id="file">
         <fieldset id="add" class="button">
-            <label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file"> <img src="loader.gif" alt="chargement...">
+            <label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
         </fieldset>
     </div>
 
