@@ -3,13 +3,11 @@ class TypeSpecialisation
 {
   private $id;
   private $libelle;
-  private $description
   
-  public function __construct($id, $libelle, $description)
+  public function __construct($id, $libelle)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
-      $this->setDescription($description);
   }
   
 //--------------------------------------------Getters
@@ -23,10 +21,7 @@ class TypeSpecialisation
       return $this->libelle;
   }
   
-  public function getDescription()
-  {
-      return $this->description;
-  }
+
 //--------------------------------------------Setters
   public function setId($id)
   {
@@ -49,20 +44,11 @@ class TypeSpecialisation
         throw new Exception("Libellé spécialisation incorrect");
     }
   }
-  
-  public function setDescription($description)
-  {
-    $descriptionTraitee = trim($description);
-    if(($descriptionTraitee == null) or ($descriptionTraitee == ""))
-    {
-      $descriptionTraitee = "Aucune description";
-    }
-    $this->description = $descriptionTraitee;
-  }
+
 //-------------------------------------------toString
   public function __toString()
   {
-    return "Id : ".$this->id." Libellé : ".$this->libelle." Descirption : ".$this->description;
+    return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
 }
 ?>
