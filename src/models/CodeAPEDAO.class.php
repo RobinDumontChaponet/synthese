@@ -15,7 +15,7 @@
             return $lstcode;
         }
         
-        public static function getById($code){
+        public static function getById($id){
             
                 $bdd=connect();
                 $req=$bdd->prepare("SELECT `code`, `libelle` FROM `codeAPE` WHERE code=?");
