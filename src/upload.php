@@ -1,10 +1,10 @@
-<?php 
+<?php
 /*session_start();
 if (!isset($_SESSION['colouringAdmin']) || $_SESSION['colouringAdmin']=='') {
 	exit();
 }*/
 //set_include_path('/srv/data/web/vhosts/www.colouring-tour.org/includes');
-include 'transit.inc.php';
+include 'transit/transit.inc.php';
 
 $possibleDestinations = array('data/csv', 'data/truc');
 $canSub = array('data/csv');
@@ -33,7 +33,7 @@ if( trim($_REQUEST['sub'])!='' ) {
 			die('bad path ! ;-)');
 		else
 			$sub = '/'.$_REQUEST['sub'];
-	} else 
+	} else
 		die('bad path ! ;-)');
 }
 
