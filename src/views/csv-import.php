@@ -13,7 +13,8 @@
         </select>
 
         <fieldset id="table"></fieldset><input type="submit" value="Enregistrer">
-    </form><script type="text/javascript">
+    </form>
+    <script type="text/javascript">
 /*var multi_selector = new MultiSelector( document.getElementById( 'files_list' ), -1, '');
     multi_selector.addElement( document.getElementById( 'fileinput' ) );*/
 
@@ -32,4 +33,4 @@
     };
     xhr.send(null);
     });
-    </script>
+	</script>
