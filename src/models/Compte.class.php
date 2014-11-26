@@ -21,7 +21,7 @@ class Compte
   
   public function getNdc()
   {
-      return $this->ndc
+      return $this->ndc;
   }
   
   public function getMdp()
