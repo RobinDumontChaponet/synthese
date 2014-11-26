@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 195.83.142.10:3306
--- Généré le : Mer 19 Novembre 2014 à 18:09
+-- Généré le : Mer 26 Novembre 2014 à 16:52
 -- Version du serveur: 5.5.40
 -- Version de PHP: 5.3.10-1ubuntu3.15
 
@@ -56,22 +56,32 @@ CREATE TABLE IF NOT EXISTS `aEtudie` (
 --
 -- Structure de la table `ancien`
 --
--- Création: Mer 19 Novembre 2014 à 16:54
+-- Création: Ven 21 Novembre 2014 à 14:33
 --
 
 CREATE TABLE IF NOT EXISTS `ancien` (
   `idPersonne` int(50) NOT NULL,
+  `idParent` int(50) DEFAULT NULL,
+  `dateNaissance` date DEFAULT NULL,
   `adresse1` varchar(50) DEFAULT NULL,
   `adresse2` varchar(50) DEFAULT NULL,
   `codePostal` varchar(5) DEFAULT NULL,
   `ville` varchar(20) DEFAULT NULL,
   `pays` varchar(20) DEFAULT NULL,
   `mobile` varchar(10) DEFAULT NULL,
-  `telephone` varchar(10) DEFAULT NULL,
+  `telephone` varchar(20) DEFAULT NULL,
   `imageProfil` blob,
   `imageTrombi` blob,
   PRIMARY KEY (`idPersonne`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS POUR LA TABLE `ancien`:
+--   `idParent`
+--       `parents` -> `idParent`
+--   `idPersonne`
+--       `personne` -> `idPersonne`
+--
 
 -- --------------------------------------------------------
 
@@ -101,11 +111,11 @@ CREATE TABLE IF NOT EXISTS `aParticipe` (
 --
 -- Structure de la table `codeAPE`
 --
--- Création: Sam 15 Novembre 2014 à 10:10
+-- Création: Ven 21 Novembre 2014 à 14:25
 --
 
 CREATE TABLE IF NOT EXISTS `codeAPE` (
-  `code` varchar(50) NOT NULL,
+  `code` varchar(4) NOT NULL,
   `libelle` varchar(50) NOT NULL DEFAULT 'Aucun libelle',
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -275,29 +285,6 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `estLie`
---
--- Création: Mer 19 Novembre 2014 à 17:04
---
-
-CREATE TABLE IF NOT EXISTS `estLie` (
-  `idPersonne` int(50) NOT NULL,
-  `idParent` int(50) NOT NULL,
-  PRIMARY KEY (`idPersonne`,`idParent`),
-  KEY `idParent` (`idParent`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS POUR LA TABLE `estLie`:
---   `idPersonne`
---       `ancien` -> `idPersonne`
---   `idParent`
---       `parents` -> `idParent`
---
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `estSpecialise`
 --
 -- Création: Mer 19 Novembre 2014 à 17:03
@@ -376,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `page` (
 --
 -- Structure de la table `parents`
 --
--- Création: Lun 17 Novembre 2014 à 19:37
+-- Création: Ven 21 Novembre 2014 à 14:33
 --
 
 CREATE TABLE IF NOT EXISTS `parents` (
@@ -387,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `parents` (
   `ville` varchar(20) DEFAULT NULL,
   `pays` varchar(20) DEFAULT NULL,
   `mobile` varchar(10) DEFAULT NULL,
-  `telephone` varchar(10) DEFAULT NULL,
+  `telephone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idParent`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -603,6 +590,12 @@ ALTER TABLE `aEtudie`
   ADD CONSTRAINT `aEtudie_ibfk_4` FOREIGN KEY (`idDiplomeDUT`) REFERENCES `diplomeDUT` (`idDiplomeDUT`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Contraintes pour la table `ancien`
+--
+ALTER TABLE `ancien`
+  ADD CONSTRAINT `ancien_ibfk_1` FOREIGN KEY (`idPersonne`) REFERENCES `personne` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `aParticipe`
 --
 ALTER TABLE `aParticipe`
@@ -616,13 +609,6 @@ ALTER TABLE `disposeDe`
   ADD CONSTRAINT `disposeDe_ibfk_3` FOREIGN KEY (`idPage`) REFERENCES `page` (`idPage`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `disposeDe_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `typeProfil` (`idProfil`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `disposeDe_ibfk_2` FOREIGN KEY (`idDroit`) REFERENCES `droits` (`idDroit`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `estLie`
---
-ALTER TABLE `estLie`
-  ADD CONSTRAINT `estLie_ibfk_3` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `estLie_ibfk_2` FOREIGN KEY (`idParent`) REFERENCES `parents` (`idParent`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `estSpecialise`
