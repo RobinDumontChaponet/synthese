@@ -11,8 +11,9 @@ private $mobile;
 private $telephone;
 private $imageProfil;
 private $imageTrombi;
+private $parents;
 //----------------------------------Constructeurs
-public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi)
+public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents)
 {
 parent::__construct($id, $nom, $nomPatronymique, $prenom);
 $this->setAdresse1($adresse1);
@@ -24,6 +25,7 @@ $this->setMobile($mobile);
 $this->setTelephone($telephone);
 $this->setImageProfil($imageProfil);
 $this->setImageTrombi($imageTrombi);
+$this->setParents($parents);
 }
 //----------------------------------GETTERS
 public function getAdresse1()
@@ -62,6 +64,11 @@ public function getImageTrombi()
 {
 return $this->imageTrombi;
 }
+public function getParents()
+{
+return $this->parents;
+}
+
 //----------------------------------SETTERS
 public function setAdresse1($adresse1)
 {
@@ -111,12 +118,16 @@ public function setImageTrombi($imageTrombi)
 {
 $this->imageTrombi = $imageTrombi;
 }
+public function setParents($parents)
+{
+  $this->parents = $parents;
+}
 //--------------------------tostring
 public function __toString()
 {
 return Personne::__toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
 ." CP : ".$this->codePostal." Ville : ".$this->ville
-." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone;
+." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone." Parents : ".$this->parents->__toString();
 }
 }
 ?>
