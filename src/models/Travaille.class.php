@@ -91,13 +91,14 @@ class Travaille
   
   public function setDateEmbaucheFin($date)
   {
-    if($date != null)
-    {
+    //Pas de verifications car la date embauche fin peut etre nulle si il travaille encore dans l'entreprise.
       $this->dateEmbaucheFin = $date;
-    }else
-    {
-      throw new Exception("Date embauche fin dans Travaille incorrecte");
-    }
+  }
+  
+  //---------------------------------toString--------------------------------------
+  public function __toString()
+  {
+    return "Entreprise : ".$this->entreprise->__toString()." Poste : ".$this->poste->__toString()." Ancien : ".$this->ancien->__toString()." Date embauche début : "$this->dateEmaucheDeb." Date embauche fin : ".$this->dateEmbaucheFin;
   }
 
 }
