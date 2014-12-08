@@ -44,7 +44,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 <!--[if IE 8]>   <html class="lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <head>
-<title>IUTbook | Connexion</title>
+<title>connectIT! | Connexion</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
 <link rel="icon" href="style/favicon-96.png">
@@ -59,14 +59,14 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
   <fieldset>
   <?php if($bot===true) echo'<p class="mapsitna">Accès interdit !</p>';
 else { ?>
-    <legend>IUTbook</legend>
+    <legend>connectIT!</legend>
     <label for="user">Identifiant</label><input title="Identifiant" id="user" name="user" type="text" value="<?php echo $_POST['user']?>" required autofocus />
     <br />
     <label for="pwd">Mot-de-passe</label><input title="Mot-de-passe" id="pwd" name="pwd" type="password" required />
     <br />
     <?php if ($badinput===true) echo'<p class="badpass">Identifiant ou mot-de-passe incorrects !</p>';?>
     <br />
-    <input class="<?php if ($badinput!==true) echo'ok'; else echo'warning';?>" name="submit" type="submit" value="&#xe60c; connexion" />
+    <input class="<?php if ($badinput!==true) echo'ok'; else echo'warning';?>" name="submit" type="submit" value="&#xe613; connexion" />
     <br /><a href="#" title="Alors, comme ça, on oublie son mot-de-passe ?!">mot-de-passe oublié ?</a>
   <?php } ?>
   </fieldset>
