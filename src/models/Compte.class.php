@@ -5,12 +5,14 @@ class Compte
   private $id;
   private $ndc;
   private $mdp;
+  private $personne;
 
-  public function __construct($id, $ndc, $mdp)
+  public function __construct($id, $ndc, $mdp, $personne)
   {
       $this->setId($id);
       $this->setNdc($ndc);
       $this->setMdp($mdp);
+      $this->setPersonne($personne);
   }
   
 //------------------------------------------Getters
@@ -27,6 +29,11 @@ class Compte
   public function getMdp()
   {
       return $this->mdp;
+  }
+  
+  public function getPersonne()
+  {
+    return $this->personne;
   }
 
 //------------------------------------------Setters
@@ -64,11 +71,22 @@ class Compte
       throw new Exception("Mot de passe incorrect");
     }
   }
+  
+  public function setPersonne($personne)
+  {
+    if($personne != null)
+    {
+      $this->personne = $personne;
+    }else
+    {
+      throw new Exception("Personne dans Compte est incorrect !");
+    }
+  }
 //------------------------------------------toString
 
   public function __toString()
   {
-      return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp;
+      return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne->__toString();
   }
 
 }
