@@ -3,35 +3,35 @@
 class Travaille
 {
 
-  private $idEntreprise;
-  private $idPoste;
-  private $idAncien;
+  private $entreprise;
+  private $poste;
+  private $ancien;
   private $dateEmbaucheDeb;
   private $dateEmbaucheFin;
 
-  public function __construct($idEntreprise, $idPoste, $idAncien, $dateEmbaucheDeb, $dateEmbaucheFin)
+  public function __construct($entreprise, $poste, $ancien, $dateEmbaucheDeb, $dateEmbaucheFin)
   {
-    $this->setIdEntreprise($idEntreprise);
-    $this->setIdPoste($idPoste);
-    $this->setIdAncien($idAncien);
+    $this->setIdEntreprise($entreprise);
+    $this->setIdPoste($poste);
+    $this->setIdAncien($ancien);
     $this->setDateEmbaucheDeb($dateEmbaucheDeb);
     $this->dateEmbaucheFin($idEmbaucheFin);
   }
   
 //--------------------------------------------GETTERS--------------------------------
-  public function getIdEntreprise()
+  public function getEntreprise()
   {
-    return $this->idEntreprise;
+    return $this->entreprise;
   }
   
-  public function getIdPoste()
+  public function getPoste()
   {
-    return $this->idPoste;
+    return $this->poste;
   }
   
-  public function getIdAnicen()
+  public function getAnicen()
   {
-    return $this->idAncien;
+    return $this->ancien;
   }
   
   public function getDateEmbaucheDebut()
@@ -45,40 +45,60 @@ class Travaille
   }
   
 //-------------------------------------------SETTERS------------------------------
-  public function setIdEntreprise($id)
+  public function setEntreprise($entreprise)
   {
-    if(($id != null) and ($id >= 0))
+    if($entreprise != null)
     {
-        $this->id = $id;
+        $this->entreprise = $entreprise;
     }else
     {
-        throw new Exception("Id entreprise incorrect");
+        throw new Exception("Entreprise dans Travaille incorrecte");
     }
   }
   
-  public function setIdPoste($id)
+  public function setPoste($poste)
   {
-    if(($id != null) and ($id > 0))
+    if($poste != null)
     {
-        $this->id = $id;
+        $this->poste = $poste;
     }else
     {
-        throw new Exception("Id poste incorrect");
+        throw new Exception("Poste dans Travaille incorrect");
     }
   }
   
-  public function setIdAncien($id)
+  public function setAncien($ancien)
   {
-    if(($id != null) and ($id > 0))
+    if($ancien != null)
       {
-          $this->id = $id;
+          $this->ancien = $ancien;
       }else
       {
-          throw new Exception("Id ancien incorrect");
+          throw new Exception("Ancien dans Travaille incorrect");
       }
   }
-  
 
+  public function setDateEmbaucheDeb($date)
+  {
+    if($date != null)
+    {
+      $this->dateEmbaucheDeb = $date;
+    }else
+    {
+      throw new Exception("Date embauche debut dans Travaille incorrecte");
+    }
+  }
+  
+  public function setDateEmbaucheFin($date)
+  {
+    if($date != null)
+    {
+      $this->dateEmbaucheFin = $date;
+    }else
+    {
+      throw new Exception("Date embauche fin dans Travaille incorrecte");
+    }
+  }
 
 }
 
