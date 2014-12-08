@@ -17,6 +17,7 @@ foreach($items as $key => $item)
 	</ul>
   </nav>
   <ul>
+	<li><a href="aide.php" target="_blank" title="Je suis perdu !"><span>Aide</span></a></li>
   	<li><a href="deconnection.php" title="Se déconnecter"><span>Déconnexion</span></a></li>
   </ul>
 </header>

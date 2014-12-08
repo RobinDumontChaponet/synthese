@@ -183,6 +183,9 @@ nav a[title="Faire une recherche..."]:before {
 	content: "\e610";
 }
 
+header a[href="aide.php"]:before {
+	content: "\e607";
+}
 header a[href="deconnection.php"]:before {
 	content: "\e61c";
 }
