@@ -98,7 +98,7 @@ class Travaille
   //---------------------------------toString--------------------------------------
   public function __toString()
   {
-    return "Entreprise : ".$this->entreprise->__toString()." Poste : ".$this->poste->__toString()." Ancien : ".$this->ancien->__toString()." Date embauche début : "$this->dateEmaucheDeb." Date embauche fin : ".$this->dateEmbaucheFin;
+    return "Entreprise : ".$this->entreprise->__toString()." Poste : ".$this->poste->__toString()." Ancien : ".$this->ancien->__toString()." Date embauche début : "$this->dateEmbaucheDeb." Date embauche fin : ".$this->dateEmbaucheFin;
   }
 
 }
