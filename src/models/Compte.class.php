@@ -6,13 +6,15 @@ class Compte
   private $ndc;
   private $mdp;
   private $personne;
+  private $typeProfil;
 
-  public function __construct($id, $ndc, $mdp, $personne)
+  public function __construct($id, $ndc, $mdp, $personne, $typeProfil)
   {
       $this->setId($id);
       $this->setNdc($ndc);
       $this->setMdp($mdp);
       $this->setPersonne($personne);
+      $this->setTypeProfil($typeProfil);
   }
   
 //------------------------------------------Getters
@@ -34,6 +36,11 @@ class Compte
   public function getPersonne()
   {
     return $this->personne;
+  }
+  
+  public function getTypeProfil()
+  {
+    return $this->typeProfil;
   }
 
 //------------------------------------------Setters
@@ -82,11 +89,22 @@ class Compte
       throw new Exception("Personne dans Compte est incorrect !");
     }
   }
+  
+  public function setTypeProfil($typeProfil)
+  {
+    if($typeProfil != null)
+    {
+      $this->typeProfil = $typeProfil;
+    }else
+    {
+      throw new Exception("Type profil dans Compte est incorrect");
+    }
+  }
 //------------------------------------------toString
 
   public function __toString()
   {
-      return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne->__toString();
+      return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne->__toString()." Type profil : ".$this->typeProfil->__toString();
   }
 
 }
