@@ -27,6 +27,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 			} else {
 				session_start();
 				$_SESSION['syntheseUser'] = $_POST['user'];
+				$_SESSION['syntheseProfil'] = $compte->getTypeProfil();
 				session_start();
 				header ('Location: index.php');
 				exit;

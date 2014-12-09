@@ -33,10 +33,10 @@ class Compte {
       return $this->mdp;
   }
   
-  public function getPersonne()
+  /*public function getPersonne()
   {
     return $this->personne;
-  }
+  }*/
   
   public function getTypeProfil()
   {
@@ -79,7 +79,7 @@ class Compte {
     }
   }
   
-  public function setPersonne($personne)
+  /*public function setPersonne($personne)
   {
     if($personne != null)
     {
@@ -88,7 +88,7 @@ class Compte {
     {
       throw new Exception("Personne dans Compte est incorrect !");
     }
-  }
+  }*/
   
   public function setTypeProfil($typeProfil)
   {
