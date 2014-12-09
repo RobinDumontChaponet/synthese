@@ -46,7 +46,7 @@ class Prefere
     //---------------------------------toString--------------------------
     public function __toString()
     {
-        return "Ancien : ".$this->ancien->__toString()." Type evenement : ".$this->typeEvenement->__toString();
+        return "Ancien : ".$this->ancien." Type evenement : ".$this->typeEvenement;
     }
     
 }
