@@ -34,27 +34,6 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 		} else {
 			$badinput = true;
 		}
-
-		/*try {
-			$connect = connect();
-			$statement = $connect->prepare("SELECT mdp FROM compte");
-
-			$statement->execute();
-
-			$res = $statement->fetch(PDO::FETCH_OBJ)->mdp;
-		} catch (PDOException $e) {
-			die("Error!: " . $e->getMessage() . "<br/>");
-		}
-		if (!validate_password($_POST['pwd'] , $res)) {
-			$badinput=true;
-			sleep(1);
-		} else {
-			session_start();
-			$_SESSION['syntheseUser']=$_POST['user'];
-			session_start();
-			header ('Location: index.php');
-			exit;
-		}*/
 	}
 } ?>
 <!DOCTYPE html>
