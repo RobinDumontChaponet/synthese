@@ -104,7 +104,7 @@ class Possede
     //----------------------------------------------toString---------------------------------------
     public function __toString()
     {
-        return "Ancien : ".$this->ancien->__toString()." Etablissement : ".$this->etablissement->__toString()." Diplome post DUT : ".$this->diplomePostDUT->__toString()." Date debut : ".$this->dateDebut." Date fin : ".$this->dateFin;
+        return "Ancien : ".$this->ancien." Etablissement : ".$this->etablissement." Diplome post DUT : ".$this->diplomePostDUT." Date debut : ".$this->dateDebut." Date fin : ".$this->dateFin;
     }
     
 }
