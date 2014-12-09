@@ -4,7 +4,7 @@ class Prefere
 {
     
     private $ancien;
-    private $typeEvement;
+    private $typeEvenement;
     
     public function __construct($ancien, $typeEvement)
     {

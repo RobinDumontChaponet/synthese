@@ -112,8 +112,10 @@ function getCompteByNdc($ndc)
 		$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
 		$statement->bindParam(1, $ndc);
 		$statement->execute();
-		
-		if ($res = $statement->fetch(PDO::FETCH_OBJ)) {
+					if ($resTwo = $statementTwo->fetch(PDO::FETCH_OBJ)) {
+				$compte=new Compte($res->idCompte, $res->idProfil, $resTwo->idPersonne, $res->ndc, $res->mdp);
+			}
+		/*if ($res = $statement->fetch(PDO::FETCH_OBJ)) {
 			$statementTwo = $connect->prepare("SELECT * FROM personne WHERE idPersonne=?");
 			$statementTwo->bindParam(1, $res->idPersonne());
 			$statementTwo->execute();
@@ -121,7 +123,7 @@ function getCompteByNdc($ndc)
 			if ($resTwo = $statementTwo->fetch(PDO::FETCH_OBJ)) {
 				$compte=new Compte($res->idCompte, $res->idProfil, $resTwo->idPersonne, $res->ndc, $res->mdp);
 			}
-		}
+		}*/
 	} catch (PDOException $e) {
 		die("Error getCompteByNdc() !: " . $e->getMessage() . "<br/>");
 	}

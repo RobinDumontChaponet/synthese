@@ -1,6 +1,6 @@
 <?php
 
-class AEtudier
+class AEtudie
 {
     private $ancien;
     private $diplomeDUT;

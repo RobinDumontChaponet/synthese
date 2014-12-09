@@ -3,5 +3,5 @@
 09/12/2014
 	Ajout de $_SESSION['syntheseProfil'] afin de récupérer dans $_SESSION le type de profil de l'utilisateur connecté (1 = admin, 2 = professeur, 3 = ancien, etc.)
 	Modification de la connection : Vérification de la connection sur la DB, compte de test : Ndc : test0u - Mdp : test
-	Ajout d'une méthode getCompteByNdc($ndc) dans Compte.class.php afin de récupérer un objet compte en donnant un paramètre Ndc
+	Ajout d'une méthode getCompteByNdc($ndc) dans Compte.class.php afin de récupérer un objet compte en donnant un paramètre Ndc (Créer la DAO du compte avec ça et changer l'inclusion dans connection)
 	Ajout de typeProfil dans la DB : ID:1 = Admin, ID:2 = Professeur, ID:3 = Ancien

@@ -12,7 +12,6 @@ class Personne
 	public function __construct($id, $nom, $nomPatronymique, $prenom, $mail)
 	{
 		$this->setId($id);
-		//$this->setCompte($compte);
 		$this->setNom($nom);
 		$this->setNomPatronymique($nomPatronymique);
 		$this->setPrenom($prenom);

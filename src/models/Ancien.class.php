@@ -12,6 +12,7 @@ class Ancien extends Personne
 	private $imageProfil;
 	private $imageTrombi;
 	private $parents;
+	
 	//----------------------------------Constructeurs
 	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents)
 	{
