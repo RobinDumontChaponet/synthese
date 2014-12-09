@@ -8,13 +8,13 @@ class Compte
 	private $personne;
 	private $typeProfil;
 
-	public function __construct($id, $typeProfil, $ndc, $mdp)
+	public function __construct($id, $typeProfil, $personne, $ndc, $mdp)
 	{
 		$this->setId($id);
 		$this->setTypeProfil($typeProfil);
+		$this->setPersonne($personne);
 		$this->setNdc($ndc);
 		$this->setMdp($mdp);
-		//$this->setPersonne($personne);
 	}
 
 	//------------------------------------------Getters
@@ -33,10 +33,9 @@ class Compte
 		return $this->mdp;
 	}
 
-	/*public function getPersonne()
-  {
-    return $this->personne;
-  }*/
+	public function getPersonne() {
+		return $this->personne;
+	}
 
 	public function getTypeProfil()
 	{
@@ -76,16 +75,14 @@ class Compte
 		}
 	}
 
-	/*public function setPersonne($personne)
-  {
-    if($personne != null)
-    {
-      $this->personne = $personne;
-    }else
-    {
-      throw new Exception("Personne dans Compte est incorrect !");
-    }
-  }*/
+	public function setPersonne($personne) {
+		if($personne != null)
+		{
+			$this->personne = $personne;
+		} else {
+			throw new Exception("Personne dans Compte est incorrect !");
+		}
+	}
 
 	public function setTypeProfil($typeProfil)
 	{
@@ -115,9 +112,16 @@ function getCompteByNdc($ndc)
 		$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
 		$statement->bindParam(1, $ndc);
 		$statement->execute();
-
-		if ($res = $statement->fetch(PDO::FETCH_OBJ))
-			$compte=new Compte($res->idCompte, $res->idProfil, $res->ndc, $res->mdp);
+		
+		if ($res = $statement->fetch(PDO::FETCH_OBJ)) {
+			$statementTwo = $connect->prepare("SELECT * FROM personne WHERE idPersonne=?");
+			$statementTwo->bindParam(1, $res->idPersonne());
+			$statementTwo->execute();
+			
+			if ($resTwo = $statementTwo->fetch(PDO::FETCH_OBJ)) {
+				$compte=new Compte($res->idCompte, $res->idProfil, $resTwo->idPersonne, $res->ndc, $res->mdp);
+			}
+		}
 	} catch (PDOException $e) {
 		die("Error getCompteByNdc() !: " . $e->getMessage() . "<br/>");
 	}
