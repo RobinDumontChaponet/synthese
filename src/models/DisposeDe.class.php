@@ -63,7 +63,7 @@ class DisposeDe
 	//-------------------------toString------------------------------------
 	public function __toString()
 	{
-		return "TypeProdil : ".$this->typeProfil->__toString()." Droit : ".$this->droit->__toStirng()." Page : ".$this->page->__toString();
+		return "TypeProdil : ".$this->typeProfil." Droit : ".$this->droit." Page : ".$this->page;
 	}
 
 }
