@@ -51,6 +51,10 @@ body {
 	margin:0 auto;
 }
 
+a, a:active, a:hover, a:visited {
+	color: #afbdd4;
+}
+
 fieldset {
 	border:0;
 }
