@@ -50,7 +50,7 @@ class Evenement
 //-------------------------------------toString----------------------------------
   public function __toString()
   {
-    return "Id : ".$this->id." Type evenement : "$this->typeEvement->toString();
+    return "Id : ".$this->id." Type evenement : "$this->typeEvement;
   }
 
 }
