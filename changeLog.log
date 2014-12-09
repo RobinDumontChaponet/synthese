@@ -1,0 +1,6 @@
+
+
+09/12/2014
+	Modification de la connection : Vérification de la connection sur la DB, compte de test : Ndc : test0u - Mdp : test
+	Ajout d'une méthode getCompteByNdc($ndc) dans Compte.class.php afin de récupérer un objet compte en donnant un paramètre Ndc
+	Ajout de typeProfil dans la DB : ID:1 = Admin, ID2 = Professeur, ID3 = Ancien

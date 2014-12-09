@@ -1,20 +1,20 @@
 <?php
 
-class Compte
-{
+class Compte {
+
   private $id;
   private $ndc;
   private $mdp;
   private $personne;
   private $typeProfil;
 
-  public function __construct($id, $ndc, $mdp, $personne, $typeProfil)
+  public function __construct($id, $typeProfil, $ndc, $mdp)
   {
-      $this->setId($id);
-      $this->setNdc($ndc);
-      $this->setMdp($mdp);
-      $this->setPersonne($personne);
-      $this->setTypeProfil($typeProfil);
+		$this->setId($id);
+		$this->setTypeProfil($typeProfil);
+		$this->setNdc($ndc);
+		$this->setMdp($mdp);
+		//$this->setPersonne($personne);
   }
   
 //------------------------------------------Getters
@@ -106,8 +106,25 @@ class Compte
   {
       return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne->__toString()." Type profil : ".$this->typeProfil->__toString();
   }
-
 }
 
+//------------------------------------------Functions
+
+function getCompteByNdc($ndc){
+	$compte = NULL;
+	
+	try {
+		$connect = connect();
+		$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
+		$statement->bindParam(1, $ndc);
+		$statement->execute();
+
+		if ($res = $statement->fetch(PDO::FETCH_OBJ))
+			$compte=new Compte($res->idCompte, $res->idProfil, $res->ndc, $res->mdp);
+	} catch (PDOException $e) {
+		die("Error getCompteByNdc() !: " . $e->getMessage() . "<br/>");
+	}
+return $compte;
+}
 
 ?>

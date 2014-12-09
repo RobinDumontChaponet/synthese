@@ -14,9 +14,28 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	$_POST['pwd']=preg_quote(strip_tags($_POST['pwd']));
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
+		include('models/Compte.class.php');
 		include('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
-		try {
+		
+		$compte = getCompteByNdc($_POST['user']);
+
+		if ($compte != NULL) {
+			if (empty($compte) || !validate_password($_POST['pwd'] , $compte->getMdp())) {
+				$badinput = true;
+				sleep(1);
+			} else {
+				session_start();
+				$_SESSION['syntheseUser'] = $_POST['user'];
+				session_start();
+				header ('Location: index.php');
+				exit;
+			}
+		} else {
+			$badinput = true;
+		}
+
+		/*try {
 			$connect = connect();
 			$statement = $connect->prepare("SELECT mdp FROM compte");
 
@@ -35,7 +54,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 			session_start();
 			header ('Location: index.php');
 			exit;
-		}
+		}*/
 	}
 } ?>
 <!DOCTYPE html>
