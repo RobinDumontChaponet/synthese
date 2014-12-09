@@ -30,7 +30,7 @@ class DiplomePostDUT extends Diplome
 	//----------------------------------toString--------------------------
 	public function __toString()
 	{
-		return parent::__toString()." Domaine : ".$this->domaine->__toString();
+		return parent::__toString()." Domaine : ".$this->domaine;
 	}
 }
 ?>
