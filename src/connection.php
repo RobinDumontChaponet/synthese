@@ -53,22 +53,26 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 <link href="style/general.css" rel="stylesheet" type="text/css" />
 <link href="style/connection.css" rel="stylesheet" type="text/css" />
 </head><body>
-<form action="connection.php" method="post" name="connection">
-  <fieldset>
+<aside id="form">
+  <form action="connection.php" method="post" name="connection">
+  	<fieldset>
   <?php if($bot===true) echo'<p class="mapsitna">Accès interdit !</p>';
 else { ?>
-    <legend>connectIT!</legend>
-    <label for="user">Identifiant</label><input title="Identifiant" id="user" name="user" type="text" value="<?php echo $_POST['user']?>" required autofocus />
-    <br />
-    <label for="pwd">Mot-de-passe</label><input title="Mot-de-passe" id="pwd" name="pwd" type="password" required />
-    <br />
-    <?php if ($badinput===true) echo'<p class="badpass">Identifiant ou mot-de-passe incorrects !</p>';?>
-    <br />
-    <input class="<?php if ($badinput!==true) echo'ok'; else echo'warning';?>" name="submit" type="submit" value="&#xe613; connexion" />
-    <br /><a href="#" title="Alors, comme ça, on oublie son mot-de-passe ?!">mot-de-passe oublié ?</a>
-  <?php } ?>
-  </fieldset>
-</form>
-<aside><p>Texte de présentation...</p></aside>
+	  <legend>connectIT!</legend>
+	  <label for="user">Identifiant</label><input title="Identifiant" id="user" name="user" type="text" value="<?php echo $_POST['user']?>" required autofocus />
+	  <br />
+	  <label for="pwd">Mot-de-passe</label><input title="Mot-de-passe" id="pwd" name="pwd" type="password" required />
+	  <br />
+	  <?php if ($badinput===true) echo'<p class="badpass">Identifiant ou mot-de-passe incorrects !</p>';?>
+	  <br />
+	  <input class="<?php if ($badinput!==true) echo'ok'; else echo'warning';?>" name="submit" type="submit" value="&#xe613; connexion" />
+	  <br /><a href="#" title="Alors, comme ça, on oublie son mot-de-passe ?!">mot-de-passe oublié ?</a>
+	  <?php } ?>
+	</fieldset>
+  </form>
+</aside>
+<aside id="intro">
+  <p>Texte de présentation...</p>
+</aside>
 </body>
 </html>

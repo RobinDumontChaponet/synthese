@@ -3,19 +3,29 @@
 
 aside {
 	text-align: center;
-	height: 100%;
 	width: 50%;
-	background: url("images/noise.png"), #6d84b4;
-	padding: 20% 2% 0;
+	height: 100%;
+	display: table;
 }
+
+aside#intro {
+	background: url("images/noise.png"), #6d84b4;
+	position: fixed;
+	bottom: 0;
+	top: 0;
+}
+aside#form {
+	float: right;
+}
+
+aside p, form {
+	margin: 20% 2% 0;
+	display: table-cell;
+	vertical-align: middle;
+}
+
 aside p {
 	color: #fff;
-}
-form {
-	margin: 20% auto 0;
-	text-align: center;
-	float: right;
-	width: 50%;
 }
 form:before {
 	content: "";
@@ -36,7 +46,6 @@ form:before {
 
 fieldset {
 	border: 0;
-	text-align: center;
 }
 legend {
 	font: 24px Verdana;
