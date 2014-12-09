@@ -1,12 +1,21 @@
 @charset "UTF-8";
 /* CSS. JJD - intro (index.html) */
 
-form {
-	position: absolute;
-	margin: 20% auto 0;
-	left: 0;
-	right: 0;
+aside {
 	text-align: center;
+	height: 100%;
+	width: 50%;
+	background: url("images/noise.png"), #6d84b4;
+	padding: 20% 2% 0;
+}
+aside p {
+	color: #fff;
+}
+form {
+	margin: 20% auto 0;
+	text-align: center;
+	float: right;
+	width: 50%;
 }
 form:before {
 	content: "";

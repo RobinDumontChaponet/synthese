@@ -1,5 +1,5 @@
 <?php
 
-include(dirname(__FILE__).'/../views/index.php');
+include(VIEWS_INC.'index.php');
 
 ?>

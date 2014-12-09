@@ -17,7 +17,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 		include('models/Compte.class.php');
 		include('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
-		
+
 		$compte = getCompteByNdc($_POST['user']);
 
 		if ($compte != NULL) {
@@ -26,8 +26,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 				sleep(1);
 			} else {
 				session_start();
-				$_SESSION['syntheseUser'] = $_POST['user'];
-				$_SESSION['syntheseProfil'] = $compte->getTypeProfil();
+				$_SESSION['syntheseUser'] = $compte;
 				session_start();
 				header ('Location: index.php');
 				exit;
@@ -70,5 +69,6 @@ else { ?>
   <?php } ?>
   </fieldset>
 </form>
+<aside><p>Texte de présentation...</p></aside>
 </body>
 </html>

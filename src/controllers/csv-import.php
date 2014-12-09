@@ -1,5 +1,5 @@
 <?php
 
-include(dirname(__FILE__).'/../views/csv-import.php');
+include(VIEWS_INC.'csv-import.php');
 
 ?>
