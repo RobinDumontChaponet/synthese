@@ -44,7 +44,7 @@ class AParticipe
 	//-------------------------toString----------------------------------------
 	public function __toString()
 	{
-		return "Ancien : ".$this->ancien->__toString()." Evenement : ".$this->evenement->__toString();
+		return "Ancien : ".$this->ancien." Evenement : ".$this->evenement;
 	}
 
 }
