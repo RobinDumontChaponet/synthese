@@ -63,7 +63,7 @@ class Specialisation
 //-------------------------------------------toString
   public function __toString()
   {
-    return "Id : ".$this->id." Libellé : ".$this->libelle." Type spécialisation : ".$this->typeSpecialisation->toString();
+    return "Id : ".$this->id." Libellé : ".$this->libelle." Type spécialisation : ".$this->typeSpecialisation;
   }
 }
 ?>
