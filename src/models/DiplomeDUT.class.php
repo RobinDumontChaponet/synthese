@@ -32,7 +32,7 @@ class DiplomeDUT extends Diplome
 	//---------------------------------toString---------------------------------
 	public function __toString()
 	{
-		return parent::__toString()." Departement IUT : ".$this->departementIUT->__toString();
+		return parent::__toString()." Departement IUT : ".$this->departementIUT;
 	}
 
 }
