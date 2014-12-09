@@ -77,7 +77,7 @@ class AEtudie
     //--------------------------------toString----------------------------------------
     public function __toString()
     {
-        return "Ancien : ".$this->ancien->__toString()." Diplome DUT : ".$this->diplomeDUT->toString()." Departement IUT : ".$this->departementIUT->__toString()." Promotion : ".$this->promotion->__toString();
+        return "Ancien : ".$this->ancien." Diplome DUT : ".$this->diplomeDUT." Departement IUT : ".$this->departementIUT." Promotion : ".$this->promotion;
     }
 }
 
