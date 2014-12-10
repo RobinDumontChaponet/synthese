@@ -8,7 +8,7 @@ class PersonneDAO
 	public static function getAll()
 	{
 		$bdd=connect();
-		$req=$bdd->query("SELECT `idPersonne`, `idCompte`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` ORDER BY nomUsage");
+		$req=$bdd->query("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` ORDER BY nomUsage");
 		$lst=$req->fetchAll();
 		$lstObjet=array();
 		foreach ($lst as $pers)
@@ -23,7 +23,7 @@ class PersonneDAO
 		if (is_numeric($id))
 		{
 			$bdd=connect();
-			$statement=$bdd->prepare("SELECT `idPersonne`, `idCompte`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` WHERE idPersonne=?");
+			$statement=$bdd->prepare("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` WHERE idPersonne=?");
 			$statement->execute(array($id));
 			$pers=$statement->fetch();
 			return new Personne($pers['idPersonne'], $pers['nomUsage'], $pers['nomPatronymique'], $pers['prenom'], $pers['mail']);

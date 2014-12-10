@@ -13,10 +13,11 @@ class CompteDAO
 			$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
 			$statement->bindParam(1, $ndc);
 			$statement->execute();
-			if ($res = $result->fetch(PDO::FETCH_OBJ))
+			if ($res = $statement->fetch())
 			{
-				$Personne=PersonneDAO::getById($res->idPersonne);
-				$compte=new Compte($res->idCompte, $res->idProfil, $Personne, $res->ndc, $res->mdp);
+                //var_dump($res);
+				$Personne=PersonneDAO::getById($res['idPersonne']);
+				$compte=new Compte($res['idCompte'], $res['idProfil'], $Personne, $res['ndc'], $res['mdp']);
 			}
 
 		} catch (PDOException $e) {
