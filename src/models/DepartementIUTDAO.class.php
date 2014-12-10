@@ -1,6 +1,6 @@
 <?php
-    require_once("config.inc.php");
-    require_once(CONTROLLERS_INC.'dbConnection.inc.php');
+    //require_once("config.inc.php");
+    require_once('dbConnection.inc.php');
     require_once(MODELS_INC.'DepartementIUT.class.php');
 
     class DepartementIUTDAO{
