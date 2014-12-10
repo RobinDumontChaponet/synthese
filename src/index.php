@@ -1,13 +1,13 @@
 <?php
-define('CONTROLLERS_INC', dirname(__FILE__).'/controllers/');
-define('MODELS_INC', dirname(__FILE__).'/models/');
-define('VIEWS_INC', dirname(__FILE__).'/views/');
+define('CONTROLLERS_INC', 'controllers/');
+define('MODELS_INC', 'models/');
+define('VIEWS_INC', 'views/');
 
 function __autoload($className) {
     include MODELS_INC.$className.'.class.php';
 }
 
-include_once(dirname(__FILE__).'/includes/dbConnection.inc.php');
+include_once('dbConnection.inc.php');
 
 session_start();
 if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
@@ -23,8 +23,6 @@ function get_include_contents($filename) {
 	}
 	return false;
 }
-
-set_include_path(dirname(__FILE__).'/includes');
 
 if(empty($_GET['requ']))
 	$_GET['requ']='index';
