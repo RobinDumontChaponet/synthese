@@ -12,8 +12,8 @@ class CompteDAO
 			$connect = connect();
 			$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
 			$statement->bindParam(1, $ndc);
-			$statement->execute();
-			if ($res = $statement->fetch(PDO::FETCH_OBJ))
+			$result=$statement->execute();
+			if ($res = $result->fetch(PDO::FETCH_OBJ))
 			{
 				$Personne=PersonneDAO::getById($res->idPersonne);
 				$compte=new Compte($res->idCompte, $res->idProfil, $Personne, $res->ndc, $res->mdp);
