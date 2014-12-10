@@ -1,13 +1,11 @@
 <?php
-define('CONTROLLERS_INC', 'controllers/');
-define('MODELS_INC', 'models/');
-define('VIEWS_INC', 'views/');
+
+include_once('conf.inc.php');
+include_once('dbConnection.inc.php');
 
 function __autoload($className) {
     include MODELS_INC.$className.'.class.php';
 }
-
-include_once('dbConnection.inc.php');
 
 session_start();
 if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
