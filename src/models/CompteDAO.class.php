@@ -12,7 +12,7 @@ class CompteDAO
 			$connect = connect();
 			$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
 			$statement->bindParam(1, $ndc);
-			$result=$statement->execute();
+			$statement->execute();
 			if ($res = $result->fetch(PDO::FETCH_OBJ))
 			{
 				$Personne=PersonneDAO::getById($res->idPersonne);
