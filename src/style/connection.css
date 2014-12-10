@@ -109,6 +109,7 @@ p.badpass {
 	font-size: 13px;
 	color: red;
 	margin-bottom: 0;
+	display: inline;
 }
 
 p.mapsitna {
