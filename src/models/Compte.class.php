@@ -100,34 +100,4 @@ class Compte
 		return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne." Type profil : ".$this->typeProfil;
 	}
 }
-
-//------------------------------------------Functions
-
-function getCompteByNdc($ndc)
-{
-	$compte = NULL;
-
-	try {
-		$connect = connect();
-		$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
-		$statement->bindParam(1, $ndc);
-		$statement->execute();
-			if ($res = $statement->fetch(PDO::FETCH_OBJ)) {
-				$compte=new Compte($res->idCompte, $res->idProfil, null, $res->ndc, $res->mdp);
-			}
-		/*if ($res = $statement->fetch(PDO::FETCH_OBJ)) {
-			$statementTwo = $connect->prepare("SELECT * FROM personne WHERE idPersonne=?");
-			$statementTwo->bindParam(1, $res->idPersonne());
-			$statementTwo->execute();
-
-			if ($resTwo = $statementTwo->fetch(PDO::FETCH_OBJ)) {
-				$compte=new Compte($res->idCompte, $res->idProfil, $resTwo->idPersonne, $res->ndc, $res->mdp);
-			}
-		}*/
-	} catch (PDOException $e) {
-		die("Error getCompteByNdc() !: " . $e->getMessage() . "<br/>");
-	}
-	return $compte;
-}
-
 ?>

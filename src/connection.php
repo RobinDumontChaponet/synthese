@@ -10,15 +10,13 @@ header("HTTP/1.1 200 OK");
 if (isset($_SESSION['syntheseUser']) && $_SESSION['syntheseUser']!='')
 	header ('Location: index.php');
 elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
-	$_POST['user']=preg_quote(strip_tags($_POST['user']));
-	$_POST['pwd']=preg_quote(strip_tags($_POST['pwd']));
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
-		include('models/Compte.class.php');
-		include('includes/dbConnection.inc.php');
+		include('models/CompteDAO.class.php');
+		include_once('includes/dbConnection.inc.php');
 		include('includes/passwordHash.inc.php');
 
-		$compte = getCompteByNdc($_POST['user']);
+		$compte = CompteDAO::getCompteByNdc($_POST['user']);
 
 		if ($compte != NULL) {
 			if (empty($compte) || !validate_password($_POST['pwd'] , $compte->getMdp())) {
