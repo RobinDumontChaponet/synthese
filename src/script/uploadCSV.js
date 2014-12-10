@@ -14,7 +14,7 @@ FileTransfert = function (input, basename, destination, subDestination, callback
 		fd.append('sub', subDestination);
 
 		var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'upload.php', true);
+		xhr.open('POST', 'helpers/upload-csv.php', true);
 
 		xhr.onload = function() {
 			if(this.readyState  == 4)
@@ -24,7 +24,7 @@ FileTransfert = function (input, basename, destination, subDestination, callback
 					t.callback(resp);
 
 					t.input.parentNode.className='button';
-					console.log('responseText: '+this.responseText);
+					//console.log('responseText: '+this.responseText);
 				}
 		};
 		xhr.send(fd);

@@ -3,51 +3,49 @@
 class DepartementIUT
 {
 
-  private $id;
-  private $nom;
+	private $id;
+	private $nom;
 
-  public function __construct($id, $nom)
-  {
-    $this->setId($id);
-    $this->setNom($nom);
-  }
-  
-  //--------------------------------GETTERS---------------------------------
-  public function getId()
-  {
-      return $this->id;
-  }
-  
-  public function getNom()
-  {
-    return $this->nom;
-  }
-  //--------------------------------SETTERS---------------------------------
-  public function setId($id)
+	public function __construct($id, $nom)
 	{
-		if(($id != null) and ($id >= 0))
+		$this->setId($id);
+		$this->setNom($nom);
+	}
+
+	//--------------------------------GETTERS---------------------------------
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function getNom()
+	{
+		return $this->nom;
+	}
+	//--------------------------------SETTERS---------------------------------
+	public function setId($id)
+	{
+		if (($id != null) and ($id >= 0))
 		{
 			$this->id = $id;
-		}else
-		{
+		} else {
 			throw new Exception("Id departement IUT invalide");
 		}
 	}
-	
+
 	public function setNom($nom)
 	{
 		$nomTraite = trim($nom);
-		if(($nomTraite != null) and ($nomTraite != ""))
+		if (($nomTraite != null) and ($nomTraite != ""))
 		{
 			$this->nom = strtoupper($nomTraite);
-		}else
-		{
+		} else {
 			throw new Exception("Nom departement IUT incorrect");
 		}
 	}
-  //--------------------------------toString--------------------------------
-  
-  public function __toString()
+	//--------------------------------toString--------------------------------
+
+	public function __toString()
 	{
 		return "Id : ".$this->id." Nom : ".$this->nom;
 	}
