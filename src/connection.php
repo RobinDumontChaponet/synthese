@@ -12,9 +12,10 @@ if (isset($_SESSION['syntheseUser']) && $_SESSION['syntheseUser']!='')
 elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	if ($_POST['user']=='' || $_POST['pwd']=='') $badinput=true;
 	else {
-		include('models/CompteDAO.class.php');
-		include_once('includes/dbConnection.inc.php');
-		include('includes/passwordHash.inc.php');
+		include('conf.inc.php');
+		include(MODELS_INC.'CompteDAO.class.php');
+		include_once('dbConnection.inc.php');
+		include('passwordHash.inc.php');
 
 		$compte = CompteDAO::getCompteByNdc($_POST['user']);
 
