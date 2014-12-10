@@ -5,8 +5,8 @@ if (!isset($_SESSION['trombiUser']) || $_SESSION['trombiUser']=='' || $_SESSION[
 	exit();
 }*/
 
-include(dirname(__FILE__).'/includes/config.inc.php');
-include(dirname(__FILE__).'/includes/urls.transit.inc.php');
+include('conf.inc.php');
+include('urls.transit.inc.php');
 
 $possibleDestinations = array('data/csv');
 
@@ -27,7 +27,7 @@ if( !in_array($destination, $possibleDestinations))
 if ( in_array(strtolower($info['extension']), $possibleExtensions) ) {
 
 	$fileContent = file_get_contents($_FILES['upload']['tmp_name']);
-	if(file_put_contents($destination.$sub.'/'.$info['basename'], $fileContent)!==false) {
+	if(file_put_contents('../'.$destination.$sub.'/'.$info['basename'], $fileContent)!==false) {
 		echo json_encode(array(
 		  'name' => $info['basename'],
 		  'type' => $fileType,

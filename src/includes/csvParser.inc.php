@@ -1,14 +1,17 @@
 <?php
+
+include_once('conf.inc.php');
+
 /**
  * csv2array function.
- * 
+ *
  * @access public
  * @param mixed $src
  * @param mixed $lineNb
  * @return void
  */
 function csv2array ($src, $lineNb) {
-	$handle=fopen('data/csv/'.$src,'r');
+	$handle=fopen(DATA_PATH.'csv/'.$src,'r');
 	$i=0;
 	$lineNb=(is_numeric($lineNb) && $lineNb>0)?$lineNb:0;
 	$array = array();
@@ -22,4 +25,4 @@ function csv2array ($src, $lineNb) {
 	fclose($handle);
 	return $array;
 }
-?> 
+?>
