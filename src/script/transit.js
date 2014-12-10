@@ -25,10 +25,16 @@ function arrayToTable(tableData, headers) {
 	return table;
 }
 
+var csvColName = { 'nomUsage':'Nom d\'usage', 'nomPat':'Nom patronymique', 'prenom':'Prénom', 'dateNais':'Date de naissance', 'adresse':'Adresse postale', 'codePost':'Code postal', 'ville':'Ville', 'pays':'Pays', 'mail':'Adresse e-mail', 'telMob':'Téléphone mobile', 'telFix':'Téléphone fixe' };
+
 function csvArrayToTable(array) {
 	var headers=Array();
 	for(var i=0, l=array[0].length; i<l; i++) {
-		headers.push('<select name="col'+i+'"><option value="" disabled selected style="display:none;">Type</option><option> </option><option>Nom</option><option>Prénom</option><option>Date de naissance</option></select>');
+
+		var select = '<select name="col'+i+'"><option value="" disabled selected style="display:none;">Type</option><option value="unused" class="unusedOption"> (Inutilisé)</option>';
+		for(var key in csvColName)
+			select += '<option value="'+key+'">'+csvColName[key]+'</option>';
+			headers.push(select);
 	}
 	return arrayToTable(array, headers);
 }

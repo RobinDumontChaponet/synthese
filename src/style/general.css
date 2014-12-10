@@ -227,6 +227,46 @@ input[type="search"] {
 	position: relative;
 }
 
+label {
+	font-size: 12px;
+	font-weight: 300;
+	line-height: 22px;
+	color: #626262;
+	display: inline-block;
+	text-align: left;
+	background: #fff;
+	border: 0;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	position: relative;
+	top: -2px;
+	height: 22px;
+	padding: 0 5px 0 10px;
+	box-shadow: 0 0 8px rgba(240, 240, 240, 0.8);
+	margin-left: 10px;
+}
+input, .button, button {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 22px;
+	color: #070707;
+	background: #fff;
+	border: 0;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	height: 22px;
+	margin: 0 10px 0 0;
+	padding: 0 10px 0 5px;
+	width: 150px;
+	box-shadow: inset 0 0 4px rgb(225, 225, 225);
+}
+input[type="submit"], .button, button {
+	border-radius: 5px;
+	cursor: pointer;
+	color: #3b3b3b;
+	box-shadow: 0 0 8px rgba(240, 240, 240, 0.9);
+}
+
 footer {
 	float: right;
 	/* margin: 0 auto; */

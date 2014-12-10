@@ -35,10 +35,10 @@ class DepartementIUT
 
 	public function setNom($nom)
 	{
-		$nomTraite = trim($nom);
-		if (($nomTraite != null) and ($nomTraite != ""))
+		$nom = trim($nom);
+		if (!empty($nom))
 		{
-			$this->nom = strtoupper($nomTraite);
+			$this->nom = $nom;
 		} else {
 			throw new Exception("Nom departement IUT incorrect");
 		}

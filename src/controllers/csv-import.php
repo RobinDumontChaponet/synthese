@@ -1,8 +1,8 @@
 <?php
 
-//include(MODELS_INC.'DepartementIUTDAO.php');
+include(MODELS_INC.'DepartementIUTDAO.class.php');
 
-//$departements = DepartementIUT::getAll();
+$departements = DepartementIUTDAO::getAll();
 
 include(VIEWS_INC.'csv-import.php');
 
