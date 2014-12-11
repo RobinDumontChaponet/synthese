@@ -64,7 +64,6 @@ form:after {
 	z-index:100;
 	position:relative;
 	overflow:hidden;
-	height:22px;
 	padding:0;
 	display:inline-block;
 	text-align:center;
@@ -194,22 +193,7 @@ th {
 	position: relative;
 }
 
-select {
-	padding:10px;
-	line-height: 14px;
-	padding-right: 25px;
-	border: 1px solid #F2F2F2;
-	-webkit-appearance:none;
-	margin: 5px;
-	overflow:hidden;
-	background:url(images/selector.png) no-repeat right, #FFF;
-	background-size:auto 14px;
-	background-position: 94% 50%;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
-}
+
 .unusedOption {
 	color: grey;
 	font-style: italic;
@@ -217,6 +201,10 @@ select {
 
 table select {
 	text-align: center;
+	background:url(images/selector.png), #FFF;
+	background-repeat: no-repeat, repeat;
+	background-size: auto 14px, auto;
+	background-position: 94% 50%, 0;
 	border: 0;
 	width: 100%;
 	height: 100%;

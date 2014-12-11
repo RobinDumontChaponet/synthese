@@ -233,7 +233,7 @@ input[type="search"] {
 label {
 	font-size: 12px;
 	font-weight: 300;
-	line-height: 22px;
+	line-height: 32px;
 	color: #626262;
 	display: inline-block;
 	text-align: left;
@@ -242,14 +242,14 @@ label {
 	border-bottom-left-radius: 5px;
 	position: relative;
 	top: -2px;
-	height: 22px;
+	height: 32px;
 	padding: 0 5px 0 10px;
 	-webkit-box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
 	-moz-box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
 	box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
 	margin-left: 10px;
 }
-label, .button, input[type="submit"] {
+label, .button, input[type="submit"], select {
 	background: #f5f5f5;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,0%,96%,1)), color-stop(100%,hsla(0,0%,89%,1)));
 	background: -webkit-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
@@ -260,9 +260,9 @@ label, .button, input[type="submit"] {
 	background: linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
 }
 input, .button, button {
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 16px;
-	line-height: 22px;
+	line-height: 32px;
 	color: #070707;
 	border: 0;
 	-webkit-top-right-radius: 5px;
@@ -271,7 +271,7 @@ input, .button, button {
 	-webkit-bottom-right-radius: 5px;
 	-moz-bottom-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-	height: 22px;
+	height: 32px;
 	margin: 0 10px 0 0;
 	padding: 0 10px 0 5px;
 	-webkit-box-shadow: inset -1px 0 4px rgba(228, 228, 228, 1);
@@ -286,6 +286,28 @@ input[type="submit"], .button, button {
 	-moz-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 	padding: 0 10px;
+}
+select {
+	line-height: 32px;
+	padding: 0 25px 0 10px;
+	border: 1px solid #F2F2F2;
+	-webkit-appearance:none;
+	margin: 5px 5px 5px 0;
+	overflow:hidden;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	position: relative;
+	background: url(images/selector.png), #f5f5f5;
+	background: url(images/selector.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,0%,96%,1)), color-stop(100%,hsla(0,0%,89%,1)));
+	background: url(images/selector.png), -webkit-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+	background: url(images/selector.png), -moz-linear-gradient(top, hsla(0,0%,96%,1) 0%, hsla(0,0%,89%,1) 100%);
+	background: url(images/selector.png), -ms-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+	background: url(images/selector.png), -o-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+	background-repeat: no-repeat, repeat;
+	background-size: auto 14px, auto;
+	background-position: 94% 50%, 0;
 }
 
 footer {
