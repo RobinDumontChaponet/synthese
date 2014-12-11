@@ -61,7 +61,7 @@ class Personne
 		$nomTraite = trim($nom);
 		if(($nomTraite != null) and ($nomTraite != ""))
 		{
-			$this->nom = strtoupper($nomTraite);
+			$this->nom = $nomTraite;
 		}else
 		{
 			throw new Exception("Nom incorrect");
@@ -73,7 +73,7 @@ class Personne
 		$nomPatronymiqueTraite = trim($nomPatronymique);
 		if(($nomPatronymiqueTraite != null) and ($nomPatronymiqueTraite != ""))
 		{
-			$this->nomPatronymique = strtoupper($nomPatronymiqueTraite);
+			$this->nomPatronymique = $nomPatronymiqueTraite;
 		}else
 		{
 			throw new Exception("Nom patronymique incorrect");
@@ -85,7 +85,7 @@ class Personne
 		$prenomTraite = trim($prenom);
 		if(($prenomTraite != null) and ($prenomTraite != ""))
 		{
-			$this->prenom = strtoupper(substr($prenomTraite,0,1)).strtolower(substr($prenomTraite,1));
+			$this->prenom = $prenomTraite;
 		}else
 		{
 			throw new Exception("Prenom incorrect");
