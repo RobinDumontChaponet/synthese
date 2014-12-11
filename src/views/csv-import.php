@@ -3,7 +3,15 @@
   <div id="file">
   	<fieldset id="add" class="button">
   		<label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
-	</fieldset><label for="delimiterInput">Délimiteur</label><input id="delimiterInput" type="text" maxlength="1" size="1" name="delimiter" value=";" />
+	</fieldset><label for="delimiterSelect">Délimiteur</label>
+	<select name="delimiter" id="delimiterSelect">
+  	  <option value="" disabled selected style="display:none;">Délimiteur .csv</option>
+  	  <option selected="selected" value=";">Délimiteur ;</option>
+  	  <option value=",">Délimiteur ,</option>
+  	  <option value="|">Délimiteur |</option>
+  	  <option value="tab">Délimiteur Tabulation</option>
+	</select>
+	<!--<input id="delimiterInput" type="text" maxlength="1" size="1" name="delimiter" value=";" />-->
   </div>
   <form action="" onsubmit="" method="post" enctype="multipart/form-data" id="csv">
   	<select name="departement">
@@ -23,7 +31,8 @@
 <script type="text/javascript">
 new FileTransfert(document.getElementById('fileinput'), 'csv', 'data/csv', '', function (resp) {
 	var xhr = new XMLHttpRequest(),
-	delimiter = document.getElementById('delimiterInput').value;
+	delimiterSelector = document.getElementById("delimiterSelect"),
+	delimiter = delimiterSelector.options[delimiterSelector.selectedIndex].value;
 	xhr.open('GET', 'helpers/getCSV.php?file='+encodeURI(resp.name)+'&nbLines=1&delimiter='+delimiter, true);
 
 	xhr.onload = function() {
