@@ -1,8 +1,9 @@
 <?php
 //switch ($_SESSION['trombiUser']->getAuth()->getId()) {
 		$items = array(
-			'profile' => '<a href="index.php?requ=profile" title="Voir son profil"><span>Profil</span></a>',
-			'promo' => '<a href="index.php?requ=promo" title="Voir sa promo"><span>Promo</span></a>',
+			'profile' => '<a href="index.php?requ=profile" title="Voir son profile"><span>Profile</span></a>',
+			'promos' => '<a href="index.php?requ=promos" title="Voir sa ou les promotions"><span>Promotions</span></a>',
+			'evenement' => '<a href="index.php?requ=evenement" title="Voir les évènements"><span>Évènements</span></a>',
 			'recherche' => '<a href="index.php?requ=recherche" title="Faire une recherche..."><span>Recherche</span></a>'
 		);
 ?>
@@ -17,7 +18,7 @@ foreach($items as $key => $item)
 	</ul>
   </nav>
   <ul>
-	<li><a href="aide.php" target="_blank" title="Je suis perdu !"><span>Aide</span></a></li>
+	<li><a href="aide.php" target="_blank" title="Perdu ?!"><span>Aide</span></a></li>
   	<li><a href="deconnection.php" title="Se déconnecter"><span>Déconnexion</span></a></li>
   </ul>
 </header>

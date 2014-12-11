@@ -177,11 +177,14 @@ header a:before {
 	position: relative;
 	top: 1px;
 }
-nav a[title="Voir son profil"]:before {
+nav a[title="Voir son profile"]:before {
 	content: "\e60d";
 }
-nav a[title="Voir sa promo"]:before {
+nav a[title="Voir sa ou les promotions"]:before {
 	content: "\e60e";
+}
+nav a[title="Voir les évènements"]:before {
+	content: "\e60a";
 }
 nav a[title="Faire une recherche..."]:before {
 	content: "\e610";
@@ -242,6 +245,8 @@ label {
 	top: -2px;
 	height: 22px;
 	padding: 0 5px 0 10px;
+	-webkit-box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
+	-moz-box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
 	box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
 	margin-left: 10px;
 }
@@ -261,25 +266,27 @@ input, .button, button {
 	height: 22px;
 	margin: 0 10px 0 0;
 	padding: 0 10px 0 5px;
+	-webkit-box-shadow: inset -1px 0 4px rgba(228, 228, 228, 1);
+	-moz-box-shadow: inset -1px 0 4px rgba(228, 228, 228, 1);
 	box-shadow: inset -1px 0 4px rgba(228, 228, 228, 1);
 }
 input[type="submit"], .button, button {
 	border-radius: 5px;
 	cursor: pointer;
 	color: #3b3b3b;
-	box-shadow: 0 0 6px rgba(228, 228, 228, 1);
+	-webkit-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	-moz-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 	padding: 0 10px;
 }
 
 footer {
 	float: right;
-	/* margin: 0 auto; */
 	clear: both;
 	position: relative;
 	z-index: 10;
 	height: 3em;
 	padding: -3em 1.875em 0;
-
 	width: 86%;
 	max-width: 76em;
 }

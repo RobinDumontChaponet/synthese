@@ -8,7 +8,7 @@ form {
 	position:relative;
 	padding:5px;
 	margin:8px;
-	border:1px solid #B3B3B3;
+	border:1px solid #e1e1e1;
 	background:#FCFCFC;
 	opacity:0;
 	display: none;
@@ -37,7 +37,7 @@ form:before {
 	margin-left:-10px;
 	border-width:0 10px 10px;
 	border-style:solid;
-	border-color:#B3B3B3 transparent;
+	border-color:#e1e1e1 transparent;
 /* reduce the damage in FF3.0 */
 	display:block;
 	width:0;
@@ -172,9 +172,9 @@ table {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	-moz-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 	min-width: 440px;
 	word-break: break-word;
 	border-collapse: collapse;
@@ -208,6 +208,7 @@ select {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 }
 .unusedOption {
 	color: grey;
