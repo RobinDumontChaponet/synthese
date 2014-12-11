@@ -122,5 +122,5 @@ p.mapsitna {
 }
 .warning {
 	border: 1px solid #ffe5e8;
-	color: #BF1606;
+	color: #BF1606 !important;
 }
