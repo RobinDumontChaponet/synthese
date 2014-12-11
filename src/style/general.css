@@ -103,10 +103,6 @@ header h1 {
 	position: relative;
 }
 
-header nav {
-
-}
-
 nav > ul {
 	margin-top: 1em;
 }
@@ -114,9 +110,10 @@ nav > ul {
 header > ul {
 	position: absolute;
 	bottom: .5em;
+	width: 100%;
 }
 
-nav li {
+header li {
 	margin: .4em 0;
 	-webkit-transition: all .5s ease-in-out;
 	-moz-transition: all .5s ease-in-out;
@@ -126,7 +123,7 @@ nav li {
 	position: relative;
 	text-shadow: 0px 1px 1px #656565;
 }
-nav li:hover {
+header li:hover {
 	background: #5d7ccd;
 }
 header li.active {
@@ -177,21 +174,24 @@ header a:before {
 	position: relative;
 	top: 1px;
 }
-nav a[title="Voir son profile"]:before {
+nav a[href="index.php?requ=profile"]:before {
 	content: "\e60d";
 }
 nav a[title="Voir sa ou les promotions"]:before {
 	content: "\e60e";
 }
-nav a[title="Voir les évènements"]:before {
+nav a[href="index.php?requ=evenements"]:before {
 	content: "\e60a";
 }
-nav a[title="Faire une recherche..."]:before {
+nav a[href="index.php?requ=recherche"]:before {
 	content: "\e610";
 }
 
 header a[href="aide.php"]:before {
 	content: "\e607";
+}
+header a[href="index.php?requ=parametres"]:before {
+	content: "\e614";
 }
 header a[href="deconnection.php"]:before {
 	content: "\e61c";
@@ -237,7 +237,6 @@ label {
 	color: #626262;
 	display: inline-block;
 	text-align: left;
-	background: #fff;
 	border: 0;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -250,12 +249,21 @@ label {
 	box-shadow: inset 1px 0 4px rgba(228, 228, 228, 1);
 	margin-left: 10px;
 }
+label, .button, input[type="submit"] {
+	background: #f5f5f5;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,0%,96%,1)), color-stop(100%,hsla(0,0%,89%,1)));
+	background: -webkit-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+	background: -moz-linear-gradient(top, hsla(0,0%,96%,1) 0%, hsla(0,0%,89%,1) 100%);
+	background: -ms-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+	background: -o-linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e4e4e4',GradientType=0 );
+	background: linear-gradient(top, hsla(0,0%,96%,1) 0%,hsla(0,0%,89%,1) 100%);
+}
 input, .button, button {
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 22px;
 	color: #070707;
-	background: #fff;
 	border: 0;
 	-webkit-top-right-radius: 5px;
 	-moz-top-right-radius: 5px;

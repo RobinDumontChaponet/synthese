@@ -56,12 +56,8 @@ legend {
 label {
 	font-size: 12px;
 	line-height: 40px;
-	color: #a0a0a0;
 	display: inline-block;
 	width: 94px;
-	text-align: left;
-	background: white;
-	border: none;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	position: relative;
@@ -70,13 +66,6 @@ label {
 	padding: 0 5px 0 10px;
 }
 input {
-	font-size: 16px;
-	line-height: 20px;
-	color: #171717;
-	background: white;
-	border: none;
-	border-top-right-radius: 8px;
-	border-bottom-right-radius: 8px;
 	height: 40px;
 	margin: 10px 0;
 	padding: 0 10px 0 5px;
