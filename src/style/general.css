@@ -177,14 +177,6 @@ header a#aOut:before {
 	content: "\e61c";
 }
 
-input[type="search"] {
-	margin: 0 0 0 8px;
-	background: rgba(255, 255, 255, 0.4);
-	filter: "alpha(opacity=70)";
-	width: 100%;
-	border: 0;
-}
-
 #wrapper {
 	float: right;
 	/* margin: 0 auto; */
@@ -317,6 +309,9 @@ select {
 .show-help header a[title]:hover:after {
 	background: #5d7ccd;
 }
+.show-help header .active a[title]:hover:after {
+	background: none;
+}
 .show-help #wrapper a[data-help] {
 	position: relative;
 }
@@ -342,6 +337,7 @@ select {
 	position: absolute;
 	border-radius: 5px;
 	left: 20px;
+	top: 1.5em;
 }
 
 footer {
