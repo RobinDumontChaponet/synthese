@@ -1,15 +1,15 @@
-<!--meta title="IUTbook | Importer promo .csv" css="style/animations.css" css="style/csv.css" js="script/tabulars.transit.js" js="script/utils.transit.js" js="script/uploadCSV.js"-->
+<!--meta title="IUTbook | Importer promo .csv" css="style/animations.css" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
 <section id="content">
   <div id="file">
   	<fieldset id="add" class="button">
   		<label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
 	</fieldset><label for="delimiterSelect">Délimiteur</label>
 	<select name="delimiter" id="delimiterSelect">
-  	  <option value="" disabled selected style="display:none;">Délimiteur .csv</option>
-  	  <option selected="selected" value=";">Délimiteur ;</option>
-  	  <option value=",">Délimiteur ,</option>
-  	  <option value="|">Délimiteur |</option>
-  	  <option value="tab">Délimiteur Tabulation</option>
+  	  <option value="" disabled selected style="display:none;">Délimiteur</option>
+  	  <option selected="selected" value=";">;</option>
+  	  <option value=",">,</option>
+  	  <option value="|">|</option>
+  	  <option value="tab">Tabulation</option>
 	</select>
 	<!--<input id="delimiterInput" type="text" maxlength="1" size="1" name="delimiter" value=";" />-->
   </div>
@@ -25,7 +25,7 @@
 	<fieldset id="table">
 		<legend>Sélectionnez le type de données en vous référant à la première ligne du fichier ci-dessous</legend>
 	</fieldset>
-	<input type="submit" value="Enregistrer" />
+	<input type="submit" value="Aperçu" />
   </form>
 </section>
 <script type="text/javascript">

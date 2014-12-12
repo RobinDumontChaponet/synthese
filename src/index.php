@@ -70,9 +70,11 @@ if($matches[1]) {
     <?php echo $link; ?>
     <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <script type="text/javascript" src="script/polyShims.js"></script>
+    <script type="text/javascript" src="script/utils.transit.js"></script>
+    <script type="text/javascript" src="script/help.js"></script>
     <?php echo $script; ?>
 </head>
-<body>
+<body<?php if($_SESSION['help']) echo ' class="show-help"';?>>
 	<?php include('menu.inc.php');?>
     <div id="wrapper">
 	    <?php echo $inc; ?>
