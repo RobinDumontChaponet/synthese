@@ -1,7 +1,8 @@
 <?php
-require_once("includes/dbConnection.inc.php");
-require_once("models/Compte.class.php");
-require_once("models/PersonneDAO.class.php");
+require_once(dirname(__FILE__).'/../includes/conf.inc.php');
+require_once("dbConnection.inc.php");
+require_once(MODELS_INC."Compte.class.php");
+require_once(MODELS_INC."PersonneDAO.class.php");
 
 class CompteDAO
 {

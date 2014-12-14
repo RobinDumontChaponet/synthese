@@ -1,31 +1,40 @@
 <?php
-require_once("includes/dbConnection.inc.php");
-require_once("models/CodeAPE.class.php");
+require_once(dirname(__FILE__).'/../includes/conf.inc.php');
+require_once("dbConnection.inc.php");
+require_once(MODELS_INC."CodeAPE.class.php");
 
 class CodeAPEDAO
 {
 
 	public static function getAll()
 	{
-		$bdd=connect();
-		$req=$bdd->query("SELECT `code`, `libelle` FROM `codeAPE` ORDER BY code");
-		$lst=$req->fetchAll();
-		$lstcode=array();
-		foreach
-		($lst as $code)
-		{
-			$lstcode[]=new CodeAPE($code['code'], $code['libelle']);
+        try{
+            $bdd=connect();
+            $req=$bdd->query("SELECT `code`, `libelle` FROM `codeAPE` ORDER BY code");
+            $lst=$req->fetchAll();
+            $lstcode=array();
+            foreach
+            ($lst as $code)
+            {
+                $lstcode[]=new CodeAPE($code['code'], $code['libelle']);
+            }
+            return $lstcode;
+        }catch (PDOException $e) {
+			die("Error get all code ape !: " . $e->getMessage() . "<br/>");
 		}
-		return $lstcode;
 	}
 
 	public static function getById($id)
 	{
-		$bdd=connect();
-		$req=$bdd->prepare("SELECT `code`, `libelle` FROM `codeAPE` WHERE code=?");
-		$req->execute(array($id));
-		$code=$req->fetch();
-		return new CodeAPE($code['code'], $code['libelle']);
+        try{
+            $bdd=connect();
+            $req=$bdd->prepare("SELECT `code`, `libelle` FROM `codeAPE` WHERE code=?");
+            $req->execute(array($id));
+            $code=$req->fetch();
+            return new CodeAPE($code['code'], $code['libelle']);
+        }catch (PDOException $e) {
+			die("Error get id code ape !: " . $e->getMessage() . "<br/>");
+		}
 
 	}
 
@@ -33,31 +42,49 @@ class CodeAPEDAO
 	{
 		if (gettype($code)=="CodeAPE")
 		{
-			$bdd->connect();
-			$req=$bdd->prepare("INSERT INTO `codeAPE`(`code`, `libelle`) VALUES (?,?)");
-			$req->execute(array($code->getCode(), $code->getLibelle()));
-			return $bdd->LastInsertId();
-		}
+            try{
+                $bdd->connect();
+                $req=$bdd->prepare("INSERT INTO `codeAPE`(`code`, `libelle`) VALUES (?,?)");
+                $req->execute(array($code->getCode(), $code->getLibelle()));
+                return $bdd->LastInsertId();
+            }catch (PDOException $e) {
+                die("Error create code ape !: " . $e->getMessage() . "<br/>");
+            }
+		}else{
+            die('Paramètre de type code ape requis');
+        }
 	}
 
 	public static function update($code)
 	{
 		if (gettype($code)=="CodeAPE")
 		{
-			$bdd->connect();
-			$req=$bdd->prepare("UPDATE `codeAPE` SET `libelle`=? WHERE code=?");
-			$req->execute(array($code->getLibelle(), $code->getCode()));
-		}
+            try{
+                $bdd->connect();
+                $req=$bdd->prepare("UPDATE `codeAPE` SET `libelle`=? WHERE code=?");
+                $req->execute(array($code->getLibelle(), $code->getCode()));
+            }catch (PDOException $e) {
+                die("Error update code ape !: " . $e->getMessage() . "<br/>");
+            }
+		}else{
+            die('Paramètre de type code ape requis');
+        }
 	}
 
 	public static function delete($code)
 	{
 		if (gettype($code)=="CodeAPE")
 		{
-			$bdd->connect();
-			$req=$bdd->prepare("DELETE FROM `codeAPE` WHERE `code`=?");
-			$req->execute(array($code->getCode()));
-		}
+            try{
+                $bdd->connect();
+                $req=$bdd->prepare("DELETE FROM `codeAPE` WHERE `code`=?");
+                $req->execute(array($code->getCode()));
+            }catch (PDOException $e) {
+                die("Error delete code ape !: " . $e->getMessage() . "<br/>");
+            }
+		}else{
+            die('Paramètre de type code ape requis');
+        }
 	}
 
 }
