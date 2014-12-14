@@ -59,26 +59,6 @@ fieldset {
 	border:0;
 }
 
-/*header {
-	padding: 5px 8%;
-	background: rgba(255, 255, 255, 0.93);
-	color: #868686;
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	line-height: 2em;
-	z-index: 10;
-	box-shadow: 0 0 4px rgba(217, 217, 217, 0.94);
-}
-
-header h1, header nav, header li {
-	display: inline-block;
-}
-header h1, header nav {
-	margin-left: 10px;
-}*/
-
 header {
 	position: fixed;
 	width: 14%;
@@ -174,35 +154,27 @@ header a:before {
 	position: relative;
 	top: 1px;
 }
-nav a[href="index.php?requ=profile"]:before {
+nav a#aProfil:before {
 	content: "\e60d";
 }
-nav a[title="Voir sa ou les promotions"]:before {
+nav a#aPromo:before {
 	content: "\e60e";
 }
-nav a[href="index.php?requ=evenements"]:before {
+nav a#aEvents:before {
 	content: "\e60a";
 }
-nav a[href="index.php?requ=recherche"]:before {
+nav a#aSearch:before {
 	content: "\e610";
 }
 
-header a[href="aide.php"]:before {
+header a#aHelp:before {
 	content: "\e607";
 }
-header a[href="index.php?requ=parametres"]:before {
+header a#aParams:before {
 	content: "\e614";
 }
-header a[href="deconnection.php"]:before {
+header a#aOut:before {
 	content: "\e61c";
-}
-
-input[type="search"] {
-	margin: 0 0 0 8px;
-	background: rgba(255, 255, 255, 0.4);
-	filter: "alpha(opacity=70)";
-	width: 100%;
-	border: 0;
 }
 
 #wrapper {
@@ -310,6 +282,64 @@ select {
 	background-position: 94% 50%, 0;
 }
 
+/*
+ * Pour l'aide sur les élements autres que des liens, il faut encore que je réchéflisse...
+ * (en temps voulu ;—] )
+ *
+.show-help *[data-help]:after {
+	content: attr(data-help);
+}*/
+.show-help header a[title]:after, .show-help a[data-help]:after {
+	display: block;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+.show-help header a[title]:after {
+	content: attr(title);
+	font-size: 12px;
+	line-height: 12px;
+	margin-top: -4px;
+}
+.show-help header a[title="Accueil"]:after {
+	display: none;
+}
+.show-help header a[title]:hover:after {
+	background: #5d7ccd;
+}
+.show-help header .active a[title]:hover:after {
+	background: none;
+}
+.show-help #wrapper a[data-help] {
+	position: relative;
+}
+.show-help #wrapper a[data-help]:before {
+	content: "";
+	background: url("images/arrow.png") no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	display: block;
+	top: 1.5em;
+}
+.show-help #wrapper a[data-help]:after {
+	content: attr(data-help);
+	background: rgba(28, 68, 152, 0.7);
+	box-shadow: 0 0 8px #bcbcbc;
+	z-index: 5000;
+	padding: 5px;
+	font: 14px/16px "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+	color: #fff;
+	text-shadow: none;
+	position: absolute;
+	border-radius: 5px;
+	left: 20px;
+	top: 1.5em;
+}
+
 footer {
 	float: right;
 	clear: both;
@@ -327,4 +357,10 @@ footer p {
 	line-height: 2.8em;
 	text-align: center;
 	color: rgb(182, 182, 182);
+}
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+	.show-help #wrapper a[data-help]:before {
+		background-image: url("images/arrow@2X.png");
+	}
 }

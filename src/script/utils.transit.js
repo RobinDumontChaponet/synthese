@@ -58,3 +58,21 @@ eventCancel = function (e) {
 	if (window.event) e.returnValue = false;
 	if (e.cancel != null) e.cancel = true;
 }
+
+
+function addParam(url, param, value) {
+	var a = document.createElement('a'), regex = /[?&]([^=]+)=([^&]*)/g;
+	var match,
+	str = [];
+	a.href = url;
+	value=value||"";
+	while (match = regex.exec(a.search))
+		if (encodeURIComponent(param) != match[1])
+				str.push(match[1] + "=" + match[2]);
+	if(value!='')
+				str.push(encodeURIComponent(param) + "=" + encodeURIComponent(value));
+			else
+				str.push(encodeURIComponent(param));
+	a.search = (a.search.substring(0,1) == "?" ? "" : "?") + str.join("&");
+	return a.href;
+}
