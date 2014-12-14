@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__).'/../includes/conf.inc.php');
+require_once('conf.inc.php');
 require_once("dbConnection.inc.php");
 require_once(MODELS_INC."Compte.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
@@ -20,13 +20,11 @@ class CompteDAO
 				$Personne=PersonneDAO::getById($res['idPersonne']);
 				$compte=new Compte($res['idCompte'], $res['idProfil'], $Personne, $res['ndc'], $res['mdp']);
 			}
-
 		} catch (PDOException $e) {
 			die("Error getCompteByNdc() !: " . $e->getMessage() . "<br/>");
 		}
 		return $compte;
 	}
-
 	public static function getAll()
 	{
 		$lstCompte=array();
@@ -43,7 +41,6 @@ class CompteDAO
 		}
 		return $lstCompte;
 	}
-
 	public static function getById($id)
 	{
 		$compte = NULL;
@@ -56,13 +53,11 @@ class CompteDAO
 				$Personne=PersonneDAO::getById($res->idPersonne);
 				$compte=new Compte($res->idCompte, $res->idProfil, $Personne, $res->ndc, $res->mdp);
 			}
-
 		} catch (PDOException $e) {
 			die("Error getCompteById() !: " . $e->getMessage() . "<br/>");
 		}
 		return $compte;
 	}
-
 	public static function update($compte)
 	{
 		try {
@@ -73,7 +68,6 @@ class CompteDAO
 			die("Error update() !: " . $e->getMessage() . "<br/>");
 		}
 	}
-
 	public static function delete($compte)
 	{
 		try{
@@ -84,6 +78,5 @@ class CompteDAO
 			die("Error delete() !: " . $e->getMessage() . "<br/>");
 		}
 	}
-
 }
 ?>
