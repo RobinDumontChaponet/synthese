@@ -77,8 +77,8 @@ class CompteDAO
 	public static function delete($compte)
 	{
 		try{
-			$bdd=$connect();
-			$req=$bdd->prepare("DELETE FROM `compte` WHERE `idCompte?");
+			$bdd=connect();
+			$req=$bdd->prepare("DELETE FROM `compte` WHERE `idCompte`=?");
 			$req->execute(array($compte->getId()));
 		} catch (PDOException $e) {
 			die("Error delete() !: " . $e->getMessage() . "<br/>");
