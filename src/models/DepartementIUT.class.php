@@ -49,6 +49,18 @@ class DepartementIUT
 	{
 		return "Id : ".$this->id." Nom : ".$this->nom;
 	}
+	
+	//---------------------------------Equals-----------------------------------
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "DepartementIUT")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 
