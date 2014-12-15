@@ -128,5 +128,17 @@ class Ancien extends Personne
 			." CP : ".$this->codePostal." Ville : ".$this->ville
 			." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone." Parents : ".$this->parents;
 	}
+	
+	//-------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Ancien")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 }
 ?>
