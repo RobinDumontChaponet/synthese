@@ -89,15 +89,15 @@ class Etablissement
     
     //-------------------------Equals-------------------------------------
     public function equals($aComparer)
+    {
+	if(get_class($aComparer) == "Etablissement")
 	{
-		if(get_class($aComparer) == "Etablissement")
-		{
-			return $this->id == $aComparer->getId();	
-		}else
-		{
-			return false;
-		}
+		return $this->id == $aComparer->getId();	
+	}else
+	{
+		return false;
 	}
+    }
 }
 
 ?>
