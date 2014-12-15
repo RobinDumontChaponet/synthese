@@ -86,6 +86,18 @@ class Etablissement
         ." CP : ".$this->codePostal." Ville : ".$this->ville
         ." Pays : ".$this->pays;
     }
+    
+    //-------------------------Equals-------------------------------------
+    public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Etablissement")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 }
 
 ?>
