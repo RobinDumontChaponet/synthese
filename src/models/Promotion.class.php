@@ -52,6 +52,18 @@ class Promotion{
   {
       return "Id : ".$this->id." Annee : ".$this->annee;
   }
+  
+//-------------------------------Equals
+  public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Promotion")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 ?>
