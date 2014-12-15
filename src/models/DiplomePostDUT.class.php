@@ -32,5 +32,17 @@ class DiplomePostDUT extends Diplome
 	{
 		return parent::__toString()." Domaine : ".$this->domaine;
 	}
+	
+	//-----------------------------------Equals----------------------------
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "DiplomePostDUT")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 }
 ?>
