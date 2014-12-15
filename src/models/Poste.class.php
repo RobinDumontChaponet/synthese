@@ -49,7 +49,7 @@ class Poste
   }
 
 //---------------------------------------------Equals
-public function equals($aComparer)
+	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "Poste")
 		{
