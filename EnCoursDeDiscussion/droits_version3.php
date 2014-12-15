@@ -10,6 +10,8 @@ $disposededao = new DisposeDeDAO();
 
 $_SESSION["disposede"] = $disposededao->getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $_GET["requ"]);
 
+/* LA PARTIE DU CODE PRECEDENTE PEUT ETRE  */
+
 /* On verifie ensuite si le tableau est vide. Si le tableau est vide, cela veut dire que l'utilisateur
 n'a pas le droit de consulter la page. Sinon, on affiche les éléments en fonction de ses droits */
 
