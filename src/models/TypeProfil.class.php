@@ -49,6 +49,18 @@ class TypeProfil
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
+  
+  //-------------------------------------Equals------------------------------
+  public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "TypeProfil")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 
