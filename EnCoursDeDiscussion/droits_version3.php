@@ -7,11 +7,9 @@ des droits dont dispose la personne consultant la page */
 include_once(CONSTANTE_DE_ROBIN_POUR_DOSSIER_DAO."/DisposeDeDAO.php");
 include_once(CONSTANTE_DE_ROBIN_POUR_DOSSIER_DAO."/PageDAO.php");
 
-$disposededao = new DisposeDeDAO();
-$pagedao = new PageDAO();
 
-$page = $pagedao->getByNom($_GET["requ"]);
-$_SESSION["disposede"] = $disposededao->getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $page);
+$page = $PageDAO::getByNom($_GET["requ"]);
+$_SESSION["disposede"] = $DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $page);
 
 
 /* On verifie ensuite si le tableau est vide. Si le tableau est vide, cela veut dire que l'utilisateur
