@@ -1,7 +1,7 @@
 <?php
 
 require_once("dbConnection.inc.php");
-require_once(MODELS_INC."models/Parents.class.php");
+require_once(MODELS_INC."Parents.class.php");
 
 class ParentsDAO
 {
