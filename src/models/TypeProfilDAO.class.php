@@ -16,7 +16,7 @@ class TypeProfilDAO
 			foreach
 			($lst as $poste)
 			{
-				$lstposte[]=new Poste($poste['idProfil'], $poste['libelle']);
+				$lstposte[]=new TypeProfil($poste['idProfil'], $poste['libelle']);
 			}
 			return $lstposte;
 		}catch (PDOException $e)
@@ -34,7 +34,7 @@ class TypeProfilDAO
 			if
 			($poste=$req->fetch())
 			{
-				return new Poste($poste['idProfil'], $poste['libelle']);
+				return new TypeProfil($poste['idProfil'], $poste['libelle']);
 			}else
 			{
 				return null;

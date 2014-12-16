@@ -3,6 +3,7 @@
 require_once("dbConnection.inc.php");
 require_once(MODELS_INC."Compte.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
+require_once(MODELS_INC."TypeProfilDAO.class.php");
 
 class CompteDAO
 {
@@ -17,8 +18,9 @@ class CompteDAO
 			if ($res = $statement->fetch())
 			{
                 //var_dump($res);
-				$Personne=PersonneDAO::getById($res['idPersonne']);
-				$compte=new Compte($res['idCompte'], $res['idProfil'], $Personne, $res['ndc'], $res['mdp']);
+				$personne=PersonneDAO::getById($res['idPersonne']);
+				$typeProfil=TypeProfilDAO::getById($res['idProfil']);
+				$compte=new Compte($res['idCompte'], $typeProfil, $personne, $res['ndc'], $res['mdp']);
 			}
 		} catch (PDOException $e) {
 			die("Error getCompteByNdc() !: " . $e->getMessage() . "<br/>");
@@ -33,8 +35,9 @@ class CompteDAO
 			$req=$bdd->query("SELECT * FROM compte ORDER BY ndc");
 			while ($res=$req->fetch(PDO::FETCH_OBJ))
 			{
-				$Personne=PersonneDAO::getById($res->idPersonne);
-				$lstCompte[]=new Compte($res->idCompte, $res->idProfil, $Personne, $res->ndc, $res->mdp);
+				$personne=PersonneDAO::getById($res->idPersonne);
+				$typeProfil=TypeProfilDAO::getById($res->idProfil);
+				$lstCompte[]=new Compte($res->idCompte, $typeProfil, $personne, $res->ndc, $res->mdp);
 			}
 		} catch (PDOException $e) {
 			die("Error getAll() !: " . $e->getMessage() . "<br/>");
@@ -51,7 +54,8 @@ class CompteDAO
 			if ($res = $statement->fetch(PDO::FETCH_OBJ))
 			{
 				$Personne=PersonneDAO::getById($res->idPersonne);
-				$compte=new Compte($res->idCompte, $res->idProfil, $Personne, $res->ndc, $res->mdp);
+				$typeProfil=TypeProfilDAO::getById($res->idProfil);
+				$compte=new Compte($res->idCompte, $typeProfil, $Personne, $res->ndc, $res->mdp);
 			}
 		} catch (PDOException $e) {
 			die("Error getCompteById() !: " . $e->getMessage() . "<br/>");
@@ -63,7 +67,7 @@ class CompteDAO
 		try {
 			$bdd=connect();
 			$req=$bdd->prepare("UPDATE `compte` SET `idProfil`=?,`idPersonne`=?,`ndc`=?,`mdp`=? WHERE `idCompte`=?");
-			$req->execute(array($compte->getTypeProfil(), $compte->getPersonne()->getId(), $compte->getMdp(), $compte->getId()));
+			$req->execute(array($compte->getTypeProfil()->getId(), $compte->getPersonne()->getId(), $compte->getMdp(), $compte->getId()));
 		} catch (PDOException $e) {
 			die("Error update() !: " . $e->getMessage() . "<br/>");
 		}
