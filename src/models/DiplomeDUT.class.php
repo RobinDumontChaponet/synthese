@@ -1,6 +1,6 @@
 <?php
 
-include_once(dirname(__FILE__)."/Diplome.class.php");
+include_once(MODELS_INC."Diplome.class.php");
 
 class DiplomeDUT extends Diplome
 {
@@ -34,13 +34,13 @@ class DiplomeDUT extends Diplome
 	{
 		return parent::__toString()." Departement IUT : ".$this->departementIUT;
 	}
-	
+
 	//---------------------------------Equals--------------------------------------
 	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "DiplomeDUT")
 		{
-			return $this->id == $aComparer->getId();	
+			return $this->id == $aComparer->getId();
 		}else
 		{
 			return false;
