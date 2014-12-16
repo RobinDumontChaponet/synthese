@@ -1,5 +1,5 @@
 <?php
-require_once('conf.inc.php');
+
 require_once("dbConnection.inc.php");
 require_once(MODELS_INC."Compte.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
