@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['trombiUser']->getAuth()->getId()==0) { // user is Admin
+//if($_SESSION['trombiUser']->getAuth()->getId()==0) { // user is Admin
 
 	include(MODELS_INC.'DepartementIUTDAO.class.php');
 
@@ -31,5 +31,6 @@ if($_SESSION['trombiUser']->getAuth()->getId()==0) { // user is Admin
 
 	} else
 		include(VIEWS_INC.'csv-import.php');
+//}
 
 ?>

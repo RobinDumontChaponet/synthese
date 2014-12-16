@@ -32,16 +32,16 @@ include_once(MODELS_INC."DisposeDeDAO.class.php");
 
 $disposededao = new DisposeDeDAO();
 
-define('USER_AUTH', $disposededao->getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $_GET["requ"]));
+//define('USER_AUTH', $disposededao->getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $_GET["requ"]));
 
 // Inclusion controleur
 if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
-	if(count(USER_AUTH)==0) {
+	/*if(count(USER_AUTH)==0) {
 		header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
 		header("Status: 403 Forbidden");
 		$_SERVER['REDIRECT_STATUS'] = 403;
 		$inc = get_include_contents(CONTROLLERS_INC.'403.php');
-	} else
+	} else*/
 		$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
 else {
 	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
