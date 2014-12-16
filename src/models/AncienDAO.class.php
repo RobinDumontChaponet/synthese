@@ -2,6 +2,12 @@
 require_once(dirname(__FILE__).'/../includes/conf.inc.php');
 require_once("dbConnection.inc.php");
 require_once(MODELS_INC."Ancien.class.php");
+require_once(MODELS_INC."DiplomeDUT.class.php");
+require_once(MODELS_INC."DiplomePostDUT.class.php");
+require_once(MODELS_INC."Etablissement.class.php");
+require_once(MODELS_INC."Promotion.class.php");
+require_once(MODELS_INC."Specialisation.class.php");
+require_once(MODELS_INC."TypeSpecialisation.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
 class AncienDAO
 {
@@ -102,6 +108,68 @@ class AncienDAO
             die('paramètre de type ancien requis');
 		}
 	}
+
+      /**
+     * Recherche une liste d'ancien dans la base de donnée
+     * @param   String   $nom         [[Description]]
+     * @param   String   $prn         [[Description]]
+     * @param   Array    $promo       [[Description]]
+     * @param   Object   $diplome     [[Description]]
+     * @param   Object   $spe         [[Description]]
+     * @param   Object   $typeSpe     [[Description]]
+     * @param   Object   $PostDut     [[Description]]
+     * @param   Object   $etabPostDut [[Description]]
+     * @param   Boolean $trav        [[Description]]
+     * @returns Object   [[Description]]
+     */
+    public static function search($nom,$prn,$promo,$diplome,$spe,$typeSpe,$PostDut,$etabPostDut,$trav){
+        $lst=array();
+        $args=array();
+        $req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud, `estSpecialise` Spe, `Specialisation` Special,`Possede` Poss WHERE P.idPersonne=A.idPersonne ";
+        if($nom != null){
+            $req.=" AND P.nomUsage LIKE %?% ";
+            $args[]=$nom;
+        }
+        if($prn!=null){
+            $req.=" AND P.prenom LIKE %?% ";
+            $args[]=$nom;
+        }
+        if($promo!=null){
+            $req.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=? ";
+            $args[]=$promo->getId();
+        }
+        if($diplome!=null){
+            $req.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
+            $args[]=$diplome->getId();
+        }
+        if($spe!=null){
+            $req.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
+            $args[]=$spe->getId();
+        }
+        if($typeSpe!=null){
+            $req.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
+            $args[]=$typeSpe->getId();
+        }
+        if($PostDut!=null){
+            $req=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=? ";
+            $args[]=$PostDut->getId();
+        }
+        if($etabPostDut!=null){
+            $req=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=? ";
+            $args[]=$etabPostDut->getId();
+        }
+        try{
+            $bdd=connect();
+            $state=$bdd->prepare($req);
+            $state->execute($args);
+            while($ancien=$state->fetch()){
+                $lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi']);
+            }
+        }catch(PDOException $e){
+            die('error search ancien '.$e->getMessage().'<br>');
+        }
+        return $lst;
+    }
 
 }
 ?>
