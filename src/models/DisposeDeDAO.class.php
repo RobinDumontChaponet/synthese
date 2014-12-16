@@ -1,5 +1,5 @@
 <?php
-    require_once(dirname(__FILE__).'/../includes/conf.inc.php');
+    require_once('conf.inc.php');
     require_once("dbConnection.inc.php");
     require_once(MODELS_INC."DisposeDe.class.php");
     require_once(MODELS_INC."ProfilDAO.class.php");
@@ -12,7 +12,7 @@
             $lst=array();
             try{
                 $bdd=connect();
-                $req=$bdd->query("SELECT  * FROM disposeDe");
+                $req=$bdd->query("SELECT * FROM disposeDe");
                 while($res=$req->fetch()){
                     $prof=ProfilDAO::getById($res['idProfil']);
                     $droit=DroitDAO::getById($res['idDroit']);
@@ -28,7 +28,7 @@
         public static function getByProfil($id){
             try{
                 $bdd=connect();
-                $req=$bdd->prepare("SELECT  * FROM disposeDe WHERE idProfil=?");
+                $req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=?");
                 $req->execute(array($id));
                 if($res=$req->fetch()){
                     $prof=ProfilDAO::getById($res['idProfil']);
@@ -46,7 +46,7 @@
         public static function getByPage($id){
             try{
                 $bdd=connect();
-                $req=$bdd->query("SELECT  * FROM disposeDe WHERE idPage=?");
+                $req=$bdd->query("SELECT * FROM disposeDe WHERE idPage=?");
                 if($res=$req->fetch()){
                     $prof=ProfilDAO::getById($res['idProfil']);
                     $droit=DroitDAO::getById($res['idDroit']);
@@ -85,7 +85,7 @@
                     die('error update disposede '.$e->getMessage().'<br>');
                 }
             }else{
-                die('paramètre de type DisposeDe   requis');
+                die('paramètre de type DisposeDe requis');
             }
         }
 
