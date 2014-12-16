@@ -30,8 +30,6 @@ if(empty($_GET['requ']))
 // Définitions des droits
 include_once(MODELS_INC."DisposeDeDAO.class.php");
 
-$disposededao = new DisposeDeDAO();
-
 //define('USER_AUTH', DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"])));
 
 // Inclusion controleur
