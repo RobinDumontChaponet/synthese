@@ -131,4 +131,16 @@ class Parents
   }
 }
 
+//-----------------------------------------Equals-----------------------------------------
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Parents")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
+
 ?>

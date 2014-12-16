@@ -110,6 +110,19 @@ class Personne
 		return "Id : ".$this->id." Nom : ".$this->nom." Nom patronymique : "
 			.$this->nomPatronymique." Prénom : ".$this->prenom." Mail : ".$this->mail;
 	}
+	
+//-----------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Personne")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
+	
 }
 	
 ?>

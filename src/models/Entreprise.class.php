@@ -160,6 +160,18 @@ class Entreprise
 			." CP : ".$this->codePostal." Ville : ".$this->ville." CEDEX".$this->cedex." Pays : ".$this->pays
 			." Telephone : ".$this->telephone." Code APE : ".$this->codeAPE;
 	}
+	
+	//----------------------------------------------Equals-----------------------------------------
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Entreprise")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 

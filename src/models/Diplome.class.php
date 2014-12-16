@@ -50,6 +50,18 @@ abstract class Diplome
 	{
 		return "Id : ".$this->id." Libellé : ".$this->libelle;
 	}
+	
+	//------------------------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Diplome")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 

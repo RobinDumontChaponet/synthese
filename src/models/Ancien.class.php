@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__FILE__)."/Personne.class.php");
+include_once(MODELS_INC."Personne.class.php");
 class Ancien extends Personne
 {
 	private $adresse1;
@@ -12,7 +12,7 @@ class Ancien extends Personne
 	private $imageProfil;
 	private $imageTrombi;
 	private $parents;
-	
+
 	//----------------------------------Constructeurs
 	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents)
 	{
@@ -128,13 +128,13 @@ class Ancien extends Personne
 			." CP : ".$this->codePostal." Ville : ".$this->ville
 			." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone." Parents : ".$this->parents;
 	}
-	
+
 	//-------------------------Equals
 	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "Ancien")
 		{
-			return $this->id == $aComparer->getId();	
+			return $this->id == $aComparer->getId();
 		}else
 		{
 			return false;

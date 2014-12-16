@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__).'/../includes/conf.inc.php');
+
 require_once("dbConnection.inc.php");
 require_once(MODELS_INC."Ancien.class.php");
 require_once(MODELS_INC."DiplomeDUT.class.php");

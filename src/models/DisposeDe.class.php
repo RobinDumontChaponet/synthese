@@ -3,7 +3,7 @@
 class DisposeDe
 {
 	private $typeProfil;
-	private $droit;
+	private $droit; //Ceci est un tableau de droits
 	private $page;
 
 	public function __construct($typeProfil, $droit, $page)

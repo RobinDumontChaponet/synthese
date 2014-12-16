@@ -50,5 +50,18 @@ class TypeSpecialisation
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
+//----------------------------------------------Equals
+  public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "TypeSpecialisation")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
+  
+  
 }
 ?>

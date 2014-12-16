@@ -54,6 +54,18 @@ class TypeEvenement
   {
     return "Id : ".$this->id." Libelle : ".$this->libelle;
   }
+  
+ //-----------------------------------------Equals---------------------------------
+ 	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "TypeEvenement")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 

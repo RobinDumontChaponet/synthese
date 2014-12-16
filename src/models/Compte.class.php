@@ -99,5 +99,17 @@ class Compte
 	{
 		return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne." Type profil : ".$this->typeProfil;
 	}
+	
+	//---------------------------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Compte")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 }
 ?>

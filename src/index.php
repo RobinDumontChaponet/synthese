@@ -7,6 +7,7 @@ function __autoload($className) {
     include MODELS_INC.$className.'.class.php';
 }
 
+
 session_start();
 if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
 	header ('Location: connection.php');
@@ -22,11 +23,24 @@ function get_include_contents($filename) {
 	return false;
 }
 
+// Requête par défaut
 if(empty($_GET['requ']))
 	$_GET['requ']='index';
 
+// Définitions des droits
+include_once(MODELS_INC."DisposeDeDAO.class.php");
+
+//define('USER_AUTH', DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"])));
+
+// Inclusion controleur
 if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
-	$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
+	/*if(count(USER_AUTH)==0) {
+		header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
+		header("Status: 403 Forbidden");
+		$_SERVER['REDIRECT_STATUS'] = 403;
+		$inc = get_include_contents(CONTROLLERS_INC.'403.php');
+	} else*/
+		$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
 else {
 	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 	header("Status: 404 Not Found");
@@ -36,6 +50,7 @@ else {
 
 include('datas.transit.inc.php');
 
+// Inclusion meta et dépendances clients
 preg_match('/<\!--meta\s*(.*)-->/i', $inc, $matches);
 if($matches[1]) {
 	$link=''; $script=''; $onload='';

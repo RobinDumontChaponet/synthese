@@ -42,5 +42,17 @@ class CodeAPE
 	{
 		return "Code : ".$this->code." Libellé : ".$this->libelle;
 	}
+	
+	//-------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "CodeAPE")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 }
 ?>
