@@ -1,7 +1,7 @@
 <?php
 require_once("dbConnection.inc.php");
 require_once(MODELS_INC."DisposeDe.class.php");
-require_once(MODELS_INC."ProfilDAO.class.php");
+require_once(MODELS_INC."TypeProfilDAO.class.php");
 require_once(MODELS_INC."DroitDAO.class.php");
 require_once(MODELS_INC."PageDAO.class.php");
 
@@ -17,7 +17,7 @@ class DisposeDeDAO
 			while
 			($res=$req->fetch())
 			{
-				$prof=ProfilDAO::getById($res['idProfil']);
+				$prof=TypeProfilDAO::getById($res['idProfil']);
 				$droit=DroitDAO::getById($res['idDroit']);
 				$page=PageDAO::getById($res['idPage']);
 				$lst[]=new DisposeDe($prof, $droit, $page);
@@ -38,7 +38,7 @@ class DisposeDeDAO
 			if
 			($res=$req->fetch())
 			{
-				$prof=ProfilDAO::getById($res['idProfil']);
+				$prof=TypeProfilDAO::getById($res['idProfil']);
 				$droit=DroitDAO::getById($res['idDroit']);
 				$page=PageDAO::getById($res['idPage']);
 				return new DisposeDe($prof, $droit, $page);
@@ -59,7 +59,7 @@ class DisposeDeDAO
 			if
 			($res=$req->fetch())
 			{
-				$prof=ProfilDAO::getById($res['idProfil']);
+				$prof=TypeProfilDAO::getById($res['idProfil']);
 				$droit=DroitDAO::getById($res['idDroit']);
 				$page=PageDAO::getById($res['idPage']);
 				return new DisposeDe($prof, $droit, $page);
