@@ -5,10 +5,13 @@ connectée. Cet objet disposeDe conteindra alors un tableau d'objets Droit. Chaq
 des droits dont dispose la personne consultant la page */
 
 include_once(CONSTANTE_DE_ROBIN_POUR_DOSSIER_DAO."/DisposeDeDAO.php");
+include_once(CONSTANTE_DE_ROBIN_POUR_DOSSIER_DAO."/PageDAO.php");
 
 $disposededao = new DisposeDeDAO();
+$pagedao = new PageDAO();
 
-$_SESSION["disposede"] = $disposededao->getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $_GET["requ"]);
+$page = $pagedao->getByNom($_GET["requ"]);
+$_SESSION["disposede"] = $disposededao->getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), $page);
 
 
 /* On verifie ensuite si le tableau est vide. Si le tableau est vide, cela veut dire que l'utilisateur
