@@ -49,7 +49,7 @@ csvColName.sort(function(a, b) {
 function csvArrayToTable(array) {
 	var headers=Array();
 	for(var i=0, l=array[0].length; i<l; i++) {
-		var select = '<select name="col'+i+'"><option value="" disabled selected style="display:none;">Type</option><option value="unused" class="unusedOption"> (Inutilisé)</option>';
+		var select = '<select name="'+i+'"><option value="" disabled selected style="display:none;">Type</option><option value="unused" class="unusedOption"> (Inutilisé)</option>';
 		for(var k=0, ll=csvColName.length; k<ll; k++)
 			select += '<option value="'+csvColName[k].key+'">'+csvColName[k].value+'</option>';
 		headers.push(select);

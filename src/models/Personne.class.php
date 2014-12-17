@@ -1,5 +1,5 @@
 <?php
-	
+
 class Personne
 {
 
@@ -8,7 +8,7 @@ class Personne
 	private $nomPatronymique;
 	private $prenom;
 	private $mail;
-	
+
 	public function __construct($id, $nom, $nomPatronymique, $prenom, $mail)
 	{
 		$this->setId($id);
@@ -23,22 +23,22 @@ class Personne
 	{
 		return $this->id;
 	}
-	
+
 	public function getNom()
 	{
 		return $this->nom;
 	}
-	
+
 	public function getNomPatronymique()
 	{
 		return $this->nomPatronymique;
 	}
-	
+
 	public function getPrenom()
 	{
 		return $this->prenom;
 	}
-	
+
 	public function getMail()
 	{
 		return $this->$mail;
@@ -47,82 +47,76 @@ class Personne
 //----------------------------------Setters
 	public function setId($id)
 	{
-		if(($id != null) and ($id >= 0))
+		if(is_numeric($id) && $id >= 0)
 		{
 			$this->id = $id;
-		}else
-		{
-			throw new Exception("Id personne invalide");
+		}else{
+			throw new Exception("Id personne invalide : ".$id);
 		}
 	}
-	
+
 	public function setNom($nom)
 	{
 		$nomTraite = trim($nom);
 		if(($nomTraite != null) and ($nomTraite != ""))
 		{
 			$this->nom = $nomTraite;
-		}else
-		{
-			throw new Exception("Nom incorrect");
+		}else{
+			throw new Exception("Nom incorrect : ".$nomTraite);
 		}
 	}
-	
+
 	public function setNomPatronymique($nomPatronymique)
 	{
 		$nomPatronymiqueTraite = trim($nomPatronymique);
 		if(($nomPatronymiqueTraite != null) and ($nomPatronymiqueTraite != ""))
 		{
 			$this->nomPatronymique = $nomPatronymiqueTraite;
-		}else
-		{
-			throw new Exception("Nom patronymique incorrect");
-		}	
+		}else{
+			throw new Exception("Nom patronymique incorrect : ".$nomPatronymiqueTraite);
+		}
 	}
-	
+
 	public function setPrenom($prenom)
 	{
 		$prenomTraite = trim($prenom);
 		if(($prenomTraite != null) and ($prenomTraite != ""))
 		{
 			$this->prenom = $prenomTraite;
-		}else
-		{
-			throw new Exception("Prenom incorrect");
+		}else{
+			throw new Exception("Prenom incorrect : ".$prenomTraite);
 		}
 	}
-	
+
 	public function setMail($mail)
 	{
 		$mailTraite = trim($mail);
 		if(($mailTraite != null) and (($mailTraite == "") or (preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite))))
 		{
-			$this->mail = $mailTraite;	
-		}else
-		{
-			throw new Exception("Mail incorrect !");
+			$this->mail = $mailTraite;
+		}else{
+			throw new Exception("Mail incorrect ! : ".$mailTraite);
 		}
 	}
-	
+
 //------------------------------tostring
 	public function __toString()
 	{
 		return "Id : ".$this->id." Nom : ".$this->nom." Nom patronymique : "
 			.$this->nomPatronymique." Prénom : ".$this->prenom." Mail : ".$this->mail;
 	}
-	
+
 //-----------------------------Equals
 	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "Personne")
 		{
-			return $this->id == $aComparer->getId();	
-		}else
-		{
+			return $this->id == $aComparer->getId();
+		}else{
 			return false;
 		}
 	}
-	
+
 }
-	
+
 ?>
