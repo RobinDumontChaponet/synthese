@@ -36,7 +36,8 @@ var csvColName = [
 	{key:'pays', value:'Pays'},
 	{key:'mail', value:'Adresse e-mail'},
 	{key:'telMob', value:'Téléphone mobile'},
-	{key:'telFix', value:'Téléphone fixe'}
+	{key:'telFix', value:'Téléphone fixe'},
+	{key:'sexe', value:'Sexe'}
 ];
 
 csvColName.sort(function(a, b) {

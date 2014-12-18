@@ -10,8 +10,8 @@ class Etablissement
     private $ville;
     private $pays;
     private $fax;
-    private $web
-    
+    private $web;
+
     public function __construct($id, $nom, $adresse1, $adresse2, $codePostal, $ville, $pays, $fax, $web)
     {
         $this->setId($id);
@@ -24,7 +24,7 @@ class Etablissement
         $this->setFax($fax);
         $this->setWeb($web);
     }
-    
+
     //------------------------------GETTERS-------------------------
     public function getId()
     {
@@ -50,17 +50,17 @@ class Etablissement
     {
         return $this->pays;
     }
-    
+
     public function getFax()
     {
     	return $this->fax;
     }
-    
+
     public function getWeb()
     {
     	return $this->web;
     }
-    
+
     //---------------------------SETTERS----------------------------
     public function setId($id)
     {
@@ -91,17 +91,17 @@ class Etablissement
     {
         $this->pays = trim($pays);
     }
-    
+
     public function setFax($fax)
     {
     	$this->fax = $fax;
     }
-    
+
     public function setWeb($web)
     {
     	$this->web = $web;
     }
-    
+
     //-------------------------toString-------------------------------
     public function __toString()
     {
@@ -109,13 +109,13 @@ class Etablissement
         ." CP : ".$this->codePostal." Ville : ".$this->ville
         ." Pays : ".$this->pays." Fax : ".$this->fax." Web : ".$this->web;
     }
-    
+
     //-------------------------Equals-------------------------------------
     public function equals($aComparer)
     {
 	if(get_class($aComparer) == "Etablissement")
 	{
-		return $this->id == $aComparer->getId();	
+		return $this->id == $aComparer->getId();
 	}else
 	{
 		return false;
