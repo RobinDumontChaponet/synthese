@@ -128,7 +128,7 @@ class AncienDAO
 	{
 		$lst=array();
 		$args=array();
-		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud,`promotion` promo, `estSpecialise` Spe, `specialisation` Special,`possede` Poss, `etablissement` etab,`diplomePostDUT` DPost, `travail` trav WHERE P.idPersonne=A.idPersonne ";
+		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud,`promotion` promo, `estSpecialise` Spe, `specialisation` Special,`possede` Poss, `etablissement` etab,`diplomePostDUT` DPost, `travaille` trav WHERE P.idPersonne=A.idPersonne ";
 		if($nom != null)
 		{
 			$req.=" AND P.nomUsage LIKE '%?%' ";
