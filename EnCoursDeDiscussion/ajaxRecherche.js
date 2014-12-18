@@ -35,7 +35,9 @@ function link_ajax()
             var etablissementpostdut = document.getElementById("etabPostDUT").value;
             var travailactuel = document.getElementById("travailActuel").value;
             
-            xhr.open("GET", "donnees.php?nom="+nom+"&prenom="+prenom+"&promotion="+promotion+"&diplomedut="+diplomedut+"&typesspecialisations="+typespecialisations+"&specialisation="+specialisation+"&diplomepostdut="+diplomepostdut+"&etablissementpostdut="+etablissementpostdut+"&travailactuel="+travailactuel, true);
+            
+            //Il faut changer le chemin sans toucher aux arguments...
+            xhr.open("GET", "search.php?nom="+nom+"&prenom="+prenom+"&promotion="+promotion+"&diplomedut="+diplomedut+"&typesspecialisations="+typespecialisations+"&specialisation="+specialisation+"&diplomepostdut="+diplomepostdut+"&etablissementpostdut="+etablissementpostdut+"&travailactuel="+travailactuel, true);
             
             xhr.onreadystatechange = affichageResultat;
             
