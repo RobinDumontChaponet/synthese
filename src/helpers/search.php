@@ -8,7 +8,7 @@ header('Content-Type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>';
 
 
-$listeSuggestions = search($_GET['nom'], $_GET['prenom'], $_GET['promotion'], $_GET['diplomedut'], $_GET['typesspecialisations'], $_GET['specialisation'], $_GET['diplomepostdut'], $_GET['etablissementpostdut'], $_GET['travailactuel']);
+$listeSuggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['promotion'], $_GET['diplomedut'], $_GET['typesspecialisations'], $_GET['specialisation'], $_GET['diplomepostdut'], $_GET['etablissementpostdut'], $_GET['travailactuel']);
 
 echo '<personnes>';
 
