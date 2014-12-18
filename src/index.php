@@ -30,12 +30,12 @@ if(empty($_GET['requ']))
 // Définitions des droits
 include_once(MODELS_INC."DisposeDeDAO.class.php");
 
-$a = DisposeDeDAO::getByTypeProfil($_SESSION["syntheseUser"]->getTypeProfil());
-var_dump($a);
+//$a = DisposeDeDAO::getByTypeProfil($_SESSION["syntheseUser"]->getTypeProfil());
+//var_dump($a);
 
 $user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
 
-var_dump($user_auth);
+//var_dump($user_auth);
 
 /*if(count($user_auth)==0) {
 	header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
