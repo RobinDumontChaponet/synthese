@@ -128,7 +128,7 @@ class AncienDAO
 	{
 		$lst=array();
 		$args=array();
-		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud, `estSpecialise` Spe, `Specialisation` Special,`Possede` Poss WHERE P.idPersonne=A.idPersonne ";
+		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud, `estSpecialise` Spe, `Specialisation` Special,`Possede` Poss, `travail` trav WHERE P.idPersonne=A.idPersonne ";
 		if($nom != null)
 		{
 			$req.=" AND P.nomUsage LIKE %?% ";
@@ -169,6 +169,9 @@ class AncienDAO
 			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=? ";
 			$args[]=$etabPostDut->getId();
 		}
+        if($trav==true){
+             $req.=" AND trav.idPersonne=P.idPersonne AND trav.EmbaucheFin=NULL GROUP BY P.idPersonne";
+        }
 		try{
 			$bdd=connect();
 			$state=$bdd->prepare($req);
