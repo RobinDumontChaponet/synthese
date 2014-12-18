@@ -76,3 +76,11 @@ function addParam(url, param, value) {
 	a.search = (a.search.substring(0,1) == "?" ? "" : "?") + str.join("&");
 	return a.href;
 }
+
+function utf8_encode(s) {
+  return unescape(encodeURIComponent(s));
+}
+
+function utf8_decode(s) {
+  return decodeURIComponent(escape(s));
+}

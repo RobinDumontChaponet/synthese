@@ -60,7 +60,6 @@ function csvstring_to_array(&$string, $CSV_SEPARATOR = ';', $CSV_ENCLOSURE = '"'
 	return $o;
 }
 
-
 function csv2array($src, $start=0, $lineNb=0, $delimiter=';') {
 	$handle = fopen(DATA_PATH.'csv/'.$src,'r');
 
@@ -72,11 +71,17 @@ function csv2array($src, $start=0, $lineNb=0, $delimiter=';') {
 		$str.=$line."\n";
 		$i++;
 	}
-	$str = iconv('Windows-1252', 'UTF-8//TRANSLIT', $str);
-	/*if(!mb_check_encoding($str, 'UTF-8') OR !($str === mb_convert_encoding(mb_convert_encoding($str, 'UTF-32', 'UTF-8' ), 'UTF-8', 'UTF-32')))
-		$str = mb_convert_encoding($str, 'UTF-8');*/
-	//$str = utf8_decode($str);
-	//$str = iconv('Windows-1252', 'ISO-8859-15//TRANSLIT', $str);
+
+	//$str = utf8_encode($str);
+
+	//$str = iconv('Windows-1252', 'UTF-8//TRANSLIT', $str);
+	//if(!mb_check_encoding($str, 'UTF-8') OR !($str === mb_convert_encoding(mb_convert_encoding($str, 'UTF-32', 'UTF-8' ), 'UTF-8', 'UTF-32')))
+		//$str = mb_convert_encoding($str, 'UTF-8');
+	$str = iconv('ISO-8859-1', 'UTF-8//TRANSLIT', $str);
+
+	$str = utf8_encode($str);
+
+	$enc = mb_detect_encoding($str, mb_list_encodings(), true);
 
 	return csvstring_to_array($str);
 }
@@ -89,7 +94,7 @@ function csv2array($src, $start=0, $lineNb=0, $delimiter=NULL) {
 	if ($lineNb>0)
 		$csv->limit = $lineNb-1;
 
-	$csv->encoding('Windows-1252', 'UTF-8//TRANSLIT');
+	$csv->encoding('ISO-8859-1', 'UTF-8//TRANSLIT');
 	if (empty($delimiter))
 		$csv->auto(DATA_PATH.'csv/'.$src);
 	else {

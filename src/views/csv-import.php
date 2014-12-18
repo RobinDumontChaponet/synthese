@@ -29,6 +29,8 @@
   </form>
 </section>
 <script type="text/javascript">
+
+
 new FileTransfert(document.getElementById('fileinput'), 'csv', 'data/csv', '', function (resp) {
 	var xhr = new XMLHttpRequest(),
 	delimiterSelector, delimiter;
@@ -39,8 +41,8 @@ new FileTransfert(document.getElementById('fileinput'), 'csv', 'data/csv', '', f
 	xhr.onload = function() {
 		if(this.readyState  == 4)
 			if (this.status == 200) {
-				//console.log('responseTextARRAYCSV: '+this.responseText);
-				var resp = JSON.parse(this.response);
+				console.log('responseTextARRAYCSV: '+this.responseText);
+				var resp = JSON.parse(utf8_decode(this.response));
 				document.getElementById('table').appendChild(csvArrayToTable(resp));
 				document.forms[0].style.display='block';
 				setAnimationState(document.forms[0], 'running');

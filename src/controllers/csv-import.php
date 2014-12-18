@@ -44,6 +44,7 @@ if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
 
 		foreach($csv as $line) {
 			$person = new Personne(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['mail']]));
+			echo $person;
 			//echo '"0", "'.fillVal($line[$order['nomUsage']]).'", "'.fillVal($line[$order['nomPat']]).'", "'.fillVal($line[$order['prenom']]).'", "'.fillVal($mail=$line[$order['mail']])."\"<br />\n";
 			//PersonneDAO::create($person);
 			//$login = substr($person->getNomPatronymique(), 0, 4).substr($person->getPrenom(), 0, 4).$person->getId();
