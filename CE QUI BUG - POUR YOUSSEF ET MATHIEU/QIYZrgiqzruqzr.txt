@@ -5,10 +5,15 @@ MATHIEU
 getAll() de AncienDAO ne fonctionnait pas quand y avait tout les paramètres et ne fonctionne quand même pas avec *
 Et les fautes d'orthographes ;_;
 
+
 YOUSSEF
 
 Dans Ancien, on peut pas construire un ancien sans qu'il y ai des trucs vide dedans, sauf qu'on peut avoir tout de vide excépté lui même !
 Pareil dans Personne
+
+Warning: Missing argument 14 for Ancien::__construct(), called in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/AncienDAO.class.php on line 54 and defined in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Ancien.class.php on line 18 Warning: Missing argument 15 for Ancien::__construct(), called in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/AncienDAO.class.php on line 54 and defined in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Ancien.class.php on line 18 Warning: Missing argumen...(line truncated)...
+
+Ya pas la date de naissance dans Ancien
 
 
 VOUS DEUX :
