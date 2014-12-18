@@ -69,12 +69,9 @@ class Personne
 	public function setNomPatronymique($nomPatronymique)
 	{
 		$nomPatronymiqueTraite = trim($nomPatronymique);
-		if(($nomPatronymiqueTraite != null) and ($nomPatronymiqueTraite != ""))
-		{
-			$this->nomPatronymique = $nomPatronymiqueTraite;
-		}else{
-			throw new Exception("Nom patronymique incorrect : ".$nomPatronymiqueTraite);
-		}
+
+		$this->nomPatronymique = $nomPatronymiqueTraite;
+
 	}
 
 	public function setPrenom($prenom)
@@ -91,7 +88,7 @@ class Personne
 	public function setMail($mail)
 	{
 		$mailTraite = trim($mail);
-		if($mail == null || preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite))
+		if(preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite))
 		{
 			$this->mail = $mailTraite;
 		}else{
