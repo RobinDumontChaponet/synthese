@@ -15,6 +15,9 @@ Warning: Missing argument 14 for Ancien::__construct(), called in /home/WWW/gga_
 
 Ya pas la date de naissance dans Ancien
 
+Le nom d'usage d'une personne peut être nul
+Plusieurs arguments de Etablissement peuvent être nul (regarde la BDD)
+
 
 VOUS DEUX :
 
