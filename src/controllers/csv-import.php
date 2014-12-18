@@ -35,6 +35,7 @@ if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
 		 * 		{key:'mail', value:'Adresse e-mail'},
 		 * 		{key:'telMob', value:'Téléphone mobile'},
 		 * 		{key:'telFix', value:'Téléphone fixe'}
+		 * 		{key:'sexe', value:'Sexe'}
 		 * ];
 		**/
 
