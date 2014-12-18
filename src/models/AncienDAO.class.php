@@ -131,12 +131,12 @@ class AncienDAO
 		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud, `estSpecialise` Spe, `Specialisation` Special,`Possede` Poss, `travail` trav WHERE P.idPersonne=A.idPersonne ";
 		if($nom != null)
 		{
-			$req.=" AND P.nomUsage LIKE %?% ";
+			$req.=" AND P.nomUsage LIKE '%?%' ";
 			$args[]=$nom;
 		}
 		if($prn!=null)
 		{
-			$req.=" AND P.prenom LIKE %?% ";
+			$req.=" AND P.prenom LIKE '%?%' ";
 			$args[]=$nom;
 		}
 		if($promo!=null)
