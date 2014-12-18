@@ -1,21 +1,22 @@
 ﻿<!--meta title="IUTbook | Profil" css="style/animations.css"-->
 <section id="content">
-	<fieldset>
-		<legend>Images de profil</legend>
-		Bla bla bla image ici
-	</fieldset>
-	<fieldset>
-		<legend>Informations générales</legend>
-		<ol>
-			<form action="index.php?modifier" method="post">
+	<form action="index.php?modifier" method="post">
+		<fieldset>
+			<legend>Images de profil</legend>
+			Bla bla bla image ici
+		</fieldset>
+		<fieldset>
+			<legend>Informations générales</legend>
+			<ol>
 				<?php //if nom d'usage existe se démerder mais comme j'ai rien qui marche ...?>
-				<li><label form="lastNamePatro">Nom patronymique:</label><input type="text" value="getNom()"><label form="lastName">Nom d'usage:</label><input type="text" value="getNom()"><label form="firstName">Prénom :</label><input type="text" value="getPrenom()"></li>
-				<li><label form="birthday">Date de naissance : </label><input type="text" value ="getNaissance()"><label form="sex">Sexe : </label><input type="text" value ="getSexe()"></li>
-				<li><label form="adress1">Adresse :</label><input type="text" value="getAdresse1()"> <label form="postalCode">Code postal :</label><input type="text" value="getCodePostal()"></li>
-				<?php // if adress2 exist then show it, else don't ...?>
-				<li><label form="city">Ville :</label><input type="text" value="getVille()"><label form="country">Pays :</label><input type="text" value="getPays()"></li>
-				<li><label form="phoneNumber">Telephone :</label><input type="text" value="getTelephone()"><label form="mobileNumber">Mobile :</label><input type="text" value="getMobile()"></li>
-			</form>
-		</ol>
+				<li><label for="lastNamePatro">Nom patronymique:</label><input type="text" value="$ancien->getNom()"/><label for="lastName">Nom d'usage:</label><input type="text" value="$ancien->getNom()"/><label for="firstName">Prénom :</label><input type="text" value="$ancien->getPrenom()"/></li>
+				<li><label for="birthday">Date de naissance : </label><input type="text" value ="$ancien->getNaissance()"/><label for="sex">Sexe : </label><input type="text" value ="$ancien->getSexe()"/></li>
+				<li><label for="adress1">Adresse :</label><input type="text" value="$ancien->getAdresse1()"/> <label for="postalCode">Code postal :</label><input type="text" value="$ancien->getCodePostal()"/></li>
+				<!--<?php //if ($ancien->getAdresse2() != NULL)?>
+					<li><label for="">Adresse 2 : </label><input type="text" value="$ancien->getAdresse2()"/></li>-->
+				<li><label for="city">Ville :</label><input type="text" value="$ancien->getVille()"/><label for="country">Pays :</label><input type="text" value="$ancien->getPays()"/></li>
+				<li><label for="phoneNumber">Telephone :</label><input type="text" value="$ancien->getTelephone()"/><label for="mobileNumber">Mobile :</label><input type="text" value="$ancien->getMobile()"/></li>
+			</ol>
 	</fieldset>
+	</form>
 </section>
