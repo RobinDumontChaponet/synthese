@@ -36,7 +36,7 @@ class DomaineDAO
 		}
 	}
 
-	public static function create($obj)
+	public static function create(&$obj)
 	{
 		if
 		(gettype($obj)=="Domaine")
@@ -45,7 +45,8 @@ class DomaineDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `domaine`(`idDomaine`, `libelle`, `description`) VALUES (?,?,?)");
 				$req->execute(array($obj->getId(), $obj->getLibelle(), $obj->getDescription()));
-				return $bdd->LastInsertId();
+                $obj->setId($bdd->LastInsertId());
+				return $obj->getId();
 			}catch(PDOException $e)
 			{
 				die('error create domaine '.$e->getMessage().'<br>');

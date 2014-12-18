@@ -62,6 +62,21 @@ class CompteDAO
 		}
 		return $compte;
 	}
+
+    public static function create(&$obj){
+        if(gettype($obj)=="Compte"){
+            try{
+                $bdd=connect();
+                $req=bdd->prepare("INSERT INTO `compte`(`idProfil`, `idPersonne`, `ndc`, `mdp`) VALUES (?,?,?,?)");
+                $req->execute(array($obj->getTypeProfil(),$obj->getPersonne(),$obj->getNdc(),$obj->getMdp));
+                $obj->setId($bdd->lastInsertId());
+                return $obj->getId();
+            }catch(PDOException $e){
+                die('error create comptedao '.$e->getMessage().'<br>');
+            }
+        }
+    }
+
 	public static function update($compte)
 	{
 		try {

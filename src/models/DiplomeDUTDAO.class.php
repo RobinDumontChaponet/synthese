@@ -45,7 +45,7 @@ class DiplomeDUTDAO
 
 	}
 
-	public static function create($obj)
+	public static function create(&$obj)
 	{
 		if
 		(gettype($obj)=="DiplomeDUT")
@@ -54,7 +54,8 @@ class DiplomeDUTDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`) VALUES (?,?)");
 				$req->execute(array($obj->getDepartement()->getId(), $obj->getLibelle()));
-				return $bdd->LastInsertId();
+                $obj->setId($bdd->LastInsertId());
+				return $obj->getId();
 			}catch(PDOException $e)
 			{
 				die('error create dip dut '.$e->getMessage().'<br>');

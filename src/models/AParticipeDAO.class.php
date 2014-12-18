@@ -78,7 +78,6 @@ class AParticiDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `aParticipe`(`idPersonne`, `idEvenement`) VALUES (?,?)");
 				$req->execute(array($obj->getPersonne()->getId(), $obj->getEvenement()->getId()));
-				return $bdd->LastInsertId();
 			}catch(PDOException $e)
 			{
 				die('error create aParticipe '.$e->getMessage().'<br>');

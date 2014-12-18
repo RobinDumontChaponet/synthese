@@ -32,7 +32,7 @@ class PageDAO
 			$req=$bdd->prepare("SELECT `idPage`, `libelle` FROM `page` WHERE idPage=?");
 			$req->execute(array($id));
 			$page=$req->fetch();
-			return new Page($page['idDroit'], $page['libelle']);
+			return new Page($page['idPage'], $page['libelle']);
 		}catch(PDOException $e)
 		{
 			die('error get id page '.$e->getMessage().'<br>');
@@ -40,7 +40,22 @@ class PageDAO
 
 	}
 
-	public static function create($page)
+    public static function getByLibelle($lib)
+	{
+		try{
+			$bdd=connect();
+			$req=$bdd->prepare("SELECT `idPage`, `libelle` FROM `page` WHERE libelle=?");
+			$req->execute(array($lib));
+			$page=$req->fetch();
+			return new Page($page['idPage'], $page['libelle']);
+		}catch(PDOException $e)
+		{
+			die('error get libelle page '.$e->getMessage().'<br>');
+		}
+
+	}
+
+	public static function create(&$page)
 	{
 		if
 		(gettype($page)=="Page")
@@ -49,7 +64,8 @@ class PageDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `page`(`libelle`) VALUES (?)");
 				$req->execute(array($page->getLibelle()));
-				return $bdd->LastInsertId();
+				$page->setId($bdd->LastInsertId());
+                return $page->getId();
 			}catch(PDOException $e)
 			{
 				die('error create page '.$e->getMessage().'<br>');

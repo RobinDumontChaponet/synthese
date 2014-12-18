@@ -39,7 +39,7 @@ class DroitDAO
 
 	}
 
-	public static function create($droit)
+	public static function create(&$droit)
 	{
 		if
 		(gettype($droit)=="Droit")
@@ -48,7 +48,8 @@ class DroitDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `droits`(`libelle`) VALUES (?)");
 				$req->execute(array($droit->getLibelle()));
-				return $bdd->LastInsertId();
+                $droit->setId($bdd->LastInsertId());
+				return $droit->getId();
 			}catch(PDOException $e)
 			{
 				die('error create droit '.$e->getMessage().'<br>');

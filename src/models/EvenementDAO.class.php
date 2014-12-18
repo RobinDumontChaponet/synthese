@@ -44,7 +44,7 @@ class EvenementDAO
 		}
 	}
 
-	public static function create($obj)
+	public static function create(&$obj)
 	{
 		if
 		(gettype($obj)=="Evenement")
@@ -53,7 +53,8 @@ class EvenementDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`) VALUES (?)");
 				$req->execute(array($obj->getTypeEvenement()->getId()));
-				return $bdd->LastInsertId();
+				$obj->setId($bdd->LastInsertId());
+                return $obj->getId();
 			}catch(PDOException $e)
 			{
 				die('error create Evenement '.$e->getMessage().'<br>');

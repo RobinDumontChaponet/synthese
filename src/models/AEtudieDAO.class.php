@@ -65,7 +65,6 @@ class AEtudieDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `aEtudie`(`idPromo`, `idDerpartement`, `idPersonne`, `idDiplomeDUT`) VALUES (?,?,?,?)");
 				$req->execute(array($obj->getPromo()->getId(), $obj->getDepartement()->getId(), $obj->getPersonne()->getId(), $obj->getDiplomeDUT()->getId()));
-				return $bdd->LastInsertId();
 			}catch(PDOException $e)
 			{
 				die('error create aetudie '.$e->getMessage().'<br>');

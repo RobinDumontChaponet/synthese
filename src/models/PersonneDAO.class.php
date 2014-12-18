@@ -39,7 +39,7 @@ class PersonneDAO
 		}
 	}
 
-	public static function create($pers)
+	public static function create(&$pers)
 	{
 		if (gettype($ancien)=="Personne")
 		{
@@ -47,7 +47,8 @@ class PersonneDAO
                 $bdd=connect();
                 $bdd->prepare("INSERT INTO `personne`(`nomUsage`, `nomPatronymique`, `mail`, `prenom`) VALUES (?,?,?,?)");
                 $bdd->execute(array($pers->getNom(), $pers->getNomPatronymique(), $pers->getMail(), $pers->getPrenom()));
-                return $bdd->LastInsertId();
+                $pers->setId($bdd->LastInsertId());
+                return $pers->getId();
             }catch(PDOException $e){
                 die('error create personne '.$e->getMessage().'<br>');
             }

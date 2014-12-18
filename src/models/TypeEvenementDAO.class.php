@@ -39,7 +39,7 @@ class TypeEvenementDAO
 		}
 	}
 
-	public static function create($type)
+	public static function create(&$type)
 	{
 		if
 		(gettype($type)=="TypeEvenement")
@@ -48,7 +48,8 @@ class TypeEvenementDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `typeEvenement`(`libelle`) VALUES (?)");
 				$req->execute(array($type->getLibelle()));
-				return $bdd->LastInsertId();
+				$type->setId($bdd->LastInsertId());
+                return $type->getId();
 			}catch (PDOException $e)
 			{
 				die("Error create type event !: " . $e->getMessage() . "<br/>");

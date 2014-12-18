@@ -5,7 +5,7 @@ require_once(MODELS_INC.'DepartementIUT.class.php');
 
 class DepartementIUTDAO
 {
-	public function getAll()
+	public static function getAll()
 	{
 		$lst=array();
 		try{
@@ -21,7 +21,7 @@ class DepartementIUTDAO
 		return $lst;
 	}
 
-	public function getById($id)
+	public static function getById($id)
 	{
 		$dpt=null;
 		try{
@@ -38,7 +38,21 @@ class DepartementIUTDAO
 		return $dpt;
 	}
 
-	public function update($dpt)
+    public static function(&$obj){
+        if(gettype($obj)=="DepartementIUT"){
+            try{
+                $bdd=connect();
+                $req=$bdd->prepare("INSERT INTO `departementIUT`(`nom`) VALUES (?)");
+                $req->execute(array($obj->getNom()));
+                $obj->setId($bdd->lastInsertId());
+                return $obj->getId();
+            }catch(PDOException $e){
+                die("Error create dpt() !: " . $e->getMessage() . "<br/>");
+            }
+        }
+    }
+
+	public static function update($dpt)
 	{
 		try{
 			$bdd=connect();
@@ -49,7 +63,7 @@ class DepartementIUTDAO
 		}
 	}
 
-	public function delete($dpt)
+	public static function delete($dpt)
 	{
 		try{
 			$bdd=connect();

@@ -46,7 +46,7 @@ class TypeProfilDAO
 
 	}
 
-	public static function create($poste)
+	public static function create(&$poste)
 	{
 		if
 		(gettype($poste)=="TypeProfil")
@@ -55,7 +55,8 @@ class TypeProfilDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `typeProfil`(`libelle`) VALUES (?)");
 				$req->execute(array($poste->getLibelle()));
-				return $bdd->LastInsertId();
+				$poste->setId($bdd->LastInsertId());
+                return $poste->getId();
 			}catch (PDOException $e)
 			{
 				die("Error create TypeProfil !: " . $e->getMessage() . "<br/>");

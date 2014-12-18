@@ -43,7 +43,7 @@ class ParentsDAO
 		}
 	}
 
-	public static function create($parents)
+	public static function create(&$parents)
 	{
 		if
 		(gettype($parents)=="Parents")
@@ -52,7 +52,8 @@ class ParentsDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `parents`(`adresse1`, `adresse2`, `codePostale`, `ville`, `pays`, `mobile`, `telephone`) VALUES (?,?,?,?,?,?,?)");
 				$req->execute(array($parents->getAdresse1(), $parents->getAdresse2(), $parents->getCodePostal(), $parents->getVille(), $parents->getPays(), $parents->getMobile(), $parents->getTelephone()));
-				return $bdd->LastInsertId();
+				$parents->setId($bdd->LastInsertId());
+                return $parents->getId();
 			}catch(PDOException $e)
 			{
 				die('error create parents '.$e->getMessage().'<br>');

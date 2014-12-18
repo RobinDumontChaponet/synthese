@@ -58,7 +58,7 @@ class AncienDAO
 		}
 	}
 
-	public static function create($ancien)
+	public static function create(&$ancien)
 	{
 		if (gettype($ancien)=="Ancien")
 		{
@@ -67,6 +67,8 @@ class AncienDAO
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req=$bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`) VALUES (?,?,?,?,?,?,?,?,?,?)");
 				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi()));
+                $ancien->setId($idPers);
+                return $idPers;
 			}catch(PDOException $e){
 				die('error create ancien '.$e->getMessage().'<br>');
 			}

@@ -4,7 +4,8 @@ require_once(MODELS_INC."DisposeDe.class.php");
 require_once(MODELS_INC."TypeProfilDAO.class.php");
 require_once(MODELS_INC."DroitDAO.class.php");
 require_once(MODELS_INC."PageDAO.class.php");
-
+require_once(MODELS_INC."Page.class.php");
+require_once(MODELS_INC."TypeProfil.class.php");
 class DisposeDeDAO
 {
 
@@ -29,46 +30,77 @@ class DisposeDeDAO
 		return $lst;
 	}
 
-	public static function getByProfil($id)
+    public static function getByTypeProfilAndPage($type,$page){
+        $lst=array();
+        if(gettype($type)=="TypeProfil" && gettype($page)=="Page"){
+            try{
+                $bdd=connect();
+                $req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=? AND idPage=?");
+                $req->execute(array($type->getId(),$page->getId()));
+                while($res=$req->fetch()){
+                    $prof=TypeProfilDAO::getById($res['idProfil']);
+				    $droit=DroitDAO::getById($res['idDroit']);
+				    $page=PageDAO::getById($res['idPage']);
+				    $lst[]= new DisposeDe($prof, $droit, $page);
+                }
+            }catch(PDOException $e){
+                die('error get profil & page disposede '.$e->getMessage().'<br>');
+            }
+        }else{
+            die("Type des paramètres pas bons!!");
+        }
+        return $lst;
+    }
+
+	public static function getByProfil($type)
 	{
-		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=?");
-			$req->execute(array($id));
-			if
-			($res=$req->fetch())
-			{
-				$prof=TypeProfilDAO::getById($res['idProfil']);
-				$droit=DroitDAO::getById($res['idDroit']);
-				$page=PageDAO::getById($res['idPage']);
-				return new DisposeDe($prof, $droit, $page);
-			}
-		}catch(PDOException $e)
-		{
-			die('error get profil disposede '.$e->getMessage().'<br>');
-			return null;
-		}
+        $lst=array();
+        if(gettype($type)=="TypeProfil"){
+            try{
+                    $bdd=connect();
+                    $req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=?");
+                    $req->execute(array($type->getId()));
+                    while($res=$req->fetch()){
+                        $prof=TypeProfilDAO::getById($res['idProfil']);
+                        $droit=DroitDAO::getById($res['idDroit']);
+                        $page=PageDAO::getById($res['idPage']);
+                        $lst[]= new DisposeDe($prof, $droit, $page);
+                    }
+            }catch(PDOException $e)
+            {
+                die('error get profil disposede '.$e->getMessage().'<br>');
+                return null;
+            }
+        }else{
+            die('type param de type typeProfil requis');
+        }
+        return $lst;
 
 	}
 
-	public static function getByPage($id)
+	public static function getByPage($page)
 	{
-		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM disposeDe WHERE idPage=?");
-			if
-			($res=$req->fetch())
-			{
-				$prof=TypeProfilDAO::getById($res['idProfil']);
-				$droit=DroitDAO::getById($res['idDroit']);
-				$page=PageDAO::getById($res['idPage']);
-				return new DisposeDe($prof, $droit, $page);
-			}
-		}catch(PDOException $e)
-		{
+		$lst=array();
+        if(gettype($type)=="Page"){
+            try{
+                    $bdd=connect();
+                    $req=$bdd->prepare("SELECT * FROM disposeDe WHERE idPage=?");
+                    $req->execute(array($page->getId()));
+                    while($res=$req->fetch()){
+                        $prof=TypeProfilDAO::getById($res['idProfil']);
+                        $droit=DroitDAO::getById($res['idDroit']);
+                        $page=PageDAO::getById($res['idPage']);
+                        $lst[]= new DisposeDe($prof, $droit, $page);
+                    }
+		  }catch(PDOException $e)
+		  {
 			die('error get page dip disposede '.$e->getMessage().'<br>');
 			return null;
-		}
+		  }
+        }else{
+            die('type param de type typeProfil requis');
+        }
+        return $lst;
 
 	}
 

@@ -42,7 +42,7 @@ class SpecialisationDAO
 
 	}
 
-	public static function create($spe)
+	public static function create(&$spe)
 	{
 		if
 		(gettype($spe)=="Specialisation")
@@ -51,7 +51,8 @@ class SpecialisationDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `specialisation`(`libelle`, `idTypeSpe`) VALUES (?,?)");
 				$req->execute(array($spe->getLibelle(), $spe->getTypeSpecialisation()->getId()));
-				return $bdd->LastInsertId();
+				$spe->setId($bdd->LastInsertId());
+                return $spe->getId();
 			}catch(PDOException $e)
 			{
 				die('error create spé '.$e->getMessage().'<br>');

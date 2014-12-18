@@ -40,7 +40,7 @@ class CodeAPEDAO
 
 	}
 
-	public static function create($code)
+	public static function create(&$code)
 	{
 		if (gettype($code)=="CodeAPE")
 		{
@@ -48,7 +48,8 @@ class CodeAPEDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `codeAPE`(`code`, `libelle`) VALUES (?,?)");
 				$req->execute(array($code->getCode(), $code->getLibelle()));
-				return $bdd->LastInsertId();
+                $code->setId($bdd->LastInsertId());
+				return $code->getId();
 			}catch (PDOException $e)
 			{
 				die("Error create code ape !: " . $e->getMessage() . "<br/>");

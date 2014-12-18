@@ -41,7 +41,7 @@ class EtablissementDAO
 		}
 	}
 
-	public static function create($obj)
+	public static function create(&$obj)
 	{
 		if
 		(gettype($obj)=="Etablissement")
@@ -50,7 +50,8 @@ class EtablissementDAO
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `etablissement`(`nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`) VALUES (?,?,?,?,?,?)");
 				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays()));
-				return $bdd->LastInsertId();
+				$obj->setId($bdd->LastInsertId());
+                return $obj->getId();
 			}catch(PDOException $e)
 			{
 				die('error create etablissement '.$e->getMessage().'<br>');

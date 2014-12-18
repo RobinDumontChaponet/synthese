@@ -43,7 +43,7 @@ class PromotionDAO
 		}
 	}
 
-	public static function create($promo)
+	public static function create(&$promo)
 	{
 		if
 		(gettype($promo)=="Promotion")
@@ -52,7 +52,8 @@ class PromotionDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `promotion`(`annee`) VALUES (?)");
 				$req->execute(array($promo->getAnnee()));
-				return $bdd->LastInsertId();
+				$promo->setId($bdd->LastInsertId());
+                return $promo->getId();
 			}catch(PDOException $e)
 			{
 				die('error create promo '.$e->getMessage().'<br>');

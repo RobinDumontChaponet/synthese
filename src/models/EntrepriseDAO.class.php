@@ -39,7 +39,7 @@ class EntrepriseDAO
 
 	}
 
-	public static function create($ent)
+	public static function create(&$ent)
 	{
 		if
 		(gettype($ent)=="Entreprise")
@@ -48,7 +48,8 @@ class EntrepriseDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `entreprise`(`codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone`) VALUES (?,?,?,?,?,?,?,?,?)");
 				$req->execute(array($ent->getCode(), $ent->getNom(), $ent->getAdresse1(), $ent->getAdresse2(), $ent->getCodePostal(), $ent->getVille(), $ent->getCedex(), $ent->getPays(), $ent->getTelephone()));
-				return $bdd->lastInsertId();
+                $ent->setId($bdd->lastInsertId());
+				return $ent->getId();
 			}catch (PDOException $e)
 			{
 				die("Error create entreprise !: " . $e->getMessage() . "<br/>");

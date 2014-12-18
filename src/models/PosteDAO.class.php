@@ -40,7 +40,7 @@ class PosteDAO
 
 	}
 
-	public static function create($poste)
+	public static function create(&$poste)
 	{
 		if
 		(gettype($poste)=="Poste")
@@ -49,7 +49,8 @@ class PosteDAO
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `poste`(`libelle`) VALUES (?)");
 				$req->execute(array($poste->getLibelle()));
-				return $bdd->LastInsertId();
+				$poste->setId($bdd->LastInsertId());
+                return $poste->getId();
 			}catch (PDOException $e)
 			{
 				die("Error create poste !: " . $e->getMessage() . "<br/>");
