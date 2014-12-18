@@ -17,6 +17,6 @@ echo '<personnes>';
         echo '<personne><nom>'.$listeSuggestions[i][0].'</nom><prenom>'.$listeSuggestions[i][1].'</prenom><promotion>'.$listeSuggestions[i][2].'</promotion><diplomedut>'.$listeSuggestions[i][3].'</diplomedut><typesspecialisations>'.$listeSuggestions[i][4].'</typesspecialisations><specialisation>'.$listeSuggestions[i][5].'</specialisation><diplomepostdut>'.$listeSuggestions[i][6].'</diplomepostdut><etablissementpostdut>'.$listeSuggestions[i][7].'</etablissementpostdut><travailactuel>'.$listeSuggestions[i][8].'</travailactuel></personne>';
     }
 
-echo '</personnes>'
+echo '</personnes>';
 
 ?>
