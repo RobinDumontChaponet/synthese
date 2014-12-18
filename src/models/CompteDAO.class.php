@@ -67,7 +67,7 @@ class CompteDAO
         if(gettype($obj)=="Compte"){
             try{
                 $bdd=connect();
-                $req=bdd->prepare("INSERT INTO `compte`(`idProfil`, `idPersonne`, `ndc`, `mdp`) VALUES (?,?,?,?)");
+                $req=$bdd->prepare("INSERT INTO `compte`(`idProfil`, `idPersonne`, `ndc`, `mdp`) VALUES (?,?,?,?)");
                 $req->execute(array($obj->getTypeProfil(),$obj->getPersonne(),$obj->getNdc(),$obj->getMdp));
                 $obj->setId($bdd->lastInsertId());
                 return $obj->getId();
