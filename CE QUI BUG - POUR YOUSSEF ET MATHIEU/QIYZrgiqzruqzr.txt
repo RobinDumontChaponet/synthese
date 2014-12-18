@@ -14,3 +14,7 @@ Pareil dans Personne
 VOUS DEUX :
 
 Pour les messages d'erreurs, veuillez indiquer : Où quoi comment c'est à dire, le nom de la fonction dans quel fichier et un semblant de pourquoi
+
+ -> Quand vous faites "gettype($var)" en espérant obtenir le nom de la classe... bah c'est raté.
+ 	Il faut faire "get_class($var)"  !!!!!!!!!!!!!!!
+ 	(dans pas mal de DAO et d'obets métiers........)
