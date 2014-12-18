@@ -11,17 +11,15 @@ class TypeSpecialisationDAO
 	{
 		try{
 			$bdd=connect();
-			$req=$bdd->query("SELECT `idTypeSpe`, `libelle` FROM `page` ORDER BY libelle");
+			$req=$bdd->query("SELECT `idTypeSpe`, `libelle` FROM `typeSpecialisation` ORDER BY libelle");
 			$lst=$req->fetchAll();
 			$lstObj=array();
-			foreach
-			($lst as $type)
+			foreach ($lst as $type)
 			{
 				$lstObj[]=new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
 			}
 			return $lstObj;
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get all specialisation '.$e->getMessage().'<br>');
 		}
 	}
@@ -34,8 +32,7 @@ class TypeSpecialisationDAO
 			$req->execute(array($id));
 			$type=$req->fetch();
 			return new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get id spe '.$e->getMessage().'<br>');
 		}
 
@@ -43,8 +40,7 @@ class TypeSpecialisationDAO
 
 	public static function create(&$type)
 	{
-		if
-		(gettype($type)=="TypeSpecialisation")
+		if (gettype($type)=="TypeSpecialisation")
 		{
 			try{
 				$bdd->connect();
@@ -52,50 +48,42 @@ class TypeSpecialisationDAO
 				$req->execute(array($type->getLibelle()));
 				$type->setId($bdd->LastInsertId());
                 return $type->getId();
-			}catch(PDOException $e)
-			{
+			} catch(PDOException $e) {
 				die('error create spe '.$e->getMessage().'<br>');
 			}
-		}else
-		{
+		} else {
 			die('paramètre de type spécialisation demandé');
 		}
 	}
 
 	public static function update($type)
 	{
-		if
-		(gettype($type)=="TypeSpecialisation")
+		if (gettype($type)=="TypeSpecialisation")
 		{
-			try{
+			try {
 				$bdd->connect();
 				$req=$bdd->prepare("UPDATE `typeSpecialisation` SET `libelle`=? WHERE `idTypeSpe`=?");
 				$req->execute(array($type->getLibelle(), $type->getId()));
-			}catch(PDOException $e)
-			{
+			} catch(PDOException $e) {
 				die('error update spe '.$e->getMessage().'<br>');
 			}
-		}else
-		{
+		} else {
 			die('paramètre de type spécialisation demandé');
 		}
 	}
 
 	public static function delete($type)
 	{
-		if
-		(gettype($type)=="TypeSpecialisation")
+		if (gettype($type)=="TypeSpecialisation")
 		{
-			try{
+			try {
 				$bdd->connect();
 				$req=$bdd->prepare("DELETE FROM `typeSpecialisation` WHERE `idTypeSpe`=?");
 				$req->execute(array($type->getId()));
-			}catch(PDOException $e)
-			{
+			} catch(PDOException $e) {
 				die('error delete spe '.$e->getMessage().'<br>');
 			}
-		}else
-		{
+		} else {
 			die('paramètre de type spécialisation demandé');
 		}
 	}
