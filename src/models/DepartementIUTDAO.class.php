@@ -38,7 +38,7 @@ class DepartementIUTDAO
 		return $dpt;
 	}
 
-    public static function(&$obj){
+    public static function create(&$obj){
         if(gettype($obj)=="DepartementIUT"){
             try{
                 $bdd=connect();
