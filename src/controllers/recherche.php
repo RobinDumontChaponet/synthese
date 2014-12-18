@@ -1,7 +1,7 @@
 <?php
 
 //Pour la liste de promotions
-$promotions = PromotionDAO::getAll();
+//$promotions = PromotionDAO::getAll();
 
 //Pour la liste de diplome iut
 $diplomes = DiplomeDUTDAO::getAll();

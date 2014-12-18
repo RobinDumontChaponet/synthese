@@ -9,10 +9,7 @@
 
 		<label for="promotion">Promotion :</label>
 		<select id="promotion" name="promotion" onchange="link_ajax()">
-		<?php
-		foreach($promotions as $promotion)
-			echo '<option name="'.$promotion->getId().'">'.$promotion->getAnnee().'</option>';
-		?>
+			<?php for($y=date("Y")+1; $y>=1967; $y--) echo '<option value="'.$y.'">'.$y.' - '.($y+2).'</option>';?>
 		</select><br />
 
 		<label for="diplome">Diplôme DUT :</label>
