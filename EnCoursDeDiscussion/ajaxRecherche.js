@@ -35,7 +35,8 @@ function link_ajax()
             var etablissementpostdut = document.getElementById("etabPostDUT").value;
             var travailactuel = document.getElementById("travailActuel").value;
             
-            xhr.open("GET", "donnees.php?nom="+nom+"&prenom="+prenom+"&promotion="+promotion+"&diplomedut="+diplomedut+"&typesspecialisations="+typespecialisations+"&specialisation="+specialisation+"&diplomepostdut="+diplomepostdut+"&etablissementpostdut="+etablissementpostdut+"&travailactuel="+travailactuel, true);
+            var chemin = $_SERVER['SERVER_NAME']."/~dumont28u/synthese/src/helpers/search.php";
+            xhr.open("GET", chemin+"?nom="+nom+"&prenom="+prenom+"&promotion="+promotion+"&diplomedut="+diplomedut+"&typesspecialisations="+typespecialisations+"&specialisation="+specialisation+"&diplomepostdut="+diplomepostdut+"&etablissementpostdut="+etablissementpostdut+"&travailactuel="+travailactuel, true);
             
             xhr.onreadystatechange = affichageResultat;
             
