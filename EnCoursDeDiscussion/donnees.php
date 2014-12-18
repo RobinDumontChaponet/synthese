@@ -1,11 +1,13 @@
 <?php
 
+include_once($_SERVER['SERVER_NAME']."~dumont28u/synthese/src/models/AncienDAO.class.php");
+
 header("Content-Type: text/xml");
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>";
 
 
-$listeSuggestions = getSuggestions($_GET["nom"], $_GET["prenom"], $_GET["promotion"], $_GET["diplomedut"], $_GET["typesspecialisations"], $_GET["specialisation"], $_GET["diplomepostdut"], $_GET["etablissementpostdut"], $_GET["travailactuel"]);
+$listeSuggestions = search($_GET["nom"], $_GET["prenom"], $_GET["promotion"], $_GET["diplomedut"], $_GET["typesspecialisations"], $_GET["specialisation"], $_GET["diplomepostdut"], $_GET["etablissementpostdut"], $_GET["travailactuel"]);
 
 echo "<personnes>";
 
