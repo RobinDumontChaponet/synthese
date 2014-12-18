@@ -5,11 +5,13 @@ class Evenement
 
   private $id;
   private $typeEvenement;
+  private $date;
   
-  public function __construct($id, $typeEvenement)
+  public function __construct($id, $typeEvenement, $date)
   {
     $this->setId($id);
     $this->setTypeEvenement($typeEvenement);
+    $this->setDate($date);
   }
   
 //-------------------------------------GETTERS----------------------------------
@@ -21,6 +23,11 @@ class Evenement
   public function getTypeEvenement()
   {
     return $this->typeEvenement;
+  }
+  
+  public function getDate()
+  {
+  	return $this->date;
   }
 
 //------------------------------------SETTERS------------------------------------
@@ -46,11 +53,16 @@ class Evenement
 	  }
 	}
 	
+	public function setDate($date)
+	{
+		$this->date = $date;
+	}
+	
 
 //-------------------------------------toString----------------------------------
   public function __toString()
   {
-    return "Id : ".$this->id." Type evenement : "$this->typeEvement;
+    return "Id : ".$this->id." Type evenement : "$this->typeEvement." Date : ".$this->date;
   }
   
   //-----------------------------------Equals-------------------------------------

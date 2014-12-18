@@ -12,9 +12,10 @@ class Ancien extends Personne
 	private $imageProfil;
 	private $imageTrombi;
 	private $parents;
+	private $sexe;
 
 	//----------------------------------Constructeurs
-	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents)
+	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents, $sexe)
 	{
 		parent::__construct($id, $nom, $nomPatronymique, $prenom);
 		$this->setAdresse1($adresse1);
@@ -27,6 +28,7 @@ class Ancien extends Personne
 		$this->setImageProfil($imageProfil);
 		$this->setImageTrombi($imageTrombi);
 		$this->setParents($parents);
+		$this->setSexe($sexe);
 	}
 	//----------------------------------GETTERS
 	public function getAdresse1()
@@ -68,6 +70,11 @@ class Ancien extends Personne
 	public function getParents()
 	{
 		return $this->parents;
+	}
+	
+	public function getSexe()
+	{
+		return $this->sexe;
 	}
 
 	//----------------------------------SETTERS
@@ -121,12 +128,25 @@ class Ancien extends Personne
 	{
 		$this->parents = $parents;
 	}
+	
+	public function setSexe($sexe)
+	{
+		$sexeTraite = trim($sexe);
+		if($sexeTraite != "")
+		{
+			$this->sexe = $sexeTraite;
+		}else
+		{
+			throw new Exception("Sexe dans Ancien incorrect !");
+		}
+	}
+	
 	//--------------------------tostring
 	public function __toString()
 	{
 		return parent::__toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
 			." CP : ".$this->codePostal." Ville : ".$this->ville
-			." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone." Parents : ".$this->parents;
+			." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone." Parents : ".$this->parents." Sexe : ".$this->sexe;
 	}
 
 	//-------------------------Equals

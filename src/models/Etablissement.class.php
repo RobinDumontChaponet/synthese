@@ -9,8 +9,10 @@ class Etablissement
     private $codePostal;
     private $ville;
     private $pays;
+    private $fax;
+    private $web
     
-    public function __construct($id, $nom, $adresse1, $adresse2, $codePostal, $ville, $pays)
+    public function __construct($id, $nom, $adresse1, $adresse2, $codePostal, $ville, $pays, $fax, $web)
     {
         $this->setId($id);
         $this->setNom($nom);
@@ -19,6 +21,8 @@ class Etablissement
         $this->setCodePostal($codePostal);
         $this->setVille($ville);
         $this->setPays($pays);
+        $this->setFax($fax);
+        $this->setWeb($web);
     }
     
     //------------------------------GETTERS-------------------------
@@ -45,6 +49,16 @@ class Etablissement
     public function getPays()
     {
         return $this->pays;
+    }
+    
+    public function getFax()
+    {
+    	return $this->fax;
+    }
+    
+    public function getWeb()
+    {
+    	return $this->web;
     }
     
     //---------------------------SETTERS----------------------------
@@ -78,13 +92,22 @@ class Etablissement
         $this->pays = trim($pays);
     }
     
+    public function setFax($fax)
+    {
+    	$this->fax = $fax;
+    }
+    
+    public function setWeb($web)
+    {
+    	$this->web = $web;
+    }
+    
     //-------------------------toString-------------------------------
-    public function __toString()
     public function __toString()
     {
         return "Id : ".$this->id." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
         ." CP : ".$this->codePostal." Ville : ".$this->ville
-        ." Pays : ".$this->pays;
+        ." Pays : ".$this->pays." Fax : ".$this->fax." Web : ".$this->web;
     }
     
     //-------------------------Equals-------------------------------------
