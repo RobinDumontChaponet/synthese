@@ -6,3 +6,11 @@ getAll() de AncienDAO ne fonctionnait pas quand y avait tout les paramètres et n
 Et les fautes d'orthographes ;_;
 
 YOUSSEF
+
+Dans Ancien, on peut pas construire un ancien sans qu'il y ai des trucs vide dedans, sauf qu'on peut avoir tout de vide excépté lui même !
+Pareil dans Personne
+
+
+VOUS DEUX :
+
+Pour les messages d'erreurs, veuillez indiquer : Où quoi comment c'est à dire, le nom de la fonction dans quel fichier et un semblant de pourquoi

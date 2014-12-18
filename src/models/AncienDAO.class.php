@@ -48,7 +48,7 @@ class AncienDAO
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P WHERE P.idPersonne=A.idPersonne AND A.idPersonne=? ORDER BY nomUsage");
+				$req=$bdd->prepare("SELECT * FROM `ancien` A, `personne` P WHERE P.idPersonne=A.idPersonne AND A.idPersonne=? ORDER BY nomUsage");
 				$req->execute(array($id));
 				$ancien=$req->fetch();
 				$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi']);
