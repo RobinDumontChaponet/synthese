@@ -115,12 +115,12 @@ class AncienDAO
 	 * Recherche une liste d'ancien dans la base de donnée
 	 * @param   String   $nom         [[Description]]
 	 * @param   String   $prn         [[Description]]
-	 * @param   Array    $promo       [[Description]]
-	 * @param   Object   $diplome     [[Description]]
-	 * @param   Object   $spe         [[Description]]
-	 * @param   Object   $typeSpe     [[Description]]
-	 * @param   Object   $PostDut     [[Description]]
-	 * @param   Object   $etabPostDut [[Description]]
+	 * @param   Int    $promo       [[Description]]
+	 * @param   Int   $diplome     [[Description]]
+	 * @param   String   $spe         [[Description]]
+	 * @param   id   $typeSpe     [[Description]]
+	 * @param   chaine   $PostDut     [[Description]]
+	 * @param   chaine   $etabPostDut [[Description]]
 	 * @param   Boolean $trav        [[Description]]
 	 * @returns Object   [[Description]]
 	 */
@@ -128,7 +128,7 @@ class AncienDAO
 	{
 		$lst=array();
 		$args=array();
-		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud, `estSpecialise` Spe, `Specialisation` Special,`Possede` Poss, `travail` trav WHERE P.idPersonne=A.idPersonne ";
+		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud,`promotion` promo, `estSpecialise` Spe, `specialisation` Special,`possede` Poss, `etablissement` etab,`diplomePostDUT` DPost, `travail` trav WHERE P.idPersonne=A.idPersonne ";
 		if($nom != null)
 		{
 			$req.=" AND P.nomUsage LIKE '%?%' ";
@@ -141,33 +141,34 @@ class AncienDAO
 		}
 		if($promo!=null)
 		{
-			$req.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=? ";
-			$args[]=$promo->getId();
+			$req.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo AND promo.annee>=? && promo.annee<=? ";
+			$args[]=$promo;
+            $args[]=$promo+2;
 		}
 		if($diplome!=null)
 		{
 			$req.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
-			$args[]=$diplome->getId();
+			$args[]=$diplome;
 		}
 		if($spe!=null)
 		{
 			$req.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
-			$args[]=$spe->getId();
+			$args[]=$spe;
 		}
 		if($typeSpe!=null)
 		{
 			$req.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
-			$args[]=$typeSpe->getId();
+			$args[]=$typeSpe;
 		}
 		if($PostDut!=null)
 		{
-			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=? ";
-			$args[]=$PostDut->getId();
+			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE '%?%' ";
+			$args[]=$PostDut;
 		}
 		if($etabPostDut!=null)
 		{
-			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=? ";
-			$args[]=$etabPostDut->getId();
+			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE '%?%' ";
+			$args[]=$etabPostDut;
 		}
         if($trav==true){
              $req.=" AND trav.idPersonne=P.idPersonne AND trav.EmbaucheFin=NULL GROUP BY P.idPersonne";
