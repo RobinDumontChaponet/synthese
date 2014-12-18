@@ -30,28 +30,28 @@ if(empty($_GET['requ']))
 // Définitions des droits
 include_once(MODELS_INC."DisposeDeDAO.class.php");
 
+$a = DisposeDeDAO::getByTypeProfil($_SESSION["syntheseUser"]->getTypeProfil());
+var_dump($a);
 
-//$disposes=DisposeDeDAO::getAll();
-$disposes=DisposeDeDAO::getByTypeProfil($_SESSION["syntheseUser"]->getTypeProfil());
-var_dump($disposes);
+$user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
 
-//define('USER_AUTH', DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"])));
+var_dump($user_auth);
 
-// Inclusion controleur
-if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
-	/*if(count(USER_AUTH)==0) {
-		header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
-		header("Status: 403 Forbidden");
-		$_SERVER['REDIRECT_STATUS'] = 403;
-		$inc = get_include_contents(CONTROLLERS_INC.'403.php');
-	} else*/
+/*if(count($user_auth)==0) {
+	header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
+	header("Status: 403 Forbidden");
+	$_SERVER['REDIRECT_STATUS'] = 403;
+	$inc = get_include_contents(CONTROLLERS_INC.'403.php');
+} else { // Inclusion controleur*/
+	if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
 		$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
-else {
-	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-	header("Status: 404 Not Found");
-	$_SERVER['REDIRECT_STATUS'] = 404;
-	$inc = get_include_contents(CONTROLLERS_INC.'404.php');
-}
+	else {
+		header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+		header("Status: 404 Not Found");
+		$_SERVER['REDIRECT_STATUS'] = 404;
+		$inc = get_include_contents(CONTROLLERS_INC.'404.php');
+	}
+//}
 
 include('datas.transit.inc.php');
 
