@@ -9,6 +9,7 @@ require_once(MODELS_INC."Promotion.class.php");
 require_once(MODELS_INC."Specialisation.class.php");
 require_once(MODELS_INC."TypeSpecialisation.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
+
 class AncienDAO
 {
 	/**
@@ -18,7 +19,7 @@ class AncienDAO
 	public static function getAll()
 	{
 		try{
-			// appelle de la connexion
+			// Appel de la connexion
 			$bdd=connect();
 			$req=$bdd->query("SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P WHERE P.idPersonne=A.idPersonne ORDER BY nomUsage");
 			$lst=$req->fetchAll();

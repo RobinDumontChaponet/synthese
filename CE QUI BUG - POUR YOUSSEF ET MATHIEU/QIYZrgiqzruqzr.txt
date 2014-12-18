@@ -1,0 +1,8 @@
+Cette liste est sujette à agrandissement constant
+
+MATHIEU
+
+getAll() de AncienDAO ne fonctionnait pas quand y avait tout les paramètres et ne fonctionne quand même pas avec *
+Et les fautes d'orthographes ;_;
+
+YOUSSEF
