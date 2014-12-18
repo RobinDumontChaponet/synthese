@@ -31,6 +31,7 @@ class Ancien extends Personne
 		$this->setSexe($sexe);
 	}
 	//----------------------------------GETTERS
+	
 	public function getAdresse1()
 	{
 		return $this->adresse1;
@@ -71,7 +72,6 @@ class Ancien extends Personne
 	{
 		return $this->parents;
 	}
-	
 	public function getSexe()
 	{
 		return $this->sexe;
