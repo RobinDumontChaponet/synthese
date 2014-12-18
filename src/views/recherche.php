@@ -32,4 +32,5 @@
 	</div>
 </section>
 <script type="text/javascript">
+link_ajax();
 </script>
