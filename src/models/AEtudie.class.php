@@ -61,6 +61,8 @@ class AEtudie
     {
         if($departementIUT == null)
             throw new Exception("Departement IUT dans AEtudier est incorrect !");
+        }else{
+            $this->departementIUT=$departementIUT;
         }
     }
 
