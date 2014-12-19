@@ -42,7 +42,7 @@ class EntrepriseDAO
 	public static function create(&$ent)
 	{
 		if
-		(gettype($ent)=="Entreprise")
+		(get_class($ent)=="Entreprise")
 		{
 			try{
 				$bdd->connect();
@@ -62,7 +62,7 @@ class EntrepriseDAO
 
 	public static function update($ent)
 	{
-		if (gettype($ent)=="Entreprise")
+		if (get_class($ent)=="Entreprise")
 		{
 			try{
 				$bdd->connect();
@@ -80,7 +80,7 @@ class EntrepriseDAO
 
 	public static function delete($ent)
 	{
-		if (gettype($ent)=="Entreprise")
+		if (get_class($ent)=="Entreprise")
 		{
 			try{
 				$bdd->connect();

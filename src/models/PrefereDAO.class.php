@@ -52,12 +52,12 @@ class PrefereDAO
 	public static function create($obj)
 	{
 		if
-		(gettype($obj)=="Prefere")
+		(get_class($obj)=="Prefere")
 		{
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `prefere`(`idPersonne`, `idTypeEvenement`) VALUES (?,?)");
-				$req->execute(array($obj->getAncien()->getId(), $obj->getTypeEvenement()->getId()));
+				$req->execute(array($obj->getAncien()->getId(), $obj->get_classEvenement()->getId()));
 			}catch(PDOException $e)
 			{
 				die('error create Prefere '.$e->getMessage().'<br>');
@@ -72,12 +72,12 @@ class PrefereDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="Prefere")
+		(get_class($obj)=="Prefere")
 		{
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("DELETE FROM `prefere` WHERE `idPersonne`=?,`idTypeEvenement`=?");
-				$req->execute(array($obj->getAncien()->getId(), $obj->getTypeEvenement()->getId()));
+				$req->execute(array($obj->getAncien()->getId(), $obj->get_classEvenement()->getId()));
 			}catch(PDOException $e)
 			{
 				die('error delete Prefere '.$e->getMessage().'<br>');

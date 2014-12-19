@@ -56,6 +56,7 @@ if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
 
 	} else
 		include(VIEWS_INC.'csv-import.php');
-}
+} else
+		include(VIEWS_INC.'403.php');
 
 ?>

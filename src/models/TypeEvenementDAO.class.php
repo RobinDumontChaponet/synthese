@@ -42,7 +42,7 @@ class TypeEvenementDAO
 	public static function create(&$type)
 	{
 		if
-		(gettype($type)=="TypeEvenement")
+		(get_class($type)=="TypeEvenement")
 		{
 			try{
 				$bdd->connect();
@@ -63,7 +63,7 @@ class TypeEvenementDAO
 	public static function update($type)
 	{
 		if
-		(gettype($type)=="TypeEvenement")
+		(get_class($type)=="TypeEvenement")
 		{
 			try{
 				$bdd->connect();
@@ -82,7 +82,7 @@ class TypeEvenementDAO
 	public static function delete($type)
 	{
 		if
-		(gettype($type)=="TypeEvenement")
+		(get_class($type)=="TypeEvenement")
 		{
 			try{
 				$bdd->connect();

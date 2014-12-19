@@ -8,13 +8,23 @@
 		<input type="text" id="prenom" name="prenom" onkeyup="link_ajax()" /><br />
 
 		<label for="promotion">Promotion :</label>
-		<select id="promotion" name="promotion" onchange="link_ajax()"><?php echo $listePromotions; ?></select><br />
+		<select id="promotion" name="promotion" onchange="link_ajax()">
+			<?php for($y=date("Y")+1; $y>=1967; $y--) echo '<option value="'.$y.'">'.$y.' - '.($y+2).'</option>';?>
+		</select><br />
 
 		<label for="diplome">Diplôme DUT :</label>
-		<select id="diplome" name="diplome" onchange="link_ajax()"><?php echo $listeDiplomesDUT; ?></select><br />
+		<select id="diplome" name="diplome" onchange="link_ajax()">
+		<?php
+		foreach($diplomes as $diplome)
+			echo '<option name="'.$diplome->getId().'">'.$diplome->getLibelle().'</option>';
+		?></select><br />
 
 		<label for="typeSpecialisation">Type de spécialisation :</label>
-		<select id="typeSpecialisation" name="typeSpecialisation" onchange="link_ajax()" ><?php echo $listeTypesSpecialisation; ?></select><br />
+		<select id="typeSpecialisation" name="typeSpecialisation" onchange="link_ajax()" >
+		<?php
+		foreach($typesSpecialisation as $typeSpecialisation)
+			echo '<option name="'.$typeSpecialisation->getId().'">'.$typeSpecialisation->getLibelle().'</option>';
+		?></select><br />
 
 		<label for="specialisation">Spécialisation :</label>
 		<input type="text" name="specialisation" id="specialisation" onkeyup="link_ajax()" /><br />

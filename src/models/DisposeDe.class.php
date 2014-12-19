@@ -14,7 +14,7 @@ class DisposeDe
 	}
 
 	//------------------------------GETTER--------------------------
-	public function getTypeProfil()
+	public function get_classProfil()
 	{
 		return $this->typeProfil;
 	}
@@ -32,7 +32,7 @@ class DisposeDe
 	//--------------------------------SETTER---------------------------
 	public function setTypeProfil($typeProfil)
 	{
-		if ($typeProfil != null)
+		if (!empty($typeProfil))
 		{
 			$this->typeProfil = $typeProfil;
 		} else {
@@ -42,7 +42,7 @@ class DisposeDe
 
 	public function setDroit($droit)
 	{
-		if ($droit != null)
+		if (!empty($droit))
 		{
 			$this->droit = $droit;
 		} else {
@@ -52,7 +52,7 @@ class DisposeDe
 
 	public function setPage($page)
 	{
-		if ($page != null)
+		if (!empty($page))
 		{
 			$this->page = $page;
 		} else {

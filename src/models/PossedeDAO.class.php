@@ -55,7 +55,7 @@ class PossedeDAO
 	public static function create($obj)
 	{
 		if
-		(gettype($obj)=="Possede")
+		(get_class($obj)=="Possede")
 		{
 			try{
 				$bdd=connect();
@@ -74,7 +74,7 @@ class PossedeDAO
 	public static function update($obj)
 	{
 		if
-		(gettype($obj)=="Possede")
+		(get_class($obj)=="Possede")
 		{
 			try{
 				$bdd=connect();
@@ -93,7 +93,7 @@ class PossedeDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="Possede")
+		(get_class($obj)=="Possede")
 		{
 			try{
 				$bdd=connect();

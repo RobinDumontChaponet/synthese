@@ -39,7 +39,7 @@ class DomaineDAO
 	public static function create(&$obj)
 	{
 		if
-		(gettype($obj)=="Domaine")
+		(get_class($obj)=="Domaine")
 		{
 			try{
 				$bdd=connect();
@@ -60,7 +60,7 @@ class DomaineDAO
 	public static function update($obj)
 	{
 		if
-		(gettype($obj)=="Domaine")
+		(get_class($obj)=="Domaine")
 		{
 			try{
 				$bdd=connect();
@@ -80,7 +80,7 @@ class DomaineDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="Domaine")
+		(get_class($obj)=="Domaine")
 		{
 			try{
 				$bdd=connect();

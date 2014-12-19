@@ -50,7 +50,7 @@ class EstSpecialiseDAO
 	public static function create($obj)
 	{
 		if
-		(gettype($obj)=="EstSpecialise")
+		(get_class($obj)=="EstSpecialise")
 		{
 			try{
 				$bdd=connect();
@@ -70,7 +70,7 @@ class EstSpecialiseDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="EstSpecialise")
+		(get_class($obj)=="EstSpecialise")
 		{
 			try{
 				$bdd=connect();

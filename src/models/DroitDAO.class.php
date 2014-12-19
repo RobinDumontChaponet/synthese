@@ -42,7 +42,7 @@ class DroitDAO
 	public static function create(&$droit)
 	{
 		if
-		(gettype($droit)=="Droit")
+		(get_class($droit)=="Droit")
 		{
 			try{
 				$bdd->connect();
@@ -63,7 +63,7 @@ class DroitDAO
 	public static function update($droit)
 	{
 		if
-		(gettype($droit)=="Droit")
+		(get_class($droit)=="Droit")
 		{
 			try{
 				$bdd->connect();
@@ -82,7 +82,7 @@ class DroitDAO
 	public static function delete($droit)
 	{
 		if
-		(gettype($droit)=="Droit")
+		(get_class($droit)=="Droit")
 		{
 			try{
 				$bdd->connect();

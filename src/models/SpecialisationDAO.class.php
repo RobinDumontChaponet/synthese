@@ -15,8 +15,7 @@ class SpecialisationDAO
 			$req=$bdd->query("SELECT `idSpe`, `libelle`, `idTypeSpe` FROM `specialisation` ORDER BY libelle");
 			$lst=$req->fetchAll();
 			$lstObj=array();
-			foreach
-			($lst as $spe)
+			foreach ($lst as $spe)
 			{
 				$lstObj[]=new TypeSpecialisation($spe['idSpe'], $spe['libelle'], TypeSpecialisationDAO::getById($spe['idTypeSpe']));
 			}
@@ -35,8 +34,7 @@ class SpecialisationDAO
 			$req->execute(array($id));
 			$spe=$req->fetch();
 			return new TypeSpecialisation($spe['idSpe'], $spe['libelle'], TypeSpecialisationDAO::getById($spe['idTypeSpe']));
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get id spé '.$e->getMessage().'<br>');
 		}
 
@@ -44,21 +42,18 @@ class SpecialisationDAO
 
 	public static function create(&$spe)
 	{
-		if
-		(gettype($spe)=="Specialisation")
+		if (gettype($spe)=="Specialisation")
 		{
-			try{
+			try {
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `specialisation`(`libelle`, `idTypeSpe`) VALUES (?,?)");
 				$req->execute(array($spe->getLibelle(), $spe->getTypeSpecialisation()->getId()));
 				$spe->setId($bdd->LastInsertId());
                 return $spe->getId();
-			}catch(PDOException $e)
-			{
+			} catch(PDOException $e) {
 				die('error create spé '.$e->getMessage().'<br>');
 			}
-		}else
-		{
+		} else {
 			die('paramètre de type specialisation demandé');
 		}
 	}

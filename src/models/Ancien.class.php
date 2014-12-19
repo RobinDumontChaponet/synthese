@@ -13,9 +13,10 @@ class Ancien extends Personne
 	private $imageTrombi;
 	private $parents;
 	private $sexe;
+	private $dateNaissance;
 
 	//----------------------------------Constructeurs
-	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents, $sexe)
+	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents, $sexe, $dateNaissance)
 	{
 		parent::__construct($id, $nom, $nomPatronymique, $prenom);
 		$this->setAdresse1($adresse1);
@@ -29,8 +30,10 @@ class Ancien extends Personne
 		$this->setImageTrombi($imageTrombi);
 		$this->setParents($parents);
 		$this->setSexe($sexe);
+		$this->setDateNaissance($dateNaissance);
 	}
 	//----------------------------------GETTERS
+	
 	public function getAdresse1()
 	{
 		return $this->adresse1;
@@ -71,10 +74,14 @@ class Ancien extends Personne
 	{
 		return $this->parents;
 	}
-	
 	public function getSexe()
 	{
 		return $this->sexe;
+	}
+	
+	public function getDateNaissance()
+	{
+		return $this->dateNaissance;
 	}
 
 	//----------------------------------SETTERS
@@ -139,6 +146,11 @@ class Ancien extends Personne
 		{
 			throw new Exception("Sexe dans Ancien incorrect !");
 		}
+	}
+	
+	public function setDateNaissance($dateNaissance)
+	{
+		$this->dateNaissance = $dateNaissance;
 	}
 	
 	//--------------------------tostring
