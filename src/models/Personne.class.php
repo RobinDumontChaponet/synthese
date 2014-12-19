@@ -70,7 +70,7 @@ class Personne
 		{
 			$this->nomPatronymique = $nomPatronymiqueTraite;
 		}else{
-			throw new Exception("Nom patronymiqe incorrect : ".$nomPatronymiqueTraite);
+			throw new Exception("Nom patronymiqe incorrect : ".$nomPatronymique);
 		}
 
 	}
