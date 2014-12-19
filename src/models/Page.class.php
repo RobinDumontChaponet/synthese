@@ -6,7 +6,7 @@ class Page
 	private $id;
 	private $libelle;
 
-	public function __constrcut($id, $libelle)
+	public function __construct($id, $libelle)
 	{
 		$this->setId($id);
 		$this->setLibelle($libelle);
