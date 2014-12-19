@@ -14,13 +14,11 @@ class DisposeDeDAO
 		$lst=array();
 		try{
 			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM disposeDe");
+			$req=$bdd->query("SELECT idProfil FROM disposeDe GROUP BY idProfil");
 			while ($res=$req->fetch())
 			{
-				$prof=TypeProfilDAO::getById($res['idProfil']);
-				$droit=DroitDAO::getById($res['idDroit']);
-				$page=PageDAO::getById($res['idPage']);
-				$lst[]=new DisposeDe($prof, $droit, $page);
+                $type=TypeProfilDAO::getById($res['idProfil']);
+				$lst[]=DisposeDeDAO::getByTypeProfil($type);
 			}
 		} catch(PDOException $e) {
 			die('error getall diposede '.$e->getMessage().'<br />');
@@ -61,14 +59,12 @@ class DisposeDeDAO
 		{
 			try {
 				$bdd=connect();
-				$req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=?");
+				$req=$bdd->prepare("SELECT idPage FROM disposeDe WHERE idProfil=? GROUP BY idPage");
 				$req->execute(array($type->getId()));
 				while ($res=$req->fetch())
 				{
-					$prof=TypeProfilDAO::getById($res['idProfil']);
-					$droit=DroitDAO::getById($res['idDroit']);
-					$page=PageDAO::getById($res['idPage']);
-					$lst[]= new DisposeDe($prof, $droit, $page);
+                    $page=PageDAO::getById($res['idPage']);
+					$lst[]=DisposeDeDAO::getByTypeProfilAndPage($type,$page);
 				}
 			} catch(PDOException $e) {
 				die('error get profil disposede '.$e->getMessage().'<br />');
@@ -88,14 +84,12 @@ class DisposeDeDAO
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("SELECT * FROM disposeDe WHERE idPage=?");
+				$req=$bdd->prepare("SELECT idProfil FROM disposeDe WHERE idPage=? ORDER BY idProfil");
 				$req->execute(array($page->getId()));
 				while ($res=$req->fetch())
 				{
-					$prof=TypeProfilDAO::getById($res['idProfil']);
-					$droit=DroitDAO::getById($res['idDroit']);
-					$page=PageDAO::getById($res['idPage']);
-					$lst[]= new DisposeDe($prof, $droit, $page);
+					$type=TypeProfilDAO::getById($res['idProfil']);
+					$lst[]=DisposeDeDAO::getByTypeProfilAndPage($type,$page);
 				}
 			} catch(PDOException $e) {
 				die('error get page dip disposede '.$e->getMessage().'<br />');

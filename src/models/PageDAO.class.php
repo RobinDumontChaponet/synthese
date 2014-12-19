@@ -42,8 +42,11 @@ class PageDAO
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT * FROM `page` WHERE libelle=?");
 			$req->execute(array($lib));
-			$page=$req->fetch();
-			return new Page($page['idPage'], $page['libelle']);
+			if($page=$req->fetch()){
+			 return new Page($page['idPage'], $page['libelle']);
+            }else{
+                return null;
+            }
 		} catch(PDOException $e) {
 			die('error get libelle page '.$e->getMessage().'<br>');
 		}
