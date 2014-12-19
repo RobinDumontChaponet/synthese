@@ -37,8 +37,22 @@ var csvColName = [
 	{key:'mail', value:'Adresse e-mail'},
 	{key:'telMob', value:'Téléphone mobile'},
 	{key:'telFix', value:'Téléphone fixe'},
-	{key:'sexe', value:'Sexe'}
+	{key:'sexe', value:'Sexe'},
+	{key:'adresse1', value:'Adresse 1'},
+	{key:'adresse2', value:'Adresse 2'},
+	{key:'diplomePostDUT', value:'Diplôme Post DUT'},
+	{key:'formationPostDUT', value:'Formation Post DUT'},
+	{key:'formationEnCours', value:'Formation en cours'},
+	{key:'situation', value:'Situation actuelle'},
+	{key:'entreprise', value:'Entreprise'},
+	{key:'fonction', value:'Fonction'},
+	{key:'ecole', value:'Ecole'},
+	{key:'piplômePrepare', value:'Diplôme préparé'},
+	{key:'TelEntreprise', value:'Téléphone Entreprise'},
+	{key:'reponse', value:'Réponse'}
 ];
+
+
 
 csvColName.sort(function(a, b) {
 	return a.value.localeCompare(b.value);
