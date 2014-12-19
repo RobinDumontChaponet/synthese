@@ -42,7 +42,7 @@ class DisposeDe
 
 	public function setDroit($droit)
 	{
-		if (!empty($droit))
+		if (gettype($droit)=="array")
 		{
 			$this->droit = $droit;
 		} else {
