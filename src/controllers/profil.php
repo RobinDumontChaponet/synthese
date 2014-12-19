@@ -1,7 +1,7 @@
 <?php
 
-//$ancien = AncienDAO::getById($_SESSION[syntheseUser]->getId());
-var_dump($ancien);
+$personne = PersonneDAO::getById($_SESSION[syntheseUser]->getId());
+$ancien = AncienDAO::getById($personne->getId());
 
 /*if ($ancien->getAdresse2() != NULL)
 	$adresse2 = 1;*/
