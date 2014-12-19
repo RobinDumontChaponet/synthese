@@ -47,12 +47,12 @@ class EvenementDAO
 	public static function create(&$obj)
 	{
 		if
-		(gettype($obj)=="Evenement")
+		(get_class($obj)=="Evenement")
 		{
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`) VALUES (?)");
-				$req->execute(array($obj->getTypeEvenement()->getId()));
+				$req->execute(array($obj->get_classEvenement()->getId()));
 				$obj->setId($bdd->LastInsertId());
                 return $obj->getId();
 			}catch(PDOException $e)
@@ -68,12 +68,12 @@ class EvenementDAO
 	public static function update($obj)
 	{
 		if
-		(gettype($obj)=="Evenement")
+		(get_class($obj)=="Evenement")
 		{
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=? WHERE `idEvenement`=?");
-				$req->execute(array($obj->getTypeEvenement()->getId(), $obj->getId()));
+				$req->execute(array($obj->get_classEvenement()->getId(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update Evenement '.$e->getMessage().'<br>');
@@ -87,7 +87,7 @@ class EvenementDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="Evenement")
+		(get_class($obj)=="Evenement")
 		{
 			try{
 				$bdd=connect();

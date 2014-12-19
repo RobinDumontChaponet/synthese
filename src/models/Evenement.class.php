@@ -20,7 +20,7 @@ class Evenement
     return $this->id;
   }
   
-  public function getTypeEvenement()
+  public function get_classEvenement()
   {
     return $this->typeEvenement;
   }

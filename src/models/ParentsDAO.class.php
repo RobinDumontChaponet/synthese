@@ -46,7 +46,7 @@ class ParentsDAO
 	public static function create(&$parents)
 	{
 		if
-		(gettype($parents)=="Parents")
+		(get_class($parents)=="Parents")
 		{
 			try{
 				$bdd=connect();
@@ -67,7 +67,7 @@ class ParentsDAO
 	public static function update($parents)
 	{
 		if
-		(gettype($parents)=="Parents")
+		(get_class($parents)=="Parents")
 		{
 			try{
 				$bdd=connect();
@@ -86,7 +86,7 @@ class ParentsDAO
 	public static function delete($parents)
 	{
 		if
-		(gettype($parents)=="Parents")
+		(get_class($parents)=="Parents")
 		{
 			try{
 				$bdd=connect();

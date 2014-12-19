@@ -41,7 +41,7 @@ class PromotionDAO
 
 	public static function create(&$promo)
 	{
-		if (gettype($promo)=="Promotion")
+		if (get_class($promo)=="Promotion")
 		{
 			try {
 				$bdd->connect();
@@ -59,7 +59,7 @@ class PromotionDAO
 
 	public static function update($promo)
 	{
-		if (gettype($promo)=="Promotion")
+		if (get_class($promo)=="Promotion")
 		{
 			try {
 				$bdd->connect();
@@ -75,7 +75,7 @@ class PromotionDAO
 
 	public static function delete($promo)
 	{
-		if (gettype($promo)=="Promotion")
+		if (get_class($promo)=="Promotion")
 		{
 			try{
 				$bdd->connect();

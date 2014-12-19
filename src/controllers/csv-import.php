@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
+if($_SESSION["syntheseUser"]->get_classProfil()->getId()==1) { // user is Admin
 
 	include(MODELS_INC.'DepartementIUTDAO.class.php');
 

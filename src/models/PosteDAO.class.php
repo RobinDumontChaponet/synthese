@@ -43,7 +43,7 @@ class PosteDAO
 	public static function create(&$poste)
 	{
 		if
-		(gettype($poste)=="Poste")
+		(get_class($poste)=="Poste")
 		{
 			try{
 				$bdd->connect();
@@ -64,7 +64,7 @@ class PosteDAO
 	public static function update($poste)
 	{
 		if
-		(gettype($poste)=="Poste")
+		(get_class($poste)=="Poste")
 		{
 			$bdd->connect();
 			$req=$bdd->prepare("UPDATE `poste` SET `libelle`=? WHERE `idPoste`=?");
@@ -75,7 +75,7 @@ class PosteDAO
 	public static function delete($poste)
 	{
 		if
-		(gettype($poste)=="Poste")
+		(get_class($poste)=="Poste")
 		{
 			try{
 				$bdd->connect();

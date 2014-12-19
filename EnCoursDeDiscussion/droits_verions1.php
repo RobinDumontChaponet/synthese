@@ -29,7 +29,7 @@ super globale $_SESSION["typeprofil"]
 Comme ceci :
 */
 
-$_SESSION["typeProfil"] = $getTypeProfilByIdCompte($idCompte);
+$_SESSION["typeProfil"] = $get_classProfilByIdCompte($idCompte);
 
 
 ?>

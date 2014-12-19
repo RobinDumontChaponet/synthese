@@ -42,7 +42,7 @@ class CodeAPEDAO
 
 	public static function create(&$code)
 	{
-		if (gettype($code)=="CodeAPE")
+		if (get_class($code)=="CodeAPE")
 		{
 			try{
 				$bdd->connect();
@@ -62,7 +62,7 @@ class CodeAPEDAO
 
 	public static function update($code)
 	{
-		if (gettype($code)=="CodeAPE")
+		if (get_class($code)=="CodeAPE")
 		{
 			try{
 				$bdd->connect();
@@ -80,7 +80,7 @@ class CodeAPEDAO
 
 	public static function delete($code)
 	{
-		if (gettype($code)=="CodeAPE")
+		if (get_class($code)=="CodeAPE")
 		{
 			try{
 				$bdd->connect();

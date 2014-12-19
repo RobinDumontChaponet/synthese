@@ -48,7 +48,7 @@ class DiplomePostDUTDAO
 	public static function create(&$obj)
 	{
 		if
-		(gettype($obj)=="DiplomePostDUT")
+		(get_class($obj)=="DiplomePostDUT")
 		{
 			try{
 				$bdd=connect();
@@ -69,7 +69,7 @@ class DiplomePostDUTDAO
 	public static function update($obj)
 	{
 		if
-		(gettype($obj)=="DiplomePostDUT")
+		(get_class($obj)=="DiplomePostDUT")
 		{
 			try{
 				$bdd=connect();
@@ -88,7 +88,7 @@ class DiplomePostDUTDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="DiplomePostDUT")
+		(get_class($obj)=="DiplomePostDUT")
 		{
 			try{
 				$bdd=connect();

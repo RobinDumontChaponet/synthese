@@ -52,7 +52,7 @@ class PageDAO
 
 	public static function create(&$page)
 	{
-		if (gettype($page)=="Page")
+		if (get_class($page)=="Page")
 		{
 			try{
 				$bdd->connect();
@@ -70,7 +70,7 @@ class PageDAO
 
 	public static function update($page)
 	{
-		if (gettype($page)=="Page")
+		if (get_class($page)=="Page")
 		{
 			try {
 				$bdd->connect();
@@ -86,7 +86,7 @@ class PageDAO
 
 	public static function delete($page)
 	{
-		if (gettype($page)=="Page")
+		if (get_class($page)=="Page")
 		{
 			try {
 				$bdd->connect();

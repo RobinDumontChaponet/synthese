@@ -49,7 +49,7 @@ class TypeProfilDAO
 	public static function create(&$poste)
 	{
 		if
-		(gettype($poste)=="TypeProfil")
+		(get_class($poste)=="TypeProfil")
 		{
 			try{
 				$bdd->connect();
@@ -70,7 +70,7 @@ class TypeProfilDAO
 	public static function update($poste)
 	{
 		if
-		(gettype($poste)=="TypeProfil")
+		(get_class($poste)=="TypeProfil")
 		{
 			$bdd->connect();
 			$req=$bdd->prepare("UPDATE `typeProfil` SET `libelle`=? WHERE `idProfil`=?");
@@ -81,7 +81,7 @@ class TypeProfilDAO
 	public static function delete($poste)
 	{
 		if
-		(gettype($poste)=="TypeProfil")
+		(get_class($poste)=="TypeProfil")
 		{
 			try{
 				$bdd->connect();

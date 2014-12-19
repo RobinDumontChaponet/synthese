@@ -44,7 +44,7 @@ class EtablissementDAO
 	public static function create(&$obj)
 	{
 		if
-		(gettype($obj)=="Etablissement")
+		(get_class($obj)=="Etablissement")
 		{
 			try{
 				$bdd=connect();
@@ -65,7 +65,7 @@ class EtablissementDAO
 	public static function update($obj)
 	{
 		if
-		(gettype($obj)=="Etablissement")
+		(get_class($obj)=="Etablissement")
 		{
 			try{
 				$bdd=connect();
@@ -84,7 +84,7 @@ class EtablissementDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="Etablissement")
+		(get_class($obj)=="Etablissement")
 		{
 			try{
 				$bdd=connect();

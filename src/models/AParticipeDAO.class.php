@@ -72,7 +72,7 @@ class AParticiDAO
 	public static function create($obj)
 	{
 		if
-		(gettype($obj)=="aParticipe")
+		(get_class($obj)=="aParticipe")
 		{
 			try{
 				$bdd=connect();
@@ -91,7 +91,7 @@ class AParticiDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="aParticipe")
+		(get_class($obj)=="aParticipe")
 		{
 			try{
 				$bdd=connect();

@@ -14,7 +14,7 @@ class DisposeDe
 	}
 
 	//------------------------------GETTER--------------------------
-	public function getTypeProfil()
+	public function get_classProfil()
 	{
 		return $this->typeProfil;
 	}
