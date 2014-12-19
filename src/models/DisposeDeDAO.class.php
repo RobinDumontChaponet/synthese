@@ -40,7 +40,7 @@ class DisposeDeDAO
 				while ($res=$req->fetch())
 				{
 					$lst=$dipos->getDroit();
-                    $lst[]=DroitDAO::getById($res['idDroit']);
+                    $lst[$res['idDroit']]=DroitDAO::getById($res['idDroit']);
                     $dipos->setDroit($lst);
 				}
                 return $dipos;
