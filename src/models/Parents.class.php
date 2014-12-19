@@ -129,7 +129,7 @@ class Parents
     return "Id : ".$this->id." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2." CP : ".$this->codePostal
           ." Ville : ".$this->ville." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone;
   }
-}
+
 
 //-----------------------------------------Equals-----------------------------------------
 	public function equals($aComparer)
@@ -142,5 +142,5 @@ class Parents
 			return false;
 		}
 	}
-
+}
 ?>
