@@ -16,9 +16,9 @@ class Ancien extends Personne
 	private $dateNaissance;
 
 	//----------------------------------Constructeurs
-	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents, $sexe, $dateNaissance)
+	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents, $sexe, $dateNaissance, $mail)
 	{
-		parent::__construct($id, $nom, $nomPatronymique, $prenom);
+		parent::__construct($id, $nom, $nomPatronymique, $prenom, $mail);
 		$this->setAdresse1($adresse1);
 		$this->setAdresse2($adresse2);
 		$this->setCodePostal($codePostal);
