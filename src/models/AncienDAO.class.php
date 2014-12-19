@@ -50,10 +50,13 @@ class AncienDAO
 				$bdd=connect();
 				$req=$bdd->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
 				$req->execute(array($id));
-				$ancien=$req->fetch();
+				if($ancien=$req->fetch()){
                 $parents=ParentsDAO::getById($ancien['idParent']);
 				$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 				return $ancienObj;
+                }else{
+                    return null;
+                }
 			}catch(PDOException $e){
 				die('error get id ancien '.$e->getMessage().'<br>');
 			}
