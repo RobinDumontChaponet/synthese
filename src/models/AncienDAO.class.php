@@ -27,7 +27,7 @@ class AncienDAO
 			while($ancien=$req->fetch())
 			{
                 $parents=ParentsDAO::getById($ancien['idParent']);
-				$lstAncien[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance']);
+				$lstAncien[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 			}
 
 			return $lstAncien;
@@ -51,7 +51,8 @@ class AncienDAO
 				$req=$bdd->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
 				$req->execute(array($id));
 				$ancien=$req->fetch();
-				$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance']);
+                $parents=ParentsDAO::getById($ancien['idParent']);
+				$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 				return $ancienObj;
 			}catch(PDOException $e){
 				die('error get id ancien '.$e->getMessage().'<br>');
