@@ -58,19 +58,20 @@ class Personne
 	public function setNom($nom)
 	{
 		$nomTraite = trim($nom);
-		if(($nomTraite != null) and ($nomTraite != ""))
-		{
-			$this->nom = $nomTraite;
-		}else{
-			throw new Exception("Nom incorrect : ".$nomTraite);
-		}
+
+		$this->nom = $nomTraite;
 	}
 
 	public function setNomPatronymique($nomPatronymique)
 	{
 		$nomPatronymiqueTraite = trim($nomPatronymique);
 
-		$this->nomPatronymique = $nomPatronymiqueTraite;
+		if(($nomPatronymiqueTraite != null) and ($nomPatronymiqueTraite != ""))
+		{
+			$this->nomPatronymique = $nomPatronymiqueTraite;
+		}else{
+			throw new Exception("Nom patronymiqe incorrect : ".$nomPatronymiqueTraite);
+		}
 
 	}
 
