@@ -70,8 +70,8 @@ class AncienDAO
 			try{
 				$bdd=connect();
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req=$bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`) VALUES (?,?,?,?,?,?,?,?,?,?)");
-				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi()));
+				$req=$bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
                 $ancien->setId($idPers);
                 return $idPers;
 			}catch(PDOException $e){

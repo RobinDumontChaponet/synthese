@@ -30,27 +30,27 @@ class DisposeDeDAO
 
 	public static function getByTypeProfilAndPage($type, $page)
 	{
-		$lst=array();
 		if (get_class($type)=="TypeProfil" && get_class($page)=="Page")
 		{
 			try {
 				$bdd=connect();
 				$req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=? AND idPage=?");
 				$req->execute(array($type->getId(), $page->getId()));
+                $dipos=new DisposeDe($type,array(),$page);
 				while ($res=$req->fetch())
 				{
-					$profil=TypeProfilDAO::getById($res['idProfil']);
-					$droit=DroitDAO::getById($res['idDroit']);
-					$page=PageDAO::getById($res['idPage']);
-					$lst[]= new DisposeDe($profil, $droit, $page);
+					$lst=$dipos->getDroit();
+                    $lst[]=DroitDAO::getById($res['idDroit']);
+                    $dipos->setDroit($lst);
 				}
+                return $dipos;
 			} catch (PDOException $e) {
 				die('error get profil & page disposede '.$e->getMessage().'<br />');
 			}
 		} else {
 			die('Mauvais type de parametres :'.get_class($type).'     :    '.get_class($page));
 		}
-		return $lst;
+
 	}
 
 	public static function getByTypeProfil($type)

@@ -31,8 +31,11 @@ class PersonneDAO
                 $bdd=connect();
                 $statement=$bdd->prepare("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` WHERE idPersonne=?");
                 $statement->execute(array($id));
-                $pers=$statement->fetch();
-                return new Personne($pers['idPersonne'], $pers['nomUsage'], $pers['nomPatronymique'], $pers['prenom'], $pers['mail']);
+                if($pers=$statement->fetch()){
+                    return new Personne($pers['idPersonne'], $pers['nomUsage'], $pers['nomPatronymique'], $pers['prenom'], $pers['mail']);
+                }else{
+                    return null;
+                }
             }catch(PDOException $e){
                 die('error get id personne '.$e->getMessage().'<br>');
             }
