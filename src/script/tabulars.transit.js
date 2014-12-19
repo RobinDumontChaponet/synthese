@@ -27,14 +27,13 @@ function arrayToTable(tableData, headers) {
 
 var csvColName = [
 	{key:'nomUsage', value:'Nom d\'usage'},
-	{key:'nomPat', value:'Nom patronymique'},
+	{key:'nomPat', value:'Nom'},
 	{key:'prenom', value:'Prénom'},
 	{key:'dateNais', value:'Date de naissance'},
-	{key:'adresse', value:'Adresse postale'},
 	{key:'codePost', value:'Code postal'},
 	{key:'ville', value:'Ville'},
 	{key:'pays', value:'Pays'},
-	{key:'mail', value:'Adresse e-mail'},
+	{key:'mail', value:'e-mail'},
 	{key:'telMob', value:'Téléphone mobile'},
 	{key:'telFix', value:'Téléphone fixe'},
 	{key:'sexe', value:'Sexe'},
@@ -46,7 +45,7 @@ var csvColName = [
 	{key:'situation', value:'Situation actuelle'},
 	{key:'entreprise', value:'Entreprise'},
 	{key:'fonction', value:'Fonction'},
-	{key:'ecole', value:'Ecole'},
+	{key:'ecole', value:'École'},
 	{key:'piplômePrepare', value:'Diplôme préparé'},
 	{key:'TelEntreprise', value:'Téléphone Entreprise'},
 	{key:'reponse', value:'Réponse'}
