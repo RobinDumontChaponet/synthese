@@ -13,8 +13,8 @@
 				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageProfil).'" alt="Image de trombinoscope"/>'; 
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';*/?>
-			<img src="helpers/viewImage.php?id=1" alt="test"/>
-			<!--<input type="file" name="imageProfil"/><input type="submit" name="submit" value="Upload"/>-->
+			<img src="helpers/viewImage.php?id=<?php $ancien->getId()?>" alt="test"/>
+			<!--<input type="file" name="imageProfil"/>-->
 		</fieldset>
 		<fieldset>
 			<legend>Informations générales</legend>
