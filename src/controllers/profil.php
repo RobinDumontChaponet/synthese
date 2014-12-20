@@ -3,8 +3,8 @@ if (isset($_GET['id']))
 	$personne = PersonneDAO::getById($_GET['id']);
 else
 	$personne = PersonneDAO::getById($_SESSION[syntheseUser]->getId());
-
-$ancien = AncienDAO::getById($personne->getId());
+if ($personne != NULL)
+	$ancien = AncienDAO::getById($personne->getId());
 
 if ($ancien != NULL) {
 $imageProfil = $ancien->getImageProfil();
