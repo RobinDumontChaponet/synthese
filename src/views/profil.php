@@ -43,7 +43,9 @@
 		<fieldset>
 			<legend>Diplômes</legend>
 			<ol>
-				
+				<?php foreach($diplomePost as $diplomePost) {?>
+					
+				<?php }?>
 			</ol>
 		</fieldset>
 		<fieldset>
