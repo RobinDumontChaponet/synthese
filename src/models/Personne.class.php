@@ -89,7 +89,7 @@ class Personne
 	public function setMail($mail)
 	{
 		$mailTraite = trim($mail);
-		if(preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite))
+		if((preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite)) || ($mail == null) || ($mail == ""))
 		{
 			$this->mail = $mailTraite;
 		}else{

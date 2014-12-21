@@ -30,6 +30,11 @@ class Etablissement
     {
         return $this->id;
     }
+    
+    public function getNom()
+    {
+    	return $this->nom;
+    }
     public function getAdresse1()
     {
         return $this->adresse1;
@@ -71,6 +76,11 @@ class Etablissement
             throw new Exception("Id etablissement incorrect");
         }
     }
+    
+    public function setNom($nom)
+    {
+    	$this->nom = trim($nom);
+    }
     public function setAdresse1($adresse1)
     {
         $this->adresse1 = trim($adresse1);
@@ -105,7 +115,7 @@ class Etablissement
     //-------------------------toString-------------------------------
     public function __toString()
     {
-        return "Id : ".$this->id." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
+        return "Id : ".$this->id."Nom : ".$this->nom." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
         ." CP : ".$this->codePostal." Ville : ".$this->ville
         ." Pays : ".$this->pays." Fax : ".$this->fax." Web : ".$this->web;
     }

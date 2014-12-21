@@ -30,8 +30,8 @@ if(empty($_GET['requ']))
 // Définitions des droits
 include_once(MODELS_INC."DisposeDeDAO.class.php");
 
-$a = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
-var_dump($a);
+//$a = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
+//var_dump($a);
 
 $user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
 

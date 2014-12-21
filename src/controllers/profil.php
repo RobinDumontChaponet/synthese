@@ -1,12 +1,22 @@
 <?php
+if (isset($_GET['id']))
+	$personne = PersonneDAO::getById($_GET['id']);
+else
+	$personne = PersonneDAO::getById($_SESSION[syntheseUser]->getId());
+if ($personne != NULL)
+	$ancien = AncienDAO::getById($personne->getId());
 
-//$ancien = AncienDAO::getById($_SESSION[syntheseUser]->getId());
-var_dump($ancien);
+var_dump($personne->getId());
+	
 
-/*if ($ancien->getAdresse2() != NULL)
-	$adresse2 = 1;*/
-/*
-*/
+if ($ancien != NULL) {
+$imageProfil = $ancien->getImageProfil();
+$imageTrombi = $ancien->getImageTrombi();
+	if ($imageProfil == NULL)
+		$noImageProfil = 1;
+	if ($imageTrombi == NULL)
+		$noImageTrombi = 1;
+}
 include(VIEWS_INC.'profil.php');
 
 ?>
