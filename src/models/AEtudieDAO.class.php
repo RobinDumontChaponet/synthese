@@ -3,7 +3,7 @@ require_once("dbConnection.inc.php");
 require_once(MODELS_INC."AEtudie.class.php");
 require_once(MODELS_INC."AncienDAO.class.php");
 require_once(MODELS_INC."DiplomeDUTDAO.class.php");
-require_once(MODELS_INC."PromoDAO.class.php");
+require_once(MODELS_INC."PromotionDAO.class.php");
 require_once(MODELS_INC."DepartementIUTDAO.class.php");
 
 class AEtudieDAO
