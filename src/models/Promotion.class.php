@@ -38,7 +38,7 @@ class Promotion
 	{
 		if (preg_match("/^[0-9][0-9][0-9][0-9]$/", $annee))
 		{
-			$this->annee;
+			$this->annee=$annee;
 		} else {
 			throw new Exception ("Année promotion incorrecte");
 		}
