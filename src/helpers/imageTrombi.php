@@ -8,9 +8,10 @@ if (isset($_GET['id']) && $_GET['id'] != NULL) {
 	$ancien = AncienDAO::getById($personne->getId());
 	if ($ancien != NULL) {
 		$imageProfil = $ancien->getImageTrombi();
+		
 		header('Content-Type: image/jpeg');
 		echo $imageProfil;
-	}	else
+	} else
 		echo 'Aucune image de trombi existante pour cet id';
 
 } else {
