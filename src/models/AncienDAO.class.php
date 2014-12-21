@@ -120,7 +120,7 @@ class AncienDAO
 	 * Recherche une liste d'ancien dans la base de donnée
 	 * @param   String   $nom         [[Description]]
 	 * @param   String   $prn         [[Description]]
-	 * @param   Int    $promo       [[Description]]
+	 * @param   array()    $promo       [[Liste de taille 2 avec en premier la première année et en 2e la seconde]]
 	 * @param   Int   $diplome     [[Description]]
 	 * @param   String   $spe         [[Description]]
 	 * @param   id   $typeSpe     [[Description]]
@@ -133,58 +133,80 @@ class AncienDAO
 	{
 		$lst=array();
 		$args=array();
-		$req="SELECT `idAncien`, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`, `mail` FROM `ancien` A, `personne` P,`aEtudie` Etud,`promotion` promo, `estSpecialise` Spe, `specialisation` Special,`possede` Poss, `etablissement` etab,`diplomePostDUT` DPost, `travaille` trav WHERE P.idPersonne=A.idPersonne ";
+        $select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,'sexe','idParent','dateNaissance' ";
+        $from="FROM `ancien` A, `personne` P";
+        $where="WHERE P.idPersonne=A.idPersonne";
+
 		if($nom != null)
 		{
-			$req.=" AND P.nomUsage LIKE '%?%' ";
-			$args[]=$nom;
+			$where.=" AND P.nomUsage LIKE ? OR P.nomPatronymique LIKE ? ";
+			$args[]='%'.$nom.'%';
+            $args[]='%'.$nom.'%';
 		}
 		if($prn!=null)
 		{
-			$req.=" AND P.prenom LIKE '%?%' ";
-			$args[]=$nom;
+			$where.=" AND P.prenom LIKE ? ";
+			$args[]='%'.$prn.'%';
 		}
 		if($promo!=null)
 		{
-			$req.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo AND promo.annee>=? && promo.annee<=? ";
-			$args[]=$promo;
-            $args[]=$promo+2;
+            if(gettype($promo)=="array"){
+                $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo AND promo.annee>=? AND promo.annee<=? ";
+                $from.=" ,`aEtudie` Etud,`promotion` promo";
+			     $args[]=$promo[0];
+                $args[]=$promo[1];
+            }else{
+                die('erreur type promo dans search ancien');
+            }
 		}
 		if($diplome!=null)
 		{
-			$req.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
+			$where.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
+            if($promo==null){ $from.=" ,`aEtudie` Etud"; }
 			$args[]=$diplome;
 		}
 		if($spe!=null)
 		{
-			$req.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
+			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
+            $from.=" , `estSpecialise` Spe";
 			$args[]=$spe;
 		}
 		if($typeSpe!=null)
 		{
-			$req.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
+			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
+            if($spe==null){$from.=" , `estSpecialise` Spe"; }
+            $from.=", `specialisation` Special";
 			$args[]=$typeSpe;
 		}
 		if($PostDut!=null)
 		{
-			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE '%?%' ";
+			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE '%?%' ";
+            $from.=" ,`possede` Poss,`diplomePostDUT` DPost";
 			$args[]=$PostDut;
 		}
 		if($etabPostDut!=null)
 		{
-			$req.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE '%?%' ";
+			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE '%?%' ";
+            if($PostDut==null){ $from.=" ,`possede` Poss"; }
+            $from.=", `etablissement` etab";
 			$args[]=$etabPostDut;
 		}
         if($trav==true){
-             $req.=" AND trav.idPersonne=P.idPersonne AND trav.EmbaucheFin=NULL GROUP BY P.idPersonne";
+             $where.=" AND trav.idPersonne=P.idPersonne AND trav.EmbaucheFin=NULL GROUP BY P.idPersonne";
+            $from.=" , `travaille` trav";
         }
+        $req=$select." ".$from." ".$where;
+        var_dump($req);
 		try{
 			$bdd=connect();
 			$state=$bdd->prepare($req);
+            var_dump($args);
 			$state->execute($args);
 			while($ancien=$state->fetch())
 			{
-				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi']);
+                $parents=ParentsDAO::getById($ancien['idParent']);
+				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
+                var_dump("test");
 			}
 		}catch(PDOException $e){
 			die('error search ancien '.$e->getMessage().'<br>');

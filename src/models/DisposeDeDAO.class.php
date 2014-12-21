@@ -80,11 +80,11 @@ class DisposeDeDAO
 	public static function getByPage($page)
 	{
 		$lst=array();
-		if (get_class($type)=="Page")
+		if (get_class($page)=="Page")
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("SELECT idProfil FROM disposeDe WHERE idPage=? ORDER BY idProfil");
+				$req=$bdd->prepare("SELECT idProfil FROM disposeDe WHERE idPage=? GROUP BY idProfil");
 				$req->execute(array($page->getId()));
 				while ($res=$req->fetch())
 				{
@@ -96,7 +96,7 @@ class DisposeDeDAO
 				return null;
 			}
 		} else {
-			die('type param de type typeProfil requis');
+			die('type param de type page requis');
 		}
 		return $lst;
 
@@ -109,7 +109,10 @@ class DisposeDeDAO
 			try {
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `disposeDe`(`idProfil`, `idDroit`, `idPage`) VALUES (?,?,?)");
-				$req->execute(array($obj->getTypeProfil()->getId(), $obj->getDroit()->getId(), $obj->getPage->getId()));
+                $lstDroit=$obj->getDroit();
+                foreach($droit as $lstDroit){
+				    $req->execute(array($obj->getTypeProfil()->getId(), $droit->getId(), $obj->getPage->getId()));
+                }
 			} catch(PDOException $e) {
 				die('error create diposede '.$e->getMessage().'<br />');
 			}
@@ -126,7 +129,10 @@ class DisposeDeDAO
 			try {
 				$bdd=connect();
 				$req=$bdd->prepare("DELETE FROM `disposeDe` WHERE `idProfil`=?, `idDroit`=?, `idPage`=?");
-				$req->execute(array($obj->getTypeProfil()->getId(), $obj->getDroit()->getId(), $obj->getPage->getId()));
+                $lstDroit=$obj->getDroit();
+                foreach($droit as $lstDroit){
+				    $req->execute(array($obj->getTypeProfil()->getId(), $droit->getId(), $obj->getPage->getId()));
+                }
 			} catch(PDOException $e) {
 				die('error update disposede '.$e->getMessage().'<br />');
 			}
