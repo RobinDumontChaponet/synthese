@@ -18,7 +18,7 @@ class AEtudieDAO
 			while
 			($result=$req->fetch())
 			{
-				$promo=PromoDAO::getById($result['idPromo']);
+				$promo=PromotionDAO::getById($result['idPromo']);
 				$dpt=DepartementIUTDAO::getById($result['idDepartement']);
 				$pers=AncienDAO::getById($result['idPersonne']);
 				$dip=DiplomeDUTDAO::getById($result['idDiplomeDUT']);
@@ -41,7 +41,7 @@ class AEtudieDAO
 			if
 			($result!=null)
 			{
-				$promo=PromoDAO::getById($result['idPromo']);
+				$promo=PromotionDAO::getById($result['idPromo']);
 				$dpt=DepartementIUTDAO::getById($result['idDepartement']);
 				$pers=AncienDAO::getById($result['idPersonne']);
 				$dip=DiplomeDUTDAO::getById($result['idDiplomeDUT']);
