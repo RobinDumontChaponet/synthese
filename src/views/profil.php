@@ -47,9 +47,28 @@
 		<fieldset>
 			<legend>Diplômes</legend>
 			<ol>
-				<?php foreach($diplomePost as $diplomePost) {?>
-					
-				<?php }?>
+				<?php if ($noDiplomeDUT != 1) {?>
+				<li>
+					<label for="diplomeDUT">Diplome : </label>
+					<input id="diplomeDUT" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?>"/>
+					<label for="departement">Département : </label>
+					<input id="departement" type="text" placeholder="Département" readonly="readonly" value="<?php echo $diplomeDUT->getDepartementIUT()->getNom();?>"/>
+					<label for="promotion">Promotion : </label>
+					<input id="promotion" type="text" placeholder="Promotion" readonly="readonly" value="<?php echo $diplomeDUT->getPromotion()->getAnnee();?>"/>
+				</li>
+				<?php } else if ($noDiplomePost != 1) {
+					foreach($diplomePost as $diplomePost) {?>
+				<li>
+					<label for="diplomePost">Diplome : </label>
+					<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/>
+					<label for="etablissement">Établissement : </label>
+					<input id="etablissement" type="text" placeholder="Établissement" readonly="readonly" value="<?php echo $diplomePost->getEtablissement()->getNom();?>"/>
+					<label for="resultat">Résultat : </label>
+					<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
+					<label for="periode">Période : </label>
+					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?> - <?php echo $diplomePost->getResultat();?>"/>
+				</li>	
+				<?php }}?>
 			</ol>
 		</fieldset>
 		<fieldset>

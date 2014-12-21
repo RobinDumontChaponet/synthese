@@ -9,9 +9,16 @@ if ($personne != NULL)
 if ($ancien != NULL) {
 	$imageProfil = $ancien->getImageProfil();
 	$imageTrombi = $ancien->getImageTrombi();
-	//$diplome = AEtudieDAO::getByAncien($ancien->getId());
+	$diplomeDUT = AEtudieDAO::getByAncien($ancien->getId());
+	if ($diplomeDUT == NULL)
+		$noDiplomeDUT = 1;
 	$diplomePost = PossedeDAO::getByAncien($ancien->getId());
+	if ($diplomePost == NULL)
+		$noDiplomePost = 1;
 	$entreprises = TravailleDAO::getByAncien($ancien->getId());
+	if ($entreprises == NULL)
+		$noEntreprises = 1;
+		
 	if ($imageProfil == NULL)
 		$noImageProfil = 1;
 	if ($imageTrombi == NULL)
