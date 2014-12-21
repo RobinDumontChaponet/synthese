@@ -30,6 +30,11 @@ class Etablissement
     {
         return $this->id;
     }
+    
+    public function getNom()
+    {
+    	return $this->nom;
+    }
     public function getAdresse1()
     {
         return $this->adresse1;
@@ -70,6 +75,11 @@ class Etablissement
         }else{
             throw new Exception("Id etablissement incorrect");
         }
+    }
+    
+    public function setNom($nom)
+    {
+    	$this->nom = trim($nom);
     }
     public function setAdresse1($adresse1)
     {
