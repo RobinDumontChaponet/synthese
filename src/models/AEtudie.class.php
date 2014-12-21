@@ -57,7 +57,7 @@ class AEtudie
         }
     }
 
-    public function setDepartementDUT($departementIUT)
+    public function setDepartementIUT($departementIUT)
     {
         if($departementIUT == null){
             throw new Exception("Departement IUT dans AEtudier est incorrect !");
