@@ -10,7 +10,7 @@ class PromotionDAO
 	{
 		try {
 			$bdd=connect();
-			$req=$bdd->query("SELECT `idPromo`, `annee` FROM `promotion` ORDER BY annee");
+			$req=$bdd->query("SELECT `idPromo`, `annee` FROM `promotion` ORDER BY annee DESC");
 			$lst=$req->fetchAll();
 			$lstPromo=array();
 			foreach ($lst as $promo)
