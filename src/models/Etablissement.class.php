@@ -115,7 +115,7 @@ class Etablissement
     //-------------------------toString-------------------------------
     public function __toString()
     {
-        return "Id : ".$this->id." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
+        return "Id : ".$this->id."Nom : ".$this->nom." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
         ." CP : ".$this->codePostal." Ville : ".$this->ville
         ." Pays : ".$this->pays." Fax : ".$this->fax." Web : ".$this->web;
     }
