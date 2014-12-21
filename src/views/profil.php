@@ -5,15 +5,15 @@
 	<p style="font-size:23px"><?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?></p>
 	<form action="index.php?modifier" method="post">
 		<fieldset>
-			<?php/* if ($noImageProfil != 1)	//	Si il n'y a pas d'image de profil
-				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de profil"/>';	//Pas terrible de le faire ainsi
+			<?php if ($noImageProfil != 1)	//	Si il n'y a pas d'image de profil
+				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de profil"/>';
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
 			if ($noImageTrombi != 1)	//	Si il n'y a pas d'image de trombi
 				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageProfil).'" alt="Image de trombinoscope"/>'; 
 			else
-				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';*/?>
-			<img src="helpers/viewImage.php?id=<?php $ancien->getId()?>" alt="test"/>
+				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';?>
+			<!--<img src="helpers/viewImage.php?id=<?php echo $ancien->getId()?>" alt="test"/>-->
 			<!--<input type="file" name="imageProfil"/>-->
 		</fieldset>
 		<fieldset>
