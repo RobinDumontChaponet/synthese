@@ -6,13 +6,17 @@
 	<form action="index.php?modifier" method="post">
 		<fieldset>
 			<?php if ($noImageProfil != 1)	//	Si il y a une image de profil
-				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageProfil).'" alt="Image de profil"/>';
+				echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
 			if ($noImageTrombi != 1)	//	Si il y a une image de trombi
-				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de trombinoscope"/>'; 
+				echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';?>
+			<?php 
+			//echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageProfil).'" alt="Image de profil"/>';
+			//echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de trombinoscope"/>';
+			?>
 			<!--<img src="helpers/viewImage.php?id=<?php echo $ancien->getId()?>" alt="test"/>-->
 			<!--<input type="file" name="imageProfil"/>-->
 		</fieldset>
