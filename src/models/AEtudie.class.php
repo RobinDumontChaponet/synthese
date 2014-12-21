@@ -28,7 +28,7 @@ class AEtudie
 
     public function getDepartementIUT()
     {
-        return $this->departementDUT;
+        return $this->departementIUT;
     }
 
     public function getPromotion()
@@ -70,7 +70,7 @@ class AEtudie
     {
         if($promotion != null)
         {
-            $this->promotions = $promotion;
+            $this->promotion = $promotion;
         } else {
             throw new Exception("Promotion dans AEtudier est incorrect !");
         }
