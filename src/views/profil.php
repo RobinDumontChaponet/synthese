@@ -29,6 +29,7 @@
 	</fieldset>
 	</form>
 <?php } else { ?>
+	
 	<p class="warning">Le profil n'existe pas</p>
 <?php }?>
 </section>

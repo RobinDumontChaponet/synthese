@@ -6,6 +6,9 @@ else
 if ($personne != NULL)
 	$ancien = AncienDAO::getById($personne->getId());
 
+var_dump($personne->getId());
+	
+
 if ($ancien != NULL) {
 $imageProfil = $ancien->getImageProfil();
 $imageTrombi = $ancien->getImageTrombi();
