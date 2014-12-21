@@ -1,7 +1,7 @@
 <?php
 
 require_once("dbConnection.inc.php");
-require_once(MODELS_INC."EntrepriseAPE.class.php");
+require_once(MODELS_INC."Entreprise.class.php");
 require_once(MODELS_INC."CodeAPE.class.php");
 require_once(MODELS_INC."CodeAPEDAO.class.php");
 
