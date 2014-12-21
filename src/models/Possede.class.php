@@ -65,9 +65,9 @@ class Possede
     {
         if($etablissement != null)
         {
-            $this->etablissement = $etablissement
+            $this->etablissement = $etablissement;
         }else{
-            throw new Exception("Etablissement dans Possede est nul !")
+            throw new Exception("Etablissement dans Possede est nul !");
         }
     }
     
