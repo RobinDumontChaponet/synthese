@@ -9,11 +9,13 @@
 
 		<label for="promotion">Promotion :</label>
 		<select id="promotion" name="promotion" onchange="link_ajax()">
+			<option value=""></option> <!-- Pour le choix vide -->
 			<?php for($y=date("Y")+1; $y>=1967; $y--) echo '<option value="'.$y.'">'.$y.' - '.($y+2).'</option>';?>
 		</select><br />
 
 		<label for="diplome">Diplôme DUT :</label>
 		<select id="diplome" name="diplome" onchange="link_ajax()">
+			<option value=""></option> <!-- Pour le choix vide -->
 		<?php
 		foreach($diplomes as $diplome)
 			echo '<option name="'.$diplome->getId().'">'.$diplome->getLibelle().'</option>';
@@ -21,6 +23,7 @@
 
 		<label for="typeSpecialisation">Type de spécialisation :</label>
 		<select id="typeSpecialisation" name="typeSpecialisation" onchange="link_ajax()" >
+			<option value=""></option> <!-- Pour le choix vide -->
 		<?php
 		foreach($typesSpecialisation as $typeSpecialisation)
 			echo '<option name="'.$typeSpecialisation->getId().'">'.$typeSpecialisation->getLibelle().'</option>';
