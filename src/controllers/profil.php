@@ -6,17 +6,17 @@ else
 if ($personne != NULL)
 	$ancien = AncienDAO::getById($personne->getId());
 
-var_dump($personne->getId());
-	
-
 if ($ancien != NULL) {
-$imageProfil = $ancien->getImageProfil();
-$imageTrombi = $ancien->getImageTrombi();
+	$imageProfil = $ancien->getImageProfil();
+	$imageTrombi = $ancien->getImageTrombi();
+	//$diplome = AEtudieDAO::getByAncien($ancien->getId());
+	//$diplomePost = PossedeDAO::getByAncien($ancien->getId());
+	//$entreprises = TravailleDAO::getByAncien($ancien->getId());
 	if ($imageProfil == NULL)
 		$noImageProfil = 1;
 	if ($imageTrombi == NULL)
 		$noImageTrombi = 1;
 }
-include(VIEWS_INC.'profil.php');
 
+include(VIEWS_INC.'profil.php');
 ?>
