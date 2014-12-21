@@ -41,7 +41,7 @@ class Personne
 
 	public function getMail()
 	{
-		return $this->$mail;
+		return $this->mail;
 	}
 
 //----------------------------------Setters
