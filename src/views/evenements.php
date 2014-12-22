@@ -17,7 +17,7 @@
 								<td>'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</td>
 								<td>'.$eventInscriPost->getEvenement()->getDate().'</td>
 								<td>'.$eventInscriPost->getEvenement()->getCommentaire().'</td>
-								<td><a href="#">Voir l\'event</a></td>
+								<td><a href="?requ=evenement&id='.$eventInscriPost->getEvenement()->getId().'">Voir l\'event</a></td>
 							</tr>';
 					} 
 				}?>
