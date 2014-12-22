@@ -46,7 +46,7 @@ class EvenementDAO
         $lst=array();
 		try{
 			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM evenement  WHERE date<now()");
+			$req=$bdd->query("SELECT * FROM evenement  WHERE date<now() ORDER BY date DESC");
 			while
 			($res=$req->fetch())
 			{
