@@ -16,7 +16,7 @@ class EvenementDAO
 			($res=$req->fetch())
 			{
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
-				$lst[]=new Evenement($res['idEvenement'], $type);
+				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
 		}catch(PDOException $e)
 		{
@@ -34,7 +34,7 @@ class EvenementDAO
 			($res=$req->fetch())
 			{
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
-				return new Evenement($res['idEvenement'], $type);
+				return new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
 		}catch(PDOException $e)
 		{
@@ -49,8 +49,8 @@ class EvenementDAO
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`) VALUES (?)");
-				$req->execute(array($obj->get_classEvenement()->getId()));
+				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`,`date`,`commentaire`) VALUES (?,?,?)");
+				$req->execute(array($obj->getTypeEvenement()->getId(),$obj->getDate(),$obj->getCommentaire()));
 				$obj->setId($bdd->LastInsertId());
                 return $obj->getId();
 			}catch(PDOException $e)
@@ -70,8 +70,8 @@ class EvenementDAO
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=? WHERE `idEvenement`=?");
-				$req->execute(array($obj->get_classEvenement()->getId(), $obj->getId()));
+				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=?,`date`=?,`commentaire`=? WHERE `idEvenement`=?");
+				$req->execute(array($obj->get_classEvenement()->getId(),$obj->getDate(),$obj->getCommentaire(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update Evenement '.$e->getMessage().'<br>');
