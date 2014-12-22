@@ -4,14 +4,55 @@
 	<?php if ($user == "Ancien") {?>
 		<div>
 			<h2>Événements inscrits</h2>
+			<ol>
+				<?php if($eventsInscriPost != NULL) {	//	Si il y a des events post où l'ancien est inscrit
+					foreach($eventsInscriPost as $eventInscriPost) {
+						echo '<li><a href="?requ=evenement&id='.$eventInscriPost->getEvenement()->getId().'"><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'"/>
+						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventInscriPost->getEvenement()->getDate().'"/>
+						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventInscriPost->getEvenement()->getCommentaire().'"/></a></li>';
+					} 
+				}?>
+			</ol>
 		</div>
 		<div>
 			<h2>Autres événements</h2>
 		</div>
 		<div>
 			<h2>Événements passés</h2>
+			<ol>
+				<?php if ($eventsAnt != NULL) {
+					foreach($eventsAnt as $eventAnt) {
+						echo '<li><a href="?requ=evenement&id='.$eventAnt->getId().'"><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventAnt->getTypeEvenement()->getLibelle().'"/>
+						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventAnt->getDate().'"/>
+						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventAnt->getCommentaire().'"/></a></li>';
+					} 
+				}?>
+			</ol>
 		</div>
 	<?php } else if ($user == "Admin" || $user == "Professeur") {?>
-		Events pour admin/prof
+		<div>
+			<h2>Événements à venir</h2>
+			<ol>
+				<?php if($eventsPost != NULL) {
+					foreach($eventsPost as $eventPost) {
+						echo '<li><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventPost->getTypeEvenement()->getLibelle().'"/>
+						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventPost->getDate().'"/>
+						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventPost->getCommentaire().'"/></li>';
+					}
+				}?>
+			</ol>
+		</div>
+		<div>
+			<h2>Événements passés</h2>
+			<ol>
+				<?php if ($eventsAnt != NULL) {
+					foreach($eventsAnt as $eventAnt) {
+						echo '<li><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventAnt->getTypeEvenement()->getLibelle().'"/>
+						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventAnt->getDate().'"/>
+						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventAnt->getCommentaire().'"/></li>';
+					} 
+				}?>
+			</ol>
+		</div>
 	<?php } ?>
 </section>
