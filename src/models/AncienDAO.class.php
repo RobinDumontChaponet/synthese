@@ -63,13 +63,13 @@ class AncienDAO
 		}
 	}
 
-    public static function getAncienByPromo($prom){
-        if(gettype($prom)=="Promotion"){
+    public static function getAncienByPromo($id){
+
             $lst=array();
             try{
                 $bdd=connect();
                 $req=$bdd->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
-                $req->execute(array($prom->getId()));
+                $req->execute(array($id));
                 while($res=$req->fetch()){
                     $lst[]=AncienDAO::getById($res['idPersonne']);
                 }
@@ -77,9 +77,7 @@ class AncienDAO
                 die('error getAncienByPromo : '.$e->getMessage().'<br>');
             }
             return $lst;
-        }else{
-            die('getAncienByPromo type du parmètre de type promotion demandé<br>');
-        }
+
     }
 
 	public static function create(&$ancien)
