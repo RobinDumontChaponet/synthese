@@ -2,7 +2,15 @@
 
 <section id="content">
 	<?php if ($user == "Ancien") {?>
-		Events pour Anciens
+		<div>
+			<h2>Événements inscrits</h2>
+		</div>
+		<div>
+			<h2>Autres événements</h2>
+		</div>
+		<div>
+			<h2>Événements passés</h2>
+		</div>
 	<?php } else if ($user == "Admin" || $user == "Professeur") {?>
 		Events pour admin/prof
 	<?php } ?>
