@@ -9,6 +9,7 @@
 					<td>Type d'événement</td>
 					<td>Date</td>
 					<td>Commentaires</td>
+					<td></td>
 				</tr>
 				<?php if($eventsInscriPost != NULL) {	//	Si il y a des events post où l'ancien est inscrit
 					foreach($eventsInscriPost as $eventInscriPost) {
