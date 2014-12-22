@@ -29,9 +29,9 @@ function link_ajax() {
 function affichageResultat() {
     if(xhr.readyState == 4) {
         if(xhr.status == 200) {
-			/*xmlresponse = xhr.responseXML;
+			//xmlresponse = xhr.responseXML;
 			console.log(xhr.responseText);
-			root = xmlresponse.documentElement;
+			/*root = xmlresponse.documentElement;
 			listePersonnes = root.getElementsByTagName('personne');
 
 			table = '<table border="1">';

@@ -15,35 +15,35 @@ class Travaille
     $this->setIdPoste($poste);
     $this->setIdAncien($ancien);
     $this->setDateEmbaucheDeb($dateEmbaucheDeb);
-    $this->dateEmbaucheFin($idEmbaucheFin);
+    $this->setdateEmbaucheFin($idEmbaucheFin);
   }
-  
+
 //--------------------------------------------GETTERS--------------------------------
   public function getEntreprise()
   {
     return $this->entreprise;
   }
-  
+
   public function getPoste()
   {
     return $this->poste;
   }
-  
+
   public function getAnicen()
   {
     return $this->ancien;
   }
-  
+
   public function getDateEmbaucheDebut()
   {
     return $this->dateEmbaucheDebut;
   }
-  
+
   public function getDateEmbaucheFin()
   {
     return $this->dateEmbaucheFin();
   }
-  
+
 //-------------------------------------------SETTERS------------------------------
   public function setEntreprise($entreprise)
   {
@@ -55,7 +55,7 @@ class Travaille
         throw new Exception("Entreprise dans Travaille incorrecte");
     }
   }
-  
+
   public function setPoste($poste)
   {
     if($poste != null)
@@ -66,7 +66,7 @@ class Travaille
         throw new Exception("Poste dans Travaille incorrect");
     }
   }
-  
+
   public function setAncien($ancien)
   {
     if($ancien != null)
@@ -88,13 +88,13 @@ class Travaille
       throw new Exception("Date embauche debut dans Travaille incorrecte");
     }
   }
-  
+
   public function setDateEmbaucheFin($date)
   {
     //Pas de verifications car la date embauche fin peut etre nulle si il travaille encore dans l'entreprise.
       $this->dateEmbaucheFin = $date;
   }
-  
+
   //---------------------------------toString--------------------------------------
   public function __toString()
   {

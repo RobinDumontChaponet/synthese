@@ -8,12 +8,14 @@ if (isset($_GET['id']) && $_GET['id'] != NULL) {
 	$ancien = AncienDAO::getById($personne->getId());
 	if ($ancien != NULL) {
 		$imageProfil = $ancien->getImageProfil();
-		
+
+		$name = 'profil_'.$ancien->getPrenom().'-'.$ancien->getNomPatronymique();
 		header('Content-Type: image/jpeg');
+		header('Content-Disposition: attachment; filename='.$name.'.jpg');
 		echo $imageProfil;
 	} else
 		echo 'Aucune image de profil existante pour cet id';
 
 } else {
-	echo 'Aucun id n\'a été mit';
+	echo 'Aucun id n\'a été mis';
 }
