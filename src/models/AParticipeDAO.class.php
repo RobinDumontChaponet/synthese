@@ -1,6 +1,6 @@
 <?php
 require_once("dbConnection.inc.php");
-require_once(MODELS_INC."aParticipe.class.php");
+require_once(MODELS_INC."AParticipe.class.php");
 require_once(MODELS_INC."AncienDAO.class.php");
 require_once(MODELS_INC."EvenementDAO.class.php");
 
