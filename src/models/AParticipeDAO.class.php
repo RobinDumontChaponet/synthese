@@ -69,6 +69,23 @@ class AParticiDAO
 		}
 	}
 
+    public static function getAParticipePost(){
+        try{
+			$lst=array();
+			$bdd=connect();
+			$req=$bdd->query("SELECT * FROM aParticipe A, evenement E WHERE A.idEvenement=E.idEvenement AND E.date>=now()");
+			while($result=$req->fetch()){
+				$event=EvenementDAO::getById($result['idEvenement']);
+				$pers=AncienDAO::getById($result['idPersonne']);
+				$lst[]=new aParticipe($pers, $event);
+			}
+			return $lst;
+		}catch(PDOException $e)
+		{
+			die('error getAParticipePost a etudie '.$e->getMessage().'<br>');
+		}
+    }
+
 	public static function create($obj)
 	{
 		if

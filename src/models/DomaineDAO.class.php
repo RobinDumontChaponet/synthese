@@ -28,8 +28,12 @@ class DomaineDAO
 		try{
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT * FROM domaine WHERE idDomaine=?");
-			$res=$req->fetch();
-			return new Domaine($res['idDomaine'], $res['libelle'], $res['description']);
+            $req->execute(array($id));
+			if($res=$req->fetch()){
+			 return new Domaine($res['idDomaine'], $res['libelle'], $res['description']);
+            }else{
+                return null;
+            }
 		}catch(PDOException $e)
 		{
 			die('error getbyid domaine '.$e->getMessage().'<br>');

@@ -59,7 +59,7 @@ class AEtudieDAO
 	public static function create($obj)
 	{
 		if
-		(gettype($obj)=="AEtudie")
+		(get_class($obj)=="AEtudie")
 		{
 			try{
 				$bdd=connect();
@@ -78,7 +78,7 @@ class AEtudieDAO
 	public static function delete($obj)
 	{
 		if
-		(gettype($obj)=="AEtudie")
+		(get_class($obj)=="AEtudie")
 		{
 			try{
 				$bdd=connect();

@@ -59,7 +59,7 @@ class Domaine
 		{
 			if ($descriptionTraite != "")
 			{
-				$this->description = $libelleTraite;
+				$this->description = $descriptionTraite;
 			} else {
 				$this->description = "Aucune description !";
 			}

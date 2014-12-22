@@ -12,10 +12,7 @@ class TypeSpecialisationDAO
 		try{
 			$bdd=connect();
 			$req=$bdd->query("SELECT `idTypeSpe`, `libelle` FROM `typeSpecialisation` ORDER BY libelle");
-			$lst=$req->fetchAll();
-			$lstObj=array();
-			foreach ($lst as $type)
-			{
+			while($type=$req->fetch()){
 				$lstObj[]=new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
 			}
 			return $lstObj;
@@ -30,8 +27,11 @@ class TypeSpecialisationDAO
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT `idTypeSpe`, `libelle` FROM `typeSpecialisation` WHERE idTypeSpe=?");
 			$req->execute(array($id));
-			$type=$req->fetch();
-			return new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
+			if($type=$req->fetch()){
+			 return new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
+            }else{
+                return null;
+            }
 		} catch(PDOException $e) {
 			die('error get id spe '.$e->getMessage().'<br>');
 		}
