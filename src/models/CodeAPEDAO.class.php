@@ -11,11 +11,7 @@ class CodeAPEDAO
 		try{
 			$bdd=connect();
 			$req=$bdd->query("SELECT `code`, `libelle` FROM `codeAPE` ORDER BY code");
-			$lst=$req->fetchAll();
-			$lstcode=array();
-			foreach
-			($lst as $code)
-			{
+			while($code=$req->fetch()){
 				$lstcode[]=new CodeAPE($code['code'], $code['libelle']);
 			}
 			return $lstcode;

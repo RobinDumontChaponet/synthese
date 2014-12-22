@@ -22,7 +22,7 @@ class Evenement
     return $this->id;
   }
   
-  public function get_classEvenement()
+  public function getTypeEvenement()
   {
     return $this->typeEvenement;
   }
