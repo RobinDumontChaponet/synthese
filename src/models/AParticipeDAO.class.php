@@ -4,7 +4,7 @@ require_once(MODELS_INC."AParticipe.class.php");
 require_once(MODELS_INC."AncienDAO.class.php");
 require_once(MODELS_INC."EvenementDAO.class.php");
 
-class AParticiDAO
+class AParticipeDAO
 {
 
 	public static function getAll()
