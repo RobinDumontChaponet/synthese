@@ -4,15 +4,24 @@
 	<?php if ($user == "Ancien") {?>
 		<div>
 			<h2>Événements inscrits</h2>
-			<ol>
+			<table style="border:1px solid black">
+				<tr>
+					<td>Type d'événement</td>
+					<td>Date</td>
+					<td>Commentaires</td>
+				</tr>
 				<?php if($eventsInscriPost != NULL) {	//	Si il y a des events post où l'ancien est inscrit
 					foreach($eventsInscriPost as $eventInscriPost) {
-						echo '<li><a href="?requ=evenement&id='.$eventInscriPost->getEvenement()->getId().'"><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'"/>
-						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventInscriPost->getEvenement()->getDate().'"/>
-						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventInscriPost->getEvenement()->getCommentaire().'"/></a></li>';
+						echo '
+							<tr>
+								<td>'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</td>
+								<td>'.$eventInscriPost->getEvenement()->getDate().'</td>
+								<td>'.$eventInscriPost->getEvenement()->getCommentaire().'</td>
+								<td><a href="#">Voir l\'event</a></td>
+							</tr>';
 					} 
 				}?>
-			</ol>
+			</table>
 		</div>
 		<div>
 			<h2>Autres événements</h2>
