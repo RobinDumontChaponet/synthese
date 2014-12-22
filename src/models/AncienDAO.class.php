@@ -63,7 +63,7 @@ class AncienDAO
 		}
 	}
 
-    public static function getAncienByPromo($id){
+    public static function getAncienByIdPromo($id){
 
             $lst=array();
             try{
@@ -74,7 +74,7 @@ class AncienDAO
                     $lst[]=AncienDAO::getById($res['idPersonne']);
                 }
             }catch(PDOException $e){
-                die('error getAncienByPromo : '.$e->getMessage().'<br>');
+                die('Error getAncienByIdPromo dans AncienDAO.class.php : '.$e->getMessage().'<br>');
             }
             return $lst;
 
