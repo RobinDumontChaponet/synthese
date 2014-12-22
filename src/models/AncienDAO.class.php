@@ -63,6 +63,25 @@ class AncienDAO
 		}
 	}
 
+    public static function getAncienByPromo($prom){
+        if(gettype($prom)=="Promotion"){
+            $lst=array();
+            try{
+                $bdd=connect();
+                $req=$bdd->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
+                $req->execute(array($prom->getId()));
+                while($res=$req->fetch()){
+                    $lst[]=AncienDAO::getById($res['idPersonne']);
+                }
+            }catch(PDOException $e){
+                die('error getAncienByPromo : '.$e->getMessage().'<br>');
+            }
+            return $lst;
+        }else{
+            die('getAncienByPromo type du parmètre de type promotion demandé<br>');
+        }
+    }
+
 	public static function create(&$ancien)
 	{
 		if (gettype($ancien)=="Ancien")
