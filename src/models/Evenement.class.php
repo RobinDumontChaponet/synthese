@@ -81,7 +81,7 @@ class Evenement
 //-------------------------------------toString----------------------------------
   public function __toString()
   {
-    return "Id : ".$this->id." Type evenement : "$this->typeEvement." Date : ".$this->date." Commentaire : ".$this->commentaire;
+    return "Id : ".$this->id." Type evenement : ".$this->typeEvement." Date : ".$this->date." Commentaire : ".$this->commentaire;
   }
   
   //-----------------------------------Equals-------------------------------------
