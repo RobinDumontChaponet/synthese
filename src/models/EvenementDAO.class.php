@@ -42,6 +42,42 @@ class EvenementDAO
 		}
 	}
 
+    public static function getEvenementAnterieur(){
+        $lst=array();
+		try{
+			$bdd=connect();
+			$req=$bdd->query("SELECT * FROM evenement  WHERE date<now()");
+			while
+			($res=$req->fetch())
+			{
+				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
+				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
+			}
+		}catch(PDOException $e)
+		{
+			die('error get all Evenement '.$e->getMessage().'<br>');
+		}
+		return $lst;
+    }
+
+    public static function getEvenementPosterieur(){
+        $lst=array();
+		try{
+			$bdd=connect();
+			$req=$bdd->query("SELECT * FROM evenement  WHERE date>now()");
+			while
+			($res=$req->fetch())
+			{
+				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
+				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
+			}
+		}catch(PDOException $e)
+		{
+			die('error get all Evenement '.$e->getMessage().'<br>');
+		}
+		return $lst;
+    }
+
 	public static function create(&$obj)
 	{
 		if
