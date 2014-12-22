@@ -5,11 +5,11 @@
 	<p style="font-size:25px"><?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?></p>
 	<form action="index.php?modifier" method="post">
 		<fieldset>
-			<?php if ($noImageProfil != 1)	//	Si il y a une image de profil
+			<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
 				echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
-			if ($noImageTrombi != 1)	//	Si il y a une image de trombi
+			if ($imageTrombi != NULL)	//	Si il y a une image de trombi
 				echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';?>
@@ -47,7 +47,7 @@
 		<fieldset>
 			<legend>Diplômes</legend>
 			<ol>
-				<?php if ($noDiplomeDUT != 1) {?>
+				<?php if ($diplomeDUT != NULL) {?>
 				<li>
 					<label for="diplomeDUT">Diplome : </label>
 					<input id="diplomeDUT" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?>"/>
@@ -56,7 +56,7 @@
 					<label for="promotion">Promotion : </label>
 					<input id="promotion" type="text" placeholder="Promotion" readonly="readonly" value="<?php echo $diplomeDUT->getPromotion()->getAnnee();?>"/>
 				</li>
-				<?php } else if ($noDiplomePost != 1) {
+				<?php } else if ($diplomePost != NULL) {
 					foreach($diplomePost as $diplomePost) {?>
 				<li>
 					<label for="diplomePost">Diplome : </label>
@@ -67,7 +67,7 @@
 					<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 					<label for="periode">Période : </label>
 					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?> - <?php echo $diplomePost->getResultat();?>"/>
-				</li>	
+				</li>
 				<?php }}?>
 			</ol>
 		</fieldset>
