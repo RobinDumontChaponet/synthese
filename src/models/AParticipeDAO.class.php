@@ -69,11 +69,12 @@ class AParticipeDAO
 		}
 	}
 
-    public static function getAParticipePost(){
+    public static function getAParticipePost($idPers){
         try{
 			$lst=array();
 			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM aParticipe A, evenement E WHERE A.idEvenement=E.idEvenement AND E.date>=now()");
+			$req=$bdd->prepare("SELECT * FROM aParticipe A, evenement E WHERE A.idPersonne=? AND A.idEvenement=E.idEvenement AND E.date>=now()");
+            $req->execute(array($idPers));
 			while($result=$req->fetch()){
 				$event=EvenementDAO::getById($result['idEvenement']);
 				$pers=AncienDAO::getById($result['idPersonne']);
@@ -84,6 +85,14 @@ class AParticipeDAO
 		{
 			die('error getAParticipePost a etudie '.$e->getMessage().'<br>');
 		}
+    }
+
+    public static function getByAncienAndNotParticipePost($idPers){
+        try{
+
+        }catch(PDOException $e){
+             die('error getByAncienAndNotParticipePost '.$e->getMessage().'<br>');
+        }
     }
 
 	public static function create($obj)

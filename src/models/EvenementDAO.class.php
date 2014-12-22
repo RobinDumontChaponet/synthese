@@ -78,6 +78,10 @@ class EvenementDAO
 		return $lst;
     }
 
+    public static function getByAncienNotParticipePost(){
+        $lst=array();
+    }
+
 	public static function create(&$obj)
 	{
 		if
