@@ -196,17 +196,17 @@ class AncienDAO
             $from.=" , `travaille` trav";
         }
         $req=$select." ".$from." ".$where;
-        var_dump($req);
+        //var_dump($req);
 		try{
 			$bdd=connect();
 			$state=$bdd->prepare($req);
-            var_dump($args);
+            //var_dump($args);
 			$state->execute($args);
 			while($ancien=$state->fetch())
 			{
                 $parents=ParentsDAO::getById($ancien['idParent']);
 				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
-                var_dump("test");
+                //var_dump("test");
 			}
 		}catch(PDOException $e){
 			die('error search ancien '.$e->getMessage().'<br>');

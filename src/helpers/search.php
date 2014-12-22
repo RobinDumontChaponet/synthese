@@ -2,6 +2,10 @@
 
 include('conf.inc.php');
 include_once(MODELS_INC.'AncienDAO.class.php');
+include_once(MODELS_INC.'AEtudieDAO.class.php');
+include_once(MODELS_INC.'PossedeDAO.class.php');
+include_once(MODELS_INC.'EstSpecialiseDAO.class.php');
+include_once(MODELS_INC.'SpecialisationDAO.class.php');
 
 header('Content-Type: text/xml');
 
@@ -12,9 +16,24 @@ $listeSuggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['prom
 echo '<personnes>';
 
 foreach($listeSuggestions as $suggestion) {
-	var_dump($suggestion);
-	echo '<personne><nom>'..'</nom><prenom>'.$suggestion->getPrenom().'</prenom><promotion>'.$suggestio->getPromotion()->getId().'</promotion><diplomedut>'.$suggestion->getDiplomeDUT()->getId().'</diplomedut><typesspecialisations>'.$suggestion->getTypeSpecialisation()->getId().'</typesspecialisations><specialisation>'.$suggestion->getSpecialisation()->getId().'</specialisation><diplomepostdut>'.$suggestion->getDiplomeDUT()->getId().'</diplomepostdut><etablissementpostdut>'.$suggestion->getEtablissement()->getId().'</etablissementpostdut><travailactuel>'.$suggestion->getTr.'</travailactuel></personne>';
+	//var_dump($suggestion);
+	$diplomeDUT = AEtudieDAO::getByAncien($suggestion->getId());
+	//var_dump($diplomeDUT);
+	$diplomePostDUT = PossedeDAO::getByAncien($suggestion->getId());
+	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion->getId());
+	$specialisation = $estSpecialise->getSpecialisation();
 
+	echo '<personne>';
+	echo '<nom>'.$suggestion->getNom().'</nom>';
+	echo '<prenom>'.$suggestion->getPrenom().'</prenom>';
+	echo '<promotion>'.$diplomeDUT->getPromotion()->getId().'</promotion>';
+	//echo '<diplomedut>'.$diplomeDUT->getId().'</diplomedut>';
+	echo '<typesspecialisations>'.$estSpecialise->getSpecialisation()->getTypeSpecialisation()->getId().'</typesspecialisations>';
+	echo '<specialisation>'.$estSpecialise->getSpecialisation()->getId().'</specialisation>';
+	echo '<diplomepostdut>'.$diplomePostDUT->getId().'</diplomepostdut>';
+	echo '<etablissementpostdut>'.$suggestion->getEtablissement()->getId().'</etablissementpostdut>';
+	echo '<travail></travail>';
+	echo '</personne>';
 }
 
 echo '</personnes>';

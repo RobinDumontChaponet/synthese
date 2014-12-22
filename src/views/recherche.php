@@ -2,10 +2,10 @@
 <section id="content">
 	<div id="criteres">
 		<label for="nom" >Nom :</label>
-		<input type="text" id="nom" name="nom" onkeyup="link_ajax()" /><br />
+		<input type="text" id="nom" name="nom" onchange="link_ajax()" /><br />
 
 		<label for="prenom">Prénom :</label>
-		<input type="text" id="prenom" name="prenom" onkeyup="link_ajax()" /><br />
+		<input type="text" id="prenom" name="prenom" onchange="link_ajax()" /><br />
 
 		<label for="promotion">Promotion :</label>
 		<select id="promotion" name="promotion" onchange="link_ajax()">
@@ -30,16 +30,16 @@
 		?></select><br />
 
 		<label for="specialisation">Spécialisation :</label>
-		<input type="text" name="specialisation" id="specialisation" onkeyup="link_ajax()" /><br />
+		<input type="text" name="specialisation" id="specialisation" onchange="link_ajax()" /><br />
 
 		<label for="diplomePostDUT">Diplôme post-DUT :</label>
-		<input type="text" id="diplomePostDUT" name="diplomePostDUT" onkeyup="link_ajax()" /><br />
+		<input type="text" id="diplomePostDUT" name="diplomePostDUT" onchange="link_ajax()" /><br />
 
 		<label for="etabPostDUT">Etablissement post-DUT :</label>
-		<input type="text" id="etabPostDUT" name="etabPostDUT" onkeyup="link_ajax()" /><br />
+		<input type="text" id="etabPostDUT" name="etabPostDUT" onchange="link_ajax()" /><br />
 
-		<label for="travailActuel">Travail actuel :</label>
-		<input type="text" id="travailActuel" name="travailActuel" onkeyup="link_ajax()" />
+		<label for="travail">Travail :</label>
+		<input type="checkbox" id="travail" value="true" name="travail" onchange="link_ajax()" />
 	</div>
 	<div id="resultat">
 	</div>

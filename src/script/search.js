@@ -12,9 +12,9 @@ function link_ajax() {
 			specialisation = document.getElementById('specialisation').value,
 			diplomepostdut = document.getElementById('diplomePostDUT').value,
 			etablissementpostdut = document.getElementById('etabPostDUT').value,
-			travailactuel = document.getElementById('travailActuel').value;
+			travail = document.getElementById('travail').value;
 
-			xhr.open('GET', 'helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travailactuel='+travailactuel, true);
+			xhr.open('GET', 'helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail, true);
 
 			xhr.onreadystatechange = affichageResultat;
 
@@ -23,7 +23,7 @@ function link_ajax() {
 		} else
 			setTimeout('link_ajax()', 1000);
 	} else if(xhr == null)
-		alert('Erreur AJAX ! Object xmlhttprequest a pour valeur FALSE ou NULL !');
+		alert('Erreur ! Désolé pour l\'inconvénient.');
 }
 
 function affichageResultat() {
@@ -35,7 +35,7 @@ function affichageResultat() {
 			listePersonnes = root.getElementsByTagName('personne');
 
 			table = '<table border="1">';
-			table += '<tr> <th>Nom</th> <th>Prenom</th> <th>promotion</th> <th>diplôme DUT</th> <th>Type specialisation</th> <th>Spécialisation</th> <th>Diplôme post-DUT</th> <th>Etablissement</th> <th>Travail actuel</th>  </tr>';
+			table += '<tr> <th>Nom</th> <th>Prenom</th> <th>promotion</th> <th>diplôme DUT</th> <th>Type specialisation</th> <th>Spécialisation</th> <th>Diplôme post-DUT</th> <th>Etablissement</th> <th>Travail</th>  </tr>';
 			for(i = 0; i < listePersonnes.length; i++) {
 				table += '<tr>';
 				for(j = 0; j < listePersonnes[i].childNodes.length; j++) {
@@ -52,7 +52,3 @@ function affichageResultat() {
 		}
 	}
 }
-
-
-
-
