@@ -15,7 +15,7 @@ class Travaille
     $this->setIdPoste($poste);
     $this->setIdAncien($ancien);
     $this->setDateEmbaucheDeb($dateEmbaucheDeb);
-    $this->setdateEmbaucheFin($idEmbaucheFin);
+    $this->setDateEmbaucheFin($idEmbaucheFin);
   }
 
 //--------------------------------------------GETTERS--------------------------------

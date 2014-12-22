@@ -56,8 +56,8 @@
 					<label for="promotion">Promotion : </label>
 					<input id="promotion" type="text" placeholder="Promotion" readonly="readonly" value="<?php echo $diplomeDUT->getPromotion()->getAnnee();?>"/>
 				</li>
-				<?php } else if ($diplomePost != NULL) {
-					foreach($diplomePost as $diplomePost) {?>
+				<?php } else if ($diplomePost != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+				foreach($diplomePost as $diplomePost) {?>
 				<li>
 					<label for="diplomePost">Diplome : </label>
 					<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/>
@@ -66,7 +66,7 @@
 					<label for="resultat">Résultat : </label>
 					<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 					<label for="periode">Période : </label>
-					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?> - <?php echo $diplomePost->getResultat();?>"/>
+					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getDateDeb();?> - <?php echo $diplomePost->getDateFin();?>"/>
 				</li>
 				<?php }}?>
 			</ol>
@@ -74,7 +74,17 @@
 		<fieldset>
 			<legend>Entreprises</legend>
 			<ol>
-				
+				<?php if($entreprises != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+				foreach($entreprises as $entreprise) {?>
+				<li>
+					<label for="entreprise">Entreprise : </label>
+					<input id="entreprise" type="text" placeholder="Entreprise" readonly="readonly" value="<?php echo $entreprise->getEntreprise()->getNom();?>"/>
+					<label for="poste">Poste : </label>
+					<input id="poste" type="text" placeholder="Poste" readonly="readonly" value="<?php echo $entreprise->getPoste()->getLibelle();?>"/>
+					<label for="periode">Période : </label>
+					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $entreprise->getDateEmbaucheDeb();?> - <?php echo $entreprise->getDateEmbaucheFin();?>"/>
+				</li>
+				<?php }}?>
 			</ol>
 		</fieldset>
 	</form>
