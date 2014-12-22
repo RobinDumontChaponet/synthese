@@ -7,8 +7,7 @@ require_once(MODELS_INC."TypeEvenementDAO.class.php");
 class EvenementDAO
 {
 
-	public static function getAll()
-	{
+	public static function getAll() {
 		$lst=array();
 		try{
 			$bdd=connect();
@@ -26,8 +25,7 @@ class EvenementDAO
 		return $lst;
 	}
 
-	public static function getById($id)
-	{
+	public static function getById($id) {
 		try{
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT * FROM evenement WHERE idEvenement=?");

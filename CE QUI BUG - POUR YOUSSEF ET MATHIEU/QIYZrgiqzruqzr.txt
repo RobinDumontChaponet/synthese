@@ -1,21 +1,6 @@
 ﻿Cette liste est sujette à agrandissement constant
 
-MATHIEU
-
-getAll() de AncienDAO ne fonctionnait pas quand y avait tout les paramètres et ne fonctionne quand même pas avec *
-Et les fautes d'orthographe ;_;
-
-Dans les dao de personne et ancien, mettre le bon nombre d'arguments dans les constructeurs.
-
-Warning: Missing argument 14 for Ancien::__construct(), called in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/AncienDAO.class.php on line 54 and defined in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Ancien.class.php on line 18 Warning: Missing argument 15 for Ancien::__construct(), called in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/AncienDAO.class.php on line 54 and defined in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Ancien.class.php on line 18 Warning: Missing argumen...(line truncated)... 
-
 YOUSSEF
-
-[FAIT]Ya pas la date de naissance dans Ancien 
-
-[FAIT]Le nom d'usage d'une personne peut être nul
-[FAIT]Plusieurs arguments de Etablissement peuvent être nul (regarde la BDD)
-
 
 VOUS DEUX :
 
@@ -24,3 +9,40 @@ Pour les messages d'erreurs, veuillez indiquer : Où quoi comment c'est à dire,
  -> Quand vous faites "gettype($var)" en espérant obtenir le nom de la classe... bah c'est raté.
  	Il faut faire "get_class($var)"  !!!!!!!!!!!!!!!
  	(dans pas mal de DAO et d'obets métiers........)
+
+VOUS DEUX ? :
+
+Warning: include(/home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EvenementsDAO.class.php): failed to open stream: No such file or directory in /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php on line 7 Warning: include(): Failed opening '/home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EvenementsDAO.class.php' for inclusion (include_path='includes') in /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php on line 7 Fatal error: Class 'EvenementsDAO' not found in /home/WWW/gga_etudiants/jozwicki2u/www/synth/controllers/evenements.php on line 4
+Youssefffff -->     $this->dateEmbaucheFin($idEmbaucheFin); c'est     $this->setDateEmbaucheFin($idEmbaucheFin); (corrigé !)
+Si vous faites quelque chose :( lisez l'analyse fonctionnellllleeeee
+Je l'ai pas faite pour des lamas
+
+Si l'utilisateur clique sur un des champs suivants : "Travail actuellement"
+L'utilisateur peut cocher la case, ex : "[X]" ou "[ ]"
+L'utilisateur clique sur "Rechercher"
+Le site recherche dans la base de données, et affiche les anciens concernés
+[01:37:07] Robin Dumont-Chaponet: c’est à dire
+[01:37:17] Robin Dumont-Chaponet: on a le choix entre l’ancien travail ou pas
+[01:38:13] Robin Dumont-Chaponet: donc une checkbox cochée ou pas cochée
+
+Pisterrrrrrrr
+[02:17:55] Robin Dumont-Chaponet: essai de ne pas laisser de var_dump dans tes DAOs quand elles sont censées êtres terminées
+[02:18:16] Robin Dumont-Chaponet: (ce qui n’est vraisemblablement pas le cas, mais passons)
+
+J'aimerai bien avoir getAncienByPromo
+
+Fatal error: Uncaught exception 'Exception' with message 'Id personne invalide' in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Domaine.class.php:40 Stack trace: #0 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Domaine.class.php(12): Domaine->setId(NULL) #1 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/DomaineDAO.class.php(32): Domaine->__construct(NULL, NULL, NULL) #2 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/DiplomePostDUTDAO.class.php(37): DomaineDAO::getById('1') #3 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/PossedeDAO.class.php(44): DiplomePostDUTDAO::getById('1') #4 /home/WWW/gga_etudiants/jozwicki2u/www/synth/controllers/profil.php(13): PossedeDAO::getByAncien('1') #5 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(20): include('/home/WWW/gga_e...') #6 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(47): get_include_contents('/home/WWW/gga_e...') #7 {main} thrown in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Domaine.class.php on line 40
+
+Fatal error: Uncaught exception 'Exception' with message 'Id spécialisation incorrect' in /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/TypeSpecialisation.class.php:33
+Stack trace:
+#0 /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/TypeSpecialisation.class.php(9): TypeSpecialisation->setId(NULL)
+#1 /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/TypeSpecialisationDAO.class.php(34): TypeSpecialisation->__construct(NULL, NULL)
+#2 /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/SpecialisationDAO.class.php(36): TypeSpecialisationDAO::getById('1')
+#3 /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/EstSpecialiseDAO.class.php(39): SpecialisationDAO::getById('1')
+#4 /home/WWW/gga_etudiants/dumont28u/www/synthese/src/helpers/search.php(23): EstSpecialiseDAO::getByAncien('1')
+#5 {main}
+  thrown in /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/TypeSpecialisation.class.php on line 33
+  
+Fatal error: Uncaught exception 'Exception' with message 'LibellÃ© ape incorrect' in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php:37 Stack trace: #0 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php(12): CodeAPE->setLibelle(NULL) #1 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPEDAO.class.php(35): CodeAPE->__construct(NULL, NULL) #2 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EntrepriseDAO.class.php(34): CodeAPEDAO::getById(NULL) #3 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/TravailleDAO.class.php(45): EntrepriseDAO::getById('1') #4 /home/WWW/gga_etudiants/jozwicki2u/www/synth/controllers/profil.php(14): TravailleDAO::getByAncien('1') #5 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(20): include('/home/WWW/gga_e...') #6 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(47): get_include_contents('/home/WWW/gga_e...') #7 {main} thrown in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php on line 37
+
+
