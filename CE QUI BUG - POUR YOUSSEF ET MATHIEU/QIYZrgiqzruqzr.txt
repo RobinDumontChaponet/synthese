@@ -12,7 +12,6 @@ Pour les messages d'erreurs, veuillez indiquer : Où quoi comment c'est à dire,
 
 VOUS DEUX ? :
 
-Warning: include(/home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EvenementsDAO.class.php): failed to open stream: No such file or directory in /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php on line 7 Warning: include(): Failed opening '/home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EvenementsDAO.class.php' for inclusion (include_path='includes') in /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php on line 7 Fatal error: Class 'EvenementsDAO' not found in /home/WWW/gga_etudiants/jozwicki2u/www/synth/controllers/evenements.php on line 4
 Youssefffff -->     $this->dateEmbaucheFin($idEmbaucheFin); c'est     $this->setDateEmbaucheFin($idEmbaucheFin); (corrigé !)
 Si vous faites quelque chose :( lisez l'analyse fonctionnellllleeeee
 Je l'ai pas faite pour des lamas
@@ -44,5 +43,8 @@ Stack trace:
   thrown in /home/WWW/gga_etudiants/dumont28u/www/synthese/src/models/TypeSpecialisation.class.php on line 33
   
 Fatal error: Uncaught exception 'Exception' with message 'LibellÃ© ape incorrect' in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php:37 Stack trace: #0 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php(12): CodeAPE->setLibelle(NULL) #1 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPEDAO.class.php(35): CodeAPE->__construct(NULL, NULL) #2 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EntrepriseDAO.class.php(34): CodeAPEDAO::getById(NULL) #3 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/TravailleDAO.class.php(45): EntrepriseDAO::getById('1') #4 /home/WWW/gga_etudiants/jozwicki2u/www/synth/controllers/profil.php(14): TravailleDAO::getByAncien('1') #5 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(20): include('/home/WWW/gga_e...') #6 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(47): get_include_contents('/home/WWW/gga_e...') #7 {main} thrown in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php on line 37
+
+Parse error: syntax error, unexpected T_VARIABLE in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Evenement.class.php on line 84
+
 
 
