@@ -10,8 +10,8 @@ if ($ancien != NULL) {
 	$imageProfil = $ancien->getImageProfil();
 	$imageTrombi = $ancien->getImageTrombi();
 	$diplomeDUT = AEtudieDAO::getByAncien($ancien->getId());
-	$diplomePost = PossedeDAO::getByAncien($ancien->getId());
-	$entreprises = TravailleDAO::getByAncien($ancien->getId());
+	//$diplomePost = PossedeDAO::getByAncien($ancien->getId());
+	//$entreprises = TravailleDAO::getByAncien($ancien->getId());
 }
 
 include(VIEWS_INC.'profil.php');
