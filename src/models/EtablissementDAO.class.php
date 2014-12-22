@@ -15,7 +15,7 @@ class EtablissementDAO
 			while
 			($res=$req->fetch())
 			{
-				$lst[]=new Etablissement($res['idEtablissement'], $res['nom'], $res['adresse1'], $res['adresse2'], $res['codePostal'], $res['ville'], $res['pays']);
+				$lst[]=new Etablissement($res['idEtablissement'], $res['nom'], $res['adresse1'], $res['adresse2'], $res['codePostal'], $res['ville'], $res['pays'],$res['fax'],$res['web']);
 			}
 		}catch(PDOException $e)
 		{
@@ -33,7 +33,7 @@ class EtablissementDAO
 			if
 			($res=$req->fetch())
 			{
-				return new Etablissement($res['idEtablissement'], $res['nom'], $res['adresse1'], $res['adresse2'], $res['codePostal'], $res['ville'], $res['pays']);
+				return new Etablissement($res['idEtablissement'], $res['nom'], $res['adresse1'], $res['adresse2'], $res['codePostal'], $res['ville'], $res['pays'],$res['fax'],$res['web']);
 			}
 		}catch(PDOException $e)
 		{
@@ -48,8 +48,8 @@ class EtablissementDAO
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `etablissement`(`nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`) VALUES (?,?,?,?,?,?)");
-				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays()));
+				$req=$bdd->prepare("INSERT INTO `etablissement`(`nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`,`fax`,`web`) VALUES (?,?,?,?,?,?,?,?)");
+				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays(),$obj->getFax(),$obj->getWeb()));
 				$obj->setId($bdd->LastInsertId());
                 return $obj->getId();
 			}catch(PDOException $e)
@@ -69,8 +69,8 @@ class EtablissementDAO
 		{
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `etablissement` SET `nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=?,`pays`=? WHERE `idEtablissement`=?");
-				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays(), $obj->getId()));
+				$req=$bdd->prepare("UPDATE `etablissement` SET `nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=?,`pays`=?,`fax`=?,`web`=? WHERE `idEtablissement`=?");
+				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays(),$obj->getFax(),$obj->getWeb(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update etablissement '.$e->getMessage().'<br>');
