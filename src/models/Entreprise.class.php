@@ -75,14 +75,14 @@ class Entreprise
 		if ($id != NULL && $id >= 0)
 			$this->id = $id;
 		else
-			throw new Exception('ENTREPRISE.CLASS.PHP : Id NULL ou invalide : '.$id);
+			throw new Exception('Entreprise.class.php : Id NULL ou invalide : '.$id);
 	}
 
 	public function setNom($nom) {
 		if ($nom != NULL && $nom != "")
 			$this->nom = $nom;
 		else
-			throw new Exception('ENTREPRISE.CLASS.PHP : Nom entreprise NULL ou vide : '.$id);
+			throw new Exception('Entreprise.class.php : Nom entreprise NULL ou vide : '.$id);
 	}
 
 	public function setAdresse1($adresse1) {
@@ -105,7 +105,7 @@ class Entreprise
 		if ($cedex != null && is_numeric($cedex))
 			$this->cedex = $cedex;
 		else
-			throw new Exception('ENTREPRISE.CLASS.PHP : Numero cedex NULL ou non numérique : '.$cedex);
+			throw new Exception('Entreprise.class.php : Numero cedex NULL ou non numérique : '.$cedex);
 	}
 
 	public function setPays($pays) {
@@ -116,7 +116,7 @@ class Entreprise
 		if (preg_match("/^\+?\d+$/", $telephone) || $telephone == "")
 			$this->$telephone = $telephone;
 		else
-			throw new Exception('ENTREPRISE.CLASS.PHP : Numéro de telephone invalide : '.$telephone);
+			throw new Exception('Entreprise.class.php : Numéro de telephone invalide : '.$telephone);
 	}
 
 	public function setCodeAPE($code) {

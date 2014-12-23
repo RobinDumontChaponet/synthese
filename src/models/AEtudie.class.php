@@ -39,28 +39,28 @@ class AEtudie
 		if ($ancien != NULL)
 			$this->ancien = $ancien;
 		else
-			throw new Exception('AETUDIE.CLASS.PHP : Ancien est NULL');
+			throw new Exception('AEtudie.class.php : Ancien est NULL');
 	}
 
 	public function setDiplomeDUT($diplomeDUT) {
 		if ($diplomeDUT != NULL)
 			$this->diplomeDUT = $diplomeDUT;
 		else
-			throw new Exception('AETUDIE.CLASS.PHP : Diplome DUT est NULL');
+			throw new Exception('AEtudie.class.php : Diplome DUT est NULL');
 	}
 
 	public function setDepartementIUT($departementIUT) {
 		if ($departementIUT != NULL)
 			$this->departementIUT=$departementIUT;
 		else
-			throw new Exception('AETUDIE.CLASS.PHP : Departement IUT est NULL');
+			throw new Exception('AEtudie.class.php : Departement IUT est NULL');
 	}
 
 	public function setPromotion($promotion) {
 		if($promotion != NULL)
 			$this->promotion = $promotion;
 		else
-			throw new Exception('AETUDIE.CLASS.PHP : Promotion est NULL');
+			throw new Exception('AEtudie.class.php : Promotion est NULL');
 	}
 
 //	TO STRING
