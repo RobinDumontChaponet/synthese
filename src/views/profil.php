@@ -47,7 +47,7 @@
 		<fieldset>
 			<legend>Diplômes</legend>
 			<ol>
-				<?php if ($diplomeDUT != NULL) {?>
+				<?php if ($diplomeDUT != NULL) {	// Ne peut être modifié, fixe et normalement présent?>
 				<li>
 					<label for="diplomeDUT">Diplôme : </label>
 					<input id="diplomeDUT" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?>"/>
@@ -56,20 +56,23 @@
 					<label for="promotion">Promotion : </label>
 					<input id="promotion" type="text" placeholder="Promotion" readonly="readonly" value="<?php echo $diplomeDUT->getPromotion()->getAnnee();?>"/>
 				</li>
-				<?php } if ($diplomesPost != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
-				foreach($diplomesPost as $diplomePost) {?>
-				<li>
-					<label for="diplomePost">Diplôme : </label>
-					<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/>
-					<label for="etablissement">Établissement : </label>
-					<input id="etablissement" type="text" placeholder="Établissement" readonly="readonly" value="<?php echo $diplomePost->getEtablissement()->getNom();?>"/>
-					<label for="resultat">Résultat : </label>
-					<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
-					<label for="periode">Période : </label>
-					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
-					<span><a href="#">Supprimer</a></span>
-				</li>
-				<?php }}?>
+				<?php } 
+				if ($diplomesPost != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+					foreach($diplomesPost as $diplomePost) {?>	
+						<li>
+							<label for="diplomePost">Diplôme : </label>
+							<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/>
+							<label for="etablissement">Établissement : </label>
+							<input id="etablissement" type="text" placeholder="Établissement" readonly="readonly" value="<?php echo $diplomePost->getEtablissement()->getNom();?>"/>
+							<label for="resultat">Résultat : </label>
+							<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
+							<label for="periode">Période : </label>
+							<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
+							<span><a href="#">Supprimer</a></span>
+						</li>
+					<?php }?>
+					<li><aside><a href="#">Ajouter +</a></aside></li>
+				<?php }?>
 			</ol>
 		</fieldset>
 		<fieldset>
@@ -83,7 +86,7 @@
 					<label for="poste">Poste : </label>
 					<input id="poste" type="text" placeholder="Poste" readonly="readonly" value="<?php echo $entreprise->getPoste()->getLibelle();?>"/>
 					<label for="periode">Période : </label>
-					<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $entreprise->getDateEmbaucheDeb();?> - <?php echo $entreprise->getDateEmbaucheFin();?>"/>
+					<input id="periode" type="text" placeholder="Période" readonly="readonly" value="<?php echo $entreprise->getDateEmbaucheDeb()?> - <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'Maintenant'; else echo $entreprise->getDateEmbaucheFin()?>"/>
 				</li>
 				<?php }}?>
 			</ol>

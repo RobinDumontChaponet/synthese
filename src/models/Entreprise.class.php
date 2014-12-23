@@ -1,7 +1,8 @@
 <?php
-
 class Entreprise
 {
+//	VARIABLES
+
 	private $id;
 	private $nom;
 	private $adresse1;
@@ -13,8 +14,9 @@ class Entreprise
 	private $telephone;
 	private $codeAPE;
 
-	public function __construct($id, $nom, $adresse1, $adresse2, $codePostal, $ville, $cedex, $pays, $telephone, $codeAPE)
-	{
+//	CONSTRUCTORS
+
+	public function __construct($id, $nom, $adresse1, $adresse2, $codePostal, $ville, $cedex, $pays, $telephone, $codeAPE) {
 		$this->setId($id);
 		$this->setNom($nom);
 		$this->setAdresse1($adresse1);
@@ -27,132 +29,102 @@ class Entreprise
 		$this->setCodeAPE($codeAPE);
 	}
 
-	//----------------------------------GETTERS---------------------------------------
-	public function getId()
-	{
+//	GETTERS & SETTERS
+
+	public function getId() {
 		return $this->id;
 	}
 
-	public function getNom()
-	{
+	public function getNom() {
 		return $this->nom;
 	}
 
-	public function getAdresse1()
-	{
+	public function getAdresse1() {
 		return $this->adresse1;
 	}
 
-	public function getAdresse2()
-	{
+	public function getAdresse2() {
 		return $this->adresse2;
 	}
 
-	public function getCodePostal()
-	{
+	public function getCodePostal() {
 		return $this->codePostal;
 	}
 
-	public function getVille()
-	{
+	public function getVille() {
 		return $this->ville;
 	}
 
-	public function getCedex()
-	{
+	public function getCedex() {
 		return $this->cedex;
 	}
 
-	public function getPays()
-	{
+	public function getPays() {
 		return $this->pays;
 	}
 
-	public function getTelephone()
-	{
+	public function getTelephone() {
 		return $this->telephone;
 	}
 
-	public function getCodeAPE()
-	{
+	public function getCodeAPE() {
 		return $this->codeAPE;
 	}
 
-	//----------------------------------------SETTERS-----------------------------------------
-	public function setId($id)
-	{
-		if (($id != null) and ($id >= 0))
-		{
+	public function setId($id) {
+		if (($id != NULL) and ($id >= 0))
 			$this->id = $id;
-		} else {
-			throw new Exception("Id personne invalide");
-		}
+		else
+			throw new Exception("Id NULL ou invalide");
 	}
 
-	public function setNom($nom)
-	{
-		$nomTraite = trim($nom);
-		if (($nomTraite != null) and ($nomTraite != ""))
-		{
-			$this->nom = strtoupper($nomTraite);
-		} else {
+	public function setNom($nom) {
+		if (($nom != NULL) and ($nom != ""))
+			$this->nom = $nom;
+		else
 			throw new Exception("Nom entreprise incorrect");
-		}
 	}
 
-	public function setAdresse1($adresse1)
-	{
+	public function setAdresse1($adresse1) {
 		$this->adresse1 = trim($adresse1);
 	}
-	public function setAdresse2($adresse2)
-	{
+	
+	public function setAdresse2($adresse2) {
 		$this->adresse2 = trim($adresse2);
 	}
 
-	public function setCodePostal($codePostale)
-	{
+	public function setCodePostal($codePostale) {
 		$this->codePostale = $codePostale;
 	}
 
-	public function setVille($ville)
-	{
+	public function setVille($ville) {
 		$this->ville = trim($ville);
 	}
 
-	public function setCedex($cedex)
-	{
+	public function setCedex($cedex) {
 		if (($cedex != null) and (is_numeric($cedex)))
-		{
 			$this->cedex = $cedex;
-		} else {
+		else
 			throw new Exception("Numero cedex incorrect");
-		}
 	}
 
-	public function setPays($pays)
-	{
+	public function setPays($pays) {
 		$this->pays = trim($pays);
 	}
 
-	public function setTelephone($telephone)
-	{
-		if
-		((preg_match("/^\+?\d+$/", $telephone)) or ($telephone==""))
-		{
+	public function setTelephone($telephone) {
+		if ((preg_match("/^\+?\d+$/", $telephone)) or ($telephone == ""))
 			$this->$telephone = $telephone;
-		}else
-		{
+		else
 			throw new Exception("Numéro de telephone invalide");
-		}
 	}
 
-	public function setCodeAPE($code)
-	{
+	public function setCodeAPE($code) {
 		$this->code=$code;
 	}
 
+//	TO STRING
 
-	//---------------------------------------------toString-------------------------------------------
 	public function __toString()
 	{
 		return "Id : ".$this->id." Nom : ".$this->nom." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2
@@ -160,18 +132,13 @@ class Entreprise
 			." Telephone : ".$this->telephone." Code APE : ".$this->codeAPE;
 	}
 	
-	//----------------------------------------------Equals-----------------------------------------
-	public function equals($aComparer)
-	{
-		if(get_class($aComparer) == "Entreprise")
-		{
+// EQUALS
+
+	public function equals($aComparer) {
+		if (get_class($aComparer) == "Entreprise")
 			return $this->id == $aComparer->getId();	
-		}else
-		{
+		else
 			return false;
-		}
 	}
-
 }
-
 ?>

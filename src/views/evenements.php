@@ -26,6 +26,19 @@
 		</div>
 		<div>
 			<h2>Autres événements</h2>
+			<ol>
+				<p>Type d'événement Date Commentaires</p>
+				<?php if($eventsInscriPost != NULL) {	//	Si il y a des events post où l'ancien est inscrit
+					foreach($eventsInscriPost as $eventInscriPost) {
+						echo '
+							<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
+								'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'
+								'.$eventInscriPost->getEvenement()->getDate().'
+								'.$eventInscriPost->getEvenement()->getCommentaire().'
+							</a><a href="evenement">S\'inscrire</a></li>';
+					}
+				}?>
+			</ol>
 		</div>
 		<div>
 			<h2>Événements passés</h2>
