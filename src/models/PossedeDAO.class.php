@@ -21,7 +21,7 @@ class PossedeDAO
 				$ancien=AncienDAO::getById($res['idPersonne']);
 				$dip=DiplomePostDUtDAO::getById($res['idDiplomePost']);
 				$etab=EtablissementDAO::getById($res['idEtablissement']);
-				$lst[]=new Possede($ancien, $etab, $dip, $res['resultat'], $res['dateDeb'], $res['dteFin']);
+				$lst[]=new Possede($ancien, $etab, $dip, $res['resultat'], $res['dateDeb'], $res['dateFin']);
 			}
 		}catch(PDOException $e)
 		{
@@ -43,7 +43,7 @@ class PossedeDAO
 				$ancien=AncienDAO::getById($res['idPersonne']);
 				$dip=DiplomePostDUtDAO::getById($res['idDiplomePost']);
 				$etab=EtablissementDAO::getById($res['idEtablissement']);
-				$lst[]=new Possede($ancien, $etab, $dip, $res['resultat'], $res['dateDeb'], $res['dteFin']);
+				$lst[]=new Possede($ancien, $etab, $dip, $res['resultat'], $res['dateDeb'], $res['dateFin']);
 			}
 		}catch(PDOException $e)
 		{
