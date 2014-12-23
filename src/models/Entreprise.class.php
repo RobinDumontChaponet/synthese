@@ -109,7 +109,7 @@ class Entreprise
 		$this->adresse2 = trim($adresse2);
 	}
 
-	public function setCodePostale($codePostale)
+	public function setCodePostal($codePostale)
 	{
 		$this->codePostale = $codePostale;
 	}
@@ -137,9 +137,9 @@ class Entreprise
 	public function setTelephone($telephone)
 	{
 		if
-		((preg_match("/^\+?\d+$/", $mobile)) or ($telephone==""))
+		((preg_match("/^\+?\d+$/", $telephone)) or ($telephone==""))
 		{
-			$this->mobile = $mobile;
+			$this->$telephone = $telephone;
 		}else
 		{
 			throw new Exception("Numéro de telephone invalide");
@@ -148,8 +148,7 @@ class Entreprise
 
 	public function setCodeAPE($code)
 	{
-		$this->code->setCode($code->getCode());
-		$this->code->setLibelle($code->getLibelle());
+		$this->code=$code;
 	}
 
 

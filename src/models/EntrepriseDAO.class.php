@@ -30,8 +30,12 @@ class EntrepriseDAO
 		try{
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT `idEntreprise`, `codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone` FROM `entreprise` WHERE idEntreprise=?");
-			$ent=$req->fetch();
+            $req->execute(array($id));
+			if($ent=$req->fetch()){
 			return new Entreprise($ent['idEntreprise'], $ent['nom'], $ent['adresse1'], $ent['adresse2'], $ent['codePostal'], $ent['ville'], $ent['cedex'], $ent['pays'], $ent['telephone'], CodeAPEDAO::getByID($ent['codeAPE']));
+            }else{
+                return null;   
+            }
 		}catch (PDOException $e)
 		{
 			die("Error get by id entreprise !: " . $e->getMessage() . "<br/>");

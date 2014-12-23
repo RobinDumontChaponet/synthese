@@ -90,6 +90,9 @@ class Possede
             throw new Exception("Date début dans Possede est nulle !");
         }
     }
+    public function setResultat($res){
+        $this->resultat=$res;    
+    }
     
     public function setDateFin($dateFin)
     {

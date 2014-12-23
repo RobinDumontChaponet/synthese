@@ -27,8 +27,11 @@ class CodeAPEDAO
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT `code`, `libelle` FROM `codeAPE` WHERE code=?");
 			$req->execute(array($id));
-			$code=$req->fetch();
-			return new CodeAPE($code['code'], $code['libelle']);
+			if($code=$req->fetch()){
+			     return new CodeAPE($code['code'], $code['libelle']);
+            }else{
+                return null;
+            }
 		}catch (PDOException $e)
 		{
 			die("Error get id code ape !: " . $e->getMessage() . "<br/>");
