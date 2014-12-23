@@ -86,7 +86,7 @@
 					<label for="poste">Poste : </label>
 					<input id="poste" type="text" placeholder="Poste" readonly="readonly" value="<?php echo $entreprise->getPoste()->getLibelle();?>"/>
 					<label for="periode">Période : </label>
-					<input id="periode" type="text" placeholder="Période" readonly="readonly" value="<?php echo $entreprise->getDateEmbaucheDeb()?> - <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'Maintenant'; else echo $entreprise->getDateEmbaucheFin()?>"/>
+					<input id="periode" type="text" placeholder="Période" readonly="readonly" value="<?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?>"/>
 				</li>
 				<?php }}?>
 			</ol>
