@@ -30,7 +30,7 @@
 				<li><label for="address1">Adresse :</label><input id="address1" type="text" placeholder="Adresse" value="<?php echo $ancien->getAdresse1(); ?>"/><label for="address2">Adresse 2 :</label><input id="address2" type="text" placeholder="Adresse 2" value="<?php echo $ancien->getAdresse2(); ?>"/></li>
 				<li><label for="postalCode">Code postal :</label><input id="postalCode" type="text" placeholder="Code postal" value="<?php echo $ancien->getCodePostal(); ?>"/><label for="city">Ville :</label><input id="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/><label for="country">Pays :</label><input id="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li>
 				<li><label for="phoneNumber">Telephone :</label><input id="phoneNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getTelephone(); ?>"/><label for="mobileNumber">Mobile :</label><input id="mobileNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getMobile(); ?>"/></li>
-				<li><label for="mailAddress">Mail :</label><input id="mailAddress" type="text" placeholder="Pas d'adresse mail" value=""/></li>
+				<li><label for="mailAddress">Mail :</label><input id="mailAddress" type="text" placeholder="Pas d'adresse mail" value="<?php echo $ancien->getMail() ?>"/></li>
 			</ol>
 			<?php } else { //Si c'est un autre profil que celui de l'utilisateur log, readonly partout?>
 			<ol>
@@ -68,7 +68,7 @@
 							<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 							<label for="periode">Période : </label>
 							<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
-							<span><a href="#">Supprimer</a></span>
+							<aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info) +</a><a href="suppr">Supprimer</a></aside>
 						</li>
 					<?php }?>
 					<li><aside><a href="#">Ajouter +</a></aside></li>
@@ -93,7 +93,6 @@
 		</fieldset>
 	</form>
 <?php } else { ?>
-	
 	<p class="warning">Le profil n'existe pas</p>
 <?php }?>
 </section>
