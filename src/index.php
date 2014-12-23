@@ -3,11 +3,6 @@
 include_once('conf.inc.php');
 include_once('dbConnection.inc.php');
 
-function __autoload($className) {
-    include MODELS_INC.$className.'.class.php';
-}
-
-
 session_start();
 if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
 	header ('Location: connection.php');
@@ -96,7 +91,7 @@ if($matches[1]) {
 	    <?php echo $inc; ?>
 	</div>
     <footer>
-        <p>footer</p>
+        <p>connectIT! - projet de synthèse - 2014</p>
     </footer>
     <script type="text/javascript"></script>
 </body>

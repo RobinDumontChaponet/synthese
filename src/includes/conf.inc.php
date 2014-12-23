@@ -6,4 +6,8 @@ define('MODELS_INC', ROOT_PATH.'/models/');
 define('VIEWS_INC', ROOT_PATH.'/views/');
 define('DATA_PATH', ROOT_PATH.'/data/');
 
+function __autoload($className) {
+    include MODELS_INC.$className.'.class.php';
+}
+
 ?>
