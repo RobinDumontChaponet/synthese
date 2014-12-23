@@ -3,6 +3,7 @@
 if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
 
 	include(MODELS_INC.'DepartementIUTDAO.class.php');
+	include('passwordHash.inc.php');
 
 	$departements = DepartementIUTDAO::getAll();
 
@@ -14,7 +15,7 @@ if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
 		$studentProfile=new TypeProfil(3, 'Ancien'); // Profil d'ancien.
 		require_once('csvParser.inc.php');
 
-		$csv = csv2array('csv');
+		$csv = csv2array('csv', 1);
 
 		$order = array();
 		foreach($_POST as $key => $value) {
@@ -45,11 +46,15 @@ if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
 
 		foreach($csv as $line) {
 			$person = new Personne(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['mail']]));
-			echo $person;
+			var_dump($person);
 			//echo '"0", "'.fillVal($line[$order['nomUsage']]).'", "'.fillVal($line[$order['nomPat']]).'", "'.fillVal($line[$order['prenom']]).'", "'.fillVal($mail=$line[$order['mail']])."\"<br />\n";
+			echo "\n<br />";
 			//PersonneDAO::create($person);
-			//$login = substr($person->getNomPatronymique(), 0, 4).substr($person->getPrenom(), 0, 4).$person->getId();
-			//$account = new Compte(0, $studentProfile, $person, $login, randomPassword());
+			$login = substr($person->getNomPatronymique(), 0, 4).$person->getId().substr($person->getPrenom(), 0, 4);
+			$account = new Compte(0, $studentProfile, $person, $login, randomPassword());
+			echo '		Login -> '.$login;
+			echo '<br />'; var_dump($account);
+			echo "\n<br />";
 			//CompteDAO::create($account);
 		}
 		//header ('Location: index.php?requ=group&id='.$_GET['id']);

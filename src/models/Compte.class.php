@@ -45,7 +45,7 @@ class Compte
 	//------------------------------------------Setters
 	public function setId($id)
 	{
-		if (($id != null) and ($id >= 0))
+		if (is_numeric($id) && $id >= 0)
 		{
 			$this->id = $id;
 		} else {
@@ -99,13 +99,13 @@ class Compte
 	{
 		return "Id : ".$this->id." Nom de compte : ".$this->ndc." Mot de passe : ".$this->mdp." Personne : ".$this->personne." Type profil : ".$this->typeProfil;
 	}
-	
+
 	//---------------------------------------------Equals
 	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "Compte")
 		{
-			return $this->id == $aComparer->getId();	
+			return $this->id == $aComparer->getId();
 		}else
 		{
 			return false;

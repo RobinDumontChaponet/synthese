@@ -4,7 +4,7 @@ class Personne
 {
 
 	private $id;
-	private $nom;
+	private $nom; //Nom d'usage.
 	private $nomPatronymique;
 	private $prenom;
 	private $mail;

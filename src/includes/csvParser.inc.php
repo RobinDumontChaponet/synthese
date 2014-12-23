@@ -60,7 +60,7 @@ function csvstring_to_array(&$string, $CSV_SEPARATOR = ';', $CSV_ENCLOSURE = '"'
 	return $o;
 }
 
-function csv2array($src, $start=0, $lineNb=0, $delimiter=';') {
+/*function csv2array($src, $start=0, $lineNb=0, $delimiter=';') {
 	$handle = fopen(DATA_PATH.'csv/'.$src,'r');
 
 	fseek($handle, ($start<0)?0:$start);
@@ -84,10 +84,10 @@ function csv2array($src, $start=0, $lineNb=0, $delimiter=';') {
 	$enc = mb_detect_encoding($str, mb_list_encodings(), true);
 
 	return csvstring_to_array($str);
-}
+}*/
 
 
-/*require_once('parsecsv.lib.php');
+require_once('parsecsv.lib.php');
 
 function csv2array($src, $start=0, $lineNb=0, $delimiter=NULL) {
 	$csv = new parseCSV();
@@ -124,7 +124,7 @@ function csv2array($src, $start=0, $lineNb=0, $delimiter=NULL) {
 	}
 
 	return $array;
-}*/
+}
 
 /*function csv2array($src, $start=0, $lineNb=0, $delimiter=NULL) {
 	$handle = fopen(DATA_PATH.'csv/'.$src,'r');
