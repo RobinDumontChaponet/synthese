@@ -1,4 +1,4 @@
-Cette liste est sujette à agrandissement constant
+﻿Cette liste est sujette à agrandissement constant
 
 YOUSSEF
 
@@ -27,3 +27,11 @@ Le site recherche dans la base de données, et affiche les anciens concernés
 Pisterrrrrrrr
 [02:17:55] Robin Dumont-Chaponet: essai de ne pas laisser de var_dump dans tes DAOs quand elles sont censées êtres terminées
 [02:18:16] Robin Dumont-Chaponet: (ce qui n’est vraisemblablement pas le cas, mais passons)
+
+
+Fatal error: Call to undefined method Possede::setResultat() in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/Possede.class.php on line 17
+
+Fatal error: Uncaught exception 'Exception' with message 'LibellÃ© ape incorrect' in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php:37 Stack trace: #0 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php(12): CodeAPE->setLibelle(NULL) #1 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPEDAO.class.php(31): CodeAPE->__construct(NULL, NULL) #2 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/EntrepriseDAO.class.php(34): CodeAPEDAO::getById(NULL) #3 /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/TravailleDAO.class.php(45): EntrepriseDAO::getById('1') #4 /home/WWW/gga_etudiants/jozwicki2u/www/synth/controllers/profil.php(14): TravailleDAO::getByAncien('1') #5 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(20): include('/home/WWW/gga_e...') #6 /home/WWW/gga_etudiants/jozwicki2u/www/synth/index.php(47): get_include_contents('/home/WWW/gga_e...') #7 {main} thrown in /home/WWW/gga_etudiants/jozwicki2u/www/synth/models/CodeAPE.class.php on line 37
+
+
+
