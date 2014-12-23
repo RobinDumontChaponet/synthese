@@ -1,86 +1,72 @@
 <?php
-
-class AEtudie
+class AEtudie 
 {
-    private $ancien;
-    private $diplomeDUT;
-    private $departementIUT;
-    private $promotion;
+//	VARIABLES
 
-    public function __construct($ancien, $diplomeDUT, $departementIUT, $promotion)
-    {
-        $this->setAncien($ancien);
-        $this->setDiplomeDUT($diplomeDUT);
-        $this->setDepartementIUT($departementIUT);
-        $this->setPromotion($promotion);
-    }
+	private $ancien;
+	private $diplomeDUT;
+	private $departementIUT;
+	private $promotion;
 
-    //----------------------------GETTERS------------------------
-    public function getAncien()
-    {
-        return $this->ancien;
-    }
+//	CONSTRUCTORS
 
-    public function getDiplomeDUT()
-    {
-        return $this->diplomeDUT;
-    }
+	public function __construct($ancien, $diplomeDUT, $departementIUT, $promotion) {
+		$this->setAncien($ancien);
+		$this->setDiplomeDUT($diplomeDUT);
+		$this->setDepartementIUT($departementIUT);
+		$this->setPromotion($promotion);
+	}
 
-    public function getDepartementIUT()
-    {
-        return $this->departementIUT;
-    }
+//	GETTERS & SETTERS
 
-    public function getPromotion()
-    {
-        return $this->promotion;
-    }
+	public function getAncien() {
+		return $this->ancien;
+	}
 
-    //------------------------------SETTERS------------------------
-    public function setAncien($ancien)
-    {
-        if($ancien != null)
-        {
-            $this->ancien = $ancien;
-        } else {
-            throw new Exception("Ancien dans AEtudier est incorrect !");
-        }
-    }
+    public function getDiplomeDUT() {
+		return $this->diplomeDUT;
+	}
 
-    public function setDiplomeDUT($diplomeDUT)
-    {
-        if($diplomeDUT != null)
-        {
-            $this->diplomeDUT = $diplomeDUT;
-        } else {
-            throw new Exception("Diplome DUT dans AEtudier est incorrect !");
-        }
-    }
+	public function getDepartementIUT() {
+		return $this->departementIUT;
+	}
 
-    public function setDepartementIUT($departementIUT)
-    {
-        if($departementIUT == null){
-            throw new Exception("Departement IUT dans AEtudier est incorrect !");
-        }else{
-            $this->departementIUT=$departementIUT;
-        }
-    }
+	public function getPromotion() {
+		return $this->promotion;
+	}
 
-    public function setPromotion($promotion)
-    {
-        if($promotion != null)
-        {
-            $this->promotion = $promotion;
-        } else {
-            throw new Exception("Promotion dans AEtudier est incorrect !");
-        }
-    }
+	public function setAncien($ancien) {
+		if ($ancien != NULL)
+			$this->ancien = $ancien;
+		else
+			throw new Exception('AETUDIE.CLASS.PHP : Ancien est NULL');
+	}
 
-    //--------------------------------toString----------------------------------------
-    public function __toString()
-    {
-        return "Ancien : ".$this->ancien." Diplome DUT : ".$this->diplomeDUT." Departement IUT : ".$this->departementIUT." Promotion : ".$this->promotion;
-    }
+	public function setDiplomeDUT($diplomeDUT) {
+		if ($diplomeDUT != NULL)
+			$this->diplomeDUT = $diplomeDUT;
+		else
+			throw new Exception('AETUDIE.CLASS.PHP : Diplome DUT est NULL');
+	}
+
+	public function setDepartementIUT($departementIUT) {
+		if ($departementIUT != NULL)
+			$this->departementIUT=$departementIUT;
+		else
+			throw new Exception('AETUDIE.CLASS.PHP : Departement IUT est NULL');
+	}
+
+	public function setPromotion($promotion) {
+		if($promotion != NULL)
+			$this->promotion = $promotion;
+		else
+			throw new Exception('AETUDIE.CLASS.PHP : Promotion est NULL');
+	}
+
+//	TO STRING
+
+	public function __toString() {
+		return "Ancien : ".$this->ancien." Diplome DUT : ".$this->diplomeDUT." Departement IUT : ".$this->departementIUT." Promotion : ".$this->promotion;
+	}
 }
-
 ?>

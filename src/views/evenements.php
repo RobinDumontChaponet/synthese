@@ -28,7 +28,7 @@
 			<h2>Autres événements</h2>
 			<ol>
 				<p>Type d'événement Date Commentaires</p>
-				<?php if($eventsInscriPost != NULL) {	//	Si il y a des events post où l'ancien est inscrit
+				<?php if($eventsInscriPost != NULL) {	//	Si il y a des events post où l'ancien n'est pas inscrit
 					foreach($eventsInscriPost as $eventInscriPost) {
 						echo '
 							<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
@@ -43,7 +43,7 @@
 		<div>
 			<h2>Événements passés</h2>
 			<ol>
-				<?php if ($eventsAnt != NULL) {
+				<?php if ($eventsAnt != NULL) {	//	Events qui sont passés
 					foreach($eventsAnt as $eventAnt) {
 						echo '<li><a href="evenement/'.$eventAnt->getId().'"><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventAnt->getTypeEvenement()->getLibelle().'"/>
 						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventAnt->getDate().'"/>
