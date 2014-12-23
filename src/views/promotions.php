@@ -3,7 +3,7 @@
 <section id="content">
 	<ol>
 	<?php foreach ($promos as $promo) {?>
-		<li><a href="?requ=promotion&id=<?php echo $promo->getId();?>" title="Promotion année : <?php echo $promo->getAnnee();?>">Promotion année : <?php echo $promo->getAnnee();?></a></li>
+		<li><a href="promotion/<?php echo $promo->getId();?>" title="Promotion année : <?php echo $promo->getAnnee();?>">Promotion année : <?php echo $promo->getAnnee();?></a></li>
 	<?php }?>
 	</ol>
 </section>

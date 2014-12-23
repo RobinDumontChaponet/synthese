@@ -30,19 +30,14 @@ if(empty($_GET['requ']))
 // Définitions des droits
 include_once(MODELS_INC."DisposeDeDAO.class.php");
 
-//$a = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
-//var_dump($a);
+$user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]))->getDroit();
 
-$user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]));
-
-//var_dump($user_auth);
-
-/*if(count($user_auth)==0) {
+if(!$user_auth['read']) {
 	header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
 	header("Status: 403 Forbidden");
 	$_SERVER['REDIRECT_STATUS'] = 403;
 	$inc = get_include_contents(CONTROLLERS_INC.'403.php');
-} else { // Inclusion controleur*/
+} else { // Inclusion controleur
 	if(is_file(CONTROLLERS_INC.$_GET['requ'].'.php'))
 		$inc = get_include_contents(CONTROLLERS_INC.$_GET['requ'].'.php');
 	else {
@@ -51,7 +46,7 @@ $user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->get
 		$_SERVER['REDIRECT_STATUS'] = 404;
 		$inc = get_include_contents(CONTROLLERS_INC.'404.php');
 	}
-//}
+}
 
 include('datas.transit.inc.php');
 
@@ -80,6 +75,7 @@ if($matches[1]) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
+    <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>" />
     <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
     <link rel="icon" href="style/favicon-96.png">
     <meta name="msapplication-TileColor" content="#FFF">

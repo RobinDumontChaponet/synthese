@@ -8,15 +8,15 @@
 	<fieldset>
 		<legend style="color:lightBlue">Liste des étudiants de la promotion</legend>
 		<ol>
-			<?php 
+			<?php
 			if($anciens != NULL) {
 				foreach($anciens as $ancien) {
-					echo '<li><a href="?requ=profil&id='.$ancien->getId().'">'.$ancien->getNomPatronymique().' '.$ancien->getPrenom().'</a></li>';
+					echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getNomPatronymique().' '.$ancien->getPrenom().'</a></li>';
 				}
 			} else {
 				echo '<p>Il n\'y a pas d\'étudiants dans cette promotion</p>';
 			}?>
 		</ol>
 	</fieldset>
-	
+
 </section>

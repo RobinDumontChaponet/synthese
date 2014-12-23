@@ -18,9 +18,9 @@
 								<td>'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</td>
 								<td>'.$eventInscriPost->getEvenement()->getDate().'</td>
 								<td>'.$eventInscriPost->getEvenement()->getCommentaire().'</td>
-								<td><a href="?requ=evenement&id='.$eventInscriPost->getEvenement()->getId().'">Voir l\'event</a></td>
+								<td><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">Voir l\'event</a></td>
 							</tr>';
-					} 
+					}
 				}?>
 			</table>
 		</div>
@@ -32,10 +32,10 @@
 			<ol>
 				<?php if ($eventsAnt != NULL) {
 					foreach($eventsAnt as $eventAnt) {
-						echo '<li><a href="?requ=evenement&id='.$eventAnt->getId().'"><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventAnt->getTypeEvenement()->getLibelle().'"/>
+						echo '<li><a href="evenement/'.$eventAnt->getId().'"><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventAnt->getTypeEvenement()->getLibelle().'"/>
 						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventAnt->getDate().'"/>
 						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventAnt->getCommentaire().'"/></a></li>';
-					} 
+					}
 				}?>
 			</ol>
 		</div>
@@ -60,7 +60,7 @@
 						echo '<li><label for="typeEvent">Type d\'événement :</label><input id="typeEvent" type="text" readonly="readonly" value="'.$eventAnt->getTypeEvenement()->getLibelle().'"/>
 						<label for="date">Date : </label><input id="date" type="text" readonly="readonly" value="'.$eventAnt->getDate().'"/>
 						<label for="commentaire">Commentaires : </label><input id="commentaire" type="text" readonly="readonly" value="'.$eventAnt->getCommentaire().'"/></li>';
-					} 
+					}
 				}?>
 			</ol>
 		</div>
