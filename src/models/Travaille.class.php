@@ -11,7 +11,7 @@ class Travaille
 
   public function __construct($entreprise, $poste, $ancien, $dateEmbaucheDeb, $dateEmbaucheFin)
   {
-    $this->setIdEntreprise($entreprise);
+    $this->setId($entreprise);
     $this->setIdPoste($poste);
     $this->setIdAncien($ancien);
     $this->setDateEmbaucheDeb($dateEmbaucheDeb);
