@@ -10,4 +10,6 @@ function __autoload($className) {
     include MODELS_INC.$className.'.class.php';
 }
 
+setlocale(LC_ALL, 'fr_FR.utf8', 'fr', 'fr_FR', 'fr_FR@euro', 'fr-FR', 'fra');
+
 ?>

@@ -1,8 +1,8 @@
-﻿<!--meta title="IUTbook | <?php if ($entreprise != NULL){echo $entreprise->getNom();} else {echo 'Entreprise non trouvé';}?>" css="style/animations.css"-->
+﻿<!--meta title="IUTbook | <?php echo (($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'); ?>" css="style/animations.css"-->
 
 <section id="content">
-	<?php if ($entreprise != NULL) {?>
-		<?php if ($user == "Ancien") {	//	Ne peut pas modifier?>
+	<?php if ($entreprise != NULL) {
+			if ($user == "Ancien") { /* Ne peut pas modifier */ ?>
 			<p>Page de l'entreprise : <?php echo $entreprise->getNom();?></p>
 			<ol>
 				<li><label for="companyName">Nom de l'entreprise :</label><input id="companyName" type="text" placeholder="Nom de l'entreprise" readonly="readonly" value="<?php echo $entreprise->getNom(); ?>"/></li>
@@ -12,7 +12,7 @@
 				<li><label for="city">Ville :</label><input id="city" type="text" placeholder="Ville" readonly="readonly" value="<?php echo $entreprise->getVille(); ?>"/></li>
 				<li><label for="country">Pays :</label><input id="country" type="text" placeholder="Pays" readonly="readonly" value="<?php echo $entreprise->getPays(); ?>"/></li>
 			</ol>
-		<?php } else if ($user == "Admin" || $user == "Professeur") { // Peut modifier?>
+		<?php } else if ($user == "Admin" || $user == "Professeur") { /*Peut modifier*/ ?>
 			<p>Page de l'entreprise : <?php echo $entreprise->getNom();?></p>
 			<ol>
 				<li><label for="companyName">Nom de l'entreprise :</label><input id="companyName" type="text" placeholder="Nom de l'entreprise" value="<?php echo $entreprise->getNom(); ?>"/></li>
@@ -23,7 +23,7 @@
 				<li><label for="country">Pays :</label><input id="country" type="text" placeholder="Pays" value="<?php echo $entreprise->getPays(); ?>"/></li>
 			</ol>
 		<?php }
-	} else {?>
+	} else { ?>
 		<p class="warning">Cette entreprise n'existe pas</p>
-	<?php }?>
+	<?php } ?>
 </section>
