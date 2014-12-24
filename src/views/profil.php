@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | Profil" css="style/animations.css"-->
+﻿<!--meta title="IUTbook | Profil de <?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?>" css="style/animations.css"-->
 
 <section id="content">
 <?php if ($ancien != NULL) {?>
@@ -81,8 +81,8 @@
 				<?php if($entreprises != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 				foreach($entreprises as $entreprise) {?>
 				<li>
-					<label for="entreprise">Entreprise : </label>
-					<input id="entreprise" type="text" placeholder="Entreprise" readonly="readonly" value="<?php echo $entreprise->getEntreprise()->getNom();?>"/>
+					<a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><label for="entreprise">Entreprise : </label>
+					<input id="entreprise" type="text" placeholder="Entreprise" readonly="readonly" value="<?php echo $entreprise->getEntreprise()->getNom();?>"/></a>
 					<label for="poste">Poste : </label>
 					<input id="poste" type="text" placeholder="Poste" readonly="readonly" value="<?php echo $entreprise->getPoste()->getLibelle();?>"/>
 					<label for="periode">Période : </label>

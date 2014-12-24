@@ -86,6 +86,7 @@ AddType application/octet-stream .zip
 	RewriteRule ^profil/([^/]+) %{ENV:BASE}/index.php?requ=profil&id=$1 [NC]
 	RewriteRule ^promotion/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1 [NC]
 	RewriteRule ^evenement/([^/]+) %{ENV:BASE}/index.php?requ=evenement&id=$1 [NC]
+	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
 
 
 	#### Generals

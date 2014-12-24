@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | Profil" css="style/animations.css"-->
+﻿<!--meta title="IUTbook | Événements" css="style/animations.css"-->
 
 <section id="content">
 	<?php if ($user == "Ancien") {?>

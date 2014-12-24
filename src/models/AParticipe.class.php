@@ -1,52 +1,46 @@
 <?php
-
 class AParticipe
 {
+//	VARIABLES
+
 	private $ancien;
 	private $evenement;
 
-	public function __construct($ancien, $evenement)
-	{
+//	CONSTRUCTORS
+
+	public function __construct($ancien, $evenement) {
 		$this->setAncien($ancien);
 		$this->setEvenement($evenement);
 	}
 
-	//-------------------------GETTER------------------------------------------
-	public function getAncien()
-	{
+//	GETTERS & SETTERS
+
+	public function getAncien() {
 		return $this->ancien;
 	}
 
-	public function getEvenement()
-	{
+	public function getEvenement() {
 		return $this->evenement;
 	}
-	//-------------------------SETTER------------------------------------------
-	public function setAncien($ancien)
-	{
-		if ($ancien != null)
-		{
+	
+	public function setAncien($ancien) {
+		if ($ancien != NULL)
 			$this->ancien = $ancien;
-		} else {
-			throw new Exception("Ancien dans AParticipe est incorrect !");
-		}
+		else
+			throw new Exception("AParticipe.class.php : Ancien est NULL : ".$ancien);
 	}
 
-	public function setEvenement($evenement)
-	{
-		if ($evenement != null)
-		{
+	public function setEvenement($evenement) {
+		if ($evenement != NULL)
 			$this->evenement = $evenement;
-		} else {
-			throw new Exception("Evenement dans AParticipe est incorrect !");
-		}
+		else
+			throw new Exception("AParticipe.class.php : Evenement est NULL : ".$evenement);
 	}
-	//-------------------------toString----------------------------------------
-	public function __toString()
-	{
+
+//	TO STRING
+
+	public function __toString() {
 		return "Ancien : ".$this->ancien." Evenement : ".$this->evenement;
 	}
-
 }
-
 ?>
