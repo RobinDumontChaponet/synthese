@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | Profil de <?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?>" css="style/animations.css"-->
+﻿<!--meta title="IUTbook | <?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css"-->
 
 <section id="content">
 <?php if (isset($ancien) && $ancien != NULL) {?>
@@ -93,6 +93,6 @@
 		</fieldset>
 	</form>
 <?php } else { ?>
-	<p class="warning">Le profil n'existe pas</p>
+	<p class="warning">Ce profil n'existe pas</p>
 <?php }?>
 </section>
