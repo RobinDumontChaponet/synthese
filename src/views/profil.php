@@ -1,7 +1,7 @@
 ﻿<!--meta title="IUTbook | Profil de <?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?>" css="style/animations.css"-->
 
 <section id="content">
-<?php if ($ancien != NULL) {?>
+<?php if (isset($ancien) && $ancien != NULL) {?>
 	<p style="font-size:25px"><?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?></p>
 	<form action="index.php?modifier" method="post">
 		<fieldset>
