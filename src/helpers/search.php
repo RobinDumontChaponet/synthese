@@ -16,24 +16,31 @@ $listeSuggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['prom
 echo '<personnes>';
 
 foreach($listeSuggestions as $suggestion) {
-	//var_dump($suggestion);
-	$diplomeDUT = AEtudieDAO::getByAncien($suggestion->getId());
-	//var_dump($diplomeDUT);
-	$diplomePostDUT = PossedeDAO::getByAncien($suggestion->getId());
+	var_dump($suggestion);
+
+	$aEtudie = AEtudieDAO::getByAncien($suggestion->getId());
+	$possede = PossedeDAO::getByAncien($suggestion->getId());
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion->getId());
-	$specialisation = $estSpecialise->getSpecialisation();
+	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 
 	echo '<personne>';
-	echo '<nom>'.$suggestion->getNom().'</nom>';
+	echo '<nom>'.$suggestion->getNomPatronymique().'</nom>';
 	echo '<prenom>'.$suggestion->getPrenom().'</prenom>';
-	echo '<promotion>'.$diplomeDUT->getPromotion()->getId().'</promotion>';
-	//echo '<diplomedut>'.$diplomeDUT->getId().'</diplomedut>';
-	echo '<typesspecialisations>'.$estSpecialise->getSpecialisation()->getTypeSpecialisation()->getId().'</typesspecialisations>';
-	echo '<specialisation>'.$estSpecialise->getSpecialisation()->getId().'</specialisation>';
-	echo '<diplomepostdut>'.$diplomePostDUT->getId().'</diplomepostdut>';
-	echo '<etablissementpostdut>'.$suggestion->getEtablissement()->getId().'</etablissementpostdut>';
+	echo '<promotion>'.$aEtudie->getPromotion()->getId().'</promotion>';
+	echo '<diplomedut>'.$aEtudie->getDiplomeDUT()->getId().'</diplomedut>';
+	echo '<typesspecialisations>'.(($specialisation!=null)?$specialisation->getTypeSpecialisation()->getId():'').'</typesspecialisations>';
+	echo '<specialisation>'.(($specialisation!=null)?$specialisation->getId():'').'</specialisation>';
+
+
+
+	///////////////////////// Comment fait-on ici ? On a un array de diplômes...
+	//echo '<diplomepostdut>',$possede[0]->getDiplomePostDUT()->getId(),'</diplomepostdut>';
+	//echo '<etablissementpostdut>'.$possede[0]->getEtablissement()->getId().'</etablissementpostdut>';
+
+
+	///////////////////////// C'est bien de "faire" la recherche, mais décider d'où sort (le booléan, je le rappel) le travail fait parti du travail à faire justement...
 	echo '<travail></travail>';
-	echo '</personne>';
+	echo '</personne>'."\n";
 }
 
 echo '</personnes>';

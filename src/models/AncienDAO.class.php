@@ -11,16 +11,14 @@ require_once(MODELS_INC."TypeSpecialisation.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
 require_once(MODELS_INC."ParentsDAO.class.php");
 
-class AncienDAO
-{
+class AncienDAO {
 	/**
 	 * Retourne la liste de tous les anciens enregistrés dans la bdd
 	 * @returns Array liste de type ancien
 	 */
-	public static function getAll()
-	{
+	public static function getAll() {
         $lstAncien=array();
-		try{
+		try {
 			// Appel de la connexion
 			$bdd=connect();
 			$req=$bdd->query("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne ORDER BY nomUsage");
@@ -31,7 +29,7 @@ class AncienDAO
 			}
 
 			return $lstAncien;
-		}catch(PDOException $e){
+		} catch(PDOException $e) {
 			die('error get all ancien '.$e->getMessage().'<br>');
 		}
 
@@ -42,11 +40,9 @@ class AncienDAO
 	 * @param   Number $id Id de l'ancien à trouver
 	 * @returns Object Objet de type ancien trouvé dans la bdd
 	 */
-	public static function getById($id)
-	{
-		if (is_numeric($id))
-		{
-			try{
+	public static function getById($id) {
+		if (is_numeric($id)) {
+			try {
 				$bdd=connect();
 				$req=$bdd->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
 				$req->execute(array($id));
@@ -54,10 +50,10 @@ class AncienDAO
                 $parents=ParentsDAO::getById($ancien['idParent']);
 				$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 				return $ancienObj;
-                }else{
+                } else {
                     return null;
                 }
-			}catch(PDOException $e){
+			} catch(PDOException $e) {
 				die('error get id ancien '.$e->getMessage().'<br>');
 			}
 		}
@@ -66,14 +62,14 @@ class AncienDAO
     public static function getAncienByIdPromo($id){
 
             $lst=array();
-            try{
+            try {
                 $bdd=connect();
                 $req=$bdd->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
                 $req->execute(array($id));
-                while($res=$req->fetch()){
+                while($res=$req->fetch()) {
                     $lst[]=AncienDAO::getById($res['idPersonne']);
                 }
-            }catch(PDOException $e){
+            } catch(PDOException $e) {
                 die('Error getAncienByIdPromo dans AncienDAO.class.php : '.$e->getMessage().'<br>');
             }
             return $lst;
@@ -82,53 +78,48 @@ class AncienDAO
 
 	public static function create(&$ancien)
 	{
-		if (gettype($ancien)=="Ancien")
-		{
-			try{
+		if (gettype($ancien)=="Ancien") {
+			try {
 				$bdd=connect();
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req=$bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
                 $ancien->setId($idPers);
                 return $idPers;
-			}catch(PDOException $e){
+			} catch(PDOException $e) {
 				die('error create ancien '.$e->getMessage().'<br>');
 			}
-		}else{
+		} else {
 			die('paramètre de type ancien requis');
 		}
 	}
 
-	public static function update($ancien)
-	{
-		if (gettype($ancien)=="Ancien")
-		{
-			try{
+	public static function update($ancien) {
+		if (gettype($ancien)=="Ancien") {
+			try {
 				$bdd=connect();
 				PersonneDAO::update(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req=$bdd->prepare("UPDATE `ancien` SET `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
 				$req->execute(array($ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
-			}catch(PDOException $e){
+			} catch(PDOException $e){
 				die('error update ancien '.$e->getMessage().'<br>');
 			}
-		}else{
+		} else {
 			die('paramètre de type ancien requis');
 		}
 	}
 
-	public static function delete($ancien)
-	{
-		if (gettype($ancien)=="Ancien")
-		{
-			try{
+	public static function delete($ancien) {
+		if (gettype($ancien)=="Ancien") {
+			try {
 				$bdd=connect();
 				PersonneDAO::delete(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req=$bdd->prepare("DELETE FROM `ancien` WHERE `idPersonne`=?");
 				$req->execute(array($ancien->getId()));
-			}catch(PDOException $e){
+			} catch(PDOException $e) {
 				die('error delete ancien '.$e->getMessage().'<br>');
 			}
-		}else{
+		} else {
 			die('paramètre de type ancien requis');
 		}
 	}
@@ -146,86 +137,76 @@ class AncienDAO
 	 * @param   Boolean $trav        [[Description]]
 	 * @returns Object   [[Description]]
 	 */
-	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav)
-	{
+	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav) {
 		$lst=array();
 		$args=array();
-        $select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,'sexe','idParent','dateNaissance' ";
+        $select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
         $from="FROM `ancien` A, `personne` P";
         $where="WHERE P.idPersonne=A.idPersonne";
 
-		if($nom != null)
-		{
+		if($nom != null) {
 			$where.=" AND P.nomUsage LIKE ? OR P.nomPatronymique LIKE ? ";
 			$args[]='%'.$nom.'%';
             $args[]='%'.$nom.'%';
 		}
-		if($prn!=null)
-		{
+		if($prn!=null) {
 			$where.=" AND P.prenom LIKE ? ";
 			$args[]='%'.$prn.'%';
 		}
-		if($promo!=null)
-		{
-            if(gettype($promo)=="array"){
+		if($promo!=null) {
+            if(gettype($promo)=="array") {
                 $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo AND promo.annee>=? AND promo.annee<=? ";
                 $from.=" ,`aEtudie` Etud,`promotion` promo";
 			     $args[]=$promo[0];
                 $args[]=$promo[1];
-            }else{
+            } else {
                 die('erreur type promo dans search ancien');
             }
 		}
-		if($diplome!=null)
-		{
+		if($diplome!=null) {
 			$where.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
             if($promo==null){ $from.=" ,`aEtudie` Etud"; }
 			$args[]=$diplome;
 		}
-		if($spe!=null)
-		{
+		if($spe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
             $from.=" , `estSpecialise` Spe";
 			$args[]=$spe;
 		}
-		if($typeSpe!=null)
-		{
+		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
             if($spe==null){$from.=" , `estSpecialise` Spe"; }
             $from.=", `specialisation` Special";
 			$args[]=$typeSpe;
 		}
-		if($PostDut!=null)
-		{
+		if($PostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE '%?%' ";
             $from.=" ,`possede` Poss,`diplomePostDUT` DPost";
 			$args[]=$PostDut;
 		}
-		if($etabPostDut!=null)
-		{
+		if($etabPostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE '%?%' ";
             if($PostDut==null){ $from.=" ,`possede` Poss"; }
             $from.=", `etablissement` etab";
 			$args[]=$etabPostDut;
 		}
-        if($trav==true){
+        if($trav==true) {
              $where.=" AND trav.idPersonne=P.idPersonne AND trav.EmbaucheFin=NULL GROUP BY P.idPersonne";
             $from.=" , `travaille` trav";
         }
         $req=$select." ".$from." ".$where;
         //var_dump($req);
-		try{
+		try {
 			$bdd=connect();
 			$state=$bdd->prepare($req);
             //var_dump($args);
 			$state->execute($args);
-			while($ancien=$state->fetch())
-			{
+			while($ancien=$state->fetch()) {
                 $parents=ParentsDAO::getById($ancien['idParent']);
 				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
                 //var_dump("test");
 			}
-		}catch(PDOException $e){
+		} catch(PDOException $e) {
 			die('error search ancien '.$e->getMessage().'<br>');
 		}
 		return $lst;

@@ -14,7 +14,10 @@ function link_ajax() {
 			etablissementpostdut = document.getElementById('etabPostDUT').value,
 			travail = document.getElementById('travail').value;
 
-			xhr.open('GET', 'helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail, true);
+
+
+			////////////// ajouter "encodeURI(...)   !!!!!!!!!!!!!
+			xhr.open('GET', encodeURI('helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
 
 			xhr.onreadystatechange = affichageResultat;
 
@@ -34,7 +37,7 @@ function affichageResultat() {
 			/*root = xmlresponse.documentElement;
 			listePersonnes = root.getElementsByTagName('personne');
 
-			table = '<table border="1">';
+			table = '<table>';
 			table += '<tr> <th>Nom</th> <th>Prenom</th> <th>promotion</th> <th>diplôme DUT</th> <th>Type specialisation</th> <th>Spécialisation</th> <th>Diplôme post-DUT</th> <th>Etablissement</th> <th>Travail</th>  </tr>';
 			for(i = 0; i < listePersonnes.length; i++) {
 				table += '<tr>';

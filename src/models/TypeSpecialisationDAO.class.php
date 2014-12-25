@@ -4,15 +4,13 @@ require_once("dbConnection.inc.php");
 require_once(MODELS_INC."TypeSpecialisation.class.php");
 
 
-class TypeSpecialisationDAO
-{
+class TypeSpecialisationDAO {
 
-	public static function getAll()
-	{
+	public static function getAll() {
 		try{
 			$bdd=connect();
 			$req=$bdd->query("SELECT `idTypeSpe`, `libelle` FROM `typeSpecialisation` ORDER BY libelle");
-			while($type=$req->fetch()){
+			while ($type=$req->fetch()) {
 				$lstObj[]=new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
 			}
 			return $lstObj;
@@ -21,33 +19,30 @@ class TypeSpecialisationDAO
 		}
 	}
 
-	public static function getById($id)
-	{
-		try{
+	public static function getById($id) {
+		try {
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT `idTypeSpe`, `libelle` FROM `typeSpecialisation` WHERE idTypeSpe=?");
 			$req->execute(array($id));
-			if($type=$req->fetch()){
-			 return new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
-            }else{
-                return null;
-            }
+			if ($type=$req->fetch()) {
+				return new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
+			} else {
+				return null;
+			}
 		} catch(PDOException $e) {
 			die('error get id spe '.$e->getMessage().'<br>');
 		}
 
 	}
 
-	public static function create(&$type)
-	{
-		if (gettype($type)=="TypeSpecialisation")
-		{
-			try{
+	public static function create(&$type) {
+		if (gettype($type)=="TypeSpecialisation") {
+			try {
 				$bdd->connect();
 				$req=$bdd->prepare("INSERT INTO `typeSpecialisation`(`libelle`) VALUES (?)");
 				$req->execute(array($type->getLibelle()));
 				$type->setId($bdd->LastInsertId());
-                return $type->getId();
+				return $type->getId();
 			} catch(PDOException $e) {
 				die('error create spe '.$e->getMessage().'<br>');
 			}
@@ -56,10 +51,8 @@ class TypeSpecialisationDAO
 		}
 	}
 
-	public static function update($type)
-	{
-		if (gettype($type)=="TypeSpecialisation")
-		{
+	public static function update($type) {
+		if (gettype($type)=="TypeSpecialisation") {
 			try {
 				$bdd->connect();
 				$req=$bdd->prepare("UPDATE `typeSpecialisation` SET `libelle`=? WHERE `idTypeSpe`=?");
@@ -72,10 +65,8 @@ class TypeSpecialisationDAO
 		}
 	}
 
-	public static function delete($type)
-	{
-		if (gettype($type)=="TypeSpecialisation")
-		{
+	public static function delete($type) {
+		if (gettype($type)=="TypeSpecialisation") {
 			try {
 				$bdd->connect();
 				$req=$bdd->prepare("DELETE FROM `typeSpecialisation` WHERE `idTypeSpe`=?");
