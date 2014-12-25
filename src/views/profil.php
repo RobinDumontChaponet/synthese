@@ -25,7 +25,7 @@
 				<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId()) { // Si l'utilisateur est celui log, modif possible?>
 				<ol>
 					<li><label for="lastName">Nom d'usage :</label><input id="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom(); ?>"/></li>
-					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php echo $ancien->getSexe(); ?>"/></li>
+					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php if ($ancien->getSexe() == "m") echo "Homme"; else if ($ancien->getSexe() == "f") echo "Femme";?>"/></li>
 					<li><label for="birthday">Date de naissance : </label><input id="birthday" type="text" readonly="readonly" value ="<?php echo $ancien->getDateNaissance(); ?>"/></li>
 					<li><label for="address1">Adresse :</label><input id="address1" type="text" placeholder="Adresse" value="<?php echo $ancien->getAdresse1(); ?>"/><label for="address2">Adresse 2 :</label><input id="address2" type="text" placeholder="Adresse 2" value="<?php echo $ancien->getAdresse2(); ?>"/></li>
 					<li><label for="postalCode">Code postal :</label><input id="postalCode" type="text" placeholder="Code postal" value="<?php echo $ancien->getCodePostal(); ?>"/><label for="city">Ville :</label><input id="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/><label for="country">Pays :</label><input id="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li>
@@ -35,7 +35,7 @@
 				<?php } else { //Si c'est un autre profil que celui de l'utilisateur log, readonly partout?>
 				<ol>
 					<li><label for="lastName">Nom d'usage :</label><input id="lastName" type="text" placeholder="Deuxième nom" readonly="readonly" value="<?php echo $ancien->getNom(); ?>"/></li>
-					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php echo $ancien->getSexe(); ?>"/></li>
+					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php if ($ancien->getSexe() == "m") echo "Homme"; else if ($ancien->getSexe() == "f") echo "Femme";?>"/></li>
 					<li><label for="birthday">Date de naissance : </label><input id="birthday" type="text" readonly="readonly" value ="<?php echo $ancien->getDateNaissance(); ?>"/></li>
 					<li><label for="address1">Adresse :</label><input id="address1" type="text" placeholder="Adresse" readonly="readonly" value="<?php echo $ancien->getAdresse1(); ?>"/><label for="address2">Adresse 2 :</label><input id="address2" type="text" placeholder="Adresse 2" readonly="readonly" value="<?php echo $ancien->getAdresse2(); ?>"/></li>
 					<li><label for="postalCode">Code postal :</label><input id="postalCode" type="text" placeholder="Code postal" readonly="readonly" value="<?php echo $ancien->getCodePostal(); ?>"/><label for="city">Ville :</label><input id="city" type="text" placeholder="Aucune ville renseignée" readonly="readonly" value="<?php echo $ancien->getVille(); ?>"/><label for="country">Pays :</label><input id="country" type="text" placeholder = "Aucun pays renseigné" readonly="readonly" value="<?php echo $ancien->getPays(); ?>"/></li>
