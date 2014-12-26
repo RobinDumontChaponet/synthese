@@ -35,7 +35,7 @@ class DiplomePostDUTDAO
 			($res=$req->fetch())
 			{
 				$dom=DomaineDAO::getById($res['idDomaine']);
-				return new DiplomeDUT($res['idDiplomePost'], $res['libelle'], $dom);
+				return new DiplomePostDUT($res['idDiplomePost'], $res['libelle'], $dom);
 			}
 		}catch(PDOException $e)
 		{

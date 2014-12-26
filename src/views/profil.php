@@ -59,7 +59,7 @@
 					if ($diplomesPost != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 						foreach($diplomesPost as $diplomePost) {?>	
 							<li>
-								<a href="diplome/"><label for="diplomePost">Diplôme : </label>
+								<a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><label for="diplomePost">Diplôme : </label>
 								<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/></a>
 								<label for="etablissement">Établissement : </label>
 								<input id="etablissement" type="text" placeholder="Établissement" readonly="readonly" value="<?php echo $diplomePost->getEtablissement()->getNom();?>"/>

@@ -1,6 +1,7 @@
 <?php
-	if (isset($_GET['id']))
-		$diplomes = PossedeDAO::getById($_GET['id']);
+if (isset($_GET['id']))
+	$diplome = DiplomePostDUTDAO::getById($_GET['id']);
+$user = $_SESSION[syntheseUser]->getTypeProfil()->getLibelle();
 
 include(VIEWS_INC.'diplome.php');
 ?>
