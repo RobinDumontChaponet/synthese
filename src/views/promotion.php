@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | Promotion" css="style/animations.css"-->
+﻿<!--meta title="Promotion" css="style/animations.css"-->
 <section id="content">
 	<h1 style="color:lightBlue">Page de la promotion année <?php echo $promo->getAnnee();?></h1>
 	<div>

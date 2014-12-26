@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | <?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css"-->
+﻿<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css"-->
 
 <section id="content">
 	<?php if (isset($ancien) && $ancien != NULL) {?>
@@ -13,7 +13,7 @@
 					echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
 				else
 					echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';?>
-				<?php 
+				<?php
 				/*echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageProfil).'" alt="Image de profil"/>';
 				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de trombinoscope"/>'*/;
 				?>
@@ -55,9 +55,9 @@
 						<label for="promotion">Promotion : </label>
 						<input id="promotion" type="text" placeholder="Promotion" readonly="readonly" value="<?php echo $diplomeDUT->getPromotion()->getAnnee();?>"/>
 					</li>
-					<?php } 
+					<?php }
 					if ($diplomesPost != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
-						foreach($diplomesPost as $diplomePost) {?>	
+						foreach($diplomesPost as $diplomePost) {?>
 							<li>
 								<a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><label for="diplomePost">Diplôme : </label>
 								<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/></a>

@@ -1,4 +1,4 @@
-<!--meta title="IUTbook | Recherche" css="style/animations.css" js="script/search.js"-->
+<!--meta title="Recherche" css="style/animations.css" js="script/search.js"-->
 <section id="content">
 	<div id="criteres">
 		<label for="nom" >Nom :</label>

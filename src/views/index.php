@@ -1,4 +1,4 @@
-<!--meta title="connectIT!"-->
+<!--meta title=""-->
 <div id="content">
   <article>
 	<h1>Temporairement...</h1>

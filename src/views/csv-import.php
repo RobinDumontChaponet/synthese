@@ -1,4 +1,4 @@
-<!--meta title="IUTbook | Importer promo .csv" css="style/animations.css" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
+<!--meta title="Importer promo .csv" css="style/animations.css" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
 <section id="content">
   <div id="file">
   	<fieldset id="add" class="button">

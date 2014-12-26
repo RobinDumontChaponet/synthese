@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | <?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/animations.css"-->
+﻿<!--meta title="<?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/animations.css"-->
 <section id="content">
 	<?php if ($etablissement != NULL) {
 			if ($user == "Ancien") { /* Ne peut pas modifier */ ?>

@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | Promotions" css="style/animations.css"-->
+﻿<!--meta title="Promotions" css="style/animations.css"-->
 <section id="content">
   <article>
 	<h1>Promotions</h1>

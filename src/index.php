@@ -51,6 +51,7 @@ if($matches[1]) {
 	$link=''; $script=''; $onload='';
 	preg_match_all("/(\\S+)=[\"']?((?:.(?![\"']?\\s+(?:\\S+)=|[\"']))+.)[\"']?/", $matches[1], $tag);
 	$tag=rearrange($tag);
+	if($tag)
 	foreach($tag as $rule) {
 		switch($rule[1]){
 			case 'title' : $title=$rule[2]; break;
@@ -69,7 +70,7 @@ if($matches[1]) {
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $title; ?></title>
+    <title>connectIT!<?php if(!empty($title)) echo ' | '.$title; ?></title>
     <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>" />
     <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
     <link rel="icon" href="style/favicon-96.png">

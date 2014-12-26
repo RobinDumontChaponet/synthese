@@ -1,4 +1,4 @@
-﻿<!--meta title="IUTbook | <?php echo (($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css"-->
+﻿<!--meta title="<?php echo (($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css"-->
 
 <section id="content">
 	<?php if ($diplome != NULL) {
