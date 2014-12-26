@@ -33,7 +33,7 @@ class PossedeDAO {
 			$req->execute(array($id));
 			while ($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
-				$dip=DiplomePostDUtDAO::getById($res['idDiplomePost']);
+				$dip=DiplomePostDUTDAO::getById($res['idDiplomePost']);
 				$etab=EtablissementDAO::getById($res['idEtablissement']);
 				$lst[]=new Possede($ancien, $etab, $dip, $res['resultat'], $res['dateDeb'], $res['dateFin']);
 			}
