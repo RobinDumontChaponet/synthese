@@ -67,7 +67,7 @@
 								<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 								<label for="periode">Période : </label>
 								<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
-								<aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside>
+								<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId()) {?><aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside><?php }?>
 							</li>
 						<?php }
 					}
