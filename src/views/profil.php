@@ -69,9 +69,9 @@
 								<input id="periode" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
 								<aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside>
 							</li>
-						<?php }?>
-						<li><aside><a href="#">Ajouter +</a></aside></li>
-					<?php }?>
+						<?php }
+					}?>
+					<li><aside><a href="#">Ajouter +</a></aside></li>
 				</ol>
 			</fieldset>
 			<fieldset>
@@ -89,6 +89,7 @@
 							</li>
 						<?php }
 					}?>
+					<li><aside><a href="#">Ajouter +</a></aside></li>
 				</ol>
 			</fieldset>
 		</form>

@@ -1,7 +1,7 @@
 ﻿<!--meta title="IUTbook | Événements" css="style/animations.css"-->
 
 <section id="content">
-	<?php if ($user == "Ancien") {?>
+	<?php if ($user == "Ancien" || $user == "Professeur") {?>
 		<div>
 			<h2>Événements inscrits</h2>
 			<table style="border:1px solid black">
@@ -52,7 +52,7 @@
 				}?>
 			</ol>
 		</div>
-	<?php } else if ($user == "Admin" || $user == "Professeur") {?>
+	<?php } else if ($user == "Admin") {?>
 		<div>
 			<h2>Événements à venir</h2>
 			<ol>
