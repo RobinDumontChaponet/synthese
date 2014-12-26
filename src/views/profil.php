@@ -70,8 +70,10 @@
 								<aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside>
 							</li>
 						<?php }
-					}?>
-					<li><aside><a href="#">Ajouter +</a></aside></li>
+					}
+					if ($_SESSION[syntheseUser]->getId() == $ancien->getId()) {?>
+						<li><aside><a href="#">Ajouter +</a></aside></li>
+					<?php }?>
 				</ol>
 			</fieldset>
 			<fieldset>
@@ -88,8 +90,10 @@
 								<input id="periode" type="text" placeholder="Période" readonly="readonly" value="<?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?>"/>
 							</li>
 						<?php }
-					}?>
-					<li><aside><a href="#">Ajouter +</a></aside></li>
+					}
+					if ($_SESSION[syntheseUser]->getId() == $ancien->getId()) {?>
+						<li><aside><a href="#">Ajouter +</a></aside></li>
+					<?php }?>
 				</ol>
 			</fieldset>
 		</form>
