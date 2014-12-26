@@ -25,12 +25,12 @@ class PossedeDAO {
 		return $lst;
 	}
 
-	public static function getByAncien($id) {
+	public static function getByAncien($ancien) {
 		$lst=array();
 		try {
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT * FROM possede WHERE idPersonne=?");
-			$req->execute(array($id));
+			$req->execute(array($ancien->getId()));
 			while ($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
 				$dip=DiplomePostDUTDAO::getById($res['idDiplomePost']);

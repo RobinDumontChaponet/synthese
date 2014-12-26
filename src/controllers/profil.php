@@ -10,8 +10,8 @@ if ($personne != NULL)
 if ($ancien != NULL) {
 	$imageProfil = $ancien->getImageProfil();
 	$imageTrombi = $ancien->getImageTrombi();
-	$diplomeDUT = AEtudieDAO::getByAncien($ancien->getId());
-	$diplomesPost = PossedeDAO::getByAncien($ancien->getId());
+	$diplomeDUT = AEtudieDAO::getByAncien($ancien);
+	$diplomesPost = PossedeDAO::getByAncien($ancien);
 	foreach($diplomesPost as $diplomePost)		//	Pourquoi j'ai des objets object(DiplomeDUT)#19 wtf ?
 		var_dump($diplomePost->getDiplomePostDUT());
 	// echo $diplomePost->getDiplomePostDUT->getId()

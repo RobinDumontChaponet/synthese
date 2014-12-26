@@ -31,12 +31,12 @@ class AEtudieDAO
 		}
 	}
 
-	public static function getByAncien($id)
+	public static function getByAncien($ancien)
 	{
 		try{
 			$bdd=connect();
 			$req=$bdd->prepare("SELECT * FROM aEtudie WHERE idPersonne=?");
-			$req->execute(array($id));
+			$req->execute(array($ancien->getId()));
 			$result=$req->fetch();
 			if
 			($result!=null)
