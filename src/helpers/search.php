@@ -16,9 +16,9 @@ $listeSuggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['prom
 echo '<personnes>';
 
 foreach($listeSuggestions as $suggestion) {
-	var_dump($suggestion);
+	//var_dump($suggestion);
 
-	$aEtudie = AEtudieDAO::getByAncien($suggestion;
+	$aEtudie = AEtudieDAO::getByAncien($suggestion);
 	$possede = PossedeDAO::getByAncien($suggestion);
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
