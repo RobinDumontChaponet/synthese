@@ -12,6 +12,9 @@ if ($ancien != NULL) {
 	$imageTrombi = $ancien->getImageTrombi();
 	$diplomeDUT = AEtudieDAO::getByAncien($ancien->getId());
 	$diplomesPost = PossedeDAO::getByAncien($ancien->getId());
+	foreach($diplomesPost as $diplomePost)		//	Pourquoi j'ai des objets object(DiplomeDUT)#19 wtf ?
+		var_dump($diplomePost->getDiplomePostDUT());
+	// echo $diplomePost->getDiplomePostDUT->getId()
 	$entreprises = TravailleDAO::getByAncien($ancien->getId());
 }
 

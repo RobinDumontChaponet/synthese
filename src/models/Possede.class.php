@@ -94,14 +94,8 @@ class Possede
         $this->resultat=$res;    
     }
     
-    public function setDateFin($dateFin)
-    {
-        if($dateFin != null)
-        {
-            $this->dateFin = $dateFin;
-        }else{
-            throw new Exception("Date fin dans Possede est nulle !");
-        }
+    public function setDateFin($dateFin) {
+		$this->dateFin = $dateFin;
     }
     
     //----------------------------------------------toString---------------------------------------
