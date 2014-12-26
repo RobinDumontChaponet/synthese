@@ -90,9 +90,5 @@ if($matches[1]) {
     <div id="wrapper">
 	    <?php echo $inc; ?>
 	</div>
-    <footer>
-        <p>connectIT! - projet de synthèse - 2014</p>
-    </footer>
-    <script type="text/javascript"></script>
 </body>
 </html>

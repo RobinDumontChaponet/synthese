@@ -349,6 +349,8 @@ footer {
 	padding: -3em 1.875em 0;
 	width: 86%;
 	max-width: 76em;
+
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
 }
 footer p {
 	border-top: 1px solid #ececec;
