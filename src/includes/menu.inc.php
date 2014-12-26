@@ -1,11 +1,30 @@
 <?php
-//switch ($_SESSION['trombiUser']->getAuth()->getId()) {
+switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
+	case 1: // isAdmin_
+		$items = array(
+			//'profil' => '<a id="aProfil" href="profil" title="Voir son profil"><span>Profil</span></a>',
+			'promotions' => '<a id="aPromo" href="promotions" title="Voir sa ou les promotions"><span>Promotions</span></a>',
+			'evenements' => '<a id="aEvents" href="evenements" title="Voir les évènements"><span>Évènements</span></a>',
+			'recherche' => '<a id="aSearch" href="recherche" title="Faire une recherche..."><span>Recherche</span></a>'
+		);
+	break;
+	case 2: // isTeacher_
 		$items = array(
 			'profil' => '<a id="aProfil" href="profil" title="Voir son profil"><span>Profil</span></a>',
 			'promotions' => '<a id="aPromo" href="promotions" title="Voir sa ou les promotions"><span>Promotions</span></a>',
 			'evenements' => '<a id="aEvents" href="evenements" title="Voir les évènements"><span>Évènements</span></a>',
 			'recherche' => '<a id="aSearch" href="recherche" title="Faire une recherche..."><span>Recherche</span></a>'
 		);
+	break;
+	case 3: // isFormerStudent_
+		$items = array(
+			'profil' => '<a id="aProfil" href="profil" title="Voir son profil"><span>Profil</span></a>',
+			'promotions' => '<a id="aPromo" href="promotions" title="Voir sa ou les promotions"><span>Promotions</span></a>',
+			'evenements' => '<a id="aEvents" href="evenements" title="Voir les évènements"><span>Évènements</span></a>',
+			'recherche' => '<a id="aSearch" href="recherche" title="Faire une recherche..."><span>Recherche</span></a>'
+		);
+	break;
+}
 ?>
 <header>
   <h1 <?php if($_GET['requ']=='index' || $_GET['requ']=='') echo' class="active"';?>><a href="index.php" title="Accueil">connectIT!</a></h1>
