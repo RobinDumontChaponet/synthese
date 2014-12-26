@@ -61,8 +61,8 @@
 							<li>
 								<a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><label for="diplomePost">Diplôme : </label>
 								<input id="diplomePost" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?>"/></a>
-								<label for="etablissement">Établissement : </label>
-								<input id="etablissement" type="text" placeholder="Établissement" readonly="readonly" value="<?php echo $diplomePost->getEtablissement()->getNom();?>"/>
+								<a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><label for="etablissement">Établissement : </label>
+								<input id="etablissement" type="text" placeholder="Établissement" readonly="readonly" value="<?php echo $diplomePost->getEtablissement()->getNom();?>"/></a>
 								<label for="resultat">Résultat : </label>
 								<input id="resultat" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 								<label for="periode">Période : </label>
