@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_GET['id']))
 	$personne = PersonneDAO::getById($_GET['id']);
 else
@@ -15,4 +16,5 @@ if ($ancien != NULL) {
 	$entreprises = TravailleDAO::getByAncien($ancien->getId());
 }
 include(VIEWS_INC.'profil.php');
+
 ?>
