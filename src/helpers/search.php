@@ -18,9 +18,9 @@ echo '<personnes>';
 foreach($listeSuggestions as $suggestion) {
 	var_dump($suggestion);
 
-	$aEtudie = AEtudieDAO::getByAncien($suggestion->getId());
-	$possede = PossedeDAO::getByAncien($suggestion->getId());
-	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion->getId());
+	$aEtudie = AEtudieDAO::getByAncien($suggestion;
+	$possede = PossedeDAO::getByAncien($suggestion);
+	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 
 	echo '<personne>';
