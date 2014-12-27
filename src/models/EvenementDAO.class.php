@@ -85,7 +85,7 @@ class EvenementDAO
                     (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
             $req->execute(array($obj->getId()));
             while($res=$req->fetch()){
-                $lst[]=getById($res['idEvenement']);
+                $lst[]=EvenementDAO::getById($res['idEvenement']);
             }
             return $lst;
         }else{
