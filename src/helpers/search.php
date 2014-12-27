@@ -36,9 +36,33 @@ foreach($listeSuggestions as $suggestion) {
 	///////////////////////// Comment fait-on ici ? On a un array de diplômes...
 	//echo '<diplomepostdut>',$possede[0]->getDiplomePostDUT()->getId(),'</diplomepostdut>';
 	//echo '<etablissementpostdut>'.$possede[0]->getEtablissement()->getId().'</etablissementpostdut>';
+	
+	/*Ce que t'as fait complique les choses. Je ne comprends pas pourquoi t'as mis des getId :/ pourquoi 
+	Ne pas afficher tout simplement le libelle directement*/
+	
+	//Moi (Youssef), ce que je ferai, c'est
+	echo '<diplomepostdut>';
+		$listeDiplomesDut = "";
+		for($i = 0; $i < )
+		{
+			$listeDiplomesDut .= $possede[i]->getDiplomePostDUT()->getLibelle()." ";
+		}
+	echo '</diplomepostdut>';
+	
+	//Cela donnera directement le resultat a afficher dans le tableau... Je trouve que c'est beaucoup plus simple
+	//On fait la meme chose pour les etablissements
+	echo '<etablissementpostdut>';
+		$listeDiplomesDut = "";
+		for($i = 0; $i < )
+		{
+			$listeDiplomesDut .= $possede[0]->getEtablissement()->getNom()." ";
+		}
+	echo '</etablissementpostdut>';
+	//J'aurai egalement enlevé tes getId pour promotion et diplomedut et mis directement les libellés
 
 
 	///////////////////////// C'est bien de "faire" la recherche, mais décider d'où sort (le booléan, je le rappel) le travail fait parti du travail à faire justement...
+	//Je vais la faire samedi, je n'ai pas eu le temps, je suis rentré au Maroc, j'ai dû voir ma famille quand même. :/
 	echo '<travail></travail>';
 	echo '</personne>'."\n";
 }
