@@ -4,7 +4,7 @@ YOUSSEF
 
 
 Va voir helpers/search.php, il y a des commentaires pour toi.
-ok
+C'est fait, j'ai vu.
 
 
 
@@ -29,6 +29,8 @@ Le site recherche dans la base de données, et affiche les anciens concernés
 [01:37:07] Robin Dumont-Chaponet: c’est à dire
 [01:37:17] Robin Dumont-Chaponet: on a le choix entre l’ancien travail ou pas
 [01:38:13] Robin Dumont-Chaponet: donc une checkbox cochée ou pas cochée
+
+Youssef -> je m'occupe de la case à cocher !
 
 Pisterrrrrrrr
 [02:17:55] Robin Dumont-Chaponet: essai de ne pas laisser de var_dump dans tes DAOs quand elles sont censées êtres terminées
