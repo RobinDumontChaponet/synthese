@@ -54,14 +54,12 @@ foreach($suggestions as $suggestion) {
 	//raison du choix de l'algorithme :::> Nous evite de parcourir tout le tableau, s'arrete dès qu'il a trouvé
 	while(($iterator < count($listeTravaux) ) && (trouve == 0))
 	{
-		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){trouve = 1;}
-		$iterator++;
+		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){trouve = 1;}else{$iterator++;}
 	}
 	
 	//Si on n'a pas trouve, affiche un "Aucun travail actuellement", sinon, on met le libelle du travail
 	if(trouve == 1)
 	{
-		$iterator--;
 		$travailActuel = $listeTravaux[$iterator]->getPoste()->getLibelle();
 	}else
 	{
