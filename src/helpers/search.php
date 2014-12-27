@@ -6,6 +6,7 @@ include_once(MODELS_INC.'AEtudieDAO.class.php');
 include_once(MODELS_INC.'PossedeDAO.class.php');
 include_once(MODELS_INC.'EstSpecialiseDAO.class.php');
 include_once(MODELS_INC.'SpecialisationDAO.class.php');
+include_once(MODELS_INC.'TravailleDAO.class.php');
 
 header('Content-Type: text/xml');
 
