@@ -78,8 +78,19 @@ class EvenementDAO
 		return $lst;
     }
 
-    public static function getByAncienNotParticipePost(){
-        $lst=array();
+    public static function getByAncienNotParticipePost($obj){
+        if(get_class($obj)=="Ancien"){
+            $lst=array();
+            $req=$bdd->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
+                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $req->execute(array($obj->getId()));
+            while($res=$req->fetch()){
+                $lst[]=getById($res['idEvenement']);
+            }
+            return $lst;
+        }else{
+            die('Erreur type paramètre getByAncienNotParticipePost');
+        }
     }
 
 	public static function create(&$obj)

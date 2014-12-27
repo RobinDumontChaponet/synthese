@@ -30,26 +30,30 @@ class TravailleDAO
 		return $lst;
 	}
 
-	public static function getByAncien($id)
+	public static function getByAncien($obj)
 	{
-		$lst=array();
-		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM travaille WHERE idPersonne=?");
-			$req->execute(array($id));
-			while
-			($res=$req->fetch())
-			{
-				$ancien=AncienDAO::getById($res['idPersonne']);
-				$poste=PosteDAO::getById($res['idPoste']);
-				$ent=EntrepriseDAO::getById($res['idEntreprise']);
-				$lst[]=new Travaille($ent, $poste, $ancien, $res['dateEmbaucheDeb'], $res['dateEmbaucheFin']);
-			}
-		}catch(PDOException $e)
-		{
-			die('error getByAncien Travaille '.$e->getMessage().'<br>');
-		}
-		return $lst;
+        if(get_class($obj)=="Ancien"){
+            $lst=array();
+            try{
+                $bdd=connect();
+                $req=$bdd->prepare("SELECT * FROM travaille WHERE idPersonne=?");
+                $req->execute(array($obj->getId()));
+                while
+                ($res=$req->fetch())
+                {
+                    $ancien=AncienDAO::getById($res['idPersonne']);
+                    $poste=PosteDAO::getById($res['idPoste']);
+                    $ent=EntrepriseDAO::getById($res['idEntreprise']);
+                    $lst[]=new Travaille($ent, $poste, $ancien, $res['dateEmbaucheDeb'], $res['dateEmbaucheFin']);
+                }
+            }catch(PDOException $e)
+            {
+                die('error getByAncien Travaille '.$e->getMessage().'<br>');
+            }
+            return $lst;
+        }else{
+            die('Erreur type du parametre getbyancien travaille dao');
+        }
 	}
 
 	public static function create($obj)
