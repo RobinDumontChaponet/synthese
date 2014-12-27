@@ -55,7 +55,7 @@ if(((isset($_GET['travail'])) && (trouve == 1)) || (!isset($_GET['travail'])))
 
 echo '</personnes>';
 
-public function afficherPersonne($suggestion, $travailActuel)
+function afficherPersonne($suggestion, $travailActuel)
 {
 
     echo '<personne>';
