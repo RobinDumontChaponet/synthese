@@ -42,8 +42,8 @@ foreach($suggestions as $suggestion) {
 	}
 	
 /*On affiche seulement dans deux cas :
-	- Si le critere travaille est pris en compte et la personne travaille
-	- Si le critere travaille n'est pas pris en compte
+	- Si le critere travaille est pris en compte (case cochée) et la personne travaille
+	- Si le critere travaille n'est pas pris en compte (case non cochée)
 */
 if(((isset($_GET['travail'])) && (trouve == 1)) || (!isset($_GET['travail'])))
 {
