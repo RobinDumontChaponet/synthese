@@ -32,9 +32,9 @@ function link_ajax() {
 function affichageResultat() {
     if(xhr.readyState == 4) {
         if(xhr.status == 200) {
-			//xmlresponse = xhr.responseXML;
-			console.log(xhr.responseText);
-			/*root = xmlresponse.documentElement;
+	        console.log(xhr.responseText);
+			xmlresponse = xhr.responseXML;
+			root = xmlresponse.documentElement;
 			listePersonnes = root.getElementsByTagName('personne');
 
 			table = '<table>';
@@ -48,7 +48,7 @@ function affichageResultat() {
 			}
 			table += '</table>';
 
-			document.getElementById('resultat').innerHTML = table;*/
+			document.getElementById('resultat').innerHTML = table;
 
 		} else {
 			console.error('le fichier xml ne retourne pas un 200');

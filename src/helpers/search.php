@@ -11,12 +11,11 @@ header('Content-Type: text/xml');
 
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>';
 
-$listeSuggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['promotion'], $_GET['diplomedut'], $_GET['typesspecialisations'], $_GET['specialisation'], $_GET['diplomepostdut'], $_GET['etablissementpostdut'], $_GET['travailactuel']);
+$suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['promotion'], $_GET['diplomedut'], $_GET['typesspecialisations'], $_GET['specialisation'], $_GET['diplomepostdut'], $_GET['etablissementpostdut'], $_GET['travailactuel']);
 
 echo '<personnes>';
 
-foreach($listeSuggestions as $suggestion) {
-	//var_dump($suggestion);
+foreach($suggestions as $suggestion) {
 
 	$aEtudie = AEtudieDAO::getByAncien($suggestion);
 	$possede = PossedeDAO::getByAncien($suggestion);
@@ -24,46 +23,35 @@ foreach($listeSuggestions as $suggestion) {
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 
 	echo '<personne>';
+
 	echo '<nom>'.$suggestion->getNomPatronymique().'</nom>';
 	echo '<prenom>'.$suggestion->getPrenom().'</prenom>';
-	echo '<promotion>'.$aEtudie->getPromotion()->getId().'</promotion>';
-	echo '<diplomedut>'.$aEtudie->getDiplomeDUT()->getId().'</diplomedut>';
-	echo '<typesspecialisations>'.(($specialisation!=null)?$specialisation->getTypeSpecialisation()->getId():'').'</typesspecialisations>';
-	echo '<specialisation>'.(($specialisation!=null)?$specialisation->getId():'').'</specialisation>';
+	echo '<promotion>'.(($aEtudie!=null)?$aEtudie->getPromotion()->getAnnee():'').'</promotion>';
+	echo '<diplomedut>'.(($aEtudie!=null)?$aEtudie->getDiplomeDUT()->getLibelle():'').'</diplomedut>';
+	echo '<typesspecialisations>'.(($specialisation!=null)?$specialisation->getTypeSpecialisation()->getLibelle():'').'</typesspecialisations>';
+	echo '<specialisation>'.$specialisation.'</specialisation>';
 
-
-
-	///////////////////////// Comment fait-on ici ? On a un array de diplômes...
-	//echo '<diplomepostdut>',$possede[0]->getDiplomePostDUT()->getId(),'</diplomepostdut>';
-	//echo '<etablissementpostdut>'.$possede[0]->getEtablissement()->getId().'</etablissementpostdut>';
-	
-	/*Ce que t'as fait complique les choses. Je ne comprends pas pourquoi t'as mis des getId :/ pourquoi 
-	Ne pas afficher tout simplement le libelle directement*/
-	
-	//Moi (Youssef), ce que je ferai, c'est
 	echo '<diplomepostdut>';
-		$listeDiplomesDut = "";
-		for($i = 0; $i < )
-		{
-			$listeDiplomesDut .= $possede[i]->getDiplomePostDUT()->getLibelle()." ";
-		}
+	$listeDiplomesDut = '';
+	foreach($possede as $it)
+		$listeDiplomesDut .= $it->getDiplomePostDUT()->getLibelle().' ';
 	echo '</diplomepostdut>';
-	
-	//Cela donnera directement le resultat a afficher dans le tableau... Je trouve que c'est beaucoup plus simple
-	//On fait la meme chose pour les etablissements
+
 	echo '<etablissementpostdut>';
-		$listeDiplomesDut = "";
-		for($i = 0; $i < )
-		{
-			$listeDiplomesDut .= $possede[0]->getEtablissement()->getNom()." ";
-		}
+	$listeDiplomesDut = '';
+	foreach($possede as $it)
+		$listeDiplomesDut .= $it->getEtablissement()->getNom().' ';
 	echo '</etablissementpostdut>';
-	//J'aurai egalement enlevé tes getId pour promotion et diplomedut et mis directement les libellés
 
-
-	///////////////////////// C'est bien de "faire" la recherche, mais décider d'où sort (le booléan, je le rappel) le travail fait parti du travail à faire justement...
-	//Je vais la faire samedi, je n'ai pas eu le temps, je suis rentré au Maroc, j'ai dû voir ma famille quand même. :/
+	/////////////////////////
 	echo '<travail></travail>';
+	/////////////////////////
+
+	// J'aurai pu répondre à mes questions et finir la recherche, mais j'aurai réécrit à ma manière (plus simple pour moi).
+	// Comme je trouve ça non respectieux de ton travail, je ne l'ai pas fait. Mais j'attends en retour que tu finisse ce que tu as commencé.
+	// un petit smiley pour la route     :–]
+	// Il y a un autre problème : au chargement(onload) de la recherche, tout les anciens sont retournés.
+
 	echo '</personne>'."\n";
 }
 
