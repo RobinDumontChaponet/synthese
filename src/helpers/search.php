@@ -23,7 +23,7 @@ foreach($suggestions as $suggestion) {
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 	$listeTravaux = TravailleDAO::getByAncien($suggestion);
-	
+
 	echo '<personne>';
 
 	echo '<nom>'.$suggestion->getNomPatronymique().'</nom>';
@@ -47,6 +47,13 @@ foreach($suggestions as $suggestion) {
 
 	/////////////////////////
 	//Ici, Mathieu doit encore changer a dao pour faire un getByAncien avec ancien et non id en parametres
+
+	///////////////////////////////////////////////////////////////////////// ^- C'est déjà le cas.
+
+
+
+
+
 	//Dans la liste de travaux, on recherche celui où la date de fin d'embauche est egal à nul, c'est le travail actuel
 	$travailActuel = null;
 	$iterator = 0;
@@ -56,7 +63,7 @@ foreach($suggestions as $suggestion) {
 	{
 		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){trouve = 1;}else{$iterator++;}
 	}
-	
+
 	//Si on n'a pas trouve, affiche un "Aucun travail actuellement", sinon, on met le libelle du travail
 	if(trouve == 1)
 	{
@@ -65,7 +72,7 @@ foreach($suggestions as $suggestion) {
 	{
 		$travailActuel = "Aucun travail actuellement";
 	}
-	
+
 	//On affiche enfin le resultat de notre recherche
 	echo '<travail>'.$travailActuel.'</travail>';
 	/////////////////////////
@@ -73,7 +80,7 @@ foreach($suggestions as $suggestion) {
 	// un petit smiley pour la route     :–]
 //REPONSE :
 	// :D
-	
+
 	// Il y a un autre problème : au chargement(onload) de la recherche, tout les anciens sont retournés.
 //REPONSE :
 	//Youssef : Au onload, normal que tous les anciens soient retournés. C'est ce que j'ai voulu
