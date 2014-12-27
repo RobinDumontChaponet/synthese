@@ -21,7 +21,8 @@ foreach($suggestions as $suggestion) {
 	$possede = PossedeDAO::getByAncien($suggestion);
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
-
+	$listeTravaux = TravailleDAO::getByAncien($suggestion);
+	
 	echo '<personne>';
 
 	echo '<nom>'.$suggestion->getNomPatronymique().'</nom>';
@@ -44,13 +45,41 @@ foreach($suggestions as $suggestion) {
 	echo '</etablissementpostdut>';
 
 	/////////////////////////
-	echo '<travail></travail>';
+	//Ici, Mathieu doit encore changer a dao pour faire un getByAncien avec ancien et non id en parametres
+	//Dans la liste de travaux, on recherche celui où la date de fin d'embauche est egal à nul, c'est le travail actuel
+	$travailActuel = null;
+	$iterator = 0;
+	$trouve = 0;
+	//raison du choix de l'algorithme :::> Nous evite de parcourir tout le tableau, s'arrete dès qu'il a trouvé
+	while(($iterator < count($listeTravaux) ) && (trouve == 0))
+	{
+		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){trouve = 1;}
+		$iterator++;
+	}
+	
+	//Si on n'a pas trouve, affiche un "Aucun travail actuellement", sinon, on met le libelle du travail
+	if(trouve == 1)
+	{
+		$iterator--;
+		$travailActuel = $listeTravaux[$iterator]->getPoste()->getLibelle();
+	}else
+	{
+		$travailActuel = "Aucun travail actuellement";
+	}
+	
+	//On affiche enfin le resultat de notre recherche
+	echo '<travail>'.$travailActuel.'</travail>';
 	/////////////////////////
 
-	// J'aurai pu répondre à mes questions et finir la recherche, mais j'aurai réécrit à ma manière (plus simple pour moi).
-	// Comme je trouve ça non respectieux de ton travail, je ne l'ai pas fait. Mais j'attends en retour que tu finisse ce que tu as commencé.
 	// un petit smiley pour la route     :–]
+//REPONSE :
+	// :D
+	
 	// Il y a un autre problème : au chargement(onload) de la recherche, tout les anciens sont retournés.
+//REPONSE :
+	//Youssef : Au onload, normal que tous les anciens soient retournés. C'est ce que j'ai voulu
+	//faire. C'est comme une recherche sans arguments. Et au fur et à mesure que l'utilisateur
+	//entre des criteres de recherche, le resultat présenté par le tableau change
 
 	echo '</personne>'."\n";
 }
