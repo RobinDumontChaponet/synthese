@@ -4,8 +4,8 @@ include_once(MODELS_INC."Personne.class.php");
 include_once("validate.transit.inc.php");
 
 class Ancien extends Personne {
-	// VARIABLES
 
+	//-------------------VARIABLES-------------------
 	private $adresse1;
 	private $adresse2;
 	private $codePostal;
@@ -19,8 +19,7 @@ class Ancien extends Personne {
 	private $sexe;
 	private $dateNaissance;
 
-	// CONSTRUCTORS
-
+	//-------------------CONSTRUCTORS-------------------
 	public function __construct($id, $nom, $nomPatronymique, $prenom, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone, $imageProfil, $imageTrombi, $parents, $sexe, $dateNaissance, $mail) {
 		parent::__construct($id, $nom, $nomPatronymique, $prenom, $mail);
 		$this->setAdresse1($adresse1);
@@ -37,8 +36,7 @@ class Ancien extends Personne {
 		$this->setDateNaissance($dateNaissance);
 	}
 
-	//----------------------------------GETTERS
-
+	//-------------------GETTERS-------------------
 	public function getAdresse1() {
 		return $this->adresse1;
 	}
@@ -87,6 +85,7 @@ class Ancien extends Personne {
 		return $this->dateNaissance;
 	}
 
+	//-------------------SETTERS-------------------
 	public function setAdresse1($adresse1) {
 		$this->adresse1 = trim($adresse1);
 	}
@@ -150,7 +149,7 @@ class Ancien extends Personne {
 		$this->dateNaissance = $dateNaissance;
 	}
 
-	//--------------------------tostring
+	//-------------------tostring-------------------
 	public function __toString() {
 		return parent::__toString()." Adresse1 : ".$this->adresse1." Adresse2 : ".$this->adresse2." CP : ".$this->codePostal." Ville : ".$this->ville." Pays : ".$this->pays." Mobile : ".$this->mobile." Telephone : ".$this->telephone." Parents : ".$this->parents." Sexe : ".$this->sexe;
 	}

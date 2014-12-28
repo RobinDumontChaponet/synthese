@@ -14,9 +14,6 @@ function link_ajax() {
 			etablissementpostdut = document.getElementById('etabPostDUT').value,
 			travail = document.getElementById('travail').value;
 
-
-
-			////////////// ajouter "encodeURI(...)   !!!!!!!!!!!!!
 			xhr.open('GET', encodeURI('helpers/searchv2.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
 
 			xhr.onreadystatechange = affichageResultat;
@@ -30,9 +27,9 @@ function link_ajax() {
 }
 
 function affichageResultat() {
-    if(xhr.readyState == 4) {
-        if(xhr.status == 200) {
-	        console.log(xhr.responseText);
+	if(xhr.readyState == 4) {
+		if(xhr.status == 200) {
+			//console.log(xhr.responseText);
 			xmlresponse = xhr.responseXML;
 			root = xmlresponse.documentElement;
 			listePersonnes = root.getElementsByTagName('personne');
@@ -49,6 +46,8 @@ function affichageResultat() {
 			table += '</table>';
 
 			document.getElementById('resultat').innerHTML = table;
+
+			//document.getElementById('resultat').innerHTML = xhr.responseText;
 
 		} else
 			console.error('le fichier xml ne retourne pas un 200 : '+xhr.status);

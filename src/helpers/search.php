@@ -12,6 +12,9 @@ header('Content-Type: text/xml');
 
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>';
 
+$suggestions = null;
+$suggestion = null;
+
 $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], $_GET['promotion'], $_GET['diplomedut'], $_GET['typesspecialisations'], $_GET['specialisation'], $_GET['diplomepostdut'], $_GET['etablissementpostdut'], $_GET['travailactuel']);
 
 echo '<personnes>';
@@ -23,7 +26,6 @@ foreach($suggestions as $suggestion) {
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 	$listeTravaux = TravailleDAO::getByAncien($suggestion);
-	//// Warning : C'est dangereux d'appeler un variable liste, ça peut faire référence au type liste. (mais c'est pas grave ;-])
 
 	echo '<personne>';
 
@@ -45,13 +47,6 @@ foreach($suggestions as $suggestion) {
 	foreach($possede as $it)
 		$listeDiplomesDut .= $it->getEtablissement()->getNom().' ';
 	echo '</etablissementpostdut>';
-
-	/////////////////////////
-	//Ici, Mathieu doit encore changer a dao pour faire un getByAncien avec ancien et non id en parametres
-
-	///////////////////////////////////////////////////////////////////////// ^- C'est déjà le cas.
-	// De quelle DAO parles-tu ?
-
 
 	//Dans la liste de travaux, on recherche celui où la date de fin d'embauche est egal à nul, c'est le travail actuel
 	//raison du choix de l'algorithme :::> Nous evite de parcourir tout le tableau, s'arrete dès qu'il a trouvé

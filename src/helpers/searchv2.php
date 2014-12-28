@@ -21,7 +21,6 @@ foreach($suggestions as $suggestion) {
 	//On regarde d'abord si la personne travaille ou pas
 	$listeTravaux = TravailleDAO::getByAncien($suggestion);
 
-
 	//Dans la liste de travaux, on recherche celui où la date de fin d'embauche est egal à nul, c'est le travail actuel
 	//raison du choix de l'algorithme :::> Nous evite de parcourir tout le tableau, s'arrete dès qu'il a trouvé
 	///////////////////////// Vrai ! Mais on peux simplifier la logique et l'emprunte mémoire & instruction ;-)
@@ -35,12 +34,12 @@ foreach($suggestions as $suggestion) {
 	else
 		$travailActuel = "Aucun travail actuellement";
 
+	//On affiche seulement dans deux cas :
+	//	- Si le critere travaille est pris en compte (case cochée) et la personne travaille
+	//	- Si le critere travaille n'est pas pris en compte (case non cochée)
+	//
 
-	/*On affiche seulement dans deux cas :
-		- Si le critere travaille est pris en compte (case cochée) et la personne travaille
-		- Si le critere travaille n'est pas pris en compte (case non cochée)
-	*/
-	if(((isset($_GET['travail'])) && ($travail)) || (!isset($_GET['travail'])))
+	if((isset($_GET['travailactuel']) && $travail) || !isset($_GET['travailactuel']))
 		afficherPersonne($suggestion, $travailActuel);
 
 }
@@ -53,7 +52,6 @@ function afficherPersonne($suggestion, $travailActuel) {
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 	$listeTravaux = TravailleDAO::getByAncien($suggestion);
-	//// Warning : C'est dangereux d'appeler un variable liste, ça peut faire référence au type liste. (mais c'est pas grave ;-])
 
 	echo '<personne>';
 
@@ -62,7 +60,7 @@ function afficherPersonne($suggestion, $travailActuel) {
 	echo '<promotion>'.(($aEtudie!=null)?$aEtudie->getPromotion()->getAnnee():'').'</promotion>';
 	echo '<diplomedut>'.(($aEtudie!=null)?$aEtudie->getDiplomeDUT()->getLibelle():'').'</diplomedut>';
 	echo '<typesspecialisations>'.(($specialisation!=null)?$specialisation->getTypeSpecialisation()->getLibelle():'').'</typesspecialisations>';
-	echo '<specialisation>'.$specialisation->getLibelle().'</specialisation>';
+	echo '<specialisation>'.(($specialisation!=null)?$specialisation->getLibelle():'').'</specialisation>';
 
 	echo '<diplomepostdut>';
 	$listeDiplomesDut = '';
@@ -75,7 +73,6 @@ function afficherPersonne($suggestion, $travailActuel) {
 	foreach($possede as $it)
 		$listeDiplomesDut .= $it->getEtablissement()->getNom().' ';
 	echo '</etablissementpostdut>';
-
 
 	echo '<travail>'.$travailActuel.'</travail>';
 
