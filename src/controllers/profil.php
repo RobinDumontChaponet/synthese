@@ -13,7 +13,7 @@ if ($ancien != NULL) {
 	$imageTrombi = $ancien->getImageTrombi();
 	$diplomeDUT = AEtudieDAO::getByAncien($ancien);
 	$diplomesPost = PossedeDAO::getByAncien($ancien);
-	$entreprises = TravailleDAO::getByAncien($ancien->getId());
+	$entreprises = TravailleDAO::getByAncien($ancien);
 }
 include(VIEWS_INC.'profil.php');
 
