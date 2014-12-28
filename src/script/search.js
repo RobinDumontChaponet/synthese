@@ -26,7 +26,7 @@ function link_ajax() {
 		} else
 			setTimeout('link_ajax()', 1000);
 	} else if(xhr == null)
-		alert('Erreur ! Désolé pour l\'inconvénient.');
+		alert('Erreur ! Désolé pour l\'inconvénient. ;-)');
 }
 
 function affichageResultat() {

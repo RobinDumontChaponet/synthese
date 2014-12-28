@@ -23,6 +23,7 @@ foreach($suggestions as $suggestion) {
 	$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
 	$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
 	$listeTravaux = TravailleDAO::getByAncien($suggestion);
+	//// Warning : C'est dangereux d'appeler un variable liste, ça peut faire référence au type liste. (mais c'est pas grave ;-])
 
 	echo '<personne>';
 
@@ -49,43 +50,24 @@ foreach($suggestions as $suggestion) {
 	//Ici, Mathieu doit encore changer a dao pour faire un getByAncien avec ancien et non id en parametres
 
 	///////////////////////////////////////////////////////////////////////// ^- C'est déjà le cas.
-
-
-
+	// De quelle DAO parles-tu ?
 
 
 	//Dans la liste de travaux, on recherche celui où la date de fin d'embauche est egal à nul, c'est le travail actuel
-	$travailActuel = null;
-	$iterator = 0;
-	$trouve = 0;
 	//raison du choix de l'algorithme :::> Nous evite de parcourir tout le tableau, s'arrete dès qu'il a trouvé
-	while(($iterator < count($listeTravaux) ) && (trouve == 0))
-	{
-		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){trouve = 1;}else{$iterator++;}
-	}
+	///////////////////////// Vrai ! Mais on peux simplifier la logique et l'emprunte mémoire & instruction ;-)
+	$travail = null;
+	foreach($listeTravaux as $travail)
+		if($travail->getDateEmbaucheFin() == null)
+			break;
 
-	//Si on n'a pas trouve, affiche un "Aucun travail actuellement", sinon, on met le libelle du travail
-	if(trouve == 1)
-	{
-		$travailActuel = $listeTravaux[$iterator]->getPoste()->getLibelle();
-	}else
-	{
+	if($travail)
+		$travailActuel = $travail->getPoste()->getLibelle();
+	else
 		$travailActuel = "Aucun travail actuellement";
-	}
 
-	//On affiche enfin le resultat de notre recherche
 	echo '<travail>'.$travailActuel.'</travail>';
-	/////////////////////////
-
-	// un petit smiley pour la route     :–]
-//REPONSE :
 	// :D
-
-	// Il y a un autre problème : au chargement(onload) de la recherche, tout les anciens sont retournés.
-//REPONSE :
-	//Youssef : Au onload, normal que tous les anciens soient retournés. C'est ce que j'ai voulu
-	//faire. C'est comme une recherche sans arguments. Et au fur et à mesure que l'utilisateur
-	//entre des criteres de recherche, le resultat présenté par le tableau change
 
 	echo '</personne>'."\n";
 }
