@@ -28,7 +28,7 @@ include_once(MODELS_INC."DisposeDeDAO.class.php");
 
 $user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]))->getDroit();
 
-if(!$user_auth['read']) {
+if(!isset($user_auth['read']) || !$user_auth['read']) {
 	header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
 	header("Status: 403 Forbidden");
 	$_SERVER['REDIRECT_STATUS'] = 403;
@@ -87,7 +87,7 @@ if($matches[1]) {
     <script type="text/javascript" src="script/help.js"></script>
     <?php echo $script; ?>
 </head>
-<body<?php if($_SESSION['help']) echo ' class="show-help"';?>>
+<body<?php if(isset($_SESSION['help']) && $_SESSION['help']) echo ' class="show-help"';?>>
 	<?php include('menu.inc.php');?>
 	<div id="wrapper">
 		<?php echo $inc; ?>
