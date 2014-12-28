@@ -152,7 +152,7 @@ class AncienDAO {
 			$where.=" AND P.prenom LIKE ? ";
 			$args[]='%'.$prn.'%';
 		}
-		if($promo!=null) {
+		if($promo!=null && $promo!=array(null, null)) {
             if(gettype($promo)=="array") {
                 $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo AND promo.annee>=? AND promo.annee<=? ";
                 $from.=" ,`aEtudie` Etud,`promotion` promo";

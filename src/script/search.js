@@ -6,7 +6,8 @@ function link_ajax() {
 		if((xhr.readyState == 0) || (xhr.readyState == 4)) {
 			var nom = document.getElementById('nom').value,
 			prenom = document.getElementById('prenom').value,
-			promotion = document.getElementById('promotion').value,
+			promotionInf = document.getElementById('promotionInf').value,
+			promotionSup = document.getElementById('promotionSup').value,
 			diplomedut = document.getElementById('diplome').value,
 			typespecialisations = document.getElementById('typeSpecialisation').value,
 			specialisation = document.getElementById('specialisation').value,
@@ -14,14 +15,14 @@ function link_ajax() {
 			etablissementpostdut = document.getElementById('etabPostDUT').value,
 			travail = document.getElementById('travail').value;
 
-			xhr.open('GET', encodeURI('helpers/searchv2.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
+			xhr.open('GET', encodeURI('helpers/searchv2.php?nom='+nom+'&prenom='+prenom+'&promotionInf='+promotionInf+'&promotionSup='+promotionSup+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
 
 			xhr.onreadystatechange = affichageResultat;
 
 			xhr.send(null);
 
 		} else
-			setTimeout('link_ajax()', 1000);
+			setTimeout('link_ajax()', 500);
 	} else if(xhr == null)
 		alert('Erreur ! Désolé pour l\'inconvénient. ;-)');
 }

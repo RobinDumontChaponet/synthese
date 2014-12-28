@@ -6,6 +6,8 @@
 //Pour la liste de diplome iut
 $diplomes = DiplomeDUTDAO::getAll();
 
+$promotions = PromotionDAO::getAll();
+
 //Pour la liste de types spécialisations
 $typesSpecialisation = TypeSpecialisationDAO::getAll();
 
