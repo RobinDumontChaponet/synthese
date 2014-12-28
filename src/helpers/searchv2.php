@@ -27,13 +27,13 @@ foreach($suggestions as $suggestion) {
 	$iterator = 0;
 	$trouve = 0;
 	//raison du choix de l'algorithme :::> Nous evite de parcourir tout le tableau, s'arrete dès qu'il a trouvé
-	while(($iterator < count($listeTravaux) ) && (trouve == 0))
+	while(($iterator < count($listeTravaux) ) && ($trouve == 0))
 	{
-		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){trouve = 1;}else{$iterator++;}
+		if($listeTravaux[$iterator]->getDateEmbaucheFin() == null){$trouve = 1;}else{$iterator++;}
 	}
 	
 	//Si on n'a pas trouve, affiche un "Aucun travail actuellement", sinon, on met le libelle du travail
-	if(trouve == 1)
+	if($trouve == 1)
 	{
 		$travailActuel = $listeTravaux[$iterator]->getPoste()->getLibelle();
 	}else
@@ -45,7 +45,7 @@ foreach($suggestions as $suggestion) {
 	- Si le critere travaille est pris en compte (case cochée) et la personne travaille
 	- Si le critere travaille n'est pas pris en compte (case non cochée)
 */
-if(((isset($_GET['travail'])) && (trouve == 1)) || (!isset($_GET['travail'])))
+if(((isset($_GET['travail'])) && ($trouve == 1)) || (!isset($_GET['travail'])))
 {
 	afficherPersonne($suggestion, $travailActuel);
 }
