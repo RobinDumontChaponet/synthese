@@ -154,10 +154,16 @@ class AncienDAO {
 		}
 		if($promo!=null && $promo!=array(null, null)) {
             if(gettype($promo)=="array") {
-                $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo AND promo.annee>=? AND promo.annee<=? ";
+                $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo";
+                if($promo[0]!=null){
+                    $where.=" AND promo.annee>=? ";
+                    $args[]=$promo[0];
+                }
+                if($promo[1]!=null){
+                    $where.=" AND promo.annee<=? ";
+                     $args[]=$promo[1];
+                }
                 $from.=" ,`aEtudie` Etud,`promotion` promo";
-			     $args[]=$promo[0];
-                $args[]=$promo[1];
             } else {
                 die('erreur type promo dans search ancien');
             }
