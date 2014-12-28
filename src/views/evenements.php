@@ -1,4 +1,4 @@
-﻿<!--meta title="Événements" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Événements" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
 	<h1>Évènements</h1>
 	<?php if ($user == "Ancien" || $user == "Professeur") {?>

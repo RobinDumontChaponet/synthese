@@ -1,5 +1,4 @@
-﻿<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
-
+<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
 <section id="content">
 	<?php
 	if ($valid) {
@@ -17,7 +16,7 @@
 			echo '<p class="error">Mauvais format de mail</p>';
 	} ?>
 	<?php if (isset($ancien) && $ancien != NULL) {?>
-		<p style="font-size:25px"><?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?></p>
+		<h1><?php echo $ancien->getPrenom()?> <?php echo strtoupper($ancien->getNomPatronymique()) ?></h1>
 		<form action="profil" method="post">
 			<figure>
 				<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
@@ -27,11 +26,7 @@
 				if ($imageTrombi != NULL)	//	Si il y a une image de trombi
 					echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
 				else
-					echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombi"/>';?>
-				<?php
-				/*echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageProfil).'" alt="Image de profil"/>';
-				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de trombinoscope"/>'*/;
-				?>
+					echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
 				<!--<input type="file" name="imageProfil"/>-->
 			</figure>
 			<fieldset>
@@ -61,7 +56,7 @@
 			<fieldset>
 				<legend>Diplômes</legend>
 				<ol>
-					<?php if ($diplomeDUT != NULL) {	// Ne peut être modifié, fixe et normalement présent?>
+					<?php if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent?>
 					<li>
 						<label for="diplomeDUT">Diplôme : </label>
 						<input id="diplomeDUT" type="text" placeholder="Diplome" readonly="readonly" value="<?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?>"/>
@@ -71,7 +66,7 @@
 						<input id="promotion" type="text" placeholder="Promotion" readonly="readonly" value="<?php echo $diplomeDUT->getPromotion()->getAnnee();?>"/>
 					</li>
 					<?php }
-					if ($diplomesPost != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+					if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 						foreach($diplomesPost as $diplomePost) {?>
 							<li>
 								<a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><label for="diplomePost<?php echo $diplomePost->getDiplomePostDUT()->getId();?>">Diplôme : </label>
@@ -94,7 +89,7 @@
 			<fieldset>
 				<legend>Entreprises</legend>
 				<ol>
-					<?php if($entreprises != NULL) {	// Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+					<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 						foreach($entreprises as $entreprise) {?>
 							<li>
 								<a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><label for="entreprise<?php echo $entreprise->getEntreprise()->getId()?>">Entreprise : </label>

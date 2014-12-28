@@ -1,5 +1,6 @@
 <!--meta title="Recherche" css="style/animations.css" js="script/search.js"-->
 <div id="content">
+	<h1>Recherche</h1>
 	<section id="criteres">
 		<label for="nom" >Nom :</label>
 		<input type="text" id="nom" name="nom" onkeydown="link_ajax()" /><br />

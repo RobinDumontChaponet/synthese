@@ -1,4 +1,4 @@
-﻿<!--meta title="Promotions" css="style/animations.css" css="style/promotions.css"-->
+<!--meta title="Promotions" css="style/animations.css" css="style/promotions.css"-->
 <div id="content">
   <h1>Promotions</h1>
   <ul>

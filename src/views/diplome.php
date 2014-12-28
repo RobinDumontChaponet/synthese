@@ -1,4 +1,4 @@
-﻿<!--meta title="<?php echo (($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css"-->
+<!--meta title="<?php echo (($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css"-->
 
 <div id="content">
 	<?php if ($diplome != NULL) {

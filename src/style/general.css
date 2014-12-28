@@ -228,7 +228,8 @@ header a#aOut:before {
 	font-size: 1.05em;
 	font-weight: normal;
 	text-align: left;
-	line-height: 2em;
+	line-height: 1em;
+	font-size: 1.5em;
 }
 #wrapper h2 {
 	line-height: 1em;

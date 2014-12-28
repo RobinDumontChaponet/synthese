@@ -1,4 +1,4 @@
-﻿<!--meta title="<?php echo (($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'); ?>" css="style/animations.css"-->
+<!--meta title="<?php echo (($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'); ?>" css="style/animations.css"-->
 <div id="content">
 	<?php if ($entreprise != NULL) {
 			if ($user == "Ancien") { /* Ne peut pas modifier */ ?>
