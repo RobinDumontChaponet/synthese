@@ -17,7 +17,7 @@ function link_ajax() {
 
 
 			////////////// ajouter "encodeURI(...)   !!!!!!!!!!!!!
-			xhr.open('GET', encodeURI('helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
+			xhr.open('GET', encodeURI('helpers/searchv2.php?nom='+nom+'&prenom='+prenom+'&promotion='+promotion+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
 
 			xhr.onreadystatechange = affichageResultat;
 
@@ -50,8 +50,7 @@ function affichageResultat() {
 
 			document.getElementById('resultat').innerHTML = table;
 
-		} else {
-			console.error('le fichier xml ne retourne pas un 200');
-		}
+		} else
+			console.error('le fichier xml ne retourne pas un 200 : '+xhr.status);
 	}
 }
