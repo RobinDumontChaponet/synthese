@@ -1,8 +1,8 @@
 ﻿<!--meta title="Événements" css="style/animations.css"-->
 
-<section id="content">
+<div id="content">
 	<?php if ($user == "Ancien" || $user == "Professeur") {?>
-		<div>
+		<section>
 			<h2>Événements inscrits</h2>
 			<table style="border:1px solid black">
 				<tr>
@@ -23,8 +23,8 @@
 					}
 				}?>
 			</table>
-		</div>
-		<div>
+		</section>
+		<section>
 			<h2>Autres événements</h2>
 			<ol>
 				<p>Type d'événement Date Commentaires</p>
@@ -39,8 +39,8 @@
 					}
 				}?>
 			</ol>
-		</div>
-		<div>
+		</section>
+		<section>
 			<h2>Événements passés</h2>
 			<ol>
 				<?php if ($eventsAnt != NULL) {	//	Events qui sont passés
@@ -51,9 +51,9 @@
 					}
 				}?>
 			</ol>
-		</div>
+		</section>
 	<?php } else if ($user == "Admin") {?>
-		<div>
+		<section>
 			<h2>Événements à venir</h2>
 			<ol>
 				<?php if($eventsPost != NULL) {
@@ -64,8 +64,8 @@
 					}
 				}?>
 			</ol>
-		</div>
-		<div>
+		</section>
+		<section>
 			<h2>Événements passés</h2>
 			<ol>
 				<?php if ($eventsAnt != NULL) {
@@ -76,6 +76,6 @@
 					}
 				}?>
 			</ol>
-		</div>
+		</section>
 	<?php } ?>
-</section>
+</div>

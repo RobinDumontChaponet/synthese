@@ -203,6 +203,15 @@ header a#aOut:before {
 	margin: 0 auto;
 }
 
+#content section {
+	border-bottom: 1px solid #ececec;
+	margin: 10px 0;
+	padding: 10px 0;
+}
+#content section:last-child {
+	border-bottom: 0;
+}
+
 #wrapper h1 {
 	letter-spacing: -1px;
 	margin-left: auto;
@@ -212,6 +221,10 @@ header a#aOut:before {
 	font-weight: normal;
 	text-align: left;
 	line-height: 2em;
+}
+#wrapper h2 {
+	line-height: 1em;
+	margin-bottom: 10px;
 }
 
 label {

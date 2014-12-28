@@ -1,5 +1,5 @@
 ﻿<!--meta title="<?php echo (($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'); ?>" css="style/animations.css"-->
-<section id="content">
+<div id="content">
 	<?php if ($entreprise != NULL) {
 			if ($user == "Ancien") { /* Ne peut pas modifier */ ?>
 			<ol>
@@ -23,4 +23,4 @@
 	} else { ?>
 		<p class="warning">Cette entreprise n'existe pas</p>
 	<?php } ?>
-</section>
+</div>

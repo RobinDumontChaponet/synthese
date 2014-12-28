@@ -1,5 +1,5 @@
 <!--meta title="Importer promo .csv" css="style/animations.css" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
-<section id="content">
+<div id="content">
   <div id="file">
   	<fieldset id="add" class="button">
   		<label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
@@ -27,10 +27,8 @@
 	</fieldset>
 	<input type="submit" value="Aperçu" />
   </form>
-</section>
+</div>
 <script type="text/javascript">
-
-
 new FileTransfert(document.getElementById('fileinput'), 'csv', 'data/csv', '', function (resp) {
 	var xhr = new XMLHttpRequest(),
 	delimiterSelector, delimiter;

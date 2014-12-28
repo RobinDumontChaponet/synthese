@@ -1,6 +1,6 @@
 <!--meta title="Recherche" css="style/animations.css" js="script/search.js"-->
-<section id="content">
-	<div id="criteres">
+<div id="content">
+	<section id="criteres">
 		<label for="nom" >Nom :</label>
 		<input type="text" id="nom" name="nom" onkeydown="link_ajax()" /><br />
 
@@ -40,10 +40,10 @@
 
 		<label for="travail">Travail :</label>
 		<input type="checkbox" id="travail" value="true" name="travail" onchange="link_ajax()" />
-	</div>
-	<div id="resultat">
-	</div>
-</section>
+	</section>
+	<section id="resultat">
+	</section>
+</div>
 <script type="text/javascript">
 link_ajax();
 </script>

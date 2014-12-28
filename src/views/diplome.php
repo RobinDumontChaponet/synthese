@@ -1,6 +1,6 @@
 ﻿<!--meta title="<?php echo (($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css"-->
 
-<section id="content">
+<div id="content">
 	<?php if ($diplome != NULL) {
 		if ($user == "Ancien") { /* Ne peut pas modifier */ ?>
 		<ol>
@@ -18,4 +18,4 @@
 	} else {?>
 		<p class="warning">Ce diplôme n'existe pas</p>
 	<?php }?>
-</section>
+</div>

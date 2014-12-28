@@ -1,12 +1,12 @@
 ﻿<!--meta title="Promotion" css="style/animations.css"-->
-<section id="content">
-	<h1 style="color:lightBlue">Page de la promotion année <?php echo $promo->getAnnee();?></h1>
-	<div>
+<div id="content">
+	<h1>Promotion année <?php echo $promo->getAnnee();?></h1>
+	<section>
 		<p>ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo</p>
-	</div>
-	<fieldset>
-		<legend style="color:lightBlue">Liste des étudiants de la promotion</legend>
-		<ol>
+	</section>
+	<section>
+		<h2>Étudiants de la promotion</h2>
+		<ul>
 			<?php
 			if($anciens != NULL) {
 				foreach($anciens as $ancien) {
@@ -15,7 +15,7 @@
 			} else {
 				echo '<p>Il n\'y a pas d\'étudiants dans cette promotion</p>';
 			}?>
-		</ol>
-	</fieldset>
+		</ul>
+	</section>
 
-</section>
+</div>

@@ -1,4 +1,4 @@
 ﻿<!--meta title="Paramètres" css="style/animations.css"-->
-<section id="content">
+<div id="content">
 	<h1>Paramètres</h1>
-</section>
+</div>
