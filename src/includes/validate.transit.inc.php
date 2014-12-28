@@ -8,4 +8,8 @@ function is_valid_email ($str) {
     return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str))?false:true;
 }
 
+function contains_numeric ($str) {
+	return preg_match('/[0-9]+/', $str);
+}
+
 ?>

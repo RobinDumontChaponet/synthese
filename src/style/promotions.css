@@ -1,0 +1,12 @@
+#content ul {
+	text-align: center;
+}
+
+#content li a {
+	margin: 0 10px;
+	text-transform: uppercase;
+}
+
+#content li a:first-child {
+	text-transform: none;
+}

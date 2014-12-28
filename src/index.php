@@ -12,6 +12,7 @@ if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
 function get_include_contents($filename) {
 	if (is_file($filename)) {
 		ob_start();
+		ob_clean();
 		include ($filename);
 		return ob_get_clean();
 	}
@@ -88,8 +89,8 @@ if($matches[1]) {
 </head>
 <body<?php if($_SESSION['help']) echo ' class="show-help"';?>>
 	<?php include('menu.inc.php');?>
-    <div id="wrapper">
-	    <?php echo $inc; ?>
+	<div id="wrapper">
+		<?php echo $inc; ?>
 	</div>
 </body>
 </html>
