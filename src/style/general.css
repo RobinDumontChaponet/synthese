@@ -52,7 +52,15 @@ body {
 }
 
 a, a:active, a:hover, a:visited {
-	color: #afbdd4;
+	color: #17458f;
+	text-decoration: none;
+}
+
+::selection {
+  background: #9FCBFD;
+}
+::-moz-selection {
+  background: #9FCBFD;
 }
 
 fieldset {

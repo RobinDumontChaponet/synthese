@@ -1,0 +1,72 @@
+#content li {
+	background: #fcfcfc;
+	margin: 10px -10px;
+	padding: 10px;
+}
+
+#content li a {
+	display: block;
+	color: #3f3f3f;
+}
+
+p {
+	font-weight: 400;
+}
+
+.dateEvent {
+	font-weight: 300;
+}
+
+.typeEvent {
+	float: right;
+	margin-left: 20px;
+	padding: 0 10px 0 12px;
+	background: #bcbcbc;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius-bottomright: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+	position: relative;
+	white-space: nowrap;
+	box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.typeEvent:before{
+	content: "";
+	float: left;
+	position: absolute;
+	top: 50%;
+	left: -12px;
+	width: 0;
+	height: 0;
+	margin-top: -14px;
+	border-color: transparent #bcbcbc transparent transparent;
+	border-style: solid;
+	border-width: 14px 12px 14px 0;
+}
+
+.typeEvent:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -2px;
+	left: 0;
+	float: left;
+	width: 4px;
+	height: 4px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #fff;
+	-moz-box-shadow: -1px -1px 2px #6d8a9d;
+	-webkit-box-shadow: -1px -1px 2px #6d8a9d;
+	box-shadow: -1px -1px 2px #6d8a9d;
+}
+
+.sad {
+	color: grey;
+}
