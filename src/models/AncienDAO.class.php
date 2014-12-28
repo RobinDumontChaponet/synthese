@@ -144,7 +144,7 @@ class AncienDAO {
         $where="WHERE P.idPersonne=A.idPersonne";
 
 		if($nom != null) {
-			$where.=" AND P.nomUsage LIKE ? OR P.nomPatronymique LIKE ? ";
+			$where.=" AND (P.nomUsage LIKE ? OR P.nomPatronymique LIKE ?) ";
 			$args[]='%'.$nom.'%';
             $args[]='%'.$nom.'%';
 		}
