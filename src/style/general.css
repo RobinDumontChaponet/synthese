@@ -186,7 +186,6 @@ header a#aOut:before {
 	min-height: 100%;
 	text-align: justify;
 	line-height: 1.7857;
-	max-width: 76em;
 	padding-bottom: 3.125em;
 	margin-bottom: -3em;
 
@@ -200,6 +199,8 @@ header a#aOut:before {
 	/*margin: 3em 0 0;
 	padding: 3em 0 3em;*/
 	position: relative;
+	max-width: 76em;
+	margin: 0 auto;
 }
 
 label {
