@@ -66,21 +66,16 @@ class DiplomePostDUTDAO
 		}
 	}
 
-	public static function update($obj)
-	{
-		if
-		(get_class($obj)=="DiplomePostDUT")
-		{
-			try{
+	public static function update($obj) {
+		if (get_class($obj)=="DiplomePostDUT") {
+			try {
 				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `diplomePostDUT` SET `idDepartement`=?,`libelle`=? WHERE idDiplomeDUT=?");
-				$req->execute(array($obj->getDepartement()->getId(), $obj->getLibelle(), $obj->getId()));
-			}catch(PDOException $e)
-			{
+				$req = $bdd->prepare("UPDATE `diplomePostDUT` SET `idDomaine`=?,`libelle`=? WHERE idDiplomePost=?");
+				$req->execute(array($obj->getDomaine()->getId(), $obj->getLibelle(), $obj->getId()));
+			} catch(PDOException $e) {
 				die('error update dip post dut '.$e->getMessage().'<br>');
 			}
-		}else
-		{
+		} else {
 			die('paramètre de type diplome post dut requis');
 		}
 	}
