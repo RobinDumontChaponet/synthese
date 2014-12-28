@@ -15,11 +15,9 @@
 				<li>
 					<label for="domainLibelle">Domaine :</label>
 					<select id="domainLibelle" name="domainLibelle">
-						<option value="<?php echo $diplome->getDomaine()->getId(); ?>"><?php echo $diplome->getDomaine()->getLibelle(); ?></option>
-						<?php foreach ($domaines as $domaine) {
-							if ($domaine->getId() != $diplome->getDomaine()->getId()) {?>
-								<option value="<?php echo $domaine->getId();?>"><?php echo $domaine->getLibelle();?></option>
-							<?php }
+						<?php foreach ($domaines as $domaine) { ?>
+								<option<?php if ($domaine->getId() == $diplome->getDomaine()->getId()) echo ' checked="checked"' ?>value="<?php echo $domaine->getId();?>"><?php echo $domaine->getLibelle();?></option>
+						<?php
 						}?>
 					</select>
 				</li>
