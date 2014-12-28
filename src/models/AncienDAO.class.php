@@ -76,13 +76,12 @@ class AncienDAO {
 
     }
 
-	public static function create(&$ancien)
-	{
-		if (gettype($ancien)=="Ancien") {
+	public static function create(&$ancien) {
+		if (get_class($ancien)=="Ancien") {
 			try {
 				$bdd=connect();
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req=$bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				$req = $bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
                 $ancien->setId($idPers);
                 return $idPers;
@@ -90,37 +89,37 @@ class AncienDAO {
 				die('error create ancien '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type ancien requis');
+			die('Create  : Paramètre de type ancien requis : '.$ancien);
 		}
 	}
 
 	public static function update($ancien) {
-		if (gettype($ancien)=="Ancien") {
+		if (get_class($ancien) == "Ancien") {
 			try {
 				$bdd=connect();
 				PersonneDAO::update(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req=$bdd->prepare("UPDATE `ancien` SET `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
-				$req->execute(array($ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
+				$req = $bdd->prepare("UPDATE `ancien` SET `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
+				$req->execute(array($ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal(), $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
 			} catch(PDOException $e){
 				die('error update ancien '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type ancien requis');
+			die('Update : Paramètre de type ancien requis : '.$ancien);
 		}
 	}
 
 	public static function delete($ancien) {
-		if (gettype($ancien)=="Ancien") {
+		if (get_class($ancien)=="Ancien") {
 			try {
 				$bdd=connect();
 				PersonneDAO::delete(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req=$bdd->prepare("DELETE FROM `ancien` WHERE `idPersonne`=?");
+				$req = $bdd->prepare("DELETE FROM `ancien` WHERE `idPersonne`=?");
 				$req->execute(array($ancien->getId()));
 			} catch(PDOException $e) {
 				die('error delete ancien '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type ancien requis');
+			die('Delete : Paramètre de type ancien requis : '.$ancien);
 		}
 	}
 
