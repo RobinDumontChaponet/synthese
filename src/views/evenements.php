@@ -1,8 +1,9 @@
 ﻿<!--meta title="Événements" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
+	<h1>Évènements</h1>
 	<?php if ($user == "Ancien" || $user == "Professeur") {?>
 		<section>
-			<h2>Événements inscrits</h2>
+			<h2>Inscrits</h2>
 			<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
 				echo '<ul>';
 				foreach($eventsInscriPost as $eventInscriPost) {
@@ -18,7 +19,7 @@
 			?>
 		</section>
 		<section>
-			<h2>Autres événements</h2>
+			<h2>Autres</h2>
 			<ul>
 				<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
 					echo '<ul>';
@@ -37,7 +38,7 @@
 			</ul>
 		</section>
 		<section>
-			<h2>Événements passés</h2>
+			<h2>Passés</h2>
 			<ul>
 			<?php if ($eventsAnt != NULL) { // Events qui sont passés
 				echo '<ul>';
@@ -55,7 +56,7 @@
 		</section>
 	<?php } else if ($user == "Admin") { ?>
 		<section>
-			<h2>Événements à venir</h2>
+			<h2>À venir</h2>
 			<ol>
 			<?php if($eventsPost != NULL) {
 				echo '<ul>';
@@ -71,7 +72,7 @@
 			</ol>
 		</section>
 		<section>
-			<h2>Événements passés</h2>
+			<h2>Passés</h2>
 			<ol>
 			<?php if ($eventsAnt != NULL) {
 				foreach($eventsAnt as $eventAnt) {

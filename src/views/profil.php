@@ -1,7 +1,7 @@
-﻿<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css"-->
+﻿<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
 
 <section id="content">
-	<?php 
+	<?php
 	if ($valid) {
 		if (isset($valid['lastName']) && !$valid['lastName'])
 			echo '<p class="error">Le nom doit être écrit en lettres</p>';
@@ -19,7 +19,7 @@
 	<?php if (isset($ancien) && $ancien != NULL) {?>
 		<p style="font-size:25px"><?php echo $ancien->getNomPatronymique() ?> <?php echo $ancien->getPrenom()?></p>
 		<form action="profil" method="post">
-			<fieldset>
+			<figure>
 				<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
 					echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
 				else
@@ -33,7 +33,7 @@
 				echo '<img height="230px" width="200px" src="data:image/jpg;base64,'.base64_encode($imageTrombi).'" alt="Image de trombinoscope"/>'*/;
 				?>
 				<!--<input type="file" name="imageProfil"/>-->
-			</fieldset>
+			</figure>
 			<fieldset>
 				<legend>Informations générales</legend>
 				<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user == 'Admin') { // Si l'utilisateur est celui log, modif possible?>

@@ -1,10 +1,10 @@
-﻿<!--meta title="Promotion" css="style/animations.css"-->
+﻿<!--meta title="Promotion" css="style/animations.css" css="style/promotion.css"-->
 <div id="content">
 	<h1>Promotion année <?php echo $promo->getAnnee();?></h1>
 	<section>
 		<p>ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo</p>
 	</section>
-	<section>
+	<section id="students">
 		<h2>Étudiants de la promotion</h2>
 		<ul>
 			<?php
