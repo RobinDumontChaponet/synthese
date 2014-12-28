@@ -365,6 +365,36 @@ select {
 	top: 1.5em;
 }
 
+table {
+	margin: 0 auto 20px;
+	font-size: 12px;
+	background: #fefefe;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	-moz-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
+	min-width: 440px;
+	word-break: break-word;
+	border-collapse: collapse;
+	width: 100%;
+}
+th, td {
+	padding: 14px 2px;
+	text-align: center;
+	border-right: 1px solid #F2F2F2;
+	border-bottom: 1px solid #EDE9E9;
+}
+th {
+	background: #e8eaeb;
+	padding: 0 10px;
+	height: 28px;
+	text-shadow: 1px 1px 1px #fff;
+	position: relative;
+}
+
+
 footer {
 	float: right;
 	clear: both;
