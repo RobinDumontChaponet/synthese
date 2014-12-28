@@ -51,14 +51,13 @@ function validate ($ancien) {
 	}	
 	return $valid;
 }
-
 if (isset($_GET['id']))
 	$personne = PersonneDAO::getById($_GET['id']);
 else
 	$personne = PersonneDAO::getById($_SESSION[syntheseUser]->getId());
 	
 if ($personne != NULL)
-	$ancien = AncienDAO::getById($personne->getId());	
+	$ancien = AncienDAO::getById($personne->getId());
 	
 if(!empty($_POST) && $ancien != NULL) {
 	$valid = validate($ancien);
@@ -96,7 +95,6 @@ if(!empty($_POST) && $ancien != NULL) {
 	}
 	if ($change)
 		AncienDAO::update($ancien);
-	var_dump($_POST);
 }
 
 if ($ancien != NULL) {
