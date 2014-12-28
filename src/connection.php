@@ -1,6 +1,7 @@
 <?php
 $badAgents = array('Java','Jakarta', 'User-Agent', 'compatible ;', 'libwww, lwp-trivial', 'curl, PHP/', 'urllib', 'GT::WWW', 'Snoopy', 'MFC_Tear_Sample', 'HTTP::Lite', 'PHPCrawl', 'URI::Fetch', 'Zend_Http_Client', 'http client', 'PECL::HTTP');
 $bot=false;
+$badinput=false;
 foreach($badAgents as $agent) {
     if(strpos($_SERVER['HTTP_USER_AGENT'],$agent) !== false)
         $bot=true;
@@ -58,7 +59,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
   <?php if($bot===true) echo'<p class="mapsitna">Accès interdit !</p>';
 else { ?>
 	  <legend>connectIT!</legend>
-	  <label for="user">Identifiant</label><input title="Identifiant" id="user" name="user" type="text" value="<?php echo $_POST['user']?>" required autofocus />
+	  <label for="user">Identifiant</label><input title="Identifiant" id="user" name="user" type="text" value="<?php if($badinput==true){ echo $_POST['user']; } ?>" required autofocus />
 	  <br />
 	  <label for="pwd">Mot-de-passe</label><input title="Mot-de-passe" id="pwd" name="pwd" type="password" required />
 	  <br />
