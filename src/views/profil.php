@@ -1,5 +1,4 @@
 <!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
-
 <section id="content">
 	<?php
 	if ($valid) {
@@ -32,7 +31,7 @@
 			</figure>
 			<fieldset>
 				<legend>Informations générales</legend>
-				<?php if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $user_auth['write']) { // Si l'utilisateur est celui log, modif possible?>
+				<?php if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { // Si l'utilisateur est celui log, modif possible?>
 				<ol>
 					<li><label for="lastName">Nom d'usage :</label><input id="lastName" name="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom(); ?>"/></li>
 					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php if ($ancien->getSexe() == "m") echo "Homme"; else if ($ancien->getSexe() == "f") echo "Femme";?>"/></li>
