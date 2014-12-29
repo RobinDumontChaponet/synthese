@@ -31,11 +31,13 @@ if(!empty($_POST) && $diplome != NULL) {
 	}
 	if ($valid['domainLibelle']) {
 		$diplome->getDomaine()->setId($_POST['domainLibelle']);
-		var_dump($diplome->getDomaine()->getId());
 		$change = true;
 	}
-	if ($change)
+	if ($change) {
 		DiplomePostDUTDAO::update($diplome);
+		header("refresh:1.5;");
+		$changeDone = 1;
+	}
 }
 
 include(VIEWS_INC.'diplome.php');
