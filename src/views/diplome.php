@@ -18,10 +18,10 @@
 					<li>
 						<label for="domainLibelle">Domaine :</label>
 						<select id="domainLibelle" name="domainLibelle">
-							<?php foreach ($domaines as $domaine) { ?>
-									<option <?php if ($domaine->getId() == $diplome->getDomaine()->getId()) echo ' selected ' ?>value="<?php echo $domaine->getId();?>"><?php echo $domaine->getLibelle();?></option>
-							<?php }?>
-						</select>
+						<?php foreach ($domaines as $domaine) {
+								echo '<option'.(($domaine->getId() == $diplome->getDomaine()->getId())?' selected':'').' value="'.$domaine->getId().'">'.$domaine->getLibelle().'</option>';
+						}?>
+					</select>
 					</li>
 					<li><label for="domainDescription">Description :</label><input id="domainDescription" name="domainDescription" type="text" placeholder="Description" value="<?php echo $diplome->getDomaine()->getDescription(); ?>"/></li>
 				</ol>
