@@ -26,9 +26,11 @@ if(empty($_GET['requ']))
 // Définitions des droits
 include_once(MODELS_INC."DisposeDeDAO.class.php");
 
-$user_auth = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]))->getDroit();
 
-if(!isset($user_auth['read']) || !$user_auth['read']) {
+// J'aurais voulu faire une constante, mais on ne peut mettre que des scalaires dans les constantes, avant php 5.6...
+$_SESSION['user_auth'] = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle($_GET["requ"]))->getDroit();
+
+if(!isset($_SESSION['user_auth']['read']) || !$_SESSION['user_auth']['read']) {
 	header($_SERVER["SERVER_PROTOCOL"]." 403 Forbidden");
 	header("Status: 403 Forbidden");
 	$_SERVER['REDIRECT_STATUS'] = 403;
