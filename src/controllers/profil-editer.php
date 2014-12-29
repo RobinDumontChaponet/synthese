@@ -7,10 +7,22 @@ $change = false;
 function validate ($ancien) {
 	$valid = array();
 	if (isset($_POST['lastName']) && trim($_POST['lastName']) != $ancien->getNom()) {
-		if (!contains_numeric($_POST['lastName']))
+		if (!contains_numeric($_POST['lastName']))	//	Si il n'y a pas de chiffres
 			$valid['lastName'] = true;
 		else
 			$valid['lastName'] = false;
+	}
+	if (isset($_POST['name']) && trim($_POST['name']) != $ancien->getNomPatronymique()) {
+		if (!contains_numeric($_POST['name']))	//	Si il n'y a pas de chiffres
+			$valid['name'] = true;
+		else
+			$valid['name'] = false;
+	}
+	if (isset($_POST['firstName']) && trim($_POST['firstName']) != $ancien->getPrenom()) {
+		if (!contains_numeric($_POST['firstName']))	//	Si il n'y a pas de chiffres
+			$valid['firstName'] = true;
+		else
+			$valid['firstName'] = false;
 	}
 	if (isset($_POST['addresstrue']) && trim($_POST['addresstrue']) != $ancien->getAdressetrue())
 		$valid['addresstrue'] = true;
@@ -19,13 +31,13 @@ function validate ($ancien) {
 	if (isset($_POST['postalCode']) && trim($_POST['postalCode']) != $ancien->getCodePostal())
 		$valid['postalCode'] = true;
 	if (isset($_POST['city']) && trim($_POST['city']) != $ancien->getVille()) {
-		if (!contains_numeric($_POST['city']))
+		if (!contains_numeric($_POST['city']))	//	Si il n'y a pas de chiffres
 			$valid['city'] = true;
 		else
 			$valid['city'] = false;
 	}
 	if (isset($_POST['country']) && trim($_POST['country']) != $ancien->getPays()) {
-		if (!contains_numeric($_POST['country']))
+		if (!contains_numeric($_POST['country']))	//	Si il n'y a pas de chiffres
 			$valid['country'] = true;
 		else
 			$valid['country'] = false;
@@ -62,6 +74,8 @@ if ($personne != NULL)
 	
 if(!empty($_POST) && $ancien != NULL) {
 	$valid = validate($ancien);
+	
+	//	Test : Si changement OK -> on attribut la valeur à $ancien -> on signifie qu'il y a changement
 	if ($valid['lastName']) {
 		$ancien->setNom($_POST['lastName']);
 		$change = true;
@@ -96,6 +110,14 @@ if(!empty($_POST) && $ancien != NULL) {
 	}
 	if ($valid['sex']) {
 		$ancien->setSexe($_POST['sex']);
+		$change = true;
+	}
+	if ($valid['name']) {
+		$ancien->setNomPatronymique($_POST['name']);
+		$change = true;
+	}
+	if ($valid['firstName']) {
+		$ancien->setPrenom($_POST['firstName']);
 		$change = true;
 	}
 	if ($change)

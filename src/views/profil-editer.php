@@ -12,10 +12,12 @@
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
 			<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil !-->
 		</figure>
-		<h1><?php echo $ancien->getPrenom()?> <?php echo strtoupper($ancien->getNomPatronymique()) ?></h1>
-		
 		
 		<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post">
+		<?php if ($_SESSION['user_auth']['write'])
+			echo '<input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" name="name" value="'.strtoupper($ancien->getNomPatronymique()).'"></input>';
+		else
+			echo '<input type="text" placeholder="Prénom" readonly="readonly" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" readonly="readonly" value="'.strtoupper($ancien->getNomPatronymique()).'"></input>'; ?>
 			<fieldset>
 				<legend>Informations générales</legend>
 				<ol>
