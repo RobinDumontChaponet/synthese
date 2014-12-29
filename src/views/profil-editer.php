@@ -2,25 +2,25 @@
 <section id="content">
 	<?php 
 	if ($valid) {
-	if (isset($valid['lastName']) && !$valid['lastName'])
-		echo '<p class="error">Le nom doit être écrit en lettres</p>';
-	if (isset($valid['lastName']) && !$valid['lastName'])
-		echo '<p class="error">Le nom patronymique doit être écrit en lettres</p>';
-	if (isset($valid['firstName']) && !$valid['firstName'])
-		echo '<p class="error">Le prénom doit être écrit en lettres</p>';
-	if  (isset($valid['city']) && !$valid['city'])
-		echo '<p class="error">La ville doit être écrit en lettres</p>';
-	if (isset($valid['country']) && !$valid['country'])
-		echo '<p class="error">Le pays doit être écrit en lettres</p>';
-	if  (isset($valid['phoneNumber']) && !$valid['phoneNumber'])
-		echo '<p class="error">Mauvais format de téléphone</p>';
-	if (isset($valid['mobileNumber']) && !$valid['mobileNumber'])
-		echo '<p class="error">Mauvais format de mobile</p>';
-	if (isset($valid['mailAddress']) && !$valid['mailAddress'])
-		echo '<p class="error">Mauvais format de mail</p>';
-	if (isset($valid['birthday']) && !$valid['birthday'])
-		echo '<p class="error">Mauvais format de date : YYYY-MM-DD</p>';
-}
+		if (isset($valid['lastName']) && !$valid['lastName'])
+			echo '<p class="error">Le nom doit être écrit en lettres</p>';
+		if (isset($valid['lastName']) && !$valid['lastName'])
+			echo '<p class="error">Le nom patronymique doit être écrit en lettres</p>';
+		if (isset($valid['firstName']) && !$valid['firstName'])
+			echo '<p class="error">Le prénom doit être écrit en lettres</p>';
+		if  (isset($valid['city']) && !$valid['city'])
+			echo '<p class="error">La ville doit être écrit en lettres</p>';
+		if (isset($valid['country']) && !$valid['country'])
+			echo '<p class="error">Le pays doit être écrit en lettres</p>';
+		if  (isset($valid['phoneNumber']) && !$valid['phoneNumber'])
+			echo '<p class="error">Mauvais format de téléphone</p>';
+		if (isset($valid['mobileNumber']) && !$valid['mobileNumber'])
+			echo '<p class="error">Mauvais format de mobile</p>';
+		if (isset($valid['mailAddress']) && !$valid['mailAddress'])
+			echo '<p class="error">Mauvais format de mail</p>';
+		if (isset($valid['birthday']) && !$valid['birthday'])
+			echo '<p class="error">Mauvais format de date : YYYY-MM-DD</p>';
+	}
 	
 	if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) {?>
 		<figure>

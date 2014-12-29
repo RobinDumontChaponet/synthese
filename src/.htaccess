@@ -90,6 +90,7 @@ AddType application/octet-stream .zip
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
 	RewriteRule ^diplome-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplome-editer&id=$1 [NC]
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
+	RewriteRule ^etablissement-editer/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-editer&id=$1 [NC]
 	RewriteRule ^etablissement/([^/]+) %{ENV:BASE}/index.php?requ=etablissement&id=$1 [NC]
 
 
