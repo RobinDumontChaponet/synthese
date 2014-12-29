@@ -152,7 +152,7 @@ class AncienDAO {
 			$where.=" AND P.prenom LIKE ? ";
 			$args[]='%'.$prn.'%';
 		}
-		if($promo!=null && $promo!=array(null, null)) {
+		if($promo!=null && $promo!=array(null,null)) {
             if(gettype($promo)=="array") {
                 $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo";
                 if($promo[0]!=null){
@@ -170,7 +170,7 @@ class AncienDAO {
 		}
 		if($diplome!=null) {
 			$where.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
-            if($promo==null){ $from.=" ,`aEtudie` Etud"; }
+            if($promo==null || $promo==array(null,null)){ $from.=" ,`aEtudie` Etud"; }
 			$args[]=$diplome;
 		}
 		if($spe!=null) {
@@ -196,11 +196,11 @@ class AncienDAO {
 			$args[]=$etabPostDut;
 		}
         if($trav==true) {
-             $where.=" AND trav.idPersonne=P.idPersonne AND trav.EmbaucheFin=NULL GROUP BY P.idPersonne";
+             $where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
             $from.=" , `travaille` trav";
         }
         $req=$select." ".$from." ".$where;
-        //var_dump($req);
+        var_dump($req);
 		try {
 			$bdd=connect();
 			$state=$bdd->prepare($req);
