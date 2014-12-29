@@ -31,7 +31,7 @@
 			</figure>
 			<fieldset>
 				<legend>Informations générales</legend>
-				<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user == 'Admin') { // Si l'utilisateur est celui log, modif possible?>
+				<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user_auth[‘write’]) { // Si l'utilisateur est celui log, modif possible?>
 				<ol>
 					<li><label for="lastName">Nom d'usage :</label><input id="lastName" name="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom(); ?>"/></li>
 					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php if ($ancien->getSexe() == "m") echo "Homme"; else if ($ancien->getSexe() == "f") echo "Femme";?>"/></li>
@@ -77,11 +77,11 @@
 								<input id="resultat<?php echo $diplomePost->getDiplomePostDUT()->getId();?>" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 								<label for="periode<?php echo $diplomePost->getDiplomePostDUT()->getId();?>">Période : </label>
 								<input id="periode<?php echo $diplomePost->getDiplomePostDUT()->getId();?>" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
-								<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user == 'Admin') {?><aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside><?php }?>
+								<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user_auth[‘write’]) {?><aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside><?php }?>
 							</li>
 						<?php }
 					}
-					if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user == 'Admin') {?>
+					if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user_auth[‘write’]) {?>
 						<li><aside><a href="#">Ajouter +</a></aside></li>
 					<?php }?>
 				</ol>
@@ -101,12 +101,12 @@
 							</li>
 						<?php }
 					}
-					if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user == 'Admin') {?>
+					if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user_auth[‘write’]) {?>
 						<li><aside><a href="#">Ajouter +</a></aside></li>
 					<?php }?>
 				</ol>
 			</fieldset>
-			<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user == 'Admin')
+			<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user_auth[‘write’])
 				echo '<input type="submit" value="Enregistrer les modifications" />';
 			?>
 		</form>

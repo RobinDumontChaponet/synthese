@@ -3,7 +3,6 @@ include_once('validate.transit.inc.php');
 
 $valid = NULL;
 $change = 0;
-$user = $_SESSION[syntheseUser]->getTypeProfil()->getLibelle();
 
 function validate ($ancien) {
 	$valid = array();
