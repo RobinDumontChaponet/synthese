@@ -62,6 +62,12 @@ function validate ($ancien) {
 	}
 	if (isset($_POST['sex']) && trim($_POST['sex']) != $ancien->getSexe())
 		$valid['sex'] = true;
+	if (isset($_POST['birthday']) && trim($_POST['birthday']) != $ancien->getDateNaissance()) {
+		if (is_valid_SQL_date($_POST['birthday']))
+			$valid['birthday'] = true;
+		else
+			$valid['birthday'] = false;
+	}
 	return $valid;
 }
 if (isset($_GET['id']))
@@ -118,6 +124,10 @@ if(!empty($_POST) && $ancien != NULL) {
 	}
 	if ($valid['firstName']) {
 		$ancien->setPrenom($_POST['firstName']);
+		$change = true;
+	}
+	if ($valid['birthday']) {
+		$ancien->setDateNaissance($_POST['birthday']);
 		$change = true;
 	}
 	if ($change)
