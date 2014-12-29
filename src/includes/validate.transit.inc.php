@@ -12,4 +12,8 @@ function contains_numeric ($str) {
 	return preg_match('/[0-9]+/', $str);
 }
 
+function format_date ($str) {
+	return date('Y-m-d',strtotime($str));
+}
+
 ?>

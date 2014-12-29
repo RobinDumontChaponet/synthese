@@ -1,5 +1,5 @@
 <!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
-<section id="content">
+<div id="content">
 	<?php
 	if ($valid) {
 		if (isset($valid['lastName']) && !$valid['lastName'])
@@ -28,9 +28,8 @@
 			<!--<input type="file" name="imageProfil"/>-->
 		</figure>
 		<h1><?php echo $ancien->getPrenom()?> <?php echo strtoupper($ancien->getNomPatronymique()) ?></h1>
-		<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post">
-			<fieldset>
-				<legend>Informations générales</legend>
+		<section>
+			<h2>Informations générales</h2>
 				<?php if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { // Si l'utilisateur est celui log, modif possible?>
 				<ol>
 					<li><label for="lastName">Nom d'usage :</label><input id="lastName" name="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom(); ?>"/></li>
@@ -59,10 +58,10 @@
 					<li><label for="mailAddress">Mail :</label><input id="mailAddress" type="text" placeholder="Pas d'adresse mail" readonly="readonly" value=""/></li>
 				</ol>
 				<?php }?>
-			</fieldset>
-			<fieldset>
-				<legend>Diplômes</legend>
-				<ol>
+		</section>
+		<section>
+			<h2>Diplômes</h2>
+			<ol>
 					<?php if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent?>
 					<li>
 						<label for="diplomeDUT">Diplôme :</label>
@@ -92,10 +91,10 @@
 						<li><aside><a href="#">Ajouter +</a></aside></li>
 					<?php }?>
 				</ol>
-			</fieldset>
-			<fieldset>
-				<legend>Entreprises</legend>
-				<ol>
+		</section>
+		<section>
+			<h2>Entreprises</h2>
+			<ol>
 					<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 						foreach($entreprises as $entreprise) {?>
 							<li>
@@ -111,8 +110,8 @@
 					if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) {?>
 						<li><aside><a href="#">Ajouter +</a></aside></li>
 					<?php }?>
-				</ol>
-			</fieldset>
+			</ol>
+		</section>
 			<?php if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 				echo '<input type="submit" value="Enregistrer les modifications" />';
 			?>
