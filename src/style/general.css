@@ -394,6 +394,7 @@ th, td {
 	text-align: center;
 	border-right: 1px solid #F2F2F2;
 	border-bottom: 1px solid #EDE9E9;
+	vertical-align: middle;
 }
 th {
 	background: #e8eaeb;
@@ -403,6 +404,9 @@ th {
 	position: relative;
 }
 
+.sad {
+	color: grey;
+}
 
 footer {
 	float: right;

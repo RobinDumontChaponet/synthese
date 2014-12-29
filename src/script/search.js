@@ -55,7 +55,10 @@ function affichageResultat() {
 					table += it['etablissementsPostDUT'][j]+' ';
 				table += '</td>';
 
-				table += '<td>'+((it['travailActuel'])?it['travailActuel']:'Aucun travail actuellement')+'</td>';
+				if(it['travailActuel'])
+					table += '<td>'+it['travailActuel']+'</td>';
+				else
+					table += '<td class="sad">Aucun travail actuellement</td>';
 
 				table += '<td><a href="profil/'+it['idProfil']+'">Consulter</a></td>';
 

@@ -22,7 +22,7 @@ if($_SESSION["syntheseUser"]) {
 		function push(&$array, $suggestion, $travailActuel) {
 			$personne = array();
 
-			$travailActuel = '';
+			$libelleTravailActuel = '';
 			if($travailActuel)
 				$libelleTravailActuel = $travailActuel->getPoste()->getLibelle();
 
