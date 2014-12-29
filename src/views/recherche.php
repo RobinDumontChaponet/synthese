@@ -1,4 +1,4 @@
-<!--meta title="Recherche" css="style/animations.css" js="script/search.js"-->
+<!--meta title="Recherche" css="style/animations.css" css="style/recherche.css" js="script/search.js"-->
 <div id="content">
 	<h1>Recherche</h1>
 	<section id="criteres">

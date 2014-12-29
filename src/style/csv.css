@@ -25,6 +25,8 @@ form {
 	-moz-animation-duration:1s;
 	animation-duration:1s;
 	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+	animation-play-state: paused;
 }
 
 form:before {
