@@ -13,7 +13,10 @@ function contains_numeric ($str) {
 }
 
 function format_date ($str) {
-	return date('Y-m-d', strtotime($str));
+	if(strtotime($str)!==false)
+		return date('Y-m-d', strtotime($str));
+
+	return false;
 }
 
 function is_valid_SQL_date ($date) {
