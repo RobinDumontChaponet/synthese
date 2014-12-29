@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/plain; charset=utf-8');
+header('Content-Type: application/json; charset=utf-8');
 
 mb_internal_encoding("UTF-8");
 mb_http_output( "UTF-8" );

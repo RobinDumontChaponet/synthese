@@ -46,8 +46,6 @@ function affichageResultat() {
 			}
 			table += '</table>';
 
-				// <a href="profil/'.$suggestion->getId().'">Consulter</a>
-
 			document.getElementById('resultat').innerHTML = table;
 
 			//document.getElementById('resultat').innerHTML = xhr.responseText;

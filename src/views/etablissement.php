@@ -1,7 +1,7 @@
 <!--meta title="<?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/animations.css"-->
 <div id="content">
 	<?php if ($etablissement != NULL) {
-			if ($user == "Ancien") { /* Ne peut pas modifier */ ?>
+			if ($libelleTypeProfil == "Ancien") { /* Ne peut pas modifier */ ?>
 			<ol>
 				<li><label for="etablissementName">Nom de l'établissement :</label><input id="etablissementName" type="text" placeholder="Nom de l'entreprise" readonly="readonly" value="<?php echo $etablissement->getNom(); ?>"/></li>
 				<li><label for="address1">Adresse 1 :</label><input id="address1" type="text" placeholder="Adresse 1" readonly="readonly" value="<?php echo $etablissement->getAdresse1(); ?>"/></li>
@@ -10,7 +10,7 @@
 				<li><label for="city">Ville :</label><input id="city" type="text" placeholder="Ville" readonly="readonly" value="<?php echo $etablissement->getVille(); ?>"/></li>
 				<li><label for="country">Pays :</label><input id="country" type="text" placeholder="Pays" readonly="readonly" value="<?php echo $etablissement->getPays(); ?>"/></li>
 			</ol>
-		<?php } else if ($user == "Admin" || $user == "Professeur") { /*Peut modifier*/ ?>
+		<?php } else if ($libelleTypeProfil == "Admin" || $libelleTypeProfil == "Professeur") { /*Peut modifier*/ ?>
 			<ol>
 				<li><label for="etablissementName">Nom de l'établissement :</label><input id="etablissementName" type="text" placeholder="Nom de l'entreprise" value="<?php echo $etablissement->getNom(); ?>"/></li>
 				<li><label for="address1">Adresse 1 :</label><input id="address1" type="text" placeholder="Adresse 1" value="<?php echo $etablissement->getAdresse1(); ?>"/></li>

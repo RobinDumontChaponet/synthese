@@ -2,7 +2,7 @@
 
 include_once('validate.transit.inc.php');
 
-$user = $_SESSION[syntheseUser]->getTypeProfil()->getLibelle();
+$libelleTypeProfil = $_SESSION['syntheseUser']->getTypeProfil()->getLibelle();
 $domaines = DomaineDAO::getAll();
 $valid = NULL;
 $change = 0;

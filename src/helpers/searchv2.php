@@ -76,7 +76,7 @@ function afficherPersonne($suggestion, $travailActuel) {
 
 	echo '<travail>'.$travailActuel.'</travail>';
 
-	echo '<idprofil>'.$suggestion->getId().'</idprofil>';
+	echo '<profil><a href="profil/'.$suggestion->getId().'">Consulter</a></profil>';
 
 	echo '</personne>'."\n";
 }

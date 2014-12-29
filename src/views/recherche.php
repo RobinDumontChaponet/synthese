@@ -55,6 +55,24 @@
 		<input type="checkbox" id="travail" value="true" name="travail" onchange="link_ajax()" />
 	</section>
 	<section id="resultat">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Promotion</th>
+					<th>Diplôme DUT</th>
+					<th>Type spécialisation</th>
+					<th>Spécialisation</th>
+					<th>Diplômes post-DUT</th>
+					<th>Etablissements</th>
+					<th>Travail</th>
+					<th>Profil</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
 	</section>
 </div>
 <script type="text/javascript">

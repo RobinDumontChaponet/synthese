@@ -1,7 +1,7 @@
 <!--meta title="Événements" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
 	<h1>Évènements</h1>
-	<?php if ($user == "Ancien" || $user == "Professeur") {?>
+	<?php if ($libelleTypeProfil == "Ancien" || $libelleTypeProfil == "Professeur") {?>
 		<section>
 			<h2>Inscrits</h2>
 			<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
@@ -54,7 +54,7 @@
 			?>
 			</ul>
 		</section>
-	<?php } else if ($user == "Admin") { ?>
+	<?php } else if ($libelleTypeProfil == "Admin") { ?>
 		<section>
 			<h2>À venir</h2>
 			<ol>
