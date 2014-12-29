@@ -200,7 +200,7 @@ class AncienDAO {
             $from.=" , `travaille` trav";
         }
         $req=$select." ".$from." ".$where;
-        var_dump($req);
+        //var_dump($req);
 		try {
 			$bdd=connect();
 			$state=$bdd->prepare($req);

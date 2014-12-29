@@ -51,8 +51,8 @@
 		<label for="etabPostDUT">Etablissement post-DUT :</label>
 		<input type="text" id="etabPostDUT" name="etabPostDUT" onkeydown="link_ajax()" /><br />
 
-		<label for="travail">Travail :</label>
-		<input type="checkbox" id="travail" value="true" name="travail" onchange="link_ajax()" />
+		<label for="travailActuel">Travail :</label>
+		<input type="checkbox" id="travailActuel" value="true" name="travailActuel" onchange="link_ajax()" />
 	</section>
 	<section id="resultat">
 		<table>

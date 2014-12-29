@@ -8,14 +8,16 @@ function link_ajax() {
 			prenom = document.getElementById('prenom').value,
 			promotionInf = document.getElementById('promotionInf').value,
 			promotionSup = document.getElementById('promotionSup').value,
-			diplomedut = document.getElementById('diplome').value,
-			typespecialisations = document.getElementById('typeSpecialisation').value,
+			diplomeDUT = document.getElementById('diplome').value,
+			typeSpecialisation = document.getElementById('typeSpecialisation').value,
 			specialisation = document.getElementById('specialisation').value,
-			diplomepostdut = document.getElementById('diplomePostDUT').value,
-			etablissementpostdut = document.getElementById('etabPostDUT').value,
-			travail = document.getElementById('travail').value;
+			diplomePostDUT = document.getElementById('diplomePostDUT').value,
+			etablissementPostDUT = document.getElementById('etabPostDUT').value,
+			travailActuel = document.getElementById('travailActuel').checked;
 
-			xhr.open('GET', encodeURI('helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotionInf='+promotionInf+'&promotionSup='+promotionSup+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
+			xhr.open('GET', encodeURI('helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotionInf='+promotionInf+'&promotionSup='+promotionSup+'&diplomeDUT='+diplomeDUT+'&typeSpecialisation='+typeSpecialisation+'&specialisation='+specialisation+'&diplomePostDUT='+diplomePostDUT+'&etablissementPostDUT='+etablissementPostDUT+'&travailActuel='+travailActuel), true);
+
+			console.log('helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotionInf='+promotionInf+'&promotionSup='+promotionSup+'&diplomeDUT='+diplomeDUT+'&typeSpecialisation='+typeSpecialisation+'&specialisation='+specialisation+'&diplomePostDUT='+diplomePostDUT+'&etablissementPostDUT='+etablissementPostDUT+'&travailActuel='+travailActuel);
 
 			xhr.onreadystatechange = affichageResultat;
 
