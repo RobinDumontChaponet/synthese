@@ -5,7 +5,7 @@ include_once('dbConnection.inc.php');
 
 session_start();
 if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
-	header ('Location: connection.php');
+	header ('Location: '.SELF.'connection.php');
 	exit();
 }
 

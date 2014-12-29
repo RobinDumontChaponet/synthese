@@ -1,6 +1,28 @@
 <!--meta title="<?php if ($ancien != NULL){echo 'Modification profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
 <section id="content">
-	<?php if (isset($ancien) && $ancien != NULL && $_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) {?>
+	<?php 
+	if ($valid) {
+	if (isset($valid['lastName']) && !$valid['lastName'])
+		echo '<p class="error">Le nom doit être écrit en lettres</p>';
+	if (isset($valid['lastName']) && !$valid['lastName'])
+		echo '<p class="error">Le nom patronymique doit être écrit en lettres</p>';
+	if (isset($valid['firstName']) && !$valid['firstName'])
+		echo '<p class="error">Le prénom doit être écrit en lettres</p>';
+	if  (isset($valid['city']) && !$valid['city'])
+		echo '<p class="error">La ville doit être écrit en lettres</p>';
+	if (isset($valid['country']) && !$valid['country'])
+		echo '<p class="error">Le pays doit être écrit en lettres</p>';
+	if  (isset($valid['phoneNumber']) && !$valid['phoneNumber'])
+		echo '<p class="error">Mauvais format de téléphone</p>';
+	if (isset($valid['mobileNumber']) && !$valid['mobileNumber'])
+		echo '<p class="error">Mauvais format de mobile</p>';
+	if (isset($valid['mailAddress']) && !$valid['mailAddress'])
+		echo '<p class="error">Mauvais format de mail</p>';
+	if (isset($valid['birthday']) && !$valid['birthday'])
+		echo '<p class="error">Mauvais format de date : YYYY-MM-DD</p>';
+}
+	
+	if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) {?>
 		<figure>
 			<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
 				echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
@@ -10,14 +32,14 @@
 				echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
 			else
 				echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
-			<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil !-->
+			<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil vu que tu as dit que tu avais déjà des trucs tout bien fait et tout et que tu t'en occuperais alors j'ai laissé ça comme ça et j'espère que le commentaire est assez grand pour que tu le vois!-->
 		</figure>
 		
 		<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post">
 		<?php if ($_SESSION['user_auth']['write'])
-			echo '<input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" name="name" value="'.strtoupper($ancien->getNomPatronymique()).'"></input>';
+			echo '<input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" name="name" value="'.$ancien->getNomPatronymique().'"></input>';
 		else
-			echo '<input type="text" placeholder="Prénom" readonly="readonly" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" readonly="readonly" value="'.strtoupper($ancien->getNomPatronymique()).'"></input>'; ?>
+			echo '<input type="text" placeholder="Prénom" readonly="readonly" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" readonly="readonly" value="'.$ancien->getNomPatronymique().'"></input>'; ?>
 			<fieldset>
 				<legend>Informations générales</legend>
 				<ol>
@@ -27,7 +49,10 @@
 						echo '<select id="sex" name="sex"><option'.(($ancien->getSexe() == 'm')?' selected':'').' value="m">Homme</option><option'.(($ancien->getSexe() == 'f')?' selected':'').' value="f">Femme</option></select>';
 					else
 						echo '<input id="sex" type="text" readonly="readonly" value ="'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'"/></li>';?>
-					<li><label for="birthday">Date de naissance :</label><input id="birthday" type="text" readonly="readonly" value ="<?php echo $ancien->getDateNaissance(); ?>"/></li>
+					<li><label for="birthday">Date de naissance :</label><?php if ($_SESSION['user_auth']['write'])
+						echo '<input id="birthday" name="birthday" type="text" value ="'.$ancien->getDateNaissance().'"/>';
+					else
+						echo '<input id="birthday" type="text" readonly="readonly" value ="'.$ancien->getDateNaissance().'"/></li>';?>
 					<li><label for="address1">Adresse 1 :</label><input id="address1" name="address1" type="text" placeholder="Adresse" value="<?php echo $ancien->getAdresse1(); ?>"/>
 					<br /><label for="address2">Adresse 2 :</label><input id="address2" name="address2" type="text" placeholder="Adresse 2" value="<?php echo $ancien->getAdresse2(); ?>"/></li>
 					<li><label for="postalCode">Code postal :</label><input id="postalCode" name="postalCode" type="text" placeholder="Code postal" value="<?php echo $ancien->getCodePostal(); ?>"/><label for="city">Ville :</label><input id="city" name="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/><label for="country">Pays :</label><input id="country" name="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li>
@@ -62,10 +87,8 @@
 								<aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside>
 							</li>
 						<?php }
-					}
-					if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) {?>
+					} ?>
 						<li><aside><a href="ajouter">Ajouter +</a></aside></li>
-					<?php }?>
 				</ol>
 			</fieldset>
 			<fieldset>
