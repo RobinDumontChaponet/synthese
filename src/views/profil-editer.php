@@ -22,7 +22,7 @@
 		echo '<p class="error">Mauvais format de date : YYYY-MM-DD</p>';
 }
 	
-	if (isset($ancien) && $ancien != NULL && $_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) {?>
+	if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) {?>
 		<figure>
 			<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
 				echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
