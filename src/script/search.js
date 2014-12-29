@@ -36,7 +36,7 @@ function affichageResultat() {
 			listePersonnes = root.getElementsByTagName('personne');
 
 			table = '<table>';
-			table += '<tr> <th>Nom</th> <th>Prenom</th> <th>promotion</th> <th>diplôme DUT</th> <th>Type specialisation</th> <th>Spécialisation</th> <th>Diplôme post-DUT</th> <th>Etablissement</th> <th>Travail</th>  </tr>';
+			table += '<tr> <th>Nom</th> <th>Prenom</th> <th>promotion</th> <th>diplôme DUT</th> <th>Type specialisation</th> <th>Spécialisation</th> <th>Diplôme post-DUT</th> <th>Etablissement</th> <th>Travail</th> <th>Profil</th>  </tr>';
 			for(i = 0; i < listePersonnes.length; i++) {
 				table += '<tr>';
 				for(j = 0; j < listePersonnes[i].childNodes.length; j++) {
