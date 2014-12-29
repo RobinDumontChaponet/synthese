@@ -60,6 +60,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th>Sélectionner</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Promotion</th>
