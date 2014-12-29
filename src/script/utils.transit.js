@@ -84,3 +84,17 @@ function utf8_encode(s) {
 function utf8_decode(s) {
   return decodeURIComponent(escape(s));
 }
+
+function form2args (elements) {
+	var args = '';
+	for(var i=0, l=elements.length; i<l; i++) {
+		var el=elements[i];
+		if (el.tagName.toLowerCase() == 'select')
+			args+= '&'+el.name+'=' + el.options[el.selectedIndex].value;
+		else if (el.tagName.toLowerCase()=='input' && el.type=='checkbox')
+			args+= '&'+el.name+'=' + ((el.checked)?el.value:false);
+		else if(el.tagName.toLowerCase()=='textarea' || (el.tagName.toLowerCase()=='input' && el.type!='file' && el.type!='submit' && el.type!='button'))
+			args+= '&'+el.name+'=' + el.value;
+	}
+	return '?'+args.substring(1);
+}

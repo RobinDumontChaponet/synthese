@@ -1,21 +1,13 @@
-var xhr = null;
-
 function link_ajax() {
-	xhr = getXMLHttpRequest();
+	var xhr = getXMLHttpRequest();
 	if((xhr != null) && (xhr != false)) {
-		if((xhr.readyState == 0) || (xhr.readyState == 4)) {
-			var nom = document.getElementById('nom').value,
-			prenom = document.getElementById('prenom').value,
-			promotionInf = document.getElementById('promotionInf').value,
-			promotionSup = document.getElementById('promotionSup').value,
-			diplomedut = document.getElementById('diplome').value,
-			typespecialisations = document.getElementById('typeSpecialisation').value,
-			specialisation = document.getElementById('specialisation').value,
-			diplomepostdut = document.getElementById('diplomePostDUT').value,
-			etablissementpostdut = document.getElementById('etabPostDUT').value,
-			travail = document.getElementById('travail').value;
+		if(xhr.readyState == 0 || xhr.readyState == 4) {
+			var form=document.forms['search'],
+			elements=form.elements;
 
-			xhr.open('GET', encodeURI('helpers/search.php?nom='+nom+'&prenom='+prenom+'&promotionInf='+promotionInf+'&promotionSup='+promotionSup+'&diplomedut='+diplomedut+'&typesspecialisations='+typespecialisations+'&specialisation='+specialisation+'&diplomepostdut='+diplomepostdut+'&etablissementpostdut='+etablissementpostdut+'&travail='+travail), true);
+			var args = form2args (elements);
+
+			xhr.open(form.method, 'helpers/search.php'+args, true);
 
 			xhr.onreadystatechange = affichageResultat;
 
@@ -28,10 +20,9 @@ function link_ajax() {
 }
 
 function affichageResultat() {
-	if(xhr.readyState == 4)
-		if(xhr.status == 200) {
-			//console.log(xhr.responseText);
-			var resp = JSON.parse(xhr.responseText),
+	if(this.readyState == 4)
+		if(this.status == 200) {
+			var resp = JSON.parse(this.responseText),
 			table = '';
 			for(var i=0, l=resp.length; i < l; i++) {
 				var it = resp[i];
@@ -69,5 +60,18 @@ function affichageResultat() {
 			document.getElementById('resultat').getElementsByTagName('tbody')[0].innerHTML = table;
 
 		} else
-			console.error('le fichier xml ne retourne pas un 200 : '+xhr.status);
+			console.error('le fichier xml ne retourne pas un 200 : '+this.status);
+}
+
+function init_search () {
+	link_ajax();
+	var form=document.forms['search'],
+	elements=form.elements;
+	for(var i=0, l=elements.length; i<l; i++) {
+		var el=elements[i];
+		if (el.tagName.toLowerCase() == 'select' || (el.tagName.toLowerCase()=='input' && el.type=='checkbox'))
+			el.onchange=link_ajax;
+		else
+			el.onkeyup=link_ajax;
+	}
 }
