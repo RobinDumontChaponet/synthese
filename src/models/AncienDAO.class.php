@@ -174,26 +174,25 @@ class AncienDAO {
 			$args[]=$diplome;
 		}
 		if($spe!=null) {
-			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
-            $from.=" , `estSpecialise` Spe";
-			$args[]=$spe;
+			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.libelle LIKE ? ";
+            $from.=" , `estSpecialise` Spe, `specialisation` Special";
+			$args[]='%'.$spe.'%';
 		}
 		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
-            if($spe==null){$from.=" , `estSpecialise` Spe"; }
-            $from.=", `specialisation` Special";
+            if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
 			$args[]=$typeSpe;
 		}
 		if($PostDut!=null) {
-			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE '%?%' ";
+			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE ? ";
             $from.=" ,`possede` Poss,`diplomePostDUT` DPost";
-			$args[]=$PostDut;
+			$args[]='%'.$PostDut.'%';
 		}
 		if($etabPostDut!=null) {
-			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE '%?%' ";
+			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE ? ";
             if($PostDut==null){ $from.=" ,`possede` Poss"; }
             $from.=", `etablissement` etab";
-			$args[]=$etabPostDut;
+			$args[]='%'.$etabPostDut.'%';
 		}
         if($trav==true) {
              $where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
