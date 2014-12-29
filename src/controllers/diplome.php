@@ -35,8 +35,7 @@ if(!empty($_POST) && $diplome != NULL) {
 	}
 	if ($change) {
 		DiplomePostDUTDAO::update($diplome);
-		header("refresh:1.5;");
-		$changeDone = 1;
+		header('Location: '.SELF.'diplome/'.$diplome->getId());
 	}
 }
 
