@@ -37,7 +37,6 @@ p {
 	white-space: nowrap;
 	box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
-
 .typeEvent:before{
 	content: "";
 	float: left;
@@ -51,7 +50,6 @@ p {
 	border-style: solid;
 	border-width: 14px 12px 14px 0;
 }
-
 .typeEvent:after{
 	content: "";
 	position: absolute;
@@ -68,4 +66,17 @@ p {
 	-moz-box-shadow: -1px -1px 2px #6d8a9d;
 	-webkit-box-shadow: -1px -1px 2px #6d8a9d;
 	box-shadow: -1px -1px 2px #6d8a9d;
+}
+
+.type-1 {
+	background: #c0b8d9;
+}
+.type-1:before {
+	border-right-color: #c0b8d9;
+}
+.type-2 {
+	background: #a5b7bc;
+}
+.type-2:before {
+	border-right-color: #a5b7bc;
 }
