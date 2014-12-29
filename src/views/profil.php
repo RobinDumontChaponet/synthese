@@ -17,7 +17,7 @@
 	} ?>
 	<?php if (isset($ancien) && $ancien != NULL) {?>
 		<h1><?php echo $ancien->getPrenom()?> <?php echo strtoupper($ancien->getNomPatronymique()) ?></h1>
-		<form action="profil" method="post">
+		<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post">
 			<figure>
 				<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
 					echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
@@ -34,7 +34,12 @@
 				<?php if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { // Si l'utilisateur est celui log, modif possible?>
 				<ol>
 					<li><label for="lastName">Nom d'usage :</label><input id="lastName" name="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom(); ?>"/></li>
-					<li><label for="sex">Sexe : </label><input id="sex" type="text" readonly="readonly" value ="<?php if ($ancien->getSexe() == "m") echo "Homme"; else if ($ancien->getSexe() == "f") echo "Femme";?>"/></li>
+					<li><label for="sex">Sexe : </label>
+					<?php if ($_SESSION['user_auth']['write'])
+						echo '<select id="sex" name="sex"><option'.(($ancien->getSexe() == 'm')?' selected':'').' value="m">Homme</option><option'.(($ancien->getSexe() == 'f')?' selected':'').' value="f">Femme</option></select>';
+					else
+						echo '<input id="sex" type="text" readonly="readonly" value ="'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'"/></li>';?>
+					
 					<li><label for="birthday">Date de naissance : </label><input id="birthday" type="text" readonly="readonly" value ="<?php echo $ancien->getDateNaissance(); ?>"/></li>
 					<li><label for="address1">Adresse :</label><input id="address1" name="address1" type="text" placeholder="Adresse" value="<?php echo $ancien->getAdresse1(); ?>"/><label for="address2">Adresse 2 :</label><input id="address2" name="address2" type="text" placeholder="Adresse 2" value="<?php echo $ancien->getAdresse2(); ?>"/></li>
 					<li><label for="postalCode">Code postal :</label><input id="postalCode" name="postalCode" type="text" placeholder="Code postal" value="<?php echo $ancien->getCodePostal(); ?>"/><label for="city">Ville :</label><input id="city" name="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/><label for="country">Pays :</label><input id="country" name="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li>
@@ -77,7 +82,7 @@
 								<input id="resultat<?php echo $diplomePost->getDiplomePostDUT()->getId();?>" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo $diplomePost->getResultat();?>"/>
 								<label for="periode<?php echo $diplomePost->getDiplomePostDUT()->getId();?>">Période : </label>
 								<input id="periode<?php echo $diplomePost->getDiplomePostDUT()->getId();?>" type="text" placeholder="Résultat" readonly="readonly" value="<?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?>"/>
-								<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $user_auth[‘write’]) {?><aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside><?php }?>
+								<?php if ($_SESSION[syntheseUser]->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) {?><aside><a href="modif">Modifier (ou faire un lien sur la ligne d'info)</a><a href="suppr">Supprimer</a></aside><?php }?>
 							</li>
 						<?php }
 					}

@@ -2,52 +2,54 @@
 include_once('validate.transit.inc.php');
 
 $valid = NULL;
-$change = 0;
+$change = false;
 
 function validate ($ancien) {
 	$valid = array();
 	if (isset($_POST['lastName']) && trim($_POST['lastName']) != $ancien->getNom()) {
 		if (!contains_numeric($_POST['lastName']))
-			$valid['lastName'] = 1;
+			$valid['lastName'] = true;
 		else
-			$valid['lastName'] = 0;
+			$valid['lastName'] = false;
 	}
-	if (isset($_POST['address1']) && trim($_POST['address1']) != $ancien->getAdresse1())
-		$valid['address1'] = 1;
+	if (isset($_POST['addresstrue']) && trim($_POST['addresstrue']) != $ancien->getAdressetrue())
+		$valid['addresstrue'] = true;
 	if (isset($_POST['address2']) && trim($_POST['address2']) != $ancien->getAdresse2())
-		$valid['address2'] = 1;
-	if (isset($_POST['postalCode'])&& trim($_POST['postalCode']) != $ancien->getCodePostal())
-		$valid['postalCode'] = 1;
+		$valid['address2'] = true;
+	if (isset($_POST['postalCode']) && trim($_POST['postalCode']) != $ancien->getCodePostal())
+		$valid['postalCode'] = true;
 	if (isset($_POST['city']) && trim($_POST['city']) != $ancien->getVille()) {
 		if (!contains_numeric($_POST['city']))
-			$valid['city'] = 1;
+			$valid['city'] = true;
 		else
-			$valid['city'] = 0;
+			$valid['city'] = false;
 	}
 	if (isset($_POST['country']) && trim($_POST['country']) != $ancien->getPays()) {
 		if (!contains_numeric($_POST['country']))
-			$valid['country'] = 1;
+			$valid['country'] = true;
 		else
-			$valid['country'] = 0;
+			$valid['country'] = false;
 	}
-	if (isset($_POST['phoneNumber'])&& trim($_POST['phoneNumber']) != $ancien->getTelephone()) {
+	if (isset($_POST['phoneNumber']) && trim($_POST['phoneNumber']) != $ancien->getTelephone()) {
 		if (is_valid_phoneNumber($_POST['phoneNumber']) || $_POST['phoneNumber'] == '')
-			$valid['phoneNumber'] = 1;
+			$valid['phoneNumber'] = true;
 		else
-			$valid['phoneNumber'] = 0;
+			$valid['phoneNumber'] = false;
 	}
-	if (isset($_POST['mobileNumber'])&& trim($_POST['mobileNumber']) != $ancien->getMobile()) {
+	if (isset($_POST['mobileNumber']) && trim($_POST['mobileNumber']) != $ancien->getMobile()) {
 		if (is_valid_phoneNumber($_POST['mobileNumber']) || $_POST['mobileNumber'] == '')
-			$valid['mobileNumber'] = 1;
+			$valid['mobileNumber'] = true;
 		else
-			$valid['mobileNumber'] = 0;
+			$valid['mobileNumber'] = false;
 	}
-	if (isset($_POST['mailAddress'])&& trim($_POST['mailAddress']) != $ancien->getMail()) {
-		if (is_valid_email($_POST['mailAddress'])) //|| $_POST['mailAddress'] == ''
-			$valid['mailAddress'] = 1;
+	if (isset($_POST['mailAddress']) && trim($_POST['mailAddress']) != $ancien->getMail()) {
+		if (is_valid_email($_POST['mailAddress']))
+			$valid['mailAddress'] = true;
 		else
-			$valid['mailAddress'] = 0;
-	}	
+			$valid['mailAddress'] = false;
+	}
+	if (isset($_POST['sex']) && trim($_POST['sex']) != $ancien->getSexe())
+		$valid['sex'] = true;
 	return $valid;
 }
 if (isset($_GET['id']))
@@ -62,35 +64,39 @@ if(!empty($_POST) && $ancien != NULL) {
 	$valid = validate($ancien);
 	if ($valid['lastName']) {
 		$ancien->setNom($_POST['lastName']);
-		$change = 1;
+		$change = true;
 	}
-	if ($valid['address1']) {
-		$ancien->setAdresse1($_POST['address1']);
-		$change = 1;
+	if ($valid['addresstrue']) {
+		$ancien->setAdressetrue($_POST['addresstrue']);
+		$change = true;
 	}
 	if ($valid['address2']) {
 		$ancien->setAdresse2($_POST['address2']);
-		$change = 1;
+		$change = true;
 	}
 	if ($valid['postalCode']) {
 		$ancien->setCodePostal($_POST['postalCode']);
-		$change = 1;
+		$change = true;
 	}
 	if ($valid['city']) {
 		$ancien->setVille($_POST['city']);
-		$change = 1;
+		$change = true;
 	}
 	if ($valid['phoneNumber']) {
 		$ancien->setTelephone($_POST['phoneNumber']);
-		$change = 1;
+		$change = true;
 	}
 	if ($valid['mobileNumber']) {
 		$ancien->setMobile($_POST['mobileNumber']);
-		$change = 1;
+		$change = true;
 	}
 	if ($valid['mailAddress']) {
 		$ancien->setMail($_POST['mailAddress']);
-		$change = 1;
+		$change = true;
+	}
+	if ($valid['sex']) {
+		$ancien->setSexe($_POST['sex']);
+		$change = true;
 	}
 	if ($change)
 		AncienDAO::update($ancien);

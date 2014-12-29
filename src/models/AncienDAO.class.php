@@ -98,8 +98,8 @@ class AncienDAO {
 			try {
 				$bdd=connect();
 				PersonneDAO::update(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req = $bdd->prepare("UPDATE `ancien` SET `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
-				$req->execute(array($ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal(), $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
+				$req = $bdd->prepare("UPDATE `ancien` SET `sexe`=?, `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
+				$req->execute(array($ancien->getSexe(), $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal(), $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
 			} catch(PDOException $e){
 				die('error update ancien '.$e->getMessage().'<br>');
 			}
