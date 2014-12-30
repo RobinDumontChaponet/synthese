@@ -7,11 +7,11 @@
 			<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
 				echo '<ul>';
 				foreach($eventsInscriPost as $eventInscriPost) {
-					echo '<li>
+					echo '<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
 				<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
-				<span class="dateEvent">'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</span>
+				<h3>'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</h3>
 				<p>'.$eventInscriPost->getEvenement()->getCommentaire().'</p>
-				<a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">Voir l\'event</a></li>';
+				</a></li>';
 				}
 				echo '</ul>';
 			} else
@@ -27,7 +27,7 @@
 						echo '
 							<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
 								<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
-								<span class="dateEvent">'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</span>
+								<h3>'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</h3>
 								<p>'.$eventInscriPost->getEvenement()->getCommentaire().'</p>
 							</a><a href="evenement">S\'inscrire</a></li>';
 					}
@@ -45,7 +45,7 @@
 				foreach($eventsAnt as $eventAnt) {
 					echo '<li><a href="evenement/'.$eventAnt->getId().'">
 						<span class="typeEvent type-'.$eventAnt->getTypeEvenement()->getId().'">'.$eventAnt->getTypeEvenement()->getLibelle().'</span>
-						<span class="dateEvent">'.strftime('%A %d %B %Y', strtotime($eventAnt->getDate())).'</span>
+						<h3>'.strftime('%A %d %B %Y', strtotime($eventAnt->getDate())).'</h3>
 						<p>'.$eventAnt->getCommentaire().'</p></a></li>';
 				}
 				echo '</ul>';
@@ -62,7 +62,7 @@
 				echo '<ul>';
 				foreach($eventsPost as $eventPost) {
 					echo '<li><span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>
-					<span class="dateEvent">'.strftime('%A %d %B %Y', strtotime($eventPost->getDate())).'</span>
+					<h3>'.strftime('%A %d %B %Y', strtotime($eventPost->getDate())).'</h3>
 					<p>'.$eventPost->getCommentaire().'</p></li>';
 				}
 				echo '</ul>';
@@ -77,7 +77,7 @@
 			<?php if ($eventsAnt != NULL) {
 				foreach($eventsAnt as $eventAnt) {
 					echo '<li><span class="typeEvent type-'.$eventAnt->getTypeEvenement()->getId().'">'.$eventAnt->getTypeEvenement()->getLibelle().'</span>
-					<span class="dateEvent">'.strftime('%A %d %B %Y', strtotime($eventAnt->getDate())).'</span>
+					<h3>'.strftime('%A %d %B %Y', strtotime($eventAnt->getDate())).'</h3>
 					<p>'.$eventAnt->getCommentaire().'</p></li>';
 				}
 			} else
