@@ -48,27 +48,29 @@ fieldset {
 	border: 0;
 }
 legend {
-	font: 24px Verdana;
-	color: grey;
-	width: 100%;
+	color: #f4f3f3;
+	text-shadow: 0 1px 0 #c9c9c9, 0 2px 0 #b7b7b7, 0 3px 2px #ededed, 0 -1px 0 #d8d8d8, -1px 0 0 #dcdcdc, 1px 0 0 #d9d9d9;
+	font-size: 28px;
+	font-family: 'ChunkFiveRegular';
+	position: relative;
+	letter-spacing: 1px;
+	-webkit-text-stroke: 1px #f6f6f6;
+	margin-bottom: 20px;
 }
-
 label {
-	font-size: 12px;
-	line-height: 40px;
-	display: inline-block;
-	width: 94px;
-	border-top-left-radius: 8px;
-	border-bottom-left-radius: 8px;
+	width: 98px;
 	position: relative;
 	top: -2px;
 	height: 40px;
-	padding: 0 5px 0 10px;
+	margin: 5px 10px;
+	font-size: 15px;
+}
+label:after {
+	content: none;
 }
 input {
 	height: 40px;
-	margin: 10px 0;
-	padding: 0 10px 0 5px;
+	padding: 0 5px;
 	width: 150px;
 }
 
@@ -85,7 +87,6 @@ input[type="submit"] {
 	cursor: pointer;
 	color: #474747;
 }
-
 
 img {
 	width: 367px;
