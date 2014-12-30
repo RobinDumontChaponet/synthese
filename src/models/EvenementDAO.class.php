@@ -71,33 +71,62 @@ class EvenementDAO
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get all Evenement '.$e->getMessage().'<br>');
 		}
 		return $lst;
     }
 
-    public static function getByAncienNotParticipePost($obj){
-        if(get_class($obj)=="Ancien"){
-            $lst=array();
-            $req=$bdd->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
+    public static function getByAncienNotParticipePost($idPersonne){
+        try {
+            $lst = array();
+			$bdd=connect();
+            $req = $bdd->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
                     (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
-            $req->execute(array($obj->getId()));
+            $req->execute(array($idPersonne));
             while($res=$req->fetch()){
                 $lst[]=EvenementDAO::getById($res['idEvenement']);
             }
-            return $lst;
-        }else{
-            die('Erreur type paramètre getByAncienNotParticipePost');
-        }
+        } catch(PDOException $e) {
+			die('error get all Evenement '.$e->getMessage().'<br>');
+		}
+		return $lst;
     }
+	
+	public static function getByAncienWithoutDateNotInscri($idPersonne){
+        try {
+            $lst = array();
+			$bdd=connect();
+            $req = $bdd->prepare("SELECT idEvenement FROM evenement WHERE date IS NULL AND idEvenement NOT IN
+                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $req->execute(array($idPersonne));
+            while($res=$req->fetch()){
+                $lst[]=EvenementDAO::getById($res['idEvenement']);
+            }
+        } catch(PDOException $e) {
+			die('error get all Evenement '.$e->getMessage().'<br>');
+		}
+		return $lst;
+    }
+	
+	public static function getEvenementWithoutDate() {
+		try {
+			$lst = array();
+			$bdd=connect();
+            $req = $bdd->prepare("SELECT idEvenement FROM `evenement` WHERE date IS NULL");
+            $req->execute();
+            while($res=$req->fetch()){
+                $lst[]=EvenementDAO::getById($res['idEvenement']);
+            }
+		} catch(PDOException $e) {
+			die('EvenementDAO : Error getEvenementWithoutDate '.$e->getMessage().'<br>');
+		}
+		return $lst;
+	}
 
-	public static function create(&$obj)
-	{
+	public static function create(&$obj) {
 		if
-		(get_class($obj)=="Evenement")
-		{
+		(get_class($obj)=="Evenement") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`,`date`,`commentaire`) VALUES (?,?,?)");
@@ -114,15 +143,12 @@ class EvenementDAO
 		}
 	}
 
-	public static function update($obj)
-	{
-		if
-		(get_class($obj)=="Evenement")
-		{
+	public static function update($obj) {
+		if (get_class($obj) == "Evenement") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=?,`date`=?,`commentaire`=? WHERE `idEvenement`=?");
-				$req->execute(array($obj->get_classEvenement()->getId(),$obj->getDate(),$obj->getCommentaire(), $obj->getId()));
+				$req->execute(array($obj->getTypeEvenement()->getId(),$obj->getDate(),$obj->getCommentaire(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update Evenement '.$e->getMessage().'<br>');
@@ -133,11 +159,8 @@ class EvenementDAO
 		}
 	}
 
-	public static function delete($obj)
-	{
-		if
-		(get_class($obj)=="Evenement")
-		{
+	public static function delete($obj) {
+		if (get_class($obj) == "Evenement") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("DELETE FROM `evenement` WHERE `idEvenement`=?");

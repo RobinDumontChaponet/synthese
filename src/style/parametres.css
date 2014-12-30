@@ -1,0 +1,54 @@
+#content {
+	text-align: center;
+}
+
+fieldset {
+	background: #fcfcfc;
+	margin: 10px -10px;
+	padding: 10px;
+	border: 1px solid;
+	border-color: #e7e9ed #e6e7ec #e1e2e7;
+	border-radius: 4px;
+}
+
+fieldset input {
+	display: block;
+	margin: 0 auto;
+}
+fieldset input[type="checkbox"] {
+	display: inline;
+}
+
+.progress {
+	width: 191px;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	top: -1px;
+}
+.progress span {
+	display: block;
+	border-radius: 3px;
+	width: 0;
+	padding: 0;
+	height: 1px;
+	background: #FFF;
+	border-bottom: 1px solid red;
+	box-shadow: 0 1px 6px rgba(150,150,150,.8), 0 0 1px #F75C00, inset 0 1px 1px rgba(0,0,0,.4);
+	-webkit-transition: padding .1s linear;
+	-moz-transition: padding .1s linear;
+	-o-transition: padding .1s linear;
+	transition: padding .1s linear;
+}
+.progress span[data-progress^="4"] {
+	border-bottom-color: lightcoral;
+}
+.progress span[data-progress^="6"] {
+	border-bottom-color: lightsalmon;
+}
+.progress span[data-progress^="8"] {
+	border-bottom-color: rgb(255, 210, 0);
+}
+.progress span[data-progress="100%"] {
+	border-bottom-color: lightgreen;
+}

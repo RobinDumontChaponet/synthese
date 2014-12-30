@@ -1,0 +1,5 @@
+﻿Diplomes : Renseigner si obtenue ou non !
+Page promotion : Mettre les noms en uppercase
+Recherche : Mettre les noms en UPPERCASE
+Recherche : Ya des mots qui se foutent l'un au dessus de l'autre :Séléctionn
+									er

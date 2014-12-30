@@ -15,8 +15,13 @@ function validate ($diplome) {
 		else
 			$valid['diplomeLibelle'] = false;
 	}
-	if (isset($_POST['domainLibelle']) && $_POST['domainLibelle'] != $diplome->getDomaine()->getId()) {
+	if (isset($_POST['domainLibelle']) && $_POST['domainLibelle'] != $diplome->getDomaine()->getId())
 		$valid['domainLibelle'] = true;
+	if (isset($_POST['domainDescription']) && $_POST['domainDescription'] != $diplome->getDomaine()->getDescription()) {
+		if (!isset($valid['domainLibelle']))
+			$valid['domainDescription'] = true;
+		else
+			$valid['domainDescription'] = false;
 	}
 	return $valid;
 }
@@ -31,10 +36,15 @@ if(!empty($_POST) && $diplome != NULL) {
 		$diplome->getDomaine()->setId($_POST['domainLibelle']);
 		$change = true;
 	}
-	if ($change) {
-		DiplomePostDUTDAO::update($diplome);
-		header('Location: '.SELF.'diplome/'.$diplome->getId());
+	if ($valid['domainDescription']) {
+		$diplome->getDomaine()->setDescription($_POST['domainDescription']);
+		DomaineDAO::update($diplome->getDomaine());
 	}
+
+	if ($change)
+		DiplomePostDUTDAO::update($diplome);
+
+	header('Location: '.SELF.'diplome/'.$diplome->getId());
 }
 
 include(VIEWS_INC.'diplome-editer.php');

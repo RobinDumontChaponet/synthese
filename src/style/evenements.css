@@ -1,4 +1,4 @@
-#content li {
+#content li, #content article {
 	background: #fcfcfc;
 	margin: 10px -10px;
 	padding: 10px;
@@ -7,8 +7,10 @@
 	border-radius: 4px;
 }
 
-#content li a {
+#content li a, #content article a {
 	display: block;
+}
+#content li a > *, #content article a > * {
 	color: #3f3f3f;
 }
 
@@ -16,8 +18,12 @@ p {
 	font-weight: 400;
 }
 
-.dateEvent {
-	font-weight: 300;
+
+li h3:before, article h3:before {
+	content: "\e953";
+}
+li p:before, article p:before {
+	content: "\e978";
 }
 
 .typeEvent {

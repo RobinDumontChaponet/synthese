@@ -86,10 +86,16 @@ AddType application/octet-stream .zip
 	RewriteRule ^profil-editer/([^/]+) %{ENV:BASE}/index.php?requ=profil-editer&id=$1 [NC]
 	RewriteRule ^profil/([^/]+) %{ENV:BASE}/index.php?requ=profil&id=$1 [NC]
 	RewriteRule ^promotion/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1 [NC]
+	RewriteRule ^evenement-editer/([^/]+) %{ENV:BASE}/index.php?requ=evenement-editer&id=$1 [NC]
+	RewriteRule ^evenement-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=evenement-ajouter [NC]
 	RewriteRule ^evenement/([^/]+) %{ENV:BASE}/index.php?requ=evenement&id=$1 [NC]
+	RewriteRule ^typeEvent-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=typeEvent-ajouter [NC]
+	RewriteRule ^typeEvent-editer/([^/]+) %{ENV:BASE}/index.php?requ=typeEvent-editer&id=$1 [NC]
+	RewriteRule ^typesEvent/([^/]+) %{ENV:BASE}/index.php?requ=typesEvent&id=$1 [NC]
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
 	RewriteRule ^diplome-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplome-editer&id=$1 [NC]
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
+	RewriteRule ^etablissement-editer/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-editer&id=$1 [NC]
 	RewriteRule ^etablissement/([^/]+) %{ENV:BASE}/index.php?requ=etablissement&id=$1 [NC]
 
 
