@@ -15,7 +15,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 	</figure>
 	<h1><?php echo $ancien->getPrenom()?> <span id="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span>
 	<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-		echo ' - <a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+		echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
 	?></h1>
 	<section id="info">
 		<h2>Informations générales</h2>

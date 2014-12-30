@@ -328,18 +328,12 @@ dt:before {
 }
 
 dd {
-	padding-left: 110px;
+	padding-left: 120px;
 	margin-left: 0;
 }
 dd:after {
 	float: right;
 }
-
-
-
-
-
-
 dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
 	font-family: 'icomoon';
 	font-size: 16px;
@@ -348,12 +342,19 @@ dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
-	line-height: 1;
+	line-height: 50px;
 	position: absolute;
-	top: 18px;
+	top: 14px;
 	left: -36px;
 	text-align: center;
 	color: #dae0e9;
+	line-height: 1em
+}
+h3:before {
+	top: 6px;
+}
+li dt:before {
+	left: -26px;
 }
 dd {
 	font-weight: 400;
@@ -365,6 +366,7 @@ dd:after {
 	display: inline-block;
 	margin: -20px;
 	width: 0;
+	float: right;
 }
 #nomUsage:before, .description:before {
 	content: "\e978";
