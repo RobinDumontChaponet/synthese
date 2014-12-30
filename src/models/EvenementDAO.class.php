@@ -71,26 +71,26 @@ class EvenementDAO
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get all Evenement '.$e->getMessage().'<br>');
 		}
 		return $lst;
     }
 
-    public static function getByAncienNotParticipePost($obj){
-        if(get_class($obj)=="Ancien"){
-            $lst=array();
-            $req=$bdd->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
+    public static function getByAncienNotParticipePost($idPersonne){
+        try {
+            $lst = array();
+			$bdd=connect();
+            $req = $bdd->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
                     (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
-            $req->execute(array($obj->getId()));
+            $req->execute(array($idPersonne));
             while($res=$req->fetch()){
                 $lst[]=EvenementDAO::getById($res['idEvenement']);
             }
-            return $lst;
-        }else{
-            die('Erreur type paramètre getByAncienNotParticipePost');
-        }
+        } catch(PDOException $e) {
+			die('error get all Evenement '.$e->getMessage().'<br>');
+		}
+		return $lst;
     }
 
 	public static function create(&$obj)

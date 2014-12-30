@@ -60,7 +60,7 @@ class AParticipeDAO {
 		try {
 			$lst=array();
 			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM aParticipe A, evenement E WHERE A.idPersonne=? AND A.idEvenement=E.idEvenement AND E.date>=now()");
+			$req = $bdd->prepare("SELECT * FROM aParticipe A, evenement E WHERE A.idPersonne=? AND A.idEvenement=E.idEvenement AND E.date>=now()");
 			$req->execute(array($idPers));
 			while ($result=$req->fetch()) {
 				$event=EvenementDAO::getById($result['idEvenement']);
@@ -73,30 +73,22 @@ class AParticipeDAO {
 		}
 	}
 
-	public static function getByIdAncienAndNotParticipePost($idPers) {
-		try {
-
-		} catch(PDOException $e) {
-			die('error getByAncienAndNotParticipePost '.$e->getMessage().'<br>');
-		}
-	}
-
 	public static function create($obj) {
-		if(get_class($obj)=="aParticipe") {
+		if(get_class($obj)=="AParticipe") {
 			try {
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `aParticipe`(`idPersonne`, `idEvenement`) VALUES (?,?)");
-				$req->execute(array($obj->getPersonne()->getId(), $obj->getEvenement()->getId()));
+				$req->execute(array($obj->getAncien()->getId(), $obj->getEvenement()->getId()));
 			} catch(PDOException $e) {
 				die('error create aParticipe '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type aParticipe requis');
+			die('Create : paramètre de type aParticipe requis'.get_class($obj));
 		}
 	}
 
 	public static function delete($obj) {
-		if(get_class($obj)=="aParticipe") {
+		if(get_class($obj)=="AParticipe") {
 			try {
 				$bdd=connect();
 				$req=$bdd->prepare("DELETE FROM `aParticipe` WHERE `idPersonne`=? AND `idEvenement`=?");
