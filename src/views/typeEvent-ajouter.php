@@ -5,7 +5,7 @@
 		<h1>Ajout d'un type d'évènement</h1>
 		<ul>
 			<li>
-				<label for="libelle">Nom du type d'évènement</label>
+				<label for="libelle">Libelle</label>
 				<input id="libelle" name="libelle" type="text" placeholder="Nom du type d'évènement" />
 			</li>
 		</ul>

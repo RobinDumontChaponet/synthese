@@ -55,43 +55,32 @@ class TypeEvenementDAO
 		}
 	}
 
-	public static function update($type)
-	{
-		if
-		(get_class($type)=="TypeEvenement")
-		{
+	public static function update($type) {
+		if (get_class($type) == "TypeEvenement") {
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("UPDATE `typeEvenement` SET `libelle`=? WHERE `idTypeEvenement`=?");
+				$bdd = connect();
+				$req = $bdd->prepare("UPDATE `typeEvenement` SET `libelle`=? WHERE `idTypeEvenement`=?");
 				$req->execute(array($type->getLibelle(), $type->getId()));
-			}catch (PDOException $e)
-			{
+			} catch (PDOException $e) {
 				die("Error update type event !: " . $e->getMessage() . "<br/>");
 			}
-		}else
-		{
+		}else {
 			die('argument de type type event demandé');
 		}
 	}
 
-	public static function delete($type)
-	{
-		if
-		(get_class($type)=="TypeEvenement")
-		{
+	public static function delete($type) {
+		if (get_class($type) == "TypeEvenement") {
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("DELETE FROM `typeEvenement` WHERE `idTypeEvenement`=?");
+				$bdd = connect();
+				$req = $bdd->prepare("DELETE FROM `typeEvenement` WHERE `idTypeEvenement`=?");
 				$req->execute(array($type->getId()));
-			}catch (PDOException $e)
-			{
+			} catch (PDOException $e) {
 				die("Error delete type event !: " . $e->getMessage() . "<br/>");
 			}
-		}else
-		{
+		} else {
 			die('argument de type type event demandé');
 		}
 	}
-
 }
 ?>

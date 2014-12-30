@@ -14,7 +14,7 @@
 				foreach($typesEvent as $typeEvent) {
 					echo '<li>
 					<p>'.$typeEvent->getLibelle().'</p>
-					<a href="typeEvent-editer/'.$typeEvent->getId().'">Modifier</a><a href="typeEvent-supprimer/'.$typeEvent->getId().'">Supprimer</a></li>';
+					<a href="typeEvent-editer/'.$typeEvent->getId().'">Modifier</a><a href="index.php?requ=typeEvent-supprimer&id='.$typeEvent->getId().'">Supprimer</a></li>';
 				}
 				echo '</ul>';
 			} 
