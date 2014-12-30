@@ -44,7 +44,7 @@ if(!empty($_POST) && $diplome != NULL) {
 	
 	if ($change) {
 		DiplomePostDUTDAO::update($diplome);
-		header('Location: '.SELF.'diplome-editer/'.$diplome->getId());
+		header('Location: '.SELF.'diplome/'.$diplome->getId());
 	}
 }
 
