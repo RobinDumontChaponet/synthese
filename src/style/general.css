@@ -305,7 +305,7 @@ dd:after {
 	margin: -20px;
 	width: 0;
 }
-#nomUsage:before {
+#nomUsage:before, .description:before {
 	content: "\e978";
 }
 #sexeF:before {
@@ -365,6 +365,10 @@ dd:after {
 .periode:before {
 	content: "\e94e";
 }
+.domaine:before {
+	content: "\e91f";
+}
+
 input, .button, button, select {
 	border: 1px solid rgba(175, 175, 175, 1);
 	outline: 0;

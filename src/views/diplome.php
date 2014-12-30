@@ -1,20 +1,21 @@
-<!--meta title="<?php echo (($diplome != NULL)?'Diplôme : '.$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css"-->
+<!--meta title="<?php echo (($diplome != NULL)?'Diplôme : '.$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($diplome != NULL) { ?>
-		<section>
-			<h2>Détails du diplôme</h2>
+	<h1>Détails du diplôme</h1>
+<?php if ($diplome != NULL) { ?>
+		<article>
+			<h3 class="diplome"><?php echo $diplome->getLibelle();?></h3>
 			<dl>
-				<dt id="diplomeLibelle">Libelle du diplôme</dt>
-				<dd><?php echo $diplome->getLibelle(); ?></li>
-				<dt id="domainLibelle">Domaine</dt>
-				<dd><?php echo $diplome->getDomaine()->getLibelle(); ?></dd>
-				<dt id="domainDescription">Description</dt>
-				<dd><?php echo $diplome->getDomaine()->getDescription(); ?></dd>
-			</ul>
-		</section>
+				<dt>Domaine</dt>
+				<dd class="domaine"><?php echo $diplome->getDomaine()->getLibelle();?></dd>
+				<dt>Description</dt>
+				<dd class="description"><?php echo $diplome->getDomaine()->getDescription();?></dd>
+			</dl>
 		<?php if ($_SESSION['user_auth']['write'])
 			echo '<a href="diplome-editer/'.$_GET['id'].'">Editer le diplôme</a>';
-	} else {?>
+		?>
+		</article>
+<?php
+} else {?>
 		<p class="warning">Ce diplôme n'existe pas</p>
-	<?php }?>
+<?php }?>
 </div>

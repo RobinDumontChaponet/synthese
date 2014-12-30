@@ -16,12 +16,12 @@
 			<dt>Pays</dt>
 			<dd id="pays"><?php echo $entreprise->getPays(); ?></dd>
 		</dl>
-		<?php if ($_SESSION['user_auth']['write'])
+	<?php if ($_SESSION['user_auth']['write'])
 		echo '<a href="entreprise-editer/'.$_GET['id'].'">Editer l\'entreprise</a>';
-		?>
+	?>
 	</article>
 <?php
-	} else { ?>
+} else { ?>
 		<p class="warning">Cette entreprise n'existe pas</p>
-	<?php } ?>
+<?php } ?>
 </div>
