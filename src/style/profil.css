@@ -34,7 +34,60 @@ figure img {
 dt {
 	margin-right: 5px;
 	float: left;
+	position: relative;
 }
+#info dt:before {
+	font-family: 'icomoon';
+	font-size: 14px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: absolute;
+	top: 6px;
+	left: -23px;
+	color: #dae0e9;
+}
+
+#nomUsage:before {
+	content: "\e978";
+}
+#sexeF:before {
+	content: "\e9dd";
+}
+#sexeM:before {
+	content: "\e9dc";
+}
+#dateNaissance:before {
+	content: "\e99f";
+}
+#adresse1:before {
+	content: "\e947";
+}
+#adresse2:before {
+	content: "\e948";
+}
+#codePostal:before {
+	content: "\e94c";
+}
+#ville:before {
+	content: "\e601";
+}
+#pays:before {
+	content: "\e94a";
+}
+#telephoneFixe:before {
+	content: "\e943";
+}
+#telephoneMobile:before {
+	content: "\e96e";
+}
+#mail:before {
+	content: "\e945";
+}
+
 dt:after {
 	padding-left: 5px;
 	content: ":";

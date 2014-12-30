@@ -20,28 +20,28 @@ if (isset($ancien) && $ancien != NULL) {?>
 	<section id="info">
 		<h2>Informations générales</h2>
 		<dl>
-			<dt>Nom d'usage</dt>
+			<dt id="nomUsage">Nom d'usage</dt>
 			<dd><?php echo $ancien->getNom();?></dd>
-			<dt>Sexe</dt>
+			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
-			<dt>Date de naissance</dt>
+			<dt id="dateNaissance">Date de naissance</dt>
 			<dd><?php echo $ancien->getDateNaissance();?></dd>
-			<dt>Adresse 1</dt>
+			<dt id="adresse1">Adresse 1</dt>
 			<dd><?php echo $ancien->getAdresse1();?></dd>
-			<dt>Adresse 2</dt>
+			<dt id="adresse2">Adresse 2</dt>
 			<dd><?php echo $ancien->getAdresse2();?></dd>
-			<dt>Code postal</dt>
+			<dt id="codePostal">Code postal</dt>
 			<dd><?php echo $ancien->getCodePostal();?></dd>
-			<dt>Ville</dt>
+			<dt id="ville">Ville</dt>
 			<dd><?php echo $ancien->getVille();?></dd>
-			<dt>Pays</dt>
+			<dt id="pays">Pays</dt>
 			<dd><?php echo $ancien->getPays(); ?></dd>
-			<dt>Telephone</dt>
-			<dd><?php echo $ancien->getTelephone();?></dd>
-			<dt>Mobile</dt>
-			<dd><?php echo $ancien->getMobile();?></dd>
-			<dt>Mail</dt>
-			<dd><?php echo $ancien->getMail() ?></dd>
+			<dt id="telephoneFixe">Telephone</dt>
+			<dd><a href="tel:<?php echo $ancien->getTelephone();?>"><?php echo $ancien->getTelephone();?></a></dd>
+			<dt id="telephoneMobile">Mobile</dt>
+			<dd><a href="tel:<?php echo $ancien->getMobile();?>"><?php echo $ancien->getMobile();?></a></dd>
+			<dt id="mail">Mail</dt>
+			<dd><a href="mailto:<?php echo $ancien->getMail();?>"><?php echo $ancien->getMail();?></a></dd>
 		</dl>
 	</section>
 	<section>
