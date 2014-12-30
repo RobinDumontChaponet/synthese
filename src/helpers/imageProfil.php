@@ -34,3 +34,5 @@ if($_SESSION["syntheseUser"]) {
 	}
 
 }
+
+?>

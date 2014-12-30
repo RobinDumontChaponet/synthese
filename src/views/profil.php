@@ -54,11 +54,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 	if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent
 ?>
 			<li>
-				<h3><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
+				<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
 				<dl>
-					<dt>Département</dt>
+					<dt class="departement">Département</dt>
 					<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
-					<dt>Promotion</dt>
+					<dt class="promotion">Promotion</dt>
 					<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
 				</dl>
 			</li>
@@ -68,13 +68,13 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($diplomesPost as $diplomePost) {
 ?>
 			<li>
-				<h3><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a></h3>
+				<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a></h3>
 				<dl>
-					<dt>Établissement</dt>
+					<dt class="etablissement">Établissement</dt>
 					<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
-					<dt>Résultat</dt>
+					<dt class="resultat">Résultat</dt>
 					<dd><?php echo $diplomePost->getResultat();?></dd>
-					<dt>Période</dt>
+					<dt class="periode">Période</dt>
 					<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
 				</dl>
 			</li>
@@ -83,6 +83,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 	}
 ?>
 		</ul>
+<?php if($diplomeDUT==null && $diplomesPost==null) { ?>
+		<p class="sad">Aucun diplôme.</p>
+<?php } ?>
 	</section>
 	<section>
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
@@ -95,19 +98,25 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($entreprises as $entreprise) {
 ?>
 			<li>
-				<h3><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
+				<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 				<dl>
-					<dt>Poste</dt>
+					<dt class="poste">Poste</dt>
 					<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
-					<dt>Période</dt>
+					<dt class="periode">Période</dt>
 					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
 <?php
 		}
-	}
 ?>
 		</ul>
+<?php
+	} else {
+?>
+		<p class="sad">Aucune entreprise.</p>
+<?php
+	}
+?>
 	</section>
 <?php
 	} else {

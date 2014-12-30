@@ -1,6 +1,6 @@
 <!--meta title="<?php if ($ancien != NULL){echo 'Modification profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
 <div id="content">
-<?php 
+<?php
 if ($valid) {
 	if (isset($valid['lastName']) && !$valid['lastName'])
 		echo '<p class="error">Le nom doit être écrit en lettres</p>';
@@ -21,7 +21,7 @@ if ($valid) {
 	if (isset($valid['birthday']) && !$valid['birthday'])
 		echo '<p class="error">Mauvais format de date : YYYY-MM-DD</p>';
 }
-	
+
 if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) {?>
 	<figure>
 		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
@@ -35,41 +35,40 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil vu que tu as dit que tu avais déjà des trucs tout bien fait et tout et que tu t'en occuperais alors j'ai laissé ça comme ça et j'espère que le commentaire est assez grand pour que tu le vois!-->
 	</figure>
 	<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post">
-		<?php if ($_SESSION['user_auth']['write'])
-			echo '<h1><input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'"></input><input type="text" placeholder="Nom" name="name" value="'.$ancien->getNomPatronymique().'"></input></h1>';
+		<h1><?php if ($_SESSION['user_auth']['write'])
+			echo '<input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'" /><input type="text" placeholder="Nom" name="name" value="'.$ancien->getNomPatronymique().'" />';
 		else
-			echo '<h1>'.$ancien->getPrenom().'<span id="nomPatronymique"> '.$ancien->getNomPatronymique().'</span></h1>'; ?>
-		<section>
+			echo $ancien->getPrenom().' <span id="nomPatronymique"> '.$ancien->getNomPatronymique().'</span>'; ?>
+		</h1>
+		<section id="info">
 			<h2>Informations générales</h2>
 			<dl>
-				<dt></label for="lastName">Nom d'usage</label></dt>
-				<dd><input id="lastName" name="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom();?>"/></dd>
-				<dt></label for="sex">Sexe</label></dt>
-				<?php if ($_SESSION['user_auth']['write'])	//	L'admin a tout les droits
-					echo '<dd><select id="sex" name="sex"><option'.(($ancien->getSexe() == 'm')?' selected':'').' value="m">Homme</option><option'.(($ancien->getSexe() == 'f')?' selected':'').' value="f">Femme</option></select></dd>';
+				<dt id="nomUsage"><label for="inputLastName">Nom d'usage</label></dt>
+				<dd><input id="inputLastName" name="lastName" type="text" placeholder="Deuxième nom" value="<?php echo $ancien->getNom();?>"/></dd>
+				<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>"><label for="inputSex">Sexe</label></dt>
+				<dd><?php if ($_SESSION['user_auth']['write'])	//	L'admin a tout les droits
+					echo '<select id="inputSex" name="sex"><option'.(($ancien->getSexe() == 'm')?' selected':'').' value="m">Homme</option><option'.(($ancien->getSexe() == 'f')?' selected':'').' value="f">Femme</option></select>';
 				else
-					echo '<dd><input id="sex" type="text" readonly="readonly" value ="'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'"/></dd>';?>
-				<dt></label for="birthday">Date de naissance</label></dt>
-				<?php if ($_SESSION['user_auth']['write'])	//	L'admin a tout les droits
-					echo '<dd><input id="birthday" name="birthday" type="text" value ="'.$ancien->getDateNaissance().'"/></dd>';
-				else
-					echo '<dd><input id="birthday" type="text" readonly="readonly" value ="'.$ancien->getDateNaissance().'"/></dd>';?>
-				<dt></label for="address1">Adresse 1</label></dt>
-				<dd><input id="address1" name="address1" type="text" placeholder="Adresse" value="<?php echo $ancien->getAdresse1();?>"/></dd>
-				<dt></label for="address2">Adresse 2</label></dt>
-				<dd><input id="address2" name="address2" type="text" placeholder="Adresse 2" value="<?php echo $ancien->getAdresse2(); ?>"/></dd>
-				<dt></label for="postalCode">Code postal</label></dt>
-				<dd><input id="postalCode" name="postalCode" type="text" placeholder="Code postal" value="<?php echo $ancien->getCodePostal(); ?>"/></dd>
-				<dt></label for="city">Ville :</label></dt>
-				<dd><input id="city" name="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/></dd>
-				<dt></label for="country">Pays :</label></dt>
-				<dd><input id="country" name="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li></dd>
-				<dt></label for="phoneNumber">Telephone</label></dt>
-				<dd><input id="phoneNumber" name="phoneNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getTelephone(); ?>"/></dd>
-				<dt></label for="mobileNumber">Mobile :</label></dt>
-				<dd><input id="mobileNumber" name="mobileNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getMobile(); ?>"/></dd>
-				<dt></label for="mailAddress">Mail</label></dt>
-				<dd><input id="mailAddress" name="mailAddress" type="text" placeholder="Aucune adresse mail" value="<?php echo $ancien->getMail() ?>"/></dd>
+					echo '<input id="inputSex" type="text" readonly="readonly" value ="'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'"/>';
+				?></dd>
+				<dt id="dateNaissance"><label for="inputBirthday">Date de naissance</label></dt>
+				<dd><?php echo '<input id="inputBirthday" name="birthday" type="text"'.(($_SESSION['user_auth']['write'])?' readonly="readonly"':'').' value="'.$ancien->getDateNaissance().'"/>';?></dd>
+				<dt id="adresse1"><label for="inputAddress1">Adresse 1</label></dt>
+				<dd><input id="inputAddress1" name="address1" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getAdresse1();?>"/></dd>
+				<dt id="adresse2"><label for="inputAddress2">Adresse 2</label></dt>
+				<dd><input id="inputAddress2" name="address2" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getAdresse2(); ?>"/></dd>
+				<dt id="codePostal"><label for="inputPostalCode">Code postal</label></dt>
+				<dd><input id="inputPostalCode" name="postalCode" type="text" placeholder="Code postal" value="<?php echo $ancien->getCodePostal(); ?>"/></dd>
+				<dt id="ville"><label for="inputCity">Ville</label></dt>
+				<dd><input id="inputCity" name="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/></dd>
+				<dt id="pays"><label for="inputCountry">Pays</label></dt>
+				<dd><input id="inputCountry" name="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li></dd>
+				<dt id="telephoneFixe"><label for="inputPhoneNumber">Telephone</label></dt>
+				<dd><input id="inputPhoneNumber" name="phoneNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getTelephone(); ?>"/></dd>
+				<dt id="telephoneMobile"><label for="inputMobileNumber">Mobile</label></dt>
+				<dd><input id="inputMobileNumber" name="mobileNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getMobile(); ?>"/></dd>
+				<dt id="mail"><label for="inputMailAddress">Mail</label></dt>
+				<dd><input id="inputMailAddress" name="mailAddress" type="text" placeholder="Aucune adresse mail" value="<?php echo $ancien->getMail() ?>"/></dd>
 			</dl>
 		</section>
 		<section>
@@ -79,11 +78,11 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					<li>
 						<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
 							echo '<a href="#">Modifier le diplôme de cet élève</a>'; ?>
-						<h3><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
+						<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
 						<dl>
-							<dt></label for="departement">Département</label></dt>
+							<dt class="departement">Département</dt>
 							<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
-							<dt></label for="promotion">Promotion</label></dt>
+							<dt class="promotion">Promotion</dt>
 							<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
 						</dl>
 					</li>
@@ -91,13 +90,13 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
-							<h3><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a></h3>
+							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a></h3>
 							<dl>
-								<dt>Établissement</dt>
+								<dt class="etablissement">Établissement</dt>
 								<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
-								<dt>Résultat</dt>
+								<dt class="resultat">Résultat</dt>
 								<dd><?php echo $diplomePost->getResultat();?></dd>
-								<dt>Période</dt>
+								<dt class="periode">Période</dt>
 								<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
 							</dl>
 							<a href="modif">Modifier</a>
@@ -116,11 +115,11 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 						<li>
-							<h3><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
+							<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 							<dl>
-								<dt>Poste</dt>
+								<dt class="poste">Poste</dt>
 								<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
-								<dt>Période</dt>
+								<dt class="periode">Période</dt>
 								<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 							</dl>
 							<a href="modif">Modifier</a>

@@ -1,4 +1,5 @@
 <?php
+
 include('conf.inc.php');
 
 session_start();
@@ -33,3 +34,5 @@ if($_SESSION["syntheseUser"]) {
 	}
 
 }
+
+?>
