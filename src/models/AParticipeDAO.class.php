@@ -80,10 +80,10 @@ class AParticipeDAO {
 				$req=$bdd->prepare("INSERT INTO `aParticipe`(`idPersonne`, `idEvenement`) VALUES (?,?)");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getEvenement()->getId()));
 			} catch(PDOException $e) {
-				die('error create aParticipe '.$e->getMessage().'<br>');
+				die('Error create aParticipe '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('Create : paramètre de type aParticipe requis'.get_class($obj));
+			die('Create AParticipeDAO : paramètre de type aParticipe requis'.get_class($obj));
 		}
 	}
 
@@ -92,12 +92,12 @@ class AParticipeDAO {
 			try {
 				$bdd=connect();
 				$req=$bdd->prepare("DELETE FROM `aParticipe` WHERE `idPersonne`=? AND `idEvenement`=?");
-				$req->execute(array($obj->getPersonne()->getId(), $obj->getEvenement()->getId()));
+				$req->execute(array($obj->getAncien()->getId(), $obj->getEvenement()->getId()));
 			} catch(PDOException $e) {
-				die('error delete aParticipe '.$e->getMessage().'<br>');
+				die('Error delete aParticipe '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type aParticipe requis');
+			die('Delete AParticipeDAO : paramètre de type aParticipe requis'.get_class($obj));
 		}
 	}
 

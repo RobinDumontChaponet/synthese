@@ -4,19 +4,19 @@
 	<?php if ($libelleTypeProfil == "Ancien" || $libelleTypeProfil == "Professeur") {?>
 		<section>
 			<h2>Inscrits</h2>
-			<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
-				echo '<ul>';
-				foreach($eventsInscriPost as $eventInscriPost) {
-					echo '<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
-				<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
-				<h3>'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</h3>
-				<p>'.$eventInscriPost->getEvenement()->getCommentaire().'</p>
-				</a><a href="evenement-desinscrire&id='.$eventInscriPost->getEvenement()->getId().'">Se désinscrire</a></li>';
-				}
-				echo '</ul>';
-			} else
-				echo '<span class="sad">Aucun évènement.</span>';
-			?>
+				<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
+					echo '<ul>';
+					foreach($eventsInscriPost as $eventInscriPost) {
+						echo '<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
+							<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
+							<h3>'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</h3>
+							<p>'.$eventInscriPost->getEvenement()->getCommentaire().'</p>
+							</a><a href="index.php?requ=evenement-desinscrire&id='.$eventInscriPost->getEvenement()->getId().'">Se désinscrire</a></li>';
+					}
+					echo '</ul>';
+				} else
+					echo '<span class="sad">Aucun évènement.</span>';
+				?>
 		</section>
 		<section>
 			<h2>Autres</h2>
