@@ -39,23 +39,18 @@ class TypeEvenementDAO
 		}
 	}
 
-	public static function create(&$type)
-	{
-		if
-		(get_class($type)=="TypeEvenement")
-		{
+	public static function create(&$type) {
+		if (get_class($type)=="TypeEvenement") {
 			try{
 				$bdd->connect();
-				$req=$bdd->prepare("INSERT INTO `typeEvenement`(`libelle`) VALUES (?)");
+				$req = $bdd->prepare("INSERT INTO `typeEvenement`(`libelle`) VALUES (?)");
 				$req->execute(array($type->getLibelle()));
 				$type->setId($bdd->LastInsertId());
                 return $type->getId();
-			}catch (PDOException $e)
-			{
+			} catch (PDOException $e) {
 				die("Error create type event !: " . $e->getMessage() . "<br/>");
 			}
-		}else
-		{
+		} else {
 			die('argument de type type event demandé');
 		}
 	}

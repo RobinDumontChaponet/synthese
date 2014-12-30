@@ -5,15 +5,16 @@
 		<?php if ($_SESSION['user_auth']['write']) {
 		echo '
 		<section>
-			<a href="evenement-ajouter">Ajouter un évènement</a>
+			<a href="typeEvent-ajouter">Ajouter un type d\'évènement</a>
 		</section>'; }
+		
 		echo '<section>';
 			if($typesEvent != NULL) {
 				echo '<ul>';
 				foreach($typesEvent as $typeEvent) {
-					echo '<li><a href="typeEvent/'.$typeEvent->getId().'">
+					echo '<li>
 					<p>'.$typeEvent->getLibelle().'</p>
-					</a></li>';
+					<a href="typeEvent-editer/'.$typeEvent->getId().'">Modifier</a><a href="typeEvent-supprimer/'.$typeEvent->getId().'">Supprimer</a></li>';
 				}
 				echo '</ul>';
 			} 
