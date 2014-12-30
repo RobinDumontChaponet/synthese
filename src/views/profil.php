@@ -44,9 +44,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 			<dd><a href="mailto:<?php echo $ancien->getMail();?>"><?php echo $ancien->getMail();?></a></dd>
 		</dl>
 	</section>
-	<section>
+	<section id="diplomes">
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Diplômes</h2>
 		<ul>
@@ -87,9 +87,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<p class="sad">Aucun diplôme.</p>
 <?php } ?>
 	</section>
-	<section>
+	<section id="entreprises">
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'#entreprises" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Entreprises</h2>
 		<ul>

@@ -26,13 +26,6 @@ figure img {
 span#nomPatronymique {
 	text-transform: uppercase;
 }
-a.aEdit {
-	font-size: 16px;
-	letter-spacing: 0px;
-}
-section > a.aEdit {
-	float: right;
-}
 
 #info dt:nth-child(4n), #info dt:nth-child(4n+1), #info dd:nth-child(4n+1), #info dd:nth-child(4n+2) {
    background-color: #f0f4f9;

@@ -71,7 +71,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<dd><input id="inputMailAddress" name="mailAddress" type="text" placeholder="Aucune adresse mail" value="<?php echo $ancien->getMail() ?>"/></dd>
 			</dl>
 		</section>
-		<section>
+		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
 				<?php if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent?>
@@ -109,7 +109,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				</li>
 			</ul>
 		</section>
-		<section>
+		<section id="entreprises">
 			<h2>Entreprises</h2>
 			<ul>
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page

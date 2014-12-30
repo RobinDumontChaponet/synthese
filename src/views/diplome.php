@@ -1,5 +1,8 @@
 <!--meta title="<?php echo (($diplome != NULL)?'Diplôme : '.$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
+	<?php if ($_SESSION['user_auth']['write'])
+		echo '<a class="aEdit" href="diplome-editer/'.$_GET['id'].'">Editer...</a>';
+	?>
 	<h1>Détails du diplôme</h1>
 <?php if ($diplome != NULL) { ?>
 		<article>
@@ -10,9 +13,6 @@
 				<dt>Description</dt>
 				<dd class="description"><?php echo $diplome->getDomaine()->getDescription();?></dd>
 			</dl>
-		<?php if ($_SESSION['user_auth']['write'])
-			echo '<a href="diplome-editer/'.$_GET['id'].'">Editer le diplôme</a>';
-		?>
 		</article>
 <?php
 } else {?>

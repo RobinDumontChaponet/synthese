@@ -208,8 +208,20 @@ header a#aOut:before {
 	position: relative;
 	max-width: 76em;
 	margin: 0 auto;
+	text-align: center;
 }
 
+article {
+	background: #fcfcfc;
+	margin: 10px -10px;
+	padding: 10px;
+	border: 1px solid;
+	border-color: #e7e9ed #e6e7ec #e1e2e7;
+	border-radius: 4px;
+}
+article, section, fieldset {
+	text-align: left;
+}
 section, fieldset {
 	border-bottom: 1px solid #ececec;
 	margin: 10px 0;
@@ -220,6 +232,15 @@ section:first-child, fieldset:first-child {
 }
 section:last-child, fieldset:last-child {
 	border-bottom: 0;
+}
+
+a.aEdit {
+	font-size: 16px;
+	letter-spacing: 0px;
+	float: right;
+}
+h1 a.aEdit {
+	float: none;
 }
 
 #wrapper h1 {
@@ -369,7 +390,7 @@ dd:after {
 	content: "\e91f";
 }
 
-input, .button, button, select {
+input, .button, button, select, textarea {
 	border: 1px solid rgba(175, 175, 175, 1);
 	outline: 0;
 	border-width: .5px;
@@ -437,9 +458,20 @@ select {
 input[type=checkbox] {
 	height: auto;
 }
-input[type="text"], input[type="password"], input[type="date"] {
+input[type="text"], input[type="password"], input[type="date"], textarea {
 	padding-left: 5px;
 	padding-right: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+textarea {
+	resize: vertical;
+	height: 12em;
+	margin: 0;
+}
+h3 input[type="text"], h3 input[type="password"], h3 input[type="date"], textarea {
+	width: 100%;
 }
 
 /*

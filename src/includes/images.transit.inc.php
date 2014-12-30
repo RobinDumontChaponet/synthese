@@ -50,7 +50,6 @@ function scaleImageRessource($src, $max_width=0, $max_height=0) {
  * @param string $type (default: 'jpeg')
  * @return 0 when saving fails, 1 when saving at original size or 2 when saving scaled image
  */
-
 function saveScaledImageRessourceToFile($src, $pathToNewImage, $max_width=0, $max_height=0, $type='jpeg', $quality=75) {
 
 	$tmp = scaleImageRessource($src, $max_width, $max_width);
@@ -73,7 +72,9 @@ function saveScaledImageRessourceToFile($src, $pathToNewImage, $max_width=0, $ma
 			$pathToNewImage.='.png';
 			imagepng ($tmp, $pathToNewImage);
 		break;
-		default: echo ''; break;
+		default:
+			echo '';
+		break;
 	}
 
 	imagedestroy($tmp);
@@ -82,6 +83,54 @@ function saveScaledImageRessourceToFile($src, $pathToNewImage, $max_width=0, $ma
 		return ($scalling)?2:1;
 	else
 		return 0;
+}
+
+/**
+ * saveScaledImageRessourceToFile function, Transit - Robin Dumont-Chaponet_
+ *
+ * Scale an image ressource and save it to disk (conserve image ratio)
+ *
+ * @access public
+ * @param ressource $src : image ressource
+ * @param int $max_width (default: 0 keep original size)
+ * @param int $max_height (default: 0 keep original size)
+ * @param string $type (default: 'jpeg')
+ * @return scaled image or original if no scaling necessary
+ */
+
+function scaledImageRessource2Image($src, $max_width=0, $max_height=0, $type='jpeg', $quality=75) {
+
+	$tmp = scaleImageRessource($src, $max_width, $max_width);
+	if($tmp === false) {
+		$tmp = $src;
+		$scalling = false;
+	} else
+		$scalling = true;
+
+	ob_start();
+	switch ($type) {
+		case 'gif' :
+			$pathToNewImage.='.gif';
+			imagegif ($tmp);
+        break;
+		case 'jpeg': case 'jpg':
+			$pathToNewImage.='.jpg';
+			imagejpeg($tmp, null, $quality);
+		break;
+		case 'png' :
+			$pathToNewImage.='.png';
+			imagepng ($tmp);
+		break;
+		default:
+			echo '';
+		break;
+	}
+	$buffer = ob_get_contents();
+
+	ob_end_clean();
+	imagedestroy($tmp);
+
+	return $buffer;
 }
 
 ?>

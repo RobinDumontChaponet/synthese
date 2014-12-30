@@ -40,13 +40,12 @@ if(!empty($_POST) && $diplome != NULL) {
 	if ($valid['domainDescription']) {
 		$diplome->getDomaine()->setDescription($_POST['domainDescription']);
 		DomaineDAO::update($diplome->getDomaine());
-		header('Location: '.SELF.'diplome/'.$diplome->getId());
 	}
-	
-	if ($change) {
+
+	if ($change)
 		DiplomePostDUTDAO::update($diplome);
-		header('Location: '.SELF.'diplome/'.$diplome->getId());
-	}
+
+	header('Location: '.SELF.'diplome/'.$diplome->getId());
 }
 
 include(VIEWS_INC.'diplome-editer.php');

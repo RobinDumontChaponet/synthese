@@ -1,4 +1,4 @@
-FileTransfert = function (input, basename, destination, callback) {
+FileTransfert = function (input, destination, callback) {
 	var t=this;
 	t.input=input;
 	t.callback=callback;
@@ -9,7 +9,6 @@ FileTransfert = function (input, basename, destination, callback) {
 
 		var fd = new FormData();
 		fd.append('upload', this.files[0]);
-		fd.append('basename', basename);
 		fd.append('destination', destination);
 
 		var xhr = new XMLHttpRequest();
