@@ -29,7 +29,7 @@ function affichageResultat() {
 
 				table += '<tr>';
 
-				table += '<td><input type="checkbox" id="selectionne" value="true" name="selectionne" /></td>';
+				table += '<td><input type="checkbox" value="'+it['idProfil']+'" name="selectionne" /></td>';
 				table += '<td>'+it['nom']+'</td>';
 				table += '<td>'+it['prenom']+'</td>';
 				table += '<td>'+it['promotion']+'</td>';
