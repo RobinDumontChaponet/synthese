@@ -13,8 +13,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 			echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
 		<!--<input type="file" name="imageProfil"/>-->
 	</figure>
-	<h1><?php echo $ancien->getPrenom()?> <span id="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span></h1>
-	<section>
+	<h1><?php echo $ancien->getPrenom()?> <span id="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span>
+	<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+		echo ' - <a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+	?></h1>
+	<section id="info">
 		<h2>Informations générales</h2>
 		<dl>
 			<dt>Nom d'usage</dt>
@@ -42,6 +45,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 		</dl>
 	</section>
 	<section>
+		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+		?>
 		<h2>Diplômes</h2>
 		<ul>
 <?php
@@ -79,6 +85,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 		</ul>
 	</section>
 	<section>
+		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+		?>
 		<h2>Entreprises</h2>
 		<ul>
 <?php
