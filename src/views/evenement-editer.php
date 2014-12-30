@@ -11,7 +11,7 @@
 			<li>
 				<label for="typeEvent">Type d'évènement</label>
 				<select name="typeEvent" ><?php foreach($typesEvent as $typeEvent) { echo '<option'.(($typeEvent->getId() == $event->getTypeEvenement()->getId())?' selected':'').' value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';}?></select>
-				<a href="typeEvent/<?php echo $_GET['id'] ?>">Accéder aux types d'évènements</a>
+				<a href="typesEvent/<?php echo $_GET['id'] ?>">Accéder aux types d'évènements</a>
 			</li>
 			<li>
 				<label for="commentaire">Commentaire</label>
