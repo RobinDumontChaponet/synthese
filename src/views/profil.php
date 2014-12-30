@@ -31,21 +31,28 @@ if (isset($ancien) && $ancien != NULL) {?>
 	<section>
 		<h2>Informations générales</h2>
 		<dl>
-			<dt>Nom d'usage :</dt>
+			<dt>Nom d'usage</dt>
 			<dd><?php echo $ancien->getNom();?></dd>
-			<dt>Sexe :</dt>
+			<dt>Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
-			<dt>Date de naissance :</dt>
+			<dt>Date de naissance</dt>
 			<dd><?php echo $ancien->getDateNaissance();?></dd>
-			<dt>Adresse 1 :</dt>
+			<dt>Adresse 1</dt>
 			<dd><?php echo $ancien->getAdresse1();?></dd>
-			<dt>Adresse 2 :</dt><dd><?php echo $ancien->getAdresse2();?></dd>
-			<dt>Code postal :</dt><dd><?php echo $ancien->getCodePostal();?></dd>
-			<dt>Ville :</dt><dd><?php echo $ancien->getVille();?></dd>
-			<dt>Pays :</dt><dd><?php echo $ancien->getPays(); ?></dd>
-			<dt>Telephone :</dt><dd><?php echo $ancien->getTelephone();?></dd>
-			<dt>Mobile :</dt><dd><?php echo $ancien->getMobile();?></dd>
-			<dt>Mail :</dt><dd><?php echo $ancien->getMail() ?></dd>
+			<dt>Adresse 2</dt>
+			<dd><?php echo $ancien->getAdresse2();?></dd>
+			<dt>Code postal</dt>
+			<dd><?php echo $ancien->getCodePostal();?></dd>
+			<dt>Ville</dt>
+			<dd><?php echo $ancien->getVille();?></dd>
+			<dt>Pays</dt>
+			<dd><?php echo $ancien->getPays(); ?></dd>
+			<dt>Telephone</dt>
+			<dd><?php echo $ancien->getTelephone();?></dd>
+			<dt>Mobile</dt>
+			<dd><?php echo $ancien->getMobile();?></dd>
+			<dt>Mail</dt>
+			<dd><?php echo $ancien->getMail() ?></dd>
 		</dl>
 	</section>
 	<section>
@@ -55,12 +62,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 	if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent
 ?>
 			<li>
+				<h3><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
 				<dl>
-					<dt>Diplôme :</dt>
-					<dd><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></dd>
-					<dt>Département :</dt>
+					<dt>Département</dt>
 					<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
-					<dt>Promotion :</dt>
+					<dt>Promotion</dt>
 					<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
 				</dl>
 			</li>
@@ -70,15 +76,13 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($diplomesPost as $diplomePost) {
 ?>
 			<li>
-				<a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>">lien</a>
+				<h3><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a></h3>
 				<dl>
-					<dt>Diplôme :</dt>
-					<dd><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></dd>
-					<dt>Établissement :</dt>
+					<dt>Établissement</dt>
 					<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
-					<dt>Résultat :</dt>
+					<dt>Résultat</dt>
 					<dd><?php echo $diplomePost->getResultat();?></dd>
-					<dt>Période :</dt>
+					<dt>Période</dt>
 					<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
 				</dl>
 			</li>
@@ -96,13 +100,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($entreprises as $entreprise) {
 ?>
 			<li>
+				<h3><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 				<dl>
-					<a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>">lien</a>
-					<dt>Entreprise :</dt>
-					<dd><?php echo $entreprise->getEntreprise()->getNom();?></dd>
-					<dt>Poste :</dt>
+					<dt>Poste</dt>
 					<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
-					<dt>Période :</dt>
+					<dt>Période</dt>
 					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
