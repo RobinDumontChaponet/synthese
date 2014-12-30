@@ -16,7 +16,7 @@
 					foreach($eventsInscriPost as $eventInscriPost) {
 						echo '<li><a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">
 							<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
-							<h3>'.strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate())).'</h3>
+							<h3>'.(($eventInscriPost->getEvenement()->getDate())?(strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate()))):'Pas de date annoncée').'</h3>
 							<p>'.$eventInscriPost->getEvenement()->getCommentaire().'</p>
 							</a><a href="index.php?requ=evenement-desinscrire&id='.$eventInscriPost->getEvenement()->getId().'">Se désinscrire</a></li>';
 					}
@@ -39,8 +39,22 @@
 							</a><a href="index.php?requ=evenement-inscrire&id='.$eventNotInscriPost->getId().'">S\'inscrire</a></li>';
 					}
 					echo '</ul>';
-				} else
+				}
+				if($eventsWithoutDateNotInscri != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
+					echo '<ul>';
+					foreach($eventsWithoutDateNotInscri as $eventWithoutDateNotInscri) {
+						echo '
+							<li><a href="evenement/'.$eventWithoutDateNotInscri->getId().'">
+								<span class="typeEvent type-'.$eventWithoutDateNotInscri->getTypeEvenement()->getId().'">'.$eventWithoutDateNotInscri->getTypeEvenement()->getLibelle().'</span>
+								<h3>Pas de date annoncée</h3>
+								<p>'.$eventWithoutDateNotInscri->getCommentaire().'</p>
+							</a><a href="index.php?requ=evenement-inscrire&id='.$eventWithoutDateNotInscri->getId().'">S\'inscrire</a></li>';
+					}
+					echo '</ul>';
+				}
+				if($eventsNotInscriPost == NULL && $eventsWithoutDateNotInscri == NULL ) {
 					echo '<span class="sad">Aucun évènement.</span>';
+				}
 				?>
 			</ul>
 		</section>
@@ -78,6 +92,20 @@
 			} else
 				echo '<span class="sad">Aucun évènement.</span>';
 			?>
+			<?php if($eventsWithoutDate != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
+					echo '<ul>';
+					foreach($eventsWithoutDate as $eventWithoutDate) {
+						echo '
+							<li><a href="evenement/'.$eventWithoutDate->getId().'">
+								<span class="typeEvent type-'.$eventWithoutDate->getTypeEvenement()->getId().'">'.$eventWithoutDate->getTypeEvenement()->getLibelle().'</span>
+								<h3>Pas de date annoncée</h3>
+								<p>'.$eventWithoutDate->getCommentaire().'</p>
+							</a></li>';
+					}
+					echo '</ul>';
+				} else
+					echo '<span class="sad">Aucun évènement.</span>';
+				?>
 			</ol>
 		</section>
 		<section>

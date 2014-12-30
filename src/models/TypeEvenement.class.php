@@ -36,17 +36,9 @@ class TypeEvenement
 	}
 	
 	
-  public function setLibelle($libelle)
-  {
-    $libelleTraite = trim($libelle);
-    if(($libelleTraite != null) and ($libelleTraite != ""))
-    {
-        $this->libelle = $libelleTraite;
-    }else
-    {
-        throw new Exception("Libellé type evenement incorrect");
-    }
-  }
+	public function setLibelle($libelle){
+		$this->libelle = $libelle;
+	}
 	
 	
 //------------------------------------toString-------------------------------------

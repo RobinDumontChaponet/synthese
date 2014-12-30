@@ -92,12 +92,41 @@ class EvenementDAO
 		}
 		return $lst;
     }
+	
+	public static function getByAncienWithoutDateNotInscri($idPersonne){
+        try {
+            $lst = array();
+			$bdd=connect();
+            $req = $bdd->prepare("SELECT idEvenement FROM evenement WHERE date IS NULL AND idEvenement NOT IN
+                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $req->execute(array($idPersonne));
+            while($res=$req->fetch()){
+                $lst[]=EvenementDAO::getById($res['idEvenement']);
+            }
+        } catch(PDOException $e) {
+			die('error get all Evenement '.$e->getMessage().'<br>');
+		}
+		return $lst;
+    }
+	
+	public static function getEvenementWithoutDate() {
+		try {
+			$lst = array();
+			$bdd=connect();
+            $req = $bdd->prepare("SELECT idEvenement FROM `evenement` WHERE date IS NULL");
+            $req->execute();
+            while($res=$req->fetch()){
+                $lst[]=EvenementDAO::getById($res['idEvenement']);
+            }
+		} catch(PDOException $e) {
+			die('EvenementDAO : Error getEvenementWithoutDate '.$e->getMessage().'<br>');
+		}
+		return $lst;
+	}
 
-	public static function create(&$obj)
-	{
+	public static function create(&$obj) {
 		if
-		(get_class($obj)=="Evenement")
-		{
+		(get_class($obj)=="Evenement") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`,`date`,`commentaire`) VALUES (?,?,?)");

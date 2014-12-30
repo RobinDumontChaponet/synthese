@@ -60,7 +60,7 @@ class AParticipeDAO {
 		try {
 			$lst=array();
 			$bdd=connect();
-			$req = $bdd->prepare("SELECT * FROM aParticipe A, evenement E WHERE A.idPersonne=? AND A.idEvenement=E.idEvenement AND E.date>=now()");
+			$req = $bdd->prepare("SELECT * FROM aParticipe A, evenement E WHERE A.idPersonne=? AND A.idEvenement=E.idEvenement AND (E.date>=now() OR date IS NULL)");
 			$req->execute(array($idPers));
 			while ($result=$req->fetch()) {
 				$event=EvenementDAO::getById($result['idEvenement']);

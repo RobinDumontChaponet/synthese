@@ -9,19 +9,12 @@
 				<input id="date" name="date" type="date"/>
 			</li>
 			<li>
-				<label for="typEvent">Type d'évènement</label>
-				<select>
-					<?php echo 
-					foreach($typesEvent as $typeEvent) {.'
-							<option>
-								
-							</option>
-						'.}?>
-				</select>
+				<label for="typeEvent">Type d'évènement</label>
+				<select name="typeEvent" ><?php foreach($typesEvent as $typeEvent) { echo '<option value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';}?></select>
 			</li>
 			<li>
 				<label for="commentaire">Commentaire</label>
-				<textarea id="commentaire" name="commentaire" rows="2" cols="80" placeholder="(peut être vide)" /></textarea>
+				<textarea id="commentaire" name="commentaire" rows="2" cols="80" placeholder="Peut être vide" /></textarea>
 			</li>
 		</ul>
 		<input type="submit" value="Ajouter l'évènement" />

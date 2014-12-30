@@ -42,7 +42,7 @@ class Evenement {
 	}
 	
 	public function setTypeEvenement($typeEvenement) {
-			$this->typeEvenement = $typeEvenement;
+		$this->typeEvenement = $typeEvenement;
 	}
 	
 	public function setDate($date) {
