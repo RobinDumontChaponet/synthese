@@ -112,9 +112,9 @@ h1 input[type="text"]:focus {
 }
 input[type="text"]:focus {
 	background: #fff;
-	-webkit-box-shadow: inset 0 0 2px rgba(220, 220, 220, 1), 0 0 12px rgba(244, 244, 247, 1);
-	-moz-box-shadow: inset 0 0 2px rgba(220, 220, 220, 1), 0 0 12px rgba(244, 244, 247, 1);
-	box-shadow: inset 0 0 2px rgba(220, 220, 220, 1), 0 0 12px rgba(244, 244, 247, 1);
+	-webkit-box-shadow: inset 0 0 2px rgba(220, 220, 220, 1), 0 0 14px rgba(218, 218, 218, 1);
+	-moz-box-shadow: inset 0 0 2px rgba(220, 220, 220, 1), 0 0 14px rgba(218, 218, 218, 1);
+	box-shadow: inset 0 0 2px rgba(220, 220, 220, 1), 0 0 14px rgba(218, 218, 218, 1);
 	border: 1px solid rgba(228, 228, 228, 1);
 	margin-top: -1px;
 	margin-left: -1px;
@@ -127,4 +127,30 @@ input[type="text"]:focus {
 	z-index: 1000;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.overlay #info, .overlay #info dd, [type="text"]:focus {
+	-webkit-filter: none!important;
+	-moz-filter: none!important;
+	-ms-filter: none!important;
+	-o-filter: none!important;
+	filter: none!important;
+}
+.overlay section, .overlay #info input, .overlay #info select, .overlay #info dt, .overlay #info dd span, .overlay #info h2, .overlay #info h3, .overlay #info a, .overlay figure {
+	-webkit-filter: blur(1px);
+	-moz-filter: blur(1px);
+	-ms-filter: blur(1px);
+	-o-filter: blur(1px);
+	filter: blur(1px);
+}
+.overlay:before {
+	content: "";
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: grey;
+	opacity: .2;
+	z-index: 900;
 }

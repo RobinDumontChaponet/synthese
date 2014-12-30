@@ -34,7 +34,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 			echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
 		<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil vu que tu as dit que tu avais déjà des trucs tout bien fait et tout et que tu t'en occuperais alors j'ai laissé ça comme ça et j'espère que le commentaire est assez grand pour que tu le vois!-->
 	</figure>
-	<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post">
+	<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post" name="profil">
 		<h1><?php if ($_SESSION['user_auth']['write'])
 			echo '<input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'" /><input type="text" placeholder="Nom" name="name" value="'.$ancien->getNomPatronymique().'" />';
 		else
@@ -49,10 +49,10 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<dd><?php if ($_SESSION['user_auth']['write'])	//	L'admin a tout les droits
 					echo '<select id="inputSex" name="sex"><option'.(($ancien->getSexe() == 'm')?' selected':'').' value="m">Homme</option><option'.(($ancien->getSexe() == 'f')?' selected':'').' value="f">Femme</option></select>';
 				else
-					echo '<input id="inputSex" type="text" readonly="readonly" value ="'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'"/>';
+					echo '<span>'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'</span>';
 				?></dd>
 				<dt id="dateNaissance"><label for="inputBirthday">Date de naissance</label></dt>
-				<dd><?php echo '<input id="inputBirthday" name="birthday" type="text"'.(($_SESSION['user_auth']['write'])?' readonly="readonly"':'').' value="'.$ancien->getDateNaissance().'"/>';?></dd>
+				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="text" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
 				<dt id="adresse1"><label for="inputAddress1">Adresse 1</label></dt>
 				<dd><input id="inputAddress1" name="address1" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getAdresse1();?>"/></dd>
 				<dt id="adresse2"><label for="inputAddress2">Adresse 2</label></dt>
@@ -138,3 +138,15 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<p class="warning">Vous ne pouvez pas modifier ce profil</p>
 	<?php }?>
 </div>
+<script>
+var form = document.forms['profil'],
+elements   = form.elements,
+wrapper  = document.getElementById('wrapper');
+for(var i=0, l=elements.length; i<l; i++) {
+	var el=elements[i];
+	if(el.type=='text' && !el.readOnly) {
+		el.onfocus = function(){wrapper.classList.add('overlay')};
+		el.onblur = function(){wrapper.classList.remove('overlay')};
+	}
+}
+</script>
