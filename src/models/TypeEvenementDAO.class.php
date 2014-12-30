@@ -40,9 +40,9 @@ class TypeEvenementDAO
 	}
 
 	public static function create(&$type) {
-		if (get_class($type)=="TypeEvenement") {
+		if (get_class($type) == "TypeEvenement") {
 			try{
-				$bdd->connect();
+				$bdd=connect();
 				$req = $bdd->prepare("INSERT INTO `typeEvenement`(`libelle`) VALUES (?)");
 				$req->execute(array($type->getLibelle()));
 				$type->setId($bdd->LastInsertId());
