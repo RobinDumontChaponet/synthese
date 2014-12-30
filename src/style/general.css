@@ -251,7 +251,7 @@ label {
 	top: -2px;
 	padding: 0 5px 0 0;
 }
-label:after, dt:after {
+label:after, dt:after, h4:after {
 	padding-left: 5px;
 	content: ":";
 }
@@ -267,6 +267,103 @@ dt label {
 }
 dt label:after {
 	content: none;
+}
+dt, dd, h3, h4, #content p {
+	position: relative;
+}
+h3 {
+	padding-bottom: 10px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #f1f1f1;
+}
+h4 {
+	margin-top: 5px;
+}
+dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
+	font-family: 'icomoon';
+	font-size: 16px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: absolute;
+	top: 8px;
+	left: -36px;
+	text-align: center;
+	color: #dae0e9;
+}
+dd {
+	font-weight: 400;
+}
+dd:after {
+	content: "\A";
+	opacity: 0;
+	display: -moz-inline-stack;
+	display: inline-block;
+	margin: -20px;
+	width: 0;
+}
+#nomUsage:before {
+	content: "\e978";
+}
+#sexeF:before {
+	content: "\e9dd";
+}
+#sexeM:before {
+	content: "\e9dc";
+}
+#dateNaissance:before {
+	content: "\e99f";
+}
+#adresse1:before {
+	content: "\e947";
+}
+#adresse2:before {
+	content: "\e948";
+}
+#codePostal:before {
+	content: "\e94c";
+}
+#ville:before {
+	content: "\e949";
+}
+#pays:before {
+	content: "\e94a";
+}
+#telephoneFixe:before {
+	content: "\e943";
+}
+#telephoneMobile:before {
+	content: "\e942";
+}
+#mail:before {
+	content: "\e945";
+}
+.diplome:before {
+	content: "\e920";
+}
+.etablissement:before {
+	content: "\e605";
+}
+.resultat:before {
+	content: "\e99b";
+}
+.departement:before {
+	content: "\e60e";
+}
+.promotion:before {
+	content: "\e9bc";
+}
+.entreprise:before {
+	content: "\e601";
+}
+.poste:before {
+	content: "\e60f";
+}
+.periode:before {
+	content: "\e94e";
 }
 input, .button, button, select {
 	border: 1px solid rgba(175, 175, 175, 1);

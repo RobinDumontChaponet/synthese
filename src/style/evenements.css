@@ -18,25 +18,11 @@ p {
 	font-weight: 400;
 }
 
-#content h3, #content h4, #content p {
-	position: relative;
-}
-li h3:before, li p:before, article h3:before, article h4:before {
-	font-family: 'icomoon';
-	font-size: 16px;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	position: absolute;
-	top: 7px;
-	left: -33px;
-	color: #dae0e9;
+
+li h3:before, article h3:before {
 	content: "\e953";
 }
-li p:before, article h4:before {
+li p:before, article p:before {
 	content: "\e978";
 }
 

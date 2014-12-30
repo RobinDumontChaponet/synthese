@@ -1,22 +1,26 @@
-<!--meta title="<?php echo (($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'); ?>" css="style/animations.css"-->
+<!--meta title="<?php echo ($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'; ?>" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($entreprise != NULL) { ?>
+	<h1>Détails de l'entreprise</h1>
+<?php if ($entreprise != NULL) { ?>
+	<article>
+		<h3 class="entreprise"><?php echo $entreprise->getNom(); ?></h3>
 		<dl>
-			<dt id="companyName">Nom de l'entreprise</dt>
-			<dd><?php echo $entreprise->getNom(); ?></dd>
-			<dt id="address1">Adresse 1</label>
-			<dd><?php echo $entreprise->getAdresse1(); ?></dd>
-			<dt id="address2">Adresse 2</dt>
-			<dd><?php echo $entreprise->getAdresse2(); ?></dd>
-			<dt id="postalCode">Code postal</label>
-			<dd><?php echo $entreprise->getCodePostal(); ?></dd>
-			<dt id="city">Ville</dt>
-			<dd><?php echo $entreprise->getVille(); ?></dd>
-			<dt id="country">Pays</dt>
-			<dd><?php echo $entreprise->getPays(); ?></dd>
+			<dt>Adresse 1</dt>
+			<dd id="adresse1"><?php echo $entreprise->getAdresse1(); ?></dd>
+			<dt>Adresse 2</dt>
+			<dd id="adresse2"><?php echo $entreprise->getAdresse2(); ?></dd>
+			<dt>Code postal</dt>
+			<dd id="codePostal"><?php echo $entreprise->getCodePostal(); ?></dd>
+			<dt>Ville</dt>
+			<dd id="ville"><?php echo $entreprise->getVille(); ?></dd>
+			<dt>Pays</dt>
+			<dd id="pays"><?php echo $entreprise->getPays(); ?></dd>
 		</dl>
 		<?php if ($_SESSION['user_auth']['write'])
-			echo '<a href="entreprise-editer/'.$_GET['id'].'">Editer l\'entreprise</a>';
+		echo '<a href="entreprise-editer/'.$_GET['id'].'">Editer l\'entreprise</a>';
+		?>
+	</article>
+<?php
 	} else { ?>
 		<p class="warning">Cette entreprise n'existe pas</p>
 	<?php } ?>

@@ -38,10 +38,6 @@ section > a.aEdit {
    background-color: #f0f4f9;
 }
 
-dt, dd, li h3 {
-	position: relative;
-}
-
 #info dt, #info dd {
 	margin: 0 -10px;
 	padding: 2px 10px 0;
@@ -55,84 +51,8 @@ dt {
 	float: left;
 	z-index: 10;
 }
-dt:before, li h3:before {
-	font-family: 'icomoon';
-	font-size: 16px;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	position: absolute;
-	top: 7px;
-	left: -33px;
-
-	color: #dae0e9;
-}
 #info dt:before {
-	left: -23px;
-}
-
-#nomUsage:before {
-	content: "\e978";
-}
-#sexeF:before {
-	content: "\e9dd";
-}
-#sexeM:before {
-	content: "\e9dc";
-}
-#dateNaissance:before {
-	content: "\e99f";
-}
-#adresse1:before {
-	content: "\e947";
-}
-#adresse2:before {
-	content: "\e948";
-}
-#codePostal:before {
-	content: "\e94c";
-}
-#ville:before {
-	content: "\e949";
-}
-#pays:before {
-	content: "\e94a";
-}
-#telephoneFixe:before {
-	content: "\e943";
-}
-#telephoneMobile:before {
-	content: "\e942";
-}
-#mail:before {
-	content: "\e945";
-}
-.diplome:before {
-	content: "\e920";
-}
-.etablissement:before {
-	content: "\e605";
-}
-.resultat:before {
-	content: "\e99b";
-}
-.departement:before {
-	content: "\e60e";
-}
-.promotion:before {
-	content: "\e9bc";
-}
-.entreprise:before {
-	content: "\e601";
-}
-.poste:before {
-	content: "\e60f";
-}
-.periode:before {
-	content: "\e94e";
+	left: -26px;
 }
 
 #info dd {
@@ -143,13 +63,7 @@ h3, dd {
 	font-weight: 500;
 }
 dd:after {
-	content: "\A";
-	opacity: 0;
-	display: -moz-inline-stack;
-	display: inline-block;
 	float: right;
-	margin: -20px;
-	width: 0;
 }
 
 #content li {
