@@ -1,4 +1,4 @@
-#content li {
+#content li, #content article {
 	background: #fcfcfc;
 	margin: 10px -10px;
 	padding: 10px;
@@ -7,10 +7,10 @@
 	border-radius: 4px;
 }
 
-#content li a {
+#content li a, #content article a {
 	display: block;
 }
-#content li a > * {
+#content li a > *, #content article a > * {
 	color: #3f3f3f;
 }
 
@@ -18,10 +18,10 @@ p {
 	font-weight: 400;
 }
 
-li h3, li p {
+#content h3, #content h4, #content p {
 	position: relative;
 }
-li h3:before, li p:before {
+li h3:before, li p:before, article h3:before, article h4:before {
 	font-family: 'icomoon';
 	font-size: 16px;
 	speak: none;
@@ -36,7 +36,7 @@ li h3:before, li p:before {
 	color: #dae0e9;
 	content: "\e953";
 }
-li p:before {
+li p:before, article h4:before {
 	content: "\e978";
 }
 

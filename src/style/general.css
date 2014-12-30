@@ -215,6 +215,9 @@ section, fieldset {
 	margin: 10px 0;
 	padding: 10px 0;
 }
+section:first-child, fieldset:first-child {
+	margin-top: 0;
+}
 section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
