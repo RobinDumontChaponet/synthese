@@ -135,11 +135,6 @@ dt:before, li h3:before {
 	content: "\e94e";
 }
 
-
-dt:after {
-	padding-left: 5px;
-	content: ":";
-}
 #info dd {
 	padding-left: 160px;
 	margin-left: 0;

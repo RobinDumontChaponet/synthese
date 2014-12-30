@@ -3,13 +3,13 @@
 	<h1>Recherche</h1>
 	<section id="criteres">
 		<form action="#" onsubmit="return false" name="search" method="get">
-			<label for="nom" >Nom :</label>
+			<label for="nom" >Nom</label>
 			<input type="text" id="nom" name="nom" /><br />
 
-			<label for="prenom">Prénom :</label>
+			<label for="prenom">Prénom</label>
 			<input type="text" id="prenom" name="prenom" /><br />
 
-			<label for="promotion">Promotion :</label>
+			<label for="promotion">Promotion</label>
 			<select id="promotionInf" name="promotionInf">
 				<option value=""></option> <!-- Pour le choix vide -->
 				<?php
@@ -25,7 +25,7 @@
 				?>
 			</select><br />
 
-			<label for="diplome">Diplôme DUT :</label>
+			<label for="diplome">Diplôme DUT</label>
 			<select id="diplome" name="diplome">
 				<option value=""></option> <!-- Pour le choix vide -->
 				<?php
@@ -34,7 +34,7 @@
 				?>
 			</select><br />
 
-			<label for="typeSpecialisation">Type de spécialisation :</label>
+			<label for="typeSpecialisation">Type de spécialisation</label>
 			<select id="typeSpecialisation" name="typeSpecialisation">
 				<option value=""></option> <!-- Pour le choix vide -->
 				<?php
@@ -43,16 +43,16 @@
 				?>
 			</select><br />
 
-			<label for="specialisation">Spécialisation :</label>
+			<label for="specialisation">Spécialisation</label>
 			<input type="text" name="specialisation" id="specialisation" /><br />
 
-			<label for="diplomePostDUT">Diplôme post-DUT :</label>
+			<label for="diplomePostDUT">Diplôme post-DUT</label>
 			<input type="text" id="diplomePostDUT" name="diplomePostDUT" /><br />
 
-			<label for="etabPostDUT">Etablissement post-DUT :</label>
+			<label for="etabPostDUT">Etablissement post-DUT</label>
 			<input type="text" id="etabPostDUT" name="etabPostDUT" /><br />
 
-			<label for="travailActuel">Travail :</label>
+			<label for="travailActuel">Travail</label>
 			<input type="checkbox" id="travailActuel" value="true" name="travailActuel" />
 		</form>
 	</section>
