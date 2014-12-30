@@ -9,7 +9,7 @@
 				<p><?php echo $event->getCommentaire();?></p>
 			</article>
 			<?php if ($_SESSION['user_auth']['write'])
-				echo '<a href="evenement-editer/'.$_GET['id'].'">Editer l\'événement</a> <a href="evenement-supprimer/'.$_GET['id'].'">Supprimer l\'événement</a>';
+				echo '<a href="evenement-editer/'.$_GET['id'].'">Editer l\'événement</a> <a href="index.php?requ=evenement-supprimer&id='.$_GET['id'].'">Supprimer l\'événement</a>';
 	} else {?>
 		<p class="warning">Cet événement n'existe pas</p>
 	<?php }?>

@@ -143,11 +143,8 @@ class EvenementDAO
 		}
 	}
 
-	public static function update($obj)
-	{
-		if
-		(get_class($obj)=="Evenement")
-		{
+	public static function update($obj) {
+		if (get_class($obj) == "Evenement") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=?,`date`=?,`commentaire`=? WHERE `idEvenement`=?");
@@ -162,11 +159,8 @@ class EvenementDAO
 		}
 	}
 
-	public static function delete($obj)
-	{
-		if
-		(get_class($obj)=="Evenement")
-		{
+	public static function delete($obj) {
+		if (get_class($obj) == "Evenement") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("DELETE FROM `evenement` WHERE `idEvenement`=?");
