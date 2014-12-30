@@ -9,5 +9,9 @@ if($_POST) {
 	header('Location: '.SELF.'typesEvent');
 }
 
-include(VIEWS_INC.'typeEvent-ajouter.php');
+if ($_SESSION['user_auth']['write'])
+	include(VIEWS_INC.'typeEvent-ajouter.php');
+else
+	include(VIEWS_INC.'403.php');
+
 ?>

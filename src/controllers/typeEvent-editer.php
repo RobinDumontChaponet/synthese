@@ -12,6 +12,9 @@ if ($_GET['id'] != NULL) {
 	}
 }
 
-include(VIEWS_INC.'typeEvent-editer.php');
+if ($_SESSION['user_auth']['write'])
+	include(VIEWS_INC.'typeEvent-editer.php');
+else
+	include(VIEWS_INC.'403.php');
 
 ?>

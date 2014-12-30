@@ -25,7 +25,8 @@
 		</dl>
 	</article>
 <?php
-} else { ?>
+} else {
+?>
 	<p class="warning">Cette entreprise n'existe pas</p>
 <?php } ?>
 </div>

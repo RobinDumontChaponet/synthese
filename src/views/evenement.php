@@ -7,9 +7,9 @@
 		<h1>Détails de l'évènement</h1>
 			<article>
 				<span class="typeEvent type-<?php echo $event->getTypeEvenement()->getId();?>"><?php echo $event->getTypeEvenement()->getLibelle();?></span>
-				<h3><?php echo (($event->getDate())?(strftime('%A %d %B %Y', strtotime($event->getDate()))):'Pas de date annoncée');?></h3>
+				<h3 class="evenement"><?php echo (($event->getDate())?(strftime('%A %d %B %Y', strtotime($event->getDate()))):'Pas de date annoncée');?></h3>
 				<h4>Commentaire</h4>
-				<p><?php echo $event->getCommentaire();?></p>
+				<p class="commentaire"><?php echo $event->getCommentaire();?></p>
 			</article>
 <?php
 } else {?>

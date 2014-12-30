@@ -8,6 +8,9 @@ define('DATA_PATH', ROOT_PATH.'/data/');
 
 define('SELF', dirname($_SERVER['PHP_SELF']).'/');
 
+// Nombre de caractères à afficher dans les longs <p> dans <li>
+define('STR_TRONC', 380);
+
 function __autoload($className) {
     include MODELS_INC.$className.'.class.php';
 }

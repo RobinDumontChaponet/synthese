@@ -1,6 +1,6 @@
 <!--meta title="<?php echo 'Diplôme : '.(($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
-	<h1>Détails du diplôme</h1>
+	<h1>Modification du diplôme</h1>
 <?php if (isset($diplome) && $diplome != NULL && $_SESSION['user_auth']['write']) { ?>
 	<form action="diplome-editer/<?php echo $diplome->getId()?>" method="post">
 		<article>

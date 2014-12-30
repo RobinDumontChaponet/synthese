@@ -45,7 +45,7 @@ form:before {
 }
 
 fieldset {
-	border: 0;
+	text-align: center;
 }
 legend {
 	color: #f4f3f3;

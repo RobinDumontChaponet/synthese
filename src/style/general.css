@@ -240,8 +240,20 @@ a.aEdit {
 	float: right;
 	margin-left: 15px;
 }
+a.aEdit, a.aAdd {
+	z-index: 100;
+	position: relative;
+}
 h1 a.aEdit {
 	float: none;
+}
+
+.troncat {
+	font-style: italic;
+	color: grey;
+	letter-spacing: 2px;
+	font-weight: 800;
+	padding-left: 4px;
 }
 
 #wrapper h1 {
@@ -256,7 +268,8 @@ h1 a.aEdit {
 }
 #wrapper h2 {
 	line-height: 1em;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	font-size: 1.1em;
 }
 
 legend {
@@ -323,13 +336,10 @@ dt {
 	float: left;
 	z-index: 10;
 }
-dt:before {
-	left: -26px;
-}
+
 
 dd {
-	padding-left: 120px;
-	margin-left: 0;
+	padding-left: 130px;
 }
 dd:after {
 	float: right;
@@ -344,16 +354,18 @@ dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
 	text-transform: none;
 	line-height: 50px;
 	position: absolute;
-	top: 14px;
-	left: -36px;
+	top: 12px;
+	left: -26px;
 	text-align: center;
 	color: #dae0e9;
 	line-height: 1em
 }
-h3:before {
+h3:before, li p:before, article p:before {
 	top: 6px;
+	left: -36px;
 }
 li dt:before {
+	top: 16px;
 	left: -26px;
 }
 dd {
@@ -430,6 +442,15 @@ dd:after {
 }
 .domaine:before {
 	content: "\e91f";
+}
+.commentaire:before {
+	content: "\e978";
+}
+.evenement:before {
+	content: "\e953";
+}
+.type:before {
+	content: "\e935";
 }
 
 input, .button, button, select, textarea {
@@ -513,9 +534,9 @@ textarea {
 	margin: 0;
 }
 dd textarea {
-	margin: 20px 0 0;
+	margin: 15px 0 0;
 }
-h3 input[type="text"], h3 input[type="password"], h3 input[type="date"], textarea {
+dd input[type="text"], dd input[type="password"], dd input[type="date"], h3 input[type="text"], h3 input[type="date"], textarea {
 	width: 100%;
 }
 
