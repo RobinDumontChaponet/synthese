@@ -11,6 +11,5 @@ $event = new Evenement(0, $typeEvent, $_POST['date'], $_POST['commentaire']);
 EvenementDAO::create($event);
 header('Location: '.SELF.'evenements');
 }
-
 include(VIEWS_INC.'evenement-ajouter.php');
 ?>

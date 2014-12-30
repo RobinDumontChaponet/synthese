@@ -15,9 +15,8 @@ function validate ($diplome) {
 		else
 			$valid['diplomeLibelle'] = false;
 	}
-	if (isset($_POST['domainLibelle']) && $_POST['domainLibelle'] != $diplome->getDomaine()->getId()) {
+	if (isset($_POST['domainLibelle']) && $_POST['domainLibelle'] != $diplome->getDomaine()->getId())
 		$valid['domainLibelle'] = true;
-	}
 	if (isset($_POST['domainDescription']) && $_POST['domainDescription'] != $diplome->getDomaine()->getDescription()) {
 		if (!isset($valid['domainLibelle']))
 			$valid['domainDescription'] = true;

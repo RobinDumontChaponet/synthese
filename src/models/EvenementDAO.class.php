@@ -148,7 +148,7 @@ class EvenementDAO
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=?,`date`=?,`commentaire`=? WHERE `idEvenement`=?");
-				$req->execute(array($obj->get_classEvenement()->getId(),$obj->getDate(),$obj->getCommentaire(), $obj->getId()));
+				$req->execute(array($obj->getTypeEvenement()->getId(),$obj->getDate(),$obj->getCommentaire(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update Evenement '.$e->getMessage().'<br>');
