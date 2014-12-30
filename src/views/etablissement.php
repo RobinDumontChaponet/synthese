@@ -1,17 +1,31 @@
-<!--meta title="<?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/animations.css"-->
+<!--meta title="<?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($etablissement != NULL) { ?>
-		<ul>
-			<li><label for="etablissementName">Nom de l'établissement</label><input id="etablissementName" type="text" placeholder="Nom de l'entreprise" readonly="readonly" value="<?php echo $etablissement->getNom(); ?>"/></li>
-			<li><label for="address1">Adresse 1</label><input id="address1" type="text" placeholder="Adresse 1" readonly="readonly" value="<?php echo $etablissement->getAdresse1(); ?>"/></li>
-			<li><label for="address2">Adresse 2</label><input id="address2" type="text" placeholder="Adresse 2" readonly="readonly" value="<?php echo $etablissement->getAdresse2(); ?>"/></li>
-			<li><label for="postalCode">Code postal</label><input id="postalCode" type="text" placeholder="Code postal" readonly="readonly" value="<?php echo $etablissement->getCodePostal(); ?>"/></li>
-			<li><label for="city">Ville</label><input id="city" type="text" placeholder="Ville" readonly="readonly" value="<?php echo $etablissement->getVille(); ?>"/></li>
-			<li><label for="country">Pays</label><input id="country" type="text" placeholder="Pays" readonly="readonly" value="<?php echo $etablissement->getPays(); ?>"/></li>
-		</ul>	
-		<?php if ($_SESSION['user_auth']['write'])
-			echo '<a href="etablissement-editer/'.$_GET['id'].'">Editer l\'établissement</a>';
-	} else { ?>
-		<p class="warning">Cette entreprise n'existe pas</p>
-	<?php } ?>
+<?php if ($etablissement != NULL) {
+	if ($_SESSION['user_auth']['write'])
+		echo '<a class="aEdit" href="etablissement-editer/'.$_GET['id'].'">Editer...</a>';
+?>
+	<h1>Détails de l'établissement</h1>
+	<article>
+		<h3 class="etablissement"><?php echo $etablissement->getNom();?></h3>
+		<dl>
+			<dt>Adresse 1</dt>
+			<dd id="adresse1"><?php echo $etablissement->getAdresse1();?></dd>
+			<dt>Adresse 2</dt>
+			<dd id="adresse2"><?php echo $etablissement->getAdresse2();?></dd>
+			<dt>Code postal</dt>
+			<dd id="codePostal"><?php echo $etablissement->getCodePostal();?></dd>
+			<dt>Ville</dt>
+			<dd id="ville"><?php echo $etablissement->getVille();?></dd>
+			<dt>Pays</dt>
+			<dd id="pays"><?php echo $etablissement->getPays();?></dd>
+			<dt>Fax</dt>
+			<dd id="fax"><a href="tel:<?php echo $etablissement->getFax();?>"><?php echo $etablissement->getFax();?></a></dd>
+			<dt>Site Web</dt>
+			<dd id="web"><a href="<?php echo $etablissement->getWeb();?>"><?php echo $etablissement->getWeb();?></a></dd>
+		</dl>
+	</article>
+<?php
+} else { ?>
+	<p class="warning">Cette entreprise n'existe pas</p>
+<?php } ?>
 </div>
