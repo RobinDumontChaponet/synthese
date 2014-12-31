@@ -6,22 +6,20 @@ class Prefere
     private $ancien;
     private $typeEvenement;
     
-    public function __construct($ancien, $typeEvement)
-    {
-        $this->setAncien($ancien);
-        $this->setTypeEvenement($typeEvement);
+	public function __construct($ancien, $typeEvement) {
+		$this->setAncien($ancien);
+		$this->setTypeEvenement($typeEvement);
     }
     
     //---------------------------------GETTERS---------------------------
-    public function getAncien()
-    {
-        return $this->ancien;
-    }
+	public function getAncien() {
+		return $this->ancien;
+	}
     
-    public function get_classEvenement()
-    {
-        return $this->typeEvenement;
-    }
+	public function getTypeEvenement() {
+		return $this->typeEvenement;
+	}
+	
     //---------------------------------SETTERS---------------------------
     public function setAncien($ancien)
     {
