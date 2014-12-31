@@ -4,7 +4,7 @@
 	<form method="POST">
 		<fieldset>
 			<legend><label for="ancienMdp" >Ancien mot de passe</label></legend>
-			<input type="password" id="ancienMdp" name="ancienMdp" required focus />
+			<input type="password" id="ancienMdp" name="ancienMdp" required autofocus />
 			<?php if(isset($erreurs['ancienIncor'])){ echo '<b style="color:red;">Ancien Mot de passe incorrecte</b>'; }?>
 			<?php if(isset($erreurs['ancien'])){ echo '<b style="color:red;">Ancien Mot de passe obligatoire</b>'; }?>
 		</fieldset>
