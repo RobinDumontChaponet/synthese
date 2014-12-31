@@ -90,7 +90,9 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
-							<a class="edit" href="modif">Modifier</a><a class="delete" href="diplome-supprimer">Supprimer</a>
+							<?php $dispose = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle('diplome-editer'))->getDroit();
+							if($dispose['write']) echo '<a class="edit" href="diplome-editer/'.$diplomePost->getDiplomePostDUT()->getId().'">Éditer</a>';
+							?><a class="delete" href="diplome-supprimer">Supprimer</a>
 							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 							<dl>
 								<dt class="etablissement">Établissement</dt>
@@ -114,7 +116,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 						<li>
-							<a class="edit" href="modif">Modifier</a><a class="edit" href="entreprise-supprimer/<?php echo $entreprise->getEntreprise()->getId(); ?>">Supprimer</a>
+							<a class="edit" href="entreprise-editer/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="entreprise-supprimer/<?php echo $entreprise->getEntreprise()->getId();?>">Supprimer</a>
 							<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 							<dl>
 								<dt class="poste">Poste</dt>

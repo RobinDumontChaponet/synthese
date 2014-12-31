@@ -7,13 +7,6 @@
 	border-radius: 4px;
 }
 
-#content li a, #content article a {
-	display: block;
-}
-#content li a > *, #content article a > * {
-	color: #3f3f3f;
-}
-
 p {
 	font-weight: 400;
 }
@@ -77,4 +70,15 @@ p {
 }
 .type-2:before {
 	border-right-color: #a5b7bc;
+}
+
+#participants li {
+	display: inline-block;
+	background: #fcfcfc;
+	margin: 8px 8px 0 0;
+	padding: 5px;
+	border: 1px solid;
+	border-color: #e7e9ed #e6e7ec #e1e2e7;
+	border-radius: 4px;
+	font-size: .95em;
 }

@@ -42,3 +42,6 @@ foreach($items as $key => $item)
   	<li><a id="aOut" href="deconnection.php" title="Se déconnecter"><span>Déconnexion</span></a></li>
   </ul>
 </header>
+<menu type="context" id="menuEvent">
+	<menuitem label="Editer" onclick="goTo('evenement-editer/');">Éditer</menuitem>
+</menu>

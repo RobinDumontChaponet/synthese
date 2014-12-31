@@ -4,18 +4,17 @@
 	<section>
 		<p>ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo</p>
 	</section>
-	<section id="students">
+	<section id="etudiants">
 		<h2>Étudiants de la promotion</h2>
+		<?php if($anciens != NULL) { ?>
 		<ul>
+			<?php foreach($anciens as $ancien)
+				echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().' <span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></li>';
+			?>
+		</ul>
 			<?php
-			if($anciens != NULL) {
-				foreach($anciens as $ancien) {
-					echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().' <span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></li>';
-				}
 			} else {
 				echo '<p>Il n\'y a pas d\'étudiants dans cette promotion</p>';
-			}?>
-		</ul>
+			} ?>
 	</section>
-
 </div>

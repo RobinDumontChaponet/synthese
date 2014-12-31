@@ -185,6 +185,10 @@ header a#aOut:before {
 	content: "\e61c";
 }
 
+menu {
+	display: none;
+}
+
 #wrapper {
 	float: right;
 	width: 86%;
@@ -330,7 +334,7 @@ dt label {
 dt label:after {
 	content: none;
 }
-dt, dd, h3, h4, #content p {
+dt, dd, h3, h4, #content p, li {
 	position: relative;
 }
 h3, dd {
@@ -371,7 +375,7 @@ dd {
 dd:after {
 	float: right;
 }
-dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
+dt:before, dd:before, h3:before, h4:before, li p:before, article p:before, li:before {
 	font-family: 'icomoon';
 	font-size: 16px;
 	speak: none;
@@ -381,7 +385,7 @@ dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
 	text-transform: none;
 	line-height: 50px;
 	position: absolute;
-	top: 12px;
+	top: 16px;
 	left: -26px;
 	text-align: center;
 	color: #dae0e9;
@@ -390,10 +394,6 @@ dt:before, dd:before, h3:before, h4:before, li p:before, article p:before {
 h3:before, li p:before, article p:before {
 	top: 6px;
 	left: -36px;
-}
-li dt:before {
-	top: 16px;
-	left: -26px;
 }
 dd {
 	font-weight: 400;

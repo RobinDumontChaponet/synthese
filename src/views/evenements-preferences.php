@@ -3,20 +3,20 @@
 <?php if ($_SESSION[syntheseUser]->getId() != NULL) { ?>
 	<form action="evenements-preferences" method="post">
 		<h1>Préférences des évènements</h1>
-		<fieldset>
+		<article>
 			<ul>
-				<?php foreach($typesEvent as $typeEvent) { ?>
-					<li>
-						<label for="preference<?php echo $typeEvent->getId()?>"><?php echo $typeEvent->getLibelle();?></label>
-						<input id="preference<?php echo $typeEvent->getId()?>" name="check[]" value="<?php echo $typeEvent->getId()?>" type="checkbox"<?php if(in_array($typeEvent->getId(), $preferencesTypesEvent)) echo " checked"; ?>>
-					</li>
-				<?php } ?>
+				<dl>
+			<?php foreach($typesEvent as $typeEvent) { ?>
+					<dt><label for="preference<?php echo $typeEvent->getId()?>"><?php echo $typeEvent->getLibelle();?></label></dt>
+					<dd class="type"><input id="preference<?php echo $typeEvent->getId()?>" name="check[]" value="<?php echo $typeEvent->getId()?>" type="checkbox"<?php if(in_array($typeEvent->getId(), $preferencesTypesEvent)) echo " checked"; ?> /></dd>
+			<?php } ?>
+				</dl>
 			</ul>
-		</fieldset>
+		</article>
 		<input type="submit" name="submit" value="Mettre à jour ses préférences"/>
 	</form>
 <?php
 } else {?>
-		<p class="warning">Vous disposez pas de préférences d'évènements</p>
+	<p class="warning">Vous disposez pas de préférences d'évènements</p>
 <?php }?>
 </div>

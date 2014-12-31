@@ -94,6 +94,7 @@ AddType application/octet-stream .zip
 	RewriteRule ^typeEvent-editer/([^/]+) %{ENV:BASE}/index.php?requ=typeEvent-editer&id=$1 [NC]
 	RewriteRule ^typesEvent/([^/]+) %{ENV:BASE}/index.php?requ=typesEvent&id=$1 [NC]
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
+	RewriteRule ^entreprise-editer/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-editer&id=$1 [NC]
 	RewriteRule ^diplome-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplome-editer&id=$1 [NC]
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
 	RewriteRule ^etablissement-editer/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-editer&id=$1 [NC]
