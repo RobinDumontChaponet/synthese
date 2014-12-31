@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) { // user is Admin
+if($_SESSION['user_auth']['write']) { // user is able to write here
 
 	include(MODELS_INC.'DepartementIUTDAO.class.php');
 	include('passwordHash.inc.php');

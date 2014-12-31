@@ -5,7 +5,7 @@
 	if ($_SESSION['user_auth']['write']) {
 		echo '
 		<section>
-			<a href="evenement-ajouter">Ajouter un évènement</a>
+			<a href="evenement-ajouter">Ajouter un évènement</a> - <a href="typesEvent" target="_blank">Accéder aux types d\'évènements</a>
 		</section>';
 	}
 	if ($libelleTypeProfil == "Ancien" || $libelleTypeProfil == "Professeur") {?>
