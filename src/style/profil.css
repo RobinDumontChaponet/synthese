@@ -23,10 +23,6 @@ figure img {
 	margin: 5px;
 }
 
-span#nomPatronymique {
-	text-transform: uppercase;
-}
-
 #info dt:nth-child(4n), #info dt:nth-child(4n+1), #info dd:nth-child(4n+1), #info dd:nth-child(4n+2) {
    background-color: #f0f4f9;
 }

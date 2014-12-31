@@ -30,7 +30,7 @@ function affichageResultat() {
 				table += '<tr>';
 
 				table += '<td><input type="checkbox" value="'+it['idProfil']+'" name="selectionne" /></td>';
-				table += '<td>'+it['nom']+'</td>';
+				table += '<td class="nomPatronymique">'+it['nom']+'</td>';
 				table += '<td>'+it['prenom']+'</td>';
 				table += '<td>'+it['promotion']+'</td>';
 				table += '<td>'+it['diplomeDUT']+'</td>';

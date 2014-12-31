@@ -1,5 +1,7 @@
-﻿Diplomes : Renseigner si obtenue ou non !
-Page promotion : Mettre les noms en uppercase
-Recherche : Mettre les noms en UPPERCASE
-Recherche : Ya des mots qui se foutent l'un au dessus de l'autre :Séléctionn
-									er
+﻿- Diplomes : Renseigner si obtenue ou non !
+- Recherche : Ya des mots qui se foutent l'un au dessus de l'autre -> me laisser finir le style, dans l'ordre.
+- Faire une pagination dans la recherche
+- Faire la page d'accueille, par exemple :
+	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
+	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar
+	- pour admin : un mélange des deux premiers, en fait... faut réchéflir

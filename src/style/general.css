@@ -453,6 +453,10 @@ dd:after {
 .type:before {
 	content: "\e935";
 }
+.nomPatronymique {
+	text-transform: uppercase;
+}
+
 
 input, .button, button, select, textarea {
 	border: 1px solid rgba(175, 175, 175, 1);
@@ -622,11 +626,20 @@ th, td {
 	vertical-align: middle;
 }
 th {
-	background: #e8eaeb;
+	background: #f3f5fb;
+	background: -moz-linear-gradient(top, #f3f5fb 0%, #cdcfcf 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f5fb), color-stop(100%,#cdcfcf));
+	background: -webkit-linear-gradient(top, #f3f5fb 0%,#cdcfcf 100%);
+	background: -o-linear-gradient(top, #f3f5fb 0%,#cdcfcf 100%);
+	background: -ms-linear-gradient(top, #f3f5fb 0%,#cdcfcf 100%);
+	background: linear-gradient(to bottom, #f3f5fb 0%,#cdcfcf 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5fb', endColorstr='#cdcfcf',GradientType=0 );
+
 	padding: 0 10px;
 	height: 28px;
-	text-shadow: 1px 1px 1px #fff;
+	text-shadow: 0 1px 1px #f3efef;
 	position: relative;
+	color: #5c5656;
 }
 
 .sad {
