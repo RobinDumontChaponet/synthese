@@ -5,3 +5,5 @@
 	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
 	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar
 	- pour admin : un mélange des deux premiers, en fait... faut réchéflir
+- Peut être réduire la taille (encore) du commentaire dans inscrits dans Evenements
+- Styler Détails de l'évent, pour la liste des participants
