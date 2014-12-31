@@ -2,7 +2,7 @@
 <div id="content">
 <?php if ($etablissement != NULL) {
 	if ($_SESSION['user_auth']['write'])
-		echo '<a class="aEdit" href="etablissement-editer/'.$_GET['id'].'">Editer...</a>';
+		echo '<a class="edit" href="etablissement-editer/'.$_GET['id'].'">Editer...</a>';
 ?>
 	<h1>Détails de l'établissement</h1>
 	<article>

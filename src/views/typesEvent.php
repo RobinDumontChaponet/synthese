@@ -3,7 +3,7 @@
 <?php if ($typesEvent != NULL) { ?>
 	<h1>Types d'évènements</h1>
 	<?php if ($_SESSION['user_auth']['write'])
-		echo '	<a class="aAdd" href="typeEvent-ajouter">Ajouter un type d\'évènement</a>';
+		echo '	<a class="add" href="typeEvent-ajouter">Ajouter un type d\'évènement</a>';
 	?>
 
 	<section>
@@ -11,7 +11,7 @@
 	if($typesEvent != NULL) {
 		echo '<ul>';
 		foreach($typesEvent as $typeEvent) {
-			echo '<li><a class="aEdit" href="typeEvent-editer/'.$typeEvent->getId().'">Modifier</a><a class="aEdit" href="index.php?requ=typeEvent-supprimer&id='.$typeEvent->getId().'">Supprimer</a>';
+			echo '<li><a class="edit" href="typeEvent-editer/'.$typeEvent->getId().'">Modifier</a><a class="delete" href="index.php?requ=typeEvent-supprimer&id='.$typeEvent->getId().'">Supprimer</a>';
 			echo '<p class="type">'.$typeEvent->getLibelle().'</p>';
 			echo '</li>';
 		}

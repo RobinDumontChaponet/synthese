@@ -77,7 +77,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent?>
 					<li>
 						<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-							echo '<a class="aEdit" href="#">Modifier le diplôme de l\'élève</a>'; ?>
+							echo '<a class="edit" href="#">Modifier le diplôme de l\'élève</a>'; ?>
 						<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
 						<dl>
 							<dt class="departement">Département</dt>
@@ -90,7 +90,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
-							<a class="aEdit" href="modif">Modifier</a><a class="aEdit" href="diplome-supprimer">Supprimer</a>
+							<a class="edit" href="modif">Modifier</a><a class="delete" href="diplome-supprimer">Supprimer</a>
 							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 							<dl>
 								<dt class="etablissement">Établissement</dt>
@@ -114,7 +114,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 						<li>
-							<a class="aEdit" href="modif">Modifier</a><a class="aEdit" href="entreprise-supprimer/<?php echo $entreprise->getEntreprise()->getId(); ?>">Supprimer</a>
+							<a class="edit" href="modif">Modifier</a><a class="edit" href="entreprise-supprimer/<?php echo $entreprise->getEntreprise()->getId(); ?>">Supprimer</a>
 							<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 							<dl>
 								<dt class="poste">Poste</dt>

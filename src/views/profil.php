@@ -15,7 +15,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 	</figure>
 	<h1><?php echo $ancien->getPrenom()?> <span class="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span>
 	<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-		echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
+		echo '<a class="edit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
 	?></h1>
 	<section id="info">
 		<h2>Informations générales</h2>
@@ -46,7 +46,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 	</section>
 	<section id="diplomes">
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
+			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Diplômes</h2>
 		<ul>
@@ -89,7 +89,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 	</section>
 	<section id="entreprises">
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-			echo '<a class="aEdit" href="profil-editer/'.$ancien->getId().'#entreprises" title="Éditer le profil...">Éditer...</a>';
+			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#entreprises" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Entreprises</h2>
 		<ul>

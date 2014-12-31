@@ -1,7 +1,7 @@
 <!--meta title="<?php echo (($diplome != NULL)?'Diplôme : '.$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
 <div id="content">
 	<?php if ($_SESSION['user_auth']['write'])
-		echo '<a class="aEdit" href="diplome-editer/'.$_GET['id'].'">Editer...</a>';
+		echo '<a class="edit" href="diplome-editer/'.$_GET['id'].'">Editer...</a>';
 	?>
 	<h1>Détails du diplôme</h1>
 <?php if ($diplome != NULL) { ?>

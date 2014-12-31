@@ -1,11 +1,11 @@
-﻿- Diplomes : Renseigner si obtenue ou non !
+﻿- Diplômes : Renseigner si obtenue ou non !
 - Faire une pagination dans la recherche
 - Faire la page d'accueille, par exemple :
 	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
 	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar
 	- pour admin : un mélange des deux premiers, en fait... faut réchéflir
 - Styler Détails de l'évent, pour la liste des participants
-- Pouvoir selectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement)
+- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement)
 	- Export des adresses mail
 	- Envoi d'un mail
 - Peut être styler un peu plus les liens <a> pour voir/ajouter/etc.

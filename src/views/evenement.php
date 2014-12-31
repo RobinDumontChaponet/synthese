@@ -2,7 +2,7 @@
 <div id="content">
 <?php if ($event != NULL) { ?>
 		<?php if ($_SESSION['user_auth']['write'])
-			echo '<a class="aEdit" href="evenement-editer/'.$_GET['id'].'">Editer l\'événement</a><a class="aEdit" href="index.php?requ=evenement-supprimer&id='.$_GET['id'].'">Supprimer l\'événement</a>';
+			echo '<a class="edit" href="evenement-editer/'.$_GET['id'].'">Editer l\'événement</a><a class="delete" href="index.php?requ=evenement-supprimer&id='.$_GET['id'].'">Supprimer l\'événement</a>';
 		?>
 		<h1>Détails de l'évènement</h1>
 		<article>
