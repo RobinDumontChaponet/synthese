@@ -5,7 +5,7 @@
 		<article>
 			<dl>
 				<dt><label for="libelle">Libelle</label></dt>
-				<dd><input id="libelle" name="libelle" type="text" placeholder="Nom du type d'évènement" /></dd>
+				<dd><input id="libelle" name="libelle" type="text" placeholder="Nom du type d'évènement" autofocus/></dd>
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le type d'évènement" />

@@ -4,7 +4,7 @@
 <?php if (isset($diplome) && $diplome != NULL && $_SESSION['user_auth']['write']) { ?>
 	<form action="diplome-editer/<?php echo $diplome->getId()?>" method="post">
 		<article>
-			<h3 class="diplome"><input id="diplomeLibelle" name="diplomeLibelle" type="text" placeholder="Pas de libelle..." value="<?php echo $diplome->getLibelle(); ?>"/></h3>
+			<h3 class="diplome"><input id="diplomeLibelle" name="diplomeLibelle" type="text" placeholder="Pas de libelle..." value="<?php echo $diplome->getLibelle(); ?>" autofocus/></h3>
 			<dl>
 				<dt><label for="domainLibelle">Domaine</label></dt>
 				<dd class="domaine"><select id="domainLibelle" name="domainLibelle"><?php foreach ($domaines as $domaine) {echo '<option'.(($domaine->getId() == $diplome->getDomaine()->getId())?' selected':'').' value="'.$domaine->getId().'">'.$domaine->getLibelle().'</option>';}?></select></dd>

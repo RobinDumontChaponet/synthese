@@ -6,7 +6,7 @@
 		<article>
 			<dl>
 				<dt><label for="date">Date</label></dt>
-				<dd class="evenement"><input id="date" name="date" type="date" value="<?php echo $event->getDate()?>"/></dd>
+				<dd class="evenement"><input id="date" name="date" type="date" value="<?php echo $event->getDate()?>" autofocus/></dd>
 				<dt><label for="typeEvent">Type d'évènement</label></dt>
 				<dd class="type">
 					<select name="typeEvent">
