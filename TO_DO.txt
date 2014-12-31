@@ -1,5 +1,4 @@
 ﻿- Diplomes : Renseigner si obtenue ou non !
-- Recherche : Ya des mots qui se foutent l'un au dessus de l'autre -> me laisser finir le style, dans l'ordre.
 - Faire une pagination dans la recherche
 - Faire la page d'accueille, par exemple :
 	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
