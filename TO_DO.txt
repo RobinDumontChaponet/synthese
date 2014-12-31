@@ -10,3 +10,4 @@
 	- Envoi d'un mail
 - Peut être styler un peu plus les liens <a> pour voir/ajouter/etc.
 - Limiter le nombre d'events <<passés>> ~ 10 devrait suffire avec un <+> pour les voir tous ? (donc refaire une view)
+- Edit de profil : Mettre le nom en UPPERCASE

@@ -9,6 +9,9 @@
 		</section>';
 	}
 	if ($libelleTypeProfil == "Ancien" || $libelleTypeProfil == "Professeur") {?>
+	<section>
+		<a href="evenements-preferences">Vos préférences d'évènements</a>
+	</section>
 		<section>
 			<h2>Inscrits</h2>
 				<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
