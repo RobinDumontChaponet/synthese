@@ -614,9 +614,13 @@ table {
 	-moz-box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 	box-shadow: 0 0 4px rgba(228, 228, 228, 1);
 	min-width: 440px;
-	word-break: break-word;
+
 	border-collapse: collapse;
 	width: 100%;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
 th, td {
 	padding: 14px 2px;
