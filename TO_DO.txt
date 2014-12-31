@@ -7,3 +7,6 @@
 	- pour admin : un mélange des deux premiers, en fait... faut réchéflir
 - Peut être réduire la taille (encore) du commentaire dans inscrits dans Evenements
 - Styler Détails de l'évent, pour la liste des participants
+- Pouvoir selectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement)
+	- Export des adresses mail
+	- Envoi d'un mail
