@@ -5,20 +5,16 @@ $typesEvent = TypeEvenementDAO::getAll();
 $preferencesTypeEvent = PrefereDAO::getByIdAncien($_SESSION[syntheseUser]->getId());
 $ancien = new Ancien($_SESSION[syntheseUser]->getId(), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-if ($_POST != NULL) {
-	foreach ($_POST as $pref) {
-		foreach($preferencesTypeEvent as $preferenceTypeEvent) {
-			echo 'Préférence'.$preferenceTypeEvent->getTypeEvenement()->getId().'</br>';
-			echo 'Case cochée :'.$pref.'</br>';	
-			if ($pref != $preferenceTypeEvent->getTypeEvenement()->getId()) {
-				echo 'Celui ci est différent :'.$preferenceTypeEvent->getTypeEvenement()->getId().' et '.$pref.'</br>';
-				//	Ici un create prefereDAO avec l'ancien et le type event créer avec id = $pref et libelle NULL
-			} else {
-				echo 'Celui ci est pareil !'.$preferenceTypeEvent->getTypeEvenement()->getId().' et '.$pref.'</br>';
-			}
-		}	
+if ($_POST) {
+	var_dump($_POST);
+	foreach($preferencesTypeEvent as $preferenceTypeEvent) {
+		if (!in_array($preferenceTypeEvent->getTypeEvenement()->getId(),$_POST)) {
+			$event = new TypeEvenement($preferenceTypeEvent->getTypeEvenement()->getId(), NULL);
+			$prefere = new Prefere($ancien, $event);
+			echo 'Il va être supprimé'.$preferenceTypeEvent->getTypeEvenement()->getId().'</br>';
+			//PrefereDAO::delete($prefere);
+		}
 	}
 }
-
 include(VIEWS_INC.'evenements-preferences.php');
 ?>
