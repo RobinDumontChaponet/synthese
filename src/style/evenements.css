@@ -35,7 +35,7 @@ p {
 	white-space: nowrap;
 	box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
-.typeEvent:before{
+.typeEvent:before {
 	content: "";
 	float: left;
 	position: absolute;
@@ -48,7 +48,7 @@ p {
 	border-style: solid;
 	border-width: 14px 12px 14px 0;
 }
-.typeEvent:after{
+.typeEvent:after {
 	content: "";
 	position: absolute;
 	top: 50%;

@@ -211,7 +211,7 @@ header a#aOut:before {
 	text-align: center;
 }
 
-article {
+article, #content li {
 	background: #fcfcfc;
 	margin: 10px -10px;
 	padding: 10px;
@@ -219,6 +219,7 @@ article {
 	border-color: #e7e9ed #e6e7ec #e1e2e7;
 	border-radius: 4px;
 }
+
 article, section, fieldset {
 	text-align: left;
 }
@@ -234,7 +235,7 @@ section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
 
-a.edit, a.delete {
+a.edit, a.delete, a.all {
 	font-size: 16px;
 	letter-spacing: 0px;
 	float: right;

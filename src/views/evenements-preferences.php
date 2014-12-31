@@ -5,18 +5,15 @@
 		<h1>Préférences des évènements</h1>
 		<fieldset>
 			<ul>
-				<?php foreach($typesEvent as $typeEvent) {?>
+				<?php foreach($typesEvent as $typeEvent) { ?>
 					<li>
 						<label for="preference<?php echo $typeEvent->getId()?>"><?php echo $typeEvent->getLibelle();?></label>
-						<input id="preference<?php echo $typeEvent->getId()?>" name="typeEvent<?php echo $typeEvent->getId()?>" value="<?php echo $typeEvent->getId()?>" type="checkbox"<?php 
-						foreach($preferencesTypeEvent as $preferenceTypeEvent) {
-							if($preferenceTypeEvent->getTypeEvenement()->getId() == $typeEvent->getId()) echo " checked";
-						}?>>
+						<input id="preference<?php echo $typeEvent->getId()?>" name="check[]" value="<?php echo $typeEvent->getId()?>" type="checkbox"<?php if(in_array($typeEvent->getId(), $preferencesTypesEvent)) echo " checked"; ?>>
 					</li>
-				<?php }?>
+				<?php } ?>
 			</ul>
 		</fieldset>
-		<input type="submit" value="Mettre à jour ses préférences"/>
+		<input type="submit" name="submit" value="Mettre à jour ses préférences"/>
 	</form>
 <?php
 } else {?>
