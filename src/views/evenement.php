@@ -12,6 +12,7 @@
 			<p class="commentaire"><?php echo $event->getCommentaire();?></p>
 		</article>
 		<article>
+		<h2>Participants</h2>
 			<ul>
 				<?php foreach ($participants as $participant) {
 					echo '<li><a href="profil/'.$participant->getAncien()->getId().'">'.$participant->getAncien()->getPrenom().' <span class="nomPatronymique">'.$participant->getAncien()->getNomPatronymique().'</span></a></li>';
