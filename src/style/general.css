@@ -275,6 +275,7 @@ h1 a.aEdit {
 legend {
 	margin-bottom: -10px;
 	text-align: center;
+	width: 100%;
 }
 label {
 	font-size: 13px;
