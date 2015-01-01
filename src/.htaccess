@@ -170,18 +170,15 @@ FileETag None
 ############# Concatenation #####################
 # Puisque mod_include.c n'est pas installé... on bidouille
 <FilesMatch "\.combined\.js$">
-	Options +Includes
-	AddOutputFilterByType INCLUDES application/javascript \
-								   application/x-javascript \
-								   text/javascript
-								   SetOutputFilter INCLUDES
+	AddType 'text/js; charset=utf-8' js
+	php_value include_path "script"
+	SetHandler php5-script
 </FilesMatch>
 <FilesMatch "\.combined\.css$">
-	Options +Includes
-	AddOutputFilterByType INCLUDES text/css
-	SetOutputFilter INCLUDES
+	AddType 'text/css; charset=utf-8' css
+	php_value include_path "style"
+	SetHandler php5-script
 </FilesMatch>
-
 
 
 ############# Rewrites ###########################
@@ -234,11 +231,11 @@ FileETag None
 	RewriteRule ^profil-editer/([^/]+) %{ENV:BASE}/index.php?requ=profil-editer&id=$1 [NC]
 	RewriteRule ^profil/([^/]+) %{ENV:BASE}/index.php?requ=profil&id=$1 [NC]
 	RewriteRule ^promotion/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1 [NC]
-	RewriteRule ^evenements-preferences/([^/]+) %{ENV:BASE}/index.php?requ=evenements-preferences [NC]
+	RewriteRule ^evenements-preferences %{ENV:BASE}/index.php?requ=evenements-preferences [NC]
 	RewriteRule ^evenement-editer/([^/]+) %{ENV:BASE}/index.php?requ=evenement-editer&id=$1 [NC]
-	RewriteRule ^evenement-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=evenement-ajouter [NC]
+	RewriteRule ^evenement-ajouter %{ENV:BASE}/index.php?requ=evenement-ajouter [NC]
 	RewriteRule ^evenement/([^/]+) %{ENV:BASE}/index.php?requ=evenement&id=$1 [NC]
-	RewriteRule ^typeEvent-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=typeEvent-ajouter [NC]
+	RewriteRule ^typeEvent-ajouter %{ENV:BASE}/index.php?requ=typeEvent-ajouter [NC]
 	RewriteRule ^typeEvent-editer/([^/]+) %{ENV:BASE}/index.php?requ=typeEvent-editer&id=$1 [NC]
 	RewriteRule ^typesEvent/([^/]+) %{ENV:BASE}/index.php?requ=typesEvent&id=$1 [NC]
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
@@ -248,7 +245,6 @@ FileETag None
 	RewriteRule ^etablissement-editer/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-editer&id=$1 [NC]
 	RewriteRule ^etablissement/([^/]+) %{ENV:BASE}/index.php?requ=etablissement&id=$1 [NC]
 	RewriteRule ^diplomeDUT-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-editer&id=$1 [NC]
-	RewriteRule ^diplomeDUT-supprimer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-supprimer&id=$1 [NC]
 	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
 
 
