@@ -9,6 +9,7 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 #AddCharset utf-8 .php
 #AddCharset utf-8 .html
 
+AddType text/css .css
 AddType application/vnd.ms-fontobject .eot
 AddType application/x-font-ttf .ttf
 AddType application/x-font-opentype .otf
@@ -170,14 +171,14 @@ FileETag None
 ############# Concatenation #####################
 # Puisque mod_include.c n'est pas installé... on bidouille
 <FilesMatch "\.combined\.js$">
-	AddType 'text/js; charset=utf-8' js
-	php_value include_path "script"
 	SetHandler php5-script
+	php_value include_path "script"
+	AddType application/javascript .js
 </FilesMatch>
 <FilesMatch "\.combined\.css$">
-	AddType 'text/css; charset=utf-8' css
-	php_value include_path "style"
 	SetHandler php5-script
+	php_value include_path "style"
+	AddType text/css .css
 </FilesMatch>
 
 
@@ -246,7 +247,7 @@ FileETag None
 	RewriteRule ^etablissement/([^/]+) %{ENV:BASE}/index.php?requ=etablissement&id=$1 [NC]
 	RewriteRule ^diplomeDUT-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-editer&id=$1 [NC]
 	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
-
+	RewriteRule ^diplomeDUT-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-selectionner&id=$1 [NC]
 
 	#### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d

@@ -1,9 +1,15 @@
 <?php
 
-include('general.css');
+header('Content-Type: text/css; charset=utf-8');
 
-include('menu.css');
+include('base.part.css');
 
-include('forms.css');
+include('header.part.css');
+
+include('wrapper.part.css');
+
+include('forms.part.css');
+
+include('retina.part.css');
 
 ?>
