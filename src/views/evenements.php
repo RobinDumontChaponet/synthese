@@ -87,8 +87,7 @@
 					<a href="evenement/'.$eventPost->getId().'">Voir</a></li>';
 				}
 				echo '</ul>';
-			} else
-				echo '<span class="sad">Aucun évènement.</span>';
+			}
 			?>
 			<?php if($eventsWithoutDate != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
 					echo '<ul>';
@@ -101,8 +100,10 @@
 							<a href="evenement/'.$eventWithoutDate->getId().'">Voir</a></li>';
 					}
 					echo '</ul>';
-				} else
+				}
+				if($eventsWithoutDate == NULL && $eventsPost == NULL ) {
 					echo '<span class="sad">Aucun évènement.</span>';
+				}
 				?>
 		</section>
 		<section id="passes">

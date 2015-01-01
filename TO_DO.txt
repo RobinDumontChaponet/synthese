@@ -23,5 +23,3 @@
 - Ecrire le texte de présentation sur la page de connection
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
-
-- Corriger "pas d'event" dans evenements (il apparait alors qu'il y a des events)
