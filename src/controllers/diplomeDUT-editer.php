@@ -7,10 +7,9 @@ if ($_SESSION['user_auth']['write']) {
 		if (isset($_POST) && $_POST != NULL) {
 			if ($_POST['libelle'] != NULL && $_POST['departementIUT'] != NULL) {
 				$departement = DepartementIUTDAO::getById($_POST['departementIUT']);
-				$newDiplomeDUT = new DiplomeDUT(0, $_POST['libelle'], $departement);
-				var_dump($newDiplomeDUT->getLibelle());
+				$newDiplomeDUT = new DiplomeDUT($_GET['id'], $_POST['libelle'], $departement);
 				DiplomeDUTDAO::update($newDiplomeDUT);
-				//header('Location: '.SELF.'diplomesDUT');
+				header('Location: '.SELF.'diplomesDUT');
 			} else if ($_POST != NULL && $_POST['libelle'] == NULL || $_POST['departementIUT'] == NULL){
 				$error = true;
 			}

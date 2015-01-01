@@ -66,7 +66,7 @@ class DiplomeDUTDAO
 		if (get_class($obj) == "DiplomeDUT") {
 			try{
 				$bdd=connect();
-				$req = $bdd->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE idDiplomeDUT=?");
+				$req = $bdd->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE `idDiplomeDUT`=?");
 				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getId()));
 			}catch(PDOException $e)
 			{
