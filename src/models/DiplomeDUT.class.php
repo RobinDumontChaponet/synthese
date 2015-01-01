@@ -13,20 +13,13 @@ class DiplomeDUT extends Diplome
 	}
 
 	//----------------------------------GETTERS------------------------------
-	public function getDepartementIUT()
-	{
+	public function getDepartementIUT() {
 		return $this->departementIUT;
 	}
 
 	//---------------------------------SETTERS------------------------------
-	public function setDepartementIUT($departementIUT)
-	{
-		if ($departementIUT != null)
-		{
-			$this->departementDUT = $departementIUT;
-		} else {
-			throw new Exception("Departement IUT dans Diplome DUT est incorrect !");
-		}
+	public function setDepartementIUT($departementIUT) {
+		$this->departementIUT = $departementIUT;
 	}
 
 	//---------------------------------toString---------------------------------

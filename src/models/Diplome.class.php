@@ -24,15 +24,11 @@ abstract class Diplome
 
 	//--------------------------------------------Setters
 
-	public function setId($id)
-	{
-		if
-		(($id != null) and ($id >= 0))
-		{
+	public function setId($id) {
+		if ($id >= 0)
 			$this->id = $id;
-		} else {
+		else
 			throw new Exception("Id diplome incorrect");
-		}
 	}
 
 	public function setLibelle($libelle)

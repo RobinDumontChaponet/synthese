@@ -74,19 +74,18 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
-				<?php if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent?>
-					<li>
-						<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-							echo '<a class="edit" href="#">Modifier le diplôme de l\'élève</a>'; ?>
-						<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
-						<dl>
-							<dt class="departement">Département</dt>
-							<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
-							<dt class="promotion">Promotion</dt>
-							<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
-						</dl>
-					</li>
-				<?php }
+				<li>
+					<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
+						echo '<a class="edit" href="diplomesDUT">Modifier le diplôme de l\'élève</a>'; ?>
+					<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'NON RENSEIGNÉE'; };?></h3>
+					<dl>
+						<dt class="departement">Département</dt>
+						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'NON RENSEIGNÉE'; };?></dd>
+						<dt class="promotion">Promotion</dt>
+						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'NON RENSEIGNÉE'; };?></dd>
+					</dl>
+				</li>
+				<?php
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>

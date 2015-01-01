@@ -24,6 +24,8 @@
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
 
+- Styler diplomesDUT/diplomeDUT-ajouter
+
 
 Profil : 
 

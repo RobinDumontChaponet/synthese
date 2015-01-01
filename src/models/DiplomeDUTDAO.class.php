@@ -45,23 +45,19 @@ class DiplomeDUTDAO
 
 	}
 
-	public static function create(&$obj)
-	{
-		if
-		(get_class($obj)=="DiplomeDUT")
-		{
+	public static function create(&$obj) {
+		if (get_class($obj) == "DiplomeDUT") {
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`) VALUES (?,?)");
-				$req->execute(array($obj->getDepartement()->getId(), $obj->getLibelle()));
+				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle()));
                 $obj->setId($bdd->LastInsertId());
 				return $obj->getId();
 			}catch(PDOException $e)
 			{
 				die('error create dip dut '.$e->getMessage().'<br>');
 			}
-		}else
-		{
+		} else {
 			die('paramètre de type diplome dut requis');
 		}
 	}
@@ -74,7 +70,7 @@ class DiplomeDUTDAO
 			try{
 				$bdd=connect();
 				$req=$bdd->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE idDiplomeDUT=?");
-				$req->execute(array($obj->getDepartement()->getId(), $obj->getLibelle(), $obj->getId()));
+				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update dip dut '.$e->getMessage().'<br>');

@@ -1,6 +1,5 @@
 <!--meta title="Types d'évènement" css="style/evenements.css"-->
 <div id="content">
-<?php if ($typesEvent != NULL) { ?>
 	<h1>Types d'évènements</h1>
 	<?php if ($_SESSION['user_auth']['write'])
 		echo '	<a class="add" href="typeEvent-ajouter">Ajouter un type d\'évènement</a>';
@@ -16,11 +15,8 @@
 			echo '</li>';
 		}
 		echo '</ul>';
-	}
-?>
+	} else { ?>
+		<p class="sad">Il n'y a aucun types d'évènement</p>
+	<?php }?>
 	</section>
-<?php
-} else {?>
-	<p class="warning">Ce type d'évènement n'existe pas</p>
-<?php }?>
 </div>
