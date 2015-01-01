@@ -31,15 +31,8 @@ abstract class Diplome
 			throw new Exception("Id diplome incorrect");
 	}
 
-	public function setLibelle($libelle)
-	{
-		$libelleTraite = trim($libelle);
-		if (($libelleTraite != null) and ($libelleTraite != ""))
-		{
-			$this->libelle = $libelleTraite;
-		} else {
-			throw new Exception("Libellé diplome incorrect");
-		}
+	public function setLibelle($libelle) {
+		$this->libelle = $libelleTraite;
 	}
 	//-------------------------------------------toString
 	public function __toString()
