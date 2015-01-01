@@ -168,25 +168,20 @@ FileETag None
 </IfModule>
 
 ############# Concatenation #####################
-# If you have the following lines in a file called, for example, `main.combined.js`:
-#  <!--#include file="js/jquery.js" -->
-#  <!--#include file="js/jquery.timer.js" -->
-#
-# Apache will replace those lines with the content of the specified files.
-<IfModule mod_include.c>
-	<FilesMatch "\.combined\.js$">
-		Options +Includes
-		AddOutputFilterByType INCLUDES application/javascript \
-									   application/x-javascript \
-									   text/javascript
-									   SetOutputFilter INCLUDES
-	</FilesMatch>
-	<FilesMatch "\.combined\.css$">
-		Options +Includes
-		AddOutputFilterByType INCLUDES text/css
-		SetOutputFilter INCLUDES
-	</FilesMatch>
-</IfModule>
+# Puisque mod_include.c n'est pas installé... on bidouille
+<FilesMatch "\.combined\.js$">
+	Options +Includes
+	AddOutputFilterByType INCLUDES application/javascript \
+								   application/x-javascript \
+								   text/javascript
+								   SetOutputFilter INCLUDES
+</FilesMatch>
+<FilesMatch "\.combined\.css$">
+	Options +Includes
+	AddOutputFilterByType INCLUDES text/css
+	SetOutputFilter INCLUDES
+</FilesMatch>
+
 
 
 ############# Rewrites ###########################
@@ -252,6 +247,9 @@ FileETag None
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
 	RewriteRule ^etablissement-editer/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-editer&id=$1 [NC]
 	RewriteRule ^etablissement/([^/]+) %{ENV:BASE}/index.php?requ=etablissement&id=$1 [NC]
+	RewriteRule ^diplomeDUT-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-editer&id=$1 [NC]
+	RewriteRule ^diplomeDUT-supprimer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-supprimer&id=$1 [NC]
+	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
 
 
 	#### Generals
