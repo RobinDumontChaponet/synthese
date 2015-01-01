@@ -143,6 +143,35 @@ header .active:after {
 	border-color: transparent #f6f9fc;
 }
 
+:target {
+	-webkit-animation: spot ease-in 1;
+	-moz-animation: spot ease-in 1;
+	animation: spot ease-in 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	animation-duration: 1s;
+}
+
+@-webkit-keyframes spot {
+	from {
+		background: #fbffba;
+	}
+	to {
+		background: transparent;
+	}
+}
+@keyframes spot {
+	from {
+		background: #fbffba;
+	}
+	to {
+		background: transparent;
+	}
+}
+
 
 header a, header a:hover, header a:visited, header a:active {
 	padding: 0 0 0 15%;

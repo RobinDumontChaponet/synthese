@@ -9,7 +9,7 @@
 	<section>
 		<a href="evenements-preferences">Vos préférences d'évènements</a>
 	</section>
-		<section>
+		<section id="inscrits">
 			<h2>Inscrits</h2>
 				<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
 					echo '<ul>';
@@ -25,7 +25,7 @@
 					echo '<span class="sad">Aucun évènement.</span>';
 				?>
 		</section>
-		<section>
+		<section id="autres">
 			<h2>Autres</h2>
 			<ul>
 				<?php if($eventsNotInscriPost != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
@@ -58,7 +58,7 @@
 				?>
 			</ul>
 		</section>
-		<section>
+		<section id="passes">
 			<h2>Passés</h2>
 			<ul>
 			<?php if ($eventsAnt != NULL) { // Events qui sont passés
@@ -77,9 +77,8 @@
 			</ul>
 		</section>
 	<?php } else if ($libelleTypeProfil == "Admin") { ?>
-		<section>
+		<section id="a_venir">
 			<h2>À venir</h2>
-			<ol>
 			<?php if($eventsPost != NULL) {
 				echo '<ul>';
 				foreach($eventsPost as $eventPost) {
@@ -107,11 +106,10 @@
 				} else
 					echo '<span class="sad">Aucun évènement.</span>';
 				?>
-			</ol>
 		</section>
-		<section>
+		<section id="passes">
 			<h2>Passés</h2>
-			<ol>
+			<ul>
 			<?php if ($eventsAnt != NULL) {
 				foreach($eventsAnt as $eventAnt) {
 					echo '<li>
@@ -123,7 +121,7 @@
 			} else
 				echo '<span class="sad">Aucun évènement.</span>';
 			?>
-			</ol>
+			</ul>
 		</section>
 	<?php } ?>
 </div>
