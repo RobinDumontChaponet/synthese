@@ -1,4 +1,4 @@
-<!--meta title="Types d'évènement" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Types d'évènement" css="style/evenements.css"-->
 <div id="content">
 <?php if ($typesEvent != NULL) { ?>
 	<h1>Types d'évènements</h1>

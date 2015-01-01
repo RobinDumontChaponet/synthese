@@ -1,4 +1,4 @@
-<!--meta title="<?php if ($ancien != NULL){echo 'Modification profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/animations.css" css="style/profil.css"-->
+<!--meta title="<?php if ($ancien != NULL){echo 'Modification profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css"-->
 <div id="content">
 <?php
 if ($valid) {
@@ -38,7 +38,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<h1><?php if ($_SESSION['user_auth']['write'])
 			echo '<input type="text" placeholder="Prénom" name="firstName" value="'.$ancien->getPrenom().'" /><input type="text" placeholder="Nom" name="name" value="'.$ancien->getNomPatronymique().'" />';
 		else
-			echo $ancien->getPrenom().' <span id="nomPatronymique"> '.$ancien->getNomPatronymique().'</span>'; ?>
+			echo $ancien->getPrenom().' <span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span>'; ?>
 		</h1>
 		<section id="info">
 			<h2>Informations générales</h2>

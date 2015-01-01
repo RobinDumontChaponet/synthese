@@ -1,4 +1,4 @@
-<!--meta title="Ajout d'un type d'évènement" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Ajout d'un type d'évènement" css="style/evenements.css"-->
 <div id="content">
 	<h1>Ajouter un type d'évènement</h1>
 	<form action="typeEvent-ajouter" method="post">

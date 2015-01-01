@@ -1,4 +1,4 @@
-<!--meta title="Modification événement" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Modification événement" css="style/evenements.css"-->
 <div id="content">
 <?php if (isset($event) && $event != NULL && $_SESSION['user_auth']['write']) { ?>
 	<h1>Modification de l'évènement</h1>

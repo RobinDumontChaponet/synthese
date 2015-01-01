@@ -1,4 +1,4 @@
-<!--meta title="Événement" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Événement" css="style/evenements.css"-->
 <div id="content">
 <?php if ($event != NULL) { ?>
 	<?php if ($_SESSION['user_auth']['write'])

@@ -1,4 +1,4 @@
-<!--meta title="Ajouter un évènement" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Ajouter un évènement" css="style/evenements.css"-->
 <div id="content">
 <?php if ($_SESSION['user_auth']['write']) { ?>
 	<h1>Ajouter un évènement</h1>

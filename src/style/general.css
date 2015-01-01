@@ -155,24 +155,6 @@ header .active:after {
 	animation-duration: 1s;
 }
 
-@-webkit-keyframes spot {
-	from {
-		background: #fbffba;
-	}
-	to {
-		background: transparent;
-	}
-}
-@keyframes spot {
-	from {
-		background: #fbffba;
-	}
-	to {
-		background: transparent;
-	}
-}
-
-
 header a, header a:hover, header a:visited, header a:active {
 	padding: 0 0 0 15%;
 	color: #f3f3f3;
@@ -268,7 +250,7 @@ section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
 
-a.edit, a.delete, a.all {
+a.edit, a.delete, a.all, a.desinscrire, a.params {
 	font-size: 16px;
 	letter-spacing: 0px;
 	float: right;
@@ -278,7 +260,7 @@ a.edit, a.add, a.delete {
 	z-index: 100;
 	position: relative;
 }
-a.edit:before, a.delete:before, a.add:before {
+a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before {
 	font-family: 'icomoon';
 	font-size: 12px;
 	speak: none;
@@ -301,6 +283,12 @@ a.add:before {
 }
 a.delete:before {
 	content: "\e615";
+}
+a.desinscrire:before {
+	content: "\e61c";
+}
+a.params:before {
+	content: "\e614";
 }
 h1 a.edit {
 	float: none;

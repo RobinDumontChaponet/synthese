@@ -11,5 +11,5 @@
 
 - Limiter le nombre d'events <<passés>> ~ 10 devrait suffire avec une pagination pour les voir tous ?
 
-
 - Faire entreprise-editer
+- Faire diplome-supprimer

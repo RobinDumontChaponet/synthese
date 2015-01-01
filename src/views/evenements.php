@@ -1,14 +1,12 @@
-<!--meta title="Événements" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Événements" css="style/evenements.css"-->
 <div id="content">
+	<a class="params" href="evenements-preferences">Vos préférences d'évènements</a>
 	<h1>Évènements</h1>
 	<?php
 	if ($_SESSION['user_auth']['write']) {
 		echo '<a class="add" href="evenement-ajouter">Ajouter un évènement</a> - <a href="typesEvent" target="_blank">Accéder aux types d\'évènements</a>';
 	}
 	if ($libelleTypeProfil == "Ancien" || $libelleTypeProfil == "Professeur") {?>
-	<section>
-		<a href="evenements-preferences">Vos préférences d'évènements</a>
-	</section>
 		<section id="inscrits">
 			<h2>Inscrits</h2>
 				<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
@@ -18,7 +16,7 @@
 							<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
 							<h3 class="evenement">'.(($eventInscriPost->getEvenement()->getDate())?(strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate()))):'Pas de date annoncée').'</h3>
 							<p class="commentaire">'.substr($eventInscriPost->getEvenement()->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventInscriPost->getEvenement()->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
-							<a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">Voir</a><a href="index.php?requ=evenement-desinscrire&id='.$eventInscriPost->getEvenement()->getId().'">Se désinscrire</a></li>';
+							<a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">Voir</a><a class="desinscrire" href="index.php?requ=evenement-desinscrire&id='.$eventInscriPost->getEvenement()->getId().'">Se désinscrire</a></li>';
 					}
 					echo '</ul>';
 				} else
@@ -36,7 +34,7 @@
 								<span class="typeEvent type-'.$eventNotInscriPost->getTypeEvenement()->getId().'">'.$eventNotInscriPost->getTypeEvenement()->getLibelle().'</span>
 								<h3 class="evenement">'.strftime('%A %d %B %Y', strtotime($eventNotInscriPost->getDate())).'</h3>
 								<p class="commentaire">'.substr($eventNotInscriPost->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventNotInscriPost->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
-							<a href="evenement/'.$eventNotInscriPost->getId().'">Voir</a><a href="index.php?requ=evenement-inscrire&id='.$eventNotInscriPost->getId().'">S\'inscrire</a></li>';
+							<a href="evenement/'.$eventNotInscriPost->getId().'">Voir</a><a class="desinscrire" href="index.php?requ=evenement-inscrire&id='.$eventNotInscriPost->getId().'">S\'inscrire</a></li>';
 					}
 					echo '</ul>';
 				}
@@ -48,7 +46,7 @@
 								<span class="typeEvent type-'.$eventWithoutDateNotInscri->getTypeEvenement()->getId().'">'.$eventWithoutDateNotInscri->getTypeEvenement()->getLibelle().'</span>
 								<h3 class="evenement">Pas de date annoncée</h3>
 								<p class="commentaire">'.substr($eventWithoutDateNotInscri->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventWithoutDateNotInscri->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
-							<a href="evenement/'.$eventWithoutDateNotInscri->getId().'">Voir</a><a href="index.php?requ=evenement-inscrire&id='.$eventWithoutDateNotInscri->getId().'">S\'inscrire</a></li>';
+							<a href="evenement/'.$eventWithoutDateNotInscri->getId().'">Voir</a><a class="desinscrire" href="index.php?requ=evenement-inscrire&id='.$eventWithoutDateNotInscri->getId().'">S\'inscrire</a></li>';
 					}
 					echo '</ul>';
 				}

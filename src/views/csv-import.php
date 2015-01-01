@@ -1,4 +1,4 @@
-<!--meta title="Importer promo .csv" css="style/animations.css" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
+<!--meta title="Importer promo .csv" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
 <div id="content">
   <div id="file">
   	<fieldset id="add" class="button">

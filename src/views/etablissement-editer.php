@@ -1,4 +1,4 @@
-<!--meta title="<?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="<?php echo (($etablissement != NULL)?$etablissement->getNom():'Établissement non trouvé'); ?>" css="style/evenements.css"-->
 <div id="content">
 <?php if ($etablissement != NULL && $_SESSION['user_auth']['write']) { ?>
 	<h1>Modification de l'établissement</h1>

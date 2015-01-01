@@ -1,4 +1,4 @@
-<!--meta title="Promotion" css="style/animations.css" css="style/promotions.css"-->
+<!--meta title="Promotion" css="style/promotions.css"-->
 <div id="content">
 	<h1>Promotion année <?php echo $promo->getAnnee();?></h1>
 	<section>

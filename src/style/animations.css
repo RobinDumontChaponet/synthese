@@ -22,3 +22,28 @@
 		opacity:1;
 	}
 }
+
+@-webkit-keyframes spot {
+	from {
+		background: #fbffba;
+	}
+	to {
+		background: transparent;
+	}
+}
+@-moz-keyframes spot {
+	from {
+		background: #fbffba;
+	}
+	to {
+		background: transparent;
+	}
+}
+@keyframes spot {
+	from {
+		background: #fbffba;
+	}
+	to {
+		background: transparent;
+	}
+}

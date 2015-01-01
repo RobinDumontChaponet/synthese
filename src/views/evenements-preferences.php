@@ -1,4 +1,4 @@
-<!--meta title="Préférences des évènements" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="Préférences des évènements" css="style/evenements.css"-->
 <div id="content">
 <?php if ($_SESSION[syntheseUser]->getId() != NULL) { ?>
 	<form action="evenements-preferences" method="post">

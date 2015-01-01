@@ -1,4 +1,4 @@
-<!--meta title="<?php echo (($diplome != NULL)?'Diplôme : '.$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/animations.css" css="style/evenements.css"-->
+<!--meta title="<?php echo (($diplome != NULL)?'Diplôme : '.$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/evenements.css"-->
 <div id="content">
 	<?php if ($_SESSION['user_auth']['write'])
 		echo '<a class="edit" href="diplome-editer/'.$_GET['id'].'">Editer...</a>';
