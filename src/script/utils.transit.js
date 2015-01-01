@@ -98,3 +98,11 @@ function form2args (elements) {
 	}
 	return '?'+args.substring(1);
 }
+
+function getUrlId() {
+	var url = window.location.pathname;
+	return url.substring(url.lastIndexOf('/')+1);
+}
+function goto (url) {
+	window.location.href=url;
+}

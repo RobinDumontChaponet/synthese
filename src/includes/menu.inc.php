@@ -43,5 +43,24 @@ foreach($items as $key => $item)
   </ul>
 </header>
 <menu type="context" id="menuEvent">
-	<menuitem label="Editer" onclick="goTo('evenement-editer/');">Éditer</menuitem>
+	<menuitem label="Éditer l'évènement" onclick="goto('evenement-editer/'+getUrlId())">Éditer l'évènement</menuitem>
+	<menuitem label="Supprimer l'évènement" onclick="goto('evenement-supprimer/'+getUrlId())">Supprimer l'évènement</menuitem>
+</menu>
+<menu type="context" id="menuProfil">
+	<menuitem label="Éditer le profil" onclick="goto('profil-editer/'+getUrlId())">Éditer le profil</menuitem>
+</menu>
+<menu type="context" id="menuDiplomes">
+	<menuitem label="Éditer les diplômes" onclick="goto('profil-editer/'+getUrlId())">Éditer les diplômes</menuitem>
+</menu>
+<menu type="context" id="menuDiplome">
+	<menuitem label="Éditer le diplôme" onclick="goto('diplome-editer/'+getUrlId())">Éditer le diplôme</menuitem>
+</menu>
+<menu type="context" id="menuEntreprises">
+	<menuitem label="Éditer les entreprises" onclick="goto('profil-editer/'+getUrlId())">Éditer les entreprises</menuitem>
+</menu>
+<menu type="context" id="menuEntreprise">
+	<menuitem label="Éditer l'entreprise" onclick="goto('entreprise-editer/'+getUrlId())">Éditer l'entreprise</menuitem>
+</menu>
+<menu type="context" id="menuEtablissement">
+	<menuitem label="Éditer l'établissement" onclick="goto('entreprise-editer/'+getUrlId())">Éditer l'établissement</menuitem>
 </menu>

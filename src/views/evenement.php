@@ -6,7 +6,7 @@
 	?>
 	<h1>Détails de l'évènement</h1>
 	<section>
-		<article>
+		<article contextmenu="menuEvent">
 			<span class="typeEvent type-<?php echo $event->getTypeEvenement()->getId();?>"><?php echo $event->getTypeEvenement()->getLibelle();?></span>
 			<h3 class="evenement"><?php echo (($event->getDate())?(strftime('%A %d %B %Y', strtotime($event->getDate()))):'Pas de date annoncée');?></h3>
 			<h4>Commentaire</h4>
