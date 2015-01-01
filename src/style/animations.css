@@ -25,7 +25,7 @@
 
 @-webkit-keyframes spot {
 	from {
-		background: #fbffba;
+		background: rgba(255, 249, 77, 0.5);
 	}
 	to {
 		background: transparent;
@@ -33,7 +33,7 @@
 }
 @-moz-keyframes spot {
 	from {
-		background: #fbffba;
+		background: rgba(255, 249, 77, 0.5);
 	}
 	to {
 		background: transparent;
@@ -41,7 +41,7 @@
 }
 @keyframes spot {
 	from {
-		background: #fbffba;
+		background: rgba(255, 249, 77, 0.5);
 	}
 	to {
 		background: transparent;

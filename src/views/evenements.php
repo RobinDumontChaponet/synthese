@@ -4,7 +4,7 @@
 	<h1>Évènements</h1>
 	<?php
 	if ($_SESSION['user_auth']['write']) {
-		echo '<a class="add" href="evenement-ajouter">Ajouter un évènement</a> - <a href="typesEvent" target="_blank">Accéder aux types d\'évènements</a>';
+		echo '<a class="add" href="evenement-ajouter">Ajouter un évènement</a> - <a href="typesEvent">Accéder aux types d\'évènements</a>';
 	}
 	if ($libelleTypeProfil == "Ancien" || $libelleTypeProfil == "Professeur") {?>
 		<section id="inscrits">
