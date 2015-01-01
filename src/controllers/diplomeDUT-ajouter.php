@@ -9,7 +9,7 @@ if ($_SESSION['user_auth']['write']) {
 			$diplomeDUT = new DiplomeDUT(0, $_POST['libelle'], $departement);
 			DiplomeDUTDAO::create($diplomeDUT);
 			header('Location: '.SELF.'diplomesDUT');
-		} else if ($_POST != NULL && $_POST['libelle'] == NULL || $_POST['departementIUT'] == NULL){
+		} else if ($_POST != NULL && $_POST['libelle'] == NULL) {
 			$error = true;
 		}
 	}

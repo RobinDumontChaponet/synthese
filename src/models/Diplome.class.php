@@ -32,7 +32,7 @@ abstract class Diplome
 	}
 
 	public function setLibelle($libelle) {
-		$this->libelle = $libelleTraite;
+		$this->libelle = $libelle;
 	}
 	//-------------------------------------------toString
 	public function __toString()

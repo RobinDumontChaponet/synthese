@@ -1,6 +1,6 @@
 <!--meta title="Ajout d'un Diplôme DUT" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($error) echo 'Vous devez renseigner les deux champs';?>
+	<?php if ($error) echo 'Vous devez renseigner le libelle';?>
 	<h1>Ajouter un Diplôme DUT</h1>
 	<form action="diplomeDUT-ajouter" method="post">
 		<article>

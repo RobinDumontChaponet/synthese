@@ -6,8 +6,7 @@ class DiplomeDUT extends Diplome
 {
 	private $departementIUT;
 
-	public function __construct($id, $libelle, $departementIUT)
-	{
+	public function __construct($id, $libelle, $departementIUT) {
 		parent::__construct($id, $libelle);
 		$this->setDepartementIUT($departementIUT);
 	}
@@ -23,23 +22,18 @@ class DiplomeDUT extends Diplome
 	}
 
 	//---------------------------------toString---------------------------------
-	public function __toString()
-	{
+	public function __toString() {
 		return parent::__toString()." Departement IUT : ".$this->departementIUT;
 	}
 
 	//---------------------------------Equals--------------------------------------
-	public function equals($aComparer)
-	{
-		if(get_class($aComparer) == "DiplomeDUT")
-		{
+	public function equals($aComparer) {
+		if(get_class($aComparer) == "DiplomeDUT") {
 			return $this->id == $aComparer->getId();
-		}else
-		{
+		} else {
 			return false;
 		}
 	}
-
 }
 
 ?>

@@ -62,22 +62,18 @@ class DiplomeDUTDAO
 		}
 	}
 
-	public static function update($obj)
-	{
-		if
-		(get_class($obj)=="DiplomeDUT")
-		{
+	public static function update($obj) {
+		if (get_class($obj) == "DiplomeDUT") {
 			try{
 				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE idDiplomeDUT=?");
+				$req = $bdd->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE idDiplomeDUT=?");
 				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getId()));
 			}catch(PDOException $e)
 			{
 				die('error update dip dut '.$e->getMessage().'<br>');
 			}
-		}else
-		{
-			die('paramètre de type diplome dut requis');
+		} else {
+			die('paramètre de type diplome dut requis update');
 		}
 	}
 
