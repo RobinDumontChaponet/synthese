@@ -15,7 +15,7 @@
 	</section>
 	<section id="participants">
 		<h2>Participants</h2>
-		<ul>
+		<ul class="magnets">
 			<?php foreach ($participants as $participant) {
 				echo '<li><a href="profil/'.$participant->getAncien()->getId().'">'.$participant->getAncien()->getPrenom().' <span class="nomPatronymique">'.$participant->getAncien()->getNomPatronymique().'</span></a></li>';
 			} ?>

@@ -7,7 +7,7 @@
 	<section id="etudiants">
 		<h2>Étudiants de la promotion</h2>
 		<?php if($anciens != NULL) { ?>
-		<ul>
+		<ul class="magnets">
 			<?php foreach($anciens as $ancien)
 				echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().' <span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></li>';
 			?>

@@ -1,5 +1,7 @@
 ﻿- Diplômes : Renseigner si obtenue ou non !
+
 - Faire une pagination dans la recherche
+
 - Faire la page d'accueille, par exemple :
 	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
 	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar
@@ -9,7 +11,15 @@
 	- Export des adresses mail
 	- Envoi d'un mail
 
-- Limiter le nombre d'events <<passés>> ~ 10 devrait suffire avec une pagination pour les voir tous ?
+- Limiter le nombre d'events <<passés>> ~ 10 (constante "LINE_PAGE" !) devrait suffire avec une pagination pour les voir tous ?
 
 - Faire entreprise-editer
+- Faire entreprise-ajouter
+- Faire diplome-ajouter
 - Faire diplome-supprimer
+
+- Détailler les départements dans promotion
+
+- Ecrire le texte de présentation sur la page de connection
+
+- Ajouter des bulles d'aides (je vous explique quand vous voulez)

@@ -6,7 +6,7 @@
 		<article>
 			<dl>
 				<dt><label for="libelle">Nom</label></dt>
-				<dd><input id="libelle" name="libelle" type="text" placeholder="Nom du type d'évènement" value="<?php echo $typeEvent->getLibelle();?>" /></dd>
+				<dd class="commentaire"><input id="libelle" name="libelle" type="text" placeholder="Nom du type d'évènement" value="<?php echo $typeEvent->getLibelle();?>" /></dd>
 			</dl>
 		</article>
 		<input type="submit" value="Enregistrer les modifications" />

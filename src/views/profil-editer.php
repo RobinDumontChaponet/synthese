@@ -106,7 +106,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					<?php }
 				} ?>
 				<li>
-					<a href="diplome-ajouter/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme</a>
+					<a class="add" href="diplome-ajouter/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme</a>
 				</li>
 			</ul>
 		</section>
@@ -128,7 +128,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					<?php }
 				} ?>
 				<li>
-					<a href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
+					<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
 				</li>
 			</ul>
 		</section>

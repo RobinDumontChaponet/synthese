@@ -19,14 +19,3 @@
 #content li a:first-child {
 	text-transform: none;
 }
-
-#etudiants li {
-	display: inline-block;
-	background: #fcfcfc;
-	margin: 8px 8px 0 0;
-	padding: 5px;
-	border: 1px solid;
-	border-color: #e7e9ed #e6e7ec #e1e2e7;
-	border-radius: 4px;
-	font-size: .95em;
-}
