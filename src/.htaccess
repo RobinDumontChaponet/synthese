@@ -3,9 +3,11 @@ php_value include_path "includes"
 
 
 ############# Charset & Types ######################
-AddDefaultCharset UTF-8
-#AddCharset UTF-8 .php
-#AddCharset UTF-8 .html
+AddDefaultCharset utf-8
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+
+#AddCharset utf-8 .php
+#AddCharset utf-8 .html
 
 AddType application/vnd.ms-fontobject .eot
 AddType application/x-font-ttf .ttf
@@ -13,6 +15,10 @@ AddType application/x-font-opentype .otf
 AddType application/x-font-woff .woff
 AddType image/svg+xml .svg
 AddType application/octet-stream .zip
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
 
 
 ############# Compatibility#######################
@@ -22,6 +28,82 @@ AddType application/octet-stream .zip
     Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
   </IfModule>
 </IfModule>
+
+
+############## Expires ###########################
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+FileETag None
+
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresDefault                                      "access plus 1 month"
+
+	##### CSS
+	ExpiresByType text/css                              "access plus 1 year"
+
+	##### Data interchange
+	ExpiresByType application/atom+xml                  "access plus 1 hour"
+	ExpiresByType application/rdf+xml                   "access plus 1 hour"
+	ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+	ExpiresByType application/json                      "access plus 0 seconds"
+	ExpiresByType application/ld+json                   "access plus 0 seconds"
+	ExpiresByType application/schema+json               "access plus 0 seconds"
+	ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
+	ExpiresByType application/xml                       "access plus 0 seconds"
+	ExpiresByType text/xml                              "access plus 0 seconds"
+
+	##### HTML
+	ExpiresByType text/html                             "access plus 0 seconds"
+
+	##### JavaScript
+	ExpiresByType application/javascript                "access plus 1 year"
+	ExpiresByType application/x-javascript              "access plus 1 year"
+	ExpiresByType text/javascript                       "access plus 1 year"
+
+	##### Manifest files
+	ExpiresByType application/manifest+json             "access plus 1 year"
+
+	ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+	ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+	##### Media files
+	ExpiresByType audio/ogg                             "access plus 1 month"
+	ExpiresByType image/bmp                             "access plus 1 month"
+	ExpiresByType image/gif                             "access plus 1 month"
+	ExpiresByType image/jpeg                            "access plus 1 month"
+	ExpiresByType image/png                             "access plus 1 month"
+	ExpiresByType image/svg+xml                         "access plus 1 month"
+	ExpiresByType video/mp4                             "access plus 1 month"
+	ExpiresByType video/ogg                             "access plus 1 month"
+	ExpiresByType video/webm                            "access plus 1 month"
+
+	####### Web fonts
+	##### Embedded OpenType (EOT)
+	ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+	ExpiresByType font/eot                              "access plus 1 month"
+
+	##### OpenType
+	ExpiresByType font/opentype                         "access plus 1 month"
+
+	##### TrueType
+	ExpiresByType application/x-font-ttf                "access plus 1 month"
+
+	##### Web Open Font Format (WOFF) 1.0
+	ExpiresByType application/font-woff                 "access plus 1 month"
+	ExpiresByType application/x-font-woff               "access plus 1 month"
+	ExpiresByType font/woff                             "access plus 1 month"
+
+	##### Web Open Font Format (WOFF) 2.0
+	ExpiresByType application/font-woff2                "access plus 1 month"
+
+	##### Other
+	ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+</IfModule>
+
 
 
 ############# Security #############################
@@ -40,6 +122,72 @@ AddType application/octet-stream .zip
 	</limit>
 </IfModule>
 
+###### Increase cookie security
+<IfModule mod_php5.c>
+    php_value session.cookie_httponly true
+</IfModule>
+
+###### Prevent ClickJacking
+<IfModule mod_headers.c>
+	Header set X-Frame-Options "DENY"
+	Header set X-XSS-Protection "1; mode=block"
+	# `mod_headers` cannot match based on the content-type, however, `X-Frame-Options` should be send only for HTML.
+	<FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|woff2?|xloc|xml|xpi)$">
+		Header unset X-Frame-Options
+	</FilesMatch>
+</IfModule>
+
+####### Content Security Policy (prevent simple XSS)
+<IfModule mod_headers.c>
+	Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
+	# `mod_headers` cannot match based on the content-type, however,
+	# the `Content-Security-Policy` response header should be send
+	# only for HTML documents and not for the other resources.
+	<FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|woff2?|xloc|xml|xpi)$">
+		Header unset Content-Security-Policy
+	</FilesMatch>
+</IfModule>
+
+###### Block access to backup and source files.
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+    # Apache < 2.3
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+        Satisfy All
+    </IfModule>
+    # Apache ≥ 2.3
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+###### No-transform
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-transform"
+</IfModule>
+
+############# Concatenation #####################
+# If you have the following lines in a file called, for example, `main.combined.js`:
+#  <!--#include file="js/jquery.js" -->
+#  <!--#include file="js/jquery.timer.js" -->
+#
+# Apache will replace those lines with the content of the specified files.
+<IfModule mod_include.c>
+	<FilesMatch "\.combined\.js$">
+		Options +Includes
+		AddOutputFilterByType INCLUDES application/javascript \
+									   application/x-javascript \
+									   text/javascript
+									   SetOutputFilter INCLUDES
+	</FilesMatch>
+	<FilesMatch "\.combined\.css$">
+		Options +Includes
+		AddOutputFilterByType INCLUDES text/css
+		SetOutputFilter INCLUDES
+	</FilesMatch>
+</IfModule>
+
 
 ############# Rewrites ###########################
 <IfModule mod_rewrite.c>
@@ -47,9 +195,10 @@ AddType application/octet-stream .zip
 	Options +FollowSymLinks
 	RewriteEngine On
 
+	Options -MultiViews
+
 	RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
 	RewriteRule ^(.*)$ - [E=BASE:%1]
-
 
 	#### Hosts BList
 	RewriteCond %{HTTP_HOST} (.*)\.crimea\.com [NC,OR]
@@ -59,10 +208,8 @@ AddType application/octet-stream .zip
 	RewriteCond %{HTTP_USER_AGENT} (g00g1e|seekerspider|siclab|spam|sqlmap) [NC]
 	RewriteRule .* - [F,L]
 
-
 	#### Some joke
 	Redirect 301 /wp-config.php http://www.fbi.gov/
-
 
 	#### Maintenance Redirection
 	#RewriteCond %{REQUEST_URI} !maintenance.html
@@ -72,17 +219,23 @@ AddType application/octet-stream .zip
 	#RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
 	#RewriteRule $ /maintenance.html [R=307,L]
 
-	RewriteRule ^maintenance.html %{ENV:BASE} [R=301,L]
+	#RewriteRule ^maintenance.html %{ENV:BASE} [R=301,L]
 
-
-	####Security
+	#### Security
 	RewriteRule ^models/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^views/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^controllers/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^includes/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 
+	#### Filename-based cache busting
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^(.+)\.(\d+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp)$ $1.$3 [L]
+	</IfModule>
 
-	#Specifics
+
+	#### Specifics
 	RewriteRule ^profil-editer/([^/]+) %{ENV:BASE}/index.php?requ=profil-editer&id=$1 [NC]
 	RewriteRule ^profil/([^/]+) %{ENV:BASE}/index.php?requ=profil&id=$1 [NC]
 	RewriteRule ^promotion/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1 [NC]
@@ -99,7 +252,6 @@ AddType application/octet-stream .zip
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
 	RewriteRule ^etablissement-editer/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-editer&id=$1 [NC]
 	RewriteRule ^etablissement/([^/]+) %{ENV:BASE}/index.php?requ=etablissement&id=$1 [NC]
-
 
 
 	#### Generals
