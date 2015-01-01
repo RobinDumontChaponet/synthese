@@ -59,6 +59,24 @@ class PrefereDAO {
 		}
 		return $lst;
 	}
+    
+    public static function getByIdTypeEvent($id) {
+		$lst=array();
+		try {
+			$bdd=connect();
+			$req=$bdd->prepare("SELECT * FROM prefere WHERE idTypeEvenement=?");
+			$req->execute(array($id));
+			while
+			($res=$req->fetch()) {
+				$ancien=AncienDAO::getById($res['idPersonne']);
+				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
+				$lst[]=new Prefere($ancien, $type);
+			}
+		} catch(PDOException $e) {
+			die('error getByIdTypeEvent Prefere '.$e->getMessage().'<br>');
+		}
+		return $lst;
+	}
 
 	public static function create($obj) {
 		if(get_class($obj)=="Prefere") {
