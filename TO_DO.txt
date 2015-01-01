@@ -23,3 +23,14 @@
 - Ecrire le texte de présentation sur la page de connection
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
+
+
+Profil : 
+
+- Pouvoir éditer le diplome d'un élève en tant qu'admin (Renvoie vers une page d'édition où l'on choisit le diplome en select, sur cette page égalemet ajouter/supprimer un DiplomeDUT)
+
+- Faire la suppression d'un diplôme dans profil (ça supprime le lien Possede)
+- Faire l'ajout d'un diplome (ajoute un lien possede)
+
+- Faire l'ajout d'une entreprise (ajoute un lien travaille)
+- Faire la suppression d'une entreprise (supprime le lien travaille)
