@@ -17,7 +17,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 	<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 		echo '<a class="edit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
 	?></h1>
-	<section id="info">
+	<section id="info"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuProfil"';?>>
 		<h2>Informations générales</h2>
 		<dl>
 			<dt id="nomUsage">Nom d'usage</dt>
@@ -44,7 +44,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 			<dd><a href="mailto:<?php echo $ancien->getMail();?>"><?php echo $ancien->getMail();?></a></dd>
 		</dl>
 	</section>
-	<section id="diplomes">
+	<section id="diplomes"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuDiplomes"';?>>
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
 		?>
@@ -87,7 +87,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<p class="sad">Aucun diplôme.</p>
 <?php } ?>
 	</section>
-	<section id="entreprises">
+	<section id="entreprises"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuEntreprises"';?>>
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#entreprises" title="Éditer le profil...">Éditer...</a>';
 		?>

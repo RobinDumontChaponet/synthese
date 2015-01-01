@@ -88,7 +88,8 @@ if($matches[1]) {
     <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <script type="text/javascript" src="script/polyShims.js"></script>
     <script type="text/javascript" src="script/utils.transit.js"></script>
-    <script type="text/javascript" src="script/help.js"></script>
+    <script type="text/javascript" src="script/smooth-scroll.min.js"></script>
+    <script type="text/javascript" src="script/help.js" async defer></script>
     <?php echo $script; ?>
 </head>
 <body<?php if(isset($_SESSION['help']) && $_SESSION['help']) echo ' class="show-help"';?>>
@@ -96,5 +97,6 @@ if($matches[1]) {
 	<div id="wrapper">
 		<?php echo $inc; ?>
 	</div>
+	<script type="text/javascript">smoothScroll.init();</script>
 </body>
 </html>

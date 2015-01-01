@@ -103,6 +103,9 @@ function getUrlId() {
 	var url = window.location.pathname;
 	return url.substring(url.lastIndexOf('/')+1);
 }
-function goto (url) {
-	window.location.href=url;
+function goTo (url, hash) {
+	if(hash && !url)
+		window.location.hash=hash;
+	else
+		window.location.href=url+((hash)?'#'+hash:'');
 }
