@@ -176,7 +176,7 @@ dd {
 dd:after {
 	float: right;
 }
-dt:before, dd:before, h3:before, h4:before, li p:before, article p:before, li:before {
+dt:before, dd:before, h3:before, h4:before, li p:before, article p:before, #content li:before {
 	font-family: 'icomoon';
 	font-size: 16px;
 	speak: none;

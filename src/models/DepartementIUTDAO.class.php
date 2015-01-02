@@ -1,6 +1,6 @@
 <?php
 
-require_once('dbConnection.inc.php');
+require_once("SPDO.class.php");
 require_once(MODELS_INC.'DepartementIUT.class.php');
 
 class DepartementIUTDAO {

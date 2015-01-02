@@ -98,3 +98,6 @@ if($matches[1]) {
 	<script type="text/javascript">smoothScroll.init();</script>
 </body>
 </html>
+<?php
+$_SESSION['referrer'] = $_GET['requ'];
+?>

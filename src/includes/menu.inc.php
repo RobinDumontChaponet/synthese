@@ -58,26 +58,31 @@ foreach(GroupeDAO::getGroupeByPersonne($_SESSION["syntheseUser"]->getPersonne())
 <?php
 $menu = '';
 $shutterOn = false;
+$sameReferrer = false;
 foreach($items as $key => $item)
 	if(gettype($item)=='array') {
 		$first = each($item);
-		$menu .= '	  <li'.(($_GET['requ']==$first['value']->href)?' class="active"':'').'><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
-
-		if(in_array($_GET['requ'], explode(', ', $key))) {
-
+		$explode = explode(', ', $key);
+		if(in_array($_GET['requ'], $explode)) {
 			$shutterOn = true;
 
-			$menu .= '<nav class="shutter"><ul>';
+			if(isset($_SESSION['referrer']) and in_array($_SESSION['referrer'], $explode))
+				$sameReferrer = true;
+
+			$menu .= '	  <li class="active"><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
+
+			$menu .= '	  <nav class="shutter"><ul>';
 			array_shift($item);
 			foreach($item as $key => $shutter)
-				$menu .= '	  <li'.(($_GET['requ']==$shutter->href)?' class="active"':'').'><a href="'.$shutter->href.'" class="'.$shutter->class.'" title="'.$shutter->title.'"><span>'.$shutter->inner.'</span></a></li>'."\n";
+				$menu .= '	  	<li'.(($_GET['requ']==$shutter->href)?' class="active"':'').'><a href="'.$shutter->href.'" class="'.$shutter->class.'" title="'.$shutter->title.'"><span>'.$shutter->inner.'</span></a></li>'."\n";
 			$menu .= '</ul></nav>';
-		}
+		} else
+			$menu .= '	  <li'.(($_GET['requ']==$first['value']->href)?' class="active"':'').'><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
 	} else
 		$menu .= '	  <li'.(($_GET['requ']==$item->href)?' class="active"':'').'><a href="'.$item->href.'" class="'.$item->class.'" title="'.$item->title.'"><span>'.$item->inner.'</span></a></li>'."\n";
 
 ?>
-	<ul<?= ($shutterOn)?' class="shutterOn"':''; ?>>
+	<ul class="<?= (($shutterOn)?' shutterOn':'').((!$sameReferrer)?' shutterAnimate':'');?>">
 		<?= $menu; ?>
 	</ul>
   </nav>
