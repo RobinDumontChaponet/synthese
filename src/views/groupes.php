@@ -1,9 +1,7 @@
 <!--meta title="Liste des groupes" -->
-
+<div id="content">
 <?php
-    foreach($lst as $gr){
+foreach($groupes as $groupe)
+	echo '<a href="groupe/'.$groupe->getId().'" title="Voir le groupe">'.$groupe->getNom().'</a>';
 ?>
-    <a id="groupe" href="groupe/<?= $gr->getId(); ?>" title="Voir le groupe"><span><?= $gr->getNom(); ?></span></a><br>
-<?php
-    }
-?>
+</div>

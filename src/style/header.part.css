@@ -104,6 +104,12 @@ nav a#aEvents:before {
 nav a#aSearch:before {
 	content: "\e610";
 }
+nav a#aGroups:before {
+	content: "\e96f";
+}
+nav .active a#aGroups:before {
+	content: "\e970";
+}
 
 header a#aHelp:before {
 	content: "\e607";
