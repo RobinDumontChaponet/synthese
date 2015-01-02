@@ -252,7 +252,7 @@ FileETag None
 	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
 	RewriteRule ^diplomeDUT-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-selectionner&id=$1 [NC]
     RewriteRule ^groupe/([^/]+) %{ENV:BASE}/index.php?requ=groupe&id=$1 [NC]
-    
+    RewriteRule ^message/([^/]+) %{ENV:BASE}/index.php?requ=message&id=$1 [NC]
     
 	#### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d
