@@ -4,13 +4,13 @@
 	<h1>Message</h1>
 	<section>
 		<!-- Message -->
-        <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) 
+        <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1)
             echo '<a class="edit" href="">Éditer...</a><a class="delete" href="">Supprimer</a>';
 	   ?>
 			<?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?>
 			<?= $post->getDate();?>
 			<p><?= $post->getContenu();?></p>
-			
+
 	</section>
     <!-- Commentaires -->
     <section>
@@ -27,13 +27,13 @@
     </section>
     <section>
         <?php foreach($post->getComs() as $com){ ?>
-            <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$com->getPers()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) 
-                echo '<a class="edit" href="">Éditer...</a><a class="delete" href="">Supprimer</a>';
+            <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$com->getPers()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1)
+                echo '<a class="edit" href="message-editer">Éditer...</a><a class="delete" href="message-supprimer">Supprimer</a>';
 	       ?>
             <?= $com->getPers()->getPrenom().' <span class="nomPatronymique">'.$com->getPers()->getNom();?>
             <?= $com->getDate();?>
             <?= $com->getContenu(); ?>
-        <?php } ?>        
+        <?php } ?>
     </section>
 </div>
 <?php
