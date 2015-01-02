@@ -5,20 +5,28 @@
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
-			//'profil' => '<a class="aProfil" href="profil" title="Voir son profil"><span>Profil</span></a>',
-			'promotions' => '<a class="aPromo" href="promotions" title="Voir sa ou les promotions"><span>Promotions</span></a>',
-			'evenements' => '<a class="aEvents" href="evenements" title="Voir les évènements"><span>Évènements</span></a>',
-			'groupes' => '<a class="aGroups" href="groupes" title="Voir les groupes"><span>Groupes</span></a>',
-			'recherche' => '<a class="aSearch" href="recherche" title="Faire une recherche..."><span>Recherche</span></a>'
+			(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
+			(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+			'groupes, groupe, creerGroupe' => array(
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Créer un groupe')
+			),
+			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
 	break;
 	case 2: // isTeacher_
 		$items = array(
-			'profil' => '<a class="aProfil" href="profil" title="Voir son profil"><span>Profil</span></a>',
-			'promotions' => '<a class="aPromo" href="promotions" title="Voir sa ou les promotions"><span>Promotions</span></a>',
-			'evenements' => '<a class="aEvents" href="evenements" title="Voir les évènements"><span>Évènements</span></a>',
-			'creerGroupe' => '<a class="aGroups" href="creerGroupe" title="Voir mes groupes"><span>Groupes</span></a>',
-			'recherche' => '<a class="aSearch" href="recherche" title="Faire une recherche..."><span>Recherche</span></a>'
+			(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
+			(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+			'groupes, groupe, creerGroupe' => array(
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Créer un groupe')
+			),
+			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
 	break;
 	case 3: // isFormerStudent_

@@ -31,8 +31,9 @@ nav {
 nav.shutter {
 	position: absolute;
 	left: 20px;
+	right: 0;
 	top: -.4em;
-	height: 100%;
+	height: 104%;
 	z-index: 1000;
 	border-left: 1px solid #4b72c2;
 	box-shadow: -2px 0 2px rgba(70, 106, 181, 0.29);
