@@ -50,7 +50,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 <meta name="msapplication-TileImage" content="style/favicon-144.png">
 <link rel="apple-touch-icon" href="style/favicon-152.png">
 <link href="style/reset.min.css" rel="stylesheet" type="text/css" />
-<link href="style/general.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/style.combined.css">
 <link href="style/connection.css" rel="stylesheet" type="text/css" />
 </head><body>
 <aside id="form">

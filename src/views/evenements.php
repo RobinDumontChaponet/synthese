@@ -95,7 +95,7 @@
 						echo '
 							<li>
 								<span class="typeEvent type-'.$eventWithoutDate->getTypeEvenement()->getId().'">'.$eventWithoutDate->getTypeEvenement()->getLibelle().'</span>
-								<h3>Pas de date annoncée</h3>
+								<h3 class="evenement">Pas de date annoncée</h3>
 								<p class="commentaire">'.substr($eventWithoutDate->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventWithoutDate->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
 							<a href="evenement/'.$eventWithoutDate->getId().'">Voir</a></li>';
 					}
