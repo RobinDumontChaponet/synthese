@@ -4,11 +4,10 @@
 	<h1>Modification d'un Diplôme DUT</h1>
 	<form action="diplomeDUT-editer/<?php echo $diplomeDUT->getId();?>" method="post">
 		<article>
+			<h3 class="diplome"><input name="libelle" type="text" value="<?php echo $diplomeDUT->getLibelle();?>" placeholder="Nom du Diplôme DUT" autofocus/></h3>
 			<dl>
-				<dt><label for="libelle">Libelle</label></dt>
-				<dd><input id="libelle" name="libelle" type="text" value="<?php echo $diplomeDUT->getLibelle();?>" placeholder="Nom du Diplôme DUT" autofocus/></dd>
 				<dt><label for="departementIUT">Département IUT</label></dt>
-				<dd>
+				<dd class="departement">
 					<select name="departementIUT">
 					<?php foreach($departementsIUT as $departementIUT)
 						echo '<option'.(($departementIUT->getId() == $diplomeDUT->getDepartementIUT()->getId())?' selected':'').' value="'.$departementIUT->getId().'">'.$departementIUT->getNom().'</option>';

@@ -24,10 +24,7 @@
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
 
-- Styler diplomesDUT/diplomeDUT-ajouter/diplomeDUT-editer
-
-
-Profil : 
+Profil :
 
 - Pouvoir éditer le diplome d'un élève en tant qu'admin (Renvoie vers une page d'édition où l'on choisit le diplome en select, sur cette page égalemet ajouter/supprimer un DiplomeDUT)
 
