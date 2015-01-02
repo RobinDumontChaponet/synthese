@@ -1,7 +1,7 @@
-<!--meta title="groupe" -->
+<!--meta title="<?= ($gr!=null)?'Groupe > '.$gr->getNom():'Groupe introuvable'; ?>"-->
 <div id="content">
-<?php if($gr!=null) { ?>
-	<h1>Discussion du groupe "<?= $gr->getNom(); ?>"</h1>
+<?php if($groupe!=null) { ?>
+	<h1>Discussion du groupe "<?= $groupe->getNom();?>"</h1>
 	<section>
 		<h2>Publier dans le groupe</h2>
 		<form method="post">
@@ -20,12 +20,12 @@
 	<?php
 	foreach($posts as $post) {
 	?>
-		<li>
+			<li>
 		<? if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) echo '<a class="edit" href="">Éditer...</a><a class="delete" href="">Supprimer</a>';
 	?>
-			<?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?>
-			<?= $post->getDate();?>
-			<p><?= $post->getContenu();?></p>
+			<h3 class="message"><?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?>
+			<span class="date">à <?= $post->getDate();?></span></h3>
+			<p class="commentaire"><?= $post->getContenu();?></p>
 			</li>
 	<?php
 	}
@@ -36,7 +36,7 @@
 <?php
 } else {
 ?>
-    <p class="warning">Groupe Introuvable</p>
+    <p class="warning">Groupe introuvable</p>
 <?php
 }
 ?>
