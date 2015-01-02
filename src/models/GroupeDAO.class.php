@@ -2,7 +2,7 @@
     
     require_once("SPDO.class.php");
     require_once(MODELS_INC."Groupe.class.php");
-    require_once(MODELS_INC."Personne.class.php");
+    require_once(MODELS_INC."PersonneDAO.class.php");
 
     class GroupeDAO{
         
@@ -11,7 +11,7 @@
             try{
                 $req=SPDO::getInstance()->query("SELECT * FROM groupes ORDER BY nom");
                 while($res=$req->fetch()){
-                    $createur=Personne::getById($res['idCreateur']);
+                    $createur=PersonneDAO::getById($res['idCreateur']);
                     $lst[]=new Groupe($res['idGroupe'],$res['nom'],$createur,$res['type']);
                 }
             }catch(PDOException $e){
