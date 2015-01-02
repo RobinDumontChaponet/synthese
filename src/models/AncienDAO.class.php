@@ -132,10 +132,10 @@ class AncienDAO {
 	 * @param   Boolean $trav        [[Description]]
 	 * @returns Object   [[Description]]
 	 */
-	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav) {
+	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$count) {
 		$lst=array();
 		$args=array();
-        $select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
+        $select="SELECT count(*) as nb, A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
         $from="FROM `ancien` A, `personne` P";
         $where="WHERE P.idPersonne=A.idPersonne";
 
@@ -195,13 +195,22 @@ class AncienDAO {
             $from.=" , `travaille` trav";
         }
         $req=$select." ".$from." ".$where;
+        if($binf!=null && $nb!=null){
+            $req.=" LIMIT ?,?";
+            $args[]=$binf;
+            $args[]=$nb;
+        }
+        
         //var_dump($req);
 		try {
-			
+			$count=0;
 			$state=SPDO::getInstance()->prepare($req);
             //var_dump($args);
 			$state->execute($args);
 			while($ancien=$state->fetch()) {
+                if($count==0){
+                    $count=$ancien['nb'];   
+                }
                 $parents=ParentsDAO::getById($ancien['idParent']);
 				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
                 //var_dump("test");
