@@ -173,7 +173,7 @@ FileETag None
 <FilesMatch "\.combined\.js$">
 	SetHandler php5-script
 	php_value include_path "script"
-	AddType application/javascript .js
+	AddType text/javascript .js
 </FilesMatch>
 <FilesMatch "\.combined\.css$">
 	SetHandler php5-script

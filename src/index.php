@@ -86,9 +86,7 @@ if($matches[1]) {
     <link rel="stylesheet" type="text/css" href="style/animations.css">
     <?php echo $link; ?>
     <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script type="text/javascript" src="script/polyShims.js"></script>
-    <script type="text/javascript" src="script/utils.transit.js"></script>
-    <script type="text/javascript" src="script/smooth-scroll.min.js"></script>
+    <script type="text/javascript" src="script/script.combined.js"></script>
     <script type="text/javascript" src="script/help.js" async defer></script>
     <?php echo $script; ?>
 </head>
