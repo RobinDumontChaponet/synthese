@@ -1,7 +1,7 @@
 <?php
 
 include_once('conf.inc.php');
-include_once('dbConnection.inc.php');
+include_once('SPDO.class.php');
 
 session_start();
 if (!isset($_SESSION['syntheseUser']) || $_SESSION['syntheseUser']=='') {
