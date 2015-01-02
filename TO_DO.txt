@@ -36,3 +36,6 @@ Profil :
 
 - Faire l'ajout d'une entreprise (ajoute un lien travaille)
 - Faire la suppression d'une entreprise (supprime le lien travaille)
+
+
+- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.

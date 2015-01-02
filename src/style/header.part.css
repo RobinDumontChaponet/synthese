@@ -22,8 +22,22 @@ header h1 {
 	position: relative;
 }
 
-nav > ul {
+nav {
+	position: relative;
+	background: url("images/noise.png"), #6d84b4;
 	margin-top: 1em;
+}
+
+nav.shutter {
+	position: absolute;
+	left: 20px;
+	top: -.4em;
+	height: 100%;
+	z-index: 1000;
+	border-left: 1px solid #4b72c2;
+	box-shadow: -2px 0 2px rgba(70, 106, 181, 0.29);
+	border-radius: 4px;
+	margin-top: 0;
 }
 
 header > ul {
@@ -80,6 +94,9 @@ header a, header a:hover, header a:visited, header a:active {
 	text-decoration: none;
 	display: block;
 }
+.shutterOn a, .shutterOn a:hover, .shutterOn a:visited, .shutterOn a:active {
+	padding-left: 5%;
+}
 header a:before {
 	font-family: 'icomoon';
 	speak: none;
@@ -92,22 +109,22 @@ header a:before {
 	position: relative;
 	top: 1px;
 }
-nav a#aProfil:before {
+nav a.aProfil:before {
 	content: "\e60d";
 }
-nav a#aPromo:before {
+nav a.aPromo:before {
 	content: "\e60e";
 }
-nav a#aEvents:before {
+nav a.aEvents:before {
 	content: "\e60a";
 }
-nav a#aSearch:before {
+nav a.aSearch:before {
 	content: "\e610";
 }
-nav a#aGroups:before {
+nav a.aGroups:before {
 	content: "\e96f";
 }
-nav .active a#aGroups:before {
+nav .active a.aGroups:before {
 	content: "\e970";
 }
 

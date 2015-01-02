@@ -1,4 +1,4 @@
-<!--meta title="<?= ($gr!=null)?'Groupe > '.$gr->getNom():'Groupe introuvable'; ?>"-->
+<!--meta title="<?= ($groupe!=null)?'Groupe > '.$groupe->getNom():'Groupe introuvable'; ?>"-->
 <div id="content">
 <?php if($groupe!=null) { ?>
 	<h1>Discussion du groupe "<?= $groupe->getNom();?>"</h1>
