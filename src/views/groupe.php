@@ -7,7 +7,7 @@
 		<form method="post">
 			<article>
 				<dl>
-					<dt><label for="contenu">Message</label></dt>
+					<dt><label for="contenu">Article</label></dt>
 					<dd class="message"><textarea name="contenu" placeholder="Écrivez votre message..."></textarea></dd>
 				</dl>
 			</article>
@@ -15,7 +15,7 @@
 		</form>
     </section>
     <section>
-        <h2>Liste des messages</h2>
+        <h2>Liste des articles</h2>
         <ul>
 	<?php
 	foreach($posts as $post) {
@@ -23,7 +23,7 @@
 			<li>
 		<? if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) echo '<a class="edit" href="message-editer">Éditer...</a><a class="delete" href="message-supprimer">Supprimer</a>';
 	?>
-				<h3 class="message"><?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?></span> <span class="date">à <?= $post->getDate();?></span></h3>
+				<h3 class="message"><?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?></span> <span class="date">le <?= $post->getDate();?></span></h3>
 				<p class="commentaire"><?= $post->getContenu();?></p>
 				<a href="message/<?= $post->getId();?>">Commentaire(s)</a>
 			</li>

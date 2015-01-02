@@ -286,7 +286,12 @@ dd:after {
 .message:before {
 	content: "\e96e";
 }
-
+.date {
+	font-weight: 400;
+	font-style: oblique;
+	font-size: 0.8em;
+	margin-left: 10px;
+}
 
 /*
  * Pour l'aide sur les élements autres que des liens, il faut encore que je réchéflisse...

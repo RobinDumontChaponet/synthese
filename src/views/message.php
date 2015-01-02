@@ -1,20 +1,18 @@
 <!--meta title="Message" -->
 <div id="content">
 <?php if($post!=null) { ?>
-	<h1>Message</h1>
+	<h1>Article & commentaires</h1>
 	<section>
-		<!-- Message -->
-        <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1)
-            echo '<a class="edit" href="">Éditer...</a><a class="delete" href="">Supprimer</a>';
-	   ?>
-			<?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?>
-			<?= $post->getDate();?>
-			<p><?= $post->getContenu();?></p>
-
+		<article>
+			<?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1)
+				echo '<a class="edit" href="">Éditer...</a><a class="delete" href="">Supprimer</a>';
+			?>
+			<h3 class="message"><?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom().'</span>';?> <span class="date">le <?= $post->getDate();?></span></h3>
+			<p class="commentaire"><?= $post->getContenu();?></p>
+		</article>
 	</section>
-    <!-- Commentaires -->
     <section>
-		<h2>Commenter le message</h2>
+		<h2>Commenter l'article</h2>
 		<form method="post">
 			<article>
 				<dl>
@@ -39,7 +37,7 @@
 <?php
 } else {
 ?>
-    <p class="warning">Message Introuvable</p>
+    <p class="warning">Article introuvable</p>
 <?php
 }
 ?>
