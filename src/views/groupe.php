@@ -1,5 +1,7 @@
 <!--meta title="groupe" -->
-
+<?php 
+    if($gr!=null){
+?>
 <div id="content">
     <h1>Discussion de groupe : <?= $gr->getNom(); ?></h1>
     <br>
@@ -56,3 +58,10 @@
     ?>
     </table>
 </div>
+<?php 
+    }else{
+?>
+    <p class="warning">Groupe Introuvable</p>
+<?php
+    }
+?>
