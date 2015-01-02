@@ -76,7 +76,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 			<ul>
 				<li>
 					<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-						echo '<a class="edit" href="diplomesDUT">Modifier le diplôme de l\'élève</a>'; ?>
+						echo '<a class="edit" href="diplomeDUT-selectionner/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
 					<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'NON RENSEIGNÉE'; };?></h3>
 					<dl>
 						<dt class="departement">Département</dt>
