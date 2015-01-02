@@ -26,7 +26,8 @@
 
 - Enlever le commentaire Update dans diplomeDUT-selectionner lorsque Pister aura finit sa DAO ...
 - Styler la page diplomeDUT-selectionner
-
+- Styler la page diplomes
+- Désolé j'ai la flemme de faire le reste pour le moment ... je sature
 
 Profil :
 
