@@ -1,5 +1,6 @@
 <?php
 require_once(MODELS_INC.'GroupeDAO.class.php');
+
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
@@ -25,12 +26,12 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			'recherche' => '<a id="aSearch" href="recherche" title="Faire une recherche..."><span>Recherche</span></a>'
 		);
 	break;
-    
+
 }
 $items['creerGroupe']= '<a id="creerGroupe" href="creerGroupe" title="Créer un groupe"><span>Créer un groupe</span></a>';
-foreach(GroupeDAO::getGroupeByPersonne($_SESSION["syntheseUser"]->getPersonne()) as $groupe){
-    $items['groupe'.$groupe->getId()] = '<a id="groupe" href="groupe/'.$groupe->getId().' " title="Voir le groupe"><span>'.$groupe->getNom().'</span></a>';   
-}
+foreach(GroupeDAO::getGroupeByPersonne($_SESSION["syntheseUser"]->getPersonne()) as $groupe)
+    $items['groupe'.$groupe->getId()] = '<a id="groupe" href="groupe/'.$groupe->getId().' " title="Voir le groupe"><span>'.$groupe->getNom().'</span></a>';
+
 ?>
 <header>
   <h1 <?php if($_GET['requ']=='index' || $_GET['requ']=='') echo' class="active"';?>><a href="index.php" title="Accueil">connectIT!</a></h1>

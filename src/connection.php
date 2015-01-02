@@ -15,7 +15,6 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 	else {
 		include('conf.inc.php');
 		include(MODELS_INC.'CompteDAO.class.php');
-		include_once('dbConnection.inc.php');
 		include('passwordHash.inc.php');
 
 		$compte = CompteDAO::getCompteByNdc($_POST['user']);
