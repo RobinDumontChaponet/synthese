@@ -58,7 +58,7 @@ section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
 
-a.edit, a.delete, a.all, a.desinscrire, a.params {
+a.edit, a.delete, a.all, a.desinscrire, a.params, a.types {
 	font-size: 16px;
 	letter-spacing: 0px;
 	float: right;
@@ -68,7 +68,7 @@ a.edit, a.add, a.delete {
 	z-index: 100;
 	position: relative;
 }
-a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before {
+a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before {
 	font-family: 'icomoon';
 	font-size: 12px;
 	speak: none;
@@ -277,7 +277,7 @@ dd:after {
 .evenement:before {
 	content: "\e953";
 }
-.type:before {
+.type:before, a.types:before {
 	content: "\e935";
 }
 .nomPatronymique {

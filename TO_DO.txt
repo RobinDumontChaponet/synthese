@@ -24,12 +24,12 @@
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
 
-- Styler diplomesDUT/diplomeDUT-ajouter/diplomeDUT-editer
+- Enlever le commentaire Update dans diplomeDUT-selectionner lorsque Pister aura finit sa DAO ...
+- Styler la page diplomeDUT-selectionner
+- Styler la page diplomes
+- Désolé j'ai la flemme de faire le reste pour le moment ... je sature
 
-
-Profil : 
-
-- Pouvoir éditer le diplome d'un élève en tant qu'admin (Renvoie vers une page d'édition où l'on choisit le diplome en select, sur cette page égalemet ajouter/supprimer un DiplomeDUT)
+Profil :
 
 - Faire la suppression d'un diplôme dans profil (ça supprime le lien Possede)
 - Faire l'ajout d'un diplome (ajoute un lien possede)

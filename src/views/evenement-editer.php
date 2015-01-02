@@ -13,7 +13,7 @@
 					<?php foreach($typesEvent as $typeEvent) {
 						echo '<option'.(($typeEvent->getId() == $event->getTypeEvenement()->getId())?' selected':'').' value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';}?>
 					</select>
-					<a href="typesEvent" target="_blank">Accéder aux types d'évènements</a>
+					<a class="types" href="typesEvent" target="_blank">Liste des types d'évènements (dans un nouvel onglet)</a>
 				</dd>
 				<dt><label for="inputCommentaire">Commentaire</label></dt>
 				<dd class="commentaire"><textarea id="inputCommentaire" name="commentaire" rows="2" cols="80" placeholder="Peut être vide"><?php echo $event->getCommentaire(); ?></textarea></dd>

@@ -74,18 +74,19 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
+				<?php if ($_SESSION[syntheseUser]->getId() != 2) { // Autre que prof?>
 				<li>
 					<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-						echo '<a class="edit" href="diplomesDUT">Modifier le diplôme de l\'élève</a>'; ?>
-					<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'NON RENSEIGNÉE'; };?></h3>
+						echo '<a class="edit" href="diplomeDUT-selectionner/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
+					<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
 					<dl>
 						<dt class="departement">Département</dt>
-						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'NON RENSEIGNÉE'; };?></dd>
+						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'Non renseigné'; };?></dd>
 						<dt class="promotion">Promotion</dt>
-						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'NON RENSEIGNÉE'; };?></dd>
+						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'Non renseigné'; };?></dd>
 					</dl>
 				</li>
-				<?php
+				<?php }
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
@@ -105,7 +106,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					<?php }
 				} ?>
 				<li>
-					<a class="add" href="diplome-ajouter/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme</a>
+					<a class="add" href="diplome-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme</a>
 				</li>
 			</ul>
 		</section>

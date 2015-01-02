@@ -6,15 +6,15 @@
 		<article>
 			<dl>
 				<dt><label for="date">Date</label></dt>
-				<dd><input id="date" name="date" type="date" autofocus/></dd>
-				<dt class="evenement"><label for="typeEvent">Type d'évènement</label></dt>
+				<dd class="evenement"><input id="date" name="date" type="date" autofocus/></dd>
+				<dt><label for="typeEvent">Type d'évènement</label></dt>
 				<dd class="type">
 					<select name="typeEvent" >
 					<?php foreach($typesEvent as $typeEvent)
 						echo '<option value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';
 					?>
 					</select>
-					<a href="typesEvent" target="_blank">Accéder aux types d'évènements</a>
+					<a class="types" href="typesEvent" target="_blank">Liste des types d'évènements (dans un nouvel onglet)</a>
 				</dd>
 				<dt><label for="inputCommentaire">Commentaire</label></dt>
 				<dd class="commentaire"><textarea id="inputCommentaire" name="commentaire" placeholder="Peut être vide"/></textarea></dd>
