@@ -23,7 +23,7 @@
 			<li>
 		<? if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) echo '<a class="edit" href="message-editer">Éditer...</a><a class="delete" href="message-supprimer">Supprimer</a>';
 	?>
-				<h3 class="message"><?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?></span> <span class="date">le <?= $post->getDate();?></span></h3>
+				<h3 class="message"><?= $post->getPosteur()->getPrenom().' <span class="nomPatronymique">'.$post->getPosteur()->getNom();?></span><span class="date">le <?= $post->getDate();?></span></h3>
 				<p class="commentaire"><?= $post->getContenu();?></p>
 				<a href="message/<?= $post->getId();?>">Commentaire(s)</a>
 			</li>
