@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Domaine.class.php");
 
 class DomaineDAO
@@ -9,8 +9,7 @@ class DomaineDAO
 	{
 		$lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM domaine ORDER BY libelle");
+			$req=SPDO::getInstance()->query("SELECT * FROM domaine ORDER BY libelle");
 			while
 			($res=$req->fetch())
 			{
@@ -26,8 +25,7 @@ class DomaineDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM domaine WHERE idDomaine=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM domaine WHERE idDomaine=?");
             $req->execute(array($id));
 			if($res=$req->fetch()){
 			 return new Domaine($res['idDomaine'], $res['libelle'], $res['description']);
@@ -46,10 +44,9 @@ class DomaineDAO
 		(get_class($obj)=="Domaine")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `domaine`(`idDomaine`, `libelle`, `description`) VALUES (?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `domaine`(`idDomaine`, `libelle`, `description`) VALUES (?,?,?)");
 				$req->execute(array($obj->getId(), $obj->getLibelle(), $obj->getDescription()));
-                $obj->setId($bdd->LastInsertId());
+                $obj->setId(SPDO::getInstance()->LastInsertId());
 				return $obj->getId();
 			}catch(PDOException $e)
 			{
@@ -67,10 +64,8 @@ class DomaineDAO
 		(get_class($obj)=="Domaine")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `domaine` SET `libelle`=?,`description`=? WHERE `idDomaine`=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `domaine` SET `libelle`=?,`description`=? WHERE `idDomaine`=?");
 				$req->execute(array($obj->getLibelle(), $obj->getDescription(), $obj->getId()));
-				return $bdd->LastInsertId();
 			}catch(PDOException $e)
 			{
 				die('error update domaine '.$e->getMessage().'<br>');
@@ -87,8 +82,7 @@ class DomaineDAO
 		(get_class($obj)=="Domaine")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `domaine` WHERE `idDomaine`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `domaine` WHERE `idDomaine`=?");
 				$req->execute(array($obj->getId()));
 			}catch(PDOException $e)
 			{

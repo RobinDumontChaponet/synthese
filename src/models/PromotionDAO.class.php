@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Promotion.class.php");
 
 class PromotionDAO
@@ -9,8 +9,7 @@ class PromotionDAO
 	public static function getAll()
 	{
 		try {
-			$bdd=connect();
-			$req=$bdd->query("SELECT `idPromo`, `annee` FROM `promotion` ORDER BY annee DESC");
+			$req=SPDO::getInstance()->query("SELECT `idPromo`, `annee` FROM `promotion` ORDER BY annee DESC");
 			$lst=$req->fetchAll();
 			$lstPromo=array();
 			foreach ($lst as $promo)
@@ -28,8 +27,7 @@ class PromotionDAO
 		if (is_numeric($id))
 		{
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("SELECT `idPromo`, `annee` FROM `promotion` WHERE idPromo=?");
+				$req=SPDO::getInstance()->prepare("SELECT `idPromo`, `annee` FROM `promotion` WHERE idPromo=?");
 				$req->execute(array($id));
 				$promo=$req->fetch();
 				return new Promotion($promo['idPromo'], $promo['annee']);
@@ -44,10 +42,9 @@ class PromotionDAO
 		if (get_class($promo)=="Promotion")
 		{
 			try {
-				$bdd->connect();
-				$req=$bdd->prepare("INSERT INTO `promotion`(`annee`) VALUES (?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `promotion`(`annee`) VALUES (?)");
 				$req->execute(array($promo->getAnnee()));
-				$promo->setId($bdd->LastInsertId());
+				$promo->setId(SPDO::getInstance()->LastInsertId());
                 return $promo->getId();
 			} catch(PDOException $e) {
 				die('error create promo '.$e->getMessage().'<br>');
@@ -62,8 +59,7 @@ class PromotionDAO
 		if (get_class($promo)=="Promotion")
 		{
 			try {
-				$bdd->connect();
-				$req=$bdd->prepare("UPDATE `promotion` SET `annee`=? WHERE idPromo=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `promotion` SET `annee`=? WHERE idPromo=?");
 				$req->execute(array($promo->getAnnee(), $promo->getId()));
 			} catch(PDOException $e) {
 				die('error update promo '.$e->getMessage().'<br>');
@@ -78,8 +74,7 @@ class PromotionDAO
 		if (get_class($promo)=="Promotion")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("DELETE FROM `promotion` WHERE `idPromo`=?");
+                $req=SPDO::getInstance()->prepare("DELETE FROM `promotion` WHERE `idPromo`=?");
 				$req->execute(array($promo->getId()));
 			} catch(PDOException $e) {
 				die('error delete promo '.$e->getMessage().'<br>');

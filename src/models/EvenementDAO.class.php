@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Evenement.class.php");
 require_once(MODELS_INC."TypeEvenementDAO.class.php");
 
@@ -10,8 +10,7 @@ class EvenementDAO
 	public static function getAll() {
 		$lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM evenement");
+			$req=SPDO::getInstance()->query("SELECT * FROM evenement");
 			while
 			($res=$req->fetch())
 			{
@@ -27,8 +26,7 @@ class EvenementDAO
 
 	public static function getById($id) {
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM evenement WHERE idEvenement=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM evenement WHERE idEvenement=?");
 			$req->execute(array($id));
 			if
 			($res=$req->fetch())
@@ -45,8 +43,7 @@ class EvenementDAO
     public static function getEvenementAnterieur(){
         $lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM evenement  WHERE date<now() ORDER BY date DESC");
+			$req=SPDO::getInstance()->query("SELECT * FROM evenement  WHERE date<now() ORDER BY date DESC");
 			while
 			($res=$req->fetch())
 			{
@@ -63,8 +60,7 @@ class EvenementDAO
     public static function getEvenementPosterieur(){
         $lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM evenement  WHERE date>now()");
+			$req=SPDO::getInstance()->query("SELECT * FROM evenement  WHERE date>now()");
 			while
 			($res=$req->fetch())
 			{
@@ -80,8 +76,7 @@ class EvenementDAO
     public static function getByAncienNotParticipePost($idPersonne){
         try {
             $lst = array();
-			$bdd=connect();
-            $req = $bdd->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
+			$req = SPDO::getInstance()->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
                     (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
             $req->execute(array($idPersonne));
             while($res=$req->fetch()){
@@ -96,8 +91,7 @@ class EvenementDAO
 	public static function getByAncienWithoutDateNotInscri($idPersonne){
         try {
             $lst = array();
-			$bdd=connect();
-            $req = $bdd->prepare("SELECT idEvenement FROM evenement WHERE date IS NULL AND idEvenement NOT IN
+			$req = SPDO::getInstance()->prepare("SELECT idEvenement FROM evenement WHERE date IS NULL AND idEvenement NOT IN
                     (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
             $req->execute(array($idPersonne));
             while($res=$req->fetch()){
@@ -112,8 +106,7 @@ class EvenementDAO
 	public static function getEvenementWithoutDate() {
 		try {
 			$lst = array();
-			$bdd=connect();
-            $req = $bdd->prepare("SELECT idEvenement FROM `evenement` WHERE date IS NULL");
+			$req = SPDO::getInstance()->prepare("SELECT idEvenement FROM `evenement` WHERE date IS NULL");
             $req->execute();
             while($res=$req->fetch()){
                 $lst[]=EvenementDAO::getById($res['idEvenement']);
@@ -128,10 +121,9 @@ class EvenementDAO
 		if
 		(get_class($obj)=="Evenement") {
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `evenement`(`idTypeEvenement`,`date`,`commentaire`) VALUES (?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `evenement`(`idTypeEvenement`,`date`,`commentaire`) VALUES (?,?,?)");
 				$req->execute(array($obj->getTypeEvenement()->getId(),$obj->getDate(),$obj->getCommentaire()));
-				$obj->setId($bdd->LastInsertId());
+				$obj->setId(SPDO::getInstance()->LastInsertId());
                 return $obj->getId();
 			}catch(PDOException $e)
 			{
@@ -146,8 +138,7 @@ class EvenementDAO
 	public static function update($obj) {
 		if (get_class($obj) == "Evenement") {
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `evenement` SET `idTypeEvenement`=?,`date`=?,`commentaire`=? WHERE `idEvenement`=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `evenement` SET `idTypeEvenement`=?,`date`=?,`commentaire`=? WHERE `idEvenement`=?");
 				$req->execute(array($obj->getTypeEvenement()->getId(),$obj->getDate(),$obj->getCommentaire(), $obj->getId()));
 			}catch(PDOException $e)
 			{
@@ -162,8 +153,7 @@ class EvenementDAO
 	public static function delete($obj) {
 		if (get_class($obj) == "Evenement") {
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `evenement` WHERE `idEvenement`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `evenement` WHERE `idEvenement`=?");
 				$req->execute(array($obj->getId()));
 			}catch(PDOException $e)
 			{

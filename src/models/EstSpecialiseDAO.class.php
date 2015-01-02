@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."EstSpecialise.class.php");
 
 class EstSpecialiseDAO {
@@ -8,8 +8,7 @@ class EstSpecialiseDAO {
 	public static function getAll() {
 		$lst=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM estSpecialise");
+			$req=SPDO::getInstance()->query("SELECT * FROM estSpecialise");
 			while
 			($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
@@ -24,8 +23,7 @@ class EstSpecialiseDAO {
 
 	public static function getByIdAncien($id) {
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
 			$req->execute(array($id));
 			if
 			($res=$req->fetch()) {
@@ -41,8 +39,7 @@ class EstSpecialiseDAO {
 
 	public static function getByAncien($ancien) {
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
 			$req->execute(array($ancien->getId()));
 			if
 			($res=$req->fetch()) {
@@ -59,8 +56,7 @@ class EstSpecialiseDAO {
 	public static function create($obj) {
 		if(get_class($obj)=="EstSpecialise") {
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `estSpecialise`(`idPersonne`, `idSpe`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `estSpecialise`(`idPersonne`, `idSpe`) VALUES (?,?)");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getSpecialisation()->getId()));
 			} catch(PDOException $e) {
 				die('error create EstSpecialise '.$e->getMessage().'<br>');
@@ -74,8 +70,7 @@ class EstSpecialiseDAO {
 	public static function delete($obj) {
 		if(get_class($obj)=="EstSpecialise") {
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `estSpecialise` WHERE `idPersonne`=?, `idSpe`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `estSpecialise` WHERE `idPersonne`=?, `idSpe`=?");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getSpecialisation()->getId()));
 			} catch(PDOException $e) {
 				die('error update EstSpecialise '.$e->getMessage().'<br>');

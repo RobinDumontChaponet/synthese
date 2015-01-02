@@ -248,7 +248,9 @@ FileETag None
 	RewriteRule ^diplomeDUT-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-editer&id=$1 [NC]
 	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
 	RewriteRule ^diplomeDUT-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-selectionner&id=$1 [NC]
-
+    RewriteRule ^groupe/([^/]+) %{ENV:BASE}/index.php?requ=groupe&id=$1 [NC]
+    
+    
 	#### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} !helpers

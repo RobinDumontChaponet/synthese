@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."AEtudie.class.php");
 require_once(MODELS_INC."AncienDAO.class.php");
 require_once(MODELS_INC."DiplomeDUTDAO.class.php");
@@ -11,8 +11,7 @@ class AEtudieDAO {
 	public static function getAll() {
 		try {
 			$lst=array();
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM aEtudie");
+			$req=SPDO::getInstance()->query("SELECT * FROM aEtudie");
 			while ($result=$req->fetch()) {
 				$promo=PromotionDAO::getById($result['idPromo']);
 				$dpt=DepartementIUTDAO::getById($result['idDepartement']);
@@ -28,8 +27,7 @@ class AEtudieDAO {
 
 	public static function getByAncien($ancien) {
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM aEtudie WHERE idPersonne=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM aEtudie WHERE idPersonne=?");
 			$req->execute(array($ancien->getId()));
 			$result=$req->fetch();
 			if ($result!=null) {
@@ -48,8 +46,7 @@ class AEtudieDAO {
 
 	public static function getByDiplomeDUT($diplome) {
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM aEtudie WHERE idDiplomeDUT=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM aEtudie WHERE idDiplomeDUT=?");
 			$req->execute(array($diplome->getId()));
 			$result=$req->fetch();
 			if ($result!=null) {
@@ -67,8 +64,7 @@ class AEtudieDAO {
 
 	public static function getByDepartementIUT($departement) {
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM aEtudie WHERE idDepartement=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM aEtudie WHERE idDepartement=?");
 			$req->execute(array($departement->getId()));
 			$result=$req->fetch();
 			if ($result!=null) {
@@ -86,8 +82,7 @@ class AEtudieDAO {
 
 	public static function getByPromotion($promotion) {
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM aEtudie WHERE idPromo=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM aEtudie WHERE idPromo=?");
 			$req->execute(array($promotion->getId()));
 			$result=$req->fetch();
 			if ($result!=null) {
@@ -106,8 +101,7 @@ class AEtudieDAO {
 	public static function create($obj) {
 		if (get_class($obj)=="AEtudie") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `aEtudie`(`idPromo`, `idDerpartement`, `idPersonne`, `idDiplomeDUT`) VALUES (?,?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `aEtudie`(`idPromo`, `idDerpartement`, `idPersonne`, `idDiplomeDUT`) VALUES (?,?,?,?)");
 				$req->execute(array($obj->getPromo()->getId(), $obj->getDepartement()->getId(), $obj->getPersonne()->getId(), $obj->getDiplomeDUT()->getId()));
 			} catch(PDOException $e) {
 				die('error create aetudie '.$e->getMessage().'<br>');
@@ -120,8 +114,7 @@ class AEtudieDAO {
 	public static function delete($obj) {
 		if (get_class($obj)=="AEtudie") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `aEtudie` WHERE `idPromo`=? AND `idDerpartement`=? AND `idPersonne`=? AND `idDiplomeDUT`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `aEtudie` WHERE `idPromo`=? AND `idDerpartement`=? AND `idPersonne`=? AND `idDiplomeDUT`=?");
 				$req->execute(array($obj->getPromo()->getId(), $obj->getDepartement()->getId(), $obj->getPersonne()->getId(), $obj->getDiplomeDUT()->getId()));
 			} catch(PDOException $e) {
 				die('error delete aetudie '.$e->getMessage().'<br>');

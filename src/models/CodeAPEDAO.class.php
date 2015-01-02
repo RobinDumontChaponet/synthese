@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."CodeAPE.class.php");
 
 class CodeAPEDAO
@@ -9,8 +9,7 @@ class CodeAPEDAO
 	public static function getAll()
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT `code`, `libelle` FROM `codeAPE` ORDER BY code");
+			$req=SPDO::getInstance()->query("SELECT `code`, `libelle` FROM `codeAPE` ORDER BY code");
 			while($code=$req->fetch()){
 				$lstcode[]=new CodeAPE($code['code'], $code['libelle']);
 			}
@@ -24,8 +23,7 @@ class CodeAPEDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT `code`, `libelle` FROM `codeAPE` WHERE code=?");
+			$req=SPDO::getInstance()->prepare("SELECT `code`, `libelle` FROM `codeAPE` WHERE code=?");
 			$req->execute(array($id));
 			if($code=$req->fetch()){
 			     return new CodeAPE($code['code'], $code['libelle']);
@@ -44,10 +42,9 @@ class CodeAPEDAO
 		if (get_class($code)=="CodeAPE")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("INSERT INTO `codeAPE`(`code`, `libelle`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `codeAPE`(`code`, `libelle`) VALUES (?,?)");
 				$req->execute(array($code->getCode(), $code->getLibelle()));
-                $code->setId($bdd->LastInsertId());
+                $code->setId(SPDO::getInstance()->LastInsertId());
 				return $code->getId();
 			}catch (PDOException $e)
 			{
@@ -64,8 +61,7 @@ class CodeAPEDAO
 		if (get_class($code)=="CodeAPE")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("UPDATE `codeAPE` SET `libelle`=? WHERE code=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `codeAPE` SET `libelle`=? WHERE code=?");
 				$req->execute(array($code->getLibelle(), $code->getCode()));
 			}catch (PDOException $e)
 			{
@@ -82,8 +78,7 @@ class CodeAPEDAO
 		if (get_class($code)=="CodeAPE")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("DELETE FROM `codeAPE` WHERE `code`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `codeAPE` WHERE `code`=?");
 				$req->execute(array($code->getCode()));
 			}catch (PDOException $e)
 			{

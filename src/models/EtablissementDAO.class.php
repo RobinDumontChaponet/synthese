@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Etablissement.class.php");
 
 class EtablissementDAO
@@ -10,8 +10,7 @@ class EtablissementDAO
 	{
 		$lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM etablissement ORDER BY nom");
+			$req=SPDO::getInstance()->query("SELECT * FROM etablissement ORDER BY nom");
 			while
 			($res=$req->fetch())
 			{
@@ -27,8 +26,7 @@ class EtablissementDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM etablissement WHERE idEtablissement=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM etablissement WHERE idEtablissement=?");
 			$req->execute(array($id));
 			if
 			($res=$req->fetch())
@@ -47,10 +45,9 @@ class EtablissementDAO
 		(get_class($obj)=="Etablissement")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `etablissement`(`nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`,`fax`,`web`) VALUES (?,?,?,?,?,?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `etablissement`(`nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`,`fax`,`web`) VALUES (?,?,?,?,?,?,?,?)");
 				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays(),$obj->getFax(),$obj->getWeb()));
-				$obj->setId($bdd->LastInsertId());
+				$obj->setId(SPDO::getInstance()->lastInsertId());
                 return $obj->getId();
 			}catch(PDOException $e)
 			{
@@ -68,8 +65,7 @@ class EtablissementDAO
 		(get_class($obj)=="Etablissement")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `etablissement` SET `nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=?,`pays`=?,`fax`=?,`web`=? WHERE `idEtablissement`=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `etablissement` SET `nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=?,`pays`=?,`fax`=?,`web`=? WHERE `idEtablissement`=?");
 				$req->execute(array($obj->getNom(), $obj->getAdresse1(), $obj->getAdresse2(), $obj->getCodePostal(), $obj->getVille(), $obj->getPays(),$obj->getFax(),$obj->getWeb(), $obj->getId()));
 			}catch(PDOException $e)
 			{
@@ -87,8 +83,7 @@ class EtablissementDAO
 		(get_class($obj)=="Etablissement")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `etablissement` WHERE `idEtablissement`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `etablissement` WHERE `idEtablissement`=?");
 				$req->execute(array($obj->getId()));
 			}catch(PDOException $e)
 			{

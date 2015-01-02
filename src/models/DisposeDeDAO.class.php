@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."DisposeDe.class.php");
 require_once(MODELS_INC."TypeProfilDAO.class.php");
 require_once(MODELS_INC."DroitDAO.class.php");
@@ -13,8 +13,7 @@ class DisposeDeDAO
 	{
 		$lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT idProfil FROM disposeDe GROUP BY idProfil");
+			$req=SPDO::getInstance()->query("SELECT idProfil FROM disposeDe GROUP BY idProfil");
 			while ($res=$req->fetch())
 			{
                 $type=TypeProfilDAO::getById($res['idProfil']);
@@ -28,11 +27,9 @@ class DisposeDeDAO
 
 	public static function getByTypeProfilAndPage($type, $page)
 	{
-		if (get_class($type)=="TypeProfil" && get_class($page)=="Page")
-		{
+		if (get_class($type)=="TypeProfil" && get_class($page)=="Page"){
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("SELECT * FROM disposeDe WHERE idProfil=? AND idPage=?");
+				$req=SPDO::getInstance()->prepare("SELECT * FROM disposeDe WHERE idProfil=? AND idPage=?");
 				$req->execute(array($type->getId(), $page->getId()));
                 $dipos=new DisposeDe($type,array(),$page);
 				while ($res=$req->fetch())
@@ -55,11 +52,9 @@ class DisposeDeDAO
 	public static function getByTypeProfil($type)
 	{
 		$lst=array();
-		if (get_class($type)=="TypeProfil")
-		{
+		if (get_class($type)=="TypeProfil"){
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("SELECT idPage FROM disposeDe WHERE idProfil=? GROUP BY idPage");
+				$req=SPDO::getInstance()->prepare("SELECT idPage FROM disposeDe WHERE idProfil=? GROUP BY idPage");
 				$req->execute(array($type->getId()));
 				while ($res=$req->fetch())
 				{
@@ -83,8 +78,7 @@ class DisposeDeDAO
 		if (get_class($page)=="Page")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("SELECT idProfil FROM disposeDe WHERE idPage=? GROUP BY idProfil");
+				$req=SPDO::getInstance()->prepare("SELECT idProfil FROM disposeDe WHERE idPage=? GROUP BY idProfil");
 				$req->execute(array($page->getId()));
 				while ($res=$req->fetch())
 				{
@@ -107,8 +101,7 @@ class DisposeDeDAO
 		if (get_class($obj)=="DisposeDe")
 		{
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `disposeDe`(`idProfil`, `idDroit`, `idPage`) VALUES (?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `disposeDe`(`idProfil`, `idDroit`, `idPage`) VALUES (?,?,?)");
                 $lstDroit=$obj->getDroit();
                 foreach($droit as $lstDroit){
 				    $req->execute(array($obj->getTypeProfil()->getId(), $droit->getId(), $obj->getPage->getId()));
@@ -127,8 +120,7 @@ class DisposeDeDAO
 		if (get_class($obj)=="DisposeDe")
 		{
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `disposeDe` WHERE `idProfil`=?, `idDroit`=?, `idPage`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `disposeDe` WHERE `idProfil`=?, `idDroit`=?, `idPage`=?");
                 $lstDroit=$obj->getDroit();
                 foreach($droit as $lstDroit){
 				    $req->execute(array($obj->getTypeProfil()->getId(), $droit->getId(), $obj->getPage->getId()));

@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Droit.class.php");
 
 class DroitDAO
@@ -8,8 +8,7 @@ class DroitDAO
 	public static function getAll()
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT `idDroit`, `libelle` FROM `droits` ORDER BY libelle");
+			$req=SPDO::getInstance()->query("SELECT `idDroit`, `libelle` FROM `droits` ORDER BY libelle");
 			$lst=$req->fetchAll();
 			$lstObj=array();
 			foreach
@@ -27,8 +26,7 @@ class DroitDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT `idDroit`, `libelle` FROM `droits` WHERE idDroit=?");
+			$req=SPDO::getInstance()->prepare("SELECT `idDroit`, `libelle` FROM `droits` WHERE idDroit=?");
 			$req->execute(array($id));
 			$droit=$req->fetch();
 			return new Droit($droit['idDroit'], $droit['libelle']);
@@ -45,10 +43,9 @@ class DroitDAO
 		(get_class($droit)=="Droit")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("INSERT INTO `droits`(`libelle`) VALUES (?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `droits`(`libelle`) VALUES (?)");
 				$req->execute(array($droit->getLibelle()));
-                $droit->setId($bdd->LastInsertId());
+                $droit->setId(SPDO::getInstance()->LastInsertId());
 				return $droit->getId();
 			}catch(PDOException $e)
 			{
@@ -62,12 +59,9 @@ class DroitDAO
 
 	public static function update($droit)
 	{
-		if
-		(get_class($droit)=="Droit")
-		{
+		if(get_class($droit)=="Droit"){
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("UPDATE `droits` SET `libelle`=? WHERE `idDroit`=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `droits` SET `libelle`=? WHERE `idDroit`=?");
 				$req->execute(array($droit->getLibelle(), $droit->getId()));
 			}catch(PDOException $e)
 			{
@@ -85,8 +79,7 @@ class DroitDAO
 		(get_class($droit)=="Droit")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("DELETE FROM `droits` WHERE `idDroit`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `droits` WHERE `idDroit`=?");
 				$req->execute(array($droit->getId()));
 			}catch(PDOException $e)
 			{

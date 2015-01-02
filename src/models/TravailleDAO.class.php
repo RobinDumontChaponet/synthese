@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Travaille.class.php");
 require_once(MODELS_INC."AncienDAO.class.php");
 require_once(MODELS_INC."PosteDAO.class.php");
@@ -11,8 +11,7 @@ class TravailleDAO {
 	public static function getAll() {
 		$lst=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM travaille");
+			$req=SPDO::getInstance()->query("SELECT * FROM travaille");
 			while($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
 				$poste=PosteDAO::getById($res['idPoste']);
@@ -29,8 +28,7 @@ class TravailleDAO {
 		if (get_class($obj)=="Ancien") {
 			$lst=array();
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("SELECT * FROM travaille WHERE idPersonne=?");
+				$req=SPDO::getInstance()->prepare("SELECT * FROM travaille WHERE idPersonne=?");
 				$req->execute(array($obj->getId()));
 				while($res=$req->fetch()) {
 					$ancien=AncienDAO::getById($res['idPersonne']);
@@ -50,8 +48,7 @@ class TravailleDAO {
 	public static function create($obj) {
 		if(get_class($obj)=="Travaille") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `travaille`(`idPersonne`, `idPoste`, `idEntreprise`, `dateEmbaucheDeb`, `dateEmbaucheFin`) VALUES (?,?,?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `travaille`(`idPersonne`, `idPoste`, `idEntreprise`, `dateEmbaucheDeb`, `dateEmbaucheFin`) VALUES (?,?,?,?,?)");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDebut(), $obj->getDateEmbaucheFin()));
 			} catch(PDOException $e) {
 				die('error create Travaille '.$e->getMessage().'<br>');
@@ -64,8 +61,7 @@ class TravailleDAO {
 	public static function update($obj) {
 		if(get_class($obj)=="Travaille") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("UPDATE `travaille` SET `dateEmbaucheFin`=? WHERE `idPersonne`=?,`idPoste`=?,`idEntreprise`=?,`dateEmbaucheDeb`=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `travaille` SET `dateEmbaucheFin`=? WHERE `idPersonne`=?,`idPoste`=?,`idEntreprise`=?,`dateEmbaucheDeb`=?");
 				$req->execute(array($obj->getDateEmbaucheFin(), $obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDebut()));
 			} catch(PDOException $e) {
 				die('error update Travaille '.$e->getMessage().'<br>');
@@ -78,8 +74,7 @@ class TravailleDAO {
 	public static function delete($obj) {
 		if(get_class($obj)=="Travaille") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `travaille` WHERE `idPersonne`=?,`idPoste`=?,`idEntreprise`=?,`dateEmbaucheDeb`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `travaille` WHERE `idPersonne`=?,`idPoste`=?,`idEntreprise`=?,`dateEmbaucheDeb`=?");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDebut()));
 			} catch(PDOException $e) {
 				die('error delete Travaille '.$e->getMessage().'<br>');

@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Compte.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
 require_once(MODELS_INC."TypeProfilDAO.class.php");
@@ -11,8 +11,7 @@ class CompteDAO
 	{
 		$compte = NULL;
 		try {
-			$connect = connect();
-			$statement = $connect->prepare("SELECT * FROM compte WHERE ndc=?");
+			$statement = SPDO::getInstance()->prepare("SELECT * FROM compte WHERE ndc=?");
 			$statement->bindParam(1, $ndc);
 			$statement->execute();
 			if ($res = $statement->fetch())
@@ -31,8 +30,7 @@ class CompteDAO
 	{
 		$lstCompte=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM compte ORDER BY ndc");
+			$req=SPDO::getInstance()->query("SELECT * FROM compte ORDER BY ndc");
 			while ($res=$req->fetch(PDO::FETCH_OBJ))
 			{
 				$personne=PersonneDAO::getById($res->idPersonne);
@@ -48,8 +46,7 @@ class CompteDAO
 	{
 		$compte = NULL;
 		try {
-			$connect = connect();
-			$statement = $connect->prepare("SELECT * FROM compte WHERE idCompte=?");
+			$statement = SPDO::getInstance()->prepare("SELECT * FROM compte WHERE idCompte=?");
 			$statement->execute(array($id));
 			if ($res = $statement->fetch(PDO::FETCH_OBJ))
 			{
@@ -66,10 +63,9 @@ class CompteDAO
     public static function create(&$obj){
         if(gettype($obj)=="Compte"){
             try{
-                $bdd=connect();
-                $req=$bdd->prepare("INSERT INTO `compte`(`idProfil`, `idPersonne`, `ndc`, `mdp`) VALUES (?,?,?,?)");
+                $req=SPDO::getInstance()->prepare("INSERT INTO `compte`(`idProfil`, `idPersonne`, `ndc`, `mdp`) VALUES (?,?,?,?)");
                 $req->execute(array($obj->getTypeProfil(),$obj->getPersonne(),$obj->getNdc(),$obj->getMdp));
-                $obj->setId($bdd->lastInsertId());
+                $obj->setId(SPDO::getInstance()->lastInsertId());
                 return $obj->getId();
             }catch(PDOException $e){
                 die('error create comptedao '.$e->getMessage().'<br>');
@@ -80,8 +76,7 @@ class CompteDAO
 	public static function update($compte)
 	{
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("UPDATE `compte` SET `idProfil`=?,`idPersonne`=?,`ndc`=?,`mdp`=? WHERE `idCompte`=?");
+			$req=SPDO::getInstance()->prepare("UPDATE `compte` SET `idProfil`=?,`idPersonne`=?,`ndc`=?,`mdp`=? WHERE `idCompte`=?");
 			$req->execute(array($compte->getTypeProfil()->getId(), $compte->getPersonne()->getId(), $compte->getMdp(), $compte->getId()));
 		} catch (PDOException $e) {
 			die("Error update() !: " . $e->getMessage() . "<br/>");
@@ -90,8 +85,7 @@ class CompteDAO
 	public static function delete($compte)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("DELETE FROM `compte` WHERE `idCompte`=?");
+			$req=SPDO::getInstance()->prepare("DELETE FROM `compte` WHERE `idCompte`=?");
 			$req->execute(array($compte->getId()));
 		} catch (PDOException $e) {
 			die("Error delete() !: " . $e->getMessage() . "<br/>");

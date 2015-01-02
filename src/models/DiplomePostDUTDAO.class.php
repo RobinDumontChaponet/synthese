@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."DomaineDAO.class.php");
 require_once(MODELS_INC."DiplomePostDUT.class.php");
 
@@ -10,13 +10,12 @@ class DiplomePostDUTDAO
 	{
 		$lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM diplomePostDUT ORDER BY libelle");
+			$req=SPDO::getInstance()->query("SELECT * FROM diplomePostDUT ORDER BY libelle");
 			while
 			($res=$req->fetch())
 			{
 				$dom=DomaineDAO::getById($res['idDomaine']);
-				$lst[]=new DiplomeDUT($res['idDiplomePost'], $res['libelle'], $dom);
+				$lst[]=new DiplomePostDUT($res['idDiplomePost'], $res['libelle'], $dom);
 			}
 		}catch(PDOException $e)
 		{
@@ -28,8 +27,7 @@ class DiplomePostDUTDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM diplomePostDUT WHERE idDiplomePost=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM diplomePostDUT WHERE idDiplomePost=?");
 			$req->execute(array($id));
 			if
 			($res=$req->fetch())
@@ -47,14 +45,12 @@ class DiplomePostDUTDAO
 
 	public static function create(&$obj)
 	{
-		if
-		(get_class($obj)=="DiplomePostDUT")
+		if(get_class($obj)=="DiplomePostDUT")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `diplomePostDUT`(`idDomaine`, `libelle`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `diplomePostDUT`(`idDomaine`, `libelle`) VALUES (?,?)");
 				$req->execute(array($obj->getDomaine()->getId(), $obj->getLibelle()));
-                $obj->setId($bdd->LastInsertId());
+                $obj->setId(SPDO::getInstance()->LastInsertId());
 				return $obj->getId();
 			}catch(PDOException $e)
 			{
@@ -69,8 +65,7 @@ class DiplomePostDUTDAO
 	public static function update($obj) {
 		if (get_class($obj)=="DiplomePostDUT") {
 			try {
-				$bdd=connect();
-				$req = $bdd->prepare("UPDATE `diplomePostDUT` SET `idDomaine`=?,`libelle`=? WHERE idDiplomePost=?");
+				$req = SPDO::getInstance()->prepare("UPDATE `diplomePostDUT` SET `idDomaine`=?,`libelle`=? WHERE idDiplomePost=?");
 				$req->execute(array($obj->getDomaine()->getId(), $obj->getLibelle(), $obj->getId()));
 			} catch(PDOException $e) {
 				die('error update dip post dut '.$e->getMessage().'<br>');
@@ -82,12 +77,9 @@ class DiplomePostDUTDAO
 
 	public static function delete($obj)
 	{
-		if
-		(get_class($obj)=="DiplomePostDUT")
-		{
+		if(get_class($obj)=="DiplomePostDUT"){
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `diplomePostDUT` WHERE `idDiplomeDUT`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `diplomePostDUT` WHERE `idDiplomePost`=?");
 				$req->execute(array($obj->getId()));
 			}catch(PDOException $e)
 			{

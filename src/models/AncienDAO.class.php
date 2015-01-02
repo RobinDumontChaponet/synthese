@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Ancien.class.php");
 require_once(MODELS_INC."DiplomeDUT.class.php");
 require_once(MODELS_INC."DiplomePostDUT.class.php");
@@ -19,9 +19,7 @@ class AncienDAO {
 	public static function getAll() {
         $lstAncien=array();
 		try {
-			// Appel de la connexion
-			$bdd=connect();
-			$req=$bdd->query("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne ORDER BY nomUsage");
+			$req=SPDO::getInstance()->query("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne ORDER BY nomUsage");
 			while($ancien=$req->fetch())
 			{
                 $parents=ParentsDAO::getById($ancien['idParent']);
@@ -43,8 +41,8 @@ class AncienDAO {
 	public static function getById($id) {
 		if (is_numeric($id)) {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
+				
+				$req=SPDO::getInstance()->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
 				$req->execute(array($id));
 				if($ancien=$req->fetch()){
                 $parents=ParentsDAO::getById($ancien['idParent']);
@@ -63,8 +61,8 @@ class AncienDAO {
 
             $lst=array();
             try {
-                $bdd=connect();
-                $req=$bdd->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
+                
+                $req=SPDO::getInstance()->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
                 $req->execute(array($id));
                 while($res=$req->fetch()) {
                     $lst[]=AncienDAO::getById($res['idPersonne']);
@@ -79,9 +77,9 @@ class AncienDAO {
 	public static function create(&$ancien) {
 		if (get_class($ancien)=="Ancien") {
 			try {
-				$bdd=connect();
+				
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req = $bdd->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				$req = SPDO::getInstance()->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
                 $ancien->setId($idPers);
                 return $idPers;
@@ -96,9 +94,8 @@ class AncienDAO {
 	public static function update($ancien) {
 		if (get_class($ancien) == "Ancien") {
 			try {
-				$bdd=connect();
 				PersonneDAO::update(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req = $bdd->prepare("UPDATE `ancien` SET `dateNaissance`=?, `sexe`=?, `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
+				$req = SPDO::getInstance()->prepare("UPDATE `ancien` SET `dateNaissance`=?, `sexe`=?, `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
 				$req->execute(array($ancien->getDateNaissance(), $ancien->getSexe(), $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal(), $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
 			} catch(PDOException $e){
 				die('error update ancien '.$e->getMessage().'<br>');
@@ -111,9 +108,8 @@ class AncienDAO {
 	public static function delete($ancien) {
 		if (get_class($ancien)=="Ancien") {
 			try {
-				$bdd=connect();
 				PersonneDAO::delete(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
-				$req = $bdd->prepare("DELETE FROM `ancien` WHERE `idPersonne`=?");
+				$req = SPDO::getInstance()->prepare("DELETE FROM `ancien` WHERE `idPersonne`=?");
 				$req->execute(array($ancien->getId()));
 			} catch(PDOException $e) {
 				die('error delete ancien '.$e->getMessage().'<br>');
@@ -201,8 +197,8 @@ class AncienDAO {
         $req=$select." ".$from." ".$where;
         //var_dump($req);
 		try {
-			$bdd=connect();
-			$state=$bdd->prepare($req);
+			
+			$state=SPDO::getInstance()->prepare($req);
             //var_dump($args);
 			$state->execute($args);
 			while($ancien=$state->fetch()) {

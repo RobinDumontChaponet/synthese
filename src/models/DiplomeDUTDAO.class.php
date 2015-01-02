@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."DepartementIUTDAO.class.php");
 require_once(MODELS_INC."DiplomeDUT.class.php");
 
@@ -10,8 +10,7 @@ class DiplomeDUTDAO
 	{
 		$lst=array();
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM diplomeDUT ORDER BY libelle");
+			$req=SPDO::getInstance()->query("SELECT * FROM diplomeDUT ORDER BY libelle");
 			while
 			($res=$req->fetch())
 			{
@@ -28,8 +27,7 @@ class DiplomeDUTDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM diplomeDUT WHERE idDiplomeDUT=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM diplomeDUT WHERE idDiplomeDUT=?");
 			$req->execute(array($id));
 			if
 			($res=$req->fetch())
@@ -48,10 +46,9 @@ class DiplomeDUTDAO
 	public static function create(&$obj) {
 		if (get_class($obj) == "DiplomeDUT") {
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`) VALUES (?,?)");
 				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle()));
-                $obj->setId($bdd->LastInsertId());
+                $obj->setId(SPDO::getInstance()->LastInsertId());
 				return $obj->getId();
 			}catch(PDOException $e)
 			{
@@ -65,8 +62,7 @@ class DiplomeDUTDAO
 	public static function update($obj) {
 		if (get_class($obj) == "DiplomeDUT") {
 			try{
-				$bdd=connect();
-				$req = $bdd->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE `idDiplomeDUT`=?");
+				$req = SPDO::getInstance()->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE `idDiplomeDUT`=?");
 				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getId()));
 			}catch(PDOException $e)
 			{
@@ -83,8 +79,7 @@ class DiplomeDUTDAO
 		(get_class($obj)=="DiplomeDUT")
 		{
 			try{
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `diplomeDUT` WHERE `idDiplomeDUT`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `diplomeDUT` WHERE `idDiplomeDUT`=?");
 				$req->execute(array($obj->getId()));
 			}catch(PDOException $e)
 			{

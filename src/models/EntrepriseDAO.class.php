@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Entreprise.class.php");
 require_once(MODELS_INC."CodeAPE.class.php");
 require_once(MODELS_INC."CodeAPEDAO.class.php");
@@ -10,8 +10,7 @@ class EntrepriseDAO
 	public static function getAll()
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT `idEntreprise`, `codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone` FROM `entreprise`");
+			$req=SPDO::getInstance()->query("SELECT `idEntreprise`, `codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone` FROM `entreprise`");
 			$results=$req->fetchAll();
 			$lstEnt=array();
 			foreach ($results as $ent)
@@ -28,8 +27,7 @@ class EntrepriseDAO
 	public static function getById($id)
 	{
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT `idEntreprise`, `codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone` FROM `entreprise` WHERE idEntreprise=?");
+			$req=SPDO::getInstance()->prepare("SELECT `idEntreprise`, `codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone` FROM `entreprise` WHERE idEntreprise=?");
             $req->execute(array($id));
 			if($ent=$req->fetch()){
 			return new Entreprise($ent['idEntreprise'], $ent['nom'], $ent['adresse1'], $ent['adresse2'], $ent['codePostal'], $ent['ville'], $ent['cedex'], $ent['pays'], $ent['telephone'], CodeAPEDAO::getByID($ent['codeAPE']));
@@ -49,10 +47,9 @@ class EntrepriseDAO
 		(get_class($ent)=="Entreprise")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("INSERT INTO `entreprise`(`codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone`) VALUES (?,?,?,?,?,?,?,?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `entreprise`(`codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone`) VALUES (?,?,?,?,?,?,?,?,?)");
 				$req->execute(array($ent->getCode(), $ent->getNom(), $ent->getAdresse1(), $ent->getAdresse2(), $ent->getCodePostal(), $ent->getVille(), $ent->getCedex(), $ent->getPays(), $ent->getTelephone()));
-                $ent->setId($bdd->lastInsertId());
+                $ent->setId(SPDO::getInstance()->lastInsertId());
 				return $ent->getId();
 			}catch (PDOException $e)
 			{
@@ -69,8 +66,7 @@ class EntrepriseDAO
 		if (get_class($ent)=="Entreprise")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("UPDATE `entreprise` SET `codeAPE`=?,`nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=? ,`ville`=?,`cedex`=?,`pays`=?,`telephone`=? WHERE idEntreprise=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `entreprise` SET `codeAPE`=?,`nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=? ,`ville`=?,`cedex`=?,`pays`=?,`telephone`=? WHERE idEntreprise=?");
 				$req->execute(array($ent->getCode(), $ent->getNom(), $ent->getAdresse1(), $ent->getAdresse2(), $ent->getCodePostal(), $ent->getVille(), $ent->getCedex(), $ent->getPays(), $ent->getTelephone(), $ent->getId()));
 			}catch (PDOException $e)
 			{
@@ -87,8 +83,7 @@ class EntrepriseDAO
 		if (get_class($ent)=="Entreprise")
 		{
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("DELETE FROM `entreprise` WHERE `idEntreprise`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `entreprise` WHERE `idEntreprise`=?");
 				$req->execute(array($ent->getId()));
 			}catch (PDOException $e)
 			{

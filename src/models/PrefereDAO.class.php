@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Prefere.class.php");
 require_once(MODELS_INC."AncienDAO.class.php");
 require_once(MODELS_INC."TypeEvenementDAO.class.php");
@@ -10,8 +10,7 @@ class PrefereDAO {
 	public static function getAll() {
 		$lst=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->query("SELECT * FROM prefere");
+			$req=SPDO::getInstance()->query("SELECT * FROM prefere");
 			while
 			($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
@@ -27,8 +26,7 @@ class PrefereDAO {
 	public static function getByIdAncien($id) {
 		$lst=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM prefere WHERE idPersonne=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM prefere WHERE idPersonne=?");
 			$req->execute(array($id));
 			while
 			($res=$req->fetch()) {
@@ -45,8 +43,7 @@ class PrefereDAO {
 	public static function getByAncien($ancien) {
 		$lst=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM prefere WHERE idPersonne=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM prefere WHERE idPersonne=?");
 			$req->execute(array($ancien->getId()));
 			while
 			($res=$req->fetch()) {
@@ -63,8 +60,7 @@ class PrefereDAO {
     public static function getByIdTypeEvent($id) {
 		$lst=array();
 		try {
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT * FROM prefere WHERE idTypeEvenement=?");
+			$req=SPDO::getInstance()->prepare("SELECT * FROM prefere WHERE idTypeEvenement=?");
 			$req->execute(array($id));
 			while
 			($res=$req->fetch()) {
@@ -81,8 +77,7 @@ class PrefereDAO {
 	public static function create($obj) {
 		if(get_class($obj)=="Prefere") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `prefere`(`idPersonne`, `idTypeEvenement`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `prefere`(`idPersonne`, `idTypeEvenement`) VALUES (?,?)");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getTypeEvenement()->getId()));
 			} catch(PDOException $e) {
 				die('error create Prefere '.$e->getMessage().'<br>');
@@ -96,8 +91,7 @@ class PrefereDAO {
 	public static function delete($obj) {
 		if (get_class($obj) == "Prefere") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `prefere` WHERE `idPersonne`=? AND`idTypeEvenement`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `prefere` WHERE `idPersonne`=? AND`idTypeEvenement`=?");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getTypeEvenement()->getId()));
 			} catch(PDOException $e) {
 				die('error delete Prefere '.$e->getMessage().'<br>');

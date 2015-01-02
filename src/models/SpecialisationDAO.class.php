@@ -1,6 +1,6 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Specialisation.class.php");
 require_once(MODELS_INC."TypeSpecialisationDAO.class.php");
 
@@ -8,8 +8,7 @@ class SpecialisationDAO {
 
 	public static function getAll() {
 		try{
-			$bdd=connect();
-			$req=$bdd->query("SELECT `idSpe`, `libelle`, `idTypeSpe` FROM `specialisation` ORDER BY libelle");
+			$req=SPDO::getInstance()->query("SELECT `idSpe`, `libelle`, `idTypeSpe` FROM `specialisation` ORDER BY libelle");
 			$lst=$req->fetchAll();
 			$lstObj=array();
 			foreach ($lst as $spe) {
@@ -23,8 +22,7 @@ class SpecialisationDAO {
 
 	public static function getById($id) {
 		try{
-			$bdd=connect();
-			$req=$bdd->prepare("SELECT `idSpe`, `libelle`, `idTypeSpe` FROM `specialisation` WHERE idSpe=?");
+			$req=SPDO::getInstance()->prepare("SELECT `idSpe`, `libelle`, `idTypeSpe` FROM `specialisation` WHERE idSpe=?");
 			$req->execute(array($id));
 			$spe=$req->fetch();
 			return new Specialisation($spe['idSpe'], $spe['libelle'], TypeSpecialisationDAO::getById($spe['idTypeSpe']));
@@ -37,10 +35,9 @@ class SpecialisationDAO {
 	public static function create(&$spe) {
 		if (gettype($spe)=="Specialisation") {
 			try {
-				$bdd->connect();
-				$req=$bdd->prepare("INSERT INTO `specialisation`(`libelle`, `idTypeSpe`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `specialisation`(`libelle`, `idTypeSpe`) VALUES (?,?)");
 				$req->execute(array($spe->getLibelle(), $spe->getTypeSpecialisation()->getId()));
-				$spe->setId($bdd->LastInsertId());
+				$spe->setId(SPDO::getInstance()->LastInsertId());
 				return $spe->getId();
 			} catch(PDOException $e) {
 				die('error create spé '.$e->getMessage().'<br>');
@@ -54,8 +51,7 @@ class SpecialisationDAO {
 		if
 		(gettype($spe)=="Specialisation") {
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("UPDATE `specialisation` SET `libelle`=?,`idTypeSpe`=? WHERE `idSpe`=?");
+				$req=SPDO::getInstance()->prepare("UPDATE `specialisation` SET `libelle`=?,`idTypeSpe`=? WHERE `idSpe`=?");
 				$req->execute(array($spe->getLibelle(), $spe->getTypeSpecialisation()->getId(), $spe->getId()));
 			}catch(PDOException $e) {
 				die('error update spé '.$e->getMessage().'<br>');
@@ -69,8 +65,7 @@ class SpecialisationDAO {
 		if
 		(gettype($spe)=="Specialisation") {
 			try{
-				$bdd->connect();
-				$req=$bdd->prepare("DELETE FROM `specialisation` WHERE `idSpe`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `specialisation` WHERE `idSpe`=?");
 				$req->execute(array($spe->getId()));
 			}catch(PDOException $e) {
 				die('error delete spé '.$e->getMessage().'<br>');

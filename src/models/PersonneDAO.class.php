@@ -1,14 +1,13 @@
 <?php
 
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Personne.class.php");
 
 class PersonneDAO
 {
 	public static function getAll() {
         try{
-            $bdd=connect();
-            $req=$bdd->query("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` ORDER BY nomUsage");
+            $req=SPDO::getInstance()->query("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` ORDER BY nomUsage");
             $lst=$req->fetchAll();
             $lstObjet=array();
             foreach ($lst as $pers)
@@ -24,8 +23,7 @@ class PersonneDAO
 	public static function getById($id) {
 		if (is_numeric($id)) {
             try{
-                $bdd=connect();
-                $statement=$bdd->prepare("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` WHERE idPersonne=?");
+                $statement=SPDO::getInstance()->prepare("SELECT `idPersonne`, `nomUsage`, `nomPatronymique`, `mail`, `prenom` FROM `personne` WHERE idPersonne=?");
                 $statement->execute(array($id));
                 if($pers=$statement->fetch()){
                     return new Personne($pers['idPersonne'], $pers['nomUsage'], $pers['nomPatronymique'], $pers['prenom'], $pers['mail']);
@@ -41,10 +39,9 @@ class PersonneDAO
 	public static function create(&$pers) {
 		if (get_class($pers)=="Personne") {
             try{
-				$bdd=connect();
-				$req = $bdd->prepare("INSERT INTO `personne`(`nomUsage`, `nomPatronymique`, `mail`, `prenom`) VALUES (?,?,?,?)");
+				$req = SPDO::getInstance()->prepare("INSERT INTO `personne`(`nomUsage`, `nomPatronymique`, `mail`, `prenom`) VALUES (?,?,?,?)");
 				$req->execute(array($pers->getNom(), $pers->getNomPatronymique(), $pers->getMail(), $pers->getPrenom()));
-				$pers->setId($bdd->LastInsertId());
+				$pers->setId(SPDO::getInstance()->LastInsertId());
 				return $pers->getId();
             } catch(PDOException $e) {
 				die('error create personne '.$e->getMessage().'<br>');
@@ -57,8 +54,7 @@ class PersonneDAO
 	public static function delete($pers) {
 		if (get_class($pers)=="Personne") {
             try{
-				$bdd=connect();
-				$req = $bdd->prepare("DELETE FROM `personne` WHERE `idPersonne`=?");
+				$req = SPDO::getInstance()->prepare("DELETE FROM `personne` WHERE `idPersonne`=?");
 				$req->execute(array($pers->getId()));
             } catch(PDOException $e) {
 				die('error delete personne '.$e->getMessage().'<br>');
@@ -71,8 +67,7 @@ class PersonneDAO
 	public static function update($pers) {
 		if (get_class($pers) == "Personne") {
             try{
-                $bdd=connect();
-                $req = $bdd->prepare("UPDATE `personne` SET `nomUsage`=?,`nomPatronymique`=?,`mail`=?,`prenom`=? WHERE `idPersonne`=?");
+                $req = SPDO::getInstance()->prepare("UPDATE `personne` SET `nomUsage`=?,`nomPatronymique`=?,`mail`=?,`prenom`=? WHERE `idPersonne`=?");
                 $req->execute(array($pers->getNom(), $pers->getNomPatronymique(), $pers->getMail(), $pers->getPrenom(), $pers->getId()));
             } catch(PDOException $e) {
                 die('error update personne '.$e->getMessage().'<br>');

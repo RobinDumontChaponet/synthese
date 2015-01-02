@@ -1,5 +1,5 @@
 <?php
-require_once("dbConnection.inc.php");
+require_once("SPDO.class.php");
 require_once(MODELS_INC."Personne.class.php");
 
 class NewsletterDAO {
@@ -7,8 +7,7 @@ class NewsletterDAO {
 	public static function add($pers) {
 		if (get_class($pers)=="Personne") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("INSERT INTO `newsletter`(`idPersonne`) VALUES (?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `newsletter`(`idPersonne`) VALUES (?)");
 				$req->execute(array($pers->getId()));
 			} catch(PDOException $e) {
 
@@ -21,8 +20,7 @@ class NewsletterDAO {
 	public static function remove($pers) {
 		if (get_class($pers)=="Personne") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("DELETE FROM `newsletter` WHERE `idPersonne`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `newsletter` WHERE `idPersonne`=?");
 				$req->execute(array($pers->getId()));
 			} catch(PDOException $e) {
 
@@ -35,8 +33,7 @@ class NewsletterDAO {
 	public static function abonnement($pers) {
 		if (get_class($pers)=="Personne") {
 			try {
-				$bdd=connect();
-				$req=$bdd->prepare("Select count(*) as nb FROM `newsletter` WHERE `idPersonne`=?");
+				$req=SPDO::getInstance()->prepare("Select count(*) as nb FROM `newsletter` WHERE `idPersonne`=?");
 				$req->execute(array($pers->getId()));
 				$res=$req->fetch();
 				if ($res['nb']==1) {
