@@ -286,6 +286,12 @@ dd:after {
 .message:before {
 	content: "\e96e";
 }
+#fax:before {
+	content: "\e926";
+}
+#web:before {
+	content: "\ea80";
+}
 .date {
 	font-weight: 400;
 	font-style: oblique;
