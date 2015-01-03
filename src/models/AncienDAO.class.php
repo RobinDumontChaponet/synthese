@@ -132,7 +132,7 @@ class AncienDAO {
 	 * @param   Boolean $trav        [[Description]]
 	 * @returns Object   [[Description]]
 	 */
-	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$count) {
+	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$nbTotal) {
 		$lst=array();
 		$args=array();
         $select="SELECT count(*) as nb, A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
@@ -208,8 +208,8 @@ class AncienDAO {
             //var_dump($args);
 			$state->execute($args);
 			while($ancien=$state->fetch()) {
-                if($count==0){
-                    $count=$ancien['nb'];   
+                if($nbTotal==0){
+                    $nbTotal=$ancien['nb'];   
                 }
                 $parents=ParentsDAO::getById($ancien['idParent']);
 				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
