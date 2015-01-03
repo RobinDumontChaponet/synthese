@@ -10,7 +10,7 @@
         public static function getAll(){
             $lst=array();
             try{
-                $req=SPDO::getInstance()->query("SELECT * FROM `commentaires`");
+                $req=SPDO::getInstance()->query("SELECT * FROM `commentaires` ORDER BY date DESC");
                 while($res=$req->fetch()){
                     $pers=PersonneDAO::getById($res['idPersonne']);
                     $lst[]=new Commentaire($res['idCom'],$pers,$res['idPost'],$res['date'],$res['contenu']);
@@ -24,7 +24,7 @@
         public static function getByIdPost($id){
             $lst=array();
             try{
-                $req=SPDO::getInstance()->prepare("SELECT * FROM `commentaires` WHERE idPost=?");
+                $req=SPDO::getInstance()->prepare("SELECT * FROM `commentaires` WHERE idPost=? ORDER BY date DESC");
                 $req->execute(array($id));
                 while($res=$req->fetch()){
                     $pers=PersonneDAO::getById($res['idPersonne']);

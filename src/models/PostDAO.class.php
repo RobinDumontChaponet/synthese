@@ -3,7 +3,7 @@ require_once("SPDO.class.php");
 require_once(MODELS_INC."Post.class.php");
 require_once(MODELS_INC."Personne.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
-require_once(MODELS_INC."Groupe.class.php");
+require_once(MODELS_INC."GroupeDAO.class.php");
 require_once(MODELS_INC."CommentaireDAO.class.php");
 
 class PostDAO {
@@ -29,7 +29,7 @@ class PostDAO {
 		if (get_class($gr)=="Groupe") {
 			$lst=array();
 			try {
-				$req=SPDO::getInstance()->prepare("SELECT PO.idPost FROM publieGroupe P, posts PO WHERE P.idGroupe=? AND P.idPost=PO.idPost ORDER BY date");
+				$req=SPDO::getInstance()->prepare("SELECT PO.idPost FROM publieGroupe P, posts PO WHERE P.idGroupe=? AND P.idPost=PO.idPost ORDER BY date DESC");
 				$req->execute(array($gr->getId()));
 				while ($res=$req->fetch()) {
 					$lst[]=PostDAO::getById($res['idPost']);
@@ -92,6 +92,9 @@ class PostDAO {
 			try {
 				$req=SPDO::getInstance()->prepare("DELETE FROM `posts` WHERE `idPost`=?");
 				$req->execute(array($obj->getId()));
+                foreach($obj->getComs() as $gr){
+                    CommentaireDAO::delete($gr);   
+                }
 			} catch(PDOException $e) {
 				die('erreur sql PostDAO::delete '.$e->getMessage());
 			}
@@ -112,6 +115,24 @@ class PostDAO {
 			die('erreur type publieGroupe groupeDAO');
 		}
 	}
+    
+    public static function getGroupeByPost($post){
+        if (get_class($post)=="Post"){
+            try {
+				$req=SPDO::getInstance()->prepare("Select * FROM publieGroupe WHERE idPost=?");
+				$req->execute(array($post->getId()));
+                if($res=$req->fetch()){
+                    return GroupeDAO::getById($res['idGroupe']);
+                }else{
+                    return null;   
+                }
+			} catch(PDOException $e) {
+				die('Erreur sql groupeDAO getGroupeByPost');
+			}   
+        }else {
+			die('erreur type getGroupeByPost groupeDAO');
+		}
+    }
 
 }
 ?>

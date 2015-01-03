@@ -39,7 +39,7 @@
         //setters
         
         public function setId($id){
-            if($id!=null && $id>-1 && is_numeric($id)){
+            if($id!=null && $id>-1){
                 $this->id=$id;   
             }else{
                 throw new Exception('groupe.class.php -> id incorrect : '.'"'.$id.'"');   
