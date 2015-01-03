@@ -33,7 +33,9 @@ class EvenementDAO
 			{
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				return new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
-			}
+			}else{
+                return null;   
+            }
 		}catch(PDOException $e)
 		{
 			die('error get id Evenement '.$e->getMessage().'<br>');
