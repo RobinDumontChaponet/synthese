@@ -11,9 +11,12 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'csv-import', 'class'=>'aPromo', 'title'=>'Ajouter une promotions', 'inner'=>'Ajouter')
 			),
+			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements à venir', 'inner'=>'À venir', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aEvents', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
 			'groupes, groupe, creerGroupe' => array(
@@ -29,12 +32,15 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			'profil' => array(
 				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
-				(object)array('href'=>'#diplomes', 'class'=>'aProfil', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes'),
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
 			),
 			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aEvents', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
 			'groupes, groupe, creerGroupe' => array(
@@ -47,13 +53,23 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	break;
 	case 3: // isFormerStudent_
 		$items = array(
-			(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+			'profil' => array(
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId().'#diplomes', 'class'=>'aProfil', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>true),
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
+			),
 			'promotion, promotions' => array(
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa et les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa promotion', 'inner'=>'Ma promotion'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Toutes')
 			),
-			(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+			'evenements, evenement-ajouter' => array(
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes')
+			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
@@ -86,7 +102,7 @@ foreach($items as $key => $item)
 			$menu .= '	  <nav class="shutter"><ul>';
 			array_shift($item);
 			foreach($item as $key => $shutter)
-				$menu .= '	  	<li'.(($_GET['requ']==$shutter->href)?' class="active"':'').'><a href="'.$shutter->href.'" class="'.$shutter->class.'" title="'.$shutter->title.'"><span>'.$shutter->inner.'</span></a></li>'."\n";
+				$menu .= '	  	<li'.(($_GET['requ']==$shutter->href)?' class="active"':'').'><a href="'.$shutter->href.'" class="'.$shutter->class.'" title="'.$shutter->title.'"'.((isset($shutter->scroll) && $_GET['requ']==$shutter->href)?' data-scroll':'').'><span>'.$shutter->inner.'</span></a></li>'."\n";
 			$menu .= '</ul></nav>';
 		} else
 			$menu .= '	  <li'.(($_GET['requ']==$first['value']->href)?' class="active"':'').'><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
