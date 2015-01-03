@@ -1,4 +1,4 @@
-<!--meta title="Message" -->
+<!--meta title="Article" -->
 <div id="content">
 <?php if($post!=null) { ?>
 	<h1>Article & commentaires</h1>

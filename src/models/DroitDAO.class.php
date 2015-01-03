@@ -28,7 +28,7 @@ class DroitDAO
         try{
             $req=SPDO::getInstance()->prepare("SELECT `idDroit`, `libelle` FROM `droits` WHERE idDroit=?");
             $req->execute(array($id));
-            if($droit=$req->fetch());{
+            if($droit=$req->fetch()){
                 return new Droit($droit['idDroit'], $droit['libelle']);
             }else{
                 return null;
