@@ -4,7 +4,6 @@
 	<?php if ($_SESSION['user_auth']['write'])
 		echo '<a class="add" href="diplome-ajouter">Ajouter un diplôme</a>';
 	?>
-
 	<section>
 	<?php
 	if($diplomes != NULL) {
@@ -16,9 +15,9 @@
 			} ?>
 			<p><a href="diplome/<?php echo $diplome->getId();?>"><?php echo $diplome->getLibelle();?></a></p>
 			<dt><label>Domaine</label></dt>
-			<dd><?php echo $diplome->getDomaine()->getLibelle();?></dd>
+			<dd class="domaine"><?php echo $diplome->getDomaine()->getLibelle();?></dd>
 			<dt><label>Description</label></dt>
-			<dd><?php echo $diplome->getDomaine()->getDescription();?></dd>
+			<dd class="commentaire"><?php echo $diplome->getDomaine()->getDescription();?></dd>
 			</li>
 		<?php }
 		echo '</ul>';

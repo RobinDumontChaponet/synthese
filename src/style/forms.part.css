@@ -28,6 +28,8 @@ input, .button, button, select, textarea {
 	padding: 0;
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
+	-ms-box-sizing: content-box;
+	-o-box-sizing: content-box;
 	box-sizing: content-box;
 	font-size: 16px;
 	line-height: 30px;

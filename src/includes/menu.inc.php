@@ -5,11 +5,10 @@
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
-			(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 			'promotion, promotions, csv-import' => array(
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
-				(object)array('href'=>'csv-import', 'class'=>'aAdd', 'title'=>'Ajouter une promotions', 'inner'=>'Ajouter')
+				(object)array('href'=>'csv-import', 'class'=>'aAdd', 'title'=>'Ajouter une promotions', 'inner'=>'Importer')
 			),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),

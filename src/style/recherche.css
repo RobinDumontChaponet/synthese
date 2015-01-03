@@ -56,7 +56,7 @@ th:first-child, td:first-child {
 	padding: 0;
 	float: left;
 	position: relative;
-	top: 16px;
+	top: 6px;
 	right: 29px;
 }
 td input[type="checkbox"] {

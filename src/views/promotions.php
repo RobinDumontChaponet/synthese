@@ -1,12 +1,17 @@
 <!--meta title="Promotions" css="style/promotions.css"-->
 <div id="content">
-  <h1>Promotions</h1>
-  <ul>
+	<h1>Promotions</h1>
+	<?php if ($_SESSION['user_auth']['write'])
+		echo '<a class="add" href="csv-import">Importer une promotion</a>';
+	?>
+	<section>
+		<ul>
 <?php foreach ($promotions as $promotion) {
-	echo '	  <li class="promotion"><a href="promotion/'.$promotion->getId().'" title="Promotion '.$promotion->getAnnee().'">Promotion '.$promotion->getAnnee().'</a> > ';
+	echo '<li class="promotion"><a href="promotion/'.$promotion->getId().'" title="Promotion '.$promotion->getAnnee().'">Promotion '.$promotion->getAnnee().'</a> > ';
 	foreach ($departements as $departement)
 		echo '<a href="promotion/'.$promotion->getId().'/'.$departement->getSigle().'" title="Promotion '.$departement->getNom().' année '.$promotion->getAnnee().'">'.$departement->getSigle().'</a>';
 	echo '</li>'.PHP_EOL;
 }?>
-  </ul>
+		</ul>
+	</section>
 </div>

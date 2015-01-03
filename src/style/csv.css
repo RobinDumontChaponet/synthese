@@ -1,169 +1,145 @@
-#wrapper > #content {
-	text-align: center;
-}
-
-
 form {
-	text-align:center;
-	position:relative;
-	padding:5px;
-	margin:8px;
-	border:1px solid #e1e1e1;
-	background:#FCFCFC;
-	opacity:0;
+	text-align: center;
+	position: relative;
+	padding: 5px;
+	margin: 8px -20px;
+	border: 1px solid #e1e1e1;
+	background: #FCFCFC;
+	opacity: 0;
 	display: none;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;
-	-webkit-animation:fadeIn ease-in 1;
-	-moz-animation:fadeIn ease-in 1;
-	animation:fadeIn ease-in 1;
-	-webkit-animation-fill-mode:forwards;
-	-moz-animation-fill-mode:forwards;
-	animation-fill-mode:forwards;
-	-webkit-animation-duration:1s;
-	-moz-animation-duration:1s;
-	animation-duration:1s;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-animation: fadeIn ease-in 1;
+	-moz-animation: fadeIn ease-in 1;
+	animation: fadeIn ease-in 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	animation-duration: 1s;
 	-webkit-animation-play-state: paused;
 	-moz-animation-play-state: paused;
 	animation-play-state: paused;
 }
-
 form:before {
-	content:"";
-	position:absolute;
-	top:-10px;
-/* value = - border-top-width - border-bottom-width */
-	left:50%;
-/* controls horizontal position */
-	margin-left:-10px;
-	border-width:0 10px 10px;
-	border-style:solid;
-	border-color:#e1e1e1 transparent;
-/* reduce the damage in FF3.0 */
-	display:block;
-	width:0;
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	margin-left: -10px;
+	border-width: 0 10px 10px;
+	border-style: solid;
+	border-color: #e1e1e1 transparent;
+	display: block;
+	width: 0;
 }
-
 form:after {
-	content:"";
-	position:absolute;
-	top:-8px;
-/* value = - border-top-width - border-bottom-width */
-	left:50%;
-/* value = (:before left) + (:before border-left) - (:after border-left) */
-	margin-left:-8px;
-	border-width:0 8px 8px;
-	border-style:solid;
-	border-color:#fff transparent;
-/* reduce the damage in FF3.0 */
-	display:block;
-	width:0;
+	content: "";
+	position: absolute;
+	top: -8px;
+	left: 50%;
+	margin-left: -8px;
+	border-width: 0 8px 8px;
+	border-style: solid;
+	border-color: #fff transparent;
+	display: block;
+	width: 0;
 }
 
 .button {
-	width:200px;
-	z-index:100;
-	position:relative;
-	overflow:hidden;
-	padding:0;
-	display:inline-block;
-	text-align:center;
-	text-decoration:none;
-	-webkit-transition:.2s all ease-in-out;
-	-moz-transition:.2s all ease-in-out;
-	-ms-transition:.2s all ease-in-out;
-	-o-transition:.2s all ease-in-out;
-	transition:.2s all ease-in-out;
+	width: 200px;
+	z-index: 100;
+	position: relative;
+	overflow: hidden;
+	padding: 0;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: .2s all ease-in-out;
+	-moz-transition: .2s all ease-in-out;
+	-ms-transition: .2s all ease-in-out;
+	-o-transition: .2s all ease-in-out;
+	transition: .2s all ease-in-out;
 }
-
 .button label {
 	box-shadow: none;
 	margin: 0;
 	padding: 0;
 }
-
 .button img {
-	display:none;
+	display: none;
 }
-
 .button.loading {
-	width:40px;
-	height:40px;
-	margin:0 auto;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
 }
-
 .button.loading label {
-	display:none;
+	display: none;
 }
-
 .button.loading img {
-	display:block;
+	display: block;
 }
-
 
 input[type="file"] {
-	position:absolute;
-	left:-1000px;
-	visibility:hidden;
+	position: absolute;
+	left: -1000px;
+	visibility: hidden;
 }
 
+fieldset#table {
+	position: relative;
+	height: 200px;
+	overflow: auto;
+	overflow-y: hidden;
+}
+table {
+	position: absolute;
+	width: 140%;
+	margin: 0 1px;
 
-fieldset {
-	border:0;
+}
+td {
+	padding: 2px 10px;
 }
 
 #fileinput {
-	visibility:visible;
-	top:0;
-	bottom:0;
-	left:0;
-	width:100%;
-	opacity:0;
-	filter:alpha(opacity=0);
-	cursor:pointer;
-	position:absolute;
+	visibility: visible;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+	position: absolute;
 }
 
 #files_list {
-	font-size:10px;
-	word-wrap:break-word;
-	word-break:break-all;
-	white-space:nowrap;
-	text-overflow:ellipsis;
+	font-size: 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 #files_list input {
-	position:relative;
-	top:3px;
-	right:5px;
-	background:url(close.png) no-repeat;
-	-webkit-background-size:contain;
-	-moz-background-size:contain;
-	-ms-background-size:contain;
-	-o-background-size:contain;
-	background-size:contain;
-	border:0;
-	width:20px;
-	height:20px;
-	z-index:1005;
-	cursor:pointer;
-}
-
-#files_list input:hover {
-	border:1px solid #FAFAFA;
-	border-radius:50%;
-	top:3px;
-	-webkit-transform:rotate(45deg);
-	-moz-transform:rotate(45deg);
-	-ms-transform:rotate(45deg);
-	-o-transform:rotate(45deg);
-	transform:rotate(45deg);
-	-webkit-transition:1s all ease-out;
-	-moz-transition:1s all ease-out;
-	-ms-transition:1s all ease-out;
-	-o-transition:1s all ease-out;
-	transition:1s all ease-out;
+	position: relative;
+	top: 3px;
+	right: 5px;
+	background: url(close.png) no-repeat;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-ms-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	border: 0;
+	width: 20px;
+	height: 20px;
+	z-index: 1005;
+	cursor: pointer;
 }
 
 th {
@@ -177,7 +153,7 @@ th {
 
 table select {
 	text-align: center;
-	background:url(images/selector.png), #FFF;
+	background: url(images/selector.png), #FFF;
 	background-repeat: no-repeat, repeat;
 	background-size: auto 14px, auto;
 	background-position: 94% 50%, 0;
@@ -190,4 +166,10 @@ table select {
 	-moz-border-radius: 0;
 	border-radius: 0;
 	vertical-align: middle;
+	font-size: 12px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
 }
