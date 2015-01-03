@@ -132,10 +132,10 @@ class AncienDAO {
 	 * @param   Boolean $trav        [[Description]]
 	 * @returns Object   [[Description]]
 	 */
-    public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav) {
+    public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$nbTotal) {
         $lst=array();
         $args=array();
-        $select="SELECT count(*) as nb, A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
+        $select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
         $from="FROM `ancien` A, `personne` P";
         $where="WHERE P.idPersonne=A.idPersonne";
 
@@ -195,22 +195,15 @@ class AncienDAO {
             $from.=" , `travaille` trav";
         }
         $req=$select." ".$from." ".$where;
-        /*if($binf!=null && $nb!=null){
-            $req.=" LIMIT ?,?";
-            $args[]=$binf;
-            $args[]=$nb;
-        }*/
+
+        $req.=" LIMIT ".$binf.",".$nb."";
+
 
         //var_dump($req);
         try {
-            //$nbTotal=0;
             $state=SPDO::getInstance()->prepare($req);
-            //var_dump($args);
             $state->execute($args);
             while($ancien=$state->fetch()) {
-                /*if($nbTotal==0){
-                    $nbTotal=$ancien['nb'];   
-                }*/
                 $parents=ParentsDAO::getById($ancien['idParent']);
                 $lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
                 //var_dump("test");
@@ -218,7 +211,85 @@ class AncienDAO {
         } catch(PDOException $e) {
             die('error search ancien '.$e->getMessage().'<br>');
         }
+        $nbTotal=AncienDAO::nbEtudSearch($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav);
         return $lst;
+    }
+
+    public static function nbEtudSearch($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav) {
+        $lst=array();
+        $args=array();
+        $select="SELECT count(*) as nb ";
+        $from="FROM `ancien` A, `personne` P";
+        $where="WHERE P.idPersonne=A.idPersonne";
+
+        if($nom != null) {
+            $where.=" AND (P.nomUsage LIKE ? OR P.nomPatronymique LIKE ?) ";
+            $args[]='%'.$nom.'%';
+            $args[]='%'.$nom.'%';
+        }
+        if($prn!=null) {
+            $where.=" AND P.prenom LIKE ? ";
+            $args[]='%'.$prn.'%';
+        }
+        if($promo!=null && $promo!=array(null,null)) {
+            if(gettype($promo)=="array") {
+                $where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo";
+                if($promo[0]!=null){
+                    $where.=" AND promo.annee>=? ";
+                    $args[]=$promo[0];
+                }
+                if($promo[1]!=null){
+                    $where.=" AND promo.annee<=? ";
+                    $args[]=$promo[1];
+                }
+                $from.=" ,`aEtudie` Etud,`promotion` promo";
+            } else {
+                die('erreur type promo dans search ancien');
+            }
+        }
+        if($diplome!=null) {
+            $where.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
+            if($promo==null || $promo==array(null,null)){ $from.=" ,`aEtudie` Etud"; }
+            $args[]=$diplome;
+        }
+        if($spe!=null) {
+            $where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.libelle LIKE ? ";
+            $from.=" , `estSpecialise` Spe, `specialisation` Special";
+            $args[]='%'.$spe.'%';
+        }
+        if($typeSpe!=null) {
+            $where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
+            if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
+            $args[]=$typeSpe;
+        }
+        if($PostDut!=null) {
+            $where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE ? ";
+            $from.=" ,`possede` Poss,`diplomePostDUT` DPost";
+            $args[]='%'.$PostDut.'%';
+        }
+        if($etabPostDut!=null) {
+            $where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE ? ";
+            if($PostDut==null){ $from.=" ,`possede` Poss"; }
+            $from.=", `etablissement` etab";
+            $args[]='%'.$etabPostDut.'%';
+        }
+        if($trav==true) {
+            $where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
+            $from.=" , `travaille` trav";
+        }
+        $req=$select." ".$from." ".$where;
+
+
+        //var_dump($req);
+        try {
+            $state=SPDO::getInstance()->prepare($req);
+            $state->execute($args);
+            if($res=$state->fetch()) {
+                return $res['nb'];
+            }
+        } catch(PDOException $e) {
+            die('error search ancien '.$e->getMessage().'<br>');
+        }
     }
 }
 ?>
