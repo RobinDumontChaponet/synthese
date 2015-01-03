@@ -3,7 +3,7 @@
 	<?php if($promo!=null) { ?>
 	<h1>Promotion année <?php echo $promo->getAnnee();?></h1>
 	<section>
-		<p>ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo ici on des news de la promo</p>
+		<p>ici on a des news de la promo ici on a des news de la promo ici on a des news de la promo ici on a des news de la promo ici on a des news de la promo ici on a des news de la promo ici on a des news de la promo</p>
 	</section>
 	<section id="etudiants">
 		<h2>Étudiants de la promotion</h2>

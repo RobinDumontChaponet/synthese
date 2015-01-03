@@ -39,6 +39,11 @@ nav.shutter {
 	box-shadow: -2px 0 2px rgba(70, 106, 181, 0.29);
 	border-radius: 4px;
 	margin-top: 0;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
 }
 
 .shutterAnimate nav.shutter {
@@ -115,11 +120,6 @@ header a, header a:hover, header a:visited, header a:active {
 }
 
 .shutterOn:hover .shutter {
-	-webkit-transition: all .5s ease-in-out;
-	-moz-transition: all .5s ease-in-out;
-	-ms-transition: all .5s ease-in-out;
-	-o-transition: all .5s ease-in-out;
-	transition: all .5s ease-in-out;
 	left: 18%;
 }
 
@@ -157,6 +157,14 @@ nav a.aGroups:before {
 }
 nav .active a.aGroups:before {
 	content: "\e970";
+}
+nav a.aAnchor:before {
+	content: "#";
+	margin-left: 8px;
+}
+nav a.aAdd:before {
+	content: "+";
+	margin-left: 12px;
 }
 
 header a#aHelp:before {

@@ -18,7 +18,7 @@
         <h2>Liste des articles</h2>
         <ul>
             <?php
-                             foreach($posts as $post) {
+            foreach($posts as $post) {
             ?>
             <li>
                 <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1) echo '<a class="edit" href="article-editer/'.$post->getId().'">Éditer...</a><a class="delete" href="article-supprimer/'.$post->getId().'">Supprimer</a>';

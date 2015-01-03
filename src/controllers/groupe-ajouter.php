@@ -11,11 +11,11 @@ if(isset($_POST['addGroupe'])){
         $membres=new AppartientGroupe($nouveauGroupe,array($_SESSION["syntheseUser"]->getPersonne()));
         AppartientGroupeDAO::create($membres);
     }else{
-        echo "Le nom est vide";   
+        echo "Le nom est vide";
     }
 }
 
 // inclusion de la vue
-include(VIEWS_INC.'creerGroupe.php');
+include(VIEWS_INC.'groupe-ajouter.php');
 
 ?>

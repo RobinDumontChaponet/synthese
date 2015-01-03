@@ -9,19 +9,19 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			'promotion, promotions, csv-import' => array(
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
-				(object)array('href'=>'csv-import', 'class'=>'aPromo', 'title'=>'Ajouter une promotions', 'inner'=>'Ajouter')
+				(object)array('href'=>'csv-import', 'class'=>'aAdd', 'title'=>'Ajouter une promotions', 'inner'=>'Ajouter')
 			),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements à venir', 'inner'=>'À venir', 'scroll'=>'a_venir'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
-				(object)array('href'=>'evenement-ajouter', 'class'=>'aEvents', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements à venir', 'inner'=>'À venir', 'scroll'=>'a_venir'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
+				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Ajouter')
+				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')
 			),
 			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
@@ -31,21 +31,22 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			'profil' => array(
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
-				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
-				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
 			),
 			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
-				(object)array('href'=>'evenement-ajouter', 'class'=>'aEvents', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
+				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Ajouter')
+				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')
 			),
 			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
@@ -55,8 +56,8 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			'profil' => array(
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
-				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
-				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
 			),
 			'promotion, promotions' => array(
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa et les promotions', 'inner'=>'Promotions'),
@@ -65,14 +66,14 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
-				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes')
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes')
 			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Ajouter')
+				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')
 			),
 			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
@@ -80,7 +81,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 }
 ?>
 <header>
-  <h1 <?php if($_GET['requ']=='index' || $_GET['requ']=='') echo' class="active"';?>><a href="index.php" title="Accueil">connectIT!</a></h1>
+  <h1 <?php if($_GET['requ']=='index' || $_GET['requ']=='') echo' class="active"';?>><a href="index.php" title="Accueil"><span>connect</span>IT!</a></h1>
   <nav>
 <?php
 $menu = '';

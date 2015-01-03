@@ -13,7 +13,6 @@
 		<h1>Temporairement...</h1>
 		<p>Temporairement, ici, quelques liens.</p>
 		<ul class="magnets">
-			<li><a href="csv-import" title="Importation .csv" data-help="Par ici !">importation .csv</a></li>
 			<li><a target="_blank" href="../TO_DO.txt">TO_DO.txt</a></li>
 		</ul>
 	</section>
