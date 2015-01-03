@@ -95,7 +95,7 @@ select::-ms-expand {
 input[type=checkbox] {
 	height: auto;
 }
-input[type="text"], input[type="password"], input[type="date"], textarea {
+input[type="text"], input[type="password"], input[type="date"], input[type="number"], textarea {
 	padding-left: 5px;
 	padding-right: 5px;
 	-webkit-box-sizing: border-box;
@@ -112,4 +112,7 @@ dd textarea {
 }
 dd input[type="text"], dd input[type="password"], dd input[type="date"], h3 input[type="text"], h3 input[type="date"], textarea {
 	width: 100%;
+}
+dd input[maxlength] {
+	width: auto;
 }

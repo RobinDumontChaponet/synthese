@@ -251,15 +251,18 @@ FileETag None
 	RewriteRule ^diplomeDUT-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-editer&id=$1 [NC]
 	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
 	RewriteRule ^diplomeDUT-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-selectionner&id=$1 [NC]
-    RewriteRule ^groupe/([^/]+) %{ENV:BASE}/index.php?requ=groupe&id=$1 [NC]
-    RewriteRule ^administrer-groupe/([^/]+) %{ENV:BASE}/index.php?requ=administrer-groupe&id=$1 [NC]
-    RewriteRule ^article/([^/]+) %{ENV:BASE}/index.php?requ=article&id=$1 [NC]
-    RewriteRule ^article-supprimer/([^/]+) %{ENV:BASE}/index.php?requ=article-supprimer&id=$1 [NC]
-    RewriteRule ^article-commenter/([^/]+) %{ENV:BASE}/index.php?requ=article-commenter&id=$1 [NC]
-    RewriteRule ^article-editer/([^/]+) %{ENV:BASE}/index.php?requ=article&id=$1&action=editer [NC]
-    RewriteRule ^article-modifier-commentaire/([^/]+)/([^/]+) %{ENV:BASE}/index.php?requ=article&id=$1&action=modCom&com=$2 [NC]
-    RewriteRule ^commentaire-supprimer/([^/]+) %{ENV:BASE}/index.php?requ=commentaire-supprimer&id=$1 [NC]
-    
+	RewriteRule ^groupe/([^/]+) %{ENV:BASE}/index.php?requ=groupe&id=$1 [NC]
+	RewriteRule ^administrer-groupe/([^/]+) %{ENV:BASE}/index.php?requ=administrer-groupe&id=$1 [NC]
+	RewriteRule ^article/([^/]+) %{ENV:BASE}/index.php?requ=article&id=$1 [NC]
+	RewriteRule ^article-supprimer/([^/]+) %{ENV:BASE}/index.php?requ=article-supprimer&id=$1 [NC]
+	RewriteRule ^article-commenter/([^/]+) %{ENV:BASE}/index.php?requ=article-commenter&id=$1 [NC]
+	RewriteRule ^article-editer/([^/]+) %{ENV:BASE}/index.php?requ=article&id=$1&action=editer [NC]
+	RewriteRule ^article-modifier-commentaire/([^/]+)/([^/]+) %{ENV:BASE}/index.php?requ=article&id=$1&action=modCom&com=$2 [NC]
+	RewriteRule ^commentaire-supprimer/([^/]+) %{ENV:BASE}/index.php?requ=commentaire-supprimer&id=$1 [NC]
+	RewriteRule ^diplome-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=diplome-ajouter&id=$1 [NC]
+	RewriteRule ^etablissement-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-ajouter&id=$1 [NC]
+
+
 	#### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} !helpers

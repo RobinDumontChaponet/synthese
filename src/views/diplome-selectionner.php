@@ -7,29 +7,31 @@
 			<article>
 				<dl>
 					<dt><label for="diplome">Diplôme</label></dt>
-					<dd>
+					<dd class="diplome">
 						<select name="diplome">
 							<?php if ($diplomes != NULL) {
 								foreach($diplomes as $diplome)
 									echo '<option value="'.$diplome->getId().'">'.$diplome->getLibelle().' ('.$diplome->getDomaine()->getLibelle().')</option>';
 							}?>
 						</select>
-						<a href="diplomes" target="_blank">Voir tout les diplômes</a><p>Vous ne trouvez pas votre diplôme?</p><a href="diplome-ajouter/<?php echo $ancien->getId()?>">Ajoutez le !</a>
+						<a class="diplomes" href="diplomes" target="_blank">Voir tout les diplômes</a>
+						<br /><a href="diplome-ajouter/<?php echo $ancien->getId()?>">Vous ne trouvez pas votre diplôme ? Ajoutez le !</a>
 					</dd>
 					<dt><label for="etablissement">Etablissement</label></dt>
-					<dd>
+					<dd class="etablissement">
 						<select name="etablissement">
 							<?php if ($etablissements != NULL) {
 								foreach($etablissements as $etablissement)
 									echo '<option value="'.$etablissement->getId().'">'.$etablissement->getNom().' ('.$etablissement->getVille().'/'.$etablissement->getPays().')</option>'; // Je sais pas comment l'afficher
 							}?>
 						</select>
-						<a href="etablissements" target="_blank">Voir tout les établissements</a><p>Vous ne trouvez pas votre établissement?</p><a href="etablissement-ajouter/<?php echo $ancien->getId()?>">Ajoutez le !</a>
+						<a class="etablissements" href="etablissements" target="_blank">Voir tout les établissements</a>
+						<br /><a href="etablissement-ajouter/<?php echo $ancien->getId()?>">Vous ne trouvez pas votre établissement ? Ajoutez le !</a>
 					</dd>
 					<dt><label for="resultat">Résultat</label></dt>
-					<dd><input id="resultat" name="resultat" placeholder="Résultat de votre diplôme" /></dd>
+					<dd class="resultat"><input type="number" id="resultat" name="resultat" placeholder="Résultat de votre diplôme" /></dd>
 					<dt><label for="periode">Période</label></dt>
-					<dd><input id="periode1" name="periode1" maxlength="4" placeholder="AAAA"/> - <input id="periode2" name="periode2" maxlength="4" placeholder="AAAA"/></dd>
+					<dd class="periode"><input type="text" id="periode1" name="periode1" maxlength="4" placeholder="AAAA"/> - <input type="text" id="periode2" name="periode2" maxlength="4" placeholder="AAAA"/></dd>
 				</dl>
 			</article>
 			<input type="submit" value="Enregistrer les modifications" />
