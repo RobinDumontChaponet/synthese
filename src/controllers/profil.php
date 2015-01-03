@@ -1,4 +1,5 @@
 <?php
+
 include_once('validate.transit.inc.php');
 
 $valid = NULL;
@@ -7,8 +8,8 @@ $change = false;
 if (isset($_GET['id']))
 	$personne = PersonneDAO::getById($_GET['id']);
 else
-	$personne = PersonneDAO::getById($_SESSION[syntheseUser]->getId());
-	
+	header('Location: '.SELF.'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId());
+
 if ($personne != NULL)
 	$ancien = AncienDAO::getById($personne->getId());
 
@@ -20,4 +21,5 @@ if ($ancien != NULL) {
 	$entreprises = TravailleDAO::getByAncien($ancien);
 }
 include(VIEWS_INC.'profil.php');
+
 ?>

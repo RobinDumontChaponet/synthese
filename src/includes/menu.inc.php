@@ -6,32 +6,47 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
 			(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
-			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
-			(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+			'promotion, promotions, csv-import' => array(
+				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
+				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
+				(object)array('href'=>'csv-import', 'class'=>'aPromo', 'title'=>'Ajouter une promotions', 'inner'=>'Ajouter')
+			),
+			'evenements, evenement-ajouter' => array(
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenement-ajouter', 'class'=>'aEvents', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
+			),
 			'groupes, groupe, creerGroupe' => array(
-				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Créer un groupe')
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Ajouter')
 			),
 			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
 	break;
 	case 2: // isTeacher_
 		$items = array(
-			(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
-			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
-			(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+			(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+			'promotion, promotions, csv-import' => array(
+				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
+				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions')
+			),
+			'evenements, evenement-ajouter' => array(
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenement-ajouter', 'class'=>'aEvents', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
+			),
 			'groupes, groupe, creerGroupe' => array(
-				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Créer un groupe')
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
+				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Ajouter')
 			),
 			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
 	break;
 	case 3: // isFormerStudent_
 		$items = array(
-			(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+			(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 			'promotion, promotions' => array(
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa et les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa promotion', 'inner'=>'Ma promotion'),
@@ -41,16 +56,12 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
-				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Créer un groupe')
+				(object)array('href'=>'creerGroupe', 'class'=>'aGroups', 'title'=>'Créer un groupe', 'inner'=>'Ajouter')
 			),
 			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
 		);
 	break;
-
 }
-/*$items['creerGroupe']= '<a id="creerGroupe" href="creerGroupe" title="Créer un groupe"><span>Créer un groupe</span></a>';
-foreach(GroupeDAO::getGroupeByPersonne($_SESSION["syntheseUser"]->getPersonne()) as $groupe)
-    $items['groupe'.$groupe->getId()] = '<a id="groupe" href="groupe/'.$groupe->getId().' " title="Voir le groupe"><span>'.$groupe->getNom().'</span></a>';*/
 ?>
 <header>
   <h1 <?php if($_GET['requ']=='index' || $_GET['requ']=='') echo' class="active"';?>><a href="index.php" title="Accueil">connectIT!</a></h1>
