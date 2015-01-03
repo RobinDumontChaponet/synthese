@@ -12,6 +12,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 			),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements à venir', 'inner'=>'À venir', 'scroll'=>'a_venir'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
@@ -64,6 +65,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Toutes')
 			),
 			'evenements, evenement-ajouter' => array(
+				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),

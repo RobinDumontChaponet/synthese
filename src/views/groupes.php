@@ -1,6 +1,7 @@
 <!--meta title="Liste des groupes" -->
 <div id="content">
 	<h1>Groupes</h1>
+	<a class="add" href="groupe-ajouter">Ajouter un groupe</a>
 	<section>
 	<?php
 	if($groupes != NULL) {
