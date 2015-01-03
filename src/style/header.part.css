@@ -30,7 +30,7 @@ nav {
 
 nav.shutter {
 	position: absolute;
-	left: 22px;
+	left: 12%;
 	right: 0;
 	top: -.4em;
 	height: 104%;
@@ -45,9 +45,6 @@ nav.shutter {
 	-webkit-animation: slide ease-in 1;
 	-moz-animation: slide ease-in 1;
 	animation: slide ease-in 1;
-	-webkit-animation-fill-mode: forwards;
-	-moz-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
 	-webkit-animation-duration: 1s;
 	-moz-animation-duration: 1s;
 	animation-duration: 1s;
@@ -112,12 +109,18 @@ header a, header a:hover, header a:visited, header a:active {
 	-webkit-animation: slide2 ease-in 1;
 	-moz-animation: slide2 ease-in 1;
 	animation: slide2 ease-in 1;
-	-webkit-animation-fill-mode: forwards;
-	-moz-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
 	-webkit-animation-duration: .5s;
 	-moz-animation-duration: .5s;
 	animation-duration: .5s;
+}
+
+.shutterOn:hover .shutter {
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	left: 18%;
 }
 
 .shutterOn .shutter a {

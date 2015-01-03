@@ -95,3 +95,8 @@ a, a:active, a:hover, a:visited {
 .sad {
 	color: grey;
 }
+.warning {
+	margin-top: 20%;
+	font-size: 1.2em;
+	color: grey;
+}

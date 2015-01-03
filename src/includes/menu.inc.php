@@ -26,11 +26,12 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	break;
 	case 2: // isTeacher_
 		$items = array(
-			(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
-			'promotion, promotions, csv-import' => array(
-				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
-				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions')
+			'profil' => array(
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+				(object)array('href'=>'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId(), 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
+				(object)array('href'=>'#diplomes', 'class'=>'aProfil', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes'),
 			),
+			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 			'evenements, evenement-ajouter' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
