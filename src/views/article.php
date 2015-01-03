@@ -2,6 +2,7 @@
 <div id="content">
 <?php if($post!=null) { ?>
 	<h1>Article & commentaires</h1>
+    
 	<section>
 		<article id="post">
 			<?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1)

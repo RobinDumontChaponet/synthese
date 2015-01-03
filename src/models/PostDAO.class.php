@@ -98,8 +98,25 @@ class PostDAO {
             } catch(PDOException $e) {
                 die('erreur sql PostDAO::delete '.$e->getMessage());
             }
+            try{
+                $req=SPDO::getInstance()->prepare("DELETE FROM `publieGroupe` WHERE `idPost`=?");
+                $req->execute(array($obj->getId()));
+            }catch(PDOException $e){
+                
+            }
         } else {
             die('Erreur type PostDAO::delete');
+        }
+    }
+    
+    public static function deleteByGroupe($gr){
+        if (get_class($gr)=="Groupe") {
+            $lstPost=PostDAO::getByGroupe($gr);
+            foreach($lstPost as $post){
+                PostDAO::delete($post);   
+            }
+        }else {
+            die('Erreur type PostDAO::deleteByGroupe');
         }
     }
 

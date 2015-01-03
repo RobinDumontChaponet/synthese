@@ -3,6 +3,7 @@
 require_once("SPDO.class.php");
 require_once(MODELS_INC."Groupe.class.php");
 require_once(MODELS_INC."PersonneDAO.class.php");
+require_once(MODELS_INC."PostDAO.class.php");
 
 class GroupeDAO{
 
@@ -52,7 +53,25 @@ class GroupeDAO{
             die('erreur type getGroupeByPersonne groupeDAO');   
         }
     }
-
+    
+    public static function getMembres($groupe){
+        if(get_class($groupe)=="Groupe"){
+            $lst=array();
+            try{
+                $req=SPDO::getInstance()->prepare("SELECT idPersonne FROM appartientGroupe WHERE idGroupe=?");
+                $req->execute(array($groupe->getId()));
+                while($res=$req->fetch()){
+                    $lst[]=PersonneDAO::getById($res['idPersonne']);   
+                }
+                return $lst;
+            }catch(PDOException $e){
+                die('erreur sql getMembres groupeDAO '.$e->getMessage());
+            }
+        }else{
+            die('erreur type getMembres groupeDAO');
+        }
+    }
+    
     public static function update($obj){
         if(get_class($obj)=="Groupe"){
             try{
@@ -87,6 +106,7 @@ class GroupeDAO{
             try{
                 $req=SPDO::getInstance()->prepare("DELETE FROM `groupes` WHERE `idGroupe`=?");
                 $req->execute(array($obj->getId()));
+                PostDAO::deleteByGroupe($obj);
             }catch(PDOException $e){
                 die('Erreur sql groupedao delete');    
             }

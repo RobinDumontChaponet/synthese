@@ -3,6 +3,9 @@
     <?php if($groupe!=null) { ?>
     <h1>Discussion du groupe "<?= $groupe->getNom();?>"</h1>
     <section>
+        <?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$groupe->getCreateur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1){ ?>
+            <h2><a href="administrer-groupe/<?= $groupe->getId(); ?>">Administrer le groupe</a></h2>
+        <?php } ?>
         <h2>Publier dans le groupe</h2>
         <form method="post">
             <article>
