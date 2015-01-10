@@ -97,11 +97,7 @@
 			</tbody>
 		</table>
 	</section>
-	<!-- ----------------------------------A VOIR PAR ROBIN---------------------------------------
-	<section id="pages">
-		
-	</section>
-	-->
+	<nav class="pagination"></nav>
 </div>
 <script type="text/javascript">
 init_search();

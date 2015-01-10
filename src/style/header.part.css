@@ -22,7 +22,7 @@ header h1 {
 	position: relative;
 }
 
-nav {
+header nav {
 	position: relative;
 	background: url("images/noise.png"), #6d84b4;
 	margin-top: 1em;

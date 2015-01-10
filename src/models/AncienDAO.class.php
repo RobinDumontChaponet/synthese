@@ -130,6 +130,9 @@ class AncienDAO {
 	 * @param   chaine   $PostDut     [[Description]]
 	 * @param   chaine   $etabPostDut [[Description]]
 	 * @param   Boolean $trav        [[Description]]
+	 * @param   Boolean $binf        "Borne inférieur", pour la pagination
+	 * @param   Boolean $nb        Nombre d'éléments à retourner
+	 * @param   Boolean $nbTotal        return : nombre d'éléments total;
 	 * @returns Object   [[Description]]
 	 */
     public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$nbTotal) {

@@ -1,11 +1,14 @@
-function link_ajax() {
+function link_ajax(page) {
 	var xhr = getXMLHttpRequest();
+	page = isNaN(page)?0:page;
 	if((xhr != null) && (xhr != false)) {
 		if(xhr.readyState == 0 || xhr.readyState == 4) {
 			var form=document.forms['search'],
 			elements=form.elements;
 
 			var args = form2args (elements);
+
+			args += '&page='+page;
 
 			xhr.open(form.method, 'helpers/search.php'+args, true);
 
@@ -22,13 +25,13 @@ function link_ajax() {
 function affichageResultat() {
 	if(this.readyState == 4)
 		if(this.status == 200) {
+			//console.log(this.responseText);
 			var resp = JSON.parse(this.responseText),
+			data = resp['data'],
 			table = '';
-			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
-			//for(var i=0, l=(resp.length-1); i < l; i++)
-			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
-			for(var i=0, l=resp.length; i < l; i++) {
-				var it = resp[i];
+
+			for(var i=0, l=data.length; i < l; i++) {
+				var it = data[i];
 
 				table += '<tr>';
 
@@ -62,12 +65,14 @@ function affichageResultat() {
 			table += '</table>';
 
 			document.getElementById('resultat').getElementsByTagName('tbody')[0].innerHTML = table;
-			
-			
-			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
-			//Dans le script, on fait jusqu'à lenght-1
-			//document.getElementById('pages').innerHTML = resp[i]
-			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
+
+			var pagesCount = resp['pagesCount'],
+			linksPage = '';
+			for(var i=0; i < pagesCount; i++)
+				linksPage += '<button onclick="link_ajax('+i+')">'+(i+1)+'</button>';
+			document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
+			// Si jamais on veux mettre en haut et en bas_
+			//document.getElementsByClassName('pagination')[1].innerHTML = linksPage;
 
 		} else
 			console.error('le fichier xml ne retourne pas un 200 : '+this.status);

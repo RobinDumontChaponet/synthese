@@ -66,6 +66,9 @@ input[type="submit"], .button, button, select {
 	color: #413131;
 	margin: 10px auto;
 }
+button {
+	margin: 0 3px;
+}
 select {
 	background: url(images/selector.png), rgba(235,235,235,1);
     background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);

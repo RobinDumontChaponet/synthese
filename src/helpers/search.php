@@ -55,15 +55,8 @@ if ($_SESSION["syntheseUser"]) {
 
 		header('Content-Type: application/json; charset=utf-8');
 
-		$suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'], $_GET['typeSpecialisation'], $_GET['diplomePostDUT'], $_GET['etabPostDUT'], ($_GET['travailActuel']=='true')?true:false);
-
-		//------------------------------------A VOIR PAR ROBIN-----------------------------------------
-		//JE NE SAIS PAS QUOI METTRE DANS LE GET, C'EST UN DE MES PROBLEMES
-		/*
         $nbTotal = 0;
-        $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'],$_GET['typeSpecialisation'], $_GET['diplomePostDUT'], $_GET['etabPostDUT'], ($_GET['travailActuel']=='true')?true:false, $_GET[''], LINES_PAGE, &$nbTotal);
-        */
-		//------------------------------------A VOIR PAR ROBIN-----------------------------------------
+        $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'],$_GET['typeSpecialisation'], $_GET['diplomePostDUT'], $_GET['etabPostDUT'], ($_GET['travailActuel']=='true')?true:false, $_GET['page'], 1, $nbTotal);
 
 		$array = array();
 
@@ -88,7 +81,7 @@ if ($_SESSION["syntheseUser"]) {
 
 		}
 
-		$array['pagesCount'] = ceil($nbTotal/LINES_PAGE);
+		$array['pagesCount'] = ceil($nbTotal/1);
 
 
 		echo json_encode($array);
