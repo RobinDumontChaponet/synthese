@@ -77,7 +77,20 @@ if($_SESSION["syntheseUser"]) {
                 push($array, $suggestion, $travailActuel);
 
         }
-
+//------------------------------------A VOIR PAR ROBIN-----------------------------------------        
+        //VOICI LE CODE QUE J'AI AJOUTE
+        /*
+        $nbPages = ceil($nbTotal/LINES_PAGE);
+        $linksPage = "";
+        for($i = 0; $i < $nbPages; $i++)
+        {
+            $linksPage .= '<label onclick="link_ajax" >'.$i.'</label>';
+        }
+        */
+        
+        //Ensuite, on ajoute une case dans le tableau
+        //push($array, $linksPage);
+//------------------------------------A VOIR PAR ROBIN-----------------------------------------
         echo json_encode($array);
 
     }
