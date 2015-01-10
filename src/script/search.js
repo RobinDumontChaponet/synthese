@@ -24,6 +24,9 @@ function affichageResultat() {
 		if(this.status == 200) {
 			var resp = JSON.parse(this.responseText),
 			table = '';
+			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
+			//for(var i=0, l=(resp.length-1); i < l; i++)
+			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
 			for(var i=0, l=resp.length; i < l; i++) {
 				var it = resp[i];
 
@@ -59,6 +62,12 @@ function affichageResultat() {
 			table += '</table>';
 
 			document.getElementById('resultat').getElementsByTagName('tbody')[0].innerHTML = table;
+			
+			
+			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
+			//Dans le script, on fait jusqu'à lenght-1
+			//document.getElementById('pages').innerHTML = resp[i]
+			//------------------------------------A VOIR PAR ROBIN-----------------------------------------
 
 		} else
 			console.error('le fichier xml ne retourne pas un 200 : '+this.status);
