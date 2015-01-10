@@ -97,6 +97,11 @@
 			</tbody>
 		</table>
 	</section>
+	<!-- ----------------------------------A VOIR PAR ROBIN---------------------------------------
+	<section id="pages">
+		
+	</section>
+	-->
 </div>
 <script type="text/javascript">
 init_search();
