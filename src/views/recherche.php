@@ -16,7 +16,7 @@
 				</fieldset>
 				<fieldset>
 					<div>
-						<label for="promotion">Promotion</label>
+						<label for="promotionInf">Entre</label>
 						<select id="promotionInf" name="promotionInf">
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
@@ -24,6 +24,7 @@
 								echo '<option value="'.$promotion->getAnnee().'">'.$promotion->getAnnee().'</option>';
 							?>
 						</select>
+						<label for="promotionSup">et</label>
 						<select name="promotionSup">
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
