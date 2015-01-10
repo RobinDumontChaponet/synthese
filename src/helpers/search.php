@@ -92,7 +92,7 @@ if($_SESSION["syntheseUser"]) {
         $linksPage = "";
         for($i = 0; $i < $nbPages; $i++)
         {
-            $linksPage .= '<label onclick="link_ajax" >'.$i.'</label>';
+            $linksPage .= '<label onclick="link_ajax()" >'.$i.'</label>';
         }
         */
         
