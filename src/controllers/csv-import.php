@@ -79,7 +79,57 @@ if($_SESSION['user_auth']['write']) { // user is able to write here
 			return ($value)?$value:'';
 		}
 
+		$output = '';
+		$count = 1;
 		foreach($csv as $line) {
+			$sexe = strtolower(fillVal($line[$order['sexe']]));
+			if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
+				$sexe = 'f';
+			if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
+				$sexe = 'm';
+
+			$mobileParents = fillVal($line[$order['telMobParents']]);
+			if (!empty($mobileParents) && !is_valid_phoneNumber ($mobileParents)) {
+				$output .= '<p class="error">Valeur incorrecte pour le téléphone mobile des parents à la ligne '.$count.'</p>';
+				$output .= '<input type="text" name="telMobParents_'.$count.'" value="'.$line[$order['telFix']].'" />';
+			}
+
+			$telParents = fillVal($line[$order['telFixParents']]);
+			if (!empty($telParents) && !is_valid_phoneNumber ($telParents)) {
+				$output .= '<p class="error">Valeur incorrecte pour le téléphone fixe des parents à la ligne '.$count.'</p>';
+				$output .= '<input type="text" name="telFixParents_'.$count.'" value="'.$line[$order['telFixParents']].'" />';
+			}
+
+			$telMob = fillVal($line[$order['telMob']]);
+			if (!empty($telMob) && !is_valid_phoneNumber ($telMob)) {
+				$output .= '<p class="error">Valeur incorrecte pour le téléphone mobile de l\'ancien à la ligne '.$count.'</p>';
+				$output .= '<input type="text" name="telMob_'.$count.'" value="'.$line[$order['telMob']].'" />';
+			}
+
+			$telFix = fillVal($line[$order['telFix']]);
+			if (!empty($telFix) && !is_valid_phoneNumber ($telFix)) {
+				$output .= '<p class="error">Valeur incorrecte pour le téléphone fixe de l\'ancien à la ligne '.$count.'</p>';
+				$output .= '<input type="text" name="telFix_'.$count.'" value="'.$line[$order['telFix']].'" />';
+			}
+
+			$dateNais = fillVal($line[$order['dateNais']]);
+			if (!empty($dateNais) && !is_valid_phoneNumber ($dateNais)) {
+				$output .= '<p class="error">Valeur incorrecte pour la date-de-naissance à la ligne '.$count.'</p>';
+				$output .= '<input type="text" name="dateNais_'.$count.'" value="'.$line[$order['dateNais']].'" />';
+			}
+
+			$mail = fillVal($line[$order['mail']]);
+			if (!empty($mail) && !is_valid_phoneNumber ($mail)) {
+				$output .= '<p class="error">Valeur incorrecte pour l\'e-mail à la ligne '.$count.'</p>';
+				$output .= '<input type="text" name="mail_'.$count.'" value="'.$line[$order['mail']].'" />';
+			}
+			$count++;
+		}
+
+		include(VIEWS_INC.'csv-apercu.php');
+
+
+		/*foreach($csv as $line) {
 			$sexe = strtolower(fillVal($line[$order['sexe']]));
 			if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
 				$sexe = 'f';
@@ -98,7 +148,7 @@ if($_SESSION['user_auth']['write']) { // user is able to write here
 			//echo '<br />'; var_dump($account);
 			//echo "\n<br />";
 			//CompteDAO::create($account);
-		}
+		}*/
 		//header ('Location: index.php?requ=group&id='.$_GET['id']);
 
 	} else

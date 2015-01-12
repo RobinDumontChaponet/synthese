@@ -74,8 +74,6 @@ var csvColName = [
 	{key:'reponse', value:'Réponse'}*/
 ];
 
-
-
 csvColName.sort(function(a, b) {
 	return a.value.localeCompare(b.value);
 });
