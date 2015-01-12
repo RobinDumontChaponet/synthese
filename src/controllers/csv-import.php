@@ -25,31 +25,54 @@ if($_SESSION['user_auth']['write']) { // user is able to write here
 
 		/**
 		 * valeurs possibles :
-		 * var csvColName = [
-	{key:'nomUsage', value:'Nom d\'usage'},
-	{key:'nomPat', value:'Nom'},
-	{key:'prenom', value:'Prénom'},
-	{key:'dateNais', value:'Date de naissance'},
-	{key:'codePost', value:'Code postal'},
-	{key:'ville', value:'Ville'},
-	{key:'pays', value:'Pays'},
-	{key:'mail', value:'e-mail'},
-	{key:'telMob', value:'Téléphone mobile'},
-	{key:'telFix', value:'Téléphone fixe'},
-	{key:'sexe', value:'Sexe'},
-	{key:'adresse1', value:'Adresse 1'},
-	{key:'adresse2', value:'Adresse 2'},
-	{key:'diplomePostDUT', value:'Diplôme Post DUT'},
-	{key:'formationPostDUT', value:'Formation Post DUT'},
-	{key:'formationEnCours', value:'Formation en cours'},
-	{key:'situation', value:'Situation actuelle'},
-	{key:'entreprise', value:'Entreprise'},
-	{key:'fonction', value:'Fonction'},
-	{key:'ecole', value:'École'},
-	{key:'piplômePrepare', value:'Diplôme préparé'},
-	{key:'TelEntreprise', value:'Téléphone Entreprise'},
-	{key:'reponse', value:'Réponse'}
-			];
+		 * [
+			{key:'Ancien', value: [
+				{key:'nomPat', value:'Nom'},
+				{key:'nomUsage', value:'Nom d\'usage'},
+				{key:'prenom', value:'Prénom'},
+				{key:'dateNais', value:'Date de naissance'},
+				{key:'mail', value:'E-mail'},
+				{key:'telMob', value:'Téléphone mobile'},
+				{key:'telFix', value:'Téléphone fixe'},
+				{key:'sexe', value:'Sexe'},
+				{key:'adresse1', value:'Adresse 1'},
+				{key:'adresse2', value:'Adresse 2'},
+				{key:'codePost', value:'Code postal'},
+				{key:'ville', value:'Ville'},
+				{key:'pays', value:'Pays'},
+				{key:'situation', value:'Situation actuelle'}
+			]},
+			{key:'Formation', value: [
+				{key:'diplomePostDUT', value:'Diplôme post-DUT'},
+				{key:'formationPostDUT', value:'Formation Post-DUT'},
+				{key:'formationEnCours', value:'Formation en cours'},
+				{key:'ecole', value:'École'},
+				{key:'diplomePrepare', value:'Diplôme préparé'}
+			]},
+			{key:'Entreprise', value: [
+				{key:'entreprise', value:'Raison sociale'},
+				{key:'codeAPE', value:'Code APE'},
+				{key:'fonction', value:'Fonction'},
+				{key:'telEntreprise', value:'Téléphone entreprise'},
+				{key:'codePostEntreprise', value:'Code postal entreprise'},
+				{key:'villeEntreprise', value:'Ville entreprise'},
+				{key:'paysEntreprise', value:'Pays entreprise'},
+				{key:'adresse1Entreprise', value:'Adresse 1 entreprise'},
+				{key:'adresse2Entreprise', value:'Adresse 2 entreprise'},
+				{key:'cedex', value:'Cedex'}
+			]},
+			{key:'Parents', value: [
+				{key:'adresse1Parents', value:'Adresse 1 parents'},
+				{key:'adresse2Parents', value:'Adresse 2 parents'},
+				{key:'codePostParents', value:'Code postal parents'},
+				{key:'villeParents', value:'Ville parents'},
+				{key:'paysParents', value:'Pays parents'},
+				{key:'situationParents', value:'Situation actuelle parents'},
+				{key:'telMobParents', value:'Téléphone mobile parents'},
+				{key:'telFixParents', value:'Téléphone fixe parents'}
+			]}
+			//,{key:'reponse', value:'Réponse'}
+		]
 		**/
 
 		function fillVal($value) {
@@ -57,20 +80,17 @@ if($_SESSION['user_auth']['write']) { // user is able to write here
 		}
 
 		foreach($csv as $line) {
-			//$person = new Personne(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['mail']]));
-
 			$sexe = strtolower(fillVal($line[$order['sexe']]));
 			if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
 				$sexe = 'f';
 			if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
 				$sexe = 'm';
 
-			$parents = null;
+			$parents = new Parents(0, fillVal($line[$order['adresse1Parents']]), fillVal($line[$order['adresse2Parents']]), fillVal($line[$order['codePostParent']]), fillVal($line[$order['villeParents']]), fillVal($line[$order['paysParents']]), fillVal($line[$order['telMobParents']]), fillVal($line[$order['telFixParents']]));
 
 			$ancien = new Ancien(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['adresse1']]), fillVal($line[$order['adresse2']]), fillVal($line[$order['codePost']]), fillVal($line[$order['ville']]), fillVal($line[$order['pays']]), fillVal($line[$order['telMob']]), fillVal($line[$order['telFix']]), null, null, $parents, $sexe, fillVal($line[$order['dateNais']]), fillVal($line[$order['mail']]));
 			var_dump($ancien);
-			//echo '"0", "'.fillVal($line[$order['nomUsage']]).'", "'.fillVal($line[$order['nomPat']]).'", "'.fillVal($line[$order['prenom']]).'", "'.fillVal($mail=$line[$order['mail']])."\"<br />\n";
-			echo "\n<br />";
+			echo "\n<br /><br />";
 			//PersonneDAO::create($person);
 			//$login = substr($ancien->getNomPatronymique(), 0, 4).$person->getId().substr($person->getPrenom(), 0, 4);
 			//$account = new Compte(0, $studentProfile, $person, $login, randomPassword());
