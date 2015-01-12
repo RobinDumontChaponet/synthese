@@ -33,12 +33,42 @@
 					<th>Code postal entreprise</th>
 					<th>Cedex</th>
 					<th>Adresse 1 parent</th>
-					<th>Adresse 2 parent</th>
 					<th>Code postal parent</th>
 					<th>Téléphone mobile parent</th>
 				</tr>
 				<tr>
-					
+					<?php
+					$i = 0;
+					foreach($csv as $line) {
+						if ($i > 2)
+							break;
+						else {
+							echo '<th>'.$line[$order['nomPat']].'</th>';
+							echo '<th>'.$line[$order['nomUsage']].'</th>';
+							echo '<th>'.$line[$order['prenom']].'</th>';
+							echo '<th>'.$line[$order['dateNais']].'</th>';
+							echo '<th>'.$line[$order['mail']].'</th>';
+							echo '<th>'.$line[$order['telMob']].'</th>';
+							echo '<th>'.$line[$order['telFix']].'</th>';
+							echo '<th>'.$line[$order['adresse1']].'</th>';
+							echo '<th>'.$line[$order['codePost']].'</th>';
+							echo '<th>'.$line[$order['ville']].'</th>';
+							echo '<th>'.$line[$order['pays']].'</th>';
+							echo '<th>'.$line[$order['diplomePostDUT']].'</th>';
+							echo '<th>'.$line[$order['formationPostDUT']].'</th>';
+							echo '<th>'.$line[$order['ecole']].'</th>';
+							echo '<th>'.$line[$order['diplomePrepare']].'</th>';
+							echo '<th>'.$line[$order['entreprise']].'</th>';
+							echo '<th>'.$line[$order['telEntreprise']].'</th>';
+							echo '<th>'.$line[$order['codePostEntreprise']].'</th>';
+							echo '<th>'.$line[$order['cedex']].'</th>';
+							echo '<th>'.$line[$order['adresse1Parents']].'</th>';
+							echo '<th>'.$line[$order['codePostParents']].'</th>';
+							echo '<th>'.$line[$order['telMobParents']].'</th>';
+						}
+						$i++;
+					}
+					?>
 				</tr>
 			</thead>
 			<tbody>
