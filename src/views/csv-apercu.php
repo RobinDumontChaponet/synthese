@@ -9,7 +9,42 @@
 <?php
 } else {
 ?>
-aperçu...
+<section id="resultat">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom patronymique</th>
+					<th>Nom d'usage</th>
+					<th>Prénom</th>
+					<th>Date de naissance</th>
+					<th>Mail</th>
+					<th>Téléphone mobile</th>
+					<th>Téléphone fixe</th>
+					<th>Adresse 1</th>
+					<th>Code postal</th>
+					<th>Ville</th>
+					<th>Pays</th>
+					<th>Diplôme Post DUT</th>
+					<th>Formation Post DUT</th>
+					<th>Ecole</th>
+					<th>Diplôme préparé</th>
+					<th>Entreprise</th>
+					<th>Téléphone entreprise</th>
+					<th>Code postal entreprise</th>
+					<th>Cedex</th>
+					<th>Adresse 1 parent</th>
+					<th>Adresse 2 parent</th>
+					<th>Code postal parent</th>
+					<th>Téléphone mobile parent</th>
+				</tr>
+				<tr>
+					
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</section>
 <?php
 }
 ?>
