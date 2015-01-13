@@ -77,7 +77,7 @@ function affichageResultat(page) {
 			
 			for(var i=0; i < pagesCount; i++)
 				linksPage += '<button onclick="link_ajax('+i+')">'+(i+1)+'</button>';
-			document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
+			
 			// Si jamais on veux mettre en haut et en bas_
 			//document.getElementsByClassName('pagination')[1].innerHTML = linksPage;
 			
@@ -85,6 +85,9 @@ function affichageResultat(page) {
 			{
 				linksPage += '<button onclick="link_ajax('+(page+1)+')">suivant</button>';
 			}
+			
+			
+			document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
 
 		} else
 			console.error('le fichier xml ne retourne pas un 200 : '+this.status);
