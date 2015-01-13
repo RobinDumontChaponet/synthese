@@ -12,7 +12,7 @@ function link_ajax(page) {
 
 			xhr.open(form.method, 'helpers/search.php'+args, true);
 
-			xhr.onreadystatechange = affichageResultat;
+			xhr.onreadystatechange = affichageResultat(page);
 
 			xhr.send(null);
 
@@ -22,7 +22,7 @@ function link_ajax(page) {
 		alert('Erreur ! Désolé pour l\'inconvénient. ;-)');
 }
 
-function affichageResultat() {
+function affichageResultat(page) {
 	if(this.readyState == 4)
 		if(this.status == 200) {
 			//console.log(this.responseText);
@@ -66,13 +66,25 @@ function affichageResultat() {
 
 			document.getElementById('resultat').getElementsByTagName('tbody')[0].innerHTML = table;
 
-			var pagesCount = resp['pagesCount'],
+			var pagesCount = resp['pagesCount'];
+			
+		
 			linksPage = '';
+			if(page > 0)
+			{
+				linksPage = '<button onclick="link_ajax('+(page-1)+')">précédent</button>';
+			}
+			
 			for(var i=0; i < pagesCount; i++)
 				linksPage += '<button onclick="link_ajax('+i+')">'+(i+1)+'</button>';
 			document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
 			// Si jamais on veux mettre en haut et en bas_
 			//document.getElementsByClassName('pagination')[1].innerHTML = linksPage;
+			
+			if(page < i)
+			{
+				linksPage += '<button onclick="link_ajax('+(page+1)+')">suivant</button>';
+			}
 
 		} else
 			console.error('le fichier xml ne retourne pas un 200 : '+this.status);
