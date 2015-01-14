@@ -1,249 +1,246 @@
 <?php
 
-function rearrange( $arr ){
+function rearrange($arr) {
     $new=null;
-    foreach( $arr as $key => $all ){
-        foreach( $all as $i => $val ){
+    foreach($arr as $key => $all) {
+        foreach($all as $i => $val) {
             $new[$i][$key] = $val;
         }
     }
     return $new;
 }
 
-function getListePaysMonde(){
-    $lst=array();
-
-    $lst[]="Afghanistan";
-    $lst[]="Afrique_Centrale";
-    $lst[]="Afrique_du_sud";
-    $lst[]="Albanie";
-    $lst[]="Algerie";
-    $lst[]="Allemagne";
-    $lst[]="Andorre";
-    $lst[]="Angola";
-    $lst[]="Anguilla";
-    $lst[]="Arabie_Saoudite";
-    $lst[]="Argentine";
-    $lst[]="Armenie";
-    $lst[]="Australie";
-    $lst[]="Autriche";
-    $lst[]="Azerbaidjan";
-    $lst[]="Bahamas";
-    $lst[]="Bangladesh";
-    $lst[]="Barbade";
-    $lst[]="Bahrein";
-    $lst[]="Belgique";
-    $lst[]="Belize";
-    $lst[]="Benin";
-    $lst[]="Bermudes";
-    $lst[]="Bielorussie";
-    $lst[]="Bolivie";
-    $lst[]="Botswana";
-    $lst[]="Bhoutan";
-    $lst[]="Boznie_Herzegovine";
-    $lst[]="Bresil";
-    $lst[]="Brunei";
-    $lst[]="Bulgarie";
-    $lst[]="Burkina_Faso";
-    $lst[]="Burundi";
-    $lst[]="Caiman";
-    $lst[]="Cambodge";
-    $lst[]="Cameroun";
-    $lst[]="Canada";
-    $lst[]="Canaries";
-    $lst[]="Cap_vert";
-    $lst[]="Chili";
-    $lst[]="Chine";
-    $lst[]="Chypre";
-    $lst[]="Colombie";
-    $lst[]="Comores";
-    $lst[]="Congo";
-    $lst[]="Congo_democratique";
-    $lst[]="Cook";
-    $lst[]="Coree_du_Nord";
-    $lst[]="Coree_du_Sud";
-    $lst[]="Costa_Rica";
-    $lst[]="Cote_d_Ivoire";
-    $lst[]="Croatie";
-    $lst[]="Cuba";
-    $lst[]="Danemark";
-    $lst[]="Djibouti";
-    $lst[]="Dominique";
-    $lst[]="Egypte";
-    $lst[]="Emirats_Arabes_Unis";
-    $lst[]="Equateur";
-    $lst[]="Erythree";
-    $lst[]="Espagne";
-    $lst[]="Estonie";
-    $lst[]="Etats_Unis";
-    $lst[]="Ethiopie";
-    $lst[]="Falkland";
-    $lst[]="Feroe";
-    $lst[]="Fidji";
-    $lst[]="Finlande";
-    $lst[]="France";
-    $lst[]="Gabon";
-    $lst[]="Gambie";
-    $lst[]="Georgie";
-    $lst[]="Ghana";
-    $lst[]="Gibraltar";
-    $lst[]="Grece";
-    $lst[]="Grenade";
-    $lst[]="Groenland";
-    $lst[]="Guadeloupe";
-    $lst[]="Guam";
-    $lst[]="Guatemala";
-    $lst[]="Guernesey";
-    $lst[]="Guinee";
-    $lst[]="Guinee_Bissau";
-    $lst[]="Guinee equatoriale";
-    $lst[]="Guyana";
-    $lst[]="Guyane_Francaise ";
-    $lst[]="Haiti";
-    $lst[]="Hawaii";
-    $lst[]="Honduras";
-    $lst[]="Hong_Kong";
-    $lst[]="Hongrie";
-    $lst[]="Inde";
-    $lst[]="Indonesie";
-    $lst[]="Iran";
-    $lst[]="Iraq";
-    $lst[]="Irlande";
-    $lst[]="Islande";
-    $lst[]="Israel";
-    $lst[]="Italie";
-    $lst[]="Jamaique";
-    $lst[]="Jan Mayen";
-    $lst[]="Japon";
-    $lst[]="Jersey";
-    $lst[]="Jordanie";
-    $lst[]="Kazakhstan";
-    $lst[]="Kenya";
-    $lst[]="Kirghizstan";
-    $lst[]="Kiribati";
-    $lst[]="Koweit";
-    $lst[]="Laos";
-    $lst[]="Lesotho";
-    $lst[]="Lettonie";
-    $lst[]="Liban";
-    $lst[]="Liberia";
-    $lst[]="Liechtenstein";
-    $lst[]="Lituanie";
-    $lst[]="Luxembourg";
-    $lst[]="Lybie";
-    $lst[]="Macao";
-    $lst[]="Macedoine";
-    $lst[]="Madagascar";
-    $lst[]="Madère";
-    $lst[]="Malaisie";
-    $lst[]="Malawi";
-    $lst[]="Maldives";
-    $lst[]="Mali";
-    $lst[]="Malte";
-    $lst[]="Man";
-    $lst[]="Mariannes du Nord";
-    $lst[]="Maroc";
-    $lst[]="Marshall";
-    $lst[]="Martinique";
-    $lst[]="Maurice";
-    $lst[]="Mauritanie";
-    $lst[]="Mayotte";
-    $lst[]="Mexique";
-    $lst[]="Micronesie";
-    $lst[]="Midway";
-    $lst[]="Moldavie";
-    $lst[]="Monaco";
-    $lst[]="Mongolie";
-    $lst[]="Montserrat";
-    $lst[]="Mozambique";
-    $lst[]="Namibie";
-    $lst[]="Nauru";
-    $lst[]="Nepal";
-    $lst[]="Nicaragua";
-    $lst[]="Niger";
-    $lst[]="Nigeria";
-    $lst[]="Niue";
-    $lst[]="Norfolk";
-    $lst[]="Norvege";
-    $lst[]="Nouvelle_Caledonie";
-    $lst[]="Nouvelle_Zelande";
-    $lst[]="Oman";
-    $lst[]="Ouganda";
-    $lst[]="Ouzbekistan";
-    $lst[]="Pakistan";
-    $lst[]="Palau";
-    $lst[]="Palestine";
-    $lst[]="Panama";
-    $lst[]="Papouasie_Nouvelle_Guinee";
-    $lst[]="Paraguay";
-    $lst[]="Pays_Bas";
-    $lst[]="Perou";
-    $lst[]="Philippines";
-    $lst[]="Pologne";
-    $lst[]="Polynesie";
-    $lst[]="Porto_Rico";
-    $lst[]="Portugal";
-    $lst[]="Qatar";
-    $lst[]="Republique_Dominicaine";
-    $lst[]="Republique_Tcheque";
-    $lst[]="Reunion";
-    $lst[]="Roumanie";
-    $lst[]="Royaume_Uni";
-    $lst[]="Russie";
-    $lst[]="Rwanda";
-    $lst[]="Sahara Occidental";
-    $lst[]="Sainte_Lucie";
-    $lst[]="Saint_Marin";
-    $lst[]="Salomon";
-    $lst[]="Salvador";
-    $lst[]="Samoa_Occidentales";
-    $lst[]="Samoa_Americaine";
-    $lst[]="Sao_Tome_et_Principe";
-    $lst[]="Senegal";
-    $lst[]="Seychelles";
-    $lst[]="Sierra Leone";
-    $lst[]="Singapour";
-    $lst[]="Slovaquie";
-    $lst[]="Slovenie";
-    $lst[]="Somalie";
-    $lst[]="Soudan";
-    $lst[]="Sri_Lanka";
-    $lst[]="Suede";
-    $lst[]="Suisse";
-    $lst[]="Surinam";
-    $lst[]="Swaziland";
-    $lst[]="Syrie";
-    $lst[]="Tadjikistan";
-    $lst[]="Taiwan";
-    $lst[]="Tonga";
-    $lst[]="Tanzanie";
-    $lst[]="Tchad";
-    $lst[]="Thailande";
-    $lst[]="Tibet";
-    $lst[]="Timor_Oriental";
-    $lst[]="Togo";
-    $lst[]="Trinite_et_Tobago";
-    $lst[]="Tristan da cunha";
-    $lst[]="Tunisie";
-    $lst[]="Turkmenistan";
-    $lst[]="Turquie";
-    $lst[]="Ukraine";
-    $lst[]="Uruguay";
-    $lst[]="Vanuatu";
-    $lst[]="Vatican";
-    $lst[]="Venezuela";
-    $lst[]="Vierges_Americaines";
-    $lst[]="Vierges_Britanniques";
-    $lst[]="Vietnam";
-    $lst[]="Wake";
-    $lst[]="Wallis et Futuma";
-    $lst[]="Yemen";
-    $lst[]="Yougoslavie";
-    $lst[]="Zambie";
-    $lst[]="Zimbabwe";
-
-    return $lst;
-
+function getListePaysMonde() {
+    return array(
+    	"Afghanistan",
+    	"Afrique Centrale",
+    	"Afrique du sud",
+	    "Albanie",
+	    "Algerie",
+	    "Allemagne",
+	    "Andorre",
+	    "Angola",
+	    "Anguilla",
+	    "Arabie Saoudite",
+	    "Argentine",
+	    "Armenie",
+	    "Australie",
+	    "Autriche",
+	    "Azerbaidjan",
+	    "Bahamas",
+	    "Bangladesh",
+	    "Barbade",
+	    "Bahrein",
+	    "Belgique",
+	    "Belize",
+	    "Benin",
+	    "Bermudes",
+	    "Bielorussie",
+	    "Bolivie",
+	    "Botswana",
+	    "Bhoutan",
+	    "Boznie Herzegovine",
+	    "Bresil",
+	    "Brunei",
+	    "Bulgarie",
+	    "Burkina Faso",
+	    "Burundi",
+	    "Caiman",
+	    "Cambodge",
+	    "Cameroun",
+	    "Canada",
+	    "Canaries",
+	    "Cap vert",
+	    "Chili",
+	    "Chine",
+	    "Chypre",
+	    "Colombie",
+	    "Comores",
+	    "Congo",
+	    "Congo democratique",
+	    "Cook",
+	    "Coree du Nord",
+	    "Coree du Sud",
+	    "Costa Rica",
+	    "Cote d Ivoire",
+	    "Croatie",
+	    "Cuba",
+	    "Danemark",
+	    "Djibouti",
+	    "Dominique",
+	    "Egypte",
+	    "Emirats Arabes Unis",
+	    "Equateur",
+	    "Erythree",
+	    "Espagne",
+	    "Estonie",
+	    "Etats Unis",
+	    "Ethiopie",
+	    "Falkland",
+	    "Feroe",
+	    "Fidji",
+	    "Finlande",
+	    "France",
+	    "Gabon",
+	    "Gambie",
+	    "Georgie",
+	    "Ghana",
+	    "Gibraltar",
+	    "Grece",
+	    "Grenade",
+	    "Groenland",
+	    "Guadeloupe",
+	    "Guam",
+	    "Guatemala",
+	    "Guernesey",
+	    "Guinee",
+	    "Guinee Bissau",
+	    "Guinee equatoriale",
+	    "Guyana",
+	    "Guyane Francaise ",
+	    "Haiti",
+	    "Hawaii",
+	    "Honduras",
+	    "Hong Kong",
+	    "Hongrie",
+	    "Inde",
+	    "Indonesie",
+	    "Iran",
+	    "Iraq",
+	    "Irlande",
+	    "Islande",
+	    "Israel",
+	    "Italie",
+	    "Jamaique",
+	    "Jan Mayen",
+	    "Japon",
+	    "Jersey",
+	    "Jordanie",
+	    "Kazakhstan",
+	    "Kenya",
+	    "Kirghizstan",
+	    "Kiribati",
+	    "Koweit",
+	    "Laos",
+	    "Lesotho",
+	    "Lettonie",
+	    "Liban",
+	    "Liberia",
+	    "Liechtenstein",
+	    "Lituanie",
+	    "Luxembourg",
+	    "Lybie",
+	    "Macao",
+	    "Macedoine",
+	    "Madagascar",
+	    "Madère",
+	    "Malaisie",
+	    "Malawi",
+	    "Maldives",
+	    "Mali",
+	    "Malte",
+	    "Man",
+	    "Mariannes du Nord",
+	    "Maroc",
+	    "Marshall",
+	    "Martinique",
+	    "Maurice",
+	    "Mauritanie",
+	    "Mayotte",
+	    "Mexique",
+	    "Micronesie",
+	    "Midway",
+	    "Moldavie",
+	    "Monaco",
+	    "Mongolie",
+	    "Montserrat",
+	    "Mozambique",
+	    "Namibie",
+	    "Nauru",
+	    "Nepal",
+	    "Nicaragua",
+	    "Niger",
+	    "Nigeria",
+	    "Niue",
+	    "Norfolk",
+	    "Norvege",
+	    "Nouvelle Caledonie",
+	    "Nouvelle Zelande",
+	    "Oman",
+	    "Ouganda",
+	    "Ouzbekistan",
+	    "Pakistan",
+	    "Palau",
+	    "Palestine",
+	    "Panama",
+	    "Papouasie Nouvelle Guinee",
+	    "Paraguay",
+	    "Pays Bas",
+	    "Perou",
+	    "Philippines",
+	    "Pologne",
+	    "Polynesie",
+	    "Porto Rico",
+	    "Portugal",
+	    "Qatar",
+	    "Republique Dominicaine",
+	    "Republique Tcheque",
+	    "Reunion",
+	    "Roumanie",
+	    "Royaume Uni",
+	    "Russie",
+	    "Rwanda",
+	    "Sahara Occidental",
+	    "Sainte Lucie",
+	    "Saint Marin",
+	    "Salomon",
+	    "Salvador",
+	    "Samoa Occidentales",
+	    "Samoa Americaine",
+	    "Sao Tome et Principe",
+	    "Senegal",
+	    "Seychelles",
+	    "Sierra Leone",
+	    "Singapour",
+	    "Slovaquie",
+	    "Slovenie",
+	    "Somalie",
+	    "Soudan",
+	    "Sri Lanka",
+	    "Suede",
+	    "Suisse",
+	    "Surinam",
+	    "Swaziland",
+	    "Syrie",
+	    "Tadjikistan",
+	    "Taiwan",
+	    "Tonga",
+	    "Tanzanie",
+	    "Tchad",
+	    "Thailande",
+	    "Tibet",
+	    "Timor Oriental",
+	    "Togo",
+	    "Trinite et Tobago",
+	    "Tristan da cunha",
+	    "Tunisie",
+	    "Turkmenistan",
+	    "Turquie",
+	    "Ukraine",
+	    "Uruguay",
+	    "Vanuatu",
+	    "Vatican",
+	    "Venezuela",
+	    "Vierges Americaines",
+	    "Vierges Britanniques",
+	    "Vietnam",
+	    "Wake",
+	    "Wallis et Futuma",
+	    "Yemen",
+	    "Yougoslavie",
+	    "Zambie",
+	    "Zimbabwe"
+    );
 }
 
 ?>

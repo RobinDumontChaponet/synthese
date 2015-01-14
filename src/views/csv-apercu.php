@@ -2,15 +2,14 @@
 <div id="content">
 <?php if(!empty($output)) { ?>
   <p class="notice">Le fichier .csv contient les erreurs suivantes. Corrigez-les puis validez.</p>
-  <form action="" method="post" name="correct">
+  <form action="index.php?requ=csv-import&<?php echo http_build_query($order);?>" method="post" name="correct">
   	<?php echo $output; ?>
-  	<br /><input type="submit" value="Corriger" />
+  	<br /><input type="submit" name="submitCorrect" value="Corriger" />
   </form>
 <?php
 } else {
 ?>
-<section id="resultat">
-		<table>
+		<table style="position: static">
 			<thead>
 				<tr>
 					<th>Nom patronymique</th>
@@ -36,45 +35,47 @@
 					<th>Code postal parent</th>
 					<th>Téléphone mobile parent</th>
 				</tr>
-				<tr>
-					<?php
-					$i = 0;
-					foreach($csv as $line) {
-						if ($i > 2)
-							break;
-						else {
-							echo '<th>'.$line[$order['nomPat']].'</th>';
-							echo '<th>'.$line[$order['nomUsage']].'</th>';
-							echo '<th>'.$line[$order['prenom']].'</th>';
-							echo '<th>'.$line[$order['dateNais']].'</th>';
-							echo '<th>'.$line[$order['mail']].'</th>';
-							echo '<th>'.$line[$order['telMob']].'</th>';
-							echo '<th>'.$line[$order['telFix']].'</th>';
-							echo '<th>'.$line[$order['adresse1']].'</th>';
-							echo '<th>'.$line[$order['codePost']].'</th>';
-							echo '<th>'.$line[$order['ville']].'</th>';
-							echo '<th>'.$line[$order['pays']].'</th>';
-							echo '<th>'.$line[$order['diplomePostDUT']].'</th>';
-							echo '<th>'.$line[$order['formationPostDUT']].'</th>';
-							echo '<th>'.$line[$order['ecole']].'</th>';
-							echo '<th>'.$line[$order['diplomePrepare']].'</th>';
-							echo '<th>'.$line[$order['entreprise']].'</th>';
-							echo '<th>'.$line[$order['telEntreprise']].'</th>';
-							echo '<th>'.$line[$order['codePostEntreprise']].'</th>';
-							echo '<th>'.$line[$order['cedex']].'</th>';
-							echo '<th>'.$line[$order['adresse1Parents']].'</th>';
-							echo '<th>'.$line[$order['codePostParents']].'</th>';
-							echo '<th>'.$line[$order['telMobParents']].'</th>';
-						}
-						$i++;
-					}
-					?>
-				</tr>
 			</thead>
 			<tbody>
+				<?php
+				$i = 0;
+				foreach($csv as $line) {
+					if ($i > 2)
+						break;
+					else {
+							echo '<tr>';
+							echo '<td>'.$line[$order['nomPat']].'</td>';
+							echo '<td>'.$line[$order['nomUsage']].'</td>';
+							echo '<td>'.$line[$order['prenom']].'</td>';
+							echo '<td>'.$line[$order['dateNais']].'</td>';
+							echo '<td>'.$line[$order['mail']].'</td>';
+							echo '<td>'.$line[$order['telMob']].'</td>';
+							echo '<td>'.$line[$order['telFix']].'</td>';
+							echo '<td>'.$line[$order['adresse1']].'</td>';
+							echo '<td>'.$line[$order['codePost']].'</td>';
+							echo '<td>'.$line[$order['ville']].'</td>';
+							echo '<td>'.$line[$order['pays']].'</td>';
+							echo '<td>'.$line[$order['diplomePostDUT']].'</td>';
+							echo '<td>'.$line[$order['formationPostDUT']].'</td>';
+							echo '<td>'.$line[$order['ecole']].'</td>';
+							echo '<td>'.$line[$order['diplomePrepare']].'</td>';
+							echo '<td>'.$line[$order['entreprise']].'</td>';
+							echo '<td>'.$line[$order['telEntreprise']].'</td>';
+							echo '<td>'.$line[$order['codePostEntreprise']].'</td>';
+							echo '<td>'.$line[$order['cedex']].'</td>';
+							echo '<td>'.$line[$order['adresse1Parents']].'</td>';
+							echo '<td>'.$line[$order['codePostParents']].'</td>';
+							echo '<td>'.$line[$order['telMobParents']].'</td>';
+							echo '</tr>';
+					}
+					$i++;
+				}
+				?>
 			</tbody>
 		</table>
-	</section>
+	<form action="index.php?requ=csv-import&<?php echo http_build_query($order);?>" method="post" name="final">
+	  <input type="submit" name="submitFinal" value="Importer" />
+  </form>
 <?php
 }
 ?>

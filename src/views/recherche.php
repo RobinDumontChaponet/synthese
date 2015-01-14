@@ -16,7 +16,7 @@
 				</fieldset>
 				<fieldset>
 					<div>
-						<label for="promotionInf">Entre</label>
+						<label for="promotionInf">Promotion entre</label>
 						<select id="promotionInf" name="promotionInf">
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
