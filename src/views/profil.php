@@ -63,8 +63,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 				</dl>
 			</li>
 <?php
-	}
-	if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+	} ?>
+		</ul>
+		<h2>Diplômes post-DUT</h2>
+		<ul>
+	<?php if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 		foreach($diplomesPost as $diplomePost) {
 ?>
 			<li>
@@ -81,7 +84,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php
 		}
 	}
-?>
+		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
+			<li>
+				<a class="add" href="diplome-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme post-DUT</a>
+			</li>
+		<?php } ?>
 		</ul>
 <?php if($diplomeDUT==null && $diplomesPost==null) { ?>
 		<p class="sad">Aucun diplôme.</p>
@@ -108,7 +115,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 			</li>
 <?php
 		}
-?>
+		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
+			<li>
+				<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
+			</li>
+		<?php }?>
 		</ul>
 <?php
 	} else {
