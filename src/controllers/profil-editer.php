@@ -1,6 +1,7 @@
 <?php
 include_once('validate.transit.inc.php');
-
+require_once('lstPays.php');
+$lstPays=getListePaysMonde();
 $valid = NULL;
 $change = false;
 

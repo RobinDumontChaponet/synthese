@@ -1,6 +1,7 @@
 <?php
 if ($_SESSION['user_auth']['write']) {
 	require_once(MODELS_INC.'CodeAPEDAO.class.php');
+    require_once('lstPays.php');
 	$entreprise = EntrepriseDAO::getById($_GET['id']);
 	$lstPays=getListePaysMonde();
 	$lstCodeApe=CodeAPEDAO::getAll();

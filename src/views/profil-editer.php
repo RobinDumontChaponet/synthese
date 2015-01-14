@@ -62,7 +62,18 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<dt id="ville"><label for="inputCity">Ville</label></dt>
 				<dd><input id="inputCity" name="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/></dd>
 				<dt id="pays"><label for="inputCountry">Pays</label></dt>
-				<dd><input id="inputCountry" name="country" type="text" placeholder = "Aucun pays renseigné" value="<?php echo $ancien->getPays(); ?>"/></li></dd>
+				<dd>
+				    <select name="country" id="inputCountry">
+				        <option value="<?php echo $ancien->getPays(); ?>" selected><?php echo $ancien->getPays(); ?></option>
+                        <?php
+                            foreach($lstPays as $pays){
+                        ?>
+                            <option value="<?= $pays; ?>" ><?= $pays; ?></option>
+                        <?php
+                            }
+                        ?>
+				    </select>
+				</dd>
 				<dt id="telephoneFixe"><label for="inputPhoneNumber">Telephone</label></dt>
 				<dd><input id="inputPhoneNumber" name="phoneNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getTelephone(); ?>"/></dd>
 				<dt id="telephoneMobile"><label for="inputMobileNumber">Mobile</label></dt>

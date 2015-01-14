@@ -3,7 +3,7 @@
     <?php
         if(isset($error)){
     ?>
-            <p class="warning"><?= $error; ?></p>
+            <p class="error"><?= $error; ?></p>
     <?php
         }
     ?>
