@@ -13,7 +13,6 @@
 
 - Limiter le nombre d'events <<passés>> ~ 10 (constante "LINE_PAGE" !) devrait suffire avec une pagination pour les voir tous ?
 
-- Faire entreprise-editer
 - Faire entreprise-ajouter
 - Faire diplome-ajouter
 - Faire diplome-supprimer
