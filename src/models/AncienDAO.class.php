@@ -74,6 +74,20 @@ class AncienDAO {
 
     }
 
+    public static function getAncienByIdPromoAndIdDep($prom,$dep){
+        $lst=array();
+         try {
+            $req=SPDO::getInstance()->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=? AND idDepartement=?");
+            $req->execute(array($prom,$dep));
+            while($res=$req->fetch()) {
+                $lst[]=AncienDAO::getById($res['idPersonne']);
+            }
+        } catch(PDOException $e) {
+            die('Error getAncienByIdPromo dans AncienDAO.class.php : '.$e->getMessage().'<br>');
+        }
+        return $lst;
+    }
+
     public static function create(&$ancien) {
         if (get_class($ancien)=="Ancien") {
             try {

@@ -75,5 +75,18 @@ class PromotionDAO {
         }
     }
 
+    public static function nbAncienPromo($promo){
+        if (get_class($promo)=="Promotion") {
+            try{
+                $req=SPDO::getInstance()->prepare("SELECT count(*) FROM ");
+                $req->execute(array($promo->getId()));
+            } catch(PDOException $e) {
+                die('error delete promo '.$e->getMessage().'<br>');
+            }
+        } else {
+            die('paramètre de type promo requis');
+        }
+    }
+
 }
 ?>
