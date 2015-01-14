@@ -56,7 +56,7 @@ if ($_SESSION["syntheseUser"]) {
 		header('Content-Type: application/json; charset=utf-8');
 
         $nbTotal = 0;
-        $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'],$_GET['typeSpecialisation'], $_GET['diplomePostDUT'], $_GET['etabPostDUT'], ($_GET['travailActuel']=='true')?true:false, $_GET['page'], 1, $nbTotal);
+        $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'],$_GET['typeSpecialisation'], $_GET['diplomePostDUT'], $_GET['etabPostDUT'], ($_GET['travailActuel']=='true')?true:false, $_GET['page'], LINES_PAGE, $nbTotal);
 
 		$array = array();
 
@@ -81,7 +81,7 @@ if ($_SESSION["syntheseUser"]) {
 
 		}
 
-		$array['pagesCount'] = ceil($nbTotal/1);
+		$array['pagesCount'] = ceil($nbTotal/LINES_PAGE);
 
 
 		echo json_encode($array);

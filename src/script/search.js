@@ -1,6 +1,14 @@
 var g_page;
 function link_ajax(page) {
-    g_page = page;
+
+
+
+    if(typeof(page) == 'object')
+    {
+        g_page = 0;
+    }else{
+        g_page = page;
+    }
 	var xhr = getXMLHttpRequest();
 	page = isNaN(page)?0:page;
 	if((xhr != null) && (xhr != false)) {
@@ -69,12 +77,11 @@ function affichageResultat() {
 			document.getElementById('resultat').getElementsByTagName('tbody')[0].innerHTML = table;
 
 			var pagesCount = resp['pagesCount'];
-			
-		
+
 			linksPage = '';
 			if(g_page > 0)
 			{
-				linksPage = '<button onclick="link_ajax('+(g_page-1)+')">précédent</button>';
+				linksPage = '<button onclick="link_ajax('+(g_page-1)+')"><</button>';
 			}
 			var i;
 			for(i=0; i < pagesCount; i++)
@@ -85,10 +92,14 @@ function affichageResultat() {
 			
 			if(g_page < (i-1))
 			{
-				linksPage += '<button onclick="link_ajax('+(g_page+1)+')">suivant</button>';
+				linksPage += '<button onclick="link_ajax('+(g_page+1)+')">></button>';
 			}else if(!g_page)
             {
-                linksPage += '<button onclick="link_ajax('+1+')">suivant</button>';
+                g_page = pagesCount;
+                if(g_page > 1)
+                {
+                    linksPage += '<button onclick="link_ajax('+1+')">></button>';
+                }
             }
 
 			
