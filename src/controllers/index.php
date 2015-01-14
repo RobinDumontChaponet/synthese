@@ -1,5 +1,9 @@
 <?php
 
-include(dirname(__FILE__).'/../views/index.php');
+$libelleTypeProfil = $_SESSION['syntheseUser']->getTypeProfil()->getLibelle();
+
+
+
+include(VIEWS_INC.'index.php');
 
 ?>

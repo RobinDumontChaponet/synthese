@@ -1,0 +1,41 @@
+﻿- Diplômes : Renseigner si obtenue ou non !
+
+- Faire une pagination dans la recherche
+
+- Faire la page d'accueille, par exemple :
+	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
+	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar
+	- pour admin : un mélange des deux premiers, en fait... faut réchéflir
+
+- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement)
+	- Export des adresses mail
+	- Envoi d'un mail
+
+- Limiter le nombre d'events <<passés>> ~ 10 (constante "LINE_PAGE" !) devrait suffire avec une pagination pour les voir tous ?
+
+- Faire entreprise-editer
+- Faire entreprise-ajouter
+- Faire diplome-ajouter
+- Faire diplome-supprimer
+
+- Détailler les départements dans promotion
+
+- Ecrire le texte de présentation sur la page de connection
+
+- Ajouter des bulles d'aides (je vous explique quand vous voulez)
+
+- Enlever le commentaire Update dans diplomeDUT-selectionner lorsque Pister aura finit sa DAO ...
+- Styler la page diplomeDUT-selectionner
+- Styler la page diplomes
+- Désolé j'ai la flemme de faire le reste pour le moment ... je sature
+
+Profil :
+
+- Faire la suppression d'un diplôme dans profil (ça supprime le lien Possede)
+- Faire l'ajout d'un diplome (ajoute un lien possede)
+
+- Faire l'ajout d'une entreprise (ajoute un lien travaille)
+- Faire la suppression d'une entreprise (supprime le lien travaille)
+
+
+- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.

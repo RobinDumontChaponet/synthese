@@ -1,16 +1,60 @@
-<!--meta title="IUTbook"-->
-<header>
-  <h1><a href="#">connectIT!</a></h1>
-  <nav>
-	<ul>
-	  <li><a href="#" title="">Profil</a></li>
-	  <li><a href="#" title="">Promo</a></li>
-	</ul>
-  </nav><input type="search" results=5 placeholder="Recherche..." />
-</header>
-<div id="wrapper">
-  <div id="content">test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test
-  </div>
+<!--meta title=""-->
+
+<?php
+/***************************************************************************************************
+ *	- pour ancien : news de sa promo, messages, et les machins de réseau social                    *
+ *	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar   *
+ *	- pour admin : un mélange des deux premiers, en fait... faut réchéflir                         *
+ ***************************************************************************************************/
+?>
+
+<div id="content">
+	<section>
+		<h1>Temporairement...</h1>
+		<p>Temporairement, ici, quelques liens.</p>
+		<ul class="magnets">
+			<li><a target="_blank" href="../TO_DO.txt">TO_DO.txt</a></li>
+		</ul>
+	</section>
+<?php
+if ($libelleTypeProfil == "Admin") {
+?>
+	<section>
+		<h1>Ici des news...</h1>
+	</section>
+<?php
+} elseif ($libelleTypeProfil == "Professeur") {
+?>
+	<section>
+		<a class="all" href="evenements" title="Voir tous les évènements">Tous les évènements...</a>
+		<h1>Mes évènements</h1>
+		<ul>
+			<li></li>
+		</ul>
+	</section>
+	<section>
+		<a class="all" href="#" title="Voir tous les messages">Tous les messages...</a>
+		<h1>Derniers messages</h1>
+		<ul>
+			<li></li>
+		</ul>
+	</section>
+<?php
+} elseif($libelleTypeProfil == "Ancien") {
+?>
+	<section>
+		<a class="all" href="promotion" title="Voir la page de la promotion">Aller à la promotion...</a>
+		<h1>Dernières activités de la promotion</h1>
+		<ul>
+			<li></li>
+		</ul>
+	</section>
+	<section>
+		<a class="all" href="#" title="Voir tous les messages">Tous les messages...</a>
+		<h1>Derniers messages</h1>
+		<ul>
+			<li></li>
+		</ul>
+	</section>
+<?php } ?>
 </div>
-<footer><p>footer</p></footer>
-<script type="text/javascript"></script>

@@ -24,29 +24,17 @@ class TypeEvenement
   }
   
 //-------------------------------------SETTERS---------------------------------------
-  public function setId($id)
-	{
-		if(($id != null) and ($id >= 0))
-		{
+	public function setId($id){
+		if($id >= 0)
 			$this->id = $id;
-		}else
-		{
+		else
 			throw new Exception("Id type evenement invalide");
-		}
 	}
 	
 	
-  public function setLibelle($libelle)
-  {
-    $libelleTraite = trim($libelle);
-    if(($libelleTraite != null) and ($libelleTraite != ""))
-    {
-        $this->libelle = $libelleTraite;
-    }else
-    {
-        throw new Exception("Libellé type evenement incorrect");
-    }
-  }
+	public function setLibelle($libelle){
+		$this->libelle = $libelle;
+	}
 	
 	
 //------------------------------------toString-------------------------------------
@@ -54,6 +42,18 @@ class TypeEvenement
   {
     return "Id : ".$this->id." Libelle : ".$this->libelle;
   }
+  
+ //-----------------------------------------Equals---------------------------------
+ 	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "TypeEvenement")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 

@@ -84,6 +84,7 @@
 			•	Promo : Entre borne		 -- Ex : [1985] - [1989]
 			•	Diplôme			 	 -- Ex : [DUT Informatique]
 			•	Spécialisation 			 -- Ex : [BDD]
+			•	Type spécialisation		 -- Ex : [Réseau, Base de Données, Architecte réseau]
 			•	Diplome PostDUT			 -- Ex : [Ingénieur informatique]
 			•	Etablissement PostDUT	 	 -- Ex : [Telecom Nancy]
 			•	Travail actuellement		 -- Ex : [X] ou [ ]

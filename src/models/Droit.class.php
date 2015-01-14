@@ -52,6 +52,18 @@ public function setLibelle($libelle)
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
+  
+//--------------------------------------Equals
+  public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Droit")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
 
 }
 

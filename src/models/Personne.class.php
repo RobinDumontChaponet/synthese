@@ -1,16 +1,16 @@
 <?php
-	
-class Personne
-{
 
+class Personne {
+
+	//-------------------VARIABLES-------------------
 	private $id;
-	private $nom;
+	private $nom; //Nom d'usage.
 	private $nomPatronymique;
 	private $prenom;
 	private $mail;
-	
-	public function __construct($id, $nom, $nomPatronymique, $prenom, $mail)
-	{
+
+	//-------------------CONSTRUCTORS-------------------
+	public function __construct($id, $nom, $nomPatronymique, $prenom, $mail) {
 		$this->setId($id);
 		$this->setNom($nom);
 		$this->setNomPatronymique($nomPatronymique);
@@ -18,98 +18,72 @@ class Personne
 		$this->setMail($mail);
 	}
 
-//----------------------------------Getters
-	public function getId()
-	{
+	// -------------------GETTERS-------------------
+	public function getId() {
 		return $this->id;
 	}
-	
-	public function getNom()
-	{
+
+	public function getNom() {
 		return $this->nom;
 	}
-	
-	public function getNomPatronymique()
-	{
+
+	public function getNomPatronymique() {
 		return $this->nomPatronymique;
 	}
-	
-	public function getPrenom()
-	{
+
+	public function getPrenom() {
 		return $this->prenom;
 	}
-	
-	public function getMail()
-	{
-		return $this->$mail;
+
+	public function getMail() {
+		return $this->mail;
 	}
 
-//----------------------------------Setters
-	public function setId($id)
-	{
-		if(($id != null) and ($id >= 0))
-		{
+	//-------------------SETTERS-------------------
+	public function setId($id) {
+		if(is_numeric($id) && $id >= 0)
 			$this->id = $id;
-		}else
-		{
-			throw new Exception("Id personne invalide");
-		}
+		else
+			throw new Exception("Id personne invalide : ".$id);
 	}
-	
-	public function setNom($nom)
-	{
-		$nomTraite = trim($nom);
-		if(($nomTraite != null) and ($nomTraite != ""))
-		{
-			$this->nom = strtoupper($nomTraite);
-		}else
-		{
-			throw new Exception("Nom incorrect");
-		}
+
+	public function setNom($nom) {
+		$this->nom = trim($nom);
 	}
-	
-	public function setNomPatronymique($nomPatronymique)
-	{
-		$nomPatronymiqueTraite = trim($nomPatronymique);
-		if(($nomPatronymiqueTraite != null) and ($nomPatronymiqueTraite != ""))
-		{
-			$this->nomPatronymique = strtoupper($nomPatronymiqueTraite);
-		}else
-		{
-			throw new Exception("Nom patronymique incorrect");
-		}	
+
+	public function setNomPatronymique($nomPatronymique) {
+		$this->nomPatronymique = $nomPatronymique;
 	}
-	
-	public function setPrenom($prenom)
-	{
-		$prenomTraite = trim($prenom);
-		if(($prenomTraite != null) and ($prenomTraite != ""))
-		{
-			$this->prenom = strtoupper(substr($prenomTraite,0,1)).strtolower(substr($prenomTraite,1));
-		}else
-		{
-			throw new Exception("Prenom incorrect");
-		}
+
+	public function setPrenom($prenom) {
+		$this->prenom = $prenom;
 	}
-	
-	public function setMail($mail)
-	{
+
+	public function setMail($mail) {
 		$mailTraite = trim($mail);
-		if(($mailTraite != null) and (($mailTraite == "") or (preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite))))
-		{
-			$this->mail = $mailTraite;	
-		}else
-		{
-			throw new Exception("Mail incorrect !");
-		}
+		if((preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $mailTraite)) || ($mail == ""))
+			$this->mail = $mailTraite;
+		else
+			throw new Exception("Mail incorrect ! : ".$mailTraite);
 	}
-	
-//------------------------------tostring
-	public function __toString()
-	{
+
+	//-------------------tostring-------------------
+	public function __toString() {
 		return "Id : ".$this->id." Nom : ".$this->nom." Nom patronymique : "
 			.$this->nomPatronymique." Prénom : ".$this->prenom." Mail : ".$this->mail;
 	}
+
+//-----------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Personne")
+		{
+			return $this->id == $aComparer->getId();
+		}else{
+			return false;
+		}
+	}
+
 }
-	
+
 ?>

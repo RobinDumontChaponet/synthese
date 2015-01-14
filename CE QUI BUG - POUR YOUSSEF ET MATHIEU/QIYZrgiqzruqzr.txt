@@ -1,0 +1,38 @@
+Cette liste est sujette à agrandissement constant
+
+YOUSSEF
+
+
+Va voir helpers/search.php, il y a des commentaires pour toi.
+C'est fait, j'ai vu.
+
+
+
+VOUS DEUX :
+
+Pour les messages d'erreurs, veuillez indiquer : Où quoi comment c'est à dire, le nom de la fonction dans quel fichier et un semblant de pourquoi
+
+ -> Quand vous faites "gettype($var)" en espérant obtenir le nom de la classe... bah c'est raté.
+ 	Il faut faire "get_class($var)"  !!!!!!!!!!!!!!!
+ 	(dans pas mal de DAO et d'obets métiers........)
+
+VOUS DEUX ? :
+
+Youssefffff -->     $this->dateEmbaucheFin($idEmbaucheFin); c'est     $this->setDateEmbaucheFin($idEmbaucheFin); (corrigé !)
+Si vous faites quelque chose :( lisez l'analyse fonctionnellllleeeee
+Je l'ai pas faite pour des lamas
+
+Si l'utilisateur clique sur un des champs suivants : "Travail actuellement"
+L'utilisateur peut cocher la case, ex : "[X]" ou "[ ]"
+L'utilisateur clique sur "Rechercher"
+Le site recherche dans la base de données, et affiche les anciens concernés
+[01:37:07] Robin Dumont-Chaponet: c’est à dire
+[01:37:17] Robin Dumont-Chaponet: on a le choix entre l’ancien travail ou pas
+[01:38:13] Robin Dumont-Chaponet: donc une checkbox cochée ou pas cochée
+
+Youssef -> je m'occupe de la case à cocher !
+
+Pisterrrrrrrr
+[02:17:55] Robin Dumont-Chaponet: essai de ne pas laisser de var_dump dans tes DAOs quand elles sont censées êtres terminées
+[02:18:16] Robin Dumont-Chaponet: (ce qui n’est vraisemblablement pas le cas, mais passons)
+

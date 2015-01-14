@@ -1,12 +1,31 @@
 @charset "UTF-8";
 /* CSS. JJD - intro (index.html) */
 
-form {
-	position: absolute;
-	margin: 20% auto 0;
-	left: 0;
-	right: 0;
+aside {
 	text-align: center;
+	width: 50%;
+	height: 100%;
+	display: table;
+}
+
+aside#intro {
+	background: url("images/noise.png"), #6d84b4;
+	position: fixed;
+	bottom: 0;
+	top: 0;
+}
+aside#form {
+	float: right;
+}
+
+aside p, form {
+	margin: 20% 2% 0;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+aside p {
+	color: #fff;
 }
 form:before {
 	content: "";
@@ -26,42 +45,32 @@ form:before {
 }
 
 fieldset {
-	border: 0;
 	text-align: center;
 }
 legend {
-	font: 24px Verdana;
-	color: grey;
-	width: 100%;
+	color: #f4f3f3;
+	text-shadow: 0 1px 0 #c9c9c9, 0 2px 0 #b7b7b7, 0 3px 2px #ededed, 0 -1px 0 #d8d8d8, -1px 0 0 #dcdcdc, 1px 0 0 #d9d9d9;
+	font-size: 28px;
+	font-family: 'ChunkFiveRegular';
+	position: relative;
+	letter-spacing: 1px;
+	-webkit-text-stroke: 1px #f6f6f6;
+	margin-bottom: 20px;
 }
-
 label {
-	font-size: 12px;
-	line-height: 40px;
-	color: #a0a0a0;
-	display: inline-block;
-	width: 94px;
-	text-align: left;
-	background: white;
-	border: none;
-	border-top-left-radius: 8px;
-	border-bottom-left-radius: 8px;
+	width: 98px;
 	position: relative;
 	top: -2px;
 	height: 40px;
-	padding: 0 5px 0 10px;
+	margin: 5px 10px;
+	font-size: 15px;
+}
+label:after {
+	content: none;
 }
 input {
-	font-size: 16px;
-	line-height: 20px;
-	color: #171717;
-	background: white;
-	border: none;
-	border-top-right-radius: 8px;
-	border-bottom-right-radius: 8px;
 	height: 40px;
-	margin: 10px 0;
-	padding: 0 10px 0 5px;
+	padding: 0 5px;
 	width: 150px;
 }
 
@@ -79,7 +88,6 @@ input[type="submit"] {
 	color: #474747;
 }
 
-
 img {
 	width: 367px;
 	position: relative;
@@ -91,6 +99,7 @@ p.badpass {
 	font-size: 13px;
 	color: red;
 	margin-bottom: 0;
+	display: inline;
 }
 
 p.mapsitna {
@@ -103,5 +112,5 @@ p.mapsitna {
 }
 .warning {
 	border: 1px solid #ffe5e8;
-	color: #BF1606;
+	color: #BF1606 !important;
 }

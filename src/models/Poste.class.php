@@ -47,5 +47,19 @@ class Poste
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
+
+//---------------------------------------------Equals
+	public function equals($aComparer)
+	{
+		if(get_class($aComparer) == "Poste")
+		{
+			return $this->id == $aComparer->getId();	
+		}else
+		{
+			return false;
+		}
+	}
+  
+  
 }
 ?>
