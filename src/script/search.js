@@ -9,6 +9,7 @@ function link_ajax(page) {
     }else{
         g_page = page;
     }
+
 	var xhr = getXMLHttpRequest();
 	page = isNaN(page)?0:page;
 	if((xhr != null) && (xhr != false)) {
@@ -79,13 +80,15 @@ function affichageResultat() {
 			var pagesCount = resp['pagesCount'];
 
 			linksPage = '';
-			if(g_page > 0)
+			if((g_page > 0) && (pagesCount > 1))
 			{
 				linksPage = '<button onclick="link_ajax('+(g_page-1)+')"><</button>';
 			}
 			var i;
 			for(i=0; i < pagesCount; i++)
 				linksPage += '<button onclick="link_ajax('+i+')">'+(i+1)+'</button>';
+
+
 			
 			// Si jamais on veux mettre en haut et en bas_
 			//document.getElementsByClassName('pagination')[1].innerHTML = linksPage;
