@@ -231,7 +231,7 @@ FileETag None
 	#### Specifics
 	RewriteRule ^profil-editer/([^/]+) %{ENV:BASE}/index.php?requ=profil-editer&id=$1 [NC]
 	RewriteRule ^profil/([^/]+) %{ENV:BASE}/index.php?requ=profil&id=$1 [NC]
-	RewriteRule ^promotion/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1 [NC]
+	RewriteRule ^promotion/([^/]+)/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1&dep=$2 [NC]
 	RewriteRule ^evenements-preferences %{ENV:BASE}/index.php?requ=evenements-preferences [NC]
 	RewriteRule ^evenement-editer/([^/]+) %{ENV:BASE}/index.php?requ=evenement-editer&id=$1 [NC]
 	RewriteRule ^evenement-ajouter %{ENV:BASE}/index.php?requ=evenement-ajouter [NC]

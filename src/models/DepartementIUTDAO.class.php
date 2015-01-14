@@ -33,6 +33,22 @@ class DepartementIUTDAO {
         return $dpt;
     }
 
+    public static function getBySigle($sigle) {
+        $dpt=null;
+        try {
+            $req=SPDO::getInstance()->prepare("SELECT * FROM departementIUT WHERE sigle=?");
+            $req->execute(array($sigle));
+            if ($res=$req->fetch()) {
+                $dpt=new DepartementIUT($res['idDepartement'], $res['nom'], $res['sigle']);
+            }else{
+                return null;
+            }
+        } catch (PDOException $e) {
+            die("Error get by sigle dpt() !: " . $e->getMessage() . "<br/>");
+        }
+        return $dpt;
+    }
+
     public static function create(&$obj) {
         if (get_class($obj)=="DepartementIUT") {
             try {
@@ -61,6 +77,24 @@ class DepartementIUTDAO {
             $req->execute(array($dpt->getId()));
         } catch (PDOException $e) {
             die("Error delete dpt() !: " . $e->getMessage() . "<br/>");
+        }
+    }
+
+    public static function getDepByPromo($prom){
+        $lst=array();
+        if (get_class($obj)=="Promotion") {
+            try {
+                $req=SPDO::getInstance()->prepare("SELECT DISTINCT A.idDepartement FROM aEtudie A, departementIUT D WHERE A.idPromo=? AND A.idDepartement=D.idDepartement ORDER BY sigle");
+                $req->execute(array($prom->getId()));
+                while($res=$req->fetch()){
+                    $lst[]=DepartementIUTDAO::getById($res['idDepartement']);
+                }
+                return $lst;
+            } catch(PDOException $e) {
+                die("Error create dpt() !: " . $e->getMessage() . "<br/>");
+            }
+        }else{
+            die('error type');
         }
     }
 }
