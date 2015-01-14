@@ -94,7 +94,7 @@ class Entreprise
 	}
 
 	public function setCodePostal($codePostale) {
-		$this->codePostale = $codePostale;
+		$this->codePostal = $codePostale;
 	}
 
 	public function setVille($ville) {
@@ -114,13 +114,13 @@ class Entreprise
 
 	public function setTelephone($telephone) {
 		if (preg_match("/^\+?\d+$/", $telephone) || $telephone == "")
-			$this->$telephone = $telephone;
+			$this->telephone = $telephone;
 		else
 			throw new Exception('Entreprise.class.php : Numéro de telephone invalide : '.$telephone);
 	}
 
 	public function setCodeAPE($code) {
-		$this->code=$code;
+		$this->codeAPE=$code;
 	}
 
 //	TO STRING
