@@ -148,7 +148,6 @@ if($_SESSION['user_auth']['write']) { // user can write
 				$count++;
 			}
 
-
 			if(!empty($output))
 				include(VIEWS_INC.'csv-apercu.php');
 			else {
@@ -161,10 +160,8 @@ if($_SESSION['user_auth']['write']) { // user can write
 						$sexe = 'm';
 
 					$diplomeDUT = DiplomeDUTDAO::getByDepartement($departement);
-					var_dump($diplomeDUT);
-					echo '<br /><br />';
 
-					/*$parents = new Parents(0, fillVal($line[$order['adresse1Parents']]), fillVal($line[$order['adresse2Parents']]), fillVal($line[$order['codePostParent']]), fillVal($line[$order['villeParents']]), fillVal($line[$order['paysParents']]), fillVal($line[$order['telMobParents']]), fillVal($line[$order['telFixParents']]));
+					$parents = new Parents(0, fillVal($line[$order['adresse1Parents']]), fillVal($line[$order['adresse2Parents']]), fillVal($line[$order['codePostParent']]), fillVal($line[$order['villeParents']]), fillVal($line[$order['paysParents']]), fillVal($line[$order['telMobParents']]), fillVal($line[$order['telFixParents']]));
 
 					$ancien = new Ancien(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['adresse1']]), fillVal($line[$order['adresse2']]), fillVal($line[$order['codePost']]), fillVal($line[$order['ville']]), fillVal($line[$order['pays']]), fillVal($line[$order['telMob']]), fillVal($line[$order['telFix']]), null, null, $parents, $sexe, fillVal($line[$order['dateNais']]), fillVal($line[$order['mail']]));
 
@@ -174,7 +171,7 @@ if($_SESSION['user_auth']['write']) { // user can write
 
 					$login = substr($ancien->getNomPatronymique(), 0, 4).$ancien->getId().substr($ancien->getPrenom(), 0, 4);
 					$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
-					echo '		Login -> '.$login;
+					echo '	Login -> '.$login;
 					echo '<br />';
 
 					CompteDAO::create($account);
@@ -182,10 +179,10 @@ if($_SESSION['user_auth']['write']) { // user can write
 					if($diplomeDUT!=NULL) {
 						$aEtudie = new AEtudie($ancien, $diplomeDUT, $departement, $promotion);
 						AEtudieDAO::create($aEtudie);
-					}*/
+					}
 				}
 			}
-			//header ('Location: index.php?requ=group&id='.$_GET['id']);
+			//header ('Location: '.SELF.'promo/'.$_GET['id']);
 		} else {
 			echo 'argh';
 		}

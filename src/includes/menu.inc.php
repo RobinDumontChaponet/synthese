@@ -3,8 +3,14 @@
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
-
-			(object)array('href'=>'comptes', 'class'=>'aProfil', 'title'=>'Gérer les comptes', 'inner'=>'Comptes'),
+			'comptes' => array(
+				(object)array('href'=>'comptes', 'class'=>'aProfil', 'title'=>'Gérer les comptes', 'inner'=>'Comptes'),
+				(object)array('href'=>'comptes', 'class'=>'aProfil', 'title'=>'Gérer les comptes', 'inner'=>'Comptes'),
+				(object)array('href'=>'comptes', 'class'=>'aAnchor', 'title'=>'Ajouter un compte', 'inner'=>'Ajouter', 'scroll'=>'ajouter'),
+				(object)array('href'=>'comptes', 'class'=>'aAnchor', 'title'=>'Voir les admins', 'inner'=>'Admins', 'scroll'=>'Admin'),
+				(object)array('href'=>'comptes', 'class'=>'aAnchor', 'title'=>'Voir les anciens', 'inner'=>'Anciens', 'scroll'=>'Ancien'),
+				(object)array('href'=>'comptes', 'class'=>'aAnchor', 'title'=>'Voir les professeurs', 'inner'=>'Professeurs', 'scroll'=>'Professeur')
+			),
 			'promotion, promotions, csv-import' => array(
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
