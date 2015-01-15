@@ -1,7 +1,7 @@
 <!--meta title="<?= ($promo!=null)?'Promotion '.$promo->getAnnee():'La promotion n‘existe pas';?>" css="style/promotions.css"-->
 <div id="content">
 	<?php if($promo!=null) { ?>
-	<h1>Promotion année <?php echo $promo->getAnnee();?></h1>
+	<h1>Promotion <?php echo $dept->getNom().' année '.$promo->getAnnee();?></h1>
 	<section>
 		<p>Il y a actuellement <?= count($anciens); ?> anciens dans cette promotion.</p>
 	</section>
@@ -10,7 +10,7 @@
 		<?php if($anciens != NULL) { ?>
 		<ul class="magnets">
 			<?php foreach($anciens as $ancien)
-				echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().' <span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></li>';
+				echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().'<span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></li>';
 			?>
 		</ul>
 		<?php
