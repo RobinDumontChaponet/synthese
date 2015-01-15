@@ -1,4 +1,7 @@
-<!--meta title="Recherche" css="style/recherche.css" js="script/search.js"-->
+<!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" -->
+
+<!-- testdddddddddddddd -->
+
 <div id="content">
 	<h1>Recherche</h1>
 	<section id="criteres">
@@ -17,7 +20,7 @@
 				<fieldset>
 					<div>
 						<label for="promotionInf">Promotion entre</label>
-						<select id="promotionInf" name="promotionInf">
+						<select id="promotionInf" name="promotionInf" onmouseup="selection();" onkeyup="selection();">
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
 							foreach($promotions as $promotion)
@@ -25,7 +28,7 @@
 							?>
 						</select>
 						<label for="promotionSup">et</label>
-						<select name="promotionSup">
+						<select id="promotionSup" name="promotionSup">
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
 							foreach($promotions as $promotion)
@@ -103,3 +106,5 @@
 <script type="text/javascript">
 init_search();
 </script>
+
+
