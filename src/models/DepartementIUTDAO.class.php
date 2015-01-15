@@ -49,6 +49,22 @@ class DepartementIUTDAO {
         return $dpt;
     }
 
+    public static function getByNom($nom) {
+        $dpt=null;
+        try {
+            $req=SPDO::getInstance()->prepare("SELECT * FROM departementIUT WHERE nom=?");
+            $req->execute(array($nom));
+            if ($res=$req->fetch()) {
+                $dpt=new DepartementIUT($res['idDepartement'], $res['nom'], $res['sigle']);
+            }else{
+                return null;
+            }
+        } catch (PDOException $e) {
+            die("Error get by nom dpt() !: " . $e->getMessage() . "<br/>");
+        }
+        return $dpt;
+    }
+
     public static function create(&$obj) {
         if (get_class($obj)=="DepartementIUT") {
             try {

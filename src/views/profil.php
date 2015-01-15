@@ -87,61 +87,47 @@ if (isset($ancien) && $ancien != NULL) {?>
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Diplômes</h2>
-		<table>
-		    <thead>
-		        <tr>
-		            <th>Diplome</th>
-                    <th>Département</th>
-                    <th>Promotion</th>
-		        </tr>
-		    </thead>
-            <tbody>
+		<ul>
 <?php
 	if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent
 ?>
-			<tr>
-				<td><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></td>
-				<td><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></td>
-				<td><?php echo $diplomeDUT->getPromotion()->getAnnee();?></td>
-			</tr>
+			<li>
+				<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
+				<dl>
+					<dt class="departement">Département</dt>
+					<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
+					<dt class="promotion">Promotion</dt>
+					<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
+				</dl>
+			</li>
 <?php
-	}else{ ?>
-            <tr>
-                <td colspan="3">Aucun diplome IUT n'est associé à cet ancien.</td>
-            </tr>
-<?php } ?>
-            </tbody>
-		</table>
-        <br>
+	} ?>
+		</ul>
 		<h2>Diplômes post-DUT</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Diplome</th>
-                    <th>Etablissement</th>
-                    <th>Résultat</th>
-                    <th>Période</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
-		              foreach($diplomesPost as $diplomePost) { ?>
-                        <tr>
-                            <td><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</td>
-                            <td><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></td>
-                            <td><?php echo $diplomePost->getResultat();?></td>
-                            <td><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></td>
-                        </tr>
-                <?php } } ?>
-                <?php if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
-                    <tr>
-                        <td colspan="4"><a class="add" href="diplome-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme post-DUT</a></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+		<ul>
+	<?php if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+		foreach($diplomesPost as $diplomePost) {
+?>
+			<li>
+				<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
+				<dl>
+					<dt class="etablissement">Établissement</dt>
+					<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
+					<dt class="resultat">Résultat</dt>
+					<dd><?php echo $diplomePost->getResultat();?></dd>
+					<dt class="periode">Période</dt>
+					<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
+				</dl>
+			</li>
+<?php
+		}
+	}
+		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
+			<li>
+				<a class="add" href="diplome-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme post-DUT</a>
+			</li>
+		<?php } ?>
+		</ul>
 <?php if($diplomeDUT==null && $diplomesPost==null) { ?>
 		<p class="sad">Aucun diplôme.</p>
 <?php } ?>
@@ -151,32 +137,28 @@ if (isset($ancien) && $ancien != NULL) {?>
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#entreprises" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Entreprises</h2>
-		<table>
-            <thead>
-                <tr>
-                    <th>Entreprise</th>
-                    <th>Poste</th>
-                    <th>Période</th>
-                </tr>
-            </thead>
-            <tbody>
+		<ul>
 <?php
 	if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 		foreach($entreprises as $entreprise) {
 ?>
-			<tr>
-				<td><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></td>
-				<td><?php echo $entreprise->getPoste()->getLibelle();?></td>
-				<td><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></td>
-			</tr>
+			<li>
+				<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
+				<dl>
+					<dt class="poste">Poste</dt>
+					<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
+					<dt class="periode">Période</dt>
+					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
+				</dl>
+			</li>
 <?php
 		}
 		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
-			<tr>
-                <td colspan="3"><a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a></td>
-			</tr>
+			<li>
+				<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
+			</li>
 		<?php }?>
-
+		</ul>
 <?php
 	} else {
 ?>
@@ -184,8 +166,6 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php
 	}
 ?>
-        </tbody>
-    </table>
 	</section>
 <?php
 	} else {

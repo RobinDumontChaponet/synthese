@@ -11,7 +11,8 @@
 				<dd class="type">
 					<select name="typeEvent">
 					<?php foreach($typesEvent as $typeEvent) {
-						echo '<option'.(($typeEvent->getId() == $event->getTypeEvenement()->getId())?' selected':'').' value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';}?>
+						echo '<option'.(($typeEvent->getId() == $event->getTypeEvenement()->getId())?' selected':'').' value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';
+					}?>
 					</select>
 					<a class="types" href="typesEvent" target="_blank">Liste des types d'évènements (nouvel onglet)</a>
 				</dd>

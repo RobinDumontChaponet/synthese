@@ -16,6 +16,10 @@ if ($_SESSION['user_auth']['write']) {
 
 	if (isset($_GET['id']) && $_GET['id'] != NULL) {
 		$event = EvenementDAO::getById($_GET['id']);
+		if ($event->getTypeEvenement() == NULL) {
+			$eventTempo = new TypeEvenement (-1, 'Rhaaa');
+			$event->setTypeEvenement($eventTempo);
+		}
 		$typesEvent = TypeEvenementDAO::getAll();
 		if (!empty($_POST) && $event != NULL) {
 			$valid = validate($event);

@@ -7,8 +7,8 @@
 	<h1>Détails de l'évènement</h1>
 	<section>
 		<article<?php if($_SESSION['user_auth']['write']) echo ' contextmenu="menuEvent"';?>>
-			<?php if ($eventPost->getTypeEvenement != NULL) {
-					echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+			<?php if ($event->getTypeEvenement() != NULL) {
+					echo '<span class="typeEvent type-'.$event->getTypeEvenement()->getId().'">'.$event->getTypeEvenement()->getLibelle().'</span>';
 				} else {
 					echo '<span class="typeEvent">Pas de type d\'évènement</span>';
 				} ?>
@@ -21,7 +21,7 @@
 		<h2>Participants</h2>
 		<ul class="magnets">
 			<?php foreach ($participants as $participant) {
-				echo '<li><a href="profil/'.$participant->getAncien()->getId().'">'.$participant->getAncien()->getPrenom().' <span class="nomPatronymique">'.$participant->getAncien()->getNomPatronymique().'</span></a></li>';
+				echo '<li><a href="profil/'.$participant->getAncien()->getId().'">'.$participant->getAncien()->getPrenom().'<span class="nomPatronymique">'.$participant->getAncien()->getNomPatronymique().'</span></a></li>';
 			} ?>
 		</ul>
 	</section>

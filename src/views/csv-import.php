@@ -20,7 +20,7 @@
 	</select>
   	<select name="promo">
   	  <option value="" disabled selected style="display:none;">Promotion</option>
-  	  <?php for($y=date("Y")+1; $y>=1967; $y--) echo '<option value="'.$y.'">'.$y.' - '.($y+2).'</option>';?>
+  	  <?php for($y=date("Y")+1; $y>=1968; $y--) echo '<option value="'.$y.'">'.$y.'</option>';?>
 	</select>
 	<fieldset id="table">
 		<legend>Sélectionnez le type de données en vous référant aux deux premières lignes du fichier ci-dessous</legend>
