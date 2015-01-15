@@ -7,7 +7,11 @@
 	<h1>Détails de l'évènement</h1>
 	<section>
 		<article<?php if($_SESSION['user_auth']['write']) echo ' contextmenu="menuEvent"';?>>
-			<span class="typeEvent type-<?php echo $event->getTypeEvenement()->getId();?>"><?php echo $event->getTypeEvenement()->getLibelle();?></span>
+			<?php if ($eventPost->getTypeEvenement != NULL) {
+					echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+				} else {
+					echo '<span class="typeEvent">Pas de type d\'évènement</span>';
+				} ?>
 			<h3 class="evenement"><?php echo (($event->getDate())?(strftime('%A %d %B %Y', strtotime($event->getDate()))):'Pas de date annoncée');?></h3>
 			<h4>Commentaire</h4>
 			<p class="commentaire"><?php echo $event->getCommentaire();?></p>
