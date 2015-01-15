@@ -1,13 +1,17 @@
 function selection()
     {
         var selectItem = document.getElementById("promotionInf");
-        selectItem.onchange = adaptationSup(selectItem);
+           selectItem.onchange = adaptationSup(selectItem);
     }
 
 
     function adaptationSup(selectItem)
     {
-        var dateDebut = selectItem.options[selectItem.selectedIndex].value;
+        var dateDebut;
+
+        if(selectItem.options[selectItem.selectedIndex].value == ''){dateDebut = selectItem.options[selectItem.options.length-1].value}
+        else{dateDebut = selectItem.options[selectItem.selectedIndex].value;}
+
         var dateLimite = selectItem.options[1].value;
         var selectItem2 = document.getElementById("promotionSup");
 
@@ -18,6 +22,10 @@ function selection()
         }
 
         //Ensuite, on remet les dates cohérantes
+        var vide = document.createElement('option');
+          vide.value = '';
+          vide.innerHTML = '';
+          selectItem2.appendChild(vide);
        for (var i = dateDebut; i<=dateLimite; i++){
           var option = document.createElement('option');
           option.value = i;

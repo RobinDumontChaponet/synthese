@@ -7,9 +7,9 @@
 	<section>
 		<ul>
 <?php foreach ($promotions as $promotion) {
-	echo '<li class="promotion"><a href="promotion/'.$promotion->getId().'" title="Promotion '.$promotion->getAnnee().'">Promotion '.$promotion->getAnnee().'</a> > ';
+	echo '<li class="promotion"><p>Promotion '.$promotion->getAnnee().'</p> ';
 	foreach ($departements as $departement)
-		echo '<a href="promotion/'.$promotion->getId().'/'.$departement->getSigle().'" title="Promotion '.$departement->getNom().' année '.$promotion->getAnnee().'">'.$departement->getSigle().'</a>';
+		echo '<a href="promotion/'.$promotion->getId().'/'.$departement->getSigle().'" title="Promotion '.$departement->getNom().' année '.$promotion->getAnnee().'">'.$departement->getNom().'</a>';
 	echo '</li>'.PHP_EOL;
 }?>
 		</ul>
