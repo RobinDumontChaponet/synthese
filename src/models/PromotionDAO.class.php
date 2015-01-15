@@ -34,6 +34,21 @@ class PromotionDAO {
         }
     }
 
+    public static function getByAnnee($annee) {
+        if (is_numeric($annee)) {
+            try {
+                $req=SPDO::getInstance()->prepare("SELECT `idPromo`, `annee` FROM `promotion` WHERE annee=?");
+                $req->execute(array($annee));
+                $promo=$req->fetch();
+                if($promo['idPromo']!=null)
+                    return new Promotion($promo['idPromo'], $promo['annee']);
+                return null;
+            } catch(PDOException $e) {
+                die('error get id promo '.$e->getMessage().'<br>');
+            }
+        }
+    }
+
     public static function create(&$promo) {
         if (get_class($promo)=="Promotion") {
             try {
