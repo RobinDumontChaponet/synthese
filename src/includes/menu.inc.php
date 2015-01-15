@@ -3,6 +3,8 @@
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
+
+			(object)array('href'=>'comptes', 'class'=>'aProfil', 'title'=>'Gérer les comptes', 'inner'=>'Comptes'),
 			'promotion, promotions, csv-import' => array(
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
@@ -20,7 +22,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')
 			),
-			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche')
+			(object)array('href'=>'recherche', 'class'=>'aSearch', 'title'=>'Faire une recherche...', 'inner'=>'Recherche'),
 		);
 	break;
 	case 2: // isTeacher_

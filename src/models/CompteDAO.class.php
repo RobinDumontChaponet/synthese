@@ -80,22 +80,24 @@ class CompteDAO
     }
 
     public static function create(&$obj){
-        if(gettype($obj)=="Compte"){
+        if(get_class($obj)=="Compte"){
             try{
                 $req=SPDO::getInstance()->prepare("INSERT INTO `compte`(`idProfil`, `idPersonne`, `ndc`, `mdp`) VALUES (?,?,?,?)");
-                $req->execute(array($obj->getTypeProfil(),$obj->getPersonne(),$obj->getNdc(),$obj->getMdp));
+                $req->execute(array($obj->getTypeProfil()->getId(),$obj->getPersonne()->getId(),$obj->getNdc(),$obj->getMdp()));
                 $obj->setId(SPDO::getInstance()->lastInsertId());
                 return $obj->getId();
             }catch(PDOException $e){
                 die('error create comptedao '.$e->getMessage().'<br>');
             }
+        }else{
+            die('type create compte incor');
         }
     }
 
     public static function update($compte)
     {
         try {
-            $req=SPDO::getInstance()->prepare("UPDATE `compte` SET `idProfil`=?,`idPersonne`=?,`ndc`=?,`mdp`=? WHERE `idCompte`=?");
+            $req=SPDO::getInstance()->prepare("UPDATE `compte` SET `idProfil`=?,`idPersonne`=?,`mdp`=? WHERE `idCompte`=?");
             $req->execute(array($compte->getTypeProfil()->getId(), $compte->getPersonne()->getId(), $compte->getMdp(), $compte->getId()));
         } catch (PDOException $e) {
             die("Error update() !: " . $e->getMessage() . "<br/>");
