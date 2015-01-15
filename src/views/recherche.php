@@ -50,7 +50,13 @@
 				<fieldset>
 					<div>
 						<label for="specialisation">Spécialisation</label>
-						<input type="text" name="specialisation" id="specialisation" />
+                        <select id="specialisation" name="specialisation">
+                        <option value=""></option> <!-- Pour le choix vide -->
+						<?php
+							foreach($spes as $spe)
+								echo '<option value="'.$spe->getId().'">'.$spe->getLibelle().'</option>';
+				        ?>
+                        </select>
 					</div>
 					<div>
 						<label for="typeSpecialisation">Type de spécialisation</label>
