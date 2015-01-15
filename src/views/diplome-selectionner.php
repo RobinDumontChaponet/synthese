@@ -1,6 +1,6 @@
 <!--meta title="Ajout d'un Diplôme DUT" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($_GET['id'] && $_SESSION[syntheseUser]->getId() == $_GET['id'] || $_SESSION[syntheseUser]->getTypeProfil()->getLibelle() == 'Admin') {
+	<?php if ($_GET['id'] && $_SESSION['syntheseUser']->getId() == $_GET['id'] || $_SESSION['syntheseUser']->getTypeProfil()->getLibelle() == 'Admin') {
 		if ($ancien != NULL) {?>
 		<h1>Selectionner un Diplôme pour <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>
 		<form action="diplome-selectionner/<?php echo $_GET['id']?>" method="post">
