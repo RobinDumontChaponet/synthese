@@ -1,39 +1,37 @@
 function selection()
     {
-        var selectItem = document.getElementById("promotionInf");
-        selectItem.onchange = function(){adaptationSup(this)};
-        selectItem.onclick = selectItem.onchange;
+        //On recupere les select
+        var selectDeb = document.getElementById("promotionInf");
+        var selectFin = document.getElementById("promotionSup");
 
-    }
+        //On gere la date de debut
+        var dateDebut = selectDeb.options[selectDeb.selectedIndex].value;
 
+        if(dateDebut == '')
+        {
+            dateDebut = selectDeb.options[selectDeb.options.length-1].value;
+        }
 
-    function adaptationSup(selectItem)
-    {
-        alert("dfjidsojfdsoi");
-        var dateDebut;
+        //On gere la date de fin
+        var dateFin = selectDeb.options[1].value;
 
-        if(selectItem.options[selectItem.selectedIndex].value == ''){dateDebut = selectItem.options[selectItem.options.length-1].value}
-        else{dateDebut = selectItem.options[selectItem.selectedIndex].value;}
+        for(var i = (selectFin.options.length-1); i >= 0; i--)
+        {
+            selectFin.remove(selectFin.options[i]);
+        }
 
-        var dateLimite = selectItem.options[1].value;
-        var selectItem2 = document.getElementById("promotionSup");
+            var vide = document.createElement('option');
+            vide.value = '';
+            vide.innerHTML = 'j';
+            selectFin.appendChild(vide);
 
-        //On supprime d'abord tous les éléments existants
-        var l = selectItem2.options.length;
-        for (var j = (l-1); j >= 0; j--) {
-          selectItem2.removeChild(selectItem2.options[j]);
+        for(var j = dateDebut; j <= dateFin; j++)
+        {
+            var option = document.createElement('option');
+            option.value = j;
+            option.innerHTML = j;
+            selectFin.appendChild(option);
         }
 
 
-       //Ensuite, on remet les dates cohérantes
-        var vide = document.createElement('option');
-          vide.value = '';
-          vide.innerHTML = '';
-          selectItem2.appendChild(vide);
-       for (var i = dateDebut; i<=dateLimite; i++){
-          var option = document.createElement('option');
-          option.value = i;
-          option.innerHTML = i;
-          selectItem2.appendChild(option);
-       }
-      }
+    }
