@@ -36,7 +36,7 @@ if($_SESSION['user_auth']['write']) { // user can write
 			}
 		}
 
-		if(!empty($departement) && !empty($promotion)) {
+		if($departement!=NULL && $promotion!=NULL) {
 
 			$csv = csv2array('csv', 1);
 
@@ -148,10 +148,9 @@ if($_SESSION['user_auth']['write']) { // user can write
 				$count++;
 			}
 
-			if(!empty($output))
+			if(!isset($_POST['final']) || $output!='')
 				include(VIEWS_INC.'csv-apercu.php');
 			else {
-
 				foreach($csv as $line) {
 					$sexe = strtolower(fillVal($line[$order['sexe']]));
 					if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
@@ -181,10 +180,13 @@ if($_SESSION['user_auth']['write']) { // user can write
 						AEtudieDAO::create($aEtudie);
 					}
 				}
+				echo '<p class="true">Les données ont bien été importées.</p>';
 			}
+
 			//header ('Location: '.SELF.'promo/'.$_GET['id']);
 		} else {
-			echo 'argh';
+			// Pas le temps de mettre dans la vue_ Désolé_ T.T  J'irai me punir_
+			echo '<div id="content"><p class="warning">Vous devez sélectionner une promotion et un département.</p></section>';
 		}
 
 	} else
