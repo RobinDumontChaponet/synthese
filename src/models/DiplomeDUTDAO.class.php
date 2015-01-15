@@ -21,21 +21,34 @@ class DiplomeDUTDAO {
 	}
 
 	public static function getById($id) {
-		try{
+		try {
 			$req=SPDO::getInstance()->prepare("SELECT * FROM diplomeDUT WHERE idDiplomeDUT=?");
 			$req->execute(array($id));
-			if
-			($res=$req->fetch()) {
+			if ($res=$req->fetch()) {
 				$dep=DepartementIUTDAO::getById($res['idDepartement']);
 				return new DiplomeDUT($res['idDiplomeDUT'], $res['libelle'], $dep);
-			}else {
+			} else {
 				return null;
 			}
-		}catch(PDOException $e) {
+		} catch(PDOException $e) {
 			die('error getall dip dut '.$e->getMessage().'<br>');
 			return null;
 		}
+	}
 
+	public static function getByDepartement($departement) {
+		try {
+			$req=SPDO::getInstance()->prepare("SELECT * FROM diplomeDUT WHERE idDepartement=?");
+			$req->execute(array($departement->getId()));
+			if ($res=$req->fetch()) {
+				return new DiplomeDUT($res['idDiplomeDUT'], $res['libelle'], $departement);
+			} else {
+				return null;
+			}
+		} catch(PDOException $e) {
+			die('error getall dip dut '.$e->getMessage().'<br>');
+			return null;
+		}
 	}
 
 	public static function getByLibelle($libelle) {
@@ -52,7 +65,6 @@ class DiplomeDUTDAO {
 			die('error getall dip dut '.$e->getMessage().'<br>');
 			return null;
 		}
-
 	}
 
 	public static function create(&$obj) {

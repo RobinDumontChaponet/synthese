@@ -101,8 +101,8 @@ class AEtudieDAO {
 	public static function create($obj) {
 		if (get_class($obj)=="AEtudie") {
 			try {
-				$req=SPDO::getInstance()->prepare("INSERT INTO `aEtudie`(`idPromo`, `idDerpartement`, `idPersonne`, `idDiplomeDUT`) VALUES (?,?,?,?)");
-				$req->execute(array($obj->getPromo()->getId(), $obj->getDepartement()->getId(), $obj->getPersonne()->getId(), $obj->getDiplomeDUT()->getId()));
+				$req=SPDO::getInstance()->prepare("INSERT INTO `aEtudie`(`idPromo`, `idDepartement`, `idPersonne`, `idDiplomeDUT`) VALUES (?,?,?,?)");
+				$req->execute(array($obj->getPromotion()->getId(), $obj->getDepartementIUT()->getId(), $obj->getAncien()->getId(), $obj->getDiplomeDUT()->getId()));
 			} catch(PDOException $e) {
 				die('error create aetudie '.$e->getMessage().'<br>');
 			}
@@ -115,7 +115,7 @@ class AEtudieDAO {
 		if (get_class($obj)=="AEtudie") {
 			try {
 				$req=SPDO::getInstance()->prepare("DELETE FROM `aEtudie` WHERE `idPromo`=? AND `idDerpartement`=? AND `idPersonne`=? AND `idDiplomeDUT`=?");
-				$req->execute(array($obj->getPromo()->getId(), $obj->getDepartement()->getId(), $obj->getPersonne()->getId(), $obj->getDiplomeDUT()->getId()));
+				$req->execute(array($obj->getPromotion()->getId(), $obj->getDepartementIUT()->getId(), $obj->getAncien()->getId(), $obj->getDiplomeDUT()->getId()));
 			} catch(PDOException $e) {
 				die('error delete aetudie '.$e->getMessage().'<br>');
 			}
