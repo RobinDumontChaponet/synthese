@@ -18,9 +18,9 @@
   	  <option value="" disabled selected style="display:none;">Département</option>
   	  <?php if(!empty($departements)) foreach($departements as $departement) echo '<option value="'.$departement->getId().'">'.$departement->getNom().'</option>';?>
 	</select>
-  	<select name="promo">
+  	<select name="promotion">
   	  <option value="" disabled selected style="display:none;">Promotion</option>
-  	  <?php for($y=date("Y")+1; $y>=1967; $y--) echo '<option value="'.$y.'">'.$y.' - '.($y+2).'</option>';?>
+  	  <?php for($y=date("Y")+1; $y>=1968; $y--) echo '<option value="'.$y.'">'.$y.'</option>';?>
 	</select>
 	<fieldset id="table">
 		<legend>Sélectionnez le type de données en vous référant aux deux premières lignes du fichier ci-dessous</legend>

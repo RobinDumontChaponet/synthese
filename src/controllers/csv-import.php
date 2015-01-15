@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['user_auth']['write']) { // user is able to write here
+if($_SESSION['user_auth']['write']) { // user can write
 
 	include(MODELS_INC.'DepartementIUTDAO.class.php');
 	include('passwordHash.inc.php');
@@ -13,6 +13,8 @@ if($_SESSION['user_auth']['write']) { // user is able to write here
 		include_once(MODELS_INC.'TypeProfil.class.php');
 		include_once(MODELS_INC.'CompteDAO.class.php');
 		include_once(MODELS_INC.'AncienDAO.class.php');
+		include_once(MODELS_INC.'PromotionDAO.class.php');
+		include_once(MODELS_INC.'DepartementIUTDAO.class.php');
 		$studentProfile=new TypeProfil(3, 'Ancien'); // Profil d'ancien.
 		require_once('csvParser.inc.php');
 
@@ -126,30 +128,58 @@ if($_SESSION['user_auth']['write']) { // user is able to write here
 			$count++;
 		}
 
-		include(VIEWS_INC.'csv-apercu.php');
 
+		if(!empty($output))
+			include(VIEWS_INC.'csv-apercu.php');
+		else {
 
-		/*foreach($csv as $line) {
-			$sexe = strtolower(fillVal($line[$order['sexe']]));
-			if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
-				$sexe = 'f';
-			if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
-				$sexe = 'm';
+			$promotion = PromotionDAO::getByAnnee($_POST['promotion']);
+			if($promotion==NULL) {
+				$promotion = new Promotion(0, $_POST['promotion']);
+				PromotionDAO::create($promotion);
+			}
 
-			$parents = new Parents(0, fillVal($line[$order['adresse1Parents']]), fillVal($line[$order['adresse2Parents']]), fillVal($line[$order['codePostParent']]), fillVal($line[$order['villeParents']]), fillVal($line[$order['paysParents']]), fillVal($line[$order['telMobParents']]), fillVal($line[$order['telFixParents']]));
+			if($_POST['departement']==NULL) {
+				$valid
+			else
+				$departement = DepartementIUTDAO::getByNom($_POST['departement']);
+			}
 
-			$ancien = new Ancien(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['adresse1']]), fillVal($line[$order['adresse2']]), fillVal($line[$order['codePost']]), fillVal($line[$order['ville']]), fillVal($line[$order['pays']]), fillVal($line[$order['telMob']]), fillVal($line[$order['telFix']]), null, null, $parents, $sexe, fillVal($line[$order['dateNais']]), fillVal($line[$order['mail']]));
-			var_dump($ancien);
-			echo "\n<br /><br />";
-			//PersonneDAO::create($person);
-			//$login = substr($ancien->getNomPatronymique(), 0, 4).$person->getId().substr($person->getPrenom(), 0, 4);
-			//$account = new Compte(0, $studentProfile, $person, $login, randomPassword());
-			//echo '		Login -> '.$login;
-			//echo '<br />'; var_dump($account);
-			//echo "\n<br />";
-			//CompteDAO::create($account);
-		}*/
-		//header ('Location: index.php?requ=group&id='.$_GET['id']);
+			foreach($csv as $line) {
+				$sexe = strtolower(fillVal($line[$order['sexe']]));
+				if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
+					$sexe = 'f';
+				if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
+					$sexe = 'm';
+
+				$diplomeDUT = DiplomeDUTDAO::getByLibelle(fillVal($line[$order['diplomePrepare']]));
+				if($diplomeDUT==NULL) {
+					$diplomeDUT = new DiplomeDUT(0, fillVal($line[$order['diplomePrepare']]), $departement);
+					DepartementIUTDAO::create($diplomeDUT);
+				}
+
+				$parents = new Parents(0, fillVal($line[$order['adresse1Parents']]), fillVal($line[$order['adresse2Parents']]), fillVal($line[$order['codePostParent']]), fillVal($line[$order['villeParents']]), fillVal($line[$order['paysParents']]), fillVal($line[$order['telMobParents']]), fillVal($line[$order['telFixParents']]));
+
+				$ancien = new Ancien(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['adresse1']]), fillVal($line[$order['adresse2']]), fillVal($line[$order['codePost']]), fillVal($line[$order['ville']]), fillVal($line[$order['pays']]), fillVal($line[$order['telMob']]), fillVal($line[$order['telFix']]), null, null, $parents, $sexe, fillVal($line[$order['dateNais']]), fillVal($line[$order['mail']]));
+
+				$idAncien=AncienDAO::create($ancien);
+
+				$typeProfile = TypeProfilDAO::getByLibelle('Ancien');
+
+				$login = substr($ancien->getNomPatronymique(), 0, 4).$ancien->getId().substr($ancien->getPrenom(), 0, 4);
+				$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
+				echo '		Login -> '.$login;
+				echo '<br />';
+
+				CompteDAO::create($account);
+
+				if($diplomeDUT!=NULL) {
+					$aEtudie = new AEtudie($ancien, $diplomeDUT, $departement, $promotion);
+					AEtudieDAO::create($aEtudie);
+				}
+			}
+			//header ('Location: index.php?requ=group&id='.$_GET['id']);
+		}
 
 	} else
 		include(VIEWS_INC.'csv-import.php');

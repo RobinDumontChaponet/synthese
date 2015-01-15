@@ -27,7 +27,7 @@ class DepartementIUT {
 
 	//--------------------------------SETTERS---------------------------------
 	public function setId($id) {
-		if ($id != null and $id >= 0)
+		if (is_numeric($id) & $id >= 0)
 			$this->id = $id;
 		else
 			throw new Exception('Id departement IUT invalide');

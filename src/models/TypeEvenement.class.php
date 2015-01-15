@@ -25,10 +25,7 @@ class TypeEvenement
   
 //-------------------------------------SETTERS---------------------------------------
 	public function setId($id){
-		if($id >= 0)
-			$this->id = $id;
-		else
-			throw new Exception("Id type evenement invalide");
+		$this->id = $id;
 	}
 	
 	
