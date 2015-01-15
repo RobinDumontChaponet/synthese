@@ -1,7 +1,4 @@
 <!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" -->
-
-<!-- testdddddddddddddd -->
-
 <div id="content">
 	<h1>Recherche</h1>
 	<section id="criteres">
@@ -28,7 +25,7 @@
 							?>
 						</select>
 						<label for="promotionSup">et</label>
-						<select id="promotionSup" name="promotionSup">
+						<select name="promotionSup" id="promotionSup">
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
 							foreach($promotions as $promotion)
@@ -110,6 +107,26 @@
 	<nav class="pagination"></nav>
 </div>
 <script type="text/javascript">
+function adaptationSup(select) {
+	var dateDebut = select.options[select.selectedIndex].value;
+	var dateLimite = select.options[select.options.length - 1].value;
+	var select2 = document.getElementById("promotionSup");
+
+	console.log(dateDebut, dateLimite);
+
+	for (var i = dateDebut; i<=dateLimite; i++) {
+		console.log(i);
+		var option = document.createElement('option');
+		option.value = i;
+		option.innerHTML = i;
+		select2.appendChild(option);
+	}
+}
+
+var select = document.getElementById("promotionInf");
+select.onchange = function(){adaptationSup(this)};
+select.onclick = select.onchange;
+
 init_search();
 </script>
 
