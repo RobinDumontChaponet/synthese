@@ -28,7 +28,7 @@
 				?>
 		</section>
 		<section id="autres">
-			<h2>Non inscrit</h2>
+			<h2>Non inscrits</h2>
 			<ul>
 				<?php if($eventsNotInscriPost != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
 					echo '<ul>';
