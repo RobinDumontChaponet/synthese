@@ -9,13 +9,6 @@
 ?>
 
 <div id="content">
-	<section>
-		<h1>Temporairement...</h1>
-		<p>Temporairement, ici, quelques liens.</p>
-		<ul class="magnets">
-			<li><a target="_blank" href="../TO_DO.txt">TO_DO.txt</a></li>
-		</ul>
-	</section>
 <?php
 if ($libelleTypeProfil == "Admin") {
 ?>

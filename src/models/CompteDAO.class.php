@@ -44,6 +44,20 @@ class CompteDAO
         }
         return $lstCompte;
     }
+
+    public static function getByTypeProfil($idType){
+        $lst=array();
+        try{
+            $req=SPDO::getInstance()->prepare("SELECT idCompte FROM compte WHERE idProfil=?");
+            $req->execute(array($idType));
+            while($res=$req->fetch()){
+                $lst[]=CompteDAO::getById($res['idCompte']);
+            }
+            return $lst;
+        }catch(PDOException $e){
+            die('error sql getByTypeProfil ancien');
+        }
+    }
     public static function getById($id)
     {
         $compte = NULL;
@@ -52,9 +66,12 @@ class CompteDAO
             $statement->execute(array($id));
             if ($res = $statement->fetch(PDO::FETCH_OBJ))
             {
-                $Personne=PersonneDAO::getById($res->idPersonne);
+                $personne=AncienDAO::getById($res->idPersonne);
+                if($personne==null){
+                    $personne=PersonneDAO::getById($res->idPersonne);
+                }
                 $typeProfil=TypeProfilDAO::getById($res->idProfil);
-                $compte=new Compte($res->idCompte, $typeProfil, $Personne, $res->ndc, $res->mdp);
+                $compte=new Compte($res->idCompte, $typeProfil, $personne, $res->ndc, $res->mdp);
             }
         } catch (PDOException $e) {
             die("Error getCompteById() !: " . $e->getMessage() . "<br/>");

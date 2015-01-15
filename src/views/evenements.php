@@ -12,9 +12,13 @@
 				<?php if($eventsInscriPost != NULL) { // Si il y a des events post où l'ancien est inscrit
 					echo '<ul>';
 					foreach($eventsInscriPost as $eventInscriPost) {
-						echo '<li>
-							<span class="typeEvent type-'.$eventInscriPost->getEvenement()->getTypeEvenement()->getId().'">'.$eventInscriPost->getEvenement()->getTypeEvenement()->getLibelle().'</span>
-							<h3 class="evenement">'.(($eventInscriPost->getEvenement()->getDate())?(strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate()))):'Pas de date annoncée').'</h3>
+						echo '<li>';
+						if ($eventPost->getTypeEvenement != NULL) {
+							echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+						} else {
+							echo '<span class="typeEvent">Pas de type d\'évènement</span>';
+						}
+						echo '<h3 class="evenement">'.(($eventInscriPost->getEvenement()->getDate())?(strftime('%A %d %B %Y', strtotime($eventInscriPost->getEvenement()->getDate()))):'Pas de date annoncée').'</h3>
 							<p class="commentaire">'.substr($eventInscriPost->getEvenement()->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventInscriPost->getEvenement()->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
 							<a href="evenement/'.$eventInscriPost->getEvenement()->getId().'">Voir</a><a class="desinscrire" href="index.php?requ=evenement-desinscrire&id='.$eventInscriPost->getEvenement()->getId().'">Se désinscrire</a></li>';
 					}
@@ -80,9 +84,13 @@
 			<?php if($eventsPost != NULL) {
 				echo '<ul>';
 				foreach($eventsPost as $eventPost) {
-					echo '<li>
-					<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>
-					<h3 class="evenement">'.strftime('%A %d %B %Y', strtotime($eventPost->getDate())).'</h3>
+					echo '<li>';
+					if ($eventPost->getTypeEvenement != NULL) {
+						echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+					} else {
+						echo '<span class="typeEvent">Pas de type d\'évènement</span>';
+					}
+					echo '<h3 class="evenement">'.strftime('%A %d %B %Y', strtotime($eventPost->getDate())).'</h3>
 					<p class="commentaire">'.substr($eventPost->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventPost->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
 					<a href="evenement/'.$eventPost->getId().'">Voir</a></li>';
 				}
@@ -92,12 +100,15 @@
 			<?php if($eventsWithoutDate != NULL) { // Si il y a des events post où l'ancien n'est pas inscrit
 					echo '<ul>';
 					foreach($eventsWithoutDate as $eventWithoutDate) {
-						echo '
-							<li>
-								<span class="typeEvent type-'.$eventWithoutDate->getTypeEvenement()->getId().'">'.$eventWithoutDate->getTypeEvenement()->getLibelle().'</span>
-								<h3 class="evenement">Pas de date annoncée</h3>
-								<p class="commentaire">'.substr($eventWithoutDate->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventWithoutDate->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
-							<a href="evenement/'.$eventWithoutDate->getId().'">Voir</a></li>';
+						echo '<li>';
+						if ($eventPost->getTypeEvenement != NULL) {
+							echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+						} else {
+							echo '<span class="typeEvent">Pas de type d\'évènement</span>';
+						}
+						echo '<h3 class="evenement">Pas de date annoncée</h3>
+						<p class="commentaire">'.substr($eventWithoutDate->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventWithoutDate->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
+						<a href="evenement/'.$eventWithoutDate->getId().'">Voir</a></li>';
 					}
 					echo '</ul>';
 				}
@@ -111,8 +122,13 @@
 			<ul>
 			<?php if ($eventsAnt != NULL) {
 				foreach($eventsAnt as $eventAnt) {
-					echo '<li>
-					<span class="typeEvent type-'.$eventAnt->getTypeEvenement()->getId().'">'.$eventAnt->getTypeEvenement()->getLibelle().'</span>
+					echo '<li>';
+						if ($eventPost->getTypeEvenement != NULL) {
+							echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+						} else {
+							echo '<span class="typeEvent">Pas de type d\'évènement</span>';
+						}
+						echo '<span class="typeEvent type-'.$eventAnt->getTypeEvenement()->getId().'">'.$eventAnt->getTypeEvenement()->getLibelle().'</span>
 					<h3 class="evenement">'.strftime('%A %d %B %Y', strtotime($eventAnt->getDate())).'</h3>
 					<p class="commentaire">'.substr($eventAnt->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventAnt->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
 					<a href="evenement/'.$eventAnt->getId().'">Voir</a></li>';
