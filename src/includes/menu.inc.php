@@ -3,6 +3,8 @@
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
+
+			(object)array('href'=>'comptes', 'class'=>'aProfil', 'title'=>'Gérer les compte un compte', 'inner'=>'Comptes'),
 			'promotion, promotions, csv-import' => array(
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
