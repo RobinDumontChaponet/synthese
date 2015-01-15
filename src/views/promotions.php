@@ -1,7 +1,7 @@
 <!--meta title="Promotions" css="style/promotions.css"-->
 <div id="content">
 	<h1>Promotions</h1>
-	<?php if ($_SESSION['user_auth']['write'])
+	<?php if (isset($_SESSION['user_auth']['write']) && $_SESSION['user_auth']['write']==true)
 		echo '<a class="add" href="csv-import">Importer une promotion</a>';
 	?>
 	<section>

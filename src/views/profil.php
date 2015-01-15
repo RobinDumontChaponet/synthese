@@ -176,8 +176,7 @@ if (isset($ancien) && $ancien != NULL) {?>
                 <td colspan="3"><a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a></td>
 			</tr>
 		<?php }?>
-            </tbody>
-		</table>
+
 <?php
 	} else {
 ?>
@@ -185,6 +184,8 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php
 	}
 ?>
+        </tbody>
+    </table>
 	</section>
 <?php
 	} else {
