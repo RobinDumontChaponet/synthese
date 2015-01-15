@@ -1,11 +1,36 @@
 function selection()
+{
+    var select = document.getElementById("promotionInf");
+    select.onchange = function(){adaptationSup(this)};
+    select.onclick = select.onchange;
+}
+
+function adaptationSup(select) {
+	var dateDebut = select.options[select.selectedIndex].value;
+	var dateLimite = select.options[select.options.length - 1].value;
+	var select2 = document.getElementById("promotionSup");
+
+	console.log(dateDebut, dateLimite);
+
+	for (var i = dateDebut; i<=dateLimite; i++) {
+		console.log(i);
+		var option = document.createElement('option');
+		option.value = i;
+		option.innerHTML = i;
+		select2.appendChild(option);
+	}
+}
+
+
+
+/*function selection()
     {
         var selectItem = document.getElementById("promotionInf");
            selectItem.onchange = adaptationSup(selectItem);
     }
+*/
 
-
-    function adaptationSup(selectItem)
+    /*function adaptationSup(selectItem)
     {
         var dateDebut;
 
@@ -32,4 +57,4 @@ function selection()
           option.innerHTML = i;
           selectItem2.appendChild(option);
        }
-      }
+      }*/
