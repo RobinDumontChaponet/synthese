@@ -1,13 +1,15 @@
 function selection()
     {
         var selectItem = document.getElementById("promotionInf");
-        selectItem.onchange = function(){adaptationSup(selectItem)};
+        selectItem.onchange = function(){adaptationSup(this)};
         selectItem.onclick = selectItem.onchange;
+
     }
 
 
     function adaptationSup(selectItem)
     {
+        alert("dfjidsojfdsoi");
         var dateDebut;
 
         if(selectItem.options[selectItem.selectedIndex].value == ''){dateDebut = selectItem.options[selectItem.options.length-1].value}
