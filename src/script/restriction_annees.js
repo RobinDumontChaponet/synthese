@@ -22,7 +22,7 @@ function selection()
 
             var vide = document.createElement('option');
             vide.value = '';
-            vide.innerHTML = 'j';
+            vide.innerHTML = '';
             selectFin.appendChild(vide);
 
         for(var j = dateDebut; j <= dateFin; j++)
