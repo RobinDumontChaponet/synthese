@@ -42,8 +42,46 @@ if (isset($ancien) && $ancien != NULL) {?>
 			<dd><a href="tel:<?php echo $ancien->getMobile();?>"><?php echo $ancien->getMobile();?></a></dd>
 			<dt id="mail">Mail</dt>
 			<dd><a href="mailto:<?php echo $ancien->getMail();?>"><?php echo $ancien->getMail();?></a></dd>
+
 		</dl>
 	</section>
+
+
+    <?php
+        if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
+    ?>
+        <section id="parents"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuParents"';?>>
+            <?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+                echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#parents" title="Éditer le profil...">Éditer...</a>';
+            ?>
+
+            <h2>Parents</h2>
+            <ul>
+                <li>
+                    <dl>
+                        <dt id="adresse1">Adresse 1</dt>
+                        <dd><?php echo $ancien->getParents()->getAdresse1();?></dd>
+                        <dt id="adresse2">Adresse 2</dt>
+                        <dd><?php echo $ancien->getParents()->getAdresse2();?></dd>
+                        <dt id="codePostal">Code postal</dt>
+                        <dd><?php echo $ancien->getParents()->getCodePostal();?></dd>
+                        <dt id="ville">Ville</dt>
+                        <dd><?php echo $ancien->getParents()->getVille();?></dd>
+                        <dt id="pays">Pays</dt>
+                        <dd><?php echo $ancien->getParents()->getPays(); ?></dd>
+                        <dt id="telephoneFixe">Telephone</dt>
+                        <dd><a href="tel:<?php echo $ancien->getParents()->getTelephone();?>"><?php echo $ancien->getParents()->getTelephone();?></a></dd>
+                        <dt id="telephoneMobile">Mobile</dt>
+                        <dd><a href="tel:<?php echo $ancien->getParents()->getMobile();?>"><?php echo $ancien->getParents()->getMobile();?></a></dd>
+                   </dl>
+                </li>
+            </ul>
+        </section>
+    <?php
+        }
+    ?>
+
+
 	<section id="diplomes"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuDiplomes"';?>>
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';

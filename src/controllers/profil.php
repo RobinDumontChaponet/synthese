@@ -10,8 +10,9 @@ if (isset($_GET['id']))
 else
 	header('Location: '.SELF.'profil/'.$_SESSION["syntheseUser"]->getPersonne()->getId());
 
-if ($personne != NULL)
+if ($personne != NULL){
 	$ancien = AncienDAO::getById($personne->getId());
+}
 
 if ($ancien != NULL) {
 	$imageProfil = $ancien->getImageProfil();

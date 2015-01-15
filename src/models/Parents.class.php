@@ -11,7 +11,7 @@ class Parents {
 	private $mobile;
 	private $telephone;
 
-	public function __construct($id, $adresse1, $adresse2, $codePostale, $ville, $pays, $mobile, $telephone) {
+	public function __construct($id, $adresse1, $adresse2, $codePostal, $ville, $pays, $mobile, $telephone) {
 		$this->setId($id);
 		$this->setAdresse1($adresse1);
 		$this->setAdresse2($adresse2);
@@ -72,7 +72,7 @@ class Parents {
 	}
 
 	public function setCodePostal($codePostale) {
-		$this->codePostale = $codePostale;
+		$this->codePostal = $codePostale;
 	}
 
 	public function setVille($ville) {
@@ -91,8 +91,8 @@ class Parents {
 	}
 
 	public function setTelephone($telephone) {
-		if (empty($mobile) || is_valid_phoneNumber ($mobile))
-			$this->mobile = $mobile;
+		if (empty($telephone) || is_valid_phoneNumber ($telephone))
+			$this->telephone = $telephone;
 		else
 			throw new Exception("Numéro de telephone invalide");
 	}
