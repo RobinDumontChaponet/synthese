@@ -282,6 +282,7 @@ dd:after {
 }
 .nomPatronymique {
 	text-transform: uppercase;
+	margin-left: 3px;
 }
 .message:before {
 	content: "\e96e";
