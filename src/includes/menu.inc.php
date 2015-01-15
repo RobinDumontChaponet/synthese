@@ -36,7 +36,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
-				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements auxquels on ne participe pas', 'inner'=>'Non inscrits', 'scroll'=>'autres'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
@@ -65,7 +65,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
-				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements autres', 'inner'=>'Autres', 'scroll'=>'autres'),
+				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements auxquels on ne participe pas', 'inner'=>'Non inscrits', 'scroll'=>'autres'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes')
 			),
 			'groupes, groupe, creerGroupe' => array(
