@@ -80,9 +80,13 @@
 			<?php if($eventsPost != NULL) {
 				echo '<ul>';
 				foreach($eventsPost as $eventPost) {
-					echo '<li>
-					<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>
-					<h3 class="evenement">'.strftime('%A %d %B %Y', strtotime($eventPost->getDate())).'</h3>
+					echo '<li>';
+					if ($eventPost->getTypeEvenement != NULL) {
+						echo '<span class="typeEvent type-'.$eventPost->getTypeEvenement()->getId().'">'.$eventPost->getTypeEvenement()->getLibelle().'</span>';
+					} else {
+						echo '<span class="typeEvent">Pas de type d\'évènement</span>';
+					}
+					echo '<h3 class="evenement">'.strftime('%A %d %B %Y', strtotime($eventPost->getDate())).'</h3>
 					<p class="commentaire">'.substr($eventPost->getCommentaire(), 0, STR_TRONC).((mb_strlen($eventPost->getCommentaire())>STR_TRONC)?'<span class="troncat">...</span>':'').'</p>
 					<a href="evenement/'.$eventPost->getId().'">Voir</a></li>';
 				}
