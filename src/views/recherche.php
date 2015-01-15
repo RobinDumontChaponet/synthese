@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 <!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" js="script/envoyer_message.js" -->
 
+=======
+
+<!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" js="script/envoyer_message.js" -->
+
+<!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" -->
+>>>>>>> origin/master
 <div id="content">
 	<h1>Recherche</h1>
 	<section id="criteres">
