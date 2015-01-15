@@ -126,9 +126,14 @@ if($_SESSION['user_auth']['write']) { // user can write
 			$count++;
 		}
 
+
+
 		if(!empty($output))
 			include(VIEWS_INC.'csv-apercu.php');
 		else {
+
+
+
 			foreach($csv as $line) {
 				$sexe = strtolower(fillVal($line[$order['sexe']]));
 				if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
