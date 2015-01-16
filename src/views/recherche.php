@@ -109,7 +109,7 @@
 	<nav class="pagination"></nav>
 
     <section id="actions">
-        <form method="POST" action="views/messages.php">
+        <form method="POST" action="messages">
             <input type="submit" value="Envoyer un message" />
         </form>
         <?php if(isset($msgErrAdresse)){ echo $msgErrAdresse;} ?>
