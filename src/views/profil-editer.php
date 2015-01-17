@@ -128,27 +128,35 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
-				<?php if ($_SESSION['syntheseUser']->getId() != 2) { // Autre que prof?>
-				<li>
-					<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-						echo '<a class="edit" href="diplomeDUT-selectionner/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
-					<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
-					<dl>
-						<dt class="departement">Département</dt>
-						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'Non renseigné'; };?></dd>
-						<dt class="promotion">Promotion</dt>
-						<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'Non renseigné'; };?></dd>
-					</dl>
-				</li>
+				<p>A refaire (dans profil aussi, il peut y avoir plusieurs diplomeDUT)</p>
+				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomeDUT != NULL) { // Autre que prof?>
+					<li>
+						<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
+							echo '<a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
+						<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
+						<dl>
+							<dt class="departement">Département</dt>
+							<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'Non renseigné'; };?></dd>
+							<dt class="promotion">Promotion</dt>
+							<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'Non renseigné'; };?></dd>
+						</dl>
+					</li>
+				<?php } else {
+					echo '<p class="sad">Pas de diplôme DUT renseigné</p>';
+				} if($_SESSION['user_auth']['write']) { ?>
+					<li>
+						<a class="add" href="diplomeDUT-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme DUT</a>
+					</li>
+				<?php } ?>
 			</ul>
 			<h2>Diplômes post-DUT</h2>
 			<ul>
-				<?php }
+				<?php
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
 							<?php $dispose = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle('diplome-editer'))->getDroit();
-							if($dispose['write']) echo '<a class="edit" href="diplome-editer/'.$diplomePost->getDiplomePostDUT()->getId().'">Éditer</a>';
+							if($dispose['write']) echo '<a class="edit" href="diplome-editer/'.$diplomePost->getDiplomePostDUT()->getId().'" target="_blank">Éditer</a>';
 							?><a class="delete" href="diplome-supprimer">Supprimer</a>
 							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 							<dl>

@@ -2,12 +2,12 @@
 if ($_SESSION['user_auth']['write']) {
 	if ($_GET['id']) {
 		$ancien = AncienDAO::getById($_GET['id']);
-		$diplomesDUT = DiplomeDUTDAO::getAll();
-		$diplAncien = AEtudieDAO::getByAncien($ancien);
+		$diplomesDUT = DiplomeDUTDAO::getDiplomeDutNotHave($ancien);
+		// $diplAncien = new AEtudie ($ancien, $diplomeDUT, $departementIUT, $promotion);
 		if (isset($_POST) && $_POST != NULL) {
-			if ($_POST['diplome'] != $diplAncien->getDiplomeDUT()->getId()) {
+			if ($_POST['diplome']) {
 				$diplAncien->getDiplomeDUT()->setId($_POST['diplome']);
-				//AEtudieDAO::update($diplAncien);
+				//AEtudieDAO::create($diplAncien);
 			}
 		}
 	}

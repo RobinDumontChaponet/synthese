@@ -66,6 +66,24 @@ class DiplomeDUTDAO {
 			return null;
 		}
 	}
+	
+	   public static function getDiplomeDutNotHave($ancien){ // Modifier cette requête pour qu'elle retourne les diplomesDUT (la liste) que l'ancien n'a pas
+        if(get_class($ancien)=="Ancien"){
+			var_dump($ancien);
+            try{
+                $req = SPDO::getInstance()->prepare("SELECT idDiplomeDUT FROM diplomeDUT WHERE idDiplomeDUT NOT IN (SELECT idDiplomeDUT FROM aEtudie WHERE idPersonne=?)");
+                $lst = array();
+                while($res = $req->fetch()){
+                    $lst[]=DiplomeDUTDAO::getById($res['idDiplome']);
+                }
+                return $lst;
+            }catch(PDOException $e){
+                die('error getDiplomeDutNotHave '.$e->getMessage());
+            }
+        } else s{
+            die('paramètre de type ancien getDiplomeDutNotHave');
+        }
+    }
 
 	public static function create(&$obj) {
 		if (get_class($obj) == "DiplomeDUT") {

@@ -10,14 +10,15 @@
 					<select name="diplome">
 						<?php if ($diplomesDUT != NULL) {
 							foreach($diplomesDUT as $diplomeDUT)
-								echo '<option'.(($diplomeDUT->getId() == $diplAncien->getDiplomeDUT()->getId())?' selected':'') .' value="'.$diplomeDUT->getId().'">'.$diplomeDUT->getLibelle().'</option>';
+								echo '<option value="'.$diplomeDUT->getId().'">'.$diplomeDUT->getLibelle().'</option>';
 						}?>
 					</select>
 					<a class="diplomes" href="diplomesDUT" target="_blank">Accéder aux diplômes DUT</a>
 				</dd>
 			</dl>
 		</article>
-		<input type="submit" value="Enregistrer les modifications" />
+		<input type="submit" value="Ajouter le diplôme DUT à l'étudiant" />
+		<a href="profil/<?php echo $_GET['id']?>">Retour étudiant</a>
 	</form>
 	<?php } else {?>
 		<p class="warning">Aucun id étudiant n'a été renseigné</p>
