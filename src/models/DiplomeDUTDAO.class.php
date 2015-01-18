@@ -71,6 +71,7 @@ class DiplomeDUTDAO {
         if(get_class($ancien)=="Ancien"){
             try{
                 $req = SPDO::getInstance()->prepare("SELECT idDiplomeDUT FROM diplomeDUT WHERE idDiplomeDUT NOT IN (SELECT idDiplomeDUT FROM aEtudie WHERE idPersonne=?)");
+                $req->execute(array($ancien->getId())); //LOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOl
                 $lst = array();
                 while($res = $req->fetch()){
                     $lst[]=DiplomeDUTDAO::getById($res['idDiplome']);
