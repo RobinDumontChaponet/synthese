@@ -67,11 +67,11 @@ class DiplomeDUTDAO {
 		}
 	}
 	
-	   public static function getDiplomeDutNotHave($ancien){ // Modifier cette requête pour qu'elle retourne les diplomesDUT (la liste) que l'ancien n'a pas
+	   public static function getDiplomeDutNotHave($ancien){
         if(get_class($ancien)=="Ancien"){
             try{
                 $req = SPDO::getInstance()->prepare("SELECT idDiplomeDUT FROM diplomeDUT WHERE idDiplomeDUT NOT IN (SELECT idDiplomeDUT FROM aEtudie WHERE idPersonne=?)");
-                $req->execute(array($ancien->getId())); //LOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOl
+                $req->execute(array($ancien->getId()));
                 $lst = array();
                 while($res = $req->fetch()){
                     $lst[]=DiplomeDUTDAO::getById($res['idDiplome']);
@@ -80,7 +80,7 @@ class DiplomeDUTDAO {
             }catch(PDOException $e){
                 die('error getDiplomeDutNotHave '.$e->getMessage());
             }
-        } else s{
+        } else {
             die('paramètre de type ancien getDiplomeDutNotHave');
         }
     }
