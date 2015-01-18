@@ -9,16 +9,13 @@ class EvenementDAO
 
 	public static function getAll() {
 		$lst=array();
-		try{
+		try {
 			$req=SPDO::getInstance()->query("SELECT * FROM evenement");
-			while
-			($res=$req->fetch())
-			{
+			while ($res=$req->fetch()) {
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get all Evenement '.$e->getMessage().'<br>');
 		}
 		return $lst;
@@ -28,12 +25,10 @@ class EvenementDAO
 		try{
 			$req=SPDO::getInstance()->prepare("SELECT * FROM evenement WHERE idEvenement=?");
 			$req->execute(array($id));
-			if
-			($res=$req->fetch())
-			{
+			if ($res=$req->fetch()) {
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				return new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
-			}else{
+			} else {
                 return null;   
             }
 		}catch(PDOException $e)
@@ -43,17 +38,14 @@ class EvenementDAO
 	}
 
     public static function getEvenementAnterieur(){
-        $lst=array();
-		try{
+        $lst = array();
+		try {
 			$req=SPDO::getInstance()->query("SELECT * FROM evenement  WHERE date<now() ORDER BY date DESC");
-			while
-			($res=$req->fetch())
-			{
+			while ($res=$req->fetch()) {
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
-		}catch(PDOException $e)
-		{
+		} catch(PDOException $e) {
 			die('error get all Evenement '.$e->getMessage().'<br>');
 		}
 		return $lst;

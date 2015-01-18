@@ -12,7 +12,7 @@ class AEtudieDAO {
 		try {
 			$lst=array();
 			$req=SPDO::getInstance()->query("SELECT * FROM aEtudie");
-			while ($result=$req->fetch()) {
+			while ($result = $req->fetch()) {
 				$promo=PromotionDAO::getById($result['idPromo']);
 				$dpt=DepartementIUTDAO::getById($result['idDepartement']);
 				$pers=AncienDAO::getById($result['idPersonne']);
@@ -29,16 +29,14 @@ class AEtudieDAO {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT * FROM aEtudie WHERE idPersonne=?");
 			$req->execute(array($ancien->getId()));
-			$result=$req->fetch();
-			if ($result!=null) {
-				$promo=PromotionDAO::getById($result['idPromo']);
-				$dpt=DepartementIUTDAO::getById($result['idDepartement']);
-				$pers=AncienDAO::getById($result['idPersonne']);
-				$dip=DiplomeDUTDAO::getById($result['idDiplomeDUT']);
-				return new AEtudie($pers, $dip, $dpt, $promo);
-			} else {
-				return null;
+			while ($result = $req->fetch()) {
+				$promo = PromotionDAO::getById($result['idPromo']);
+				$dpt = DepartementIUTDAO::getById($result['idDepartement']);
+				$pers = AncienDAO::getById($result['idPersonne']);
+				$dip = DiplomeDUTDAO::getById($result['idDiplomeDUT']);
+				$lst[] = new AEtudie($pers, $dip, $dpt, $promo);
 			}
+			return $lst;
 		} catch(PDOException $e) {
 			die('error getById a etudie '.$e->getMessage().'<br>');
 		}
@@ -128,15 +126,15 @@ class AEtudieDAO {
 	}
 
 	public static function delete($obj) {
-		if (get_class($obj)=="AEtudie") {
+		if (get_class($obj) == "AEtudie") {
 			try {
-				$req=SPDO::getInstance()->prepare("DELETE FROM `aEtudie` WHERE `idPromo`=? AND `idDerpartement`=? AND `idPersonne`=? AND `idDiplomeDUT`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `aEtudie` WHERE `idPromo`=? AND `idDepartement`=? AND `idPersonne`=? AND `idDiplomeDUT`=?");
 				$req->execute(array($obj->getPromotion()->getId(), $obj->getDepartementIUT()->getId(), $obj->getAncien()->getId(), $obj->getDiplomeDUT()->getId()));
 			} catch(PDOException $e) {
 				die('error delete aetudie '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type AEtudie requis');
+			die('AEtudieDAO delete : Paramètre de type AEtudie requis');
 		}
 	}
 

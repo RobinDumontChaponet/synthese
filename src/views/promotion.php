@@ -3,7 +3,7 @@
 	<?php if($promo!=null) { ?>
 	<h1>Promotion <?php echo $dept->getNom().' année '.$promo->getAnnee();?></h1>
 	<section>
-		<p>Il y a actuellement <?= count($anciens); ?> anciens dans cette promotion.</p>
+		<p>Il y a actuellement <?= count($anciens); if (count($anciens) > 1) echo ' anciens'; else echo ' ancien';?> dans cette promotion.</p>
 	</section>
 	<section id="etudiants">
 		<h2>Étudiants de la promotion</h2>

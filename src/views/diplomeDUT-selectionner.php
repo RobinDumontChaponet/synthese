@@ -17,6 +17,9 @@
 					</select>
 					<a class="diplomes" href="diplomesDUT" target="_blank">Accéder aux diplômes DUT (nouvel onglet)</a>
 				</dd>
+				<dt><label for="promotion">Promotion</label></dt>
+				<dd><input id="promotion" name="promotion"/></dd>
+				<p>Si la promotion n'existe pas, elle sera créer</p>
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le diplôme DUT à l'étudiant" />
