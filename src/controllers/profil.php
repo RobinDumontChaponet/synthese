@@ -17,7 +17,7 @@ if ($personne != NULL){
 if ($ancien != NULL) {
 	$imageProfil = $ancien->getImageProfil();
 	$imageTrombi = $ancien->getImageTrombi();
-	$diplomeDUT = AEtudieDAO::getByAncien($ancien);
+	$diplomesDUT = AEtudieDAO::getByAncien($ancien);
 	$diplomesPost = PossedeDAO::getByAncien($ancien);
 	$entreprises = TravailleDAO::getByAncien($ancien);
 }

@@ -10,10 +10,10 @@
 					<select name="diplome">
 						<?php if ($diplomesDUT != NULL) {
 							foreach($diplomesDUT as $diplomeDUT)
-								echo '<option value="'.$diplomeDUT->getId().'">'.$diplomeDUT->getLibelle().'</option>';
+								echo '<option value="'.$diplomeDUT->getId().$diplomeDUT->getDepartementIUT()->getId().'">'.$diplomeDUT->getLibelle().'</option>';
 						}?>
 					</select>
-					<a class="diplomes" href="diplomesDUT" target="_blank">Accéder aux diplômes DUT</a>
+					<a class="diplomes" href="diplomesDUT" target="_blank">Accéder aux diplômes DUT (nouvel onglet)</a>
 				</dd>
 			</dl>
 		</article>

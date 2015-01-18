@@ -87,22 +87,27 @@ if (isset($ancien) && $ancien != NULL) {?>
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
 		?>
 		<h2>Diplômes</h2>
-		<ul>
 <?php
-	if ($diplomeDUT != NULL) { // Ne peut être modifié, fixe et normalement présent
-?>
-			<li>
-				<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
-				<dl>
-					<dt class="departement">Département</dt>
-					<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
-					<dt class="promotion">Promotion</dt>
-					<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
-				</dl>
-			</li>
-<?php
+	if ($diplomesDUT != NULL) { // Ne peut être modifié, fixe et normalement présent
+		echo '<ul>';
+			foreach ($diplomesDUT as $diplomeDUT) { ?>
+				<li>
+					<h3 class="diplome"><?php echo $diplomeDUT->getDiplomeDUT()->getLibelle();?></h3>
+					<dl>
+						<dt class="departement">Département</dt>
+						<dd><?php echo $diplomeDUT->getDepartementIUT()->getNom();?></dd>
+						<dt class="promotion">Promotion</dt>
+						<dd><?php echo $diplomeDUT->getPromotion()->getAnnee();?></dd>
+					</dl>
+				</li>
+	<?php	}
+			if($_SESSION['user_auth']['write']) { ?>
+				<li>
+					<a class="add" href="diplomeDUT-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme DUT</a>
+				</li>
+	<?php 	}
+		echo '</ul>';
 	} ?>
-		</ul>
 		<h2>Diplômes post-DUT</h2>
 		<ul>
 	<?php if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page

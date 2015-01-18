@@ -128,20 +128,21 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
-				<p>A refaire (dans profil aussi, il peut y avoir plusieurs diplomeDUT)</p>
-				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomeDUT != NULL) { // Autre que prof?>
-					<li>
-						<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-							echo '<a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
-						<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
-						<dl>
-							<dt class="departement">Département</dt>
-							<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'Non renseigné'; };?></dd>
-							<dt class="promotion">Promotion</dt>
-							<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'Non renseigné'; };?></dd>
-						</dl>
-					</li>
-				<?php } else {
+				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomeDUT != NULL) { // Autre que prof
+					foreach ($diplomesDUT as $diplomeDUT) { ?>
+						<li>
+							<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
+								echo '<a href="index.php?=diplomeDUT-selectionner-supprimer&id='.$diplomeDUT->getId().'&idAncien='.$ancien->getId().'>Supprimer le diplôme de l\élève</a><a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
+							<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
+							<dl>
+								<dt class="departement">Département</dt>
+								<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDepartementIUT()->getNom();} else { echo 'Non renseigné'; };?></dd>
+								<dt class="promotion">Promotion</dt>
+								<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'Non renseigné'; };?></dd>
+							</dl>
+						</li>
+			<?php 	} 
+				} else {
 					echo '<p class="sad">Pas de diplôme DUT renseigné</p>';
 				} if($_SESSION['user_auth']['write']) { ?>
 					<li>
