@@ -43,6 +43,22 @@ class AEtudieDAO {
 			die('error getById a etudie '.$e->getMessage().'<br>');
 		}
 	}
+	
+	public static function getPromotionByAncien($ancien) {
+		try {
+			$req=SPDO::getInstance()->prepare("SELECT idPromo FROM aEtudie WHERE idPersonne=?");
+			$req->execute(array($ancien->getId()));
+			$result=$req->fetch();
+			if ($result != NULL) {
+				$promotion = PromotionDAO::getById($result['idPromo']);
+				return $promotion;
+			} else {
+				return null;
+			}
+		} catch(PDOException $e) {
+			die('Error getPromotionByAncien AEtudieDAO : '.$e->getMessage().'<br>');
+		}
+	}
 
 	public static function getByDiplomeDUT($diplome) {
 		try {
