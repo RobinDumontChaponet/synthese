@@ -74,7 +74,7 @@ class DiplomeDUTDAO {
                 $req->execute(array($ancien->getId()));
                 $lst = array();
                 while($res = $req->fetch()){
-                    $lst[]=DiplomeDUTDAO::getById($res['idDiplome']);
+                    $lst[]=DiplomeDUTDAO::getById($res['idDiplomeDUT']);
                 }
                 return $lst;
             }catch(PDOException $e){
