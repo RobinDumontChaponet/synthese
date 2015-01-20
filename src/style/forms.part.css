@@ -20,7 +20,7 @@ label {
 }
 
 input, .button, button, select, textarea {
-	border: 1px solid rgba(175, 175, 175, 1);
+	border: 1px solid rgb(175, 175, 175);
 	outline: 0;
 	border-width: .5px;
 	margin: 0 10px 0 0;
@@ -49,33 +49,47 @@ input, .button, button, select, textarea {
 	-o-transition: background .5s, box-shadow .5s;
 	transition: background .5s, box-shadow .5s;
 }
-input[type="submit"], .button, button, select {
+input[type="submit"], input[type="button"], .button, button, select {
 	cursor: pointer;
 	padding: 0 10px;
-	-webkit-box-shadow: rgba(0,0,0,0.14) 0px 1px 4px 0px, inset rgba(255,255,255,0.4) 0px 1px 2px 0px;
-	-moz-box-shadow: rgba(0,0,0,0.14) 0px 1px 4px 0px, inset rgba(255,255,255,0.4) 0px 1px 2px 0px;
-	box-shadow: rgba(0,0,0,0.14) 0px 1px 4px 0px, inset rgba(255,255,255,0.4) 0px 1px 2px 0px;
-	background: rgba(235,235,235,1);
-    background: -webkit-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: -moz-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: -o-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: -ms-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
+	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
+	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
+	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
+	background: rgba(235, 235, 235, 1);
+	background: -webkit-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: -moz-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: -o-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: -ms-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
 
 	text-shadow: 0 -1px 0 rgb(240, 240, 240);
 	color: #413131;
 	margin: 10px auto;
+	-webkit-transition: all .5s ease;
+}
+input[type="submit"]:hover, input[type="button"]:hover, .button:hover, button:hover, select:hover {
+	background: rgba(230, 229, 229, 1);
+	background: -webkit-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: -moz-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: -o-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: -ms-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	-webkit-transform: scale(.98);
+
+	-webkit-animation: pulse 1s ease-in-out .1s infinite alternate;
+	-moz-animation: pulse 1s ease-in-out .1s infinite alternate;
+	animation: pulse 1s ease-in-out .1s infinite alternate;
 }
 button {
 	margin: 0 3px;
 }
 select {
-	background: url(images/selector.png), rgba(235,235,235,1);
-    background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
-    background: url(images/selector.png), linear-gradient(top, #fffefe 0%,#efefef 50%,#e7e7e7 50%,#eeeeee 100%);
+	background: url(images/selector.png), rgb(235, 235, 235);
+	background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: url(images/selector.png), linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
 
 	background-repeat: no-repeat, repeat;
 	background-size: auto 14px, 100% auto;
@@ -91,6 +105,18 @@ select {
 	transition: all .3s ease;
 	margin: 1px auto;
 }
+select:hover {
+	background: url(images/selector.png), rgb(230, 229, 229);
+	background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background: url(images/selector.png), linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
+	background-repeat: no-repeat, repeat;
+	background-size: auto 14px, 100% auto;
+	background-position: 94% 50%, 0;
+}
+
 
 select::-ms-expand {
 	display: none;

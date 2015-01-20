@@ -1,5 +1,6 @@
-@charset "UTF-8";
-/* CSS. JJD - intro (index.html) */
+body {
+	max-width: 100%;
+}
 
 aside {
 	text-align: center;
@@ -7,7 +8,6 @@ aside {
 	height: 100%;
 	display: table;
 }
-
 aside#intro {
 	background: url("images/noise.png"), #6d84b4;
 	position: fixed;
@@ -17,6 +17,17 @@ aside#intro {
 aside#form {
 	float: right;
 }
+
+@media screen and (max-width: 800px) {
+	aside, aside#intro, aside#form {
+		width: 100%;
+		height: auto;
+		min-height: 50%;
+		position: static;
+		float: none;
+	}
+}
+
 
 aside p, form {
 	margin: 20% 2% 0;
