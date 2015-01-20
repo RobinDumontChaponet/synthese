@@ -138,5 +138,17 @@ class AEtudieDAO {
 		}
 	}
 
+	public static function update($ex, $new) {
+		if (get_class($ex) == "AEtudie" && get_class($new) == "AEtudie") {
+			try {
+				$req=SPDO::getInstance()->prepare("UPDATE `aEtudie` SET `idPromo`=?, `idDepartement`=?, `idPersonne`=?, `idDiplomeDUT`=? WHERE `idPromo`=? AND `idDepartement`=? AND `idPersonne`=? AND `idDiplomeDUT`=? ");
+				$req->execute(array($new->getPromotion()->getId(), $new->getDepartementIUT()->getId(), $new->getAncien()->getId(), $new->getDiplomeDUT()->getId(), $ex->getPromotion()->getId(), $ex->getDepartementIUT()->getId(), $ex->getAncien()->getId(), $ex->getDiplomeDUT()->getId(),));
+			} catch(PDOException $e) {
+				die('error delete aetudie '.$e->getMessage().'<br>');
+			}
+		} else {
+			die('AEtudieDAO delete : Paramètre de type AEtudie requis');
+		}
+	}
 }
 ?>

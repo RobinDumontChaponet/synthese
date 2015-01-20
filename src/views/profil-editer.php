@@ -132,7 +132,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					foreach ($diplomesDUT as $diplomeDUT) { ?>
 						<li>
 							<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-								echo '<a href="index.php?requ=diplomeDUT-selectionner-supprimer&idDiplomeDUT='.$diplomeDUT->getDiplomeDUT()->getId().'&idAncien='.$ancien->getId().'&idDepartement='.$diplomeDUT->getDepartementIUT()->getId().'&idPromotion='.$diplomeDUT->getPromotion()->getId().'">Supprimer le diplôme de l\'élève</a><a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
+								echo '<a href="index.php?requ=diplomeDUT-selectionner-supprimer&idDiplomeDUT='.$diplomeDUT->getDiplomeDUT()->getId().'&idAncien='.$ancien->getId().'&idDepartement='.$diplomeDUT->getDepartementIUT()->getId().'&idPromotion='.$diplomeDUT->getPromotion()->getId().'">Supprimer le diplôme de l\'élève</a><a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'&'.$diplomeDUT->getDiplomeDUT()->getId().'&'.$diplomeDUT->getDepartementIUT()->getId().'&'.$diplomeDUT->getPromotion()->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
 							<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
 							<dl>
 								<dt class="departement">Département</dt>
