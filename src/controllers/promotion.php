@@ -7,7 +7,7 @@ if (isset($_GET['id']) && isset($_GET['dep'])) {
 } else {
 	$ancient = new Ancien($_SESSION["syntheseUser"]->getPersonne()->getId(), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	$aEtudie = AEtudieDAO::getByAncien($ancient);
-	header('Location: '.SELF.'promotion/'.$aEtudie->getPromotion()->getId().'/'.$aEtudie->getDepartementIUT()->getSigle());
+	header('Location: '.SELF.'promotion/'.$aEtudie[0]->getPromotion()->getId().'/'.$aEtudie[0]->getDepartementIUT()->getSigle());
 }
 
 include(VIEWS_INC.'promotion.php');

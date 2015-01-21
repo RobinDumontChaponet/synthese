@@ -34,19 +34,11 @@ class DepartementIUT {
 	}
 
 	public function setNom($nom) {
-		$nom = trim($nom);
-		if (!empty($nom))
-			$this->nom = $nom;
-		else
-			throw new Exception('Nom departement IUT incorrect');
+		$this-> nom = trim($nom);
 	}
 
 	public function setSigle($sigle) {
-		$sigle = trim($sigle);
-		if (!empty($sigle))
-			$this->sigle = $sigle;
-		else
-			throw new Exception('Sigle departement IUT incorrect : '.$sigle);
+		$this->sigle = trim($sigle);
 	}
 
 	//--------------------------------toString--------------------------------

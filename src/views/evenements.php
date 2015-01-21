@@ -1,6 +1,8 @@
 <!--meta title="Événements" css="style/evenements.css"-->
 <div id="content">
-	<a class="params" href="evenements-preferences">Vos préférences d'évènements</a>
+	<?php if ($libelleTypeProfil != "Admin") {?>
+		<a class="params" href="evenements-preferences">Vos préférences d'évènements</a>
+	<?php }?>
 	<h1>Évènements</h1>
 	<?php
 	if ($_SESSION['user_auth']['write']) {

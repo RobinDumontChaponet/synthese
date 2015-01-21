@@ -21,10 +21,10 @@ if(isset($_GET['id'])){
     }
 
 }else{
-    $groupe=null;   
+    $groupe=null;
 }
 if($droit!=0){
     $lstMembre=GroupeDAO::getMembres($groupe);
-    require_once(VIEWS_INC.'administrer-groupe.php');
+    require_once(VIEWS_INC.'groupe-administrer.php');
 }
 ?>

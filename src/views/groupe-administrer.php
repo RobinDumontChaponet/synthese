@@ -1,9 +1,9 @@
 <!--meta title="Administrer le groupe" css="style/promotions.css"-->
 <div id="content">
-    
+
     <!-- SI groupe trouve -->
     <?php if($groupe!=null) { ?>
-    
+
     <h1>Administrer le groupe</h1>
     <section>
         <h2>Modifier les paramètres du groupe</h2>
@@ -17,7 +17,7 @@
             <input type="submit" name="modGroupe" value="Modifier"> <input type="submit" name="supprGroupe" value="Supprimer le groupe">
         </form>
     </section>
-    
+
     <section id="etudiants">
 		<h2>Liste des membres du groupe</h2>
 		<?php if($lstMembre != array()) { ?>
@@ -31,7 +31,7 @@
 			echo '<p class="sad">Il n\'y a personne dans ce groupe</p>';
 		}
 	?>
-		
+
 	</section>
 
     <?php } else {  ?>

@@ -12,6 +12,8 @@
 							<?php if ($diplomes != NULL) {
 								foreach($diplomes as $diplome)
 									echo '<option value="'.$diplome->getId().'">'.$diplome->getLibelle().' ('.$diplome->getDomaine()->getLibelle().')</option>';
+							} else {
+								echo '<option value="NULL">Aucun diplôme disponible pour l\'étudiant</option>';
 							}?>
 						</select>
 						<a class="diplomes" href="diplomes" target="_blank">Voir tout les diplômes</a>

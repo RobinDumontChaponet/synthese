@@ -77,35 +77,32 @@ class DiplomePostDUTDAO
         }
     }
 
-    public static function delete($obj)
-    {
+    public static function delete($obj) {
         if(get_class($obj)=="DiplomePostDUT"){
-            try{
+            try {
                 $req=SPDO::getInstance()->prepare("DELETE FROM `diplomePostDUT` WHERE `idDiplomePost`=?");
                 $req->execute(array($obj->getId()));
-            }catch(PDOException $e)
-            {
+            } catch(PDOException $e) {
                 die('error update dip post dut '.$e->getMessage().'<br>');
             }
-        }else
-        {
-            die('paramètre de type diplome post dut requis');
+		} else {
+			die('paramètre de type diplome post dut requis');
         }
     }
 
-    public static function getDiplomePostDutNotHave($ancien){
+    public static function getDiplomePostDutNotHave ($ancien) {
         if(get_class($ancien)=="Ancien"){
-            try{
+            try {
                 $req=SPDO::getInstance()->prepare("SELECT idDiplomePost FROM diplomePostDUT WHERE idDiplomePost NOT IN (SELECT idDiplomePost FROM possede WHERE idPersonne=?)");
                 $lst=array();
                 while($res=$req->fetch()){
                     $lst[]=DiplomePostDUTDAO::getById($res['idDiplomePost']);
                 }
                 return $lst;
-            }catch(PDOException $e){
+            } catch(PDOException $e){
                 die('error getDiplomePostDutNotHave '.$e->getMessage());
             }
-        }else{
+        } else {
             die('paramètre de type ancien getDiplomePostDutNotHave');
         }
     }

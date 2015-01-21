@@ -1,4 +1,34 @@
-﻿- Diplômes : Renseigner si obtenue ou non !
+﻿(On fait le tri de ce qu'il y a en dessous au fur et à mesure)
+
+
+Style :
+	- Styler la page Profil et Profil-editer au niveau des Diplômes
+	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créer et "retour étudiant")
+	- 
+
+Autres :
+	- Pour "Ma promotion", il va falloir récupérer la dernière promotion de la personne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+
+
+
+- Diplômes : Renseigner si obtenue ou non !
 
 - Faire une pagination dans la recherche
 
@@ -17,16 +47,12 @@
 - Faire diplome-ajouter
 - Faire diplome-supprimer
 
-- Détailler les départements dans promotion
-
 - Ecrire le texte de présentation sur la page de connection
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
 
-- Enlever le commentaire Update dans diplomeDUT-selectionner lorsque Pister aura finit sa DAO ...
 - Styler la page diplomeDUT-selectionner
 - Styler la page diplomes
-- Désolé j'ai la flemme de faire le reste pour le moment ... je sature
 
 Profil :
 
