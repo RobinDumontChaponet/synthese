@@ -10,6 +10,16 @@ if($_SESSION['user_auth']['write']) { // user can write
 
 	if(!empty($_POST)) {
 
+		echo '<br/>';
+		var_dump($_POST);
+		var_dump($_GET);
+
+		$in=$_POST;
+		if(isset($_POST['submitFinal']))
+			$in=$_GET;
+
+		echo '<br /><br /><br/>';
+
 		$valid = array();
 
 		include_once(MODELS_INC.'TypeProfil.class.php');
@@ -21,27 +31,30 @@ if($_SESSION['user_auth']['write']) { // user can write
 		require_once('csvParser.inc.php');
 
 
-		if(empty($_POST['departement']) || $_POST['departement']==NULL)
+		if(empty($in['departement']) || $in['departement']==NULL)
 			$valid['departement']=false;
 		else
-			$departement = DepartementIUTDAO::getById($_POST['departement']);
+			$departement = DepartementIUTDAO::getById($in['departement']);
 
-		if(empty($_POST['promotion']) || $_POST['promotion']==NULL)
+		if(empty($in['promotion']) || $in['promotion']==NULL)
 			$valid['promotion']=false;
 		else {
-			$promotion = PromotionDAO::getByAnnee($_POST['promotion']);
+			$promotion = PromotionDAO::getByAnnee($in['promotion']);
 			if($promotion==NULL) {
-				$promotion = new Promotion(0, $_POST['promotion']);
+				$promotion = new Promotion(0, $in['promotion']);
 				PromotionDAO::create($promotion);
 			}
 		}
 
 		if($departement!=NULL && $promotion!=NULL) {
 
-			$csv = csv2array('csv', 1);
+			if(isset($_POST['submitFinal']))
+				$csv = csv2array('csv', 0);
+			else
+				$csv = csv2array('csv', 1);
 
 			$order = array();
-			foreach($_POST as $key => $value) {
+			foreach($in as $key => $value) {
 				$order[$value]=$key;
 			}
 
@@ -104,13 +117,16 @@ if($_SESSION['user_auth']['write']) { // user can write
 			$output = '';
 			$count = 1;
 			foreach($csv as $line) {
+				var_dump($line);
+				echo '<br /><br />';
+
 				$sexe = strtolower(fillVal($line[$order['sexe']]));
 				if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
 					$sexe = 'f';
 				if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
 					$sexe = 'm';
 
-				$mobileParents = fillVal($line[$order['telMobParents']]);
+				/*$mobileParents = fillVal($line[$order['telMobParents']]);
 				if (!empty($mobileParents) && !is_valid_phoneNumber ($mobileParents)) {
 					$output .= '<p class="error">Valeur incorrecte pour le téléphone mobile des parents à la ligne '.$count.'</p>';
 					$output .= '<input type="text" name="telMobParents_'.$count.'" value="'.$line[$order['telFix']].'" />';
@@ -132,7 +148,7 @@ if($_SESSION['user_auth']['write']) { // user can write
 				if (!empty($telFix) && !is_valid_phoneNumber ($telFix)) {
 					$output .= '<p class="error">Valeur incorrecte pour le téléphone fixe de l\'ancien à la ligne '.$count.'</p>';
 					$output .= '<input type="text" name="telFix_'.$count.'" value="'.$line[$order['telFix']].'" />';
-				}
+				}*/
 
 				$dateNais = fillVal($line[$order['dateNais']]);
 				if (!empty($dateNais) && !is_valid_phoneNumber ($dateNais)) {
@@ -148,7 +164,7 @@ if($_SESSION['user_auth']['write']) { // user can write
 				$count++;
 			}
 
-			if(!isset($_POST['final']) || $output!='')
+			if(!isset($_POST['submitFinal']) || $output!='')
 				include(VIEWS_INC.'csv-apercu.php');
 			else {
 				foreach($csv as $line) {
