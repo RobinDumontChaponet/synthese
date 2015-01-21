@@ -29,13 +29,13 @@ aside#form {
 }
 
 
-aside p, form {
+aside > p, form {
 	margin: 20% 2% 0;
 	display: table-cell;
 	vertical-align: middle;
 }
 
-aside p {
+aside#intro p {
 	color: #fff;
 }
 form:before {
