@@ -64,8 +64,17 @@ input[type="submit"], input[type="button"], .button, button, select {
 
 	text-shadow: 0 -1px 0 rgb(240, 240, 240);
 	color: #413131;
-	margin: 10px auto;
-	-webkit-transition: all .5s ease;
+	margin: 10px auto 0;
+}
+input[type="submit"]:hover, input[type="button"]:hover, input[type="checkbox"]:hover, .button:hover, button:hover, select:hover {
+	-webkit-transform: scale(.98);
+	-moz-transform: scale(.98);
+	-ms-transform: scale(.98);
+	-o-transform: scale(.98);
+	transform: scale(.98);
+	-webkit-animation: pulse 1s ease-in-out .1s infinite alternate;
+	-moz-animation: pulse 1s ease-in-out .1s infinite alternate;
+	animation: pulse 1s ease-in-out .1s infinite alternate;
 }
 input[type="submit"]:hover, input[type="button"]:hover, .button:hover, button:hover, select:hover {
 	background: rgba(230, 229, 229, 1);
@@ -74,11 +83,12 @@ input[type="submit"]:hover, input[type="button"]:hover, .button:hover, button:ho
 	background: -o-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
 	background: -ms-linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
 	background: linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
-	-webkit-transform: scale(.98);
-
-	-webkit-animation: pulse 1s ease-in-out .1s infinite alternate;
-	-moz-animation: pulse 1s ease-in-out .1s infinite alternate;
-	animation: pulse 1s ease-in-out .1s infinite alternate;
+}
+input:focus, .button:focus, button:focus, select:focus {
+	border-width: 1px;
+}
+select:focus {
+	margin-top: 9.5px;
 }
 button {
 	margin: 0 3px;
@@ -103,7 +113,7 @@ select {
 	-ms-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
-	margin: 1px auto;
+	margin: 1px auto 0;
 }
 select:hover {
 	background: url(images/selector.png), rgb(230, 229, 229);

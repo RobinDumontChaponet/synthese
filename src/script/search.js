@@ -71,7 +71,7 @@ function affichageResultat() {
 			}
 		}
 		document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
-	} else console.error('le fichier xml ne retourne pas un 200 : ' + this.status);
+	} else console.error('Helper retourne code : ' + this.status);
 }
 
 function init_search() {

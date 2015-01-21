@@ -34,8 +34,8 @@ if ($_SESSION["syntheseUser"]) {
 
 			$personne['nom'] = $suggestion->getNomPatronymique();
 			$personne['prenom'] = $suggestion->getPrenom();
-			$personne['promotion'] = ($aEtudie!=null)?$aEtudie->getPromotion()->getAnnee():'';
-			$personne['diplomeDUT'] = ($aEtudie!=null)?$aEtudie->getDiplomeDUT()->getLibelle():'';
+			$personne['promotion'] = ($aEtudie!=null)?$aEtudie[0]->getPromotion()->getAnnee():'';
+			$personne['diplomeDUT'] = ($aEtudie!=null)?$aEtudie[0]->getDiplomeDUT()->getLibelle():'';
 			$personne['typeSpecialisation'] = ($specialisation!=null)?$specialisation->getTypeSpecialisation()->getLibelle():'';
 			$personne['specialisation'] = ($specialisation!=null)?$specialisation->getLibelle():'';
 
