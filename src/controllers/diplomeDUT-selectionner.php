@@ -19,7 +19,7 @@ if ($_SESSION['user_auth']['write']) {
 					$diplAncien = new AEtudie ($ancien, $diplomeDUT, $departementIUT, $promotion);
 					AEtudieDAO::create($diplAncien);
 				}
-				header('Location: '.SELF.'profil/'.$ancien->getId().'#diplomes');
+				header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
 			}
 		}
 	}
