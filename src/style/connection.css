@@ -37,6 +37,11 @@ aside > p, form {
 
 aside#intro p {
 	color: #fff;
+	padding: 0 20%;
+	text-align: justify;
+	line-height: 2.3em;
+	font-size: 1.05em;
+	letter-spacing: 1px;
 }
 form:before {
 	content: "";
@@ -60,12 +65,12 @@ fieldset {
 }
 legend {
 	color: #f4f3f3;
-	text-shadow: 0 1px 0 #c9c9c9, 0 2px 0 #b7b7b7, 0 3px 2px #ededed, 0 -1px 0 #d8d8d8, -1px 0 0 #dcdcdc, 1px 0 0 #d9d9d9;
+	text-shadow: 0 0 1px #f6f6f6, 0 1px 0 #c9c9c9, 0 2px 0 #b7b7b7, 0 3px 2px #ededed, 0 -1px 0 #d8d8d8, -1px 0 0 #dcdcdc, 1px 0 0 #d9d9d9;
 	font-size: 28px;
 	font-family: 'ChunkFiveRegular';
 	position: relative;
-	letter-spacing: 1px;
 	-webkit-text-stroke: 1px #f6f6f6;
+	letter-spacing: 1px;
 	margin-bottom: 20px;
 }
 label {

@@ -73,7 +73,9 @@ else { ?>
   </form>
 </aside>
 <aside id="intro">
-  <p>Texte de présentation...</p>
+  <p>
+	  Plus qu'un simple réseau, ConnectIT! est la concrétisation du lien fort qui unit les nouveaux comme les anciens étudiants de l'IUT de Metz.<br />Consultez les événements spécialement organisés pour vous. Bénéficiez d'offres de stages et d'emplois qui vous aideront à progresser dans votre carrière professionnelle. Profitez des avantages offerts par une communauté solidaire. Retrouvez vos anciens camarades et revivez les moments passés.<br /><br /><br />C'est temporaire, j'ai une idée ^^
+  </p>
 </aside>
 </body>
 </html>
