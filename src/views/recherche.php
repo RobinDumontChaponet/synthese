@@ -109,34 +109,13 @@
 	<nav class="pagination"></nav>
 
     <section id="actions">
-        <form method="POST" action="views/messages.php">
+        <form method="POST" action="messages">
             <input type="submit" value="Envoyer un message" />
         </form>
         <?php if(isset($msgErrAdresse)){ echo $msgErrAdresse;} ?>
     </section>
 </div>
 <script type="text/javascript">
-function adaptationSup(select) {
-	var dateDebut = select.options[select.selectedIndex].value;
-	var dateLimite = select.options[select.options.length - 1].value;
-	var select2 = document.getElementById("promotionSup");
-
-	console.log(dateDebut, dateLimite);
-
-	for (var i = dateDebut; i<=dateLimite; i++) {
-		console.log(i);
-		var option = document.createElement('option');
-		option.value = i;
-		option.innerHTML = i;
-		select2.appendChild(option);
-	}
-}
-
-var select = document.getElementById("promotionInf");
-select.onchange = function(){adaptationSup(this)};
-select.onclick = select.onchange;
-
 init_search();
 </script>
-
 

@@ -24,6 +24,7 @@ function link_ajax(page) {
 function affichageResultat() {
 	if (this.readyState == 4) if (this.status == 200) {
 		//console.log(this.responseText);
+        alert(this.responseText);
 		var resp = JSON.parse(this.responseText),
 			data = resp['data'],
 			table = '';
@@ -71,7 +72,7 @@ function affichageResultat() {
 			}
 		}
 		document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
-	} else console.error('le fichier xml ne retourne pas un 200 : ' + this.status);
+	} else console.error('Helper retourne code : ' + this.status);
 }
 
 function init_search() {
