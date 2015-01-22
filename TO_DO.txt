@@ -9,6 +9,11 @@ Style :
 	- Augmenter la taille de "Inscrit" "Non inscrit" "Passés" "A venir" afin qu'ils resortent plus (demande de prof)
 	- Styler le bouton retour sur diplomeDUT-selectionner
 	- Styler la page diplomes
+	- Styler la page diplome-editer au niveau de "Voir tout les domaines"
+	- Styler la page etablissements
+	- Styler la page domaines
+	- Styler la page domaine-editer
+	- Styler la page domaine-ajouter
 
 Profil :
 	- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
@@ -16,13 +21,14 @@ Profil :
 diplomeDUT-selectionner :
 	- Créer la promotion si elle n'existe pas
 
-Autres :
-	- Pour "Ma promotion", il va falloir récupérer la dernière promotion de la personne
-
 Recherche : 
 	- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement !) :
 		- Export des adresses mail
 		- Envoi d'un mail
+
+Autres :
+	- Pour "Ma promotion", il va falloir récupérer la dernière promotion de la personne
+	- Vérifier les noms des pages
 
 
 
