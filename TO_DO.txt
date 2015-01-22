@@ -1,13 +1,28 @@
 ﻿(On fait le tri de ce qu'il y a en dessous au fur et à mesure)
 
 
+-- SUPPRIMER CE QUI EST FAIT --
+
 Style :
 	- Styler la page Profil et Profil-editer au niveau des Diplômes
 	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créer et "retour étudiant")
-	- 
+	- Augmenter la taille de "Inscrit" "Non inscrit" "Passés" "A venir" afin qu'ils resortent plus (demande de prof)
+	- Styler le bouton retour sur diplomeDUT-selectionner
+	- Styler la page diplomes
+
+Profil :
+	- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
+
+diplomeDUT-selectionner :
+	- Créer la promotion si elle n'existe pas
 
 Autres :
 	- Pour "Ma promotion", il va falloir récupérer la dernière promotion de la personne
+
+Recherche : 
+	- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement !) :
+		- Export des adresses mail
+		- Envoi d'un mail
 
 
 
@@ -30,16 +45,11 @@ Autres :
 
 - Diplômes : Renseigner si obtenue ou non !
 
-- Faire une pagination dans la recherche
-
 - Faire la page d'accueille, par exemple :
 	- pour ancien : news de sa promo, messages, et les machins de réseau social que Mathieu mets 3 ans à faire
 	- pour prof : les dernières activités/évènements ouverts par lui, messages, et tout le bazar
 	- pour admin : un mélange des deux premiers, en fait... faut réchéflir
 
-- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement)
-	- Export des adresses mail
-	- Envoi d'un mail
 
 - Limiter le nombre d'events <<passés>> ~ 10 (constante "LINE_PAGE" !) devrait suffire avec une pagination pour les voir tous ?
 
@@ -47,12 +57,7 @@ Autres :
 - Faire diplome-ajouter
 - Faire diplome-supprimer
 
-- Ecrire le texte de présentation sur la page de connection
-
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
-
-- Styler la page diplomeDUT-selectionner
-- Styler la page diplomes
 
 Profil :
 
@@ -63,4 +68,3 @@ Profil :
 - Faire la suppression d'une entreprise (supprime le lien travaille)
 
 
-- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
