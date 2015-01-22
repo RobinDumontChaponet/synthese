@@ -3,11 +3,11 @@
 	<?php if ($_GET['id'] && $_SESSION['syntheseUser']->getId() == $_GET['id'] || $_SESSION['syntheseUser']->getTypeProfil()->getLibelle() == 'Admin') {
 		if ($ancien != NULL) {
 			if ($errorDiplomeEtablissement)
-				echo '<p class="error">Vous devez renseigner le diplôme et l\'établissement</p>';
+				echo '<p class="error">Le diplôme et l\'établissement doivent être renseignés</p>';
 			if ($noResultat)
-				echo '<p class="error">Vous devez renseigner un résultat pour votre diplôme</p>';
+				echo '<p class="error">Un résultat pour votre diplôme doit être renseigné</p>';
 			if ($noPeriode)
-				echo '<p class="error">Vous devez renseigner une période correcte (AAAA - AAAA) pour votre diplôme</p>';
+				echo '<p class="error">Une période correcte (AAAA - AAAA) doit être renseignée</p>';
 		?>
 		<h1>Selectionner un Diplôme pour <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>
 		<form action="diplome-selectionner/<?php echo $_GET['id']?>" method="post">
