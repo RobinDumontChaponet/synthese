@@ -13,6 +13,7 @@ Style :
 
 Victor :
 	- Faire le système de retour de page (Je comprendrai ...)
+	- Dans etablissement-editer, remplacer le input text du pays par un select.
 
 Profil :
 	- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
