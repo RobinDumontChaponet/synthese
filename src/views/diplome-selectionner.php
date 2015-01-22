@@ -44,6 +44,7 @@
 				</dl>
 			</article>
 			<input type="submit" value="Enregistrer les modifications" />
+			<a href="profil-editer/<?php echo $ancien->getId();?>">Retour</a>
 		</form>
 		<?php } else {?>
 			<p class="warning">Cet étudiant n'existe pas</p>

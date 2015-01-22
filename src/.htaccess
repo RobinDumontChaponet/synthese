@@ -250,6 +250,7 @@ FileETag None
 	RewriteRule ^etablissements/([^/]+) %{ENV:BASE}/index.php?requ=etablissements [NC]
 	RewriteRule ^diplomeDUT-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-editer&id=$1 [NC]
 	RewriteRule ^diplomeDUT-modifier/([^/]+)&([^/]+)&([^/]+)&([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-modifier&idAncien=$1&idDiplomeDUT=$2&idDepartement=$3&idPromotion=$4 [NC]
+	RewriteRule ^diplome-modifier/([^/]+)&([^/]+)&([^/]+) %{ENV:BASE}/index.php?requ=diplome-modifier&idAncien=$1&idDiplomePost=$2&idEtablissement=$3 [NC]
 	RewriteRule ^diplomeDUT-ajouter %{ENV:BASE}/index.php?requ=diplomeDUT-ajouter [NC]
 	RewriteRule ^diplomeDUT-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplomeDUT-selectionner&id=$1 [NC]
 	RewriteRule ^groupe/([^/]+) %{ENV:BASE}/index.php?requ=groupe&id=$1 [NC]

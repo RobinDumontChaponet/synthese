@@ -132,7 +132,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					foreach ($diplomesDUT as $diplomeDUT) { ?>
 						<li>
 							<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-								echo '<a href="index.php?requ=diplomeDUT-selectionner-supprimer&idDiplomeDUT='.$diplomeDUT->getDiplomeDUT()->getId().'&idAncien='.$ancien->getId().'&idDepartement='.$diplomeDUT->getDepartementIUT()->getId().'&idPromotion='.$diplomeDUT->getPromotion()->getId().'">Supprimer le diplôme de l\'élève</a><a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'&'.$diplomeDUT->getDiplomeDUT()->getId().'&'.$diplomeDUT->getDepartementIUT()->getId().'&'.$diplomeDUT->getPromotion()->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
+								echo '<a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'&'.$diplomeDUT->getDiplomeDUT()->getId().'&'.$diplomeDUT->getDepartementIUT()->getId().'&'.$diplomeDUT->getPromotion()->getId().'">Éditer</a><a class="delete" href="index.php?requ=diplomeDUT-selectionner-supprimer&idDiplomeDUT='.$diplomeDUT->getDiplomeDUT()->getId().'&idAncien='.$ancien->getId().'&idDepartement='.$diplomeDUT->getDepartementIUT()->getId().'&idPromotion='.$diplomeDUT->getPromotion()->getId().'">Supprimer</a>'; ?>
 							<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
 							<dl>
 								<dt class="departement">Département</dt>
@@ -157,9 +157,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
-							<?php $dispose = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle('diplome-editer'))->getDroit();
-								if($dispose['write']) echo '<a class="edit" href="diplome-modifier/'.$diplomePost->getDiplomePostDUT()->getId().'" target="_blank">Éditer</a>';
-							?>
+							<a class="edit" href="diplome-modifier/<?php echo $ancien->getId();?>&<?php echo $diplomePost->getDiplomePostDUT()->getId();?>&<?php echo $diplomePost->getEtablissement()->getId();?>">Éditer</a>
 							<a class="delete" href="index.php?requ=diplome-selectionner-supprimer&idDiplomePost=<?php echo $diplomePost->getDiplomePostDUT()->getId();?>&idAncien=<?php echo $ancien->getId();?>&idEtablissement=<?php echo $diplomePost->getEtablissement()->getId();?>">Supprimer</a>
 							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 							<dl>
