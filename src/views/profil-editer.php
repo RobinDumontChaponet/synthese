@@ -128,7 +128,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
-				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomeDUT != NULL) { // Autre que prof
+				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomesDUT != NULL) { // Autre que prof
 					foreach ($diplomesDUT as $diplomeDUT) { ?>
 						<li>
 							<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
@@ -158,8 +158,9 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
 							<?php $dispose = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle('diplome-editer'))->getDroit();
-							if($dispose['write']) echo '<a class="edit" href="diplome-editer/'.$diplomePost->getDiplomePostDUT()->getId().'" target="_blank">Éditer</a>';
-							?><a class="delete" href="diplome-supprimer">Supprimer</a>
+								if($dispose['write']) echo '<a class="edit" href="diplome-modifier/'.$diplomePost->getDiplomePostDUT()->getId().'" target="_blank">Éditer</a>';
+							?>
+							<a class="delete" href="index.php?requ=diplome-selectionner-supprimer&idDiplomePost=<?php echo $diplomePost->getDiplomePostDUT()->getId();?>&idAncien=<?php echo $ancien->getId();?>&idEtablissement=<?php echo $diplomePost->getEtablissement()->getId();?>">Supprimer</a>
 							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 							<dl>
 								<dt class="etablissement">Établissement</dt>

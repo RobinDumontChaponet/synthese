@@ -1,7 +1,14 @@
 <!--meta title="Ajout d'un Diplôme DUT" css="style/evenements.css"-->
 <div id="content">
 	<?php if ($_GET['id'] && $_SESSION['syntheseUser']->getId() == $_GET['id'] || $_SESSION['syntheseUser']->getTypeProfil()->getLibelle() == 'Admin') {
-		if ($ancien != NULL) {?>
+		if ($ancien != NULL) {
+			if ($errorDiplomeEtablissement)
+				echo '<p class="error">Vous devez renseigner le diplôme et l\'établissement</p>';
+			if ($noResultat)
+				echo '<p class="error">Vous devez renseigner un résultat pour votre diplôme</p>';
+			if ($noPeriode)
+				echo '<p class="error">Vous devez renseigner une période correcte (AAAA - AAAA) pour votre diplôme</p>';
+		?>
 		<h1>Selectionner un Diplôme pour <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>
 		<form action="diplome-selectionner/<?php echo $_GET['id']?>" method="post">
 			<article>
@@ -33,7 +40,7 @@
 					<dt><label for="resultat">Résultat</label></dt>
 					<dd class="resultat"><input type="number" id="resultat" name="resultat" placeholder="Résultat de votre diplôme" /></dd>
 					<dt><label for="periode">Période</label></dt>
-					<dd class="periode"><input type="text" id="periode1" name="periode1" maxlength="4" placeholder="AAAA"/> - <input type="text" id="periode2" name="periode2" maxlength="4" placeholder="AAAA"/></dd>
+					<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="4" placeholder="AAAA"/> - <input type="date" id="periode2" name="periode2" maxlength="4" placeholder="AAAA"/></dd>
 				</dl>
 			</article>
 			<input type="submit" value="Enregistrer les modifications" />

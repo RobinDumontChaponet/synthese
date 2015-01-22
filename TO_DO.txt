@@ -5,6 +5,7 @@
 
 Style :
 	- Styler la page Profil et Profil-editer au niveau des Diplômes
+	- Styler sur la page de profil (faire une séparation entre DiplômesDUT et Diplômes)
 	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créer et "retour étudiant")
 	- Augmenter la taille de "Inscrit" "Non inscrit" "Passés" "A venir" afin qu'ils resortent plus (demande de prof)
 	- Styler le bouton retour sur diplomeDUT-selectionner
@@ -14,6 +15,11 @@ Style :
 	- Styler la page domaines
 	- Styler la page domaine-editer
 	- Styler la page domaine-ajouter
+	- Styler la page diplome-ajouter
+	- Dans diplome-selectionner mettre le nom de la personne en majuscule
+
+Victor :
+	- Faire le système de retour de page (Je comprendrai ...)
 
 Profil :
 	- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
