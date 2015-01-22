@@ -6,12 +6,12 @@
 		<article>
 			<dl>
 				<dt><label for="libelle">Libelle</label></dt>
-				<dd><input id="libelle" name="libelle" placeholder="Libelle du domaine" value="<?php echo $domaine->getLibelle(); ?>" autofocus/></dd>
+				<dd class="domaine"><input type="text" id="libelle" name="libelle" placeholder="Libelle du domaine" value="<?php echo $domaine->getLibelle(); ?>" autofocus/></dd>
 				<dt><label for="description">Description</label></dt>
-				<dd><input id="description" name="description" placeholder="Description du domaine" value="<?php echo $domaine->getDescription(); ?>"/></dd>
+				<dd class="description"><input type="text" id="description" name="description" placeholder="Description du domaine" value="<?php echo $domaine->getDescription(); ?>"/></dd>
 			</dl>
 		</article>
-		<input type="submit" value="Enregistrer les modifications" />
+		<input type="submit" value="Enregistrer" />
 	</form>
 <?php
 } else { ?>

@@ -21,7 +21,7 @@
 			<dt>Fax</dt>
 			<dd id="fax"><a href="tel:<?php echo $etablissement->getFax();?>"><?php echo $etablissement->getFax();?></a></dd>
 			<dt>Site Web</dt>
-			<dd id="web"><a href="<?php echo $etablissement->getWeb();?>"><?php echo $etablissement->getWeb();?></a></dd>
+			<dd id="web"><a target="_blank" href="http://<?php echo $etablissement->getWeb();?>"><?php echo $etablissement->getWeb();?></a></dd>
 		</dl>
 	</article>
 <?php

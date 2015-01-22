@@ -7,15 +7,8 @@ Style :
 	- Styler la page Profil et Profil-editer au niveau des Diplômes
 	- Styler sur la page de profil (faire une séparation entre DiplômesDUT et Diplômes)
 	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créer et "retour étudiant")
-	- Augmenter la taille de "Inscrit" "Non inscrit" "Passés" "A venir" afin qu'ils resortent plus (demande de prof)
+	- Distinguer les catégories "Inscrit" "Non inscrit" "Passés" "A venir" afin qu'ils resortent plus (demande de prof)
 	- Styler le bouton retour sur diplomeDUT-selectionner
-	- Styler la page diplomes
-	- Styler la page diplome-editer au niveau de "Voir tout les domaines"
-	- Styler la page etablissements
-	- Styler la page domaines
-	- Styler la page domaine-editer
-	- Styler la page domaine-ajouter
-	- Styler la page diplome-ajouter
 	- Dans diplome-selectionner mettre le nom de la personne en majuscule
 
 Victor :
@@ -27,7 +20,7 @@ Profil :
 diplomeDUT-selectionner :
 	- Créer la promotion si elle n'existe pas
 
-Recherche : 
+Recherche :
 	- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement !) :
 		- Export des adresses mail
 		- Envoi d'un mail

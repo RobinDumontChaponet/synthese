@@ -99,3 +99,16 @@ a, a:active, a:hover, a:visited {
 	font-size: 1.2em;
 	color: grey;
 }
+.error{
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    margin: 0 -10px 20px;
+    -webkit-animation: flipInX 1s ease-in-out 0 1;
+	-moz-animation: flipInX 1s ease-in-out 0 1;
+	-ms-animation: flipInX 1s ease-in-out 0 1;
+	-o-animation: flipInX 1s ease-in-out 0 1;
+	animation: flipInX 1s ease-in-out 0 1;
+}

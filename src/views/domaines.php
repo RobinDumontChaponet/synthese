@@ -1,25 +1,27 @@
-<!--meta title="Domaines" css="style/evenements.css"-->
+<!--meta title="Domaines"-->
 <div id="content">
-	<?php if ($domaines != NULL) {
-		if ($_SESSION['user_auth']['write'])
-			echo '<a class="add" href="domaine-ajouter">Ajouter un nouveau domaine</a>'; 
+<?php if ($domaines != NULL) {
+?>
+	<h1>Domaines</h1>
+	<?php if ($_SESSION['user_auth']['write'])
+		echo '<a class="add" href="domaine-ajouter">Ajouter un nouveau domaine</a>';
 	?>
-		<h1>Domaines</h1>
+	<section>
+	<?php foreach ($domaines as $domaine) { ?>
 		<ul>
-			<?php foreach ($domaines as $domaine) { ?>
 			<li>
-				<h2><?php echo $domaine->getLibelle();?></h2>
+				<a class="edit" href="domaine-editer/<?php echo $domaine->getId() ?>">Éditer</a><a class="delete" href="index.php?requ=domaine-supprimer&id=<?php echo $domaine->getId() ?>">Supprimer</a>
+				<h2 class="domaine"><?php echo $domaine->getLibelle();?></h2>
 				<dl>
 					<dt>Description</dt>
-					<dd id="description"><?php echo $domaine->getDescription();?></dd>
+					<dd class="description"><?php echo $domaine->getDescription();?></dd>
 				</dl>
-				<a class="edit" href="domaine-editer/<?php echo $domaine->getId() ?>">Modifier</a><a class="delete" href="index.php?requ=domaine-supprimer&id=<?php echo $domaine->getId() ?>">Supprimer</a>
 			</li>
-			<?php } ?>
 		</ul>
-	<?php
-	} else { ?>
-		<a class="add" href="domaine-ajouter">Ajouter un nouveau domaine</a>
-		<p class="warning">Aucun domaines</p>
 	<?php } ?>
+	</section>
+<?php
+} else { ?>
+	<p class="sad">Aucun domaine</p>
+<?php } ?>
 </div>
