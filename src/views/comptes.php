@@ -44,7 +44,7 @@
                 <?php foreach ($lst[$type->getId()] as $pers) { ?>
                     <form action="" method="POST">
                         <tr>
-                            <td style="padding:0;"><?php echo $pers->getPersonne()->getNom(); ?></td>
+                            <td style="padding:0;"><?php echo $pers->getPersonne()->getNomPatronymique(); ?></td>
                             <td style="padding:0;"><?php echo $pers->getPersonne()->getPrenom(); ?></td>
                             <td style="padding:0;"><input type="password" name="mdp" placeholder="Remplacer le mot de passe" style="width:220px;"></td>
                             <td style="padding:0;">
