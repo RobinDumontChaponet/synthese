@@ -54,9 +54,13 @@ if($_SESSION['user_auth']['write']) { // user can write
 				$csv = csv2array('csv', 1);
 
 			$order = array();
-			foreach($in as $key => $value) {
-				$order[$value]=$key;
-			}
+			foreach($in as $key => $value)
+				if(strpos($key, 'type_') === 0)
+					$order[$value]=$key;
+
+			echo '<br />order : ';
+			var_dump($order);
+			echo '<br />';
 
 			/**
 			 * valeurs possibles :
@@ -117,8 +121,8 @@ if($_SESSION['user_auth']['write']) { // user can write
 			$output = '';
 			$count = 1;
 			foreach($csv as $line) {
-				var_dump($line);
-				echo '<br /><br />';
+				//var_dump($line);
+				//echo '<br /><br />';
 
 				$sexe = strtolower(fillVal($line[$order['sexe']]));
 				if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
@@ -167,7 +171,14 @@ if($_SESSION['user_auth']['write']) { // user can write
 			if(!isset($_POST['submitFinal']) || $output!='')
 				include(VIEWS_INC.'csv-apercu.php');
 			else {
+
 				foreach($csv as $line) {
+
+					echo '<br />line : ';
+					var_dump($line);
+					echo '<br /><br />nomPat : '.fillVal($line[$order['nomPat']]).'<br /><br />';
+					echo '<br /><br />';
+
 					$sexe = strtolower(fillVal($line[$order['sexe']]));
 					if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
 						$sexe = 'f';
@@ -180,20 +191,23 @@ if($_SESSION['user_auth']['write']) { // user can write
 
 					$ancien = new Ancien(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['adresse1']]), fillVal($line[$order['adresse2']]), fillVal($line[$order['codePost']]), fillVal($line[$order['ville']]), fillVal($line[$order['pays']]), fillVal($line[$order['telMob']]), fillVal($line[$order['telFix']]), null, null, $parents, $sexe, fillVal($line[$order['dateNais']]), fillVal($line[$order['mail']]));
 
-					$idAncien=AncienDAO::create($ancien);
+					//$idAncien=AncienDAO::create($ancien);
 
 					$typeProfile = TypeProfilDAO::getByLibelle('Ancien');
 
 					$login = substr($ancien->getNomPatronymique(), 0, 4).$ancien->getId().substr($ancien->getPrenom(), 0, 4);
-					$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
-					echo '	Login -> '.$login;
+
+					var_dump($ancien);
+					echo '<br />';
+					//$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
+					//echo '	Login -> '.$login;
 					echo '<br />';
 
-					CompteDAO::create($account);
+					//CompteDAO::create($account);
 
 					if($diplomeDUT!=NULL) {
 						$aEtudie = new AEtudie($ancien, $diplomeDUT, $departement, $promotion);
-						AEtudieDAO::create($aEtudie);
+						//AEtudieDAO::create($aEtudie);
 					}
 				}
 				echo '<p class="true">Les données ont bien été importées.</p>';

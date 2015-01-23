@@ -5,7 +5,7 @@
 	<a class="add" href="etablissement-ajouter">Ajouter un nouvel établissement</a>
 	<section>
 		<ul>
-			<?php foreach ($etablissements as $etablissement) { 
+			<?php foreach ($etablissements as $etablissement) {
 			echo '<li>';
 			if ($_SESSION['user_auth']['write']) {
 				echo '<a class="edit" href="etablissement-editer/'.$etablissement->getId().'">Modifier</a><a class="delete" href="index.php?requ=etablissement-supprimer&id='.$etablissement->getId().'">Supprimer</a>';
@@ -28,6 +28,6 @@
 <?php
 } else { ?>
 	<a class="add" href="etablissement-ajouter">Ajouter un nouvel établissement</a>
-	<p class="warning">Aucun établissements</p>
+	<p class="warning">Aucun établissement</p>
 <?php } ?>
 </div>
