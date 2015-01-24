@@ -305,6 +305,8 @@ FileETag None
 	RewriteRule ^diplome-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=diplome-ajouter&id=$1 [NC]
 	RewriteRule ^etablissement-ajouter/([^/]+) %{ENV:BASE}/index.php?requ=etablissement-ajouter&id=$1 [NC]
 	RewriteRule ^domaine-editer/([^/]+) %{ENV:BASE}/index.php?requ=domaine-editer&id=$1 [NC]
+	RewriteRule ^message/([^/]+) %{ENV:BASE}/index.php?requ=message&id=$1 [NC]
+	RewriteRule ^message-ecrire/([^/]+) %{ENV:BASE}/index.php?requ=message-ecrire&id=$1 [NC]
 
 
 #### Generals
