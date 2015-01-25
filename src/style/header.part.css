@@ -155,6 +155,9 @@ nav a.aSearch:before {
 nav a.aGroups:before {
 	content: "\e96f";
 }
+nav a.aMessage:before {
+	content: "\e945";
+}
 nav .active a.aGroups:before {
 	content: "\e970";
 }
