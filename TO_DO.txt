@@ -30,6 +30,7 @@ Recherche :
 Autres :
 	- Pour "Ma promotion", il va falloir récupérer la dernière promotion de la personne
 	- Vérifier les noms des pages
+	- Faire une pagination dans comptes
 
 
 
