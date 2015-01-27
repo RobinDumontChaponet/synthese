@@ -33,6 +33,8 @@ Autres :
 
 
 
+SI ON A LE TEMPS :
+	- Ajouter des liens du genre de "Chercher les anciens avec ce diplôme" sur la page d'un diplôme (par exemple) qui ouvre la recherche avec déjà le diplôme renseigné !
 
 
 

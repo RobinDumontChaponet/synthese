@@ -108,19 +108,23 @@ class Ancien extends Personne {
 
 	public function setMobile($mobile) {
 		$mobile=trim($mobile);
-		if (empty($mobile) || is_valid_phoneNumber ($mobile)) {
+		// if (empty($mobile) || is_valid_phoneNumber ($mobile)) {
 			$this->mobile = $mobile;
-		} else {
+		/*
+} else {
 			throw new Exception('Ancien.class.php | Numéro de mobile invalide : '.'"'.$mobile.'" ');
 		}
+*/
 	}
 	public function setTelephone($telephone) {
 		$telephone=trim($telephone);
-		if (empty($telephone) || is_valid_phoneNumber ($telephone)) {
+		// if (empty($telephone) || is_valid_phoneNumber ($telephone)) {
 			$this->telephone = $telephone;
-		} else {
+		/*
+} else {
 			throw new Exception('Ancien.class.php | Numéro de telephone fixe invalide : '.'"'.$telephone.'" ');
 		}
+*/
 
 	}
 

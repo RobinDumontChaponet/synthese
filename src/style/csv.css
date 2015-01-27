@@ -89,11 +89,17 @@ input[type="file"] {
 	visibility: hidden;
 }
 
-fieldset#table {
-	position: relative;
-	height: 200px;
+.table {
 	overflow: auto;
 	overflow-y: hidden;
+}
+section.table {
+	margin-left: -20px;
+	margin-right: -20px;
+}
+fieldset.table {
+	position: relative;
+	height: 200px;
 }
 table {
 	position: absolute;
@@ -172,4 +178,9 @@ table select {
 	-ms-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+table select:focus {
+	border-width: .5px;
+	margin-top: 0;
 }

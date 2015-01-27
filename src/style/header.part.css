@@ -168,6 +168,7 @@ nav a.aAnchor:before {
 nav a.aAdd:before {
 	content: "+";
 	margin-left: 12px;
+	top: -1px;
 }
 
 header a#aHelp:before {

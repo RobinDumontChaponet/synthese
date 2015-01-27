@@ -1,4 +1,4 @@
-<!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" -->
+<!--meta title="Recherche" css="style/recherche.css" needJs="needJs" js="script/restriction_annees.js" js="script/search.js" -->
 
 <div id="content">
 	<h1>Recherche</h1>

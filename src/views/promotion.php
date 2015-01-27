@@ -1,9 +1,9 @@
-<!--meta title="<?= ($promo!=null)?'Promotion '.$promo->getAnnee():'La promotion n‘existe pas';?>" css="style/promotions.css"-->
+<!--meta title="<?= ($promo!=null)?'Promotion '.$dept->getNom().' '.$promo->getAnnee():'La promotion n‘existe pas';?>" css="style/promotions.css"-->
 <div id="content">
 	<?php if($promo!=null) { ?>
 	<h1>Promotion <?php echo $dept->getNom().' année '.$promo->getAnnee();?></h1>
 	<section>
-		<p>Il y a actuellement <?= count($anciens); if (count($anciens) > 1) echo ' anciens'; else echo ' ancien';?> dans cette promotion.</p>
+		<p>Il y a <?= count($anciens); if (count($anciens) > 1) echo ' anciens'; else echo ' ancien';?> en <?= $dept->getNom();?> dans cette promotion.</p>
 	</section>
 	<section id="etudiants">
 		<h2>Étudiants de la promotion</h2>
