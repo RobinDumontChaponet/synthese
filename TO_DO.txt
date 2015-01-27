@@ -10,9 +10,10 @@ Style :
 	- Distinguer les catégories "Inscrit", "Non inscrit", "Passés", "A venir" afin qu'ils ressortent plus (demande de prof)
 	- Styler le bouton retour sur diplomeDUT-selectionner
 	- Dans diplome-selectionner mettre le nom de la personne en majuscule
+	- Styler dans Profil-editer l'input de type date pour Birthday
 
 Victor :
-	- Faire le système de retour de page (Je comprendrai ...)
+	- Faire le système de retour de page (Je comprendrai ...) (ah bah je comprends plus)
 	- Dans etablissement-editer, remplacer le input text du pays par un select.
 
 Profil :

@@ -52,7 +52,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					echo '<span>'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'</span>';
 				?></dd>
 				<dt id="dateNaissance"><label for="inputBirthday">Date de naissance</label></dt>
-				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="text" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
+				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="date" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
 				<dt id="adresse1"><label for="inputAddress1">Adresse 1</label></dt>
 				<dd><input id="inputAddress1" name="address1" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getAdresse1();?>"/></dd>
 				<dt id="adresse2"><label for="inputAddress2">Adresse 2</label></dt>

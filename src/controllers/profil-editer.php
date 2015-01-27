@@ -96,10 +96,7 @@ function validate ($ancien) {
 	if (isset($_POST['sex']) && trim($_POST['sex']) != $ancien->getSexe())
 		$valid['sex'] = true;
 	if (isset($_POST['birthday']) && trim($_POST['birthday']) != $ancien->getDateNaissance()) {
-		if (is_valid_SQL_date($_POST['birthday']))
-			$valid['birthday'] = true;
-		else
-			$valid['birthday'] = false;
+		$valid['birthday'] = true;
 	}
 	return $valid;
 }

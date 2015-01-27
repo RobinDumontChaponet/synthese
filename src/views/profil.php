@@ -25,7 +25,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
 			<dt id="dateNaissance">Date de naissance</dt>
-			<dd><?php echo $ancien->getDateNaissance();?></dd>
+			<dd><?php if ($ancien->getDateNaissance() == '0000-00-00') echo 'Non renseignée'; else echo $ancien->getDateNaissance();?></dd>
 			<dt id="adresse1">Adresse 1</dt>
 			<dd><?php echo $ancien->getAdresse1();?></dd>
 			<dt id="adresse2">Adresse 2</dt>
