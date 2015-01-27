@@ -25,7 +25,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
 			<dt id="dateNaissance">Date de naissance</dt>
-			<dd><?php if ($ancien->getDateNaissance() == '0000-00-00') echo 'Non renseignée'; else echo $ancien->getDateNaissance();?></dd>
+			<dd><?php if ($ancien->getDateNaissance() == '0000-00-00') echo '<span class="nc">Non renseignée</span>'; else echo $ancien->getDateNaissance();?></dd>
 			<dt id="adresse1">Adresse 1</dt>
 			<dd><?php echo $ancien->getAdresse1();?></dd>
 			<dt id="adresse2">Adresse 2</dt>
@@ -133,8 +133,8 @@ if (isset($ancien) && $ancien != NULL) {?>
 			</li>
 		<?php } ?>
 		</ul>
-<?php if($diplomeDUT==null && $diplomesPost==null) { ?>
-		<p class="sad">Aucun diplôme.</p>
+<?php if($diplomesPost == NULL) { ?>
+		<p class="sad">Aucun diplôme post DUT renseigné.</p>
 <?php } ?>
 	</section>
 	<section id="entreprises"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuEntreprises"';?>>
@@ -156,20 +156,17 @@ if (isset($ancien) && $ancien != NULL) {?>
 					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
-<?php
-		}
-		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
+<?php	}
+	} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>
 			<li>
 				<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
 			</li>
 		<?php }?>
 		</ul>
 <?php
-	} else {
-?>
+	if($entreprises == NULL) { ?>
 		<p class="sad">Aucune entreprise.</p>
-<?php
-	}
+<?php }
 ?>
 	</section>
 <?php
