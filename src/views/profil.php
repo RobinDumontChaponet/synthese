@@ -21,21 +21,21 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<h2>Informations générales</h2>
 		<dl>
 			<dt id="nomUsage">Nom d'usage</dt>
-			<dd><?php echo $ancien->getNom();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getNom()));?></dd>
 			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
 			<dt id="dateNaissance">Date de naissance</dt>
 			<dd><?php if ($ancien->getDateNaissance() == '0000-00-00') echo '<span class="nc">Non renseignée</span>'; else echo $ancien->getDateNaissance();?></dd>
 			<dt id="adresse1">Adresse 1</dt>
-			<dd><?php echo $ancien->getAdresse1();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getAdresse1()));?></dd>
 			<dt id="adresse2">Adresse 2</dt>
-			<dd><?php echo $ancien->getAdresse2();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getAdresse2()));?></dd>
 			<dt id="codePostal">Code postal</dt>
 			<dd><?php echo $ancien->getCodePostal();?></dd>
 			<dt id="ville">Ville</dt>
-			<dd><?php echo $ancien->getVille();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getVille()));?></dd>
 			<dt id="pays">Pays</dt>
-			<dd><?php echo $ancien->getPays(); ?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getPays())); ?></dd>
 			<dt id="telephoneFixe">Telephone</dt>
 			<dd><a href="tel:<?php echo $ancien->getTelephone();?>"><?php echo $ancien->getTelephone();?></a></dd>
 			<dt id="telephoneMobile">Mobile</dt>
