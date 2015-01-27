@@ -130,12 +130,3 @@ input[type="text"]:focus {
 	opacity: .2;
 	z-index: 900;
 }
-.error{
-    width:100%;
-    background-color: rgba(255, 0, 0, 0.5);
-    border:1px solid red;
-    border-radius: 10px;
-    padding:10px;
-    color:white;
-    margin-bottom: 20px;
-}

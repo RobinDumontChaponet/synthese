@@ -3,24 +3,24 @@ class TypeSpecialisation
 {
   private $id;
   private $libelle;
-
+  
   public function __construct($id, $libelle)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
   }
-
+  
 //--------------------------------------------Getters
   public function getId()
   {
       return $this->id;
   }
-
+  
   public function getLibelle()
   {
       return $this->libelle;
   }
-
+  
 
 //--------------------------------------------Setters
   public function setId($id)
@@ -55,13 +55,13 @@ class TypeSpecialisation
 	{
 		if(get_class($aComparer) == "TypeSpecialisation")
 		{
-			return $this->id == $aComparer->getId();
+			return $this->id == $aComparer->getId();	
 		}else
 		{
 			return false;
 		}
 	}
-
-
+  
+  
 }
 ?>

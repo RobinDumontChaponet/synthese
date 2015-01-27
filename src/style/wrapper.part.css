@@ -17,8 +17,6 @@
 }
 
 #wrapper > #content {
-	/*margin: 3em 0 0;
-	padding: 3em 0 3em;*/
 	position: relative;
 	max-width: 76em;
 	margin: 0 auto;
@@ -33,15 +31,22 @@ article, #content li {
 	border-color: #e7e9ed #e6e7ec #e1e2e7;
 	border-radius: 4px;
 }
+#content .magnets {
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
 #content .magnets li {
 	display: inline-block;
 	background: #fcfcfc;
 	margin: 8px 8px 0 0;
-	padding: 5px;
+	padding: 10px 5px;
 	border: 1px solid;
 	border-color: #e7e9ed #e6e7ec #e1e2e7;
 	border-radius: 4px;
 	font-size: .95em;
+	line-height: 1em;
 }
 
 article, section, fieldset {
@@ -59,7 +64,7 @@ section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
 
-a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements {
+a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements, a.domaines {
 	font-size: 16px;
 	letter-spacing: 0px;
 	float: right;
@@ -69,7 +74,7 @@ a.edit, a.add, a.delete {
 	z-index: 100;
 	position: relative;
 }
-a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before {
+a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before {
 	font-family: 'icomoon';
 	font-size: 12px;
 	speak: none;
@@ -177,7 +182,7 @@ dd {
 dd:after {
 	float: right;
 }
-dt:before, dd:before, h3:before, h4:before, li p:before, article p:before, #content li:before {
+dt:before, dd:before, h2:before, h3:before, h4:before, li p:before, article p:before, #content li:before {
 	font-family: 'icomoon';
 	font-size: 16px;
 	speak: none;
@@ -196,6 +201,9 @@ dt:before, dd:before, h3:before, h4:before, li p:before, article p:before, #cont
 h3:before, li p:before, article p:before {
 	top: 6px;
 	left: -36px;
+}
+h2:before {
+	top: 11px;
 }
 dd {
 	font-weight: 400;
@@ -269,7 +277,7 @@ dd:after {
 .periode:before {
 	content: "\e94e";
 }
-.domaine:before {
+.domaine:before, a.domaines:before {
 	content: "\e91f";
 }
 .commentaire:before {

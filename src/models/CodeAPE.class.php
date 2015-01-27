@@ -22,11 +22,11 @@ class CodeAPE
 	public function getLibelle() {
 		return $this->libelle;
 	}
-
+	
 	public function setCode($code) {
 		$this->code = trim($code);
 	}
-
+	
 	public function setLibelle($libelle) {
 		if (trim($libelle) != NULL && trim($libelle) != "")
 			$this->libelle = $libelle;
@@ -39,13 +39,13 @@ class CodeAPE
 	public function __toString() {
 		return "Code : ".$this->code." Libellé : ".$this->libelle;
 	}
-
+	
 	//-------------------------Equals
 	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "CodeAPE")
 		{
-			return $this->id == $aComparer->getId();
+			return $this->id == $aComparer->getId();	
 		}else
 		{
 			return false;

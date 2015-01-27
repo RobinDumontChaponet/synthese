@@ -10,15 +10,31 @@ if($_SESSION['user_auth']['write']) { // user can write
 
 	if(!empty($_POST)) {
 
-		echo '<br/>';
+		/*
+echo 'POST : ';
 		var_dump($_POST);
+		echo '<br /><br />GET : ';
 		var_dump($_GET);
+		echo '<br /><br />';
+*/
 
 		$in=$_POST;
-		if(isset($_POST['submitFinal']))
+		if(isset($_POST['submitFinal'])) {
 			$in=$_GET;
+			/*
+echo '<p class="warning">submitFinal, $in = ';
+			var_dump($in);
+			echo '</p>';
+*/
+		}/*
+ else {
+			echo '<p class="warning">NOTsubmitFinal, $in = ';
+			var_dump($in);
+			echo '</p>';
+		}
+*/
 
-		echo '<br /><br /><br/>';
+		// echo '<br /><br /><br/>';
 
 		$valid = array();
 
@@ -29,7 +45,6 @@ if($_SESSION['user_auth']['write']) { // user can write
 		include_once(MODELS_INC.'DepartementIUTDAO.class.php');
 		$studentProfile=new TypeProfil(3, 'Ancien'); // Profil d'ancien.
 		require_once('csvParser.inc.php');
-
 
 		if(empty($in['departement']) || $in['departement']==NULL)
 			$valid['departement']=false;
@@ -46,17 +61,37 @@ if($_SESSION['user_auth']['write']) { // user can write
 			}
 		}
 
+		/*
+echo 'departement : ';
+		var_dump($departement);
+		echo '<br /><br />promotion : ';
+		var_dump($promotion);
+		echo '<br /><br />';
+*/
+
 		if($departement!=NULL && $promotion!=NULL) {
 
-			if(isset($_POST['submitFinal']))
-				$csv = csv2array('csv', 0);
-			else
-				$csv = csv2array('csv', 1);
-
 			$order = array();
-			foreach($in as $key => $value) {
-				$order[$value]=$key;
+			if(isset($_POST['submitFinal'])) {
+				$csv = csv2array('csv', 0);
+				$order=$in;
+			} else {
+				$csv = csv2array('csv', 1);
+				foreach($in as $key => $value)
+					if(strpos($key, 'type_') === 0)
+						$order[$value]=substr($key, 5);
 			}
+
+
+			/*
+echo '<br />order : ';
+			var_dump($order);
+			echo '<br />';
+
+			echo '<br /><br />csv : ';
+			var_dump($csv);
+			echo '<br />';
+*/
 
 			/**
 			 * valeurs possibles :
@@ -106,7 +141,6 @@ if($_SESSION['user_auth']['write']) { // user can write
 					{key:'telMobParents', value:'Téléphone mobile parents'},
 					{key:'telFixParents', value:'Téléphone fixe parents'}
 				]}
-				//,{key:'reponse', value:'Réponse'}
 			]
 			**/
 
@@ -117,11 +151,11 @@ if($_SESSION['user_auth']['write']) { // user can write
 			$output = '';
 			$count = 1;
 			foreach($csv as $line) {
-				var_dump($line);
-				echo '<br /><br />';
+				if($count<2)
+					continue;
 
 				$sexe = strtolower(fillVal($line[$order['sexe']]));
-				if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
+				if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'f', -strlen($sexe)) !== FALSE)
 					$sexe = 'f';
 				if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
 					$sexe = 'm';
@@ -167,9 +201,24 @@ if($_SESSION['user_auth']['write']) { // user can write
 			if(!isset($_POST['submitFinal']) || $output!='')
 				include(VIEWS_INC.'csv-apercu.php');
 			else {
+				$count = 0;
 				foreach($csv as $line) {
+					$count++;
+					if($count<2)
+						continue;
+
+// 				echo $count.'<br />';
+
+					/*
+echo '<br />line : ';
+					var_dump($line);
+					echo '<br /><br />nomPat : '.fillVal($line[$order['nomPat']]).'<br /><br />';
+					echo '<br /><br />';
+*/
+
+
 					$sexe = strtolower(fillVal($line[$order['sexe']]));
-					if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'fem', -strlen($sexe)) !== FALSE)
+					if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'f', -strlen($sexe)) !== FALSE)
 						$sexe = 'f';
 					if($sexe=='masculin' || strrpos($sexe, 'mas', -strlen($sexe)) !== FALSE)
 						$sexe = 'm';
@@ -185,9 +234,17 @@ if($_SESSION['user_auth']['write']) { // user can write
 					$typeProfile = TypeProfilDAO::getByLibelle('Ancien');
 
 					$login = substr($ancien->getNomPatronymique(), 0, 4).$ancien->getId().substr($ancien->getPrenom(), 0, 4);
-					$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
-					echo '	Login -> '.$login;
+
+					/*
+var_dump($ancien);
 					echo '<br />';
+*/
+
+					$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
+					/*
+echo '	Login -> '.$login;
+					echo '<br />';
+*/
 
 					CompteDAO::create($account);
 
@@ -196,10 +253,8 @@ if($_SESSION['user_auth']['write']) { // user can write
 						AEtudieDAO::create($aEtudie);
 					}
 				}
-				echo '<p class="true">Les données ont bien été importées.</p>';
+				include(VIEWS_INC.'csv-imported.php');
 			}
-
-			//header ('Location: '.SELF.'promo/'.$_GET['id']);
 		} else {
 			// Pas le temps de mettre dans la vue_ Désolé_ T.T  J'irai me punir_
 			echo '<div id="content"><p class="warning">Vous devez sélectionner une promotion et un département.</p></section>';

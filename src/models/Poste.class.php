@@ -3,19 +3,19 @@ class Poste
 {
   private $id;
   private $libelle;
-
+  
   public function __construct($id, $libelle)
   {
       $this->setId($id);
       $this->setLibelle($libelle);
   }
-
+  
 //--------------------------------------------Getters
   public function getId()
   {
       return $this->id;
   }
-
+  
   public function getLibelle()
   {
       return $this->libelle;
@@ -53,13 +53,13 @@ class Poste
 	{
 		if(get_class($aComparer) == "Poste")
 		{
-			return $this->id == $aComparer->getId();
+			return $this->id == $aComparer->getId();	
 		}else
 		{
 			return false;
 		}
 	}
-
-
+  
+  
 }
 ?>

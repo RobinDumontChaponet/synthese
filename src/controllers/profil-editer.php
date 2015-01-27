@@ -96,10 +96,7 @@ function validate ($ancien) {
 	if (isset($_POST['sex']) && trim($_POST['sex']) != $ancien->getSexe())
 		$valid['sex'] = true;
 	if (isset($_POST['birthday']) && trim($_POST['birthday']) != $ancien->getDateNaissance()) {
-		if (is_valid_SQL_date($_POST['birthday']))
-			$valid['birthday'] = true;
-		else
-			$valid['birthday'] = false;
+		$valid['birthday'] = true;
 	}
 	return $valid;
 }
@@ -107,13 +104,13 @@ if (isset($_GET['id']))
 	$personne = PersonneDAO::getById($_GET['id']);
 else
 	$personne = PersonneDAO::getById($_SESSION[syntheseUser]->getId());
-
+	
 if ($personne != NULL)
 	$ancien = AncienDAO::getById($personne->getId());
-
+	
 if(!empty($_POST) && $ancien != NULL) {
 	$valid = validate($ancien);
-
+	
 	//	Test : Si changement OK -> on attribut la valeur à $ancien -> on signifie qu'il y a changement
 	if (isset($valid['lastName']) && $valid['lastName']==true) {
 		$ancien->setNom($_POST['lastName']);

@@ -1,4 +1,4 @@
-<!--meta title="Recherche" css="style/recherche.css" js="script/restriction_annees.js" js="script/search.js" -->
+<!--meta title="Recherche" css="style/recherche.css" needJs="needJs" js="script/restriction_annees.js" js="script/search.js" -->
 
 <div id="content">
 	<h1>Recherche</h1>
@@ -109,7 +109,7 @@
 	<nav class="pagination"></nav>
 
     <section id="actions">
-        <form method="POST" action="message-ecrire" id="send_message">
+        <form method="POST" action="messages">
             <input type="submit" value="Envoyer un message" />
         </form>
         <?php if(isset($msgErrAdresse)){ echo $msgErrAdresse;} ?>

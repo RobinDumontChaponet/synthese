@@ -31,7 +31,7 @@ function affichageResultat() {
 		for (var i = 0, l = data.length; i < l; i++) {
 			var it = data[i];
 			table += '<tr>';
-			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne[]" form="send_message" /></td>';
+			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne" /></td>';
 			table += '<td class="nomPatronymique">' + it['nom'] + '</td>';
 			table += '<td>' + it['prenom'] + '</td>';
 			table += '<td>' + it['promotion'] + '</td>';

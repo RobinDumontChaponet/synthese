@@ -34,15 +34,15 @@ function link_ajax()
             var diplomepostdut = document.getElementById("diplomePostDUT").value;
             var etablissementpostdut = document.getElementById("etabPostDUT").value;
             var travailactuel = document.getElementById("travailActuel").value;
-
-
+            
+            
             //Il faut changer le chemin sans toucher aux arguments...
             xhr.open("GET", "search.php?nom="+nom+"&prenom="+prenom+"&promotion="+promotion+"&diplomedut="+diplomedut+"&typesspecialisations="+typespecialisations+"&specialisation="+specialisation+"&diplomepostdut="+diplomepostdut+"&etablissementpostdut="+etablissementpostdut+"&travailactuel="+travailactuel, true);
-
+            
             xhr.onreadystatechange = affichageResultat;
-
+            
             xhr.send(null);
-
+            
         }else{
             setTimeout("link_ajax()", 1000);
         }
@@ -60,7 +60,7 @@ function affichageResultat()
             xmlreponse = xhr.responseXML;
             root = xmlreponse.documentElement;
             listePersonnes = root.getElementsByTagName("personne");
-
+            
             table = "<table border=\"1\">";
             table += "<tr> <th>Nom</th> <th>Prenom</th> <th>promotion</th> <th>diplôme DUT</th> <th>Type specialisation</th> <th>Spécialisation</th> <th>Diplôme post-DUT</th> <th>Etablissement</th> <th>Travail actuel</th>  </tr>";
             for(i = 0; i < listePersonnes.length; i++)
@@ -73,9 +73,9 @@ function affichageResultat()
                 table += "</tr>";
             }
             table += "</table>";
-
+            
             document.getElementById("resultat").innerHTML = table;
-
+            
         }else{
             console.error("le fichier xml ne retourne pas un 200");
         }

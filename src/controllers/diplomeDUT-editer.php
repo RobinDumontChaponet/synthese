@@ -15,7 +15,7 @@ if ($_SESSION['user_auth']['write']) {
 			}
 		}
 	}
-
+	
 	include(VIEWS_INC.'diplomeDUT-editer.php');
 } else {
 	include(VIEWS_INC.'403.php');

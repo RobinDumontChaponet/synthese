@@ -21,21 +21,21 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<h2>Informations générales</h2>
 		<dl>
 			<dt id="nomUsage">Nom d'usage</dt>
-			<dd><?php echo $ancien->getNom();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getNom()));?></dd>
 			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
 			<dt id="dateNaissance">Date de naissance</dt>
-			<dd><?php echo $ancien->getDateNaissance();?></dd>
+			<dd><?php if ($ancien->getDateNaissance() == '0000-00-00') echo '<span class="nc">Non renseignée</span>'; else echo $ancien->getDateNaissance();?></dd>
 			<dt id="adresse1">Adresse 1</dt>
-			<dd><?php echo $ancien->getAdresse1();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getAdresse1()));?></dd>
 			<dt id="adresse2">Adresse 2</dt>
-			<dd><?php echo $ancien->getAdresse2();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getAdresse2()));?></dd>
 			<dt id="codePostal">Code postal</dt>
 			<dd><?php echo $ancien->getCodePostal();?></dd>
 			<dt id="ville">Ville</dt>
-			<dd><?php echo $ancien->getVille();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getVille()));?></dd>
 			<dt id="pays">Pays</dt>
-			<dd><?php echo $ancien->getPays(); ?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getPays())); ?></dd>
 			<dt id="telephoneFixe">Telephone</dt>
 			<dd><a href="tel:<?php echo $ancien->getTelephone();?>"><?php echo $ancien->getTelephone();?></a></dd>
 			<dt id="telephoneMobile">Mobile</dt>
@@ -133,8 +133,8 @@ if (isset($ancien) && $ancien != NULL) {?>
 			</li>
 		<?php } ?>
 		</ul>
-<?php if($diplomeDUT==null && $diplomesPost==null) { ?>
-		<p class="sad">Aucun diplôme.</p>
+<?php if($diplomesPost == NULL) { ?>
+		<p class="sad">Aucun diplôme post DUT renseigné.</p>
 <?php } ?>
 	</section>
 	<section id="entreprises"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuEntreprises"';?>>
@@ -156,20 +156,17 @@ if (isset($ancien) && $ancien != NULL) {?>
 					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
-<?php
-		}
-		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
+<?php	}
+	} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>
 			<li>
 				<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
 			</li>
 		<?php }?>
 		</ul>
 <?php
-	} else {
-?>
+	if($entreprises == NULL) { ?>
 		<p class="sad">Aucune entreprise.</p>
-<?php
-	}
+<?php }
 ?>
 	</section>
 <?php

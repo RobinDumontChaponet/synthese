@@ -1,5 +1,5 @@
 <?php
-class AEtudie
+class AEtudie 
 {
 //	VARIABLES
 

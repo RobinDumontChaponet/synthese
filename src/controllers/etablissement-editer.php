@@ -58,7 +58,7 @@ if ($_SESSION['user_auth']['write']) {
 			$etablissement->setPays($_POST['country']);
 			$change = true;
 		}
-
+		
 		if ($change) {
 			EtablissementDAO::update($etablissement);
 			header('Location: '.SELF.'etablissement/'.$etablissement->getId());

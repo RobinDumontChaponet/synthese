@@ -91,19 +91,20 @@ class DiplomePostDUTDAO
     }
 
     public static function getDiplomePostDutNotHave ($ancien) {
-        if(get_class($ancien)=="Ancien"){
+        if(get_class($ancien) == "Ancien"){
             try {
-                $req=SPDO::getInstance()->prepare("SELECT idDiplomePost FROM diplomePostDUT WHERE idDiplomePost NOT IN (SELECT idDiplomePost FROM possede WHERE idPersonne=?)");
-                $lst=array();
-                while($res=$req->fetch()){
-                    $lst[]=DiplomePostDUTDAO::getById($res['idDiplomePost']);
+                $req = SPDO::getInstance()->prepare("SELECT idDiplomePost FROM diplomePostDUT WHERE idDiplomePost NOT IN (SELECT idDiplomePost FROM possede WHERE idPersonne=?)");
+				$req->execute(array($ancien->getId()));
+                $lst = array();
+                while($res = $req->fetch()){
+                    $lst[] = DiplomePostDUTDAO::getById($res['idDiplomePost']);
                 }
                 return $lst;
             } catch(PDOException $e){
-                die('error getDiplomePostDutNotHave '.$e->getMessage());
+                die('Error getDiplomePostDutNotHave($ancien) dans DiplomePostDUTDAO '.$e->getMessage());
             }
         } else {
-            die('paramètre de type ancien getDiplomePostDutNotHave');
+            die('Paramètre de type ancien getDiplomePostDutNotHave($ancien) dans DiplomePostDUTDAO');
         }
     }
 

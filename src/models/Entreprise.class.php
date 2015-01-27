@@ -88,7 +88,7 @@ class Entreprise
 	public function setAdresse1($adresse1) {
 		$this->adresse1 = trim($adresse1);
 	}
-
+	
 	public function setAdresse2($adresse2) {
 		$this->adresse2 = trim($adresse2);
 	}

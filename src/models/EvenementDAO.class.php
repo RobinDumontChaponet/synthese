@@ -29,7 +29,7 @@ class EvenementDAO
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				return new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			} else {
-                return null;
+                return null;   
             }
 		}catch(PDOException $e)
 		{
@@ -81,7 +81,7 @@ class EvenementDAO
 		}
 		return $lst;
     }
-
+	
 	public static function getByAncienWithoutDateNotInscri($idPersonne){
         try {
             $lst = array();
@@ -96,7 +96,7 @@ class EvenementDAO
 		}
 		return $lst;
     }
-
+	
 	public static function getEvenementWithoutDate() {
 		try {
 			$lst = array();

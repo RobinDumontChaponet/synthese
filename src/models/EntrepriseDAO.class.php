@@ -32,7 +32,7 @@ class EntrepriseDAO
 			if($ent=$req->fetch()){
 			return new Entreprise($ent['idEntreprise'], $ent['nom'], $ent['adresse1'], $ent['adresse2'], $ent['codePostal'], $ent['ville'], $ent['cedex'], $ent['pays'], $ent['telephone'], CodeAPEDAO::getByID($ent['codeAPE']));
             }else{
-                return null;
+                return null;   
             }
 		}catch (PDOException $e)
 		{

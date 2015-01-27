@@ -66,7 +66,7 @@ class DiplomeDUTDAO {
 			return null;
 		}
 	}
-
+	
 	   public static function getDiplomeDutNotHave($ancien){
         if(get_class($ancien)=="Ancien"){
             try{

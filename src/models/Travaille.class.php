@@ -39,7 +39,7 @@ class Travaille
 	public function getDateEmbaucheFin() {
 		return $this->dateEmbaucheFin;
 	}
-
+	
 	public function setEntreprise($entreprise) {
 		if($entreprise != null)
 			$this->entreprise = $entreprise;
