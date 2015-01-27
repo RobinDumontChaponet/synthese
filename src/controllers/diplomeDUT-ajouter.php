@@ -2,7 +2,7 @@
 if ($_SESSION['user_auth']['write']) {
 
 	$departementsIUT = DepartementIUTDAO::getAll();
-	
+
 	if(isset ($_POST) && $_POST != NULL) {
 		if ($_POST['libelle'] != NULL && $_POST['departementIUT'] != NULL) {
 			$departement = DepartementIUTDAO::getById($_POST['departementIUT']);

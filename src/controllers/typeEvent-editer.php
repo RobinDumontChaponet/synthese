@@ -12,7 +12,7 @@ if ($_SESSION['user_auth']['write']) {
 			header('Location: '.SELF.'typesEvent');
 		}
 	}
-	
+
 	include(VIEWS_INC.'typeEvent-editer.php');
 } else {
 	include(VIEWS_INC.'403.php');

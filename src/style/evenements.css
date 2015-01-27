@@ -62,3 +62,12 @@ p {
 .type-2:before {
 	border-right-color: #a5b7bc;
 }
+.error{
+    width:100%;
+    background-color: rgba(255, 0, 0, 0.5);
+    border:1px solid red;
+    border-radius: 10px;
+    padding:10px;
+    color:white;
+    margin-bottom: 20px;
+}

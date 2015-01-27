@@ -1,7 +1,9 @@
 <!--meta title="Diplômes" css="style/evenements.css"-->
 <div id="content">
 	<h1>Diplômes</h1>
-	<a class="add" href="diplome-ajouter">Ajouter un diplôme</a>
+	<?php if ($_SESSION['user_auth']['write'])
+		echo '<a class="add" href="diplome-ajouter">Ajouter un diplôme</a>';
+	?>
 	<section>
 	<?php
 	if($diplomes != NULL) {

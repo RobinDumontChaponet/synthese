@@ -155,9 +155,6 @@ nav a.aSearch:before {
 nav a.aGroups:before {
 	content: "\e96f";
 }
-nav a.aMessage:before {
-	content: "\e945";
-}
 nav .active a.aGroups:before {
 	content: "\e970";
 }
@@ -168,7 +165,6 @@ nav a.aAnchor:before {
 nav a.aAdd:before {
 	content: "+";
 	margin-left: 12px;
-	top: -1px;
 }
 
 header a#aHelp:before {

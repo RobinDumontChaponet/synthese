@@ -42,22 +42,22 @@ class PossedeDAO {
     }
 
     public static function create($obj) {
-        if (get_class($obj) == "Possede") {
+        if (get_class($obj)=="Possede") {
             try {
                 $req=SPDO::getInstance()->prepare("INSERT INTO `possede`(`idPersonne`, `idDiplomePost`, `idEtablissement`, `resultat`, `dateDeb`, `dateFin`) VALUES (?,?,?,?,?,?)");
-                $req->execute(array($obj->getAncien()->getId(), $obj->getDiplomePostDUT()->getId(), $obj->getEtablissement()->getId(), $obj->getResultat(), $obj->getDateDebut(), $obj->getDateFin()));
+                $req->execute(array($obj->getAncien()->getId(), $obj->getDiplomePostDUT->getId(), $obj->getEtablissement()->getId(), $obj->getResultat(), $obj->getDateDeb(), $obj->getDateFin()));
             } catch(PDOException $e) {
-                die('Error create Possede dans PossedeDAO '.$e->getMessage().'<br>');
+                die('error create possede '.$e->getMessage().'<br>');
             }
         } else {
-            die('Paramètre de type Possede requis dans PossedeDAO');
+            die('paramètre de type possède requis');
         }
     }
 
     public static function update($obj) {
         if (get_class($obj)=="Possede") {
             try {
-                $req=SPDO::getInstance()->prepare("UPDATE `possede` SET `resultat`=?,`dateDeb`=?,`dateFin`=? WHERE `idPersonne`=? AND`idDiplomePost`=? AND`idEtablissement`=?");
+                $req=SPDO::getInstance()->prepare("UPDATE `possede` SET `resultat`=?,`dateDeb`=?,`dateFin`=? WHERE `idPersonne`=?,`idDiplomePost`=?,`idEtablissement`=?");
                 $req->execute(array($obj->getResultat(), $obj->getDateDeb(), $obj->getDateFin(), $obj->getAncien()->getId(), $obj->getDiplomePostDUT->getId(), $obj->getEtablissement()->getId()));
             } catch(PDOException $e) {
                 die('error update possede '.$e->getMessage().'<br>');
@@ -70,8 +70,8 @@ class PossedeDAO {
     public static function delete($obj) {
         if (get_class($obj)=="Possede") {
             try {
-                $req=SPDO::getInstance()->prepare("DELETE FROM `possede` WHERE `idPersonne`=? AND`idDiplomePost`=? AND`idEtablissement`=?");
-                $req->execute(array($obj->getAncien()->getId(), $obj->getDiplomePostDUT()->getId(), $obj->getEtablissement()->getId()));
+                $req=SPDO::getInstance()->prepare("DELETE FROM `possede` WHERE `idPersonne`=?,`idDiplomePost`=?,`idEtablissement`=?");
+                $req->execute(array($obj->getAncien()->getId(), $obj->getDiplomePostDUT->getId(), $obj->getEtablissement()->getId()));
             } catch(PDOException $e) {
                 die('error delete possede '.$e->getMessage().'<br>');
             }

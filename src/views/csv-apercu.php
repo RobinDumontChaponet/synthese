@@ -1,15 +1,14 @@
-<!--meta title="Importer un fichier de promotion .csv : Aperçu" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
+<!--meta title="Importer promo .csv" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
 <div id="content">
 <?php if(!empty($output)) { ?>
   <p class="notice">Le fichier .csv contient les erreurs suivantes. Corrigez-les puis validez.</p>
-  <form action="index.php?requ=csv-import&<?= http_build_query($order);?>&promotion=<?= ($promotion!=NULL)?$promotion->getAnnee():'' ?>&departement=<?= ($departement!=NULL)?$departement->getId():'' ?>" method="post" name="correct">
+  <form action="index.php?requ=csv-import&<?php echo http_build_query($order);?>&promotion=<?= ($promotion!=NULL)?$promotion->getAnnee():'' ?>&departement=<?= ($departement!=NULL)?$departement->getId():'' ?>" method="post" name="correct">
   	<?php echo $output; ?>
   	<br /><input type="submit" name="submitCorrect" value="Corriger" />
   </form>
 <?php
 } else {
 ?>
-	<section class="table">
 		<table style="position: static">
 			<thead>
 				<tr>
@@ -74,8 +73,7 @@
 				?>
 			</tbody>
 		</table>
-	</section>
-	<form action="index.php?requ=csv-import&<?= http_build_query($order);?>&promotion=<?= ($promotion!=NULL)?$promotion->getAnnee():'' ?>&departement=<?= ($departement!=NULL)?$departement->getId():'' ?>" method="post" name="final">
+	<form action="index.php?requ=csv-import&<?php echo http_build_query($order);?>&promotion=<?= ($promotion!=NULL)?$promotion->getAnnee():'' ?>&departement=<?= ($departement!=NULL)?$departement->getId():'' ?>" method="post" name="final">
 	  <input type="submit" name="submitFinal" value="Importer" />
   </form>
 <?php

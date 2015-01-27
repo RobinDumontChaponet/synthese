@@ -30,7 +30,7 @@ class Etablissement
     {
         return $this->id;
     }
-    
+
     public function getNom()
     {
     	return $this->nom;
@@ -76,7 +76,7 @@ class Etablissement
             throw new Exception("Id etablissement incorrect");
         }
     }
-    
+
     public function setNom($nom)
     {
     	$this->nom = trim($nom);

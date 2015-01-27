@@ -19,15 +19,15 @@ if ($_SESSION['user_auth']['write']) {
 		}
 	}
 	/*if ($_GET['idAncien']) {
-		
-		
+
+
 		if (isset($_POST) && $_POST != NULL) {
 			if ($_POST['diplome']) {
 				if ($valid) {
-					
-					
+
+
 				}
-				
+
 			}
 		}
 	}*/

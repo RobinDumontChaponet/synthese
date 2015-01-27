@@ -41,7 +41,7 @@ class AEtudieDAO {
 			die('error getById a etudie '.$e->getMessage().'<br>');
 		}
 	}
-	
+
 	public static function getPromotionByAncien($ancien) {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT idPromo FROM aEtudie WHERE idPersonne=?");

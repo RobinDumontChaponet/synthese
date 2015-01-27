@@ -45,7 +45,7 @@ if ($_SESSION['user_auth']['write']) {
 		if ($change)
 			DiplomePostDUTDAO::update($diplome);
 
-		header('Location: '.SELF.'diplomes');
+		header('Location: '.SELF.'diplome/'.$diplome->getId());
 	}
 
 	include(VIEWS_INC.'diplome-editer.php');

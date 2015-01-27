@@ -7,7 +7,7 @@
 			<h3 class="diplome"><input id="diplomeLibelle" name="diplomeLibelle" type="text" placeholder="Pas de libelle..." value="<?php echo $diplome->getLibelle(); ?>" autofocus/></h3>
 			<dl>
 				<dt><label for="domainLibelle">Domaine</label></dt>
-				<dd class="domaine"><select id="domaineLibelle" name="domaineLibelle"><?php foreach ($domaines as $domaine) {echo '<option'.(($domaine->getId() == $diplome->getDomaine()->getId())?' selected':'').' value="'.$domaine->getId().'">'.$domaine->getLibelle().'</option>';}?></select><a class="domaines" href="domaines" target="_blank">Voir tout les domaines (nouvel onglet)</a></dd>
+				<dd class="domaine"><select id="domaineLibelle" name="domaineLibelle"><?php foreach ($domaines as $domaine) {echo '<option'.(($domaine->getId() == $diplome->getDomaine()->getId())?' selected':'').' value="'.$domaine->getId().'">'.$domaine->getLibelle().'</option>';}?></select></dd>
 				<dt><label for="domainDescription">Description</label></dt>
 				<dd class="description"><textarea id="domainDescription" name="domainDescription" placeholder="Pas de description..."><?php echo $diplome->getDomaine()->getDescription(); ?></textarea></dd>
 			</dl>

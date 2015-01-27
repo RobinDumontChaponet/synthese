@@ -16,7 +16,7 @@ class GroupeDAO{
                 $lst[]=new Groupe($res['idGroupe'],$res['nom'],$createur,$res['type']);
             }
         }catch(PDOException $e){
-            die('Erreur sql groupedao getAll');   
+            die('Erreur sql groupedao getAll');
         }
         return $lst;
     }
@@ -32,7 +32,7 @@ class GroupeDAO{
                 return null;
             }
         }catch(PDOException $e){
-            die('Erreur sql groupedao getById');   
+            die('Erreur sql groupedao getById');
         }
     }
 
@@ -43,17 +43,17 @@ class GroupeDAO{
                 $req=SPDO::getInstance()->prepare("SELECT A.idGroupe FROM appartientGroupe A, groupes G WHERE A.idGroupe=G.idGroupe AND idPersonne=? ORDER BY nom");
                 $req->execute(array($pers->getId()));
                 while($res=$req->fetch()){
-                    $lst[]=GroupeDAO::getById($res['idGroupe']);   
+                    $lst[]=GroupeDAO::getById($res['idGroupe']);
                 }
                 return $lst;
             }catch(PDOException $e){
-                die('erreur sql getGroupeByPersonne groupeDAO '.$e->getMessage());   
+                die('erreur sql getGroupeByPersonne groupeDAO '.$e->getMessage());
             }
         }else{
-            die('erreur type getGroupeByPersonne groupeDAO');   
+            die('erreur type getGroupeByPersonne groupeDAO');
         }
     }
-    
+
     public static function getMembres($groupe){
         if(get_class($groupe)=="Groupe"){
             $lst=array();
@@ -61,7 +61,7 @@ class GroupeDAO{
                 $req=SPDO::getInstance()->prepare("SELECT idPersonne FROM appartientGroupe WHERE idGroupe=?");
                 $req->execute(array($groupe->getId()));
                 while($res=$req->fetch()){
-                    $lst[]=PersonneDAO::getById($res['idPersonne']);   
+                    $lst[]=PersonneDAO::getById($res['idPersonne']);
                 }
                 return $lst;
             }catch(PDOException $e){
@@ -71,17 +71,17 @@ class GroupeDAO{
             die('erreur type getMembres groupeDAO');
         }
     }
-    
+
     public static function update($obj){
         if(get_class($obj)=="Groupe"){
             try{
                 $req=SPDO::getInstance()->prepare("UPDATE `groupes` SET `nom`=?,`idCreateur`=?,`type`=? WHERE `idGroupe`=?");
                 $req->execute(array($obj->getNom(),$obj->getCreateur()->getId(),$obj->getType(),$obj->getId()));
             }catch(PDOException $e){
-                die('Erreur sql groupedao update');    
+                die('Erreur sql groupedao update');
             }
         }else{
-            die('erreur type update groupedao');   
+            die('erreur type update groupedao');
         }
     }
 
@@ -94,10 +94,10 @@ class GroupeDAO{
                 $obj->setId($id);
                 return $id;
             }catch(PDOException $e){
-                die('Erreur sql groupedao create');    
+                die('Erreur sql groupedao create');
             }
         }else{
-            die('erreur type create groupedao');   
+            die('erreur type create groupedao');
         }
     }
 
@@ -108,10 +108,10 @@ class GroupeDAO{
                 $req->execute(array($obj->getId()));
                 PostDAO::deleteByGroupe($obj);
             }catch(PDOException $e){
-                die('Erreur sql groupedao delete');    
+                die('Erreur sql groupedao delete');
             }
         }else{
-            die('erreur type delete groupedao');   
+            die('erreur type delete groupedao');
         }
     }
 

@@ -1,5 +1,4 @@
 <?php
-
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
@@ -102,12 +101,9 @@ foreach($items as $key => $item)
 		$explode = explode(', ', $key);
 		if(in_array($_GET['requ'], $explode)) {
 			$shutterOn = true;
-
 			if(isset($_SESSION['referrer']) and in_array($_SESSION['referrer'], $explode))
 				$sameReferrer = true;
-
 			$menu .= '	  <li class="active"><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
-
 			$menu .= '	  <nav class="shutter"><ul>';
 			array_shift($item);
 			foreach($item as $key => $shutter)
@@ -117,7 +113,6 @@ foreach($items as $key => $item)
 			$menu .= '	  <li'.(($_GET['requ']==$first['value']->href)?' class="active"':'').'><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
 	} else
 		$menu .= '	  <li'.(($_GET['requ']==$item->href)?' class="active"':'').'><a href="'.$item->href.'" class="'.$item->class.'" title="'.$item->title.'"><span>'.$item->inner.'</span></a></li>'."\n";
-
 ?>
 	<ul class="<?= (($shutterOn)?' shutterOn':'').((!$sameReferrer)?' shutterAnimate':'');?>">
 		<?= $menu; ?>
@@ -144,7 +139,6 @@ foreach($items as $key => $item)
 	<menuitem label="Éditer les entreprises" onclick="goTo('profil-editer/'+getUrlId(), 'entreprises')">Éditer les entreprises</menuitem>
 </menu>
 <?php /* NON IMPLEMENTÉ(s)_
-
 <menu type="context" id="menuDiplome">
 	<menuitem label="Éditer le diplôme" onclick="goTo('diplome-editer/'+getUrlId())">Éditer le diplôme</menuitem>
 </menu>

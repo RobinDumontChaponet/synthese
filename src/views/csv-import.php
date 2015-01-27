@@ -1,8 +1,8 @@
-<!--meta title="Importer un fichier de promotion .csv : Sélection du fichier" css="style/csv.css" needJs="needJs" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
+<!--meta title="Importer promo .csv" css="style/csv.css" js="script/tabulars.transit.js" js="script/uploadCSV.js"-->
 <div id="content">
   <div id="file">
   	<fieldset id="add" class="button">
-  		<label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file" accept="text/csv"> <img src="style/images/loader.gif" alt="chargement...">
+  		<label>Sélectionnez un fichier .CSV</label> <input type="file" id="fileinput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
 	</fieldset><!--<label for="delimiterSelect">Délimiteur</label>
 	<select name="delimiter" id="delimiterSelect">
   	  <option value="" disabled selected style="display:none;">Délimiteur</option>
@@ -22,7 +22,7 @@
   	  <option value="" disabled selected style="display:none;">Promotion</option>
   	  <?php for($y=date("Y")+1; $y>=1968; $y--) echo '<option value="'.$y.'">'.$y.'</option>';?>
 	</select>
-	<fieldset class="table" id="table">
+	<fieldset id="table">
 		<legend>Sélectionnez le type de données en vous référant aux deux premières lignes du fichier ci-dessous</legend>
 	</fieldset>
 	<input type="submit" value="Aperçu" />
