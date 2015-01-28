@@ -37,6 +37,9 @@
                 $header = "de: ". $Name . " <" . $email . ">\r\n"; //optional headerfields
                 mail($recipient, $subject, $mail_body, $header); //mail command :)
             }
+        }elseif(isset($_POST['suppr'])){
+            $compte=CompteDAO::getById($_POST['id']);
+            CompteDAO::delete($compte);
         }
     }
 

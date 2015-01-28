@@ -33,6 +33,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Login</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Nouveau Mot-de-passe</th>
@@ -44,6 +45,7 @@
                 <?php foreach ($lst[$type->getId()] as $pers) { ?>
                     <form action="" method="POST">
                         <tr>
+                            <td style="padding:0;"><?= $pers->getNdc(); ?></td>
                             <td style="padding:0;"><?php echo $pers->getPersonne()->getNomPatronymique(); ?></td>
                             <td style="padding:0;"><?php echo $pers->getPersonne()->getPrenom(); ?></td>
                             <td style="padding:0;"><input type="password" name="mdp" placeholder="Remplacer le mot de passe" style="width:220px;"></td>
@@ -56,6 +58,7 @@
                             </td>
                             <td style="padding:0;">
                                 <input type="hidden" name="id" value="<?php echo $pers->getId(); ?>"><input type="submit" value="modifier" name="mod">
+                                <input type="submit" value="Supprimer le compte" name="suppr">
                                 <a href="profil/<?php echo $pers->getPersonne()->getId(); ?>">Voir le profil</a>
                             </td>
                         </tr>
