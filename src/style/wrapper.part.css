@@ -217,6 +217,9 @@ dd:after {
 	width: 0;
 	float: right;
 }
+.personne:before {
+	content: "\e60d";
+}
 #nomUsage:before, .description:before {
 	content: "\e978";
 }
