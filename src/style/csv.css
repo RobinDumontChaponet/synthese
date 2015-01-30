@@ -48,46 +48,7 @@ form:after {
 	width: 0;
 }
 
-.button {
-	width: 200px;
-	z-index: 100;
-	position: relative;
-	overflow: hidden;
-	padding: 0;
-	display: inline-block;
-	text-align: center;
-	text-decoration: none;
-	-webkit-transition: .2s all ease-in-out;
-	-moz-transition: .2s all ease-in-out;
-	-ms-transition: .2s all ease-in-out;
-	-o-transition: .2s all ease-in-out;
-	transition: .2s all ease-in-out;
-}
-.button label {
-	box-shadow: none;
-	margin: 0;
-	padding: 0;
-}
-.button img {
-	display: none;
-}
-.button.loading {
-	width: 40px;
-	height: 40px;
-	margin: 0 auto;
-}
-.button.loading label {
-	display: none;
-}
-.button.loading img {
-	display: block;
-}
 
-input[type="file"] {
-	position: absolute;
-	left: -1000px;
-	visibility: hidden;
-}
 
 .table {
 	overflow: auto;
@@ -109,43 +70,6 @@ table {
 }
 td {
 	padding: 2px 10px;
-}
-
-#fileinput {
-	visibility: visible;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	opacity: 0;
-	filter: alpha(opacity=0);
-	cursor: pointer;
-	position: absolute;
-}
-
-#files_list {
-	font-size: 10px;
-	word-wrap: break-word;
-	word-break: break-all;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
-#files_list input {
-	position: relative;
-	top: 3px;
-	right: 5px;
-	background: url(close.png) no-repeat;
-	-webkit-background-size: contain;
-	-moz-background-size: contain;
-	-ms-background-size: contain;
-	-o-background-size: contain;
-	background-size: contain;
-	border: 0;
-	width: 20px;
-	height: 20px;
-	z-index: 1005;
-	cursor: pointer;
 }
 
 th {

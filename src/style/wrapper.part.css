@@ -124,10 +124,6 @@ h1 a.edit {
 	font-size: 1.1em;
 }
 
-label:after, dt:after, h4:after {
-	padding-left: 5px;
-	content: ":";
-}
 dt label {
 	font-size: inherit;
 	font-weight: inherit;

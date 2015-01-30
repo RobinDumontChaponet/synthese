@@ -24,15 +24,24 @@ if ($valid) {
 
 if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) {?>
 	<figure>
-		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
-			echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
-		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
+		<?php
 		if ($imageTrombi != NULL)	//	Si il y a une image de trombi
-			echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
+			echo '<img id="trombiImg" height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope" />';
 		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
-		<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil vu que tu as dit que tu avais déjà des trucs tout bien fait et tout et que tu t'en occuperais alors j'ai laissé ça comme ça et j'espère que le commentaire est assez grand pour que tu le vois!-->
+			echo '<img id="trombiImg" src="style/images/nobody.png" alt="Pas d\'image de trombinoscope" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+	</figure>
+	<figure>
+		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
+			echo '<img id="profilImg" height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil" />';
+		else
+			echo '<img id="profilImg" src="style/images/nobody.png" alt="Pas d\'image de profil" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+		</p>
 	</figure>
 	<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post" name="profil">
 		<h1><?php if ($_SESSION['user_auth']['write'])
@@ -141,10 +150,10 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 								<dd><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getPromotion()->getAnnee();} else { echo 'Non renseigné'; };?></dd>
 							</dl>
 						</li>
-			<?php 	} 
+			<?php 	}
 				} else {
 					echo '<p class="sad">Pas de diplôme(s) DUT renseigné(s)</p>';
-				} 
+				}
 				if($_SESSION['user_auth']['write']) { ?>
 					<li>
 						<a class="add" href="diplomeDUT-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme DUT</a>

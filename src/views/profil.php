@@ -1,18 +1,28 @@
-<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css"-->
+<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css" js="script/upload-img.js"-->
 <div id="content">
 <?php
 if (isset($ancien) && $ancien != NULL) {?>
 	<figure>
-		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
-			echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
-		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
+		<?php
 		if ($imageTrombi != NULL)	//	Si il y a une image de trombi
-			echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
+			echo '<img id="trombiImg" height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope" />';
 		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
-		<!--<input type="file" name="imageProfil"/>-->
+			echo '<img id="trombiImg" src="style/images/nobody.png" alt="Pas d\'image de trombinoscope" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
 	</figure>
+	<figure>
+		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
+			echo '<img id="profilImg" height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil" />';
+		else
+			echo '<img id="profilImg" src="style/images/nobody.png" alt="Pas d\'image de profil" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+		</p>
+	</figure>
+
 	<h1><?php echo $ancien->getPrenom()?> <span class="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span>
 	<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 		echo '<a class="edit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
@@ -25,7 +35,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
 			<dt id="dateNaissance">Date de naissance</dt>
-			<dd><?php if ($ancien->getDateNaissance() == '0000-00-00') echo '<span class="nc">Non renseignée</span>'; else echo $ancien->getDateNaissance();?></dd>
+			<dd><?php if ($ancien->getDateNaissance() != '0000-00-00') echo $ancien->getDateNaissance();?></dd>
 			<dt id="adresse1">Adresse 1</dt>
 			<dd><?php echo ucfirst(strtolower($ancien->getAdresse1()));?></dd>
 			<dt id="adresse2">Adresse 2</dt>
@@ -175,3 +185,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 	<p class="warning">Ce profil n'existe pas</p>
 <?php }?>
 </div>
+<script type="text/javascript">
+new FileTransfert(document.getElementById('profilInput'), 'profil', function (resp) {
+	document.getElementById('profilImg').src=resp.image;
+});
+new FileTransfert(document.getElementById('trombiInput'), 'trombi', function (resp) {
+	document.getElementById('profilImg').src=resp.image;
+});
+</script>

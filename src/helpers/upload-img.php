@@ -36,7 +36,7 @@ if($_SESSION["syntheseUser"]) {
 		$image = scaledImageRessource2Image($tmpImage, THUMB_UPLOAD_MAX_WIDTH, THUMB_UPLOAD_MAX_HEIGHT, IMAGE_EXT, JPEG_QUALITY);
 		if($image) {
 			echo json_encode(array(
-				'image' => $image;
+				'image' => $image
 			));
 		} else
 			echo 'could not save image';

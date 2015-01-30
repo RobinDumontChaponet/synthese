@@ -12,17 +12,17 @@ FileTransfert = function (input, destination, callback) {
 		fd.append('destination', destination);
 
 		var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'upload-img.php', true);
+		xhr.open('POST', 'helpers/upload-img.php', true);
 
 		xhr.onload = function() {
 			if(this.readyState  == 4)
 				if (this.status == 200) {
-					var resp = JSON.parse(this.response);
+					/*var resp = JSON.parse(this.response);
 
-					t.callback(resp);
+					t.callback(resp);*/
 
 					t.input.parentNode.className='button';
-					//console.log('responseText: '+this.responseText);
+					console.log('responseText: '+this.responseText);
 				}
 		};
 		xhr.send(fd);
