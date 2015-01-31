@@ -48,7 +48,7 @@ class EntrepriseDAO
 		{
 			try{
 				$req=SPDO::getInstance()->prepare("INSERT INTO `entreprise`(`codeAPE`, `nom`, `adresse1`, `adresse2`, `codePostal`, `ville`, `cedex`, `pays`, `telephone`) VALUES (?,?,?,?,?,?,?,?,?)");
-				$req->execute(array($ent->getCode(), $ent->getNom(), $ent->getAdresse1(), $ent->getAdresse2(), $ent->getCodePostal(), $ent->getVille(), $ent->getCedex(), $ent->getPays(), $ent->getTelephone()));
+				$req->execute(array($ent->getCodeAPE(), $ent->getNom(), $ent->getAdresse1(), $ent->getAdresse2(), $ent->getCodePostal(), $ent->getVille(), $ent->getCedex(), $ent->getPays(), $ent->getTelephone()));
                 $ent->setId(SPDO::getInstance()->lastInsertId());
 				return $ent->getId();
 			}catch (PDOException $e)

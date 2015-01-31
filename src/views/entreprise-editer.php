@@ -1,4 +1,4 @@
-<!--meta title="Modifier <?php echo ($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvé'; ?>" css="style/evenements.css"-->
+<!--meta title="Modifier <?php echo ($entreprise != NULL)?$entreprise->getNom():'Entreprise non trouvée'; ?>" css="style/evenements.css"-->
 <div id="content">
     <?php
         if(isset($error)){

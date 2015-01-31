@@ -72,10 +72,7 @@ class Entreprise
 	}
 
 	public function setId($id) {
-		if ($id != NULL && $id >= 0)
 			$this->id = $id;
-		else
-			throw new Exception('Entreprise.class.php : Id NULL ou invalide : '.$id);
 	}
 
 	public function setNom($nom) {
@@ -102,10 +99,7 @@ class Entreprise
 	}
 
 	public function setCedex($cedex) {
-		if ($cedex != null && is_numeric($cedex))
-			$this->cedex = $cedex;
-		else
-			throw new Exception('Entreprise.class.php : Numero cedex NULL ou non numérique : '.$cedex);
+		$this->cedex = trim($cedex);
 	}
 
 	public function setPays($pays) {

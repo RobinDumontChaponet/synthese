@@ -203,7 +203,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					<?php }
 				} ?>
 				<li>
-					<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
+					<a class="add" href="entreprise-ajouter?>" target="_blank">Ajouter une nouvelle entreprise</a>
 				</li>
 			</ul>
 		</section>
