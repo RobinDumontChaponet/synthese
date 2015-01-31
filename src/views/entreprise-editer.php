@@ -35,7 +35,7 @@
                     </select>
                 </dd>
                 <dt>Code APE</dt>
-                <dd id="codeApe">
+                <dd class="codeAPE">
                     <select name="entrepriseCodeApe" id="entrepriseCodeApe">
                         <?php
                             foreach($lstCodeApe as $code){
@@ -45,6 +45,7 @@
                             }
                         ?>
                     </select>
+                    <a href="codesAPE" class="codesAPE" target="_blank">Accéder aux codes APE</a>
                 </dd>
             </dl>
         </article>

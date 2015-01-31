@@ -118,6 +118,7 @@ select {
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
 	margin: 1px auto 0;
+	max-width: 84%;
 }
 select:hover {
 	background: url(images/selector.png), rgb(230, 229, 229);

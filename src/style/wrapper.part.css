@@ -64,7 +64,7 @@ section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
 
-a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements, a.domaines {
+a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements, a.domaines, a.codesAPE {
 	font-size: 16px;
 	letter-spacing: 0px;
 	float: right;
@@ -74,7 +74,7 @@ a.edit, a.add, a.delete {
 	z-index: 100;
 	position: relative;
 }
-a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before {
+a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before, a.codesAPE:before {
 	font-family: 'icomoon';
 	font-size: 12px;
 	speak: none;
@@ -300,6 +300,9 @@ dd:after {
 }
 #web:before {
 	content: "\ea80";
+}
+.codeAPE:before, a.codesAPE:before {
+	content: "\e937";
 }
 .date {
 	font-weight: 400;

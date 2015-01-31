@@ -19,7 +19,7 @@
             <dt>Pays</dt>
             <dd id="pays"><?php echo $entreprise->getPays(); ?></dd>
             <dt>Code APE</dt>
-            <dd id="codeApe">
+            <dd class="codeAPE">
             <?php
             if($entreprise->getCodeAPE()==NULL){
                 echo "Aucune code APE n'est associé à cette entreprise";
