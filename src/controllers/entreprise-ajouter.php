@@ -1,5 +1,6 @@
 <?php
 include_once('validate.transit.inc.php');
+$lstPays=getListePaysMonde();
 $codesAPE = CodeAPEDAO::getAll();
 $libelleTypeProfil = $_SESSION['syntheseUser']->getTypeProfil()->getLibelle();
 
