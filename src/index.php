@@ -76,8 +76,8 @@ if($matches[1]) {
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <head>
     <meta charset="UTF-8">
+    <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>">
     <title>connectIT!<?php if(!empty($title)) echo ' | '.$title; ?></title>
-    <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>" />
     <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
     <link rel="icon" href="style/favicon-96.png">
     <meta name="msapplication-TileColor" content="#FFF">
