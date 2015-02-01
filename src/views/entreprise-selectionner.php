@@ -15,7 +15,7 @@
 				<dl>
 					<dt><label for="entreprise">Enterprise</label></dt>
 					<dd class="entreprise">
-						<select name="entreprise">
+						<select id="entreprise" name="entreprise">
 							<?php if ($entreprises != NULL) {
 								foreach($entreprises as $entreprise)
 									echo '<option value="'.$entreprise->getId().'">'.$entreprise->getNom().'</option>';
@@ -27,7 +27,7 @@
 					</dd>
 					<dt><label for="poste">Poste</label></dt>
 					<dd class="poste">
-						<select name="poste">
+						<select id="poste" name="poste">
 							<?php if ($postes != NULL) {
 								foreach($postes as $poste)
 									echo '<option value="'.$poste->getId().'">'.$poste->getLibelle().'</option>';
@@ -36,8 +36,8 @@
 						<a class="postes" href="postes" target="_blank">Accéder aux postes (nouvel onglet)</a>
 					</dd>
 
-					<dt><label for="promotion">Dates</label></dt>
-					<dd><input id="periode1" name="periode1" maxlength="10" type="date" placeholder="jj/mm/aaaa"/> - <input id="periode2" name="periode2" maxlength="10" type="date" placeholder="jj/mm/aaaa"/></dd>
+					<dt><label for="periode1">Dates</label></dt>
+					<dd><input id="periode1" name="periode1" maxlength="10" type="date" placeholder="jj/mm/aaaa"/> <label for="periode2">à</label> <input id="periode2" name="periode2" maxlength="10" type="date" placeholder="jj/mm/aaaa"/></dd>
 				</dl>
 			</article>
 			<input type="submit" value="Ajouter l'entreprise à l'étudiant" />

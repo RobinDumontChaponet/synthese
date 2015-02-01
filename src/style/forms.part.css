@@ -59,12 +59,12 @@ input[type="submit"], input[type="button"], .button, button, select {
 	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
 	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
 	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
-	background: rgba(235, 235, 235, 1);
-	background: -webkit-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: -moz-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: -o-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: -ms-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: #f4f4f4;
+	background: -webkit-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: -moz-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: -o-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: -ms-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
 
 	text-shadow: 0 -1px 0 rgb(240, 240, 240);
 	color: #413131;
@@ -89,21 +89,20 @@ input[type="submit"]:hover, input[type="button"]:hover, .button:hover, button:ho
 	background: linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
 }
 input:focus, .button:focus, button:focus, select:focus {
-	border-width: 1px;
-}
-select:focus {
-	margin-top: 9.5px;
+	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
 }
 button {
 	margin: 0 3px;
 }
 select {
-	background: url(images/selector.png), rgb(235, 235, 235);
-	background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: url(images/selector.png), #f4f4f4;
+	background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
 
 	background-repeat: no-repeat, repeat;
 	background-size: auto 14px, 100% auto;
@@ -132,10 +131,42 @@ select:hover {
 	background-position: 94% 50%, 0;
 }
 
-
 select::-ms-expand {
 	display: none;
 }
+table select {
+	text-align: center;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 1px 0 0;
+	padding: 0 5px;
+	box-shadow: rgba(242, 242, 242, 0.14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	vertical-align: middle;
+	font-size: 12px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+td select {
+	background: url(images/selector.png), #FFF;
+	background-repeat: no-repeat, repeat;
+	background-size: auto 14px, auto;
+	background-position: 94% 50%, 0;
+}
+table select:focus {
+	border-width: .5px;
+	margin-top: 0;
+}
+td input, td input[type="submit"], td input[type="button"], td .button, td button {
+	margin: 0 2px;
+}
+
 input[type=checkbox] {
 	height: auto;
 }

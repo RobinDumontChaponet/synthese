@@ -64,7 +64,7 @@ section:last-child, fieldset:last-child {
 	border-bottom: 0;
 }
 
-a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements, a.domaines, a.codesAPE {
+a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements, a.domaines, a.codesAPE, a.postes {
 	font-size: 16px;
 	letter-spacing: 0px;
 	float: right;
@@ -74,7 +74,7 @@ a.edit, a.add, a.delete {
 	z-index: 100;
 	position: relative;
 }
-a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before, a.codesAPE:before {
+a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before, a.codesAPE:before, a.postes:before {
 	font-family: 'icomoon';
 	font-size: 12px;
 	speak: none;
@@ -270,7 +270,7 @@ dd:after {
 .entreprise:before {
 	content: "\e601";
 }
-.poste:before {
+.poste:before, a.postes:before {
 	content: "\e60f";
 }
 .periode:before {
@@ -396,15 +396,14 @@ th, td {
 }
 th {
 	background: #f3f5fb;
-	background: -moz-linear-gradient(top, #f3f5fb 0%, #cdcfcf 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f5fb), color-stop(100%,#cdcfcf));
-	background: -webkit-linear-gradient(top, #f3f5fb 0%,#cdcfcf 100%);
-	background: -o-linear-gradient(top, #f3f5fb 0%,#cdcfcf 100%);
-	background: -ms-linear-gradient(top, #f3f5fb 0%,#cdcfcf 100%);
-	background: linear-gradient(to bottom, #f3f5fb 0%,#cdcfcf 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5fb', endColorstr='#cdcfcf',GradientType=0 );
-
-	padding: 0 10px;
+	background: -moz-linear-gradient(top, #f3f5fb 0%, #e8ebeb 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f5fb), color-stop(100%,#e8ebeb));
+	background: -webkit-linear-gradient(top, #f3f5fb 0%,#e8ebeb 100%);
+	background: -o-linear-gradient(top, #f3f5fb 0%,#e8ebeb 100%);
+	background: -ms-linear-gradient(top, #f3f5fb 0%,#e8ebeb 100%);
+	background: linear-gradient(to bottom, #f3f5fb 0%,#e8ebeb 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5fb', endColorstr='#e8ebeb',GradientType=0 );
+	border: 1px solid #dfdfdf;	padding: 0 10px;
 	height: 28px;
 	text-shadow: 0 1px 1px #f3efef;
 	position: relative;
