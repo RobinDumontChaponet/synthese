@@ -12,12 +12,12 @@
 	<form action="entreprise-ajouter" method="post">
 		<article>
 			<dl>
-				<dt><label for="name">Nom de l'entreprise</label></dt>
+				<dt><label for="name">Nom</label></dt>
 				<dd class="entreprise"><input id="name" name="name" type="text"/></dd>
 
 				<dt><label for="address1">Adresse 1</label></dt>
 				<dd id="adresse1"><input id="address1" name="address1" type="text"/></dd>
-
+				
 				<dt><label for="address2">Adresse 2</label></dt>
 				<dd id="adresse2"><input id="address2" name="address2" type="text"/></dd>
 
@@ -28,13 +28,13 @@
 				<dd id="ville"><input id="city" name="city" type="text"/></dd>
 
 				<dt><label for="cedex">Cedex</label></dt>
-				<dd id="cedex"><input id="cedex" name="cedex" type="text"/></dd>
+				<dd class="cedex"><input id="cedex" name="cedex" type="text"/></dd>
 
 				<dt><label for="country">Pays</label></dt>
-				<dd>
+				<dd id="pays">
 					<select name="country" id="country">
 						<?php foreach($lstPays as $pays){ ?>
-							<option value="<?= $pays; ?>"><?php echo $pays; ?></option>
+						<option value="<?= $pays; ?>"><?php echo $pays; ?></option>
 						<?php } ?>
 					</select>
 				</dd>
