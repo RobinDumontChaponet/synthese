@@ -13,9 +13,9 @@
 				} ?>
 				<p class="entreprise"><a href="entreprise/<?php echo $entreprise->getId();?>"><?php echo $entreprise->getNom();?></a></p>
 				<dt id="ville"><label>Ville</label></dt>
-				<dd class="ville"><?php echo $entreprise->getville();?></dd>
+				<dd class="ville"><?php echo $entreprise->getVille();?></dd>
 				<dt id="pays"><label>Pays</label></dt>
-				<dd class="pays"><?php echo $entreprise->getPays;?></dd>
+				<dd class="pays"><?php echo $entreprise->getPays();?></dd>
 			</li>
 			<?php }
 			echo '</ul>';

@@ -169,7 +169,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php	}
 	} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>
 			<li>
-				<a class="add" href="entreprise-selectionner/<?php echo $ancien->getId(); ?>"  target="_blank">Ajouter une nouvelle entreprise</a>
+				<a class="add" href="entreprise-selectionner/<?php echo $ancien->getId(); ?>">Ajouter une nouvelle entreprise</a>
 			</li>
 		<?php }?>
 		</ul>

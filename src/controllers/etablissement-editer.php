@@ -30,6 +30,18 @@ if ($_SESSION['user_auth']['write']) {
 			else
 				$valid['country'] = false;
 		}
+		if (isset($_POST['fax']) && trim($_POST['fax']) != $etablissement->getFax()) {
+				$valid['fax'] = true;
+		}
+		if (isset($_POST['web']) && trim($_POST['web']) != $etablissement->getWeb()) {
+				$valid['web'] = true;
+		}
+		if (isset($_POST['country']) && trim($_POST['country']) != $etablissement->getPays()) {
+			if (!contains_numeric($_POST['country']))	//	Si il n'y a pas de chiffres
+				$valid['country'] = true;
+			else
+				$valid['country'] = false;
+		}
 		return $valid;
 	}
 	if(!empty($_POST) && $etablissement != NULL) {
@@ -56,6 +68,14 @@ if ($_SESSION['user_auth']['write']) {
 		}
 		if ($valid['country']) {
 			$etablissement->setPays($_POST['country']);
+			$change = true;
+		}
+		if ($valid['fax']) {
+			$etablissement->setFax($_POST['fax']);
+			$change = true;
+		}
+		if ($valid['web']) {
+			$etablissement->setWeb($_POST['wb']);
 			$change = true;
 		}
 		
