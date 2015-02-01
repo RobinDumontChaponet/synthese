@@ -68,13 +68,13 @@ class Travaille
 			throw new Exception("Date embauche debut dans Travaille incorrecte");
 	}
 
-	public function setDateEmbaucheFin($date)	{
+	public function setDateEmbaucheFin($date) {
 			$this->dateEmbaucheFin = $date;	//Pas de vérification, la dateFin peut être nulle
-	}
+		}
 
 //	TO STRING
-	public function __toString() {
-		return "Entreprise : ".$this->entreprise." Poste : ".$this->poste." Ancien : ".$this->ancien." Date embauche début : ".$this->dateEmbaucheDeb." Date embauche fin : ".$this->dateEmbaucheFin;
+		public function __toString() {
+			return "Entreprise : ".$this->entreprise." Poste : ".$this->poste." Ancien : ".$this->ancien." Date embauche début : ".$this->dateEmbaucheDeb." Date embauche fin : ".$this->dateEmbaucheFin;
+		}
 	}
-}
-?>
+	?>

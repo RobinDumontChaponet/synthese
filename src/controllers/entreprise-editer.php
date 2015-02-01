@@ -18,8 +18,8 @@ if ($_SESSION['user_auth']['write']) {
 			if ($code!=null) {
 				$entreprise->setCodeAPE($code);
 			}
-
 			EntrepriseDAO::update($entreprise);
+			header('Location: '.SELF.'entreprises');
 		} else {
 			$error="Nom de l'entreprise incorrecte";
 		}

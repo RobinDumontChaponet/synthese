@@ -76,10 +76,7 @@ class Entreprise
 	}
 
 	public function setNom($nom) {
-		if ($nom != NULL && $nom != "")
-			$this->nom = $nom;
-		else
-			throw new Exception('Entreprise.class.php : Nom entreprise NULL ou vide : '.$id);
+		$this->nom = trim($nom);
 	}
 
 	public function setAdresse1($adresse1) {
