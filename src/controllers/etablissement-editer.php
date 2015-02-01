@@ -61,7 +61,7 @@ if ($_SESSION['user_auth']['write']) {
 		
 		if ($change) {
 			EtablissementDAO::update($etablissement);
-			header('Location: '.SELF.'etablissement/'.$etablissement->getId());
+			header('Location: '.SELF.'etablissements');
 		}
 	}
 	include(VIEWS_INC.'etablissement-editer.php');

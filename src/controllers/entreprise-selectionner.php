@@ -2,7 +2,9 @@
 if ($_SESSION['user_auth']['write']) {
 	if ($_GET['id']) {
 		$ancien = AncienDAO::getById($_GET['id']);
-		$entreprises = EntrepriseDAO::getAll();
+		if ($ancien != NULL) {
+			$entreprises = EntrepriseDAO::getEntrepriseDutNotHave($ancien);
+		}
 		$postes = PosteDAO::getAll();
 		if (isset($_POST) && $_POST != NULL) {
 			if ($_POST['periode1'] != NULL) {

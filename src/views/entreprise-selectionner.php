@@ -4,7 +4,7 @@
 	echo 'Personne non trouvée';
 } ?>" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($_GET['id']) {
+	<?php if ($_GET['id'] && $_SESSION['syntheseUser']->getId() == $_GET['id'] || $_SESSION['syntheseUser']->getTypeProfil()->getLibelle() == 'Admin') {
 	if ($errorPeriode1)
 		echo '<p class="error">Vous devez renseigner correctement la date de début de l\'embauche (la date de fin peut être nule)</p>';
 	?>
@@ -41,9 +41,14 @@
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter l'entreprise à l'étudiant" />
-		<a href="profil/<?php echo $_GET['id']?>">Retour étudiant</a>
+		<a href="profil/<?php echo $_GET['id']?>#entreprises">Retour étudiant</a>
 	</form>
-	<?php } else {?>
-	<p class="warning">Aucun id étudiant n'a été renseigné</p>
+	<?php } else if ($_GET['id'] == NULL) {
+		echo '<p class="warning">Aucun id étudiant n\'a été renseigné</p>';
+	} else {
+		echo '<p class="warning">Vous ne pouvez pas ajouter un travail à cette personne</p>';
+	}
+	{ ?>
+	
 	<?php } ?>
 </div>

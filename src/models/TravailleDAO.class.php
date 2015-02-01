@@ -44,7 +44,6 @@ class TravailleDAO {
 			die('Erreur type du parametre getbyancien travaille dao');
 		}
 	}
-
 	public static function create($obj) {
 		if(get_class($obj)=="Travaille") {
 			try {
