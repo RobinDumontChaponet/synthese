@@ -163,7 +163,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 					<dt class="poste">Poste</dt>
 					<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
 					<dt class="periode">Période</dt>
-					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
+					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
 <?php	}

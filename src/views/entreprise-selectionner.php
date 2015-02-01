@@ -19,8 +19,6 @@
 							<?php if ($entreprises != NULL) {
 								foreach($entreprises as $entreprise)
 									echo '<option value="'.$entreprise->getId().'">'.$entreprise->getNom().'</option>';
-							} else {
-								echo '<option value="NULL">Aucune entreprise disponible pour cette personne</option>';
 							}?>
 						</select>
 						<a class="diplomes" href="entreprises" target="_blank">Accéder aux entreprises (nouvel onglet)</a>

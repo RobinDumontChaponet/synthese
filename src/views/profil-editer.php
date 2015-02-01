@@ -191,19 +191,19 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 						<li>
-							<a class="edit" href="entreprise-editer/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="entreprise-supprimer/<?php echo $entreprise->getEntreprise()->getId();?>">Supprimer</a>
+							<a class="edit" href="entreprise-editer/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="index.php?requ=entreprise-selectionner-supprimer&idEntreprise=<?php echo $entreprise->getEntreprise()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>&idPoste=<?php echo $entreprise->getPoste()->getId(); ?>&dateDebut=<?php echo $entreprise->getDateEmbaucheDeb(); ?>">Supprimer</a>
 							<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 							<dl>
 								<dt class="poste">Poste</dt>
 								<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
 								<dt class="periode">Période</dt>
-								<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
+								<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 							</dl>
 						</li>
 					<?php }
 				} ?>
 				<li>
-					<a class="add" href="entreprise-ajouter?>" target="_blank">Ajouter une nouvelle entreprise</a>
+					<a class="add" href="entreprise-selectionner/<?php echo $ancien->getId(); ?>" target="_blank">Ajouter une nouvelle entreprise</a>
 				</li>
 			</ul>
 		</section>

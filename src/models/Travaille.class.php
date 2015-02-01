@@ -27,7 +27,7 @@ class Travaille {
 		return $this->poste;
 	}
 
-	public function getAnicen() {
+	public function getAncien() {
 		return $this->ancien;
 	}
 
@@ -61,10 +61,7 @@ class Travaille {
 	}
 
 	public function setDateEmbaucheDeb($date) {
-		if ($date != null)
-			$this->dateEmbaucheDeb = $date;
-		else
-			throw new Exception("Date embauche debut dans Travaille incorrecte");
+		$this->dateEmbaucheDeb = $date;
 	}
 
 	public function setDateEmbaucheFin($date) {
