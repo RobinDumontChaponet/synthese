@@ -18,6 +18,10 @@ label {
 	top: -2px;
 	padding: 0 5px 0 0;
 }
+label:after, dt:after, h4:after {
+	padding-left: 5px;
+	content: ":";
+}
 
 input, .button, button, select, textarea {
 	border: 1px solid rgb(175, 175, 175);
@@ -55,12 +59,12 @@ input[type="submit"], input[type="button"], .button, button, select {
 	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
 	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
 	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
-	background: rgba(235, 235, 235, 1);
-	background: -webkit-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: -moz-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: -o-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: -ms-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: #f4f4f4;
+	background: -webkit-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: -moz-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: -o-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: -ms-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
 
 	text-shadow: 0 -1px 0 rgb(240, 240, 240);
 	color: #413131;
@@ -85,21 +89,20 @@ input[type="submit"]:hover, input[type="button"]:hover, .button:hover, button:ho
 	background: linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
 }
 input:focus, .button:focus, button:focus, select:focus {
-	border-width: 1px;
-}
-select:focus {
-	margin-top: 9.5px;
+	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
 }
 button {
 	margin: 0 3px;
 }
 select {
-	background: url(images/selector.png), rgb(235, 235, 235);
-	background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
-	background: url(images/selector.png), linear-gradient(top, #fffefe 0%, #efefef 50%, #e7e7e7 50%, #eeeeee 100%);
+	background: url(images/selector.png), #f4f4f4;
+	background: url(images/selector.png), -webkit-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), -moz-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), -o-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), -ms-linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
+	background: url(images/selector.png), linear-gradient(top, #fffefe 0%, #f4f4f4 50%, #f0eded 50%, #efefef 100%);
 
 	background-repeat: no-repeat, repeat;
 	background-size: auto 14px, 100% auto;
@@ -114,6 +117,7 @@ select {
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
 	margin: 1px auto 0;
+	max-width: 84%;
 }
 select:hover {
 	background: url(images/selector.png), rgb(230, 229, 229);
@@ -127,10 +131,42 @@ select:hover {
 	background-position: 94% 50%, 0;
 }
 
-
 select::-ms-expand {
 	display: none;
 }
+table select {
+	text-align: center;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 1px 0 0;
+	padding: 0 5px;
+	box-shadow: rgba(242, 242, 242, 0.14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	vertical-align: middle;
+	font-size: 12px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+td select {
+	background: url(images/selector.png), #FFF;
+	background-repeat: no-repeat, repeat;
+	background-size: auto 14px, auto;
+	background-position: 94% 50%, 0;
+}
+table select:focus {
+	border-width: .5px;
+	margin-top: 0;
+}
+td input, td input[type="submit"], td input[type="button"], td .button, td button {
+	margin: 0 2px;
+}
+
 input[type=checkbox] {
 	height: auto;
 }
@@ -154,4 +190,85 @@ dd input[type="text"], dd input[type="password"], dd input[type="date"], h3 inpu
 }
 dd input[maxlength] {
 	width: auto;
+}
+
+
+.button {
+	width: 200px;
+	z-index: 100;
+	position: relative;
+	overflow: hidden;
+	padding: 0;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: .2s all ease-in-out;
+	-moz-transition: .2s all ease-in-out;
+	-ms-transition: .2s all ease-in-out;
+	-o-transition: .2s all ease-in-out;
+	transition: .2s all ease-in-out;
+}
+.button label:after {
+	content: none;
+}
+.button input[type="file"] {
+	visibility: visible;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+	position: absolute;
+}
+
+#files_list {
+	font-size: 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.button label {
+	box-shadow: none;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+.button img {
+	display: none;
+}
+.button.loading {
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+}
+.button.loading label {
+	display: none;
+}
+.button.loading img {
+	display: block;
+}
+
+input[type="file"] {
+	position: absolute;
+	left: -1000px;
+	visibility: hidden;
+}
+#files_list input {
+	position: relative;
+	top: 3px;
+	right: 5px;
+	background: url(close.png) no-repeat;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-ms-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	border: 0;
+	width: 20px;
+	height: 20px;
+	z-index: 1005;
+	cursor: pointer;
 }

@@ -84,17 +84,21 @@ class Parents {
 	}
 
 	public function setMobile($mobile) {
-		if (empty($mobile) || is_valid_phoneNumber ($mobile))
-			$this->mobile = $mobile;
-		else
+		// if (empty($mobile) || is_valid_phoneNumber ($mobile))
+			$this->mobile = trim($mobile);
+		/*
+else
 			throw new Exception("Numéro de mobile invalide");
+*/
 	}
 
 	public function setTelephone($telephone) {
-		if (empty($telephone) || is_valid_phoneNumber ($telephone))
-			$this->telephone = $telephone;
-		else
+		// if (empty($telephone) || is_valid_phoneNumber ($telephone))
+			$this->telephone = trim($telephone);
+		/*
+else
 			throw new Exception("Numéro de telephone invalide");
+*/
 	}
 
 	//-----------------------------------------toString-----------------------------------------

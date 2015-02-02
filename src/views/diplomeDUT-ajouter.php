@@ -1,6 +1,6 @@
 <!--meta title="Ajout d'un Diplôme DUT" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($error) echo 'Vous devez renseigner le libelle';?>
+	<?php if ($error) echo '<p class="error">Vous devez renseigner le libelle</p>';?>
 	<h1>Ajouter un Diplôme DUT</h1>
 	<form action="diplomeDUT-ajouter" method="post">
 		<article>
@@ -14,7 +14,7 @@
 						echo '<option value="'.$departementIUT->getId().'">'.$departementIUT->getNom().'</option>';
 					?>
 					</select>
-					<a href="departementsIUT" target="_blank">Accéder aux départements IUT</a>
+					<a href="departementsIUT" target="_blank">Accéder aux départements IUT (nouvel onglet)</a>
 				</dd>
 			</dl>
 		</article>

@@ -1,18 +1,28 @@
-<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css"-->
+<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css" js="script/upload-img.js"-->
 <div id="content">
 <?php
 if (isset($ancien) && $ancien != NULL) {?>
 	<figure>
-		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
-			echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
-		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
+		<?php
 		if ($imageTrombi != NULL)	//	Si il y a une image de trombi
-			echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
+			echo '<img id="trombiImg" height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope" />';
 		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
-		<!--<input type="file" name="imageProfil"/>-->
+			echo '<img id="trombiImg" src="style/images/nobody.png" alt="Pas d\'image de trombinoscope" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
 	</figure>
+	<figure>
+		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
+			echo '<img id="profilImg" height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil" />';
+		else
+			echo '<img id="profilImg" src="style/images/nobody.png" alt="Pas d\'image de profil" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+		</p>
+	</figure>
+
 	<h1><?php echo $ancien->getPrenom()?> <span class="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span>
 	<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 		echo '<a class="edit" href="profil-editer/'.$ancien->getId().'" title="Éditer le profil...">Éditer...</a>';
@@ -21,21 +31,21 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<h2>Informations générales</h2>
 		<dl>
 			<dt id="nomUsage">Nom d'usage</dt>
-			<dd><?php echo $ancien->getNom();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getNom()));?></dd>
 			<dt id="sexe<?php echo strtoupper($ancien->getSexe());?>">Sexe</dt>
 			<dd><?php echo ($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe');?></dd>
 			<dt id="dateNaissance">Date de naissance</dt>
-			<dd><?php echo $ancien->getDateNaissance();?></dd>
+			<dd><?php if ($ancien->getDateNaissance() != '0000-00-00') echo $ancien->getDateNaissance();?></dd>
 			<dt id="adresse1">Adresse 1</dt>
-			<dd><?php echo $ancien->getAdresse1();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getAdresse1()));?></dd>
 			<dt id="adresse2">Adresse 2</dt>
-			<dd><?php echo $ancien->getAdresse2();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getAdresse2()));?></dd>
 			<dt id="codePostal">Code postal</dt>
 			<dd><?php echo $ancien->getCodePostal();?></dd>
 			<dt id="ville">Ville</dt>
-			<dd><?php echo $ancien->getVille();?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getVille()));?></dd>
 			<dt id="pays">Pays</dt>
-			<dd><?php echo $ancien->getPays(); ?></dd>
+			<dd><?php echo ucfirst(strtolower($ancien->getPays())); ?></dd>
 			<dt id="telephoneFixe">Telephone</dt>
 			<dd><a href="tel:<?php echo $ancien->getTelephone();?>"><?php echo $ancien->getTelephone();?></a></dd>
 			<dt id="telephoneMobile">Mobile</dt>
@@ -133,8 +143,8 @@ if (isset($ancien) && $ancien != NULL) {?>
 			</li>
 		<?php } ?>
 		</ul>
-<?php if($diplomeDUT==null && $diplomesPost==null) { ?>
-		<p class="sad">Aucun diplôme.</p>
+<?php if($diplomesPost == NULL) { ?>
+		<p class="sad">Aucun diplôme post DUT renseigné.</p>
 <?php } ?>
 	</section>
 	<section id="entreprises"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuEntreprises"';?>>
@@ -153,23 +163,20 @@ if (isset($ancien) && $ancien != NULL) {?>
 					<dt class="poste">Poste</dt>
 					<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
 					<dt class="periode">Période</dt>
-					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
+					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
-<?php
-		}
-		if ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write']) { ?>
+<?php	}
+	} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>
 			<li>
-				<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
+				<a class="add" href="entreprise-selectionner/<?php echo $ancien->getId(); ?>">Ajouter une nouvelle entreprise</a>
 			</li>
 		<?php }?>
 		</ul>
 <?php
-	} else {
-?>
+	if($entreprises == NULL) { ?>
 		<p class="sad">Aucune entreprise.</p>
-<?php
-	}
+<?php }
 ?>
 	</section>
 <?php
@@ -178,3 +185,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 	<p class="warning">Ce profil n'existe pas</p>
 <?php }?>
 </div>
+<script type="text/javascript">
+new FileTransfert(document.getElementById('profilInput'), 'profil', function (resp) {
+	document.getElementById('profilImg').src=resp.image;
+});
+new FileTransfert(document.getElementById('trombiInput'), 'trombi', function (resp) {
+	document.getElementById('profilImg').src=resp.image;
+});
+</script>

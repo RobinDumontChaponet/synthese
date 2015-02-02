@@ -44,12 +44,11 @@ class TravailleDAO {
 			die('Erreur type du parametre getbyancien travaille dao');
 		}
 	}
-
 	public static function create($obj) {
 		if(get_class($obj)=="Travaille") {
 			try {
 				$req=SPDO::getInstance()->prepare("INSERT INTO `travaille`(`idPersonne`, `idPoste`, `idEntreprise`, `dateEmbaucheDeb`, `dateEmbaucheFin`) VALUES (?,?,?,?,?)");
-				$req->execute(array($obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDebut(), $obj->getDateEmbaucheFin()));
+				$req->execute(array($obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDeb(), $obj->getDateEmbaucheFin()));
 			} catch(PDOException $e) {
 				die('error create Travaille '.$e->getMessage().'<br>');
 			}
@@ -74,8 +73,8 @@ class TravailleDAO {
 	public static function delete($obj) {
 		if(get_class($obj)=="Travaille") {
 			try {
-				$req=SPDO::getInstance()->prepare("DELETE FROM `travaille` WHERE `idPersonne`=?,`idPoste`=?,`idEntreprise`=?,`dateEmbaucheDeb`=?");
-				$req->execute(array($obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDebut()));
+				$req=SPDO::getInstance()->prepare("DELETE FROM `travaille` WHERE `idPersonne`=? AND `idPoste`=? AND `idEntreprise`=? AND `dateEmbaucheDeb`=?");
+				$req->execute(array($obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDeb()));
 			} catch(PDOException $e) {
 				die('error delete Travaille '.$e->getMessage().'<br>');
 			}

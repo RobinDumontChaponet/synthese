@@ -1,4 +1,4 @@
-<!--meta title="Ajout de Diplôme DUT" css="style/evenements.css"-->
+<!--meta title="Modifier un Diplôme DUT d'un élève" css="style/evenements.css"-->
 <div id="content">
 	<?php if (isset($_GET) && $_GET['idAncien'] != NULL && $_GET['idDiplomeDUT'] != NULL && $_GET['idDepartement'] != NULL && $_GET['idPromotion'] !=NULL) {?>
 	<h1>Modification d'un Diplôme DUT pour l'étudiant <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>

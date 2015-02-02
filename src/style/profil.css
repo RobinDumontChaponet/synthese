@@ -17,10 +17,11 @@ figure {
 	position: relative;
 	z-index: 100;
 }
-figure img {
+figure > img {
 	border: 4px solid #fff;
 	box-shadow: 0 0 4px lightgrey;
 	margin: 5px;
+	display: block;
 }
 
 #info dt:nth-child(4n), #info dt:nth-child(4n+1), #info dd:nth-child(4n+1), #info dd:nth-child(4n+2) {
@@ -129,13 +130,4 @@ input[type="text"]:focus {
 	background: grey;
 	opacity: .2;
 	z-index: 900;
-}
-.error{
-    width:100%;
-    background-color: rgba(255, 0, 0, 0.5);
-    border:1px solid red;
-    border-radius: 10px;
-    padding:10px;
-    color:white;
-    margin-bottom: 20px;
 }

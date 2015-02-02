@@ -52,7 +52,7 @@ include('datas.transit.inc.php');
 // Inclusion meta et dépendances clients
 preg_match('/<\!--meta\s*(.*)-->/i', $inc, $matches);
 if($matches[1]) {
-	$link=''; $script=''; $onload='';
+	$link=''; $script=''; $meta=''; $onload='';
 	preg_match_all("/(\\S+)=[\"']?((?:.(?![\"']?\\s+(?:\\S+)=|[\"']))+.)[\"']?/", $matches[1], $tag);
 	$tag=rearrange($tag);
 	if($tag)
@@ -62,6 +62,8 @@ if($matches[1]) {
 			case 'css'   : $link.='<link rel="stylesheet" type="text/css" href="'.$rule[2].'"/>'."\n"; break;
 			case 'js'    : $script.='<script type="text/javascript" src="'.$rule[2].'"></script>'."\n"; break;
 			case 'onload': $onload.=$rule[2].'();'; break;
+			case 'refresh': $meta.='<meta http-equiv="refresh" content="'.$rule[2].'">'."\n"; break;
+			case 'needJs': $meta.='<noscript><meta http-equiv="refresh" content="0; url=nojs"></noscript>'."\n"; break;
 		}
 	}
 	if($onload!='') $script.="\n".'<script type="text/javascript">window.onload=function(){'.$onload.'}</script>';
@@ -74,12 +76,13 @@ if($matches[1]) {
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <head>
     <meta charset="UTF-8">
+    <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>">
     <title>connectIT!<?php if(!empty($title)) echo ' | '.$title; ?></title>
-    <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>" />
     <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
     <link rel="icon" href="style/favicon-96.png">
     <meta name="msapplication-TileColor" content="#FFF">
     <meta name="msapplication-TileImage" content="style/favicon-144.png">
+    <?php echo $meta; ?>
     <link rel="apple-touch-icon" href="style/favicon-152.png">
     <link rel="stylesheet" type="text/css" href="style/reset.min.css">
     <link rel="stylesheet" type="text/css" href="style/style.combined.css">

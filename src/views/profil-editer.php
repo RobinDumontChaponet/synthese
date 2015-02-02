@@ -24,15 +24,24 @@ if ($valid) {
 
 if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) {?>
 	<figure>
-		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
-			echo '<img height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil"/>';
-		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de profil"/>';
+		<?php
 		if ($imageTrombi != NULL)	//	Si il y a une image de trombi
-			echo '<img height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope"/>';
+			echo '<img id="trombiImg" height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope" />';
 		else
-			echo '<img src="style/images/nobody.png" alt="Pas d\'image de trombinoscope"/>';?>
-		<!--<input type="file" name="imageProfil"/> Il faut faire un input sur cette page pour upload/supprimer l'image de profil vu que tu as dit que tu avais déjà des trucs tout bien fait et tout et que tu t'en occuperais alors j'ai laissé ça comme ça et j'espère que le commentaire est assez grand pour que tu le vois!-->
+			echo '<img id="trombiImg" src="style/images/nobody.png" alt="Pas d\'image de trombinoscope" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+	</figure>
+	<figure>
+		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
+			echo '<img id="profilImg" height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil" />';
+		else
+			echo '<img id="profilImg" src="style/images/nobody.png" alt="Pas d\'image de profil" />';
+		?>
+		<p class="button">
+			<label>Importez une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+		</p>
 	</figure>
 	<form action="<?php ((isset($_GET['id']))?'profil':'profil/'.$_GET['id'])?>" method="post" name="profil">
 		<h1><?php if ($_SESSION['user_auth']['write'])
@@ -52,7 +61,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 					echo '<span>'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'</span>';
 				?></dd>
 				<dt id="dateNaissance"><label for="inputBirthday">Date de naissance</label></dt>
-				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="text" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
+				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="date" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
 				<dt id="adresse1"><label for="inputAddress1">Adresse 1</label></dt>
 				<dd><input id="inputAddress1" name="address1" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getAdresse1();?>"/></dd>
 				<dt id="adresse2"><label for="inputAddress2">Adresse 2</label></dt>
@@ -63,16 +72,16 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<dd><input id="inputCity" name="city" type="text" placeholder="Aucune ville renseignée" value="<?php echo $ancien->getVille(); ?>"/></dd>
 				<dt id="pays"><label for="inputCountry">Pays</label></dt>
 				<dd>
-				    <select name="country" id="inputCountry">
-				        <option value="<?php echo $ancien->getPays(); ?>" selected><?php echo $ancien->getPays(); ?></option>
-                        <?php
-                            foreach($lstPays as $pays){
-                        ?>
-                            <option value="<?= $pays; ?>" ><?= $pays; ?></option>
-                        <?php
-                            }
-                        ?>
-				    </select>
+					<select name="country" id="inputCountry">
+						<option value="<?php echo $ancien->getPays(); ?>" selected><?php echo $ancien->getPays(); ?></option>
+						<?php
+							foreach($lstPays as $pays){
+						?>
+							<option value="<?= $pays; ?>" ><?= $pays; ?></option>
+						<?php
+							}
+						?>
+					</select>
 				</dd>
 				<dt id="telephoneFixe"><label for="inputPhoneNumber">Telephone</label></dt>
 				<dd><input id="inputPhoneNumber" name="phoneNumber" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getTelephone(); ?>"/></dd>
@@ -83,56 +92,56 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 			</dl>
 		</section>
 
-        <?php
-            if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
-        ?>
-            <section id="info">
+		<?php
+			if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
+		?>
+			<section id="info">
 
-                <h2>Parents</h2>
-                <ul>
-                    <li>
-                        <dl>
-                            <dt id="adresse1"><label for="inputAddress1P">Adresse 1</label></dt>
-                            <dd><input id="inputAddress1P" name="address1P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse1();?>" /></dd>
-                            <dt id="adresse2"><label for="inputAddress2P">Adresse 2</label></dt>
-                            <dd><input id="inputAddress2P" name="address2P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse2();?>" /></dd>
-                            <dt id="codePostal"><label for="">Code postal</label></dt>
-                            <dd><input id="inputPostalCodeP" name="postalCodeP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getCodePostal();?> "/></dd>
-                            <dt id="ville"><label for="inputCityP">Ville</label></dt>
-                            <dd><input id="inputCityP" name="cityP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getVille();?>" /></dd>
-                            <dt id="pays"><label for="inputCuntryP">Pays</label></dt>
-                            <dd>
-                                <select name="countryP" id="inputCountryP">
-                                    <option value="<?php echo $ancien->getParents()->getPays(); ?>" selected><?php echo $ancien->getParents()->getPays(); ?></option>
-                                    <?php
-                                        foreach($lstPays as $pays){
-                                    ?>
-                                        <option value="<?= $pays; ?>" ><?= $pays; ?></option>
-                                    <?php
-                                        }
-                                    ?>
-                                </select>
-                            </dd>
-                            <dt id="telephoneFixe"><label for="inputPhoneNumberP">Telephone</label></dt>
-                            <dd><input id="inputPhoneNumberP" name="phoneNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getTelephone();?>" /></dd>
-                            <dt id="telephoneMobile"><label for="inputMobileNumberP">Mobile</label></dt>
-                            <dd><input id="inputMobileNumberP" name="mobileNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getMobile();?>" /></dd>
-                       </dl>
-                    </li>
-                </ul>
-            </section>
-        <?php
-            }
-        ?>
+				<h2>Parents</h2>
+				<ul>
+					<li>
+						<dl>
+							<dt id="adresse1"><label for="inputAddress1P">Adresse 1</label></dt>
+							<dd><input id="inputAddress1P" name="address1P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse1();?>" /></dd>
+							<dt id="adresse2"><label for="inputAddress2P">Adresse 2</label></dt>
+							<dd><input id="inputAddress2P" name="address2P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse2();?>" /></dd>
+							<dt id="codePostal"><label for="">Code postal</label></dt>
+							<dd><input id="inputPostalCodeP" name="postalCodeP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getCodePostal();?> "/></dd>
+							<dt id="ville"><label for="inputCityP">Ville</label></dt>
+							<dd><input id="inputCityP" name="cityP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getVille();?>" /></dd>
+							<dt id="pays"><label for="inputCuntryP">Pays</label></dt>
+							<dd>
+								<select name="countryP" id="inputCountryP">
+									<option value="<?php echo $ancien->getParents()->getPays(); ?>" selected><?php echo $ancien->getParents()->getPays(); ?></option>
+									<?php
+										foreach($lstPays as $pays){
+									?>
+										<option value="<?= $pays; ?>" ><?= $pays; ?></option>
+									<?php
+										}
+									?>
+								</select>
+							</dd>
+							<dt id="telephoneFixe"><label for="inputPhoneNumberP">Telephone</label></dt>
+							<dd><input id="inputPhoneNumberP" name="phoneNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getTelephone();?>" /></dd>
+							<dt id="telephoneMobile"><label for="inputMobileNumberP">Mobile</label></dt>
+							<dd><input id="inputMobileNumberP" name="mobileNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getMobile();?>" /></dd>
+					   </dl>
+					</li>
+				</ul>
+			</section>
+		<?php
+			}
+		?>
 
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
-				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomeDUT != NULL) { // Autre que prof
+				<?php if ($_SESSION['syntheseUser']->getId() != 2 || $diplomesDUT != NULL) { // Autre que prof
 					foreach ($diplomesDUT as $diplomeDUT) { ?>
 						<li>
 							<?php if ($_SESSION['user_auth']['write'])	//	En cas où le diplôme n'est pas le bon
-								echo '<a href="index.php?requ=diplomeDUT-selectionner-supprimer&idDiplomeDUT='.$diplomeDUT->getDiplomeDUT()->getId().'&idAncien='.$ancien->getId().'&idDepartement='.$diplomeDUT->getDepartementIUT()->getId().'&idPromotion='.$diplomeDUT->getPromotion()->getId().'">Supprimer le diplôme de l\'élève</a><a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'&'.$diplomeDUT->getDiplomeDUT()->getId().'&'.$diplomeDUT->getDepartementIUT()->getId().'&'.$diplomeDUT->getPromotion()->getId().'">Modifier le diplôme de l\'élève</a>'; ?>
+								echo '<a class="edit" href="diplomeDUT-modifier/'.$ancien->getId().'&'.$diplomeDUT->getDiplomeDUT()->getId().'&'.$diplomeDUT->getDepartementIUT()->getId().'&'.$diplomeDUT->getPromotion()->getId().'">Éditer</a><a class="delete" href="index.php?requ=diplomeDUT-selectionner-supprimer&idDiplomeDUT='.$diplomeDUT->getDiplomeDUT()->getId().'&idAncien='.$ancien->getId().'&idDepartement='.$diplomeDUT->getDepartementIUT()->getId().'&idPromotion='.$diplomeDUT->getPromotion()->getId().'">Supprimer</a>'; ?>
 							<h3 class="diplome"><?php if ($diplomeDUT != NULL) { echo $diplomeDUT->getDiplomeDUT()->getLibelle();} else { echo 'Non renseigné'; };?></h3>
 							<dl>
 								<dt class="departement">Département</dt>
@@ -157,9 +166,8 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($diplomesPost as $diplomePost) {?>
 						<li>
-							<?php $dispose = DisposeDeDAO::getByTypeProfilAndPage($_SESSION["syntheseUser"]->getTypeProfil(), PageDAO::getByLibelle('diplome-editer'))->getDroit();
-							if($dispose['write']) echo '<a class="edit" href="diplome-editer/'.$diplomePost->getDiplomePostDUT()->getId().'" target="_blank">Éditer</a>';
-							?><a class="delete" href="diplome-supprimer">Supprimer</a>
+							<a class="edit" href="diplome-modifier/<?php echo $ancien->getId();?>&<?php echo $diplomePost->getDiplomePostDUT()->getId();?>&<?php echo $diplomePost->getEtablissement()->getId();?>">Éditer</a>
+							<a class="delete" href="index.php?requ=diplome-selectionner-supprimer&idDiplomePost=<?php echo $diplomePost->getDiplomePostDUT()->getId();?>&idAncien=<?php echo $ancien->getId();?>&idEtablissement=<?php echo $diplomePost->getEtablissement()->getId();?>">Supprimer</a>
 							<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 							<dl>
 								<dt class="etablissement">Établissement</dt>
@@ -183,19 +191,19 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 						<li>
-							<a class="edit" href="entreprise-editer/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="entreprise-supprimer/<?php echo $entreprise->getEntreprise()->getId();?>">Supprimer</a>
+							<a class="edit" href="entreprise-modifier/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="index.php?requ=entreprise-selectionner-supprimer&idEntreprise=<?php echo $entreprise->getEntreprise()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>&idPoste=<?php echo $entreprise->getPoste()->getId(); ?>&dateDebut=<?php echo $entreprise->getDateEmbaucheDeb(); ?>">Supprimer</a>
 							<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 							<dl>
 								<dt class="poste">Poste</dt>
 								<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
 								<dt class="periode">Période</dt>
-								<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
+								<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 							</dl>
 						</li>
 					<?php }
 				} ?>
 				<li>
-					<a class="add" href="entreprise-ajouter/<?php echo $ancien->getId();?>">Ajouter une nouvelle entreprise</a>
+					<a class="add" href="entreprise-selectionner/<?php echo $ancien->getId(); ?>" target="_blank">Ajouter une nouvelle entreprise</a>
 				</li>
 			</ul>
 		</section>
