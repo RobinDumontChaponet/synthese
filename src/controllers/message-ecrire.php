@@ -16,7 +16,7 @@ if(isset($_POST['selectionne']))
     {
         $ancien = AncienDAO::getById($check);
         array_push($anciens, $ancien);
-        $chaine_mails .= $ancien->getMail().'; ';
+        $chaine_mails .= $ancien->getNom().' '.$ancien->getPrenom().'; ';
     }
     $_SESSION['dest_anciens'] = $anciens;
 }else if(isset($_POST['dest_rep'])) {
@@ -25,7 +25,7 @@ if(isset($_POST['selectionne']))
     array_push($anciens, $ancien);
     $_SESSION['dest_anciens'] = $anciens;
 
-    $chaine_mails = $ancien->getMail();
+    $chaine_mails = $ancien->getNom().' '.$ancien->getPrenom();
 }
 
 
