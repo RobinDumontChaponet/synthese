@@ -20,7 +20,7 @@
 			<?php }
 			echo '</ul>';
 		} else { ?>
-		<p class="sad">Il n'y a aucun diplôme</p>
+		<p class="sad">Il n'y a aucune entreprise enregistré.</p>
 		<?php }?>
 	</section>
 </div>

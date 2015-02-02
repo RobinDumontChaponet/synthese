@@ -310,6 +310,7 @@ FileETag None
 	RewriteRule ^domaine-editer/([^/]+) %{ENV:BASE}/index.php?requ=domaine-editer&id=$1 [NC]
 	RewriteRule ^message/([^/]+) %{ENV:BASE}/index.php?requ=message&id=$1 [NC]
 	RewriteRule ^message-ecrire/([^/]+) %{ENV:BASE}/index.php?requ=message-ecrire&id=$1 [NC]
+	RewriteRule ^poste-editer/([^/]+) %{ENV:BASE}/index.php?requ=poste-editer&id=$1 [NC]
 
 
 #### Generals

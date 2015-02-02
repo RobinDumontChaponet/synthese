@@ -191,7 +191,7 @@ if (isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == 
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 						<li>
-							<a class="edit" href="entreprise-editer/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="index.php?requ=entreprise-selectionner-supprimer&idEntreprise=<?php echo $entreprise->getEntreprise()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>&idPoste=<?php echo $entreprise->getPoste()->getId(); ?>&dateDebut=<?php echo $entreprise->getDateEmbaucheDeb(); ?>">Supprimer</a>
+							<a class="edit" href="entreprise-modifier/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="edit" href="index.php?requ=entreprise-selectionner-supprimer&idEntreprise=<?php echo $entreprise->getEntreprise()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>&idPoste=<?php echo $entreprise->getPoste()->getId(); ?>&dateDebut=<?php echo $entreprise->getDateEmbaucheDeb(); ?>">Supprimer</a>
 							<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 							<dl>
 								<dt class="poste">Poste</dt>

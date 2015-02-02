@@ -40,11 +40,11 @@
 					<dt><label for="resultat">Résultat</label></dt>
 					<dd class="resultat"><input type="number" id="resultat" name="resultat" placeholder="Résultat de votre diplôme" /></dd>
 					<dt><label for="periode">Période</label></dt>
-					<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="4" placeholder="AAAA"/> - <input type="date" id="periode2" name="periode2" maxlength="4" placeholder="AAAA"/></dd>
+					<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="10" placeholder="jj/mm/aaaa"/> - <input type="date" id="periode2" name="periode2" maxlength="10" placeholder="jj/mm/aaaa"/></dd>
 				</dl>
 			</article>
 			<input type="submit" value="Enregistrer les modifications" />
-			<a href="profil-editer/<?php echo $ancien->getId();?>">Retour</a>
+			<a href="profil-editer/<?php echo $ancien->getId();?>">Retour profil</a>
 		</form>
 		<?php } else {?>
 			<p class="warning">Cet étudiant n'existe pas</p>

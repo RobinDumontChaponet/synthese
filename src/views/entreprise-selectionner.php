@@ -19,9 +19,12 @@
 							<?php if ($entreprises != NULL) {
 								foreach($entreprises as $entreprise)
 									echo '<option value="'.$entreprise->getId().'">'.$entreprise->getNom().'</option>';
+							} else {
+								echo '<option value="NULL">Aucune entreprise enregistrée...</option>';
 							}?>
 						</select>
 						<a class="diplomes" href="entreprises" target="_blank">Accéder aux entreprises (nouvel onglet)</a>
+						<br /><a href="entreprise-ajouter" target="_blank">Vous ne trouvez pas votre entreprise ? Ajoutez la !</a>
 					</dd>
 					<dt><label for="poste">Poste</label></dt>
 					<dd class="poste">
@@ -29,9 +32,12 @@
 							<?php if ($postes != NULL) {
 								foreach($postes as $poste)
 									echo '<option value="'.$poste->getId().'">'.$poste->getLibelle().'</option>';
+							} else {
+								echo '<option value="NULL">Aucun poste enregistré...</option>';
 							}?>
 						</select>
 						<a class="postes" href="postes" target="_blank">Accéder aux postes (nouvel onglet)</a>
+						<br /><a href="poste-ajouter" target="_blank">Vous ne trouvez pas votre poste ? Ajoutez le !</a>
 					</dd>
 
 					<dt><label for="periode1">Dates</label></dt>
@@ -39,7 +45,7 @@
 				</dl>
 			</article>
 			<input type="submit" value="Ajouter l'entreprise à l'étudiant" />
-			<a href="profil/<?php echo $_GET['id']?>#entreprises">Retour étudiant</a>
+			<a href="profil/<?php echo $_GET['id']?>#entreprises">Retour profil</a>
 		</form>
 		<?php } else if ($_GET['id'] == NULL) {
 			echo '<p class="warning">Aucun id étudiant n\'a été renseigné</p>';

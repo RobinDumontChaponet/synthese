@@ -4,9 +4,9 @@
 	if ($error)
 		echo '<p class="error">Vous devez renseigner correctement tout les champs</p>';
 	if ($errorCedex)
-		 echo '<p class="error">Le cedex est invalide</p>';
+		echo '<p class="error">Le cedex est invalide</p>';
 	if ($errorCedex)
-		 echo '<p class="error">Le numéro de téléphone est invalide</p>';
+		echo '<p class="error">Le numéro de téléphone est invalide</p>';
 	?>
 	<h1>Ajout d'une entreprise</h1>
 	<form action="entreprise-ajouter" method="post">
@@ -45,9 +45,10 @@
 				<dt><label for="APEcode">Code APE</label></dt>
 				<dd class="codeAPE">
 					<select id="APEcode" name="APEcode">
-					<?php foreach($codesAPE as $codeAPE)
+						<option value="Non renseigné">Non renseigné</option>
+						<?php foreach($codesAPE as $codeAPE)
 						echo '<option value="'.$codeAPE->getCode().'">'.$codeAPE->getCode().' - '.$codeAPE->getLibelle().'</option>';
-					?>
+						?>
 					</select>
 					<a href="codesAPE" class="codesAPE" target="_blank">Accéder aux codes APE</a>
 				</dd>
