@@ -89,9 +89,9 @@ input[type="submit"]:hover, input[type="button"]:hover, .button:hover, button:ho
 	background: linear-gradient(top, #fffefe 0%, #E6E5E5 50%, #E6E5E5 50%, #eeeeee 100%);
 }
 input:focus, .button:focus, button:focus, select:focus {
-	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
-	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
-	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px 0, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	-webkit-box-shadow: rgba(0, 0, 0, .14) 0 1px 4px, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	-moz-box-shadow: rgba(0, 0, 0, .14) 0px 1px 4px, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
+	box-shadow: rgba(0, 0 , 0, .14) 0 1px 4px, inset rgba(255, 255, 255, .4) 0 1px 2px 0, 0 0 1px rgba(108, 108, 108, 1);
 }
 button {
 	margin: 0 3px;
