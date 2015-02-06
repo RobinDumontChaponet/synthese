@@ -3,6 +3,26 @@
 
 -- SUPPRIMER CE QUI EST FAIT --
 
+(pour l'instant, je ne peux pas commit)
+- évènement : + nom;
+- retours pages;
+- description d’un ancien d’un event par l’admin;
+- preferences d’événement dans régales de comptes;
+- notifications mails et inscriptions event;
+- enlever inscription à la newsletter de l'admin;
+- résultat diplôme pas forcément un nombre et pas obligatoire;
+- vérification sur la période dans les diplômes;
+- recherche dans les comptes;
+- importER pas pour l'ancien;
+- promo en liste;
+- dans les résultats de recherche : - "(info)";
+- dans promotions : afficher par diplômes;
+- lien vers le profil dans la liste de comptes;
+- recherche dans les comptes;
+- dans dB boolean pour ne pas être dans la recherche;
+
+
+
 Style :
 	- Styler la page Profil et Profil-editer au niveau des Diplômes
 	- Styler sur la page de profil (faire une séparation entre DiplômesDUT et Diplômes)
