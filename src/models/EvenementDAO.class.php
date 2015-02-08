@@ -37,24 +37,49 @@ class EvenementDAO
 		}
 	}
 
-    public static function getEvenementAnterieur(){
+    public static function getEvenementAnterieur($binf,$nb,&$nbTotal){
         $lst = array();
 		try {
-			$req=SPDO::getInstance()->query("SELECT * FROM evenement  WHERE date<now() ORDER BY date DESC");
+            $sql="SELECT * FROM evenement  WHERE date<now() ORDER BY date DESC";
+            if($nb!=null){
+                if($binf==null){ $binf=0; }
+                $sql.=" LIMIT ".$binf.",".$nb."";
+            }
+            $nbTotal=EvenementDAO::getNbEvenementAnterieur();
+			$req=SPDO::getInstance()->query($sql);
 			while ($res=$req->fetch()) {
 				$type=TypeEvenementDAO::getById($res['idTypeEvenement']);
 				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
 		} catch(PDOException $e) {
-			die('error get all Evenement '.$e->getMessage().'<br>');
+			die('error getEvenementAnterieur '.$e->getMessage().'<br>');
 		}
 		return $lst;
     }
 
-    public static function getEvenementPosterieur(){
+    public static function getNbEvenementAnterieur(){
+		try {
+			$req=SPDO::getInstance()->query("SELECT count(*) as nb FROM evenement  WHERE date<now() ORDER BY date DESC");
+			if ($res=$req->fetch()) {
+				return $res['nb'];
+			}else{
+                return 0;
+            }
+		} catch(PDOException $e) {
+			die('error getNbEvenementAnterieur '.$e->getMessage().'<br>');
+		}
+    }
+
+    public static function getEvenementPosterieur($binf,$nb,&$nbTotal){
         $lst=array();
 		try{
-			$req=SPDO::getInstance()->query("SELECT * FROM evenement  WHERE date>now()");
+            $sql="SELECT * FROM evenement  WHERE date>now()";
+            if($nb!=null){
+                if($binf==null){ $binf=0; }
+                $sql.=" LIMIT ".$binf.",".$nb."";
+            }
+            $nbTotal=EvenementDAO::getNbEvenementPosterieur();
+			$req=SPDO::getInstance()->query($sql);
 			while
 			($res=$req->fetch())
 			{
@@ -62,16 +87,35 @@ class EvenementDAO
 				$lst[]=new Evenement($res['idEvenement'], $type,$res['date'],$res['commentaire']);
 			}
 		} catch(PDOException $e) {
-			die('error get all Evenement '.$e->getMessage().'<br>');
+			die('error getEvenementPosterieur '.$e->getMessage().'<br>');
 		}
 		return $lst;
     }
 
-    public static function getByAncienNotParticipePost($idPersonne){
+    public static function getNbEvenementPosterieur(){
+		try{
+			$req=SPDO::getInstance()->query("SELECT count(*) as nb FROM evenement  WHERE date>now()");
+			if($res=$req->fetch()){
+				return $res['nb'];
+			}else{
+                return 0;
+            }
+		} catch(PDOException $e) {
+			die('error getNbEvenementPosterieur '.$e->getMessage().'<br>');
+		}
+    }
+
+    public static function getByAncienNotParticipePost($idPersonne,$binf,$nb,&$nbTotal){
         try {
             $lst = array();
-			$req = SPDO::getInstance()->prepare("SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
-                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $sql="SELECT idEvenement FROM evenement WHERE date>=now() AND idEvenement NOT IN
+                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)";
+            if($nb!=null){
+                if($binf==null){ $binf=0; }
+                $sql.=" LIMIT ".$binf.",".$nb."";
+            }
+            $nbTotal=EvenementDAO::getNbByAncienNotParticipePost($idPersonne);
+			$req = SPDO::getInstance()->prepare($sql);
             $req->execute(array($idPersonne));
             while($res=$req->fetch()){
                 $lst[]=EvenementDAO::getById($res['idEvenement']);
@@ -82,25 +126,65 @@ class EvenementDAO
 		return $lst;
     }
 
-	public static function getByAncienWithoutDateNotInscri($idPersonne){
+    public static function getNbByAncienNotParticipePost($idPersonne){
+        try {
+			$req = SPDO::getInstance()->prepare("SELECT count(idEvenement) as nb FROM evenement WHERE date>=now() AND idEvenement NOT IN (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $req->execute(array($idPersonne));
+            if($res=$req->fetch()){
+                return $res['nb'];
+            }else{
+                return 0;
+            }
+        } catch(PDOException $e) {
+			die('error getNbByAncienNotParticipePost '.$e->getMessage().'<br>');
+		}
+    }
+
+	public static function getByAncienWithoutDateNotInscri($idPersonne,$binf,$nb,&$nbTotal){
         try {
             $lst = array();
-			$req = SPDO::getInstance()->prepare("SELECT idEvenement FROM evenement WHERE date IS NULL AND idEvenement NOT IN
-                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $sql="SELECT idEvenement FROM evenement WHERE date IS NULL AND idEvenement NOT IN
+                    (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)";
+            if($nb!=null){
+                if($binf==null){ $binf=0; }
+                $sql.=" LIMIT ".$binf.",".$nb."";
+            }
+            $nbTotal=EvenementDAO::getNbByAncienWithoutDateNotInscri($idPersonne);
+			$req = SPDO::getInstance()->prepare($sql);
             $req->execute(array($idPersonne));
             while($res=$req->fetch()){
                 $lst[]=EvenementDAO::getById($res['idEvenement']);
             }
         } catch(PDOException $e) {
-			die('error get all Evenement '.$e->getMessage().'<br>');
+			die('error getByAncienWithoutDateNotInscri '.$e->getMessage().'<br>');
 		}
 		return $lst;
     }
 
-	public static function getEvenementWithoutDate() {
+    public static function getNbByAncienWithoutDateNotInscri($idPersonne){
+        try {
+			$req = SPDO::getInstance()->prepare("SELECT count(idEvenement) as nb FROM evenement WHERE date IS NULL AND idEvenement NOT IN (SELECT idEvenement FROM aParticipe WHERE idPersonne=?)");
+            $req->execute(array($idPersonne));
+            if($res=$req->fetch()){
+                return $res['nb'];
+            }else{
+                return 0;
+            }
+        } catch(PDOException $e) {
+			die('error getNbByAncienWithoutDateNotInscri '.$e->getMessage().'<br>');
+		}
+    }
+
+	public static function getEvenementWithoutDate($binf,$nb,&$nbTotal) {
 		try {
 			$lst = array();
-			$req = SPDO::getInstance()->prepare("SELECT idEvenement FROM `evenement` WHERE date IS NULL");
+            $sql="SELECT idEvenement FROM `evenement` WHERE date IS NULL";
+            if($nb!=null){
+                if($binf==null){ $binf=0; }
+                $sql.=" LIMIT ".$binf.",".$nb."";
+            }
+            $nbTotal=EvenementDAO::getNbEvenementWithoutDate();
+			$req = SPDO::getInstance()->prepare($sql);
             $req->execute();
             while($res=$req->fetch()){
                 $lst[]=EvenementDAO::getById($res['idEvenement']);
@@ -109,6 +193,20 @@ class EvenementDAO
 			die('EvenementDAO : Error getEvenementWithoutDate '.$e->getMessage().'<br>');
 		}
 		return $lst;
+	}
+
+    public static function getNbEvenementWithoutDate() {
+		try {
+			$req = SPDO::getInstance()->prepare("SELECT count(idEvenement) as nb FROM `evenement` WHERE date IS NULL");
+            $req->execute();
+            if($res=$req->fetch()){
+                return $res['nb'];
+            }else{
+                return 0;
+            }
+		} catch(PDOException $e) {
+			die('EvenementDAO : Error getEvenementWithoutDate '.$e->getMessage().'<br>');
+		}
 	}
 
 	public static function create(&$obj) {
