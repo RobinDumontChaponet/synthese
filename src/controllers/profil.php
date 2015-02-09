@@ -20,7 +20,6 @@ if ($ancien != NULL) {
 	$diplomesDUT = AEtudieDAO::getByAncien($ancien);
 	$diplomesPost = PossedeDAO::getByAncien($ancien);
 	$entreprises = TravailleDAO::getByAncien($ancien);
-	$spes = EstSpecialiseDAO::getByAncien($ancien);
 }
 include(VIEWS_INC.'profil.php');
 

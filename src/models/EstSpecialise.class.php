@@ -24,14 +24,14 @@ class EstSpecialise
 	}
 
 	public function setAncien($ancien) {
-		if ($ancien != NULL)
+		if ($ancien != null)
 			$this->ancien = $ancien;
 		else
 			throw new Exception('EstSpecialise.class.php : Ancien est NULL');
-	}
+    }
 
-	public function setSpecialisation($specialisation) {
-		if($specialisation != NULL)
+    public function setSpecialisation($specialisation) {
+		if($specialisation != null)
 			$this->specialisation = $specialisation;
 		else
 			throw new Exception('Specialisation dans EstSpecialise est NULL');

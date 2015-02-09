@@ -1,14 +1,13 @@
 <?php
-class AEtudie 
-{
-//	VARIABLES
+class AEtudie {
+	// VARIABLES
 
 	private $ancien;
 	private $diplomeDUT;
 	private $departementIUT;
 	private $promotion;
 
-//	CONSTRUCTORS
+	// CONSTRUCTORS
 
 	public function __construct($ancien, $diplomeDUT, $departementIUT, $promotion) {
 		$this->setAncien($ancien);
@@ -17,13 +16,13 @@ class AEtudie
 		$this->setPromotion($promotion);
 	}
 
-//	GETTERS & SETTERS
+	// GETTERS & SETTERS
 
 	public function getAncien() {
 		return $this->ancien;
 	}
 
-    public function getDiplomeDUT() {
+	public function getDiplomeDUT() {
 		return $this->diplomeDUT;
 	}
 
@@ -57,13 +56,13 @@ class AEtudie
 	}
 
 	public function setPromotion($promotion) {
-		if($promotion != NULL)
+		if ($promotion != NULL)
 			$this->promotion = $promotion;
 		else
 			throw new Exception('AEtudie.class.php : Promotion est NULL');
 	}
 
-//	TO STRING
+	// TO STRING
 
 	public function __toString() {
 		return "Ancien : ".$this->ancien." Diplome DUT : ".$this->diplomeDUT." Departement IUT : ".$this->departementIUT." Promotion : ".$this->promotion;
