@@ -48,8 +48,7 @@ if (isset($_POST['mod'])) {
 $lst=array();
 $lstTypeProfil=TypeProfilDAO::getAll();
 foreach ($lstTypeProfil as $type) {
-    $nb=0;
-	$lst[$type->getId()]=CompteDAO::getByTypeProfil($type->getId(),0,null,$nb);
+	$lst[$type->getId()]=CompteDAO::getByTypeProfil($type->getId());
 }
 require_once(VIEWS_INC.'comptes.php');
 ?>
