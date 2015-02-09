@@ -87,7 +87,7 @@ class DiplomeDUTDAO {
 	public static function create(&$obj) {
 		if (get_class($obj) == "DiplomeDUT") {
 			try {
-				$req=SPDO::getInstance()->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`) VALUES (?,?)");
+				$req=SPDO::getInstance()->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`, `sigle`) VALUES (?,?,?)");
 				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle()), $obj->getSigle());
 				$obj->setId(SPDO::getInstance()->LastInsertId());
 				return $obj->getId();
@@ -102,8 +102,8 @@ class DiplomeDUTDAO {
 	public static function update($obj) {
 		if (get_class($obj) == "DiplomeDUT") {
 			try {
-				$req = SPDO::getInstance()->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=? WHERE `idDiplomeDUT`=?");
-				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getId(), $obj->getSigle()));
+				$req = SPDO::getInstance()->prepare("UPDATE `diplomeDUT` SET `idDepartement`=?,`libelle`=?, `sigle`=? WHERE `idDiplomeDUT`=?");
+				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getSigle(), $obj->getId()));
 			} catch(PDOException $e) {
 				die('error update dip dut '.$e->getMessage().'<br>');
 			}
