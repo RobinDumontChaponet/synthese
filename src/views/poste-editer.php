@@ -1,6 +1,6 @@
 <!--meta title="<?php echo 'Poste : '.(($poste != NULL)?$poste->getLibelle():'Poste non trouvé'); ?>" css="style/evenements.css"-->
 <div id="content">
-	<h1>Modification du poste <?php echo 'Poste : '.(($poste != NULL)?$poste->getLibelle():'Poste non trouvé'); ?></h1>
+	<h1>Modification du poste <?php echo 'Poste : "'.(($poste != NULL)?$poste->getLibelle():'Poste non trouvé').'"'; ?></h1>
 	<?php if (isset($poste) && $poste != NULL && $_SESSION['user_auth']['write']) { ?>
 	<form action="poste-editer/<?php echo $poste->getId()?>" method="post">
 		<article>

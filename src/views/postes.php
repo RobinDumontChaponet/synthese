@@ -6,7 +6,7 @@
 	<section>
 		<ul>
 			<?php foreach ($postes as $poste) {
-			echo '<li>';
+			echo '<li class="poste">';
 			if ($_SESSION['user_auth']['write']) {
 				echo '<a class="edit" href="poste-editer/'.$poste->getId().'">Modifier</a><a class="delete" href="index.php?requ=poste-supprimer&id='.$poste->getId().'">Supprimer</a>';
 			} ?>
