@@ -20,9 +20,10 @@ class AncienDAO {
 		$lstAncien=array();
 		try {
 			$req=SPDO::getInstance()->query("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne ORDER BY nomUsage");
-			while ($ancien=$req->fetch()) {
+			while($ancien=$req->fetch())
+			{
 				$parents=ParentsDAO::getById($ancien['idParent']);
-				$lstAncien[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'], $parents, $ancien['sexe'], $ancien['dateNaissance'], $ancien['mail']);
+				$lstAncien[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 			}
 
 			return $lstAncien;
@@ -43,9 +44,9 @@ class AncienDAO {
 
 				$req=SPDO::getInstance()->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
 				$req->execute(array($id));
-				if ($ancien=$req->fetch()) {
+				if($ancien=$req->fetch()){
 					$parents=ParentsDAO::getById($ancien['idParent']);
-					$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'], $parents, $ancien['sexe'], $ancien['dateNaissance'], $ancien['mail']);
+					$ancienObj=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 					return $ancienObj;
 				} else {
 					return null;
@@ -56,14 +57,14 @@ class AncienDAO {
 		}
 	}
 
-	public static function getAncienByIdPromo($id) {
+	public static function getAncienByIdPromo($id){
 
 		$lst=array();
 		try {
 
 			$req=SPDO::getInstance()->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
 			$req->execute(array($id));
-			while ($res=$req->fetch()) {
+			while($res=$req->fetch()) {
 				$lst[]=AncienDAO::getById($res['idPersonne']);
 			}
 		} catch(PDOException $e) {
@@ -73,12 +74,12 @@ class AncienDAO {
 
 	}
 
-	public static function getAncienByIdPromoAndIdDep($prom, $dep) {
+	public static function getAncienByIdPromoAndIdDep($prom,$dep){
 		$lst=array();
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=? AND idDepartement=?");
-			$req->execute(array($prom, $dep));
-			while ($res=$req->fetch()) {
+			$req->execute(array($prom,$dep));
+			while($res=$req->fetch()) {
 				$lst[]=AncienDAO::getById($res['idPersonne']);
 			}
 		} catch(PDOException $e) {
@@ -93,7 +94,7 @@ class AncienDAO {
 
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req = SPDO::getInstance()->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getParents()->getId(), $ancien->getDateNaissance(), $ancien->getSexe()));
+				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
 				$ancien->setId($idPers);
 				return $idPers;
 			} catch(PDOException $e) {
@@ -110,7 +111,7 @@ class AncienDAO {
 				PersonneDAO::update(new Personne($ancien->getId(), $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req = SPDO::getInstance()->prepare("UPDATE `ancien` SET `dateNaissance`=?, `sexe`=?, `adresse1`=?,`adresse2`=?,`codePostal`=?,`ville`=? ,`pays`=?,`mobile`=?,`telephone`=?,`imageProfil`=?,`imageTrombi`=? WHERE `idPersonne`=?");
 				$req->execute(array($ancien->getDateNaissance(), $ancien->getSexe(), $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal(), $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(), $ancien->getId()));
-			} catch(PDOException $e) {
+			} catch(PDOException $e){
 				die('error update ancien '.$e->getMessage().'<br>');
 			}
 		} else {
@@ -148,30 +149,30 @@ class AncienDAO {
 	 * @param   Boolean $nbTotal        return : nombre d'éléments total;
 	 * @returns Object   [[Description]]
 	 */
-	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav, $binf, $nb, &$nbTotal) {
+	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$nbTotal) {
 		$lst=array();
 		$args=array();
 		$select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
 		$from="FROM `ancien` A, `personne` P";
 		$where="WHERE P.idPersonne=A.idPersonne";
 
-		if ($nom != null) {
+		if($nom != null) {
 			$where.=" AND (P.nomUsage LIKE ? OR P.nomPatronymique LIKE ?) ";
 			$args[]='%'.$nom.'%';
 			$args[]='%'.$nom.'%';
 		}
-		if ($prn!=null) {
+		if($prn!=null) {
 			$where.=" AND P.prenom LIKE ? ";
 			$args[]='%'.$prn.'%';
 		}
-		if ($promo!=null && $promo!=array(null, null)) {
-			if (gettype($promo)=="array") {
+		if($promo!=null && $promo!=array(null,null)) {
+			if(gettype($promo)=="array") {
 				$where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo";
-				if ($promo[0]!=null) {
+				if($promo[0]!=null){
 					$where.=" AND promo.annee>=? ";
 					$args[]=$promo[0];
 				}
-				if ($promo[1]!=null) {
+				if($promo[1]!=null){
 					$where.=" AND promo.annee<=? ";
 					$args[]=$promo[1];
 				}
@@ -180,33 +181,33 @@ class AncienDAO {
 				die('erreur type promo dans search ancien');
 			}
 		}
-		if ($diplome!=null) {
+		if($diplome!=null) {
 			$where.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
-			if ($promo==null || $promo==array(null, null)) { $from.=" ,`aEtudie` Etud"; }
+			if($promo==null || $promo==array(null,null)){ $from.=" ,`aEtudie` Etud"; }
 			$args[]=$diplome;
 		}
-		if ($spe!=null) {
+		if($spe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.libelle LIKE ? ";
 			$from.=" , `estSpecialise` Spe, `specialisation` Special";
 			$args[]='%'.$spe.'%';
 		}
-		if ($typeSpe!=null) {
+		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
-			if ($spe==null) {$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
+			if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
 			$args[]=$typeSpe;
 		}
-		if ($PostDut!=null) {
+		if($PostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE ? ";
 			$from.=" ,`possede` Poss,`diplomePostDUT` DPost";
 			$args[]='%'.$PostDut.'%';
 		}
-		if ($etabPostDut!=null) {
+		if($etabPostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE ? ";
-			if ($PostDut==null) { $from.=" ,`possede` Poss"; }
+			if($PostDut==null){ $from.=" ,`possede` Poss"; }
 			$from.=", `etablissement` etab";
 			$args[]='%'.$etabPostDut.'%';
 		}
-		if ($trav==true) {
+		if($trav==true) {
 			$where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
 			$from.=" , `travaille` trav";
 		}
@@ -219,9 +220,9 @@ class AncienDAO {
 		try {
 			$state=SPDO::getInstance()->prepare($req);
 			$state->execute($args);
-			while ($ancien=$state->fetch()) {
+			while($ancien=$state->fetch()) {
 				$parents=ParentsDAO::getById($ancien['idParent']);
-				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'], $parents, $ancien['sexe'], $ancien['dateNaissance'], $ancien['mail']);
+				$lst[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 				//var_dump("test");
 			}
 		} catch(PDOException $e) {
@@ -238,23 +239,23 @@ class AncienDAO {
 		$from="FROM `ancien` A, `personne` P";
 		$where="WHERE P.idPersonne=A.idPersonne";
 
-		if ($nom != null) {
+		if($nom != null) {
 			$where.=" AND (P.nomUsage LIKE ? OR P.nomPatronymique LIKE ?) ";
 			$args[]='%'.$nom.'%';
 			$args[]='%'.$nom.'%';
 		}
-		if ($prn!=null) {
+		if($prn!=null) {
 			$where.=" AND P.prenom LIKE ? ";
 			$args[]='%'.$prn.'%';
 		}
-		if ($promo!=null && $promo!=array(null, null)) {
-			if (gettype($promo)=="array") {
+		if($promo!=null && $promo!=array(null,null)) {
+			if(gettype($promo)=="array") {
 				$where.=" AND P.idPersonne=Etud.idPersonne AND Etud.idPromo=promo.idPromo";
-				if ($promo[0]!=null) {
+				if($promo[0]!=null){
 					$where.=" AND promo.annee>=? ";
 					$args[]=$promo[0];
 				}
-				if ($promo[1]!=null) {
+				if($promo[1]!=null){
 					$where.=" AND promo.annee<=? ";
 					$args[]=$promo[1];
 				}
@@ -263,33 +264,33 @@ class AncienDAO {
 				die('erreur type promo dans search ancien');
 			}
 		}
-		if ($diplome!=null) {
+		if($diplome!=null) {
 			$where.=" AND P.idPersonne=Etud.idPersonne AND idDiplomeDUT=? ";
-			if ($promo==null || $promo==array(null, null)) { $from.=" ,`aEtudie` Etud"; }
+			if($promo==null || $promo==array(null,null)){ $from.=" ,`aEtudie` Etud"; }
 			$args[]=$diplome;
 		}
-		if ($spe!=null) {
+		if($spe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.libelle LIKE ? ";
 			$from.=" , `estSpecialise` Spe, `specialisation` Special";
 			$args[]='%'.$spe.'%';
 		}
-		if ($typeSpe!=null) {
+		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
-			if ($spe==null) {$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
+			if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
 			$args[]=$typeSpe;
 		}
-		if ($PostDut!=null) {
+		if($PostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE ? ";
 			$from.=" ,`possede` Poss,`diplomePostDUT` DPost";
 			$args[]='%'.$PostDut.'%';
 		}
-		if ($etabPostDut!=null) {
+		if($etabPostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE ? ";
-			if ($PostDut==null) { $from.=" ,`possede` Poss"; }
+			if($PostDut==null){ $from.=" ,`possede` Poss"; }
 			$from.=", `etablissement` etab";
 			$args[]='%'.$etabPostDut.'%';
 		}
-		if ($trav==true) {
+		if($trav==true) {
 			$where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
 			$from.=" , `travaille` trav";
 		}
@@ -300,7 +301,7 @@ class AncienDAO {
 		try {
 			$state=SPDO::getInstance()->prepare($req);
 			$state->execute($args);
-			if ($res=$state->fetch()) {
+			if($res=$state->fetch()) {
 				return $res['nb'];
 			}
 		} catch(PDOException $e) {

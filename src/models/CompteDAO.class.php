@@ -45,41 +45,19 @@ class CompteDAO
         return $lstCompte;
     }
 
-    public static function getByTypeProfil($idType,$binf,$nb,&$nbTotal){
+    public static function getByTypeProfil($idType){
         $lst=array();
         try{
-            $sql="SELECT idCompte FROM compte WHERE idProfil=?";
-            if($nb!=null){
-                if($binf==null){ $binf=0; }
-                $sql.=" LIMIT ".$binf.",".$nb."";
-            }
-            $req=SPDO::getInstance()->prepare($sql);
+            $req=SPDO::getInstance()->prepare("SELECT idCompte FROM compte WHERE idProfil=?");
             $req->execute(array($idType));
             while($res=$req->fetch()){
                 $lst[]=CompteDAO::getById($res['idCompte']);
             }
-            $nbTotal=CompteDAO::getNbByTypeProfil($idType);
             return $lst;
         }catch(PDOException $e){
             die('error sql getByTypeProfil ancien');
         }
     }
-
-    public static function getNbByTypeProfil($idType){
-        $lst=array();
-        try{
-            $req=SPDO::getInstance()->prepare("SELECT count(idCompte) as nb FROM compte WHERE idProfil=?");
-            $req->execute(array($idType));
-            if($res=$req->fetch()){
-                return $res['nb'];
-            }else{
-                return 0;
-            }
-        }catch(PDOException $e){
-            die('error sql getNbByTypeProfil compte');
-        }
-    }
-
     public static function getById($id)
     {
         $compte = NULL;
