@@ -275,6 +275,7 @@ FileETag None
 	RewriteRule ^typesEvent/([^/]+) %{ENV:BASE}/index.php?requ=typesEvent&id=$1 [NC]
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
 	RewriteRule ^entreprise-editer/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-editer&id=$1 [NC]
+	RewriteRule ^entreprise-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-selectionner&id=$1 [NC]
 	RewriteRule ^diplome-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplome-editer&id=$1 [NC]
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
 	RewriteRule ^diplome-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplome-selectionner&id=$1 [NC]
