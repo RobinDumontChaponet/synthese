@@ -24,12 +24,12 @@ if ($_GET['idAncien'] != NULL) {
 							$possede->setDateFin($_POST['periode2']);
 						}
 						PossedeDAO::update($possedeAncien, $possede);
+						header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
 					} else {
 						$errorDate = true;
 					}
 				}
 			}
-			header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
 		}
 		include(VIEWS_INC.'diplome-modifier.php');
 	} 

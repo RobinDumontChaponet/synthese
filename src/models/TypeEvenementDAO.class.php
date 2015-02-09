@@ -43,7 +43,7 @@ class TypeEvenementDAO
     public static function create(&$type) {
         if (get_class($type) == "TypeEvenement") {
             try{
-                $req = $bdd->prepare("INSERT INTO `typeEvenement`(`libelle`) VALUES (?)");
+                $req=SPDO::getInstance()->prepare("INSERT INTO `typeEvenement`(`libelle`) VALUES (?)");
                 $req->execute(array($type->getLibelle()));
                 $type->setId(SPDO::getInstance()->LastInsertId());
                 return $type->getId();

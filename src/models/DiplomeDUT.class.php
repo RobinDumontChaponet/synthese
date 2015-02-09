@@ -2,11 +2,11 @@
 
 include_once(MODELS_INC."Diplome.class.php");
 
-class DiplomeDUT extends Diplome {
+class DiplomeDUT extends Diplome
+{
 	private $departementIUT;
-	private $sigle;
 
-	public function __construct($id, $libelle, $departementIUT, $sigle) {
+	public function __construct($id, $libelle, $departementIUT) {
 		parent::__construct($id, $libelle);
 		$this->setDepartementIUT($departementIUT);
 	}
@@ -16,17 +16,9 @@ class DiplomeDUT extends Diplome {
 		return $this->departementIUT;
 	}
 
-	public function getSigle() {
-		return $this->sigle;
-	}
-
 	//---------------------------------SETTERS------------------------------
 	public function setDepartementIUT($departementIUT) {
 		$this->departementIUT = $departementIUT;
-	}
-
-	public function setSigle($sigle) {
-		$this->sigle = $sigle;
 	}
 
 	//---------------------------------toString---------------------------------
@@ -36,7 +28,7 @@ class DiplomeDUT extends Diplome {
 
 	//---------------------------------Equals--------------------------------------
 	public function equals($aComparer) {
-		if (get_class($aComparer) == "DiplomeDUT") {
+		if(get_class($aComparer) == "DiplomeDUT") {
 			return $this->id == $aComparer->getId();
 		} else {
 			return false;

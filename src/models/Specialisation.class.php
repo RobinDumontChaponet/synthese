@@ -25,23 +25,15 @@ class Specialisation {
 
 	//--------------------------------------------Setters
 	public function setId($id) {
-		if (($id != null) and ($id >= 0)) {
-			$this->id = $id;
-		} else {
-			throw new Exception("Id spécialisation incorrect");
-		}
+		$this->id = $id;
 	}
+
 	public function setLibelle($libelle) {
-		$libelleTraite = trim($libelle);
-		if (($libelleTraite != null) and ($libelleTraite != "")) {
-			$this->libelle = $libelleTraite;
-		} else {
-			throw new Exception("Libellé spécialisation incorrect");
-		}
+		$this->libelle = trim($libelle);
 	}
 
 	public function setTypeSpecialisation($typeSpecialisation) {
-		if ($typeSpecialisation != null) {
+		if ($typeSpecialisation != NULL) {
 			$this->typeSpecialisation = $typeSpecialisation;
 		} else {
 			throw new Exception("TypeSpecialisation nul");

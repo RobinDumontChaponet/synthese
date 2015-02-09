@@ -22,7 +22,7 @@ class TypeSpecialisationDAO {
         try {
             $req=SPDO::getInstance()->prepare("SELECT `idTypeSpe`, `libelle` FROM `typeSpecialisation` WHERE idTypeSpe=?");
             $req->execute(array($id));
-            if ($type=$req->fetch()) {
+            if ($type = $req->fetch()) {
                 return new TypeSpecialisation($type['idTypeSpe'], $type['libelle']);
             } else {
                 return null;
