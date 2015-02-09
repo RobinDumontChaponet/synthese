@@ -8,5 +8,4 @@ $promotions = PromotionDAO::getAll();
 $departements = DepartementIUTDAO::getAll();
 
 include(VIEWS_INC.'promotions.php');
-
 ?>

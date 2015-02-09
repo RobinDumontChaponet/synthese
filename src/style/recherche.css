@@ -54,6 +54,7 @@ th:first-child, td:first-child {
 	width: 0;
 	margin: 0;
 	padding: 0;
+	border: 0;
 	float: left;
 	position: relative;
 	top: 12px;

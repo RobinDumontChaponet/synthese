@@ -68,11 +68,11 @@ class PossedeDAO {
 		}
 	}
 
-	public static function update($obj) {
-		if (get_class($obj)=="Possede") {
+	public static function update($ex, $new) {
+		if (get_class($ex) == "Possede" && get_class($new) == "Possede") {
 			try {
-				$req=SPDO::getInstance()->prepare("UPDATE `possede` SET `resultat`=?,`dateDeb`=?,`dateFin`=? WHERE `idPersonne`=? AND`idDiplomePost`=? AND`idEtablissement`=?");
-				$req->execute(array($obj->getResultat(), $obj->getDateDeb(), $obj->getDateFin(), $obj->getAncien()->getId(), $obj->getDiplomePostDUT->getId(), $obj->getEtablissement()->getId()));
+				$req=SPDO::getInstance()->prepare("UPDATE `possede` SET `idDiplomePost`=?, `idPersonne`=?, `idEtablissement`=?, `resultat`=?,`dateDeb`=?,`dateFin`=? WHERE `idPersonne`=? AND`idDiplomePost`=? AND`idEtablissement`=?");
+				$req->execute(array($new->getDiplomePostDUT()->getId(), $new->getAncien()->getId(), $new->getEtablissement()->getId(), $new->getResultat(), $new->getDateDebut(), $new->getDateFin(), $ex->getAncien()->getId(), $ex->getDiplomePostDUT()->getId(), $ex->getEtablissement()->getId()));
 			} catch(PDOException $e) {
 				die('error update possede '.$e->getMessage().'<br>');
 			}

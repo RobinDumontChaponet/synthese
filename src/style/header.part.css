@@ -161,13 +161,13 @@ nav a.aMessage:before {
 nav .active a.aGroups:before {
 	content: "\e970";
 }
-nav a.aAnchor:before {
+nav a.aAnchor:before, nav a.aAdd:before {
 	content: "#";
-	margin-left: 8px;
+	margin-left: 3px;
+	margin-right: 15px;
 }
 nav a.aAdd:before {
 	content: "+";
-	margin-left: 12px;
 	top: -1px;
 }
 

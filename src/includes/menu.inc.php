@@ -23,7 +23,13 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
-			(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+			'messagerie, message, message-ecrire' => array(
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
+				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
+				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
+			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
@@ -34,7 +40,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	break;
 	case 2: // isTeacher_
 		$items = array(
-			'profil' => array(
+			'profil, profil-editer' => array(
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
@@ -49,7 +55,13 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes'),
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
-			(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+			'messagerie, message, message-ecrire' => array(
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
+				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
+				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
+			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
@@ -60,7 +72,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	break;
 	case 3: // isFormerStudent_
 		$items = array(
-			'profil' => array(
+			'profil, profil-editer' => array(
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
@@ -78,7 +90,13 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements auxquels on ne participe pas', 'inner'=>'Non inscrits', 'scroll'=>'autres'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes')
 			),
-			(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+			'messagerie, message, message-ecrire' => array(
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
+				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
+				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
+			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),

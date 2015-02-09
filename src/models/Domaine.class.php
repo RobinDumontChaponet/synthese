@@ -44,13 +44,13 @@ class Domaine
 	public function __toString() {
 		return "Id : ".$this->id." Libelle : ".$this->libelle." Description : ".$this->desciption;
 	}
-
+	
 	//------------------------------Equals---------------------------------
 	public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "Domaine")
 		{
-			return $this->id == $aComparer->getId();
+			return $this->id == $aComparer->getId();	
 		}else
 		{
 			return false;

@@ -4,11 +4,14 @@
 	<h1>Article & commentaires</h1>
 
 	<section>
+		<?php if(isset($_GET['action']) && $_GET['action']=="editer")
+			echo '<form method="POST">';
+		?>
 		<article id="post">
 			<?php if($_SESSION["syntheseUser"]->getPersonne()->getId()==$post->getPosteur()->getId() || $_SESSION["syntheseUser"]->getTypeProfil()->getId()==1)
 				if(isset($_GET['action']) && $_GET['action']=="editer"){
                     echo '<a class="edit" href="article/'.$_GET['id'].'">Annuler la modification...</a>';
-                }else{
+                } else {
                     echo '<a class="edit" href="article-editer/'.$_GET['id'].'">Éditer...</a>';
                 }
                 echo '<a class="delete" href="article-supprimer/'.$_GET['id'].'">Supprimer</a>';
@@ -18,15 +21,15 @@
             </h3>
             <p class="commentaire">
                 <?php if(isset($_GET['action']) && $_GET['action']=="editer"){ ?>
-                    <form method="POST">
                         <textarea name="contenu"><?= $post->getContenu();?></textarea>
-                        <input type="submit" name="modif" value="Editer">
-                    </form>
-                <?php }else{ ?>
+                <?php } else { ?>
                     <?= $post->getContenu();?>
                 <?php } ?>
             </p>
 		</article>
+		<?php if(isset($_GET['action']) && $_GET['action']=="editer")
+			echo '<input type="submit" name="modif" value="Enregistrer"></form>';
+		?>
 	</section>
     <section>
 		<h2>Commenter l'article</h2>

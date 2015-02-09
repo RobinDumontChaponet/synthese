@@ -232,7 +232,6 @@ FileETag None
 	RewriteCond %{QUERY_STRING} ^.*(localhost|loopback|127\.0\.0\.1).* [NC,OR]
 	# Block out  use of illegal or unsafe characters in the Query String variable
 	RewriteCond %{QUERY_STRING} ^.*(<|>|'|%0A|%0D|%27|%3C|%3E|%00).* [NC]
-
 #### Hosts BList
 	RewriteCond %{HTTP_HOST} (.*)\.crimea\.com [NC,OR]
 	RewriteCond %{HTTP_HOST} s368\.loopia\.se [NC,OR]
@@ -240,10 +239,8 @@ FileETag None
 	RewriteCond %{HTTP_HOST} g00g1e [NC,OR]
 	RewriteCond %{HTTP_USER_AGENT} (g00g1e|seekerspider|siclab|spam|sqlmap) [NC]
 	RewriteRule .* - [F,L]
-
 #### Some joke
 	Redirect 301 /wp-config.php http://www.fbi.gov/
-
 #### Maintenance Redirection
 	#RewriteCond %{REQUEST_URI} !maintenance.html
 	#RewriteCond %{REQUEST_FILENAME} !(styles|images).+$
@@ -251,15 +248,12 @@ FileETag None
 	#RewriteCond %{REMOTE_ADDR} !^80\.185\.62\.181$
 	#RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
 	#RewriteRule $ /maintenance.html [R=307,L]
-
 	#RewriteRule ^maintenance.html %{ENV:BASE} [R=301,L]
-
 #### Block access to
 	RewriteRule ^models/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^views/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^controllers/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
 	RewriteRule ^includes/(.*)$ %{ENV:BASE}/index.php [R=403,NC,L]
-
 #### Performance : Cache busting
 	#### Filename-based cache busting
 	<IfModule mod_rewrite.c>
@@ -267,7 +261,6 @@ FileETag None
 		RewriteCond %{REQUEST_FILENAME} !-f
 		RewriteRule ^(.+)\.(\d+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp)$ $1.$3 [L]
 	</IfModule>
-
 #### Traditional rewriting
 	#### Specifics
 	RewriteRule ^profil-editer/([^/]+) %{ENV:BASE}/index.php?requ=profil-editer&id=$1 [NC]
@@ -280,11 +273,8 @@ FileETag None
 	RewriteRule ^typeEvent-ajouter %{ENV:BASE}/index.php?requ=typeEvent-ajouter [NC]
 	RewriteRule ^typeEvent-editer/([^/]+) %{ENV:BASE}/index.php?requ=typeEvent-editer&id=$1 [NC]
 	RewriteRule ^typesEvent/([^/]+) %{ENV:BASE}/index.php?requ=typesEvent&id=$1 [NC]
-	RewriteRule ^entreprise-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-selectionner&id=$1 [NC]
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
-	RewriteRule ^entreprises %{ENV:BASE}/index.php?requ=entreprises [NC]
 	RewriteRule ^entreprise-editer/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-editer&id=$1 [NC]
-	RewriteRule ^entreprise-ajouter %{ENV:BASE}/index.php?requ=entreprise-ajouter [NC]
 	RewriteRule ^diplome-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplome-editer&id=$1 [NC]
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
 	RewriteRule ^diplome-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplome-selectionner&id=$1 [NC]
@@ -310,15 +300,10 @@ FileETag None
 	RewriteRule ^domaine-editer/([^/]+) %{ENV:BASE}/index.php?requ=domaine-editer&id=$1 [NC]
 	RewriteRule ^message/([^/]+) %{ENV:BASE}/index.php?requ=message&id=$1 [NC]
 	RewriteRule ^message-ecrire/([^/]+) %{ENV:BASE}/index.php?requ=message-ecrire&id=$1 [NC]
-	RewriteRule ^poste-editer/([^/]+) %{ENV:BASE}/index.php?requ=poste-editer&id=$1 [NC]
-
-
 #### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} !helpers
 	RewriteRule ^([A-Za-z0-9-]+)/?$ %{ENV:BASE}/index.php?requ=$1 [L]
-
-
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME}.php -f
 	RewriteRule ^(.*)$ $1.php

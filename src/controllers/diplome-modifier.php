@@ -16,19 +16,23 @@ if ($_GET['idAncien'] != NULL) {
 					$possede->setDiplomePostDUT($diplPostNew);
 					$etablNew = EtablissementDAO::getById($_POST['etablissement']);
 					$possede->setEtablissement($etablNew);
-					$possede->setDateDebut($_POST['periode1']);
-					if ($_POST['periode2'] == NULL) {
-						$possede->setDateFin('0000-00-00');
+					if ($_POST['periode1'] != NULL) {
+						$possede->setDateDebut($_POST['periode1']);
+						if ($_POST['periode2'] == NULL) {
+							$possede->setDateFin('0000-00-00');
+						} else {
+							$possede->setDateFin($_POST['periode2']);
+						}
+						PossedeDAO::update($possedeAncien, $possede);
 					} else {
-						$possede->setDateFin($_POST['periode2']);
+						$errorDate = true;
 					}
-					//PossedeDAO::update($possedeAncien, $possede); // Créer l'update dans le model Possede avec ancien/nouveau pour l'update et décommenter
 				}
 			}
-		//header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
+			header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
 		}
 		include(VIEWS_INC.'diplome-modifier.php');
-	}
+	} 
 } else {
 	include(VIEWS_INC.'403.php');
 }

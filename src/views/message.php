@@ -1,5 +1,6 @@
 <!--meta title="Message de <?= $expediteur ?> : <?= $objet ?>" css="style/message.css"-->
 <div id="content">
+	<h1>Message</h1>
 	<section id="message">
 		<article>
 			<p class="date">Envoyé le <?php echo $date;?></p>

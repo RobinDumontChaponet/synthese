@@ -1,4 +1,4 @@
-<?php
+<?php 
 	require_once('lstPays.php');
 	$lstPays=getListePaysMonde();
 	if (isset($_POST) && $_POST != NULL) {

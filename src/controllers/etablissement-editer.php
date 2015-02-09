@@ -78,7 +78,7 @@ if ($_SESSION['user_auth']['write']) {
 			$etablissement->setWeb($_POST['wb']);
 			$change = true;
 		}
-
+		
 		if ($change) {
 			EtablissementDAO::update($etablissement);
 			header('Location: '.SELF.'etablissements');

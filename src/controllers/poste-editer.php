@@ -14,7 +14,7 @@ if ($_SESSION['user_auth']['write']) {
 	} else {
 		$noId = true;
 	}
-
+	
 	include(VIEWS_INC.'poste-editer.php');
 } else {
 	include(VIEWS_INC.'403.php');

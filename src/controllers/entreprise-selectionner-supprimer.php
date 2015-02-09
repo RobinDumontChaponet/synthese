@@ -1,4 +1,4 @@
-<?php
+<?php 
 if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) {
 	if (isset($_GET) && $_GET['idEntreprise'] != NULL && $_GET['idAncien'] != NULL && $_GET['idPoste'] != NULL) {
 		$ancien = new Ancien($_GET['idAncien'], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

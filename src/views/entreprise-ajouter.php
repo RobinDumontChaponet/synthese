@@ -17,7 +17,7 @@
 
 				<dt><label for="address1">Adresse 1</label></dt>
 				<dd id="adresse1"><input id="address1" name="address1" type="text"/></dd>
-
+				
 				<dt><label for="address2">Adresse 2</label></dt>
 				<dd id="adresse2"><input id="address2" name="address2" type="text"/></dd>
 

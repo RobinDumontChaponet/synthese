@@ -22,7 +22,7 @@ class AParticipe
 	public function getEvenement() {
 		return $this->evenement;
 	}
-
+	
 	public function setAncien($ancien) {
 		if ($ancien != NULL)
 			$this->ancien = $ancien;

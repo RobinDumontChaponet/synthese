@@ -15,7 +15,7 @@ class Groupe{
 
     // Getters
     public function getId(){
-        return $this->id;
+        return $this->id;   
     }
 
     public function getNom(){
@@ -23,20 +23,20 @@ class Groupe{
     }
 
     public function getCreateur(){
-        return $this->createur;
+        return $this->createur;   
     }
 
     public function getType(){
-        return $this->type;
+        return $this->type;   
     }
 
     //setters
 
     public function setId($id){
         if($id!=null && $id>-1 && is_numeric($id)){
-            $this->id=$id;
+            $this->id=$id;   
         }else{
-            throw new Exception('groupe.class.php -> id incorrect : '.'"'.$id.'"');
+            throw new Exception('groupe.class.php -> id incorrect : '.'"'.$id.'"');   
         }
     }
 
@@ -44,24 +44,24 @@ class Groupe{
         if($nom!=null && is_string($nom) && trim($nom)!=""){
             $this->nom=$nom;
         }else{
-            throw new Exception('groupe.class.php -> nom incorrect : '.'"'.$nom.'"');
+            throw new Exception('groupe.class.php -> nom incorrect : '.'"'.$nom.'"');   
         }
     }
 
     public function setCreateur($c){
         if(get_class($c)=="Personne"){
-            $this->createur=$c;
+            $this->createur=$c;   
         }else{
-            $this->createur=null;
+            $this->createur=null;   
         }
     }
 
     public function setType($t){
         if($t!=null && is_string($t) && trim($t)!=""){
-            $this->type=$t;
+            $this->type=$t;   
         }else{
             throw new Exception('groupe.class.php -> type incorrect : '.'"'.$t.'"');
-        }
+        }   
     }
 }
 ?>

@@ -98,9 +98,11 @@ a, a:active, a:hover, a:visited {
 	font-style: italic;
 }
 .warning {
-	margin-top: 20%;
 	font-size: 1.2em;
 	color: grey;
+}
+.warning:first-child {
+	margin-top: 20%;
 }
 .error{
     background-color: rgba(255, 0, 0, 0.5);

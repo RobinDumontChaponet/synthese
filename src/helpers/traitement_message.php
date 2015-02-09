@@ -1,5 +1,11 @@
 <?php
 
+/*                                                                                                          *
+ * Ce code (le tout) devrait pas être dans un helper mais dans un controller								*
+ * (ex: message-envoyé, cf: csv-imported),																	*
+ * appelé au moment de l'envoi du formulaire.																*
+ *                                                                                                          */
+
 session_start();
 
 include_once(MODELS_INC.'MessageDAO.class.php');
@@ -9,6 +15,10 @@ foreach ($_SESSION['dest_anciens'] as $a)
 
 unset($_SESSION['dest_anciens']);
 
-echo 'Message envoyé avec succès ! <br /> <a href="recherche">Retour</a>';
+
+/*                                                                                                          *
+ * Devrait être dans une vue (ex: message-envoyé, cf: csv-imported)											*
+ *																											*/
+echo '<p class="true">Message envoyé ! <br /> <a href="messagerie">Retour</a></p>';
 
 ?>

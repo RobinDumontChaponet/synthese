@@ -12,7 +12,7 @@ define('SELF', dirname($_SERVER['PHP_SELF']).'/');
 define('STR_TRONC', 380);
 
 // Nombre de ligne à afficher dans les listes et tables paginées
-define('LINES_PAGE', 10);
+define('LINES_PAGE', 15);
 
 function __autoload($className) {
     include MODELS_INC.$className.'.class.php';

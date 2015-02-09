@@ -11,13 +11,13 @@ class Droit
       $this->setId($id);
       $this->setLibelle($libelle);
   }
-
+  
 //--------------------------------------------Getters
   public function getId()
   {
       return $this->id;
   }
-
+  
   public function getLibelle()
   {
       return $this->libelle;
@@ -52,13 +52,13 @@ public function setLibelle($libelle)
   {
     return "Id : ".$this->id." Libellé : ".$this->libelle;
   }
-
+  
 //--------------------------------------Equals
   public function equals($aComparer)
 	{
 		if(get_class($aComparer) == "Droit")
 		{
-			return $this->id == $aComparer->getId();
+			return $this->id == $aComparer->getId();	
 		}else
 		{
 			return false;

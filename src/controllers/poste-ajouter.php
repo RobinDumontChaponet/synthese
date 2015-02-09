@@ -1,4 +1,4 @@
-<?php
+<?php 
 	if (isset($_POST) && $_POST != NULL) {
 		if ($_POST['name'] != NULL) {
 			$poste = new Poste(0, $_POST['name']);

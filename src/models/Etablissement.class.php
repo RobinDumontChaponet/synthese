@@ -27,11 +27,11 @@ class Etablissement {
 	public function getId() {
 		return $this->id;
 	}
-
+	
 	public function getNom() {
 		return $this->nom;
 	}
-
+	
 	public function getAdresse1() {
 		return $this->adresse1;
 	}

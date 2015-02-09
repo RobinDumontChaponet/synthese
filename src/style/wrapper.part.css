@@ -1,4 +1,3 @@
-
 #wrapper {
 	float: right;
 	width: 86%;
@@ -61,7 +60,7 @@ section, fieldset {
 section:first-child, fieldset:first-child {
 	margin-top: 0;
 }
-section:last-child, fieldset:last-child {
+section:last-child {
 	border-bottom: 0;
 }
 
@@ -403,7 +402,7 @@ th {
 	background: -o-linear-gradient(top, #f3f5fb 0%,#e8ebeb 100%);
 	background: -ms-linear-gradient(top, #f3f5fb 0%,#e8ebeb 100%);
 	background: linear-gradient(to bottom, #f3f5fb 0%,#e8ebeb 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5fb', endColorstr='#e8ebeb',GradientType=0 );
+	filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5fb', endColorstr='#e8ebeb',GradientType=0 )";
 	border: 1px solid #dfdfdf;	padding: 0 10px;
 	height: 28px;
 	text-shadow: 0 1px 1px #f3efef;

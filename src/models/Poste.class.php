@@ -1,6 +1,6 @@
 <?php
 class Poste {
-
+	
 	private $id;
 	private $libelle;
 
