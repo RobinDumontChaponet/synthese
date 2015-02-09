@@ -41,7 +41,7 @@
 					</dd>
 
 					<dt><label for="periode1">Dates</label></dt>
-					<dd><input id="periode1" name="periode1" maxlength="10" type="date" placeholder="jj/mm/aaaa"/> <label for="periode2">à</label> <input id="periode2" name="periode2" maxlength="10" type="date" placeholder="jj/mm/aaaa"/></dd>
+					<dd class="periode"><input id="periode1" name="periode1" maxlength="10" type="date" placeholder="jj/mm/aaaa"/> <label for="periode2">à</label> <input id="periode2" name="periode2" maxlength="10" type="date" placeholder="jj/mm/aaaa"/></dd>
 				</dl>
 			</article>
 			<input type="submit" value="Ajouter l'entreprise à l'étudiant" />
