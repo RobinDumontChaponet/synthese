@@ -6,11 +6,11 @@
 	<section>
 		<ul>
 			<?php foreach ($postes as $poste) {
-			echo '<li class="poste">';
+			echo '<li>';
 			if ($_SESSION['user_auth']['write']) {
 				echo '<a class="edit" href="poste-editer/'.$poste->getId().'">Modifier</a><a class="delete" href="index.php?requ=poste-supprimer&id='.$poste->getId().'">Supprimer</a>';
 			} ?>
-				<?php echo $poste->getLibelle();?>
+				<h3><?php echo $poste->getLibelle();?></h3>
 			</li>
 			<?php } ?>
 		</ul>

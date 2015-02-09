@@ -178,6 +178,27 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<p class="sad">Aucune entreprise.</p>
 <?php }
 ?>
+<h2>Spécialisations</h2>
+		<ul>
+<?php
+	if($spes != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
+		foreach($spes as $spe) {
+?>
+			<li>
+				<p><?php echo $spe->getSpecialisation()->getLibelle(); ?></p>
+			</li>
+<?php	}
+	} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>
+			<li>
+				<a class="add" href="specialisation-selectionner/<?php echo $ancien->getId(); ?>">Ajouter une nouvelle spécialisation</a>
+			</li>
+		<?php }?>
+		</ul>
+<?php
+	if($spes == NULL) { ?>
+		<p class="sad">Aucune spécialisation.</p>
+<?php }
+?>
 	</section>
 <?php
 	} else {
