@@ -110,15 +110,12 @@ function scaledImageRessource2Image($src, $max_width=0, $max_height=0, $type='jp
 	ob_start();
 	switch ($type) {
 		case 'gif' :
-			$pathToNewImage.='.gif';
 			imagegif ($tmp);
         break;
 		case 'jpeg': case 'jpg':
-			$pathToNewImage.='.jpg';
 			imagejpeg($tmp, null, $quality);
 		break;
 		case 'png' :
-			$pathToNewImage.='.png';
 			imagepng ($tmp);
 		break;
 		default:

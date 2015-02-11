@@ -1,19 +1,17 @@
-﻿(On fait le tri de ce qu'il y a en dessous au fur et à mesure)
+(On fait le tri de ce qu'il y a en dessous au fur et à mesure)
 
 
 -- SUPPRIMER CE QUI EST FAIT --
 
-(pour l'instant, je ne peux pas commit)
 - évènement : + nom;
 - retours pages;
-- description d’un ancien d’un event par l’admin;
-- preferences d’événement dans régales de comptes;
+- suppression ou ajout d’un ancien dans event par l’admin;
+- lien vers preferences d’événements dans réglages de comptes;
 - notifications mails et inscriptions event;
-- enlever inscription à la newsletter de l'admin;
+- enlever « inscription à la newsletter » de l'admin;
 - résultat diplôme pas forcément un nombre et pas obligatoire;
 - vérification sur la période dans les diplômes;
 - recherche dans les comptes;
-- importER pas pour l'ancien;
 - promo en liste;
 - dans les résultats de recherche : - "(info)";
 - dans promotions : afficher par diplômes;

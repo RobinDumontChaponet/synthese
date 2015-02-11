@@ -34,12 +34,17 @@ if($_SESSION["syntheseUser"]) {
 		$tmpImage = imagecreatefromstring($fileContent);
 
 		$image = scaledImageRessource2Image($tmpImage, THUMB_UPLOAD_MAX_WIDTH, THUMB_UPLOAD_MAX_HEIGHT, IMAGE_EXT, JPEG_QUALITY);
-		if($image) {
-			echo json_encode(array(
-				'image' => $image
-			));
-		} else
-			echo 'could not save image';
+
+
+
+		//if($image) {
+			echo json_encode(
+				array(
+					'image' => $image
+				)
+			);
+		/*} else
+			echo 'could not save image';*/
 
 	} else
 		die('unnacepted extension');

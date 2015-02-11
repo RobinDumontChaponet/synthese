@@ -9,8 +9,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 		else
 			echo '<img id="trombiImg" src="style/images/nobody.png" alt="Pas d\'image de trombinoscope" />';
 		?>
+		<?php if($_SESSION["syntheseUser"]->getTypeProfil()->getLibelle()=="Admin") { ?>
 		<p class="button">
-			<label>Importez une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+			<label>Importer une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement..." />
+		</p>
+		<?php } ?>
 	</figure>
 	<figure>
 		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
@@ -18,9 +21,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 		else
 			echo '<img id="profilImg" src="style/images/nobody.png" alt="Pas d\'image de profil" />';
 		?>
+		<?php if(isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) { ?>
 		<p class="button">
-			<label>Importez une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement...">
+			<label>Importer une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement..." />
 		</p>
+		<?php } ?>
 	</figure>
 
 	<h1><?php echo $ancien->getPrenom()?> <span class="nomPatronymique"><?php echo $ancien->getNomPatronymique() ?></span>
