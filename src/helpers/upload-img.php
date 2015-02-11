@@ -23,12 +23,14 @@ if($_SESSION["syntheseUser"]) {
 
 	$fileType = $_FILES['upload']['type'];
 
-	preg_match("/[^\/]+/", $_REQUEST['destination'], $matches);
-	$destination = $matches[0];
-	$sub = $matches[count($matches)-1];
+	preg_match_all("/([^\/]+)/", $_REQUEST['destination'], $matches);
+	$destination = $matches[0][0];
+	$sub = $matches[0][count($matches[0])-1];
 
 	if( !in_array($destination, $possibleDestinations))
 		die('bad path ! ;-)');
+
+	include_once(MODELS_INC.'AncienDAO.class.php');
 
 	if ( in_array(strtolower($info['extension']), $possibleExtensions) ) {
 
@@ -38,16 +40,19 @@ if($_SESSION["syntheseUser"]) {
 
 		$image = scaledImageRessource2Image($tmpImage, THUMB_UPLOAD_MAX_WIDTH, THUMB_UPLOAD_MAX_HEIGHT, IMAGE_EXT, JPEG_QUALITY);
 
-		if($destination=='profil')
-			;
-		elseif($destination=='trombi')
-			;
-
 		if($image) {
+			$ancien = AncienDAO::getById($sub);
+			if($destination=='profil')
+				$ancien->setImageProfil($image);
+			elseif($destination=='trombi')
+				$ancien->setImageTrombi($image);
+			AncienDAO::update($ancien);
+
 			echo json_encode(
 				array(
 					'image' => base64_encode($image),
-					'destination' => $destination
+					'destination' => $destination,
+					'id' => $sub
 				)
 			);
 		} else

@@ -3,9 +3,10 @@
 <?php
 if (isset($ancien) && $ancien != NULL) {?>
 	<figure>
+		<figcaption>Trombinoscope</figcaption>
 		<?php
 		if ($imageTrombi != NULL)	//	Si il y a une image de trombi
-			echo '<img id="trombiImg" height="230px" width="200px" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope" />';
+			echo '<img id="trombiImg" src="helpers/imageTrombi.php?id='.$ancien->getId().'" alt="Image de trombinoscope" />';
 		else
 			echo '<img id="trombiImg" src="style/images/nobody.png" alt="Pas d\'image de trombinoscope" />';
 		?>
@@ -16,8 +17,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<?php } ?>
 	</figure>
 	<figure>
+		<figcaption>Image de Profil</figcaption>
 		<?php if ($imageProfil != NULL)	//	Si il y a une image de profil
-			echo '<img id="profilImg" height="230px" width="200px" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil" />';
+			echo '<img id="profilImg" src="helpers/imageProfil.php?id='.$ancien->getId().'" alt="Image de profil" />';
 		else
 			echo '<img id="profilImg" src="style/images/nobody.png" alt="Pas d\'image de profil" />';
 		?>
@@ -123,6 +125,8 @@ if (isset($ancien) && $ancien != NULL) {?>
 	<?php 	}
 		echo '</ul>';
 	} ?>
+	</section>
+	<section id="diplomesPostDUT">
 		<h2>Diplômes post-DUT</h2>
 		<ul>
 	<?php if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
@@ -183,8 +187,10 @@ if (isset($ancien) && $ancien != NULL) {?>
 		<p class="sad">Aucune entreprise.</p>
 <?php }
 ?>
-<h2>Spécialisations</h2>
-	<ul>
+	</section>
+	<section id="specialisation">
+		<h2>Spécialisations</h2>
+		<ul>
 <?php
 	if($spes != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 		foreach($spes as $spe) {
@@ -216,6 +222,6 @@ new FileTransfert(document.getElementById('profilInput'), 'profil/<?=$ancien->ge
 	document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
 });
 new FileTransfert(document.getElementById('trombiInput'), 'trombi/<?=$ancien->getId() ?>', function (resp) {
-	document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
+	document.getElementById('trombiImg').src='data:image/png;base64,'+resp.image;
 });
 </script>

@@ -100,7 +100,7 @@ header .active:before {
 }
 header .active:after {
 	content: "";
-	border-color: transparent #f6f9fc;
+	border-color: transparent #fcffff;
 }
 
 header a, header a:hover, header a:visited, header a:active {

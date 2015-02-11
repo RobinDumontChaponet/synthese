@@ -54,8 +54,9 @@ article, section, fieldset {
 }
 section, fieldset {
 	border-bottom: 1px solid #ececec;
-	margin: 10px 0;
-	padding: 10px 0;
+	margin: 10px 0 15px;
+	padding: 15px 0;
+	position: relative;
 }
 section:first-child, fieldset:first-child {
 	margin-top: 0;
@@ -63,6 +64,17 @@ section:first-child, fieldset:first-child {
 section:last-child {
 	border-bottom: 0;
 }
+section:nth-child(2n+1):before {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: -46px;
+	bottom: 0;
+	left: -46px;
+	z-index: -1;
+	background: rgba(240, 242, 245, 0.6);
+}
+
 
 a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablissements, a.domaines, a.codesAPE, a.postes {
 	font-size: 16px;

@@ -21,8 +21,7 @@
 
 Style :
 	- Styler la page Profil et Profil-editer au niveau des Diplômes
-	- Styler sur la page de profil (faire une séparation entre DiplômesDUT et Diplômes)
-	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créer et "retour étudiant")
+	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créée et "retour étudiant")
 	- Distinguer les catégories "Inscrit", "Non inscrit", "Passés", "A venir" afin qu'ils ressortent plus (demande de prof)
 	- Styler le bouton retour sur diplomeDUT-selectionner
 	- Dans diplome-selectionner mettre le nom de la personne en majuscule
