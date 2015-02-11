@@ -52,7 +52,7 @@ function scaleImageRessource($src, $max_width=0, $max_height=0) {
  */
 function saveScaledImageRessourceToFile($src, $pathToNewImage, $max_width=0, $max_height=0, $type='jpeg', $quality=75) {
 
-	$tmp = scaleImageRessource($src, $max_width, $max_width);
+	$tmp = scaleImageRessource($src, $max_width, $max_height);
 	if($tmp === false) {
 		$tmp = $src;
 		$scalling = false;
@@ -100,12 +100,9 @@ function saveScaledImageRessourceToFile($src, $pathToNewImage, $max_width=0, $ma
 
 function scaledImageRessource2Image($src, $max_width=0, $max_height=0, $type='jpeg', $quality=75) {
 
-	$tmp = scaleImageRessource($src, $max_width, $max_width);
-	if($tmp === false) {
+	$tmp = scaleImageRessource($src, $max_width, $max_height);
+	if($tmp === false)
 		$tmp = $src;
-		$scalling = false;
-	} else
-		$scalling = true;
 
 	ob_start();
 	switch ($type) {
@@ -118,7 +115,7 @@ function scaledImageRessource2Image($src, $max_width=0, $max_height=0, $type='jp
 		case 'png' :
 			imagepng ($tmp);
 		break;
-		default:
+		default :
 			echo '';
 		break;
 	}

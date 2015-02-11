@@ -17,12 +17,12 @@ FileTransfert = function (input, destination, callback) {
 		xhr.onload = function() {
 			if(this.readyState  == 4)
 				if (this.status == 200) {
-					/*var resp = JSON.parse(this.response);
+					console.log('responseText: '+this.responseText);
+					var resp = JSON.parse(this.response);
 
-					t.callback(resp);*/
+					t.callback(resp);
 
 					t.input.parentNode.className='button';
-					console.log('responseText: '+this.responseText);
 				}
 		};
 		xhr.send(fd);

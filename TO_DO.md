@@ -17,9 +17,7 @@
 - dans promotions : afficher par diplômes;
 - lien vers le profil dans la liste de comptes;
 - recherche dans les comptes;
-- dans dB boolean pour ne pas être dans la recherche;
-
-
+- dans dB ajouter un boolean pour ne pas être dans la recherche;
 
 Style :
 	- Styler la page Profil et Profil-editer au niveau des Diplômes
@@ -67,8 +65,7 @@ SI ON A LE TEMPS :
 
 
 
-------------------------------------------------------------------------------------
-
+---
 
 
 - Diplômes : Renseigner si obtenue ou non !

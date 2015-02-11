@@ -184,7 +184,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php }
 ?>
 <h2>Spécialisations</h2>
-		<ul>
+	<ul>
 <?php
 	if($spes != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 		foreach($spes as $spe) {
@@ -212,10 +212,10 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php }?>
 </div>
 <script type="text/javascript">
-new FileTransfert(document.getElementById('profilInput'), 'profil', function (resp) {
-	document.getElementById('profilImg').src=resp.image;
+new FileTransfert(document.getElementById('profilInput'), 'profil/<?=$ancien->getId() ?>', function (resp) {
+	document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
 });
-new FileTransfert(document.getElementById('trombiInput'), 'trombi', function (resp) {
-	document.getElementById('profilImg').src=resp.image;
+new FileTransfert(document.getElementById('trombiInput'), 'trombi/<?=$ancien->getId() ?>', function (resp) {
+	document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
 });
 </script>

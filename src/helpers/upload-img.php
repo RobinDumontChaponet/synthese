@@ -22,7 +22,10 @@ if($_SESSION["syntheseUser"]) {
 		$info['basename']=post_slug($info['basename']);
 
 	$fileType = $_FILES['upload']['type'];
-	$destination = $_REQUEST['destination'];
+
+	preg_match("/[^\/]+/", $_REQUEST['destination'], $matches);
+	$destination = $matches[0];
+	$sub = $matches[count($matches)-1];
 
 	if( !in_array($destination, $possibleDestinations))
 		die('bad path ! ;-)');
@@ -35,19 +38,23 @@ if($_SESSION["syntheseUser"]) {
 
 		$image = scaledImageRessource2Image($tmpImage, THUMB_UPLOAD_MAX_WIDTH, THUMB_UPLOAD_MAX_HEIGHT, IMAGE_EXT, JPEG_QUALITY);
 
+		if($destination=='profil')
+			;
+		elseif($destination=='trombi')
+			;
 
-
-		//if($image) {
+		if($image) {
 			echo json_encode(
 				array(
-					'image' => $image
+					'image' => base64_encode($image),
+					'destination' => $destination
 				)
 			);
-		/*} else
-			echo 'could not save image';*/
+		} else
+			echo 'could not save image';
 
 	} else
-		die('unnacepted extension');
+		die('unaccepted extension');
 
 }
 
