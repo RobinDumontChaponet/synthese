@@ -70,7 +70,13 @@
 				<fieldset>
 					<div>
 						<label for="diplomePostDUT">Diplôme post-DUT</label>
-						<input type="text" id="diplomePostDUT" name="diplomePostDUT" />
+						<select id="diplomePostDut" name="diplomePostDut">
+                            			<option value=""></option>
+                            			<?php
+							foreach($diplomesPostDut as $dpd)
+							echo '<option value="'.$dpd->getId().'">'.$dpd->getLibelle().'</option>';
+						?>
+                        			</select>
 					</div>
 					<div>
 						<label for="etabPostDUT">Etablissement post-DUT</label>
