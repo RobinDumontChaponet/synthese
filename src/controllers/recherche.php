@@ -12,6 +12,10 @@ $spes = SpecialisationDAO::getAll();
 //Pour la liste de types spécialisations
 $typesSpecialisation = TypeSpecialisationDAO::getAll();
 
+//Pour la liste des diplomes post dut
+$diplomesPostDut = DiplomePostDUTDAO::getAll();
+
+
 include(VIEWS_INC.'recherche.php');
 
 ?>
