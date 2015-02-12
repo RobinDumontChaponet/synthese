@@ -17,6 +17,6 @@
 	</form>
 <?php
 } else {?>
-	<p class="warning">Vous ne disposez pas de préférences d'évènements</p>
+	<p class="warning">Vous ne disposez pas de préférences d'évènements.</p>
 <?php }?>
 </div>

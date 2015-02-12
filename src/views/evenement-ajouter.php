@@ -11,7 +11,7 @@
 				<dd class="periode"><input id="date" name="date" type="date"/></dd>
 				<dt><label for="typeEvent">Type d'évènement</label></dt>
 				<dd class="type">
-					<select name="typeEvent" >
+					<select id="typeEvent" name="typeEvent" >
 					<?php foreach($typesEvent as $typeEvent)
 						echo '<option value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';
 					?>
