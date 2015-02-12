@@ -32,8 +32,8 @@ var csvColName = [
 		{key:'prenom', value:'Prénom'},
 		{key:'dateNais', value:'Date de naissance'},
 		{key:'mail', value:'E-mail'},
-		{key:'telMob', value:'Téléphone mobile'},
 		{key:'telFix', value:'Téléphone fixe'},
+		{key:'telMob', value:'Téléphone mobile'},
 		{key:'sexe', value:'Sexe'},
 		{key:'adresse1', value:'Adresse 1'},
 		{key:'adresse2', value:'Adresse 2'},
@@ -70,13 +70,12 @@ var csvColName = [
 		{key:'situationParents', value:'Situation actuelle parents'},
 		{key:'telMobParents', value:'Téléphone mobile parents'},
 		{key:'telFixParents', value:'Téléphone fixe parents'}
-	]}/*,
-	{key:'reponse', value:'Réponse'}*/
+	]}
 ];
 
-csvColName.sort(function(a, b) {
+/*csvColName.sort(function(a, b) {
 	return a.value.localeCompare(b.value);
-});
+});*/
 
 function csvArrayToTable(array) {
 	var headers=Array();

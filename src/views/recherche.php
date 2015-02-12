@@ -104,10 +104,8 @@
 			<tbody>
 			</tbody>
 		</table>
+		<nav class="pagination"></nav>
 	</section>
-
-	<nav class="pagination"></nav>
-
     <section id="actions">
         <form method="POST" action="message-ecrire" id="send_message">
             <input type="submit" value="Envoyer un message" />

@@ -421,3 +421,8 @@ th {
 	position: relative;
 	color: #5c5656;
 }
+
+#content nav {
+	text-align: center;
+	margin: 10px 0 0;
+}

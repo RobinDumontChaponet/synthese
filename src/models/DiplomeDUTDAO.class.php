@@ -88,7 +88,7 @@ class DiplomeDUTDAO {
 		if (get_class($obj) == "DiplomeDUT") {
 			try {
 				$req=SPDO::getInstance()->prepare("INSERT INTO `diplomeDUT`(`idDepartement`, `libelle`, `sigle`) VALUES (?,?,?)");
-				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle()), $obj->getSigle());
+				$req->execute(array($obj->getDepartementIUT()->getId(), $obj->getLibelle(), $obj->getSigle()));
 				$obj->setId(SPDO::getInstance()->LastInsertId());
 				return $obj->getId();
 			} catch(PDOException $e) {

@@ -40,8 +40,8 @@ new FileTransfert(document.getElementById('fileinput'), 'csv', 'data/csv', '', f
 		if(this.readyState  == 4)
 			if (this.status == 200) {
 				console.log('responseTextARRAYCSV: '+this.responseText);
-				//var resp = JSON.parse(utf8_decode(this.response));
-				//document.getElementById('table').appendChild(csvArrayToTable(resp));
+				var resp = JSON.parse(utf8_decode(this.response));
+				document.getElementById('table').appendChild(csvArrayToTable(resp));
 				document.forms[0].style.display='block';
 				setAnimationState(document.forms[0], 'running');
 			}

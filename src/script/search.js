@@ -63,7 +63,7 @@ function affichageResultat() {
 		document.getElementsByClassName('pagination')[0].innerHTML = linksPage;
 		// Si jamais on veux mettre en haut et en bas_
 		//document.getElementsByClassName('pagination')[1].innerHTML = linksPage;
-	} else console.error('Helper retourne code : ' + this.status);
+	} else console.log('Helper retourne code : ' + this.status);
 }
 
 function init_search() {
