@@ -3,7 +3,6 @@
 
 -- SUPPRIMER CE QUI EST FAIT --
 
-- évènement : + nom;
 - retours pages;
 - suppression ou ajout d’un ancien dans event par l’admin;
 - lien vers preferences d’événements dans réglages de comptes;
