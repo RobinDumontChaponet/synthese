@@ -8,7 +8,7 @@
 				<dt><label for="nom">Nom</label></dt>
 				<dd class="evenement"><input id="nom" name="nom" type="text" autofocus/></dd>
 				<dt><label for="date">Date</label></dt>
-				<dd class="evenement"><input id="date" name="date" type="date"/></dd>
+				<dd class="periode"><input id="date" name="date" type="date"/></dd>
 				<dt><label for="typeEvent">Type d'évènement</label></dt>
 				<dd class="type">
 					<select name="typeEvent" >
