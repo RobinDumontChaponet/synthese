@@ -34,7 +34,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
-				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
+				(object)array('href'=>'message-ecrire/1', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
 			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
@@ -66,7 +66,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
-				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
+				(object)array('href'=>'message-ecrire/1', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
 			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
@@ -101,7 +101,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
-				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
+				(object)array('href'=>'message-ecrire/1', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
 			),
 			'groupes, groupe, creerGroupe' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
