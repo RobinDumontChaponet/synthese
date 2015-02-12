@@ -17,4 +17,7 @@
 	.show-help #wrapper a[data-help]:before {
 		background-image: url("images/arrow@2X.png");
 	}
+	input, .button, button, select, textarea, input[readonly]:focus {
+		border-width: .5px;
+	}
 }

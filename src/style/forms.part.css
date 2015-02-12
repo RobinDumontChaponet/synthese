@@ -26,7 +26,7 @@ label:after, dt:after, h4:after {
 input, .button, button, select, textarea, input[readonly]:focus {
 	border: 1px solid rgb(175, 175, 175);
 	outline: 0;
-	border-width: .5px;
+	border-width: 1px;
 	margin: 0 10px 0 0;
 	height: 30px;
 	padding: 0;
