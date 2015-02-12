@@ -62,3 +62,7 @@ p {
 .type-2:before {
 	border-right-color: #a5b7bc;
 }
+
+.date {
+	float: right;
+}

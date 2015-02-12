@@ -5,6 +5,8 @@ if ($_SESSION['user_auth']['write']) {
 
 	function validate ($event) {
 		$valid = array();
+		if (isset($_POST['nom']) && $_POST['nom'] != $event->getDate())
+			$valid['nom'] = true;
 		if (isset($_POST['date']) && $_POST['date'] != $event->getDate())
 			$valid['date'] = true;
 		if (isset($_POST['typeEvent']) && $_POST['typeEvent'] != $event->getTypeEvenement()->getId())
@@ -23,6 +25,10 @@ if ($_SESSION['user_auth']['write']) {
 		$typesEvent = TypeEvenementDAO::getAll();
 		if (!empty($_POST) && $event != NULL) {
 			$valid = validate($event);
+			if ($valid['nom']) {
+				$event->setNom($_POST['nom']);
+				$change = true;
+			}
 			if ($valid['date']) {
 				$event->setDate($_POST['date']);
 				$change = true;

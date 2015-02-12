@@ -9,7 +9,7 @@ if ($_SESSION['user_auth']['write']) {
 		if ($_POST['date'] == '')
 			$_POST['date'] = NULL;
 		$typeEvent = new TypeEvenement($_POST['typeEvent'], NULL);
-		$event = new Evenement(0, $typeEvent, $_POST['date'], $_POST['commentaire']);
+		$event = new Evenement(0, $typeEvent, $_POST['nom'], $_POST['date'], $_POST['commentaire']);
 		$idEvent = EvenementDAO::create($event);
 		$preferences = PrefereDAO::getByIdTypeEvent($_POST['typeEvent']);
 		foreach ($preferences as $preference) {

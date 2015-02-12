@@ -22,7 +22,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 				(object)array('href'=>'csv-import', 'class'=>'aAdd', 'title'=>'Ajouter une promotions', 'inner'=>'Importer')
 			),
-			'evenements, evenement-ajouter' => array(
+			'evenements, evenement-ajouter, evenement-editer, evenement' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements à venir', 'inner'=>'À venir', 'scroll'=>'a_venir'),
@@ -53,7 +53,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
 			),
 			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
-			'evenements, evenement-ajouter' => array(
+			'evenements, evenement-ajouter, evenement-editer, evenement' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
@@ -89,7 +89,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa promotion', 'inner'=>'Ma promotion'),
 				(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Toutes')
 			),
-			'evenements, evenement-ajouter' => array(
+			'evenements, evenement-ajouter, evenement-editer, evenement' => array(
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aEvents', 'title'=>'Voir les évènements', 'inner'=>'Évènements'),
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements inscrits', 'inner'=>'Inscrits', 'scroll'=>'inscrits'),
