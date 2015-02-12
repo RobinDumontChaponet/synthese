@@ -38,9 +38,11 @@ nav.shutter {
 	min-height: 104%;
 	z-index: 1000;
 	border-left: 1px solid #4b72c2;
+	/*
 	-webkit-box-shadow: -2px 0 2px rgba(70, 106, 181, 0.29);
 	-moz-box-shadow: -2px 0 2px rgba(70, 106, 181, 0.29);
 	box-shadow: -2px 0 2px rgba(70, 106, 181, 0.29);
+	*/
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -51,6 +53,19 @@ nav.shutter {
 	-o-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;
 }
+/*nav.shutter:before {
+	content: "";
+	position: absolute;
+	z-index: -1000;
+	top: 10px;
+	bottom: 10px;
+	left: 0;
+	width: 100%;
+	border-radius: 12px / 65px;
+	-webkit-box-shadow: -2px 0 10px rgba(70, 106, 181, .92);
+	-moz-box-shadow: -2px 0 10px rgba(70, 106, 181, .92);
+	box-shadow: -2px 0 10px rgba(70, 106, 181, .92);
+}*/
 
 .shutterAnimate nav.shutter {
 	-webkit-animation: slide ease-in 1;
