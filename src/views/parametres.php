@@ -16,10 +16,14 @@
 			<input type="password" id="newMdp2" name="newMdp2" />
 			<?php if(isset($erreurs['mqConfirm'])){ echo '<b style="color:red;">Confirmation obligatoire</b>'; }?>
 		</fieldset>
+        <?php
+            if($_SESSION['syntheseUser']->getTypeProfil()->getLibelle()!="Admin"){
+        ?>
 		<fieldset>
 			<label for="newsletter">Abonnement à la newsletter</label>
 			<input type="checkbox" name="newsletter" id="newsletter"<?php if($abo) echo " checked";?>>
 		</fieldset>
+        <?php } ?>
 		<input type="submit" value="Enregistrer" name="mod">
     </form>
 </div>
