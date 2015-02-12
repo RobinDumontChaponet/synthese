@@ -7,13 +7,12 @@
 - retours pages;
 - suppression ou ajout d’un ancien dans event par l’admin;
 - lien vers preferences d’événements dans réglages de comptes;
-- notifications mails et inscriptions event;
-- enlever « inscription à la newsletter » de l'admin;
+- notifications inscriptions event;
+- enlever « inscription à la newsletter » de l'admin, dans les réglages de compte;
 - résultat diplôme pas forcément un nombre et pas obligatoire;
 - vérification sur la période dans les diplômes;
 - recherche dans les comptes;
 - promo en liste;
-- dans les résultats de recherche : - "(info)";
 - dans promotions : afficher par diplômes;
 - lien vers le profil dans la liste de comptes;
 - recherche dans les comptes;

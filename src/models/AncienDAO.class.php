@@ -20,8 +20,7 @@ class AncienDAO {
 		$lstAncien=array();
 		try {
 			$req=SPDO::getInstance()->query("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne ORDER BY nomUsage");
-			while($ancien=$req->fetch())
-			{
+			while($ancien=$req->fetch()) {
 				$parents=ParentsDAO::getById($ancien['idParent']);
 				$lstAncien[]=new Ancien($ancien['idPersonne'], $ancien['nomUsage'], $ancien['nomPatronymique'], $ancien['prenom'], $ancien['adresse1'], $ancien['adresse2'], $ancien['codePostal'], $ancien['ville'], $ancien['pays'], $ancien['mobile'], $ancien['telephone'], $ancien['imageProfil'], $ancien['imageTrombi'],$parents,$ancien['sexe'],$ancien['dateNaissance'],$ancien['mail']);
 			}
@@ -41,7 +40,6 @@ class AncienDAO {
 	public static function getById($id) {
 		if (is_numeric($id)) {
 			try {
-
 				$req=SPDO::getInstance()->prepare("SELECT P.idPersonne, A.idPersonne, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idCompte`,`nomUsage`,`nomPatronymique`,`prenom`,sexe,dateNaissance, `mail`,idParent FROM `ancien` A, `personne` P, `compte` C WHERE P.idPersonne=A.idPersonne AND P.idPersonne=C.idPersonne AND A.idPersonne=?");
 				$req->execute(array($id));
 				if($ancien=$req->fetch()){
@@ -61,7 +59,6 @@ class AncienDAO {
 
 		$lst=array();
 		try {
-
 			$req=SPDO::getInstance()->prepare("SELECT DISTINCT idPersonne FROM aEtudie WHERE idPromo=?");
 			$req->execute(array($id));
 			while($res=$req->fetch()) {
@@ -276,7 +273,7 @@ class AncienDAO {
 		}
 		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
-			if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
+			if($spe==null){ $from.=" , `estSpecialise` Spe, `specialisation` Special"; }
 			$args[]=$typeSpe;
 		}
 		if($PostDut!=null) {

@@ -1,5 +1,11 @@
 <?php
 
+include_once(MODELS_INC.'MessageDAO.class.php');
+
+$unreadMessages = MessageDAO::countMessagesNonLus($_SESSION['syntheseUser']->getId());
+if($unreadMessages<=0)
+	$unreadMessages='';
+
 switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 	case 1: // isAdmin_
 		$items = array(
@@ -24,8 +30,8 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
 			'messagerie, message, message-ecrire' => array(
-				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
-				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
 				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
@@ -56,8 +62,8 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenement-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un évènement', 'inner'=>'Ajouter')
 			),
 			'messagerie, message, message-ecrire' => array(
-				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
-				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
 				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
@@ -91,8 +97,8 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'evenements', 'class'=>'aAnchor', 'title'=>'Voir les évènements passés', 'inner'=>'Passés', 'scroll'=>'passes')
 			),
 			'messagerie, message, message-ecrire' => array(
-				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
-				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie'),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
+				(object)array('href'=>'messagerie', 'class'=>'aMessage', 'title'=>'Voir ses messages', 'inner'=>'Messagerie', 'notification'=>$unreadMessages),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages non-lus', 'inner'=>'Non-lus', 'scroll'=>'lus'),
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
 				(object)array('href'=>'message-ecrire', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
@@ -124,17 +130,17 @@ foreach($items as $key => $item)
 			if(isset($_SESSION['referrer']) and in_array($_SESSION['referrer'], $explode))
 				$sameReferrer = true;
 
-			$menu .= '	  <li class="active"><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
+			$menu .= '	  <li class="active"><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'">'.((isset($first['value']->notification) && !empty($first['value']->notification))?'<i class="notification">'.$first['value']->notification.'</i>':'').'<span>'.$first['value']->inner.'</span></a></li>'."\n";
 
 			$menu .= '	  <nav class="shutter"><ul>';
 			array_shift($item);
 			foreach($item as $key => $shutter)
-				$menu .= '	  	<li'.(($_GET['requ']==$shutter->href && !isset($shutter->scroll))?' class="active"':'').'><a href="'.$shutter->href.((isset($shutter->scroll))?'#'.$shutter->scroll:'').'" class="'.$shutter->class.'" title="'.$shutter->title.'"'.((isset($shutter->scroll) && $_GET['requ']==$shutter->href)?' data-scroll':'').'><span>'.$shutter->inner.'</span></a></li>'."\n";
+				$menu .= '	  	<li'.(($_GET['requ']==$shutter->href && !isset($shutter->scroll))?' class="active"':'').'><a href="'.$shutter->href.((isset($shutter->scroll))?'#'.$shutter->scroll:'').'" class="'.$shutter->class.'" title="'.$shutter->title.'"'.((isset($shutter->scroll) && $_GET['requ']==$shutter->href)?' data-scroll':'').'>'.((isset($shutter->notification) && !empty($shutter->notification))?'<i class="notification">'.$shutter->notification.'</i>':'').'<span>'.$shutter->inner.'</span></a></li>'."\n";
 			$menu .= '</ul></nav>';
 		} else
-			$menu .= '	  <li'.(($_GET['requ']==$first['value']->href)?' class="active"':'').'><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'"><span>'.$first['value']->inner.'</span></a></li>'."\n";
+			$menu .= '	  <li'.(($_GET['requ']==$first['value']->href)?' class="active"':'').'><a href="'.$first['value']->href.'" class="'.$first['value']->class.'" title="'.$first['value']->title.'">'.((isset($first['value']->notification) && !empty($first['value']->notification))?'<i class="notification">'.$first['value']->notification.'</i>':'').'<span>'.$first['value']->inner.'</span></a></li>'."\n";
 	} else
-		$menu .= '	  <li'.(($_GET['requ']==$item->href)?' class="active"':'').'><a href="'.$item->href.'" class="'.$item->class.'" title="'.$item->title.'"><span>'.$item->inner.'</span></a></li>'."\n";
+		$menu .= '	  <li'.(($_GET['requ']==$item->href)?' class="active"':'').'><a href="'.$item->href.'" class="'.$item->class.'" title="'.$item->title.'">'.((isset($item->notification) && !empty($item->notification))?'<i class="notification">'.$item->notification.'</i>':'').'<span>'.$item->inner.'</span></a></li>'."\n";
 
 ?>
 	<ul class="<?= (($shutterOn)?' shutterOn':'').((!$sameReferrer)?' shutterAnimate':'');?>">

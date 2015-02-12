@@ -26,7 +26,6 @@ class MessageDAO {
 		} catch (PDOException $e) {
 			die('error getById message '.$e->getMessage().'<br>');
 		}
-
 	}
 
 	public static function envoyer($date, $ancien, $expediteur, $objet, $message) {
@@ -87,15 +86,30 @@ class MessageDAO {
 		}
 	}
 
-
 	public static function setMessageLu($message) {
-		try{
+		try {
 			$req = SPDO::getInstance()->prepare('update messages set lu = 1 where id_message = ?');
 			$req->execute(array($message->getId()));
-		}catch(PDOException $e) {
+		} catch(PDOException $e) {
 			die('Impossible de declarer le message en tant que lu '.$e->getMessage().'<br>');
 		}
+	}
 
+	public static function countMessagesNonLus($id) {
+		try {
+			$result = 0;
+
+			$query = SPDO::getInstance()->prepare('select COUNT(*) AS nb from messages where lu = 0 and id_ancien_destinataire = ?');
+			$query->execute(array($id));
+
+			if ($row = $query->fetch()) {
+				$result=$row['nb'];
+			}
+
+			return $result;
+		} catch(PDOException $e) {
+			die('Erreur count messages non lus : '.$e->getMessage().'<br />');
+		}
 	}
 
 }
