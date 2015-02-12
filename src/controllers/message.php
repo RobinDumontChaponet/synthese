@@ -10,7 +10,7 @@ if (($message != null) && ($message->getAnciens()->getId() == $_SESSION['synthes
 
     //On prepare les infos
     $date = $message->getDateMessage();
-    $expediteur = $message->getExpediteur()->getNom().' '.$message->getExpediteur()->getPrenom();
+    $expediteur = $message->getExpediteur()->getNomPatronymique().' '.$message->getExpediteur()->getPrenom();
     $objet = $message->getObjet();
     $corps = $message->getMessage();
 
@@ -18,5 +18,6 @@ if (($message != null) && ($message->getAnciens()->getId() == $_SESSION['synthes
 } else {
     require_once(CONTROLLERS_INC."messagerie.php");
 }
+
 
 ?>
