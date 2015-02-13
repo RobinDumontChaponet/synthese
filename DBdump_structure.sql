@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 195.83.142.10:3306
--- Généré le : Ven 02 Janvier 2015 à 01:44
+-- Généré le : Ven 13 Février 2015 à 00:15
 -- Version du serveur: 5.5.40
 -- Version de PHP: 5.3.10-1ubuntu3.15
 
@@ -104,6 +104,18 @@ CREATE TABLE IF NOT EXISTS `aParticipe` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `appartientGroupe`
+--
+
+CREATE TABLE IF NOT EXISTS `appartientGroupe` (
+  `idGroupe` int(11) NOT NULL,
+  `idPersonne` int(11) NOT NULL,
+  PRIMARY KEY (`idGroupe`,`idPersonne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `codeAPE`
 --
 
@@ -112,6 +124,21 @@ CREATE TABLE IF NOT EXISTS `codeAPE` (
   `libelle` varchar(150) NOT NULL DEFAULT 'Aucun libelle',
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaires`
+--
+
+CREATE TABLE IF NOT EXISTS `commentaires` (
+  `idCom` int(11) NOT NULL AUTO_INCREMENT,
+  `idPersonne` int(11) NOT NULL,
+  `idPost` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `contenu` text NOT NULL,
+  PRIMARY KEY (`idCom`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -127,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `compte` (
   `mdp` varchar(60) NOT NULL,
   PRIMARY KEY (`idCompte`),
   KEY `idPersonne` (`idPersonne`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1090 ;
 
 --
 -- RELATIONS POUR LA TABLE `compte`:
@@ -148,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `departementIUT` (
   `nom` varchar(50) NOT NULL,
   `sigle` varchar(10) NOT NULL,
   PRIMARY KEY (`idDepartement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -160,8 +187,9 @@ CREATE TABLE IF NOT EXISTS `diplomeDUT` (
   `idDiplomeDUT` int(50) NOT NULL AUTO_INCREMENT,
   `idDepartement` int(50) NOT NULL,
   `libelle` varchar(50) NOT NULL,
+  `sigle` varchar(10) NOT NULL DEFAULT '',
   PRIMARY KEY (`idDiplomeDUT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- RELATIONS POUR LA TABLE `diplomeDUT`:
@@ -180,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `diplomePostDUT` (
   `idDomaine` int(50) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`idDiplomePost`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- RELATIONS POUR LA TABLE `diplomePostDUT`:
@@ -224,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `domaine` (
   `libelle` varchar(50) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`idDomaine`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -256,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
   `pays` varchar(50) NOT NULL,
   `telephone` varchar(10) NOT NULL,
   PRIMARY KEY (`idEntreprise`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- RELATIONS POUR LA TABLE `entreprise`:
@@ -302,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `etablissement` (
   `fax` varchar(20) DEFAULT NULL,
   `web` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idEtablissement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -313,15 +341,57 @@ CREATE TABLE IF NOT EXISTS `etablissement` (
 CREATE TABLE IF NOT EXISTS `evenement` (
   `idEvenement` int(50) NOT NULL AUTO_INCREMENT,
   `idTypeEvenement` int(50) NOT NULL,
+  `nom` varchar(30) NOT NULL,
   `commentaire` text,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`idEvenement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- RELATIONS POUR LA TABLE `evenement`:
 --   `idTypeEvenement`
 --       `typeEvenement` -> `idTypeEvenement`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `groupes`
+--
+
+CREATE TABLE IF NOT EXISTS `groupes` (
+  `idGroupe` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(15) NOT NULL,
+  `idCreateur` int(11) NOT NULL,
+  `type` varchar(15) NOT NULL,
+  PRIMARY KEY (`idGroupe`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id_message` int(11) NOT NULL AUTO_INCREMENT,
+  `date_message` varchar(20) NOT NULL,
+  `id_ancien_destinataire` int(11) NOT NULL,
+  `id_ancien_expediteur` int(11) NOT NULL,
+  `objet` varchar(200) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `lu` int(11) NOT NULL,
+  PRIMARY KEY (`id_message`),
+  KEY `id_ancien_destinataire` (`id_ancien_destinataire`),
+  KEY `id_ancien_expediteur` (`id_ancien_expediteur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+
+--
+-- RELATIONS POUR LA TABLE `messages`:
+--   `id_ancien_destinataire`
+--       `personne` -> `idPersonne`
+--   `id_ancien_expediteur`
+--       `personne` -> `idPersonne`
 --
 
 -- --------------------------------------------------------
@@ -351,7 +421,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `idPage` int(50) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`idPage`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=79 ;
 
 -- --------------------------------------------------------
 
@@ -366,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `parents` (
   `codePostale` varchar(5) DEFAULT NULL,
   `ville` varchar(20) DEFAULT NULL,
   `pays` varchar(20) DEFAULT NULL,
-  `mobile` varchar(10) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
   `telephone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idParent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -384,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `prenom` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   PRIMARY KEY (`idPersonne`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1102 ;
 
 -- --------------------------------------------------------
 
@@ -424,7 +494,22 @@ CREATE TABLE IF NOT EXISTS `poste` (
   `idPoste` int(50) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`idPoste`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `posts`
+--
+
+CREATE TABLE IF NOT EXISTS `posts` (
+  `idPost` int(11) NOT NULL AUTO_INCREMENT,
+  `idPersonne` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `contenu` text NOT NULL,
+  `approuve` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`idPost`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 -- --------------------------------------------------------
 
@@ -457,7 +542,19 @@ CREATE TABLE IF NOT EXISTS `promotion` (
   `idPromo` int(50) NOT NULL AUTO_INCREMENT,
   `annee` year(4) NOT NULL,
   PRIMARY KEY (`idPromo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publieGroupe`
+--
+
+CREATE TABLE IF NOT EXISTS `publieGroupe` (
+  `idGroupe` int(11) NOT NULL,
+  `idPost` int(11) NOT NULL,
+  PRIMARY KEY (`idGroupe`,`idPost`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -471,7 +568,7 @@ CREATE TABLE IF NOT EXISTS `specialisation` (
   `idTypeSpe` int(5) NOT NULL,
   PRIMARY KEY (`idSpe`),
   KEY `idTypeSpe` (`idTypeSpe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- RELATIONS POUR LA TABLE `specialisation`:
@@ -516,7 +613,7 @@ CREATE TABLE IF NOT EXISTS `typeEvenement` (
   `idTypeEvenement` int(50) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`idTypeEvenement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -540,7 +637,7 @@ CREATE TABLE IF NOT EXISTS `typeSpecialisation` (
   `idTypeSpe` int(50) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(20) NOT NULL,
   PRIMARY KEY (`idTypeSpe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contraintes pour les tables exportées
@@ -588,6 +685,13 @@ ALTER TABLE `disposeDe`
 ALTER TABLE `estSpecialise`
   ADD CONSTRAINT `estSpecialise_ibfk_2` FOREIGN KEY (`idSpe`) REFERENCES `specialisation` (`idSpe`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `estSpecialise_ibfk_3` FOREIGN KEY (`idPersonne`) REFERENCES `ancien` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_3` FOREIGN KEY (`id_ancien_destinataire`) REFERENCES `personne` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messages_ibfk_4` FOREIGN KEY (`id_ancien_expediteur`) REFERENCES `personne` (`idPersonne`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `possede`
