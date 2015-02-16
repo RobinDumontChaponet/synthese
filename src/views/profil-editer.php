@@ -80,7 +80,7 @@
 					<select name="country" id="inputCountry">
 						<option value="<?php echo $ancien->getPays(); ?>" selected><?php echo $ancien->getPays(); ?></option>
 						<?php
-						foreach($lstPays as $pays){
+						foreach($listPays as $pays){
 							?>
 							<option value="<?= $pays; ?>" ><?= $pays; ?></option>
 							<?php
@@ -104,20 +104,20 @@
 			<ul>
 				<li>
 					<dl>
-						<dt id="adresse1"><label for="inputAddress1P">Adresse 1</label></dt>
-						<dd><input id="inputAddress1P" name="address1P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse1();?>" /></dd>
-						<dt id="adresse2"><label for="inputAddress2P">Adresse 2</label></dt>
-						<dd><input id="inputAddress2P" name="address2P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse2();?>" /></dd>
-						<dt id="codePostal"><label for="">Code postal</label></dt>
-						<dd><input id="inputPostalCodeP" name="postalCodeP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getCodePostal();?> "/></dd>
-						<dt id="ville"><label for="inputCityP">Ville</label></dt>
-						<dd><input id="inputCityP" name="cityP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getVille();?>" /></dd>
-						<dt id="pays"><label for="inputCuntryP">Pays</label></dt>
+						<dt id="adresse1"><label for="inputAddress1Parent">Adresse 1</label></dt>
+						<dd><input id="inputAddress1Parent" name="address1Parent" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse1();?>" /></dd>
+						<dt id="adresse2"><label for="inputAddress2Parent">Adresse 2</label></dt>
+						<dd><input id="inputAddress2Parent" name="address2Parent" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse2();?>" /></dd>
+						<dt id="codePostal"><label for="inputPostalCodeParent">Code postal</label></dt>
+						<dd><input id="inputPostalCodeParent" name="postalCodeParent" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getCodePostal();?> "/></dd>
+						<dt id="ville"><label for="inputCityParent">Ville</label></dt>
+						<dd><input id="inputCityParent" name="cityParent" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getVille();?>" /></dd>
+						<dt id="pays"><label for="inputCountryParent">Pays</label></dt>
 						<dd>
-							<select name="countryP" id="inputCountryP">
+							<select name="countryParent" id="inputCountryParent">
 								<option value="<?php echo $ancien->getParents()->getPays(); ?>" selected><?php echo $ancien->getParents()->getPays(); ?></option>
 							<?php
-							foreach($lstPays as $pays){
+							foreach($listPays as $pays){
 							?>
 								<option value="<?= $pays; ?>" ><?= $pays; ?></option>
 							<?php
@@ -125,10 +125,10 @@
 							?>
 							</select>
 						</dd>
-						<dt id="telephoneFixe"><label for="inputPhoneNumberP">Telephone</label></dt>
-						<dd><input id="inputPhoneNumberP" name="phoneNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getTelephone();?>" /></dd>
-						<dt id="telephoneMobile"><label for="inputMobileNumberP">Mobile</label></dt>
-						<dd><input id="inputMobileNumberP" name="mobileNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getMobile();?>" /></dd>
+						<dt id="telephoneFixe"><label for="inputPhoneNumberParent">Telephone</label></dt>
+						<dd><input id="inputPhoneNumberParent" name="phoneNumberParent" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getTelephone();?>" /></dd>
+						<dt id="telephoneMobile"><label for="inputMobileNumberParent">Mobile</label></dt>
+						<dd><input id="inputMobileNumberParent" name="mobileNumberParent" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getMobile();?>" /></dd>
 					</dl>
 				</li>
 			</ul>

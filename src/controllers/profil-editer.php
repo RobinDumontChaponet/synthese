@@ -1,7 +1,7 @@
 <?php
 include_once('validate.transit.inc.php');
 require_once('lstPays.php');
-$lstPays=getListePaysMonde();
+$listPays=getListePaysMonde();
 $valid = NULL;
 $change = false;
 
@@ -56,35 +56,35 @@ function validate ($ancien) {
 			$valid['mobileNumber'] = false;
 	}
 
-    if (isset($_POST['address1P']) && trim($_POST['address1P']) != $ancien->getParents()->getAdresse2())
-		$valid['address1P'] = true;
-	if (isset($_POST['address2P']) && trim($_POST['address2P']) != $ancien->getParents()->getAdresse2())
-		$valid['address2P'] = true;
-	if (isset($_POST['postalCodeP']) && trim($_POST['postalCodeP']) != $ancien->getParents()->getCodePostal())
-		$valid['postalCodeP'] = true;
-	if (isset($_POST['cityP']) && trim($_POST['cityP']) != $ancien->getParents()->getVille()) {
-		if (!contains_numeric($_POST['cityP']))	//	Si il n'y a pas de chiffres
-			$valid['cityP'] = true;
+    if (isset($_POST['address1Parent']) && trim($_POST['address1Parent']) != $ancien->getParents()->getAdresse2())
+		$valid['address1Parent'] = true;
+	if (isset($_POST['address2Parent']) && trim($_POST['address2Parent']) != $ancien->getParents()->getAdresse2())
+		$valid['address2Parent'] = true;
+	if (isset($_POST['postalCodeParent']) && trim($_POST['postalCodeParent']) != $ancien->getParents()->getCodePostal())
+		$valid['postalCodeParent'] = true;
+	if (isset($_POST['cityP']) && trim($_POST['cityParent']) != $ancien->getParents()->getVille()) {
+		if (!contains_numeric($_POST['cityParent']))	//	Si il n'y a pas de chiffres
+			$valid['cityParent'] = true;
 		else
-			$valid['cityP'] = false;
+			$valid['cityParent'] = false;
 	}
-	if (isset($_POST['countryP']) && trim($_POST['countryP']) != $ancien->getParents()->getPays()) {
-		if (!contains_numeric($_POST['countryP']))	//	Si il n'y a pas de chiffres
-			$valid['countryP'] = true;
+	if (isset($_POST['countryParent']) && trim($_POST['countryParent']) != $ancien->getParents()->getPays()) {
+		if (!contains_numeric($_POST['countryParent']))	//	Si il n'y a pas de chiffres
+			$valid['countryParent'] = true;
         else
-			$valid['countryP'] = false;
+			$valid['countryParent'] = false;
 	}
-	if (isset($_POST['phoneNumberP']) && trim($_POST['phoneNumberP']) != $ancien->getParents()->getTelephone()) {
-		if (is_valid_phoneNumber($_POST['phoneNumberP']) || $_POST['phoneNumberP'] == '')
-			$valid['phoneNumberP'] = true;
+	if (isset($_POST['phoneNumberParent']) && trim($_POST['phoneNumberP']) != $ancien->getParents()->getTelephone()) {
+		if (is_valid_phoneNumber($_POST['phoneNumberParent']) || $_POST['phoneNumberParent'] == '')
+			$valid['phoneNumberParent'] = true;
 		else
-			$valid['phoneNumberP'] = false;
+			$valid['phoneNumberParent'] = false;
 	}
-	if (isset($_POST['mobileNumberP']) && trim($_POST['mobileNumberP']) != $ancien->getParents()->getMobile()) {
-		if (is_valid_phoneNumber($_POST['mobileNumberP']) || $_POST['mobileNumberP'] == '')
-			$valid['mobileNumberP'] = true;
+	if (isset($_POST['mobileNumberParent']) && trim($_POST['mobileNumberP']) != $ancien->getParents()->getMobile()) {
+		if (is_valid_phoneNumber($_POST['mobileNumberParent']) || $_POST['mobileNumberParent'] == '')
+			$valid['mobileNumberParent'] = true;
 		else
-			$valid['mobileNumberP'] = false;
+			$valid['mobileNumberParent'] = false;
 	}
 
 	if (isset($_POST['mailAddress']) && trim($_POST['mailAddress']) != $ancien->getMail()) {

@@ -1,8 +1,11 @@
 <?php
 if ($_SESSION['user_auth']['write']) {
 	include_once('validate.transit.inc.php');
-	if (isset($_GET['id']))
+	if (isset($_GET['id'])) {
 		$etablissement = EtablissementDAO::getById($_GET['id']);
+		include_once('lstPays.php');
+		$listPays=getListePaysMonde();
+	}
 
 	function validate ($etablissement) {
 		$valid = array();
@@ -78,7 +81,7 @@ if ($_SESSION['user_auth']['write']) {
 			$etablissement->setWeb($_POST['wb']);
 			$change = true;
 		}
-		
+
 		if ($change) {
 			EtablissementDAO::update($etablissement);
 			header('Location: '.SELF.'etablissements');

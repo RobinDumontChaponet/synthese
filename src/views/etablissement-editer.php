@@ -15,7 +15,18 @@
 				<dt><label for="city">Ville</label></dt>
 				<dd id="ville"><input id="city" name="city" type="text" placeholder="Pas de ville..." value="<?php echo $etablissement->getVille(); ?>"/></dd>
 				<dt><label for="country">Pays</label>
-				<dd id="pays"><input id="country" name="country" type="text" placeholder="Pas de pays..." value="<?php echo $etablissement->getPays(); ?>"/></li>
+				<dd id="pays">
+					<select name="country" id="country">
+						<option value="<?php echo $etablissement->getPays(); ?>" selected><?php echo $etablissement->getPays(); ?></option>
+						<?php
+						foreach($listPays as $pays) {
+							?>
+							<option value="<?= $pays; ?>"><?= $pays; ?></option>
+							<?php
+						}
+						?>
+					</select>
+				</dd>
 				<dt><label for="fax">Fax</label></dt>
 				<dd id="fax"><input id="fax" name="fax" type="text" placeholder="Pas de fax..." value="<?php echo $etablissement->getFax(); ?>"</dd>
 				<dt><label for="web">Site web</label></dt>

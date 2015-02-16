@@ -21,7 +21,6 @@ _(SUPPRIMER CE QUI EST FAIT)_
 
 ## Victor :
 	- Faire le système de retour de page (Je comprendrai ...) (ah bah je comprends plus)
-	- Dans etablissement-editer, remplacer le input text du pays par un select.
 
 ## Profil :
 	- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
