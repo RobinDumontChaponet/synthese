@@ -5,6 +5,8 @@ _(SUPPRIMER CE QUI EST FAIT)_
 - apprendre à indenter (**logiquement**) son code;
 - apprendre à utiliser les **bonnes** balises où il faut;
 
+- renseigner le site www d’un établissement ne fonctionne pas (n’enregistre pas).
+
 - retours pages;
 - suppression ou ajout d’un ancien dans event par l’admin;
 - lien vers preferences d’événements dans réglages de comptes;
