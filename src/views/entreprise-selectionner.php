@@ -44,8 +44,9 @@
 					<dd class="periode"><input id="periode1" name="periode1" maxlength="10" type="date" placeholder="jj/mm/aaaa"/> <label for="periode2">à</label> <input id="periode2" name="periode2" maxlength="10" type="date" placeholder="jj/mm/aaaa"/></dd>
 				</dl>
 			</article>
+			<a class="getback" href="profil/<?php echo $_GET['id']?>#entreprises">Retour au profil</a>
 			<input type="submit" value="Ajouter l'entreprise à l'étudiant" />
-			<a href="profil/<?php echo $_GET['id']?>#entreprises">Retour profil</a>
+
 		</form>
 		<?php } else if ($_GET['id'] == NULL) {
 			echo '<p class="warning">Aucun id étudiant n\'a été renseigné</p>';

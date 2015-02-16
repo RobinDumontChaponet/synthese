@@ -66,7 +66,7 @@
 					echo '<span>'.(($ancien->getSexe() == 'm')?'Homme':(($ancien->getSexe() == 'f')?'Femme':'Sexe')).'</span>';
 				?></dd>
 				<dt id="dateNaissance"><label for="inputBirthday">Date de naissance</label></dt>
-				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="date" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
+				<dd><?php echo ($_SESSION['user_auth']['write'])?'<input id="inputBirthday" name="birthday" type="date" maxlength="10" value="'.$ancien->getDateNaissance().'"/>':'<span>'.$ancien->getDateNaissance().'</span>';?></dd>
 				<dt id="adresse1"><label for="inputAddress1">Adresse 1</label></dt>
 				<dd><input id="inputAddress1" name="address1" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getAdresse1();?>"/></dd>
 				<dt id="adresse2"><label for="inputAddress2">Adresse 2</label></dt>
@@ -97,48 +97,45 @@
 			</dl>
 		</section>
 
-		<?php
-		if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
-			?>
-			<section id="info">
-
-				<h2>Parents</h2>
-				<ul>
-					<li>
-						<dl>
-							<dt id="adresse1"><label for="inputAddress1P">Adresse 1</label></dt>
-							<dd><input id="inputAddress1P" name="address1P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse1();?>" /></dd>
-							<dt id="adresse2"><label for="inputAddress2P">Adresse 2</label></dt>
-							<dd><input id="inputAddress2P" name="address2P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse2();?>" /></dd>
-							<dt id="codePostal"><label for="">Code postal</label></dt>
-							<dd><input id="inputPostalCodeP" name="postalCodeP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getCodePostal();?> "/></dd>
-							<dt id="ville"><label for="inputCityP">Ville</label></dt>
-							<dd><input id="inputCityP" name="cityP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getVille();?>" /></dd>
-							<dt id="pays"><label for="inputCuntryP">Pays</label></dt>
-							<dd>
-								<select name="countryP" id="inputCountryP">
-									<option value="<?php echo $ancien->getParents()->getPays(); ?>" selected><?php echo $ancien->getParents()->getPays(); ?></option>
-									<?php
-									foreach($lstPays as $pays){
-										?>
-										<option value="<?= $pays; ?>" ><?= $pays; ?></option>
-										<?php
-									}
-									?>
-								</select>
-							</dd>
-							<dt id="telephoneFixe"><label for="inputPhoneNumberP">Telephone</label></dt>
-							<dd><input id="inputPhoneNumberP" name="phoneNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getTelephone();?>" /></dd>
-							<dt id="telephoneMobile"><label for="inputMobileNumberP">Mobile</label></dt>
-							<dd><input id="inputMobileNumberP" name="mobileNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getMobile();?>" /></dd>
-						</dl>
-					</li>
-				</ul>
-			</section>
+		<?php if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
+		?>
+		<section id="info">
+			<h2>Parents</h2>
+			<ul>
+				<li>
+					<dl>
+						<dt id="adresse1"><label for="inputAddress1P">Adresse 1</label></dt>
+						<dd><input id="inputAddress1P" name="address1P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse1();?>" /></dd>
+						<dt id="adresse2"><label for="inputAddress2P">Adresse 2</label></dt>
+						<dd><input id="inputAddress2P" name="address2P" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getAdresse2();?>" /></dd>
+						<dt id="codePostal"><label for="">Code postal</label></dt>
+						<dd><input id="inputPostalCodeP" name="postalCodeP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getCodePostal();?> "/></dd>
+						<dt id="ville"><label for="inputCityP">Ville</label></dt>
+						<dd><input id="inputCityP" name="cityP" type="text" placeholder="Pas d'adresse" value="<?php echo $ancien->getParents()->getVille();?>" /></dd>
+						<dt id="pays"><label for="inputCuntryP">Pays</label></dt>
+						<dd>
+							<select name="countryP" id="inputCountryP">
+								<option value="<?php echo $ancien->getParents()->getPays(); ?>" selected><?php echo $ancien->getParents()->getPays(); ?></option>
+							<?php
+							foreach($lstPays as $pays){
+							?>
+								<option value="<?= $pays; ?>" ><?= $pays; ?></option>
+							<?php
+							}
+							?>
+							</select>
+						</dd>
+						<dt id="telephoneFixe"><label for="inputPhoneNumberP">Telephone</label></dt>
+						<dd><input id="inputPhoneNumberP" name="phoneNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getTelephone();?>" /></dd>
+						<dt id="telephoneMobile"><label for="inputMobileNumberP">Mobile</label></dt>
+						<dd><input id="inputMobileNumberP" name="mobileNumberP" type="text" placeholder="Pas de numéro" value="<?php echo $ancien->getParents()->getMobile();?>" /></dd>
+					</dl>
+				</li>
+			</ul>
+		</section>
 			<?php
 		}
 		?>
-
 		<section id="diplomes">
 			<h2>Diplômes</h2>
 			<ul>
@@ -156,15 +153,16 @@
 							</dl>
 						</li>
 						<?php 	}
-					} else {
+					} else
 						echo '<p class="sad">Pas de diplôme(s) DUT renseigné(s)</p>';
-					}
 					if($_SESSION['user_auth']['write']) { ?>
 					<li>
 						<a class="add" href="diplomeDUT-selectionner/<?php echo $ancien->getId();?>">Ajouter un nouveau diplôme DUT</a>
 					</li>
 					<?php } ?>
 				</ul>
+		</section>
+		<section id="diplomesPostDUT">
 				<h2>Diplômes post-DUT</h2>
 				<ul>
 					<?php
@@ -211,6 +209,8 @@
 					<a class="add" href="entreprise-selectionner/<?php echo $ancien->getId(); ?>" target="_blank">Ajouter une nouvelle entreprise</a>
 				</li>
 			</ul>
+		</section>
+		<section id="spetialisation">
 			<h2>Spécialisations</h2>
 			<ul>
 				<?php
@@ -232,8 +232,8 @@
 	<p class="sad">Aucune spécialisation.</p>
 	<?php }
 	?>
-</section>
-<input type="submit" value="Enregistrer les modifications" />
+	</section>
+	<input type="submit" value="Enregistrer les modifications" />
 </form>
 <?php } else {?>
 <p class="warning">Vous ne pouvez pas modifier ce profil</p>

@@ -62,43 +62,37 @@ if (isset($ancien) && $ancien != NULL) {?>
 
 		</dl>
 	</section>
-
-
-    <?php
-        if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
+    <?php if($ancien->getParents()!=NULL && ($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getTypeProfil()->getId()==2)){
     ?>
-        <section id="parents"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuParents"';?>>
-            <?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
-                echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#parents" title="Éditer le profil...">Éditer...</a>';
-            ?>
-
-            <h2>Parents</h2>
-            <ul>
-                <li>
-                    <dl>
-                        <dt id="adresse1">Adresse 1</dt>
-                        <dd><?php echo $ancien->getParents()->getAdresse1();?></dd>
-                        <dt id="adresse2">Adresse 2</dt>
-                        <dd><?php echo $ancien->getParents()->getAdresse2();?></dd>
-                        <dt id="codePostal">Code postal</dt>
-                        <dd><?php echo $ancien->getParents()->getCodePostal();?></dd>
-                        <dt id="ville">Ville</dt>
-                        <dd><?php echo $ancien->getParents()->getVille();?></dd>
-                        <dt id="pays">Pays</dt>
-                        <dd><?php echo $ancien->getParents()->getPays(); ?></dd>
-                        <dt id="telephoneFixe">Telephone</dt>
-                        <dd><a href="tel:<?php echo $ancien->getParents()->getTelephone();?>"><?php echo $ancien->getParents()->getTelephone();?></a></dd>
-                        <dt id="telephoneMobile">Mobile</dt>
-                        <dd><a href="tel:<?php echo $ancien->getParents()->getMobile();?>"><?php echo $ancien->getParents()->getMobile();?></a></dd>
-                   </dl>
-                </li>
-            </ul>
-        </section>
+    <section id="parents"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuParents"';?>>
+		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+				echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#parents" title="Éditer le profil...">Éditer...</a>';
+		?>
+			<h2>Parents</h2>
+			<ul>
+				<li>
+					<dl>
+						<dt id="adresse1">Adresse 1</dt>
+						<dd><?php echo $ancien->getParents()->getAdresse1();?></dd>
+						<dt id="adresse2">Adresse 2</dt>
+						<dd><?php echo $ancien->getParents()->getAdresse2();?></dd>
+						<dt id="codePostal">Code postal</dt>
+						<dd><?php echo $ancien->getParents()->getCodePostal();?></dd>
+						<dt id="ville">Ville</dt>
+						<dd><?php echo $ancien->getParents()->getVille();?></dd>
+						<dt id="pays">Pays</dt>
+						<dd><?php echo $ancien->getParents()->getPays(); ?></dd>
+						<dt id="telephoneFixe">Telephone</dt>
+						<dd><a href="tel:<?php echo $ancien->getParents()->getTelephone();?>"><?php echo $ancien->getParents()->getTelephone();?></a></dd>
+						<dt id="telephoneMobile">Mobile</dt>
+						<dd><a href="tel:<?php echo $ancien->getParents()->getMobile();?>"><?php echo $ancien->getParents()->getMobile();?></a></dd>
+					</dl>
+				</li>
+			</ul>
+	</section>
     <?php
-        }
+	}
     ?>
-
-
 	<section id="diplomes"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuDiplomes"';?>>
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomes" title="Éditer le profil...">Éditer...</a>';
@@ -133,14 +127,13 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($diplomesPost as $diplomePost) {
 ?>
 			<li>
+				<span class="date">de <?php echo substr($diplomePost->getDateDebut(), 0, 4);?> à <?php echo substr($diplomePost->getDateFin(), 0, 4);?></span>
 				<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 				<dl>
 					<dt class="etablissement">Établissement</dt>
 					<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
 					<dt class="resultat">Résultat</dt>
 					<dd><?php echo $diplomePost->getResultat();?></dd>
-					<dt class="periode">Période</dt>
-					<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
 				</dl>
 			</li>
 <?php
@@ -167,12 +160,11 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($entreprises as $entreprise) {
 ?>
 			<li>
+				<span class="date">de <?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></span>
 				<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 				<dl>
 					<dt class="poste">Poste</dt>
 					<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
-					<dt class="periode">Période</dt>
-					<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
 				</dl>
 			</li>
 <?php	}

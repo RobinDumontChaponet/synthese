@@ -1,7 +1,9 @@
-(On fait le tri de ce qu'il y a en dessous au fur et à mesure)
+# TODO
 
+_(SUPPRIMER CE QUI EST FAIT)_
 
--- SUPPRIMER CE QUI EST FAIT --
+- apprendre à indenter (**logiquement**) son code;
+- apprendre à utiliser les **bonnes** balises où il faut;
 
 - retours pages;
 - suppression ou ajout d’un ancien dans event par l’admin;
@@ -17,30 +19,22 @@
 - recherche dans les comptes;
 - dans dB ajouter un boolean pour ne pas être dans la recherche;
 
-Style :
-	- Styler la page Profil et Profil-editer au niveau des Diplômes
-	- Styler la page diplomeDUT-selectionner (niveau du nom à mettre en maj, ainsi que le <p> qui indique que la promo sera créée et "retour étudiant")
-	- Distinguer les catégories "Inscrit", "Non inscrit", "Passés", "A venir" afin qu'ils ressortent plus (demande de prof)
-	- Styler le bouton retour sur diplomeDUT-selectionner
-	- Dans diplome-selectionner mettre le nom de la personne en majuscule
-	- Styler dans Profil-editer l'input de type date pour Birthday
-
-Victor :
+## Victor :
 	- Faire le système de retour de page (Je comprendrai ...) (ah bah je comprends plus)
 	- Dans etablissement-editer, remplacer le input text du pays par un select.
 
-Profil :
+## Profil :
 	- Ajouter un lien "Envoyer de nouveaux identifiants" sur un profil quand user est admin.
 
 diplomeDUT-selectionner :
 	- Créer la promotion si elle n'existe pas
 
-Recherche :
+## Recherche :
 	- Pouvoir sélectionner les anciens résultant d'une recherche et appliquer les actions suivantes sur eux (professeur et administrateur seulement !) :
 		- Export des adresses mail
 		- Envoi d'un mail
 
-Autres :
+## Autres :
 	- Pour "Ma promotion", il va falloir récupérer la dernière promotion de la personne
 	- Vérifier les noms des pages
 	- Faire une pagination dans comptes
@@ -48,7 +42,7 @@ Autres :
 
 
 
-SI ON A LE TEMPS :
+## SI ON A LE TEMPS :
 	- Ajouter des liens du genre de "Chercher les anciens avec ce diplôme" sur la page d'un diplôme (par exemple) qui ouvre la recherche avec déjà le diplôme renseigné !
 
 
@@ -81,7 +75,7 @@ SI ON A LE TEMPS :
 
 - Ajouter des bulles d'aides (je vous explique quand vous voulez)
 
-Profil :
+## Profil :
 
 - Faire la suppression d'un diplôme dans profil (ça supprime le lien Possede)
 - Faire l'ajout d'un diplome (ajoute un lien possede)

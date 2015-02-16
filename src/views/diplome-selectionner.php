@@ -43,8 +43,9 @@
 					<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="10" placeholder="jj/mm/aaaa"/> - <input type="date" id="periode2" name="periode2" maxlength="10" placeholder="jj/mm/aaaa"/></dd>
 				</dl>
 			</article>
+			<a class="getback" href="profil-editer/<?php echo $ancien->getId();?>">Retour au profil</a>
 			<input type="submit" value="Enregistrer les modifications" />
-			<a href="profil-editer/<?php echo $ancien->getId();?>">Retour profil</a>
+
 		</form>
 		<?php } else {?>
 			<p class="warning">Cet étudiant n'existe pas</p>

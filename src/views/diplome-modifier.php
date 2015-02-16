@@ -37,8 +37,9 @@
 				<dt><label for="periode">Période</label></dt>
 				<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="10" placeholder="jj/mm/aaaa" value="<?php echo $possede->getDateDebut(); ?>"/> - <input type="date" id="periode2" name="periode2" maxlength="10" placeholder="jj/mm/aaaa" value="<?php echo $possede->getDateFin(); ?>"/></dd>
 			</article>
+			<a class="getback" href="profil/<?php echo $_GET['idAncien']?>">Retour à l'étudiant</a>
 			<input type="submit" value="Modifier le diplôme DUT de l'étudiant" />
-			<a href="profil/<?php echo $_GET['idAncien']?>">Retour étudiant</a>
+
 		</form>
 		<?php } else {?>
 		<p class="warning">Un id a mal été renseigné</p>

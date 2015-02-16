@@ -97,11 +97,11 @@ a.edit, a.delete, a.all, a.desinscrire, a.params, a.types, a.diplomes, a.etablis
 	float: right;
 	margin-left: 15px;
 }
-a.edit, a.add, a.delete {
+a.edit, a.add, a.delete, a.getback {
 	z-index: 100;
 	position: relative;
 }
-a.edit:before, a.delete:before, a.add:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before, a.codesAPE:before, a.postes:before {
+a.edit:before, a.delete:before, a.add:before, a.getback:before, a.desinscrire:before, a.params:before, a.types:before, a.diplomes:before, a.etablissements:before, a.domaines:before, a.codesAPE:before, a.postes:before {
 	font-family: 'icomoon';
 	font-size: 12px;
 	speak: none;
@@ -133,6 +133,17 @@ a.params:before {
 }
 h1 a.edit {
 	float: none;
+}
+a.getback {
+	float: left;
+	width: 0;
+	white-space: nowrap;
+	line-height: 2.5em;
+}
+a.getback:before {
+	margin-left: -32px;
+	padding-right: 20px;
+	content: "\ea40";
 }
 
 #wrapper h1 {
@@ -315,7 +326,7 @@ dd:after {
 .type:before, a.types:before {
 	content: "\e935";
 }
-.nomPatronymique {
+.nom, .nomPatronymique {
 	text-transform: uppercase;
 	margin-left: 3px;
 }
@@ -444,4 +455,10 @@ th {
 #content nav {
 	text-align: center;
 	margin: 10px 0 0;
+}
+
+.notice {
+	font-style: italic;
+	display: inline-block;
+	color: grey;
 }
