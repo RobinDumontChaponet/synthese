@@ -1,9 +1,19 @@
 @media screen and (max-width: 512px) {
+	header {
+		width: 10%;
+	}
 	header span {
 		display: none;
 	}
 	header a, header a:hover, header a:visited, header a:active {
-		padding-left: 40%;
+		padding-left: 0;
+		text-align: center;
+	}
+	#wrapper {
+		width: 90%;
+	}
+	.shutterOn:hover .shutter {
+		left: 55%;
 	}
 }
 

@@ -11,7 +11,6 @@ _(SUPPRIMER CE QUI EST FAIT)_
 - suppression ou ajout d’un ancien dans event par l’admin;
 - lien vers preferences d’événements dans réglages de comptes;
 - notifications inscriptions event;
-- enlever « inscription à la newsletter » de l'admin, dans les réglages de compte;
 - résultat diplôme pas forcément un nombre et pas obligatoire;
 - vérification sur la période dans les diplômes;
 - recherche dans les comptes;

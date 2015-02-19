@@ -121,6 +121,9 @@ input[disabled]:hover, .button[disabled]:hover, button[disabled]:hover, select[d
 	transform: scale(.90) translateY(0.10%);
 	background: rgb(231, 231, 231);
 	border-color: rgb(159, 159, 159);
+	-webkit-animation: none;
+	-moz-animation: none;
+	animation: none;
 }
 
 button {
