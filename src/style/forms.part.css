@@ -3,9 +3,15 @@ fieldset {
 }
 
 legend {
-	margin-bottom: -10px;
 	text-align: center;
-	width: 100%;
+}
+@-moz-document url-prefix() { /* Firefox (de merdre) hack */
+	legend {
+		width: 100%;
+	}
+}
+legend label {
+	line-height: 1em;
 }
 label {
 	font-size: 13px;
