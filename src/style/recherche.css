@@ -5,24 +5,27 @@ fieldset {
 fieldset div {
 	width: 50%;
 	display: inline-block;
-	padding: 0 10px;
+	padding: 0 10px 5px;
 	float: left;
+	position: relative;
+}
+fieldset div:first-child {
+	border-right: 1px solid rgb(242, 242, 242);
 }
 input[type="text"], input[type="date"] {
-	width: 100%;
-}
-fieldset input {
-	display: block;
+	position: absolute;
+	left: 175px;
+	right: 0;
 }
 input[type="checkbox"] {
 	display: inline;
 }
 label {
-	min-width: 140px;
+	min-width: 160px;
 }
-fieldset:last-child label {
+fieldset:last-child label, fieldset select + label {
 	min-width: 0;
-	margin: 10px 0 0 10px;
+	margin: 0 0 0 10px;
 }
 fieldset:last-child {
 	padding-bottom: 0;
@@ -59,4 +62,24 @@ th:first-child, td:first-child {
 }
 td input[type="checkbox"] {
 	visibility: visible;
+}
+
+@media screen and (max-width: 998px) {
+	fieldset div, fieldset div:first-child {
+		width: auto;
+		display: block;
+		float: none;
+		border: 0;
+	}
+}
+
+@media screen and (max-width: 555px) {
+	input[type="text"], input[type="date"] {
+		display: block;
+		position: static;
+		width: 100%;
+	}
+	label {
+		min-width: 135px;
+	}
 }

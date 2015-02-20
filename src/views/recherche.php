@@ -6,17 +6,17 @@
 		<form action="#" onsubmit="return false" name="search" method="get">
 			<article>
 				<fieldset>
-					<div>
-						<label for="nom" >Nom</label>
+					<div data-help="Recherchez par nom.">
+						<label for="nom">Nom</label>
 						<input type="text" id="nom" name="nom" />
 					</div>
-					<div>
+					<div data-help="Recherchez par prénom.">
 						<label for="prenom">Prénom</label>
 						<input type="text" id="prenom" name="prenom" />
 					</div>
 				</fieldset>
 				<fieldset>
-					<div>
+					<div data-help="Recherchez par promotion(s).">
 						<label for="promotionInf">Promotion entre</label>
 						<select id="promotionInf" name="promotionInf" onmouseup="selection();" onkeyup="selection();">
 							<option value=""></option> <!-- Pour le choix vide -->
