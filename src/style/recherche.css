@@ -5,17 +5,23 @@ fieldset {
 fieldset div {
 	width: 50%;
 	display: inline-block;
-	padding: 0 10px 5px;
+	padding: 2px 10px 2px;
 	float: left;
 	position: relative;
 }
 fieldset div:first-child {
 	border-right: 1px solid rgb(242, 242, 242);
 }
-input[type="text"], input[type="date"] {
+input[type="text"] {
 	position: absolute;
 	left: 175px;
 	right: 0;
+}
+fieldset div:first-child input[type="text"] {
+	left: 135px;
+}
+fieldset div:first-child label {
+	min-width: 120px;
 }
 input[type="checkbox"] {
 	display: inline;
@@ -23,15 +29,12 @@ input[type="checkbox"] {
 label {
 	min-width: 160px;
 }
-fieldset:last-child label, fieldset select + label {
+fieldset:last-child label, fieldset div:first-child select + label {
 	min-width: 0;
 	margin: 0 0 0 10px;
 }
 fieldset:last-child {
 	padding-bottom: 0;
-}
-select {
-	margin-top: 10px;
 }
 
 #resultat {
@@ -71,15 +74,21 @@ td input[type="checkbox"] {
 		float: none;
 		border: 0;
 	}
+	fieldset div:first-child input[type="text"] {
+		left: 175px;
+	}
+	fieldset div:first-child label {
+		min-width: 160px;
+	}
 }
 
 @media screen and (max-width: 555px) {
-	input[type="text"], input[type="date"] {
+	input[type="text"] {
 		display: block;
 		position: static;
 		width: 100%;
 	}
-	label {
+	label, fieldset div:first-child label {
 		min-width: 135px;
 	}
 }
