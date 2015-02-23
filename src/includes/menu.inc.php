@@ -36,7 +36,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
 				(object)array('href'=>'message-ecrire/1', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
 			),
-			'groupes, groupe, creerGroupe' => array(
+			'groupes, groupe, creerGroupe, groupe-ajouter' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')
@@ -68,7 +68,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
 				(object)array('href'=>'message-ecrire/1', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
 			),
-			'groupes, groupe, creerGroupe' => array(
+			'groupes, groupe, creerGroupe, groupe-ajouter' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir les groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')
@@ -103,7 +103,7 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'messagerie', 'class'=>'aAnchor', 'title'=>'Voir les messages lus', 'inner'=>'Lus', 'scroll'=>'nonLus'),
 				(object)array('href'=>'message-ecrire/1', 'class'=>'aAdd', 'title'=>'Écrire un message', 'inner'=>'Nouveau message')
 			),
-			'groupes, groupe, creerGroupe' => array(
+			'groupes, groupe, creerGroupe, groupe-ajouter' => array(
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupes', 'class'=>'aGroups', 'title'=>'Voir ses groupes', 'inner'=>'Groupes'),
 				(object)array('href'=>'groupe-ajouter', 'class'=>'aAdd', 'title'=>'Ajouter un groupe', 'inner'=>'Ajouter')

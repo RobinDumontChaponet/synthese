@@ -1,6 +1,11 @@
 <!--meta title="Créer un groupe" -->
 <div id="content">
-<?php if(!isset($id)){  // si aucun id, le groupe n'est pas crée?>
+<?php
+
+if(isset($valid) && !$valid)
+	echo '<p class="error">Le nom doit être renseigné.</p>';
+
+if(!isset($id)) {  // si aucun id, le groupe n'est pas crée?>
 	<h1>Créer un groupe</h1><br>
 	<form  method="post">
 		<article>
@@ -11,7 +16,7 @@
 		<input type="submit" name="addGroupe" value="Ajouter">
 	</form>
 <?php
-}else{ // si le groupe est crée
+} else { // si le groupe est crée
 ?>
 	<h1>{Ici, nom du groupe}</h1>
 	<section>

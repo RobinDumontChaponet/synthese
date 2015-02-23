@@ -1,7 +1,7 @@
 <!--meta title="Ajouter un établissement" css="style/evenements.css"-->
 <div id="content">
 	<?php if (isset($error) && $error) {
-		echo '<p class="error">Vous devez renseigner tout les champs</p>';
+		echo '<p class="error">Vous devez renseigner tous les champs.</p>';
 	} ?>
 	<h1>Ajouter un établissement</h1>
 	<form action="etablissement-ajouter" method="post">
