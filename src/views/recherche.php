@@ -40,7 +40,7 @@
 							<option value=""></option> <!-- Pour le choix vide -->
 							<?php
 							foreach($diplomes as $diplome)
-								echo '<option value="'.$diplome->getId().'">'.$diplome->getLibelle().'</option>';
+								echo '<option value="'.$diplome->getId().'">'.$diplome->getSigle().'</option>';
 							?>
 						</select>
 					</div>
@@ -84,8 +84,14 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<label for="travailActuel">Travail</label>
-					<input type="checkbox" id="travailActuel" value="true" name="travailActuel" />
+					<div>
+						<label for="travailActuel">Travaille</label>
+						<input type="checkbox" id="travailActuel" value="true" name="travailActuel" onclick="decocherAutre(0)" />
+                    			</div>
+                    			<div>
+                    				<label for="NtravailActuel">Ne travaille pas</label>
+                    				<input type="checkbox" id="NtravailActuel" value="true" name="NtravailActuel" onclick="decocherAutre(1)" />
+					</div>
 				</fieldset>
 			</article>
 		</form>
