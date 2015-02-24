@@ -29,16 +29,16 @@ if ($_SESSION["syntheseUser"]) {
 			$aEtudie = AEtudieDAO::getByAncien($suggestion);
 			$possede = PossedeDAO::getByAncien($suggestion);
 			$estSpecialise = EstSpecialiseDAO::getByAncien($suggestion);
-			//var_dump($estSpecialise);
-			//$specialisation = ($estSpecialise!=null)?$estSpecialise->getSpecialisation():null;
+
+			$specialisation = ($estSpecialise!=null)?$estSpecialise[0]->getSpecialisation():null;
 			$travail = TravailleDAO::getByAncien($suggestion);
 
 			$personne['nom'] = $suggestion->getNomPatronymique();
 			$personne['prenom'] = $suggestion->getPrenom();
 			$personne['promotion'] = ($aEtudie!=null)?$aEtudie[0]->getPromotion()->getAnnee():'';
 			$personne['diplomeDUT'] = ($aEtudie!=null)?$aEtudie[0]->getDiplomeDUT()->getLibelle():'';
-			//$personne['typeSpecialisation'] = ($specialisation!=null)?$specialisation->getTypeSpecialisation()->getLibelle():'';
-			//$personne['specialisation'] = ($specialisation!=null)?$specialisation->getLibelle():'';
+			$personne['typeSpecialisation'] = ($specialisation!=null)?$specialisation->getTypeSpecialisation()->getLibelle():'';
+			$personne['specialisation'] = ($specialisation!=null)?$specialisation->getLibelle():'';
 
 			$personne['diplomesPostDUT'] = array();
 			$personne['etablissementsPostDUT'] = array();
