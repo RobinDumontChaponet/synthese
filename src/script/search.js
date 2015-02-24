@@ -76,3 +76,12 @@ function init_search() {
 		else el.onkeyup = link_ajax;
 	}
 }
+
+
+function decocherAutre(indicater) {
+    
+    if(indicater == 0)
+        document.getElementById('NtravailActuel').checked = false;
+    else
+        document.getElementById('travailActuel').checked = false;
+}
