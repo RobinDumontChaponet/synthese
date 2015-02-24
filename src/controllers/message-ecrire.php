@@ -6,7 +6,8 @@ session_start();
 include_once(MODELS_INC.'AncienDAO.class.php');
 $anciens = array();
 
-if(isset($_POST['selectionne']) || isset($_POST['destinataire']) || isset($_POST['dest_rep']))
+
+if(isset($_POST['selectionne']) || isset($_POST['destinataire']) || isset($_POST['dest_rep']) || isset($_GET['destinataire']))
 {
 
 if(isset($_POST['selectionne']))
@@ -31,7 +32,7 @@ if(isset($_POST['selectionne']))
 
     
 
-    if( ($_POST['destinataire'] != '') && ($_POST['objet'] != '') && ($_POST['message'] != '') )
+    if( (trim($_POST['destinataire']) != '') && (trim($_POST['objet']) != '') && (trim($_POST['message']) != '') )
     {
         include_once('helpers/traitement_message.php');
     }else
@@ -44,7 +45,7 @@ if(isset($_POST['selectionne']))
 }else
 {
     $msgErrAdresse = "Il faut obligatoirement sélectionner des étudiants !";
-    include(VIEWS_INC.'recherche.php');
+    include(CONTROLLERS_INC.'recherche.php');
 }
 
 ?>
