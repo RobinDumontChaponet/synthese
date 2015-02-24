@@ -146,7 +146,7 @@ class AncienDAO {
 	 * @param   Boolean $nbTotal        return : nombre d'éléments total;
 	 * @returns Object   [[Description]]
 	 */
-	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav,$binf,$nb,&$nbTotal) {
+	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav, $nTrav, $binf,$nb,&$nbTotal) {
 		$lst=array();
 		$args=array();
 		$select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
@@ -193,10 +193,11 @@ class AncienDAO {
 			if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
 			$args[]=$typeSpe;
 		}
+       
 		if($PostDut!=null) {
-			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE ? ";
-			$from.=" ,`possede` Poss,`diplomePostDUT` DPost";
-			$args[]='%'.$PostDut.'%';
+			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=? ";
+			$from.=" ,`possede` Poss";
+			$args[]=$PostDut;
 		}
 		if($etabPostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE ? ";
@@ -207,7 +208,9 @@ class AncienDAO {
 		if($trav==true) {
 			$where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
 			$from.=" , `travaille` trav";
-		}
+		}else if($nTrav==true) {
+            $where.=" AND (SELECT count(*) FROM travaille trav2 WHERE trav2.idPersonne=P.idPersonne AND trav2.dateEmbaucheFin is NULL)=0";
+        }
 		$req=$select." ".$from." ".$where;
 
 		$req.=" LIMIT ".$binf.",".$nb."";
@@ -225,11 +228,11 @@ class AncienDAO {
 		} catch(PDOException $e) {
 			die('error search ancien '.$e->getMessage().'<br>');
 		}
-		$nbTotal=AncienDAO::nbEtudSearch($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav);
+		$nbTotal=AncienDAO::nbEtudSearch($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav, $nTrav);
 		return $lst;
 	}
 
-	public static function nbEtudSearch($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav) {
+	public static function nbEtudSearch($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav, $nTrav) {
 		$lst=array();
 		$args=array();
 		$select="SELECT count(*) as nb ";
@@ -277,9 +280,9 @@ class AncienDAO {
 			$args[]=$typeSpe;
 		}
 		if($PostDut!=null) {
-			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=DPost.idDiplomePost AND DPost.libelle LIKE ? ";
-			$from.=" ,`possede` Poss,`diplomePostDUT` DPost";
-			$args[]='%'.$PostDut.'%';
+			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=? ";
+			$from.=" ,`possede` Poss";
+			$args[]=$PostDut;
 		}
 		if($etabPostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idEtablissement=etab.idEtablissement AND etab.nom LIKE ? ";
@@ -290,7 +293,9 @@ class AncienDAO {
 		if($trav==true) {
 			$where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
 			$from.=" , `travaille` trav";
-		}
+		}else if($nTrav==true) {
+            $where.=" AND (SELECT count(*) FROM travaille trav2 WHERE trav2.idPersonne=P.idPersonne AND trav2.dateEmbaucheFin is NULL)=0";
+        }
 		$req=$select." ".$from." ".$where;
 
 
