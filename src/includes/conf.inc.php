@@ -25,8 +25,11 @@ function __autoload($className) {
 // Nombre de caractères à afficher dans les longs <p> dans <li>
 define('STR_TRONC', 380);
 
-// Nombre de ligne à afficher dans les listes et tables paginées
+// Nombre de lignes à afficher dans les listes et tables paginées
 define('LINES_PAGE', 15);
+
+// Nombre de lignes à afficher dans les listes et tables de la page d'accueil.
+define('LAST_ITEMS_COUNT', 10);
 
 
 /** Images **/
