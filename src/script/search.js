@@ -79,7 +79,7 @@ function init_search() {
 
 
 function decocherAutre(indicater) {
-    
+
     if(indicater == 0)
         document.getElementById('NtravailActuel').checked = false;
     else

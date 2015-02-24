@@ -51,7 +51,7 @@
                         <select id="specialisation" name="specialisation">
                         <option value=""></option> <!-- Pour le choix vide -->
 						<?php
-							foreach($spes as $spe)
+						foreach($spes as $spe)
 								echo '<option value="'.$spe->getId().'">'.$spe->getLibelle().'</option>';
 				        ?>
                         </select>
@@ -71,12 +71,12 @@
 					<div>
 						<label for="diplomePostDUT">Diplôme post-DUT</label>
 						<select id="diplomePostDut" name="diplomePostDut">
-                            			<option value=""></option>
-                            			<?php
+                            <option value=""></option>
+							<?php
 							foreach($diplomesPostDut as $dpd)
-							echo '<option value="'.$dpd->getId().'">'.$dpd->getLibelle().'</option>';
-						?>
-                        			</select>
+								echo '<option value="'.$dpd->getId().'">'.$dpd->getLibelle().'</option>';
+							?>
+						</select>
 					</div>
 					<div>
 						<label for="etabPostDUT">Etablissement post-DUT</label>
@@ -87,10 +87,8 @@
 					<div>
 						<label for="travailActuel">Travaille</label>
 						<input type="checkbox" id="travailActuel" value="true" name="travailActuel" onclick="decocherAutre(0)" />
-                    			</div>
-                    			<div>
-                    				<label for="NtravailActuel">Ne travaille pas</label>
-                    				<input type="checkbox" id="NtravailActuel" value="true" name="NtravailActuel" onclick="decocherAutre(1)" />
+                    	<label for="NtravailActuel">Ne travaille pas</label>
+                    	<input type="checkbox" id="NtravailActuel" value="true" name="NtravailActuel" onclick="decocherAutre(1)" />
 					</div>
 				</fieldset>
 			</article>
