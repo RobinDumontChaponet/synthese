@@ -8,6 +8,7 @@ define('CONTROLLERS_INC', ROOT_PATH.'/controllers/');
 define('MODELS_INC', ROOT_PATH.'/models/');
 define('VIEWS_INC', ROOT_PATH.'/views/');
 define('DATA_PATH', ROOT_PATH.'/data/');
+define('LOGS_PATH', ROOT_PATH.'/logs/');
 
 define('SELF', dirname($_SERVER['PHP_SELF']).'/');
 
@@ -50,5 +51,13 @@ define('JPEG_QUALITY', 82);
  * Locales
  */
 setlocale(LC_ALL, 'fr_FR.utf8', 'fr', 'fr_FR', 'fr_FR@euro', 'fr-FR', 'fra');
+
+
+/*
+ * Debugging
+ */
+
+// Console.log
+define('JS_DEBUG', 'send'); // send (to server), true (display) or false_
 
 ?>
