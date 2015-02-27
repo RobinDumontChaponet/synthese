@@ -13,41 +13,42 @@
 		<article>
 			<dl>
 				<dt><label for="name">Nom</label></dt>
-				<dd class="entreprise"><input id="name" name="name" type="text"/></dd>
+				<dd class="entreprise"><input id="name" name="name" type="text" value="<?php echo $_POST['name'] ?>"/></dd>
 
 				<dt><label for="address1">Adresse 1</label></dt>
-				<dd id="adresse1"><input id="address1" name="address1" type="text"/></dd>
+				<dd id="adresse1"><input id="address1" name="address1" type="text" value="<?php echo $_POST['address1'] ?>"/></dd>
 				
 				<dt><label for="address2">Adresse 2</label></dt>
-				<dd id="adresse2"><input id="address2" name="address2" type="text"/></dd>
+				<dd id="adresse2"><input id="address2" name="address2" type="text" value="<?php echo $_POST['address2'] ?>"/></dd>
 
 				<dt><label for="postalCode">Code postal</label></dt>
-				<dd id="codePostal"><input id="postalCode" name="postalCode" type="text"/></dd>
+				<dd id="codePostal"><input id="postalCode" name="postalCode" type="text" value="<?php echo $_POST['postalCode'] ?>"/></dd>
 
 				<dt><label for="city">Ville</label></dt>
-				<dd id="ville"><input id="city" name="city" type="text"/></dd>
+				<dd id="ville"><input id="city" name="city" type="text" value="<?php echo $_POST['city'] ?>"/></dd>
 
 				<dt><label for="cedex">Cedex</label></dt>
-				<dd class="cedex"><input id="cedex" name="cedex" type="text"/></dd>
+				<dd class="cedex"><input id="cedex" name="cedex" type="text" value="<?php echo $_POST['cedex'] ?>"/></dd>
 
 				<dt><label for="country">Pays</label></dt>
 				<dd id="pays">
 					<select name="country" id="country">
-						<?php foreach($lstPays as $pays){ ?>
-						<option value="<?= $pays; ?>"><?php echo $pays; ?></option>
-						<?php } ?>
+						<option>Aucun pays selectionné</option>
+						<?php foreach($lstPays as $pays) {
+						echo '<option '.(($_POST['country'] == $pays)?'selected':'').' value="'.$pays.'">'.$pays.'</option>';
+						} ?>
 					</select>
 				</dd>
 
 				<dt><label for="phoneNumber">Téléphone</label></dt>
-				<dd id="telephoneFixe"><input id="phoneNumber" name="phoneNumber" type="text"/></dd>
+				<dd id="telephoneFixe"><input id="phoneNumber" name="phoneNumber" type="text" value="<?php echo $_POST['phoneNumber'] ?>"/></dd>
 
 				<dt><label for="APEcode">Code APE</label></dt>
 				<dd class="codeAPE">
 					<select id="APEcode" name="APEcode">
-						<option value="Non renseigné">Non renseigné</option>
+						<option value="Non renseigné">Aucun code APE renseigné</option>
 						<?php foreach($codesAPE as $codeAPE)
-						echo '<option value="'.$codeAPE->getCode().'">'.$codeAPE->getCode().' - '.$codeAPE->getLibelle().'</option>';
+						echo '<option '.(($_POST['APEcode'] == $codeAPE->getCode())?'selected':'').' value="'.$codeAPE->getCode().'">'.$codeAPE->getCode().' - '.$codeAPE->getLibelle().'</option>';
 						?>
 					</select>
 					<a href="codesAPE" class="codesAPE" target="_blank">Accéder aux codes APE</a>
