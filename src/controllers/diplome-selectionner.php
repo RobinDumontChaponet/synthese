@@ -10,10 +10,14 @@ if ($_SESSION['user_auth']['write']) {
 				$diplomePost = DiplomePostDUTDAO::getById($_POST['diplome']);
 				if ($etablissement != NULL && $diplomePost != NULL) {
 					if ($_POST['resultat'] != NULL) { // rajouter un is_numeric si le résultat doit être un chiffre
-						if ($_POST['periode1'] != NULL && $_POST['periode2'] != NULL && $_POST['periode1'] <= $_POST['periode2']) {
-							$possede = new Possede($ancien, $etablissement, $diplomePost, $_POST['resultat'], $_POST['periode1'] ,$_POST['periode2']);
-							PossedeDAO::create($possede);
-							header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
+						if ($_POST['periode1'] != NULL && $_POST['periode2'] != NULL) {
+							if ($_POST['periode1'] <= $_POST['periode2']) {
+								$possede = new Possede($ancien, $etablissement, $diplomePost, $_POST['resultat'], $_POST['periode1'] ,$_POST['periode2']);
+								PossedeDAO::create($possede);
+								header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomes');
+							} else {
+								$dateSup = true;
+							}
 						} else {
 							$noPeriode = true;
 						}
