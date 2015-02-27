@@ -36,7 +36,7 @@ class SpecialisationDAO {
     }
 
     public static function create(&$spe) {
-        if (gettype($spe)=="Specialisation") {
+        if (get_class($spe)=="Specialisation") {
             try {
                 $req=SPDO::getInstance()->prepare("INSERT INTO `specialisation`(`libelle`, `idTypeSpe`) VALUES (?,?)");
                 $req->execute(array($spe->getLibelle(), $spe->getTypeSpecialisation()->getId()));
@@ -52,7 +52,7 @@ class SpecialisationDAO {
 
     public static function update($spe) {
         if
-            (gettype($spe)=="Specialisation") {
+            (get_class($spe)=="Specialisation") {
             try{
                 $req=SPDO::getInstance()->prepare("UPDATE `specialisation` SET `libelle`=?,`idTypeSpe`=? WHERE `idSpe`=?");
                 $req->execute(array($spe->getLibelle(), $spe->getTypeSpecialisation()->getId(), $spe->getId()));
@@ -66,15 +66,15 @@ class SpecialisationDAO {
 
     public static function delete($spe) {
         if
-            (gettype($spe)=="Specialisation") {
-            try{
+            (get_class($spe) == "Specialisation") {
+            try {
                 $req=SPDO::getInstance()->prepare("DELETE FROM `specialisation` WHERE `idSpe`=?");
                 $req->execute(array($spe->getId()));
-            }catch(PDOException $e) {
+            } catch(PDOException $e) {
                 die('error delete spé '.$e->getMessage().'<br>');
             }
-        }else {
-            die('paramètre de type specialisation demandé');
+        } else {
+            die ('SpecialisationDAO : Attente type : Specialisation, type actuel :' + get_class($spe) );
         }
     }
 

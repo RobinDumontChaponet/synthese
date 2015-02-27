@@ -307,6 +307,8 @@ FileETag None
 	RewriteRule ^domaine-editer/([^/]+) %{ENV:BASE}/index.php?requ=domaine-editer&id=$1 [NC]
 	RewriteRule ^message/([^/]+) %{ENV:BASE}/index.php?requ=message&id=$1 [NC]
 	RewriteRule ^message-ecrire/([^/]+) %{ENV:BASE}/index.php?requ=message-ecrire&destinataire=$1 [NC]
+	RewriteRule ^specialisation-ajouter %{ENV:BASE}/index.php?requ=specialisation-ajouter [NC]
+
 
 #### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d

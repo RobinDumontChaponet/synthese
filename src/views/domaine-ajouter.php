@@ -9,9 +9,9 @@
 		<article>
 			<dl>
 				<dt><label for="libelle">Libelle</label></dt>
-				<dd class="domaine"><input type="text" id="libelle" name="libelle" placeholder="Libelle du domaine" autofocus/></dd>
+				<dd class="domaine"><input type="text" id="libelle" name="libelle" placeholder="Libelle du domaine" value="<?php echo $_POST['libelle'] ?>" autofocus/></dd>
 				<dt><label for="description">Description</label></dt>
-				<dd class="description"><input type="text" id="description" name="description" placeholder="Description du domaine"/></dd>
+				<dd class="description"><input type="text" id="description" name="description" value="<?php echo $_POST['description'] ?>" placeholder="Description du domaine"/></dd>
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le domaine" />
