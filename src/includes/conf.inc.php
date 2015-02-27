@@ -58,6 +58,6 @@ setlocale(LC_ALL, 'fr_FR.utf8', 'fr', 'fr_FR', 'fr_FR@euro', 'fr-FR', 'fra');
  */
 
 // Console.log
-define('JS_DEBUG', 'send'); // send (to server), true (display) or false_
+define('JS_DEBUG', 'true'); // send (to server), true (display) or false_
 
 ?>

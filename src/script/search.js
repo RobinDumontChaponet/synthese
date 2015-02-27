@@ -20,7 +20,7 @@ function link_ajax(page) {
 
 function affichageResultat() {
 	if (this.readyState == 4) if (this.status == 200) {
-		console.log(this.responseText);
+		//console.log(this.responseText);
 
 		var resp   = JSON.parse(this.responseText),
 			data   = resp['data'],

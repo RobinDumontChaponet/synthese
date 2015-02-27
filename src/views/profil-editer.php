@@ -32,7 +32,7 @@
 		?>
 		<?php if($_SESSION["syntheseUser"]->getTypeProfil()->getLibelle()=="Admin") { ?>
 		<p class="button">
-			<label>Importer une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement..." />
+			<label>Importer une image...</label> <input type="file" id="trombiInput" name="file" accept="image/*"> <img src="style/images/loader.gif" alt="chargement..." />
 		</p>
 		<?php } ?>
 	</figure>
@@ -44,7 +44,7 @@
 		?>
 		<?php if(isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) { ?>
 		<p class="button">
-			<label>Importer une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement..." />
+			<label>Importer une image...</label> <input type="file" id="profilInput" name="file" accept="image/*"> <img src="style/images/loader.gif" alt="chargement..." />
 		</p>
 		<?php } ?>
 	</figure>

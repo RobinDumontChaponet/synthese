@@ -2,6 +2,9 @@
 
 _(SUPPRIMER CE QUI EST FAIT)_
 
+- daoTravail, null <- 000
+- recherche : spé. -> derniere de la dB, avec un « + » 
+
 - apprendre à indenter (**logiquement**) son code;
 - apprendre à utiliser les **bonnes** balises où il faut;
 

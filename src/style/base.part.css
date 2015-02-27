@@ -97,6 +97,29 @@ a, a:active, a:hover, a:visited {
 .nc {
 	font-style: italic;
 }
+.note {
+	position: fixed;
+	z-index: 600;
+	top: 10px;
+	left: 0;
+	right: 0;
+	width: 940px;
+	margin: 0 auto;
+	padding: 5px;
+	color: #fff;
+	font-weight: 300;
+	background: #DFDFDF;
+	-webkit-box-shadow: grey 0px 0px 4px;
+	-moz-box-shadow: grey 0px 0px 4px;
+	-o-box-shadow: grey 1px 1px 4px;
+	box-shadow: grey 0px 0px 4px;
+	text-align: center;
+	-webkit-animation: flipInX 1s ease-in-out 0 1;
+	-moz-animation: flipInX 1s ease-in-out 0 1;
+	-ms-animation: flipInX 1s ease-in-out 0 1;
+	-o-animation: flipInX 1s ease-in-out 0 1;
+	animation: flipInX 1s ease-in-out 0 1;
+}
 .warning {
 	font-size: 1.2em;
 	color: grey;
@@ -104,7 +127,7 @@ a, a:active, a:hover, a:visited {
 .warning:first-child {
 	margin-top: 20%;
 }
-.error{
+.error {
     background-color: rgba(255, 0, 0, 0.5);
     border: 1px solid red;
     border-radius: 10px;
@@ -116,4 +139,7 @@ a, a:active, a:hover, a:visited {
 	-ms-animation: flipInX 1s ease-in-out 0 1;
 	-o-animation: flipInX 1s ease-in-out 0 1;
 	animation: flipInX 1s ease-in-out 0 1;
+}
+.note {
+	margin: 0 auto!important;
 }

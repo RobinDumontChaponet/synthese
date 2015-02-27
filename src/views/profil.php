@@ -1,4 +1,4 @@
-<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css" js="script/upload-img.js"-->
+<!--meta title="<?php if ($ancien != NULL){echo 'Profil de '.$ancien->getNomPatronymique().$ancien->getPrenom();} else {echo 'Profil non trouvé';}?>" css="style/profil.css" js="script/utils.transit.js" js="script/upload-img.js"-->
 <div id="content">
 <?php
 if (isset($ancien) && $ancien != NULL) {?>
@@ -12,7 +12,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 		?>
 		<?php if($_SESSION["syntheseUser"]->getTypeProfil()->getLibelle()=="Admin") { ?>
 		<p class="button">
-			<label>Importer une image...</label> <input type="file" id="trombiInput" name="file"> <img src="style/images/loader.gif" alt="chargement..." />
+			<label>Importer une image...</label> <input type="file" id="trombiInput" name="file" accept="image/*"> <img src="style/images/loader.gif" alt="chargement..." />
 		</p>
 		<?php } ?>
 	</figure>
@@ -25,7 +25,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 		?>
 		<?php if(isset($ancien) && $ancien != NULL && ($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])) { ?>
 		<p class="button">
-			<label>Importer une image...</label> <input type="file" id="profilInput" name="file"> <img src="style/images/loader.gif" alt="chargement..." />
+			<label>Importer une image...</label> <input type="file" id="profilInput" name="file" accept="image/*"> <img src="style/images/loader.gif" alt="chargement..." />
 		</p>
 		<?php } ?>
 	</figure>
@@ -210,10 +210,14 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php }?>
 </div>
 <script type="text/javascript">
-new FileTransfert(document.getElementById('profilInput'), 'profil/<?=$ancien->getId() ?>', function (resp) {
-	document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
-});
-new FileTransfert(document.getElementById('trombiInput'), 'trombi/<?=$ancien->getId() ?>', function (resp) {
-	document.getElementById('trombiImg').src='data:image/png;base64,'+resp.image;
-});
+if(document.getElementById('profilInput')) {
+	new FileTransfert(document.getElementById('profilInput'), 'profil/<?=$ancien->getId() ?>', function (resp) {
+		document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
+	});
+}
+if(document.getElementById('trombiInput')) {
+	new FileTransfert(document.getElementById('trombiInput'), 'trombi/<?=$ancien->getId() ?>', function (resp) {
+		document.getElementById('trombiImg').src='data:image/png;base64,'+resp.image;
+	});
+}
 </script>

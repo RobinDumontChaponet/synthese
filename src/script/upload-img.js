@@ -17,10 +17,15 @@ FileTransfert = function (input, destination, callback) {
 		xhr.onload = function() {
 			if(this.readyState  == 4)
 				if (this.status == 200) {
-					console.log('responseText: '+this.responseText);
-					var resp = JSON.parse(this.response);
+					//console.log('responseText: '+this.responseText);
 
-					t.callback(resp);
+					if(this.responseText=='unaccepted extension')
+						new Note('Type de fichier non-autorisé.', 3000, 'error');
+					else {
+						var resp = JSON.parse(this.response);
+
+						t.callback(resp);
+					}
 
 					t.input.parentNode.className='button';
 				}

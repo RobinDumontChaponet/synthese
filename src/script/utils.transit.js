@@ -109,3 +109,36 @@ function goTo (url, hash) {
 	else
 		window.location.href=url+((hash)?'#'+hash:'');
 }
+
+function Timer(callback, delay) {
+    var timerId, start, remaining = delay;
+
+    this.pause = function() {
+        window.clearTimeout(timerId);
+        remaining -= new Date() - start;
+    };
+
+    this.resume = function() {
+        start = new Date();
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+    this.resume();
+}
+
+function Note ( msg, duration, specialClass ) {
+	specialClass = typeof specialClass !== 'undefined' ? specialClass : '';
+	var t=this;
+	t.el = document.createElement('p');
+	t.el.className = 'note '+specialClass;
+	t.el.innerHTML = msg;
+	if(!isNaN(duration)) {
+		var timer = new Timer(function(){t.destroy()}, duration);
+		t.el.addEventListener("mouseover", function(){timer.pause()}, false);
+		t.el.addEventListener("mouseout", function(){timer.resume()}, false);
+	}
+	document.body.appendChild( t.el );
+}
+Note.prototype.destroy = function () {
+	document.body.removeChild(this.el)
+};
