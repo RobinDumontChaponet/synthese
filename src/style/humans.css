@@ -1,0 +1,59 @@
+@font-face {
+	font-family: 'Open Sans Condensed';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url('fonts/open-sans.ttf') format('truetype');
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #000;
+	overflow: hidden;
+	-webkit-animation: 1s darken linear 1;
+	-moz-animation: 1s darken linear 1;
+	-o-animation: 1s darken linear 1;
+	animation: 1s darken linear 1;
+}
+
+#content {
+	position: absolute;
+	top: 2%;
+	left: 50%;
+	width: 400px;
+	margin-left: -200px;
+	font: 300 30px/1 'Open Sans Condensed', 'Helvetica Neue', 'Helvetica', Verdana, Arial, sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	-webkit-animation: 30s credits linear infinite;
+	-moz-animation: 30s credits linear infinite;
+	-o-animation: 30s credits linear infinite;
+	animation: 30s credits linear infinite;
+}
+#content a {
+	color: #fff;
+	text-decoration: none;
+}
+
+h1 {
+	margin-bottom: 50px;
+	font-size: 50px;
+	color: #f4f3f3;
+	font-family: 'ChunkFiveRegular';
+	position: relative;
+	text-transform: none;
+	letter-spacing: 1px;
+}
+
+dt {
+	margin-bottom: 5px;
+	font-size: 18px;
+}
+
+dd {
+	margin-bottom: 50px;
+	font-size: 35px;
+}
