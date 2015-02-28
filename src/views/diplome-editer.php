@@ -1,7 +1,7 @@
 <!--meta title="<?php echo 'Diplôme : '.(($diplome != NULL)?$diplome->getLibelle():'Diplôme non trouvé'); ?>" css="style/evenements.css"-->
 <div id="content">
 	<h1>Modification du diplôme</h1>
-<?php if (isset($diplome) && $diplome != NULL && $_SESSION['user_auth']['write']) { ?>
+	<?php if (isset($diplome) && $diplome != NULL && $_SESSION['user_auth']['write']) { ?>
 	<form action="diplome-editer/<?php echo $diplome->getId()?>" method="post">
 		<article>
 			<h3 class="diplome"><input id="diplomeLibelle" name="diplomeLibelle" type="text" placeholder="Pas de libelle..." value="<?php echo $diplome->getLibelle(); ?>" autofocus/></h3>
@@ -14,7 +14,7 @@
 		</article>
 		<input type="submit" value="Enregistrer les modifications" />
 	</form>
-		<?php } else {?>
-		<p class="warning">Ce diplôme n'existe pas</p>
+	<?php } else {?>
+	<p class="warning">Ce diplôme n'existe pas</p>
 	<?php }?>
 </div>
