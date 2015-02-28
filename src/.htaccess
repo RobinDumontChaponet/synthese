@@ -309,6 +309,7 @@ FileETag None
 	RewriteRule ^message-ecrire/([^/]+) %{ENV:BASE}/index.php?requ=message-ecrire&destinataire=$1 [NC]
 	RewriteRule ^specialisation-ajouter %{ENV:BASE}/index.php?requ=specialisation-ajouter [NC]
 	RewriteRule ^specialisation-editer/([^/]+) %{ENV:BASE}/index.php?requ=specialisation-editer&id=$1 [NC]
+	RewriteRule ^humans$ %{ENV:BASE}/humans.php [L]
 
 
 #### Generals

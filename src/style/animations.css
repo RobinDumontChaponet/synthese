@@ -282,3 +282,61 @@
 		opacity: 1;
 	}
 }
+
+@-webkit-keyframes credits {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: -100%;
+	}
+}
+@-moz-keyframes credits {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: -100%;
+	}
+}
+@-o-keyframes credits {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: -100%;
+	}
+}
+@keyframes credits {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: -100%;
+	}
+}
+
+@-webkit-keyframes darken {
+	from {
+		background: #fff;
+	}
+	to {
+		background: #000;
+	}
+}
+@-moz-keyframes darken {
+	from {
+		background: #fff;
+	}
+	to {
+		background: #000;
+	}
+}
+@keyframes darken {
+	from {
+		background: #fff;
+	}
+	to {
+		background: #000;
+	}
+}

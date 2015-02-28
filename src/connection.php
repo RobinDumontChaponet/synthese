@@ -67,14 +67,15 @@ else { ?>
 	  <?php if ($badinput===true) echo'<p class="badpass">Identifiant ou mot-de-passe incorrects !</p>';?>
 	  <br />
 	  <input class="<?php if ($badinput!==true) echo'ok'; else echo'warning';?>" name="submit" type="submit" value="&#xe613; connexion" />
-	  <br /><a href="lostpassword.php" title="Alors, comme ça, on oublie son mot-de-passe ?!">mot-de-passe oublié ?</a>
+	  <br /><a href="lostpassword.php" title="Alors, comme ça, on oublie son mot-de-passe ?!">Mot-de-passe oublié ?</a>
+	  <br /><a href="humans">À propos.</a>
 	  <?php } ?>
 	</fieldset>
   </form>
 </aside>
 <aside id="intro">
   <p>
-	  Plus qu'un simple réseau, ConnectIT! est la concrétisation du lien fort qui unit les nouveaux comme les anciens étudiants de l'IUT de Metz.<br />Consultez les événements spécialement organisés pour vous. Bénéficiez d'offres de stages et d'emplois qui vous aideront à progresser dans votre carrière professionnelle. Profitez des avantages offerts par une communauté solidaire. Retrouvez vos anciens camarades et revivez les moments passés.<br /><br /><br />Réalisé dans le cadre du projet de synthèse 2014-2015 par DUMONT Robin, JOZWICKi Victor, FADILI Youssef, PISTER Mathieu
+	Plus qu'un simple réseau, ConnectIT! est la concrétisation du lien fort qui unit les nouveaux comme les anciens étudiants de l'IUT de Metz.<br />Consultez les événements spécialement organisés pour vous. Bénéficiez d'offres de stages et d'emplois qui vous aideront à progresser dans votre carrière professionnelle. Profitez des avantages offerts par une communauté solidaire. Retrouvez vos anciens camarades et revivez les moments passés.
   </p>
 </aside>
 </body>
