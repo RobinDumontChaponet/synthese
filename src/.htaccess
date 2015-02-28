@@ -269,6 +269,7 @@ FileETag None
 
 #### Traditional rewriting
 	#### Specifics
+	RewriteRule ^specialisation-editer/([^/]+) %{ENV:BASE}/index.php?requ=specialisation-editer&id=$1 [NC]
 	RewriteRule ^profil-editer/([^/]+) %{ENV:BASE}/index.php?requ=profil-editer&id=$1 [NC]
 	RewriteRule ^profil/([^/]+) %{ENV:BASE}/index.php?requ=profil&id=$1 [NC]
 	RewriteRule ^promotion/([^/]+)/([^/]+) %{ENV:BASE}/index.php?requ=promotion&id=$1&dep=$2 [NC]
@@ -308,7 +309,6 @@ FileETag None
 	RewriteRule ^message/([^/]+) %{ENV:BASE}/index.php?requ=message&id=$1 [NC]
 	RewriteRule ^message-ecrire/([^/]+) %{ENV:BASE}/index.php?requ=message-ecrire&destinataire=$1 [NC]
 	RewriteRule ^specialisation-ajouter %{ENV:BASE}/index.php?requ=specialisation-ajouter [NC]
-	RewriteRule ^specialisation-editer/([^/]+) %{ENV:BASE}/index.php?requ=specialisation-editer&id=$1 [NC]
 
 
 #### Generals
