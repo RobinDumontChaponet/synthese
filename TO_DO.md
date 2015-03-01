@@ -9,10 +9,10 @@ _(SUPPRIMER CE QUI EST FAIT)_
 - apprendre à utiliser les **bonnes** balises où il faut;
 
 - renseigner le site www d’un établissement ne fonctionne pas (n’enregistre pas).
+- Un admin peut accéder à `evenements-preferences`, ça ne devrait pas être le cas.
 
 - retours pages;
 - suppression ou ajout d’un ancien dans event par l’admin;
-- lien vers preferences d’événements dans réglages de comptes;
 - notifications inscriptions event;
 - résultat diplôme pas forcément un nombre et pas obligatoire;
 - vérification sur la période dans les diplômes;

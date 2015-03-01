@@ -1,5 +1,8 @@
 <!--meta title="Paramètres" css="style/parametres.css" js="script/passwords.transit.js"-->
 <div id="content">
+<?php if($_SESSION['syntheseUser']->getTypeProfil()->getLibelle()=="Ancien"){?>
+	<a class="params" href="evenements-preferences">Aller aux préférences d'évènements</a>
+<?php } ?>
 	<h1>Paramètres du compte</h1>
 	<form method="POST">
 		<fieldset>
