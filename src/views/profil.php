@@ -120,7 +120,10 @@ if (isset($ancien) && $ancien != NULL) {?>
 		echo '</ul>';
 	} ?>
 	</section>
-	<section id="diplomesPostDUT">
+	<section id="diplomesPostDUT"<?php if($_SESSION['syntheseUser']->getId()==$ancien->getId() || $_SESSION['user_auth']['write']) echo ' contextmenu="menuDiplomes"';?>>
+		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#diplomesPostDUT" title="Éditer le profil...">Éditer...</a>';
+		?>
 		<h2>Diplômes post-DUT</h2>
 		<ul>
 	<?php if ($diplomesPost != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
@@ -132,8 +135,10 @@ if (isset($ancien) && $ancien != NULL) {?>
 				<dl>
 					<dt class="etablissement">Établissement</dt>
 					<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
+				<?php if($diplomePost->getResultat()!=null) {?>
 					<dt class="resultat">Résultat</dt>
 					<dd><?php echo $diplomePost->getResultat();?></dd>
+				<?php } ?>
 				</dl>
 			</li>
 <?php

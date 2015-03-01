@@ -4,8 +4,6 @@
 		if ($ancien != NULL) {
 			if ($errorDiplomeEtablissement)
 				echo '<p class="error">Le diplôme et l\'établissement doivent être renseignés</p>';
-			if ($noResultat)
-				echo '<p class="error">Un résultat pour votre diplôme doit être renseigné</p>';
 			if ($noPeriode)
 				echo '<p class="error">Une période correcte (jj/mm/aaaa - jj/mm/aaaa) doit être renseignée</p>';
 			if ($dateSup)

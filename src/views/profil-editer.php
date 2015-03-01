@@ -175,8 +175,10 @@
 						<dl>
 							<dt class="etablissement">Établissement</dt>
 							<dd><a href="etablissement/<?php echo $diplomePost->getEtablissement()->getId();?>"><?php echo $diplomePost->getEtablissement()->getNom();?></a></dd>
+						<?php if($diplomePost->getResultat()!=null) { ?>
 							<dt class="resultat">Résultat</dt>
 							<dd><?php echo $diplomePost->getResultat();?></dd>
+						<?php } ?>
 							<dt class="periode">Période</dt>
 							<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
 						</dl>

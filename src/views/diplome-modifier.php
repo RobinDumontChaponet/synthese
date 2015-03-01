@@ -33,7 +33,7 @@
 					</dd>
 				</dl>
 				<dt><label for="resultat">Résultat</label></dt>
-				<dd class="resultat"><input type="number" id="resultat" name="resultat" placeholder="Résultat de votre diplôme" value="<?php echo $possede->getResultat(); ?>"/></dd>
+				<dd class="resultat"><input type="text" id="resultat" name="resultat" placeholder="Résultat de votre diplôme" value="<?php echo $possede->getResultat(); ?>"/></dd>
 				<dt><label for="periode">Période</label></dt>
 				<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="10" placeholder="jj/mm/aaaa" value="<?php echo $possede->getDateDebut(); ?>"/> - <input type="date" id="periode2" name="periode2" maxlength="10" placeholder="jj/mm/aaaa" value="<?php echo $possede->getDateFin(); ?>"/></dd>
 			</article>

@@ -14,7 +14,6 @@ _(SUPPRIMER CE QUI EST FAIT)_
 - retours pages;
 - suppression ou ajout d’un ancien dans event par l’admin;
 - notifications inscriptions event;
-- résultat diplôme pas forcément un nombre et pas obligatoire;
 - vérification sur la période dans les diplômes;
 - recherche dans les comptes;
 - promo en liste;
