@@ -1,13 +1,13 @@
 /* TEAM */
 
-Robin Dumont-Chaponet.
+Robin Dumont-Chaponet (r-dc_)
 Mail: robin@dumontchapo.net
-Site: robin.dumontchapo.net
+Site: http://robin.dumontchapo.net/
 Location: France.
 
 Victor Jozwicki.
 Mail:
-Site:
+Site: http://victorjozwicki.olympe.in/
 Location: France.
 
 Youssef Fadili.
@@ -20,15 +20,20 @@ Mail:
 Site:
 Location: France.
 
+
 /* THANKS */
 
 Name: Patricia Mely, teacher & "client".
 
 Name: Thomas Vanniere for testing in early stage.
 
+
 /* SITE */
 
-Last update: 2014/08/17
 Standards: HTML5, CSS3, JS, PHP5, mySQL, git
-Components: smooth-scroll by Chris Ferdinandi, konamiPong inspired from Matt Mongeau's
+
+Server-side components: Password Hashing With PBKDF2 by Taylor Hornby, parseCSV by Jim Myhrberg, parts of transitLib by r-dc_
+
+Client-side components: smooth-scroll by Chris Ferdinandi, many shims & polyfills those authors & licences are in /script/polyShims.js
+
 Software: Coda 2.5, Sublime Text 2, Brackets, gitHub.
