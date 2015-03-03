@@ -8,6 +8,7 @@
 				<dt><label for="diplome">Diplôme DUT</label></dt>
 				<dd class="diplome">
 					<select name="diplome">
+						<option value=""></option>
 						<?php if ($diplomesDUT != NULL) {
 							foreach($diplomesDUT as $diplomeDUT)
 								echo '<option value="'.$diplomeDUT->getId().$diplomeDUT->getDepartementIUT()->getId().'">'.$diplomeDUT->getLibelle().'</option>';

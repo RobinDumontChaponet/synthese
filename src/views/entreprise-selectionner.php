@@ -16,6 +16,7 @@
 					<dt><label for="entreprise">Enterprise</label></dt>
 					<dd class="entreprise">
 						<select id="entreprise" name="entreprise">
+							<option value=""></option>
 							<?php if ($entreprises != NULL) {
 								foreach($entreprises as $entreprise)
 									echo '<option value="'.$entreprise->getId().'">'.$entreprise->getNom().'</option>';
@@ -29,6 +30,7 @@
 					<dt><label for="poste">Poste</label></dt>
 					<dd class="poste">
 						<select id="poste" name="poste">
+							<option value=""></option>
 							<?php if ($postes != NULL) {
 								foreach($postes as $poste)
 									echo '<option value="'.$poste->getId().'">'.$poste->getLibelle().'</option>';

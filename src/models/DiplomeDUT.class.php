@@ -9,6 +9,7 @@ class DiplomeDUT extends Diplome {
 	public function __construct($id, $libelle, $departementIUT, $sigle) {
 		parent::__construct($id, $libelle);
 		$this->setDepartementIUT($departementIUT);
+		$this->setSigle($sigle);
 	}
 
 	//----------------------------------GETTERS------------------------------

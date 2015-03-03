@@ -8,6 +8,7 @@
 				<dt><label>Diplôme DUT</label></dt>
 				<dd>
 					<select name="specialisation">
+						<option value=""></option>
 						<?php if ($spes != NULL) {
 							foreach($spes as $spe)
 								echo '<option value="'.$spe->getId().'">'.$spe->getLibelle().'</option>';

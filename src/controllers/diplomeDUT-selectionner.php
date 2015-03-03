@@ -3,10 +3,12 @@ if ($_SESSION['user_auth']['write']) {
 	if ($_GET['id']) {
 		$ancien = AncienDAO::getById($_GET['id']);
 		if (isset($_POST['promotion']) && $_POST['promotion'] != NULL) {
-			$promotion = PromotionDAO::getByAnnee($_POST['promotion']);
-			if ($promotion == NULL) {
-				echo 'La promotion n\'existe pas';
+			$promo = PromotionDAO::getByAnnee($_POST['promotion']);
+			if ($promo != NULL) {
+				$diplAncien = new AEtudie ($ancien, $diplomeDUT, $departementIUT, $promo);
 			} else {
+				$promotion = new promotion(0, $_POST['promotion']);
+				PromotionDAO::create($promotion);
 				$valid = true;
 			}
 		}

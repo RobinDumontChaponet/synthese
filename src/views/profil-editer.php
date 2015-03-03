@@ -220,6 +220,7 @@
 		foreach($spes as $spe) {
 			?>
 			<li>
+				<a class="edit" href="index.php?requ=specialisation-selectionner-supprimer&idSpe=<?php echo $spe->getSpecialisation()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>">Supprimer</a>
 				<p><?php echo $spe->getSpecialisation()->getLibelle(); ?></p>
 			</li>
 			<?php	}
