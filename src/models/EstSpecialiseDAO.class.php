@@ -39,6 +39,20 @@ class EstSpecialiseDAO {
 		}
 	}
 
+	public static function getByIdAncienNotHave($id) {
+		try {
+			$req=SPDO::getInstance()->prepare("SELECT idSpe FROM specialisation WHERE idSpe NOT IN (SELECT idSpe FROM estSpecialise WHERE idPersonne=?)");
+			$req->execute(array($id));
+			$list = array();
+			while ($res = $req->fetch())
+				$list[]=SpecialisationDAO::getById($res['idSpe']);
+			return $list;
+		} catch(PDOException $e) {
+			die('error get ancien EstSpecialise '.$e->getMessage().'<br>');
+			return null;
+		}
+	}
+
 	public static function getByAncien($ancien) {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
