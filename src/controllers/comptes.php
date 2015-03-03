@@ -23,7 +23,7 @@ if (isset($_POST['mod'])) {
 	} else
 */if (isset($_POST['add'])) {
 		if (trim($_POST['nom'])!="" && trim($_POST['prenom']) && trim($_POST['mail'])) {
-			require_once('passwordHash.inc.php');
+			include_once('passwordHash.inc.php');
 			include_once(MODELS_INC.'Compte.class.php');
 
 			$pers = new Personne(0, trim($_POST['nom']), trim($_POST['nom']), trim($_POST['prenom']), trim($_POST['mail']));
