@@ -24,12 +24,13 @@ if (isset($_POST['mod'])) {
 */if (isset($_POST['add'])) {
 		if (trim($_POST['nom'])!="" && trim($_POST['prenom']) && trim($_POST['mail'])) {
 			require_once('passwordHash.inc.php');
-			$pers=new Personne(0, trim($_POST['nom']), trim($_POST['nom']), trim($_POST['prenom']), trim($_POST['mail']));
+			include_once(MODELS_INC.'Compte.class.php');
+
+			$pers = new Personne(0, trim($_POST['nom']), trim($_POST['nom']), trim($_POST['prenom']), trim($_POST['mail']));
 			PersonneDAO::create($pers);
-			$login=substr($pers->getNom(), 0, 4).$pers->getId().substr($pers->getPrenom(), 0, 4);
-			$typeProf=TypeProfilDAO::getById($_POST['profil']);
-			$mdp=randomPassword();
-			$compte=new Compte(0, $typeProf, $pers, $login, create_hash($mdp));
+			$login = Compte::personne2LoginStr($pers);
+			$typeProf = TypeProfilDAO::getById($_POST['profil']);
+			$compte = new Compte(0, $typeProf, $pers, $login, randomPassword());
 			$id=CompteDAO::create($compte);
 			$Name = "ConnectIT!"; //senders name
 			$email = "no-reply@connectIt.fr"; //senders e-mail adress

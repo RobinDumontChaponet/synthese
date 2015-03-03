@@ -43,6 +43,9 @@ echo '<p class="warning">submitFinal, $in = ';
 		include_once(MODELS_INC.'AncienDAO.class.php');
 		include_once(MODELS_INC.'PromotionDAO.class.php');
 		include_once(MODELS_INC.'DepartementIUTDAO.class.php');
+
+		include_once('strings.transit.inc.php');
+
 		$studentProfile=new TypeProfil(3, 'Ancien'); // Profil d'ancien.
 		require_once('csvParser.inc.php');
 
@@ -233,7 +236,7 @@ echo '<br />line : ';
 
 					$typeProfile = TypeProfilDAO::getByLibelle('Ancien');
 
-					$login = substr($ancien->getNomPatronymique(), 0, 4).$ancien->getId().substr($ancien->getPrenom(), 0, 4);
+					$login = personne2LoginStr($ancien);
 
 					/*
 var_dump($ancien);
