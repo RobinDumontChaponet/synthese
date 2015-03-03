@@ -68,6 +68,7 @@ else { ?>
 	  <br />
 	  <input class="<?php if ($badinput!==true) echo'ok'; else echo'warning';?>" name="submit" type="submit" value="&#xe613; connexion" />
 	  <br /><a href="lostpassword.php" title="Alors, comme ça, on oublie son mot-de-passe ?!">mot-de-passe oublié ?</a>
+	  <br /><a href="humans.php" title="C'est nous">à propos.</a>
 	  <?php } ?>
 	</fieldset>
   </form>
