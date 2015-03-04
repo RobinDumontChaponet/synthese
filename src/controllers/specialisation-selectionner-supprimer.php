@@ -5,7 +5,7 @@ if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $an
 		$specialisation = SpecialisationDAO::getById($_GET['idSpe']);
 		if ($specialisation != NULL) {
 			$estSpecialise = new EstSpecialise ($ancien, $specialisation);
-			EstSpecialeDAO::delete($specialisation);
+			EstSpecialiseDAO::delete($estSpecialise);
 		}
 		header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#specialisations');
 	}

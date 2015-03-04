@@ -84,15 +84,16 @@ class EstSpecialiseDAO {
 
 
 	public static function delete($obj) {
+		var_dump(get_class($obj));
 		if(get_class($obj)=="EstSpecialise") {
 			try{
-				$req=SPDO::getInstance()->prepare("DELETE FROM `estSpecialise` WHERE `idPersonne`=?, `idSpe`=?");
+				$req=SPDO::getInstance()->prepare("DELETE FROM `estSpecialise` WHERE `idPersonne`=? AND `idSpe`=?");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getSpecialisation()->getId()));
 			} catch(PDOException $e) {
-				die('error update EstSpecialise '.$e->getMessage().'<br>');
+				die('error delete EstSpecialise '.$e->getMessage().'<br>');
 			}
 		} else {
-			die('paramètre de type EstSpecialise   requis');
+			die('EstSpecialiseDAO::Delete : paramètre de type EstSpecialise  requis');
 		}
 	}
 
