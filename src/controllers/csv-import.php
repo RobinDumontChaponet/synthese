@@ -218,6 +218,34 @@ echo '<br />line : ';
 */
 
 
+
+						/*
+							echo '<td>'.$line[$order['nomPat']].'</td>';
+							echo '<td>'.$line[$order['nomUsage']].'</td>';
+							echo '<td>'.$line[$order['prenom']].'</td>';
+							echo '<td>'.$line[$order['dateNais']].'</td>';
+							echo '<td>'.$line[$order['mail']].'</td>';
+							echo '<td>'.$line[$order['telMob']].'</td>';
+							echo '<td>'.$line[$order['telFix']].'</td>';
+							echo '<td>'.$line[$order['adresse1']].'</td>';
+							echo '<td>'.$line[$order['codePost']].'</td>';
+							echo '<td>'.$line[$order['ville']].'</td>';
+							echo '<td>'.$line[$order['pays']].'</td>';
+							echo '<td>'.$line[$order['diplomePostDUT']].'</td>';
+							echo '<td>'.$line[$order['formationPostDUT']].'</td>';
+							echo '<td>'.$line[$order['ecole']].'</td>';
+							echo '<td>'.$line[$order['diplomePrepare']].'</td>';
+							echo '<td>'.$line[$order['entreprise']].'</td>';
+							echo '<td>'.$line[$order['telEntreprise']].'</td>';
+							echo '<td>'.$line[$order['codePostEntreprise']].'</td>';
+							echo '<td>'.$line[$order['cedex']].'</td>';
+							echo '<td>'.$line[$order['adresse1Parents']].'</td>';
+							echo '<td>'.$line[$order['codePostParents']].'</td>';
+							echo '<td>'.$line[$order['telMobParents']].'</td>';
+						*/
+
+
+
 					$sexe = strtolower(fillVal($line[$order['sexe']]));
 					if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'f', -strlen($sexe)) !== FALSE)
 						$sexe = 'f';
@@ -234,7 +262,7 @@ echo '<br />line : ';
 
 					$typeProfile = TypeProfilDAO::getByLibelle('Ancien');
 
-					$login = personne2LoginStr($ancien);
+					$login = Compte::personne2LoginStr($ancien);
 
 					/*
 var_dump($ancien);
