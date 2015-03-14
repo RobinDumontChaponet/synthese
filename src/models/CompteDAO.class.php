@@ -56,7 +56,7 @@ class CompteDAO {
 			}
 			$nbTotal=CompteDAO::getNbByTypeProfil($idType);
 			return $lst;
-		}catch(PDOException $e) {
+		} catch(PDOException $e) {
 			die('error sql getByTypeProfil ancien');
 		}
 	}
@@ -71,7 +71,7 @@ class CompteDAO {
 			} else {
 				return 0;
 			}
-		}catch(PDOException $e) {
+		} catch(PDOException $e) {
 			die('error sql getNbByTypeProfil compte');
 		}
 	}
@@ -105,8 +105,8 @@ class CompteDAO {
 			} catch(PDOException $e) {
 				die('error create comptedao '.$e->getMessage().'<br>');
 			}
-		}else {
-			die('type create compte incor');
+		} else {
+			die('type create compte incorrecte'); // Putain Mathieu, c'est dur d'écrire "incorrecte" en entier ? (et pas "incor", c'est important les messages d'erreur, déjà qu'il n'est pas très xplicite celui là...). r-dc_
 		}
 	}
 

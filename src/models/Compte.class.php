@@ -1,6 +1,7 @@
 <?php
 
 include_once('strings.transit.inc.php');
+include_once(MODELS_INC.'PersonneDAO.class.php');
 
 class Compte {
 	private $id;
@@ -91,13 +92,25 @@ class Compte {
 	public function equals($aComparer) {
 		if (get_class($aComparer) == "Compte") {
 			return $this->id == $aComparer->getId();
-		}else {
+		} else {
 			return false;
 		}
 	}
 
 	public static function personne2LoginStr ($personne) {
-		return cleanString(strtolower(substr($personne->getNomPatronymique(), 0, 4))).$personne->getId().cleanString(strtolower(substr($personne->getPrenom(), 0, 4)));
+		$alikes = PersonneDAO::countAlikeNames($personne);
+		echo($alikes);
+		$namePart = cleanString(strtolower(substr($personne->getNomPatronymique(), 0, 4)));
+		$numberPart='';
+		$firstNamePart = cleanString(strtolower(substr($personne->getPrenom(), 0, 4)));
+
+		if($alikes) {
+			$numberPart=$alikes;
+			while(CompteDAO::getCompteByNdc($namePart.$numberPart.$firstNamePart))
+				$numberPart++;
+		}
+
+		return $namePart.$numberPart.$firstNamePart;
 	}
 }
 ?>
