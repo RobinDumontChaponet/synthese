@@ -44,6 +44,7 @@ elseif (isset($_POST['user']) && isset($_POST['pwd']) && !$bot) {
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <head>
 <title>connectIT! | Connexion</title>
+<link rel="author" href="humans.txt" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
 <link rel="icon" href="style/favicon-96.png">

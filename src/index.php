@@ -78,6 +78,7 @@ if($matches[1]) {
     <meta charset="UTF-8">
     <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>">
     <title>connectIT!<?php if(!empty($title)) echo ' | '.$title; ?></title>
+    <link rel="author" href="humans.txt" />
     <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
     <link rel="icon" href="style/favicon-96.png">
     <meta name="msapplication-TileColor" content="#FFF">
