@@ -75,7 +75,7 @@ else { ?>
 </aside>
 <aside id="intro">
   <p>
-	  Plus qu'un simple réseau, ConnectIT! est la concrétisation du lien fort qui unit les nouveaux comme les anciens étudiants de l'IUT de Metz.<br />Consultez les événements spécialement organisés pour vous. Bénéficiez d'offres de stages et d'emplois qui vous aideront à progresser dans votre carrière professionnelle. Profitez des avantages offerts par une communauté solidaire. Retrouvez vos anciens camarades et revivez les moments passés.<br /><br /><br />Réalisé dans le cadre du projet de synthèse 2014-2015 par DUMONT Robin, JOZWICKi Victor, FADILI Youssef, PISTER Mathieu
+	  Plus qu'un simple réseau, ConnectIT! est la concrétisation du lien fort qui unit les nouveaux comme les anciens étudiants de l'IUT de Metz.<br />Consultez les événements spécialement organisés pour vous. Bénéficiez d'offres de stages et d'emplois qui vous aideront à progresser dans votre carrière professionnelle. Profitez des avantages offerts par une communauté solidaire. Retrouvez vos anciens camarades et revivez les moments passés.
   </p>
 </aside>
 </body>
