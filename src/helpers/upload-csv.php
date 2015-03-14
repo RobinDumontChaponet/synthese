@@ -5,7 +5,7 @@ session_start();
 
 if($_SESSION["syntheseUser"]) {
 
-	include('urls.transit.inc.php');
+	include_once('strings.transit.inc.php');
 
 	// Définitions des droits
 	include_once(MODELS_INC."DisposeDeDAO.class.php");

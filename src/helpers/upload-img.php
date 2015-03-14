@@ -8,7 +8,7 @@ if($_SESSION["syntheseUser"]) {
 
 	/*  Absolument ajouter test de droit */
 
-	include('urls.transit.inc.php');
+	include_once('strings.transit.inc.php');
 	include('images.transit.inc.php');
 
 	$possibleExtensions = array('jpg', 'jpeg', 'png', 'gif', 'bmp');

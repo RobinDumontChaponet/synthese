@@ -10,6 +10,4 @@ function rearrange($arr) {
     return $new;
 }
 
-
-
 ?>

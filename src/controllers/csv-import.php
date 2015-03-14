@@ -44,8 +44,6 @@ echo '<p class="warning">submitFinal, $in = ';
 		include_once(MODELS_INC.'PromotionDAO.class.php');
 		include_once(MODELS_INC.'DepartementIUTDAO.class.php');
 
-		include_once('strings.transit.inc.php');
-
 		$studentProfile=new TypeProfil(3, 'Ancien'); // Profil d'ancien.
 		require_once('csvParser.inc.php');
 
