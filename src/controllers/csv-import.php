@@ -258,7 +258,7 @@ echo '<br />line : ';
 
 					$ancien = new Ancien(0, fillVal($line[$order['nomUsage']]), fillVal($line[$order['nomPat']]), fillVal($line[$order['prenom']]), fillVal($line[$order['adresse1']]), fillVal($line[$order['adresse2']]), fillVal($line[$order['codePost']]), fillVal($line[$order['ville']]), fillVal($line[$order['pays']]), fillVal($line[$order['telMob']]), fillVal($line[$order['telFix']]), null, null, $parents, $sexe, fillVal($line[$order['dateNais']]), fillVal($line[$order['mail']]));
 
-					$idAncien=AncienDAO::create($ancien);
+					$idAncien = AncienDAO::create($ancien);
 
 					$typeProfile = TypeProfilDAO::getByLibelle('Ancien');
 

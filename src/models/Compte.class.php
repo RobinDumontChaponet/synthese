@@ -99,7 +99,6 @@ class Compte {
 
 	public static function personne2LoginStr ($personne) {
 		$alikes = PersonneDAO::countAlikeNames($personne);
-		echo($alikes);
 		$namePart = cleanString(strtolower(substr($personne->getNomPatronymique(), 0, 4)));
 		$numberPart='';
 		$firstNamePart = cleanString(strtolower(substr($personne->getPrenom(), 0, 4)));
