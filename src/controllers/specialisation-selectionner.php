@@ -5,10 +5,16 @@ if ($_SESSION['user_auth']['write']) {
 		$ancien = AncienDAO::getById($_GET['id']);
 		$spes = EstSpecialiseDAO::getByIdAncienNotHave($_GET['id']);
 		if (isset($_POST) && $_POST != NULL) {
-			$specSelect = SpecialisationDAO::getById($_POST['specialisation']);
-			$specialisation = new EstSpecialise($ancien, $specSelect);
-			EstSpecialiseDAO::create($specialisation);
-			header('Location: '.SELF.'profil/'.$ancien->getId().'#specialisation');
+			if ($_POST['specialisation'] != NULL) {
+				$specSelect = SpecialisationDAO::getById($_POST['specialisation']);
+				$specialisation = new EstSpecialise($ancien, $specSelect);
+				EstSpecialiseDAO::create($specialisation);
+				header('Location: '.SELF.'profil/'.$ancien->getId().'#specialisation');
+			} else {
+				$errorSelectSpe = true;
+			}
+			
+			
 		}
 	}
 	include(VIEWS_INC.'specialisation-selectionner.php');
