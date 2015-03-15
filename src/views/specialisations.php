@@ -1,7 +1,7 @@
 <!--meta title="Spécialisations" css="style/evenements.css"-->
 <div id="content">
 	<h1>Spécialisations</h1>
-	<a class="add" href="specialisation-ajouter">Ajouter une spécialisation</a> - <a href="types-specialisation" target="_blank">Accéder aux types de spécialisation</a>
+	<a class="add" href="specialisation-ajouter">Ajouter une spécialisation</a> - <a href="types-specialisation">Accéder aux types de spécialisation</a>
 	<section>
 	<?php
 	if($spes != NULL) {

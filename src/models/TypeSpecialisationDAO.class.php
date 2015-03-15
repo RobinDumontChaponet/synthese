@@ -34,7 +34,7 @@ class TypeSpecialisationDAO {
     }
 
     public static function create(&$type) {
-        if (gettype($type)=="TypeSpecialisation") {
+        if (get_class($type)=="TypeSpecialisation") {
             try {
                 $req=SPDO::getInstance()->prepare("INSERT INTO `typeSpecialisation`(`libelle`) VALUES (?)");
                 $req->execute(array($type->getLibelle()));
@@ -49,7 +49,7 @@ class TypeSpecialisationDAO {
     }
 
     public static function update($type) {
-        if (gettype($type)=="TypeSpecialisation") {
+        if (get_class($type)=="TypeSpecialisation") {
             try {
                 $req=SPDO::getInstance()->prepare("UPDATE `typeSpecialisation` SET `libelle`=? WHERE `idTypeSpe`=?");
                 $req->execute(array($type->getLibelle(), $type->getId()));
@@ -62,7 +62,7 @@ class TypeSpecialisationDAO {
     }
 
     public static function delete($type) {
-        if (gettype($type)=="TypeSpecialisation") {
+        if (get_class($type)=="TypeSpecialisation") {
             try {
                 $req=SPDO::getInstance()->prepare("DELETE FROM `typeSpecialisation` WHERE `idTypeSpe`=?");
                 $req->execute(array($type->getId()));

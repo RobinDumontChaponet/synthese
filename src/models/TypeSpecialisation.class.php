@@ -1,11 +1,9 @@
 <?php
-class TypeSpecialisation
-{
+class TypeSpecialisation {
 	private $id;
 	private $libelle;
 
-	public function __construct($id, $libelle)
-	{
+	public function __construct($id, $libelle) {
 		$this->setId($id);
 		$this->setLibelle($libelle);
 	}
@@ -15,31 +13,22 @@ class TypeSpecialisation
 		return $this->id;
 	}
 
-	public function getLibelle()
-	{
+	public function getLibelle() {
 		return $this->libelle;
 	}
 
 
 //--------------------------------------------Setters
 	public function setId($id) {
-			$this->id = $id;
+		$this->id = $id;
 	}
 
 	public function setLibelle($libelle) {
-		$libelleTraite = trim($libelle);
-		if(($libelleTraite != null) and ($libelleTraite != ""))
-		{
-			$this->libelle = $libelleTraite;
-		}else
-		{
-			throw new Exception("Libellé spécialisation incorrect");
-		}
+		$this->libelle = $libelle;
 	}
 
 //-------------------------------------------toString
-	public function __toString()
-	{
+	public function __toString() {
 		return "Id : ".$this->id." Libellé : ".$this->libelle;
 	}
 //----------------------------------------------Equals
