@@ -91,7 +91,7 @@ class AncienDAO {
 
 				$idPers=PersonneDAO::create(new Personne(0, $ancien->getNom(), $ancien->getNomPatronymique(), $ancien->getPrenom(), $ancien->getMail()));
 				$req = SPDO::getInstance()->prepare("INSERT INTO `ancien`(`idPersonne`, `adresse1`, `adresse2`, `codePostal`, `ville`, `pays`, `mobile`, `telephone`, `imageProfil`, `imageTrombi`,`idParent`,`dateNaissance`,sexe) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal, $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
+				$req->execute(array($idPers, $ancien->getAdresse1(), $ancien->getAdresse2(), $ancien->getCodePostal(), $ancien->getVille(), $ancien->getPays(), $ancien->getMobile(), $ancien->getTelephone(), $ancien->getImageProfil(), $ancien->getImageTrombi(),$ancien->getParents()->getId(),$ancien->getDateNaissance(),$ancien->getSexe()));
 				$ancien->setId($idPers);
 				return $idPers;
 			} catch(PDOException $e) {
@@ -193,7 +193,7 @@ class AncienDAO {
 			if($spe==null){$from.=" , `estSpecialise` Spe, `specialisation` Special"; }
 			$args[]=$typeSpe;
 		}
-       
+
 		if($PostDut!=null) {
 			$where.=" AND P.idPersonne=Poss.idPersonne AND Poss.idDiplomePost=? ";
 			$from.=" ,`possede` Poss";
