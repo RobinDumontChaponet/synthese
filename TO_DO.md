@@ -2,6 +2,10 @@
 
 _(SUPPRIMER CE QUI EST FAIT)_
 
+- import-csv : avertissement doublon.
+- page de merge d’ancien. (et d’entreprise, toussa toussa)
+- import-csv : errmsg unauthorized file
+- pwd dans compte
 - daoTravail, null <- 000
 - recherche : spé. -> derniere de la dB, avec un « + » 
 
