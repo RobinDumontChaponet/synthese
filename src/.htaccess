@@ -311,6 +311,7 @@ FileETag None
 	RewriteRule ^specialisation-ajouter %{ENV:BASE}/index.php?requ=specialisation-ajouter [NC]
 	RewriteRule ^humans$ %{ENV:BASE}/humans.php [L]
 	RewriteRule ^specialisation-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=specialisation-selectionner&id=$1 [NC]
+	RewriteRule ^departementIUT-ajouter %{ENV:BASE}/index.php?requ=departementIUT-ajouter [NC]
 
 #### Generals
 	RewriteCond %{REQUEST_FILENAME} !-d
