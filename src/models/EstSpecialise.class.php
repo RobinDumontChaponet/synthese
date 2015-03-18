@@ -1,19 +1,18 @@
 <?php
-class EstSpecialise
-{
-//	VARIABLES
+class EstSpecialise {
+	// VARIABLES
 
 	private $ancien;
 	private $specialisation;
 
-//	CONSTRUCTORS
+	// CONSTRUCTORS
 
 	public function __construct($ancien, $specialisation) {
 		$this->setAncien($ancien);
 		$this->setSpecialisation($specialisation);
 	}
 
-//	GETTERS & SETTERS
+	// GETTERS & SETTERS
 
 	public function getAncien() {
 		return $this->ancien;
@@ -31,13 +30,13 @@ class EstSpecialise
 	}
 
 	public function setSpecialisation($specialisation) {
-		if($specialisation != NULL)
+		if ($specialisation != NULL)
 			$this->specialisation = $specialisation;
 		else
 			throw new Exception('Specialisation dans EstSpecialise est NULL');
 	}
 
-//	TO STRING
+	// TO STRING
 	public function __toString() {
 		return "Ancien : ".$this->ancien." Specialisation : ".$this->specialisation;
 	}

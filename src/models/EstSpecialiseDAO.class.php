@@ -9,8 +9,7 @@ class EstSpecialiseDAO {
 		$lst=array();
 		try {
 			$req=SPDO::getInstance()->query("SELECT * FROM estSpecialise");
-			while
-				($res=$req->fetch()) {
+			while ($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
 				$spe=SpecialisationDAO::getById($res['idSpe']);
 				$lst[]=new EstSpecialise($ancien, $spe);
@@ -25,12 +24,11 @@ class EstSpecialiseDAO {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
 			$req->execute(array($id));
-			if
-				($res=$req->fetch()) {
+			if ($res=$req->fetch()) {
 				$ancien=AncienDAO::getById($res['idPersonne']);
 				$spe=SpecialisationDAO::getById($res['idSpe']);
 				return new EstSpecialise($ancien, $spe);
-			}else{
+			} else {
 				return null;
 			}
 		} catch(PDOException $e) {
@@ -57,7 +55,8 @@ class EstSpecialiseDAO {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT * FROM estSpecialise WHERE idPersonne=?");
 			$req->execute(array($ancien->getId()));
-			while($res = $req->fetch()){
+			$lst = array(); // put..., c'est dur à écrire ça ?!
+			while ($res = $req->fetch()) {
 				$ancien = AncienDAO::getById($res['idPersonne']);
 				$spe = SpecialisationDAO::getById($res['idSpe']);
 				$lst[]= new EstSpecialise($ancien, $spe);;
@@ -70,8 +69,8 @@ class EstSpecialiseDAO {
 	}
 
 	public static function create($obj) {
-		if(get_class($obj)=="EstSpecialise") {
-			try{
+		if (get_class($obj)=="EstSpecialise") {
+			try {
 				$req=SPDO::getInstance()->prepare("INSERT INTO `estSpecialise`(`idPersonne`, `idSpe`) VALUES (?,?)");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getSpecialisation()->getId()));
 			} catch(PDOException $e) {
@@ -85,8 +84,8 @@ class EstSpecialiseDAO {
 
 	public static function delete($obj) {
 		var_dump(get_class($obj));
-		if(get_class($obj)=="EstSpecialise") {
-			try{
+		if (get_class($obj)=="EstSpecialise") {
+			try {
 				$req=SPDO::getInstance()->prepare("DELETE FROM `estSpecialise` WHERE `idPersonne`=? AND `idSpe`=?");
 				$req->execute(array($obj->getAncien()->getId(), $obj->getSpecialisation()->getId()));
 			} catch(PDOException $e) {

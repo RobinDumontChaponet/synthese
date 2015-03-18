@@ -29,6 +29,7 @@ class AEtudieDAO {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT * FROM aEtudie WHERE idPersonne=?");
 			$req->execute(array($ancien->getId()));
+			$lst = array(); // ça te coute un bras de mettre ça ?
 			while ($result = $req->fetch()) {
 				$promo = PromotionDAO::getById($result['idPromo']);
 				$dpt = DepartementIUTDAO::getById($result['idDepartement']);
@@ -41,7 +42,7 @@ class AEtudieDAO {
 			die('error getById a etudie '.$e->getMessage().'<br>');
 		}
 	}
-	
+
 	public static function getPromotionByAncien($ancien) {
 		try {
 			$req=SPDO::getInstance()->prepare("SELECT idPromo FROM aEtudie WHERE idPersonne=?");

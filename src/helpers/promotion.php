@@ -1,6 +1,6 @@
 <?php
 
-include 'conf.inc.php';
+include_once 'conf.inc.php';
 
 include_once MODELS_INC.'PromotionDAO.class.php';
 include_once MODELS_INC.'DepartementIUTDAO.class.php';
@@ -22,8 +22,54 @@ if($promo!=null) { ?>
 	</ul>
 	<?php
 		} elseif($_GET['view']=='table') {
+			include MODELS_INC.'EstSpecialiseDAO.class.php';
+			include MODELS_INC.'PossedeDAO.class.php';
 	?>
-		table
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Diplôme DUT</th>
+					<th>Spécialisation</th>
+					<th>Diplômes post-DUT</th>
+					<th>Travail</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach($anciens as $ancien) {
+				$estSpecialise = EstSpecialiseDAO::getByAncien($ancien);
+				$possede = PossedeDAO::getByAncien($ancien);
+				$aEtudie = AEtudieDAO::getByAncien($ancien);
+				$travail = TravailleDAO::getByAncien($ancien);
+				echo '<tr>';
+				echo '<td><a href="profil/'.$ancien->getId().'"><span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></td>';
+				echo '<td><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().'</a></td>';
+				echo '<td>';
+				if($aEtudie)
+					foreach($aEtudie as $item)
+						echo $item->getDiplomeDUT()->getLibelle().'<br />';
+				echo '</td>';
+				echo '<td>';
+				if($estSpecialise)
+					foreach($estSpecialise as $item)
+						echo $item->getSpecialisation()->getLibelle().' ('.$item->getSpecialisation()->getTypeSpecialisation()->getLibelle().')'.'<br />';
+				echo '</td>';
+				echo '<td>';
+				if($possede)
+					foreach($possede as $item)
+						echo $item->getDiplomePostDUT()->getLibelle().' à '.$item->getEtablissement()->getNom().'<br />';
+				echo '</td>';
+				echo '<td>';
+				if($travail)
+					foreach($travail as $item)
+						echo $item->getEntreprise()->getNom().'<br />';
+				echo '</td>';
+				echo '</tr>';
+				}
+			?>
+			</tbody>
+		</table>
 	<?php
 		} else {
 	?>

@@ -8,18 +8,13 @@
 	<section id="etudiants">
 		<nav id="viewType">
 			<span>Affichage :</span>
-			<button class="magnetView active" title="Vue condensée" data-view="magnet">Vue condensée</button>
-			<button class="tableView" title="Vue en tableau" data-view="table">Vue en tableau</button>
+			<button class="magnetView" title="Vue condensée" data-view="magnet">Vue condensée</button>
+			<button class="tableView active" title="Vue en tableau" data-view="table">Vue en tableau</button>
 			<button class="listView" title="Vue en liste" data-view="list">Vue en liste</button>
 		</nav>
 		<h2>Étudiants de la promotion</h2>
 		<?php if($anciens != NULL) { ?>
 		<div id="viewContent">
-			<ul class="magnets">
-				<?php foreach($anciens as $ancien)
-					echo '<li><a href="profil/'.$ancien->getId().'">'.$ancien->getPrenom().'<span class="nomPatronymique">'.$ancien->getNomPatronymique().'</span></a></li>';
-				?>
-			</ul>
 		</div>
 		<?php
 		} else {
@@ -39,4 +34,5 @@ var viewChanger = new ViewChanger(document.getElementById('viewType'), document.
 	this.content.innerHTML=resp;
 });
 viewChanger.init();
+viewChanger.aGet();
 </script>
