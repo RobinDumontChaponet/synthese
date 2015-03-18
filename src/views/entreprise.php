@@ -16,6 +16,8 @@
             <dd id="codePostal"><?php echo $entreprise->getCodePostal(); ?></dd>
             <dt>Ville</dt>
             <dd id="ville"><?php echo $entreprise->getVille(); ?></dd>
+            <dt>Cedex</dt>
+            <dd id="cedex"><?php echo $entreprise->getCedex(); ?></dd>
             <dt>Pays</dt>
             <dd id="pays"><?php echo $entreprise->getPays(); ?></dd>
             <dt>Code APE</dt>

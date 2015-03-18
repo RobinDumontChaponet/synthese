@@ -1,12 +1,10 @@
 <?php
-
 if ($_SESSION['user_auth']['write']) {
 	if ($_GET['id']) {
 		$ancien = AncienDAO::getById($_GET['id']);
 		if ($ancien != NULL) {
 			$entreprises = EntrepriseDAO::getAll();
 		}
-		var_dump($_POST);
 		$postes = PosteDAO::getAll();
 		if (isset($_POST) && $_POST != NULL) {
 			if ($_POST['entreprise'] != NULL) {
