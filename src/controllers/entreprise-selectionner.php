@@ -6,6 +6,7 @@ if ($_SESSION['user_auth']['write']) {
 		if ($ancien != NULL) {
 			$entreprises = EntrepriseDAO::getAll();
 		}
+		var_dump($_POST);
 		$postes = PosteDAO::getAll();
 		if (isset($_POST) && $_POST != NULL) {
 			if ($_POST['entreprise'] != NULL) {
@@ -13,7 +14,7 @@ if ($_SESSION['user_auth']['write']) {
 					$entreprise = EntrepriseDAO::getById($_POST['entreprise']);
 					$poste = PosteDAO::getById($_POST['poste']);
 					if ($poste != NULL) {
-						if (isset($_POST['periode2'])) {
+						if (isset($_POST['periode2']) && !empty($_POST['periode2'])) {
 							if ($_POST['periode1'] <= $_POST['periode2']) {
 								if($_POST['periode1'] >= '1900-01-01') {
 									$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], $_POST['periode2']);
@@ -27,7 +28,7 @@ if ($_SESSION['user_auth']['write']) {
 						} else {
 							$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], $_POST['periode2']);
 							TravailleDAO::create($travaille);
-							header('Location: '.SELF.'profil/'.$ancien->getId().'#entreprise');
+							header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#entreprise');
 						}
 					} else {
 						$errorPoste = true;

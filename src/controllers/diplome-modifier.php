@@ -17,14 +17,18 @@ if ($_GET['idAncien'] != NULL) {
 					$etablNew = EtablissementDAO::getById($_POST['etablissement']);
 					$possede->setEtablissement($etablNew);
 					if ($_POST['periode1'] != NULL) {
-						$possede->setDateDebut($_POST['periode1']);
-						if ($_POST['periode2'] == NULL) {
-							$possede->setDateFin('0000-00-00');
+						if ($_POST['periode1'] >= '1900-01-01') {
+							$possede->setDateDebut($_POST['periode1']);
+							if ($_POST['periode2'] != NULL && $_POST['periode1'] <= $_POST['periode2']) {
+								$possede->setDateFin($_POST['periode2']);
+								PossedeDAO::update($possedeAncien, $possede);
+								header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomesPostDUT');
+							} else {
+								$errorPeriode2 = true;
+							}
 						} else {
-							$possede->setDateFin($_POST['periode2']);
+							$beSerious = true;
 						}
-						PossedeDAO::update($possedeAncien, $possede);
-						header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomesPostDUT');
 					} else {
 						$errorDate = true;
 					}

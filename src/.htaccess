@@ -283,6 +283,7 @@ FileETag None
 	RewriteRule ^entreprise/([^/]+) %{ENV:BASE}/index.php?requ=entreprise&id=$1 [NC]
 	RewriteRule ^entreprise-editer/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-editer&id=$1 [NC]
 	RewriteRule ^entreprise-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=entreprise-selectionner&id=$1 [NC]
+	RewriteRule ^entreprise-modifier/([^/]+)&([^/]+)&([^/]+)&([^/]+)&([^/]+) %{ENV:BASE}/index.php?requ=entreprise-modifier&idAncien=$1&idEntreprise=$2&periode1=$3&periode2=$4&idPoste=$5 [NC]
 	RewriteRule ^diplome-editer/([^/]+) %{ENV:BASE}/index.php?requ=diplome-editer&id=$1 [NC]
 	RewriteRule ^diplome/([^/]+) %{ENV:BASE}/index.php?requ=diplome&id=$1 [NC]
 	RewriteRule ^diplome-selectionner/([^/]+) %{ENV:BASE}/index.php?requ=diplome-selectionner&id=$1 [NC]
