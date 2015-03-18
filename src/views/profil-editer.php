@@ -212,7 +212,7 @@
 				</li>
 			</ul>
 		</section>
-		<section id="spetialisations">
+		<section id="specialisations">
 			<h2>Spécialisations</h2>
 			<ul>
 				<?php

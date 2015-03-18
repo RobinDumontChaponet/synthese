@@ -16,13 +16,14 @@
 						echo '<option value="'.$typeEvent->getId().'">'.$typeEvent->getLibelle().'</option>';
 					?>
 					</select>
-					<a class="types" href="typesEvent" target="_blank">Liste des types d'évènements (dans un nouvel onglet)</a>
+					<a class="types" href="typesEvent">Liste des types d'évènements</a>
 				</dd>
 				<dt><label for="inputCommentaire">Commentaire</label></dt>
 				<dd class="commentaire"><textarea id="inputCommentaire" name="commentaire" placeholder="Peut être vide"/></textarea></dd>
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter l'évènement" />
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	</form>
 <?php } ?>
 </div>
