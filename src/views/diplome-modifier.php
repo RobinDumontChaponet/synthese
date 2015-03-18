@@ -3,6 +3,10 @@
 	<?php if (isset($_GET) && $_GET['idAncien'] != NULL && $_GET['idDiplomePost'] != NULL && $_GET['idEtablissement'] != NULL) {
 		if ($errorDate)
 			echo '<p class="error">La date de début doit être renseignée</p>';
+		if ($beSerious)
+			echo '<p class="error">Soyez sérieux ... c\'est impossible d\'avoir commencé ce job le '.strftime('%A %d %B %Y', strtotime($_POST['periode1'])).'</p>';
+		if ($errorPeriode2)
+			echo '<p class="error">Vous devez renseigner correctement la date de fin (elle doit être supérieure à celle de départ)</p>';
 		?>
 		<h1>Modification d'un Diplôme pour l'étudiant <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>
 		<form action="" method="post">
@@ -11,9 +15,11 @@
 					<dt><label for="diplome">Diplôme</label></dt>
 					<dd class="diplome">
 						<select name="diplome">
+							<option></option>
 							<?php if ($diplomes != NULL) {
-								foreach($diplomes as $diplome)
-									echo '<option value="'.$diplome->getId().'">'.$diplome->getLibelle().'</option>';
+								foreach($diplomes as $diplome) {?>
+									<option value="<?php echo $diplome->getId();?>"><?php echo $diplome->getLibelle();?></option>
+							<?php } 
 							} else {
 								echo '<option value="NULL">Aucun diplôme disponible pour cette personne</option>';
 							}?>
@@ -23,6 +29,7 @@
 					<dt><label for="etablissement">Etablissement</label></dt>
 					<dd class="etablissement">
 						<select name="etablissement">
+							<option></option>
 							<?php if ($etablissements != NULL) {
 								foreach($etablissements as $etablissement)
 									echo '<option value="'.$etablissement->getId().'">'.$etablissement->getNom().' ('.$etablissement->getVille().'/'.$etablissement->getPays().')</option>'; // Je sais pas comment l'afficher

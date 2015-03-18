@@ -57,11 +57,14 @@ class TravailleDAO {
 		}
 	}
 
-	public static function update($obj) {
-		if(get_class($obj)=="Travaille") {
+	public static function update($ex, $new) {
+		if(get_class($ex) == "Travaille" && get_class($new) == "Travaille") {
 			try {
-				$req=SPDO::getInstance()->prepare("UPDATE `travaille` SET `dateEmbaucheFin`=? WHERE `idPersonne`=?,`idPoste`=?,`idEntreprise`=?,`dateEmbaucheDeb`=?");
-				$req->execute(array($obj->getDateEmbaucheFin(), $obj->getAncien()->getId(), $obj->getPoste()->getId(), $obj->getEntreprise()->getId(), $obj->getDateEmbaucheDebut()));
+				$req=SPDO::getInstance()->prepare("UPDATE `travaille` SET `idEntreprise`=?, `idPoste`=?, `dateEmbaucheDeb`=?, `dateEmbaucheFin`=? WHERE `idPersonne`=? AND `idEntreprise`=? AND `idPoste`=? AND `dateEmbaucheDeb`=? AND `dateEmbaucheFin`=?");
+				$req->execute(array($new->getEntreprise()->getId(), $new->getPoste()->getId(),
+				 $new->getDateEmbaucheDeb(), $new->getDateEmbaucheFin(),
+				  $ex->getAncien()->getId(), $ex->getEntreprise()->getId(), $ex->getPoste()->getId(),
+				 $ex->getDateEmbaucheDeb(), $ex->getDateEmbaucheFin()));
 			} catch(PDOException $e) {
 				die('error update Travaille '.$e->getMessage().'<br>');
 			}

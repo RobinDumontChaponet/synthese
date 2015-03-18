@@ -212,7 +212,7 @@
 				</li>
 			</ul>
 		</section>
-		<section id="spetialisations">
+		<section id="specialisations">
 			<h2>Spécialisations</h2>
 			<ul>
 				<?php
@@ -254,10 +254,14 @@ for(var i=0, l=elements.length; i<l; i++) {
 	}
 }
 
-new FileTransfert(document.getElementById('profilInput'), 'profil', function (resp) {
-	document.getElementById('profilImg').src=resp.image;
-});
-new FileTransfert(document.getElementById('trombiInput'), 'trombi', function (resp) {
-	document.getElementById('profilImg').src=resp.image;
-});
+if(document.getElementById('profilInput')) {
+	new FileTransfert(document.getElementById('profilInput'), 'profil/<?=$ancien->getId() ?>', function (resp) {
+		document.getElementById('profilImg').src='data:image/png;base64,'+resp.image;
+	});
+}
+if(document.getElementById('trombiInput')) {
+	new FileTransfert(document.getElementById('trombiInput'), 'trombi/<?=$ancien->getId() ?>', function (resp) {
+		document.getElementById('trombiImg').src='data:image/png;base64,'+resp.image;
+	});
+}
 </script>
