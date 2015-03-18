@@ -10,6 +10,7 @@ if(isset($_GET['minify']) || !file_exists('generated/'.basename(__FILE__))) {
 	include('polyShims.js');
 	include('smooth-scroll.min.js');
 	include('utils.transit.js');
+	include('delete.js');
 
 	/*echo $out = minify(ob_get_clean());
 	file_put_contents('generated/'.basename(__FILE__), $out);*/

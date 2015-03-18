@@ -1,4 +1,5 @@
 <?php
+
 if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) {
 	if (isset($_GET) && $_GET['idAncien'] != NULL && $_GET['idSpe'] != NULL) {
 		$ancien = AncienDAO::getById($_GET['idAncien']);
@@ -13,4 +14,5 @@ if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $an
 } else {
 	include(VIEWS_INC.'403.php');
 }
+
 ?>

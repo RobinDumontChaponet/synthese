@@ -101,7 +101,12 @@ if($matches[1]) {
 	<div id="wrapper">
 		<?php echo $inc; ?>
 	</div>
-	<script type="text/javascript">smoothScroll.init();</script>
+<script type="text/javascript">
+smoothScroll.init();
+var a = document.getElementsByClassName('delete');
+for(var i=a.length; i--;)
+	a[i].onclick=function() {supprModal(this); return false};
+</script>
 </body>
 </html>
 <?php
