@@ -2,7 +2,8 @@
 <div id="content">
 	<h1>Diplômes DUT</h1>
 	<?php if ($_SESSION['user_auth']['write'])
-		echo '	<a class="add" href="diplomeDUT-ajouter">Ajouter un nouveau Diplôme DUT</a> - <a href="departementsIUT">Accéder aux départements IUT</a>';
+		echo '	<a class="add" href="diplomeDUT-ajouter">Ajouter un nouveau Diplôme DUT</a> - <a href="departementsIUT">Accéder aux départements IUT</a>
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>';
 	?>
 	<section>
 	<?php

@@ -19,5 +19,6 @@
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le diplôme" />
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	</form>
 </div>

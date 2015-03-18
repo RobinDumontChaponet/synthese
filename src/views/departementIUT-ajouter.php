@@ -15,6 +15,7 @@
 				</dl>
 			</article>
 			<input type="submit" value="Ajouter" />
+			<a class="getback "href="javascript:history.go(-1)">Retour</a>
 		</form>
 		<?php } ?>
 	</div>

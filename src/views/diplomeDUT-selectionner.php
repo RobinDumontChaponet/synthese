@@ -1,7 +1,7 @@
 <!--meta title="Ajout de Diplôme DUT" css="style/evenements.css"-->
 <div id="content">
 	<?php if ($_GET['id']) {?>
-	<h1>Sélectionner un Diplôme DUT pour l'étudiant <?php if($ancien != NULL) echo $ancien->getPrenom().' <span class="nom">'.$ancien->getNomPatronymique().'</span>';?></h1>
+	<h1>Sélectionner un diplôme DUT pour l'étudiant <?php if($ancien != NULL) echo $ancien->getPrenom().' <span class="nom">'.$ancien->getNomPatronymique().'</span>';?></h1>
 	<form action="diplomeDUT-selectionner/<?php echo $_GET['id']?>" method="post">
 		<article>
 			<dl>
@@ -16,7 +16,7 @@
 							echo '<option>Aucun diplôme disponible pour cette personne</option>';
 						?>
 					</select>
-					<a class="diplomes" href="diplomesDUT" target="_blank">Accéder aux diplômes DUT (nouvel onglet)</a>
+					<a class="diplomes" href="diplomesDUT">Accéder aux diplômes DUT</a>
 				</dd>
 				<dt><label for="promotion">Promotion</label></dt>
 				<dd>
@@ -26,7 +26,7 @@
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le diplôme DUT à l'étudiant" />
-		<a class="getback" href="profil/<?php echo $_GET['id']?>">Retour au profil</a>
+		<a class="getback" href="profil-editer/<?php echo $_GET['id']?>#diplomes">Retour au profil</a>
 	</form>
 	<?php } else {?>
 		<p class="warning">Aucun id étudiant n'a été renseigné</p>

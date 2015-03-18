@@ -17,10 +17,11 @@
 						echo '<option '.(($_POST['typeSpe'] == $typeSpe->getId())?'selected':'').' value="'.$typeSpe->getId().'">'.$typeSpe->getLibelle().'</option>';
 						?>
 					</select>
-					<a href="types-specialisation" target="_blank">Voir les types de spécialisations (nouvel onglet)</a>
+					<a href="types-specialisation">Voir les types de spécialisations</a>
 				</dl>
 			</article>
 			<input type="submit" value="Ajouter la spécialisation" />
+			<a class="getback "href="javascript:history.go(-1)">Retour</a>
 		</form>
 		<?php } ?>
 	</div>

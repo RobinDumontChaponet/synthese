@@ -12,9 +12,11 @@
 			</dl>
 		</article>
 		<input type="submit" value="Enregistrer" />
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	</form>
 <?php
 } else { ?>
 	<p class="warning">Domaine non trouvé</p>
+	<a class="getback "href="javascript:history.go(-1)">Retour</a>
 <?php } ?>
 </div>

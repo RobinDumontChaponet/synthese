@@ -34,6 +34,7 @@
 			</dl>
 		</article>
 		<input type="submit" value="Enregistrer les modifications" />
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 		</form>
 <?php
 } else {

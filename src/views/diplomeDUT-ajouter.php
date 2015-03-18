@@ -14,10 +14,11 @@
 						echo '<option value="'.$departementIUT->getId().'">'.$departementIUT->getNom().'</option>';
 					?>
 					</select>
-					<a href="departementsIUT" target="_blank">Accéder aux départements IUT (nouvel onglet)</a>
+					<a href="departementsIUT">Accéder aux départements IUT</a>
 				</dd>
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le Diplôme DUT" />
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	</form>
 </div>

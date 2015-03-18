@@ -2,6 +2,8 @@
 <div id="content">
 	<h1>Types spécialisation</h1>
 	<a class="add" href="type-specialisation-ajouter">Ajouter un type de spécialisation</a>
+	<a class="getback "href="javascript:history.go(-1)">Retour</a>
+	
 	<section>
 	<?php
 	if($typesSpe != NULL) {
@@ -17,6 +19,7 @@
 		echo '</ul>';
 	} else { ?>
 		<p class="sad">Il n'y a aucun types de spécialisation</p>
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	<?php }?>
 	</section>
 </div>

@@ -2,6 +2,7 @@
 <div id="content">
 	<h1>Entreprises</h1>
 	<a class="add" href="entreprise-ajouter">Ajouter une entreprise</a>
+	<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	<section>
 		<?php
 		if($entreprises != NULL) {
@@ -21,6 +22,7 @@
 			echo '</ul>';
 		} else { ?>
 		<p class="sad">Il n'y a aucune entreprise enregistré.</p>
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 		<?php }?>
 	</section>
 </div>

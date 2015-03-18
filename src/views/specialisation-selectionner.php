@@ -1,6 +1,6 @@
 <!--meta title="Ajout d'une spécialisation" css="style/evenements.css"-->
 <div id="content">
-	<?php if ($_GET['id']) {
+	<?php if ($_GET['id'] && $ancien != NULL) {
 		if (isset($errorSelectSpe) && $errorSelectSpe)
 				echo '<p class="error">Veuillez selectionner une spécialisation</p>';
 	?>
@@ -19,14 +19,15 @@
 							echo '<option>Aucune spécialisation disponible pour cette personne</option>';
 						?>
 					</select>
-					<a href="specialisations" target="_blank">Accéder aux spécialisations (nouvel onglet)</a>
+					<a href="specialisations">Accéder aux spécialisations</a>
 				</dd>
 			</dl>
 		</article>
-		<input type="submit" value="Ajouter la spécialisation à l'étudiant" />
-		<a class="getback" href="profil/<?php echo $_GET['id']?>">Retour au profil</a>
+		<input type="submit" value="Ajouter la spécialisation" />
+		<a class="getback" href="profil-editer/<?php echo $_GET['id']?>#specialisations">Retour au profil</a>
 	</form>
 	<?php } else {?>
-		<p class="warning">Aucun id étudiant n'a été renseigné</p>
+		<p class="warning">Aucun id étudiant n'a été renseigné ou ancien non trouvé</p>
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	<?php } ?>
 </div>

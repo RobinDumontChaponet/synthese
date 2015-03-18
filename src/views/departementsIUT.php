@@ -2,6 +2,7 @@
 <div id="content">
 	<h1>Départements IUT</h1>
 	<a class="add" href="departementIUT-ajouter">Ajouter un département IUT</a>
+	<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	<section>
 	<?php
 	if($departementsIUT != NULL) {

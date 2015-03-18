@@ -8,6 +8,7 @@
 				<dd class="poste"><input id="name" name="name" type="text"></dd>
 			</dl>
 		</article>
-		<input type="submit" value="Ajouter le poste" />
+		<input type="submit" value="Ajouter" />
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	</form>
 </div>

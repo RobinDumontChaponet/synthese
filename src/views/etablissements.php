@@ -3,6 +3,7 @@
 <?php if ($etablissements != NULL) { ?>
 	<h1>Établissements</h1>
 	<a class="add" href="etablissement-ajouter">Ajouter un nouvel établissement</a>
+	<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	<section>
 		<ul>
 			<?php foreach ($etablissements as $etablissement) {

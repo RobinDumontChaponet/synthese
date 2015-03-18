@@ -24,7 +24,7 @@
 								echo '<option value="NULL">Aucun diplôme disponible pour l\'étudiant</option>';
 							}?>
 						</select>
-						<a class="diplomes" href="diplomes" target="_blank">Voir tout les diplômes</a>
+						<a class="diplomes" href="diplomes">Voir tout les diplômes</a>
 						<br /><a href="diplome-ajouter/<?php echo $ancien->getId()?>">Vous ne trouvez pas votre diplôme ? Ajoutez le !</a>
 					</dd>
 					<dt><label for="etablissement">Etablissement</label></dt>
@@ -36,7 +36,7 @@
 									echo '<option '.(($_POST['etablissement'] == $etablissement->getId())?'selected':'').'  value="'.$etablissement->getId().'">'.$etablissement->getNom().' ('.$etablissement->getVille().'/'.$etablissement->getPays().')</option>'; // Je sais pas comment l'afficher
 							}?>
 						</select>
-						<a class="etablissements" href="etablissements" target="_blank">Voir tout les établissements</a>
+						<a class="etablissements" href="etablissements">Voir tout les établissements</a>
 						<br /><a href="etablissement-ajouter/<?php echo $ancien->getId()?>">Vous ne trouvez pas votre établissement ? Ajoutez le !</a>
 					</dd>
 					<dt><label for="resultat">Résultat</label></dt>
@@ -45,9 +45,8 @@
 					<dd class="periode"><input type="date" id="periode1" name="periode1" maxlength="10" placeholder="jj/mm/aaaa" value="<?php echo $_POST['periode1'] ?>"/> - <input type="date" id="periode2" name="periode2" maxlength="10" placeholder="jj/mm/aaaa" value="<?php echo $_POST['periode2'] ?>"/></dd>
 				</dl>
 			</article>
-			<a class="getback" href="profil-editer/<?php echo $ancien->getId();?>">Retour au profil</a>
 			<input type="submit" value="Enregistrer les modifications" />
-
+			<a class="getback" href="profil-editer/<?php echo $ancien->getId();?>#diplomesPostDUT">Retour au profil</a>
 		</form>
 		<?php } else {?>
 			<p class="warning">Cet étudiant n'existe pas</p>

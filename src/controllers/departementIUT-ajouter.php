@@ -11,7 +11,7 @@ if ($_SESSION['user_auth']['write']) {
 			*/
 			$departementIUT = new DepartementIUT (0, $_POST['nom'], $_POST['sigle']);
 			DepartementIUTDAO::create($departementIUT);
-			header('Location: '.SELF.'departementsIUT'); // Faire en sorte par la suite de pouvoir revenir aux pages précédentes
+			header('Location: '.SELF.'departementsIUT');
 		} else {
 			$error = true;
 		}

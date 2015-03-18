@@ -8,6 +8,9 @@ if ($_SESSION['user_auth']['write']) {
 
 	if (!empty($_POST) && $entreprise != NULL) {
 		if (trim($_POST['entrepriseNom'])!="") {
+			if ($_POST['cedex'] == NULL || is_numeric($_POST['cedex'])) {
+				$entreprise->setCedex(trim($_POST['cedex']));
+			}
 			$entreprise->setNom(trim($_POST['entrepriseNom']));
 			$entreprise->setAdresse1(trim($_POST['entrepriseAd1']));
 			$entreprise->setAdresse2(trim($_POST['entrepriseAd2']));
@@ -17,9 +20,11 @@ if ($_SESSION['user_auth']['write']) {
 			$code=CodeAPEDAO::getById(trim($_POST['entrepriseCodeApe']));
 			if ($code!=null) {
 				$entreprise->setCodeAPE($code);
+			} else {
+				$entreprise->setCodeAPE(new CodeAPE(0, "Non renseigné"));
 			}
 			EntrepriseDAO::update($entreprise);
-			header('Location: '.SELF.'entreprises');
+			//header('Location: '.SELF.'entreprises');
 		} else {
 			$error="Nom de l'entreprise incorrecte";
 		}

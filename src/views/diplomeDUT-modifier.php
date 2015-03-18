@@ -23,7 +23,7 @@
 			</dl>
 		</article>
 		<input type="submit" value="Modifier le diplôme DUT de l'étudiant" />
-		<a href="profil/<?php echo $_GET['idAncien']?>">Retour étudiant</a>
+		<a class="getback" href="profil/<?php echo $_GET['idAncien']?>">Retour au profil</a>
 	</form>
 	<?php } else {?>
 		<p class="warning">Aucun id étudiant n'a été renseigné</p>

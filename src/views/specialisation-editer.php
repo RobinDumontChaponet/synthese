@@ -18,13 +18,15 @@
 							echo '<option '.(($typeSpe->getId() == $spe->getTypeSpecialisation()->getId())?'selected':'').' value="'.$typeSpe->getId().'">'.$typeSpe->getLibelle().'</option>';
 						}?>
 					</select>
-					<a href="types-specialisation" target="_blank">Voir les types de spécialisations (nouvel onglet)</a>
+					<a href="types-specialisation">Voir les types de spécialisations</a>
 				</dl>
 			</article>
 			<input type="submit" value="Modifier la spécialisation" />
+			<a class="getback "href="javascript:history.go(-1)">Retour</a>
 		</form>
 		<?php } else { ?>
-		<p class="warning">Ce diplôme n'existe pas</p>
+		<p class="warning">Cette spécialisation n'existe pas</p>
+		<a class="getback "href="javascript:history.go(-1)">Retour</a>
 		<?php }
 	} ?>
 </div>

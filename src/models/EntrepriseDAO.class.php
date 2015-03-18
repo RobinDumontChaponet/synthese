@@ -79,19 +79,15 @@ class EntrepriseDAO
 			}
 		}
 
-		public static function update($ent)
-		{
-			if (get_class($ent)=="Entreprise")
-			{
-				try{
+		public static function update($ent) {
+			if (get_class($ent) == "Entreprise") {
+				try {
 					$req=SPDO::getInstance()->prepare("UPDATE `entreprise` SET `codeAPE`=?,`nom`=?,`adresse1`=?,`adresse2`=?,`codePostal`=? ,`ville`=?,`cedex`=?,`pays`=?,`telephone`=? WHERE idEntreprise=?");
 					$req->execute(array($ent->getCodeAPE()->getCode(), $ent->getNom(), $ent->getAdresse1(), $ent->getAdresse2(), $ent->getCodePostal(), $ent->getVille(), $ent->getCedex(), $ent->getPays(), $ent->getTelephone(), $ent->getId()));
-				}catch (PDOException $e)
-				{
+				} catch (PDOException $e) {
 					die("Error update entreprise !: " . $e->getMessage() . "<br/>");
 				}
-			}else
-			{
+			} else {
 				die('Paramètre de type entreprise requis');
 			}
 		}

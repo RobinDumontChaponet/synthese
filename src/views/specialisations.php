@@ -2,6 +2,7 @@
 <div id="content">
 	<h1>Spécialisations</h1>
 	<a class="add" href="specialisation-ajouter">Ajouter une spécialisation</a> - <a href="types-specialisation">Accéder aux types de spécialisation</a>
+	<a class="getback "href="javascript:history.go(-1)">Retour</a>
 	<section>
 	<?php
 	if($spes != NULL) {

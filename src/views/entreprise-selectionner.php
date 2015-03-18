@@ -30,8 +30,8 @@
 								echo '<option value="NULL">Aucune entreprise enregistrée...</option>';
 							}?>
 						</select>
-						<a class="diplomes" href="entreprises" target="_blank">Accéder aux entreprises (nouvel onglet)</a>
-						<br /><a href="entreprise-ajouter" target="_blank">Vous ne trouvez pas votre entreprise ? Ajoutez la !</a>
+						<a class="diplomes" href="entreprises">Accéder aux entreprises</a>
+						<br /><a href="entreprise-ajouter">Vous ne trouvez pas votre entreprise ? Ajoutez la !</a>
 					</dd>
 					<dt><label for="poste">Poste</label></dt>
 					<dd class="poste">
@@ -44,16 +44,16 @@
 								echo '<option value="NULL">Aucun poste enregistré...</option>';
 							}?>
 						</select>
-						<a class="postes" href="postes" target="_blank">Accéder aux postes (nouvel onglet)</a>
-						<br /><a href="poste-ajouter" target="_blank">Vous ne trouvez pas votre poste ? Ajoutez le !</a>
+						<a class="postes" href="postes">Accéder aux postes</a>
+						<br /><a href="poste-ajouter">Vous ne trouvez pas votre poste ? Ajoutez le !</a>
 					</dd>
 
 					<dt><label for="periode1">Dates</label></dt>
 					<dd class="periode"><input id="periode1" name="periode1" maxlength="10" type="date" value="<?php echo $_POST['periode1'] ?>" placeholder="jj/mm/aaaa"/> <label for="periode2">à</label> <input id="periode2" name="periode2" maxlength="10" type="date" value="<?php echo $_POST['periode2'] ?>" placeholder="jj/mm/aaaa"/></dd>
 				</dl>
 			</article>
-			<a class="getback" href="profil/<?php echo $_GET['id']?>#entreprises">Retour au profil</a>
-			<input type="submit" value="Ajouter l'entreprise à l'étudiant" />
+			<a class="getback" href="profil-editer/<?php echo $_GET['id']?>#entreprises">Retour au profil</a>
+			<input type="submit" value="Ajouter l'entreprise" />
 
 		</form>
 		<?php } else if ($_GET['id'] == NULL) {
