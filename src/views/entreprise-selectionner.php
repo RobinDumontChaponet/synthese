@@ -13,6 +13,8 @@
 			echo '<p class="error">Vous devez renseigner une entreprise</p>';
 		if ($errorPeriodes)
 			echo '<p class="error">Vous devez renseigner correctement la date de fin (elle doit être supérieure à celle de départ)</p>';
+		if ($beSerious)
+				echo '<p class="error">Soyez sérieux ... c\'est impossible d\'avoir commencé ce job le '.strftime('%A %d %B %Y', strtotime($_POST['periode1'])).'</p>';
 		?>
 
 		<h1>Sélectionner une entreprise pour l'étudiant <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>

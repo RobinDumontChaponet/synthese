@@ -11,9 +11,13 @@ if ($_SESSION['user_auth']['write']) {
 				if ($etablissement != NULL && $diplomePost != NULL) {
 					if ($_POST['periode1'] != NULL && $_POST['periode2'] != NULL) {
 						if ($_POST['periode1'] <= $_POST['periode2']) {
-							$possede = new Possede($ancien, $etablissement, $diplomePost, $_POST['resultat'], $_POST['periode1'] ,$_POST['periode2']);
-							PossedeDAO::create($possede);
-							header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomesPostDUT');
+							if($_POST['periode1'] >= '1900-01-01') {
+								$possede = new Possede($ancien, $etablissement, $diplomePost, $_POST['resultat'], $_POST['periode1'] ,$_POST['periode2']);
+								PossedeDAO::create($possede);
+								header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#diplomesPostDUT');
+							} else {
+								$beSerious = true;
+							}
 						} else {
 							$dateSup = true;
 						}

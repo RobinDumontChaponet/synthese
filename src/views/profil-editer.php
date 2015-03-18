@@ -221,7 +221,7 @@
 			?>
 			<li>
 				<a class="edit" href="index.php?requ=specialisation-selectionner-supprimer&idSpe=<?php echo $spe->getSpecialisation()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>">Supprimer</a>
-				<p><?php echo $spe->getSpecialisation()->getLibelle(); ?></p>
+				<p><?php echo $spe->getSpecialisation()->getLibelle(); echo ' ('.$spe->getSpecialisation()->getTypeSpecialisation()->getLibelle().')'; ?></p>
 			</li>
 			<?php	}
 		} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>

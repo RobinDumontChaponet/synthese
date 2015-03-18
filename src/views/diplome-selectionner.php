@@ -7,7 +7,9 @@
 			if ($noPeriode)
 				echo '<p class="error">Une période correcte (jj/mm/aaaa - jj/mm/aaaa) doit être renseignée</p>';
 			if ($dateSup)
-				echo '<p class="error">La date de fin ne peut pas être avant la date de début</p>';
+				echo '<p class="error">La date de fin doit être supérieure à la date de début</p>';
+			if ($beSerious)
+				echo '<p class="error">Soyez sérieux ... c\'est impossible de l\'avoir obtenu le '.strftime('%A %d %B %Y', strtotime($_POST['periode1'])).'</p>';
 		?>
 		<h1>Selectionner un Diplôme pour <?php if($ancien != NULL) echo $ancien->getPrenom().' '.$ancien->getNomPatronymique();?></h1>
 		<form action="diplome-selectionner/<?php echo $_GET['id']?>" method="post">

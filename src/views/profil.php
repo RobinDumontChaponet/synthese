@@ -186,6 +186,9 @@ if (isset($ancien) && $ancien != NULL) {?>
 ?>
 	</section>
 	<section id="specialisation">
+		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
+			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#specialisations" title="Éditer le profil...">Éditer...</a>';
+		?>
 		<h2>Spécialisations</h2>
 		<ul>
 <?php
@@ -193,7 +196,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($spes as $spe) {
 ?>
 			<li>
-				<p><?php echo $spe->getSpecialisation()->getLibelle(); ?></p>
+				<p><?php echo $spe->getSpecialisation()->getLibelle(); echo ' ('.$spe->getSpecialisation()->getTypeSpecialisation()->getLibelle().')'; ?></p>
 			</li>
 <?php	}
 	} if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) { ?>

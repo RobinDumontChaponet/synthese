@@ -15,9 +15,13 @@ if ($_SESSION['user_auth']['write']) {
 					if ($poste != NULL) {
 						if (isset($_POST['periode2'])) {
 							if ($_POST['periode1'] <= $_POST['periode2']) {
-								$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], $_POST['periode2']);
-								TravailleDAO::create($travaille);
-								header('Location: '.SELF.'profil/'.$ancien->getId().'#entreprise');
+								if($_POST['periode1'] >= '1900-01-01') {
+									$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], $_POST['periode2']);
+									TravailleDAO::create($travaille);
+									header('Location: '.SELF.'profil/'.$ancien->getId().'#entreprise');
+								} else {
+									$beSerious = true;
+								}
 							} else
 								$errorPeriodes = true;
 						} else {
