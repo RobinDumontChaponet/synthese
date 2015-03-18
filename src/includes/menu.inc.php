@@ -50,7 +50,9 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
-				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes post-DUT', 'inner'=>'Diplomes post-DUT', 'scroll'=>'diplomesPostDUT'),
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises'),
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les spécialisations', 'inner'=>'Spécialisations', 'scroll'=>'specialisations')
 			),
 			(object)array('href'=>'promotions', 'class'=>'aPromo', 'title'=>'Voir les promotions', 'inner'=>'Promotions'),
 			'evenements, evenement-ajouter, evenement-editer, evenement, evenements-preferences' => array(
@@ -82,7 +84,9 @@ switch ($_SESSION["syntheseUser"]->getTypeProfil()->getId()) {
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aProfil', 'title'=>'Voir son profil', 'inner'=>'Profil'),
 				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes', 'inner'=>'Diplomes', 'scroll'=>'diplomes'),
-				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises')
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les diplomes post-DUT', 'inner'=>'Diplomes post-DUT', 'scroll'=>'diplomesPostDUT'),
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les entreprises', 'inner'=>'Entreprises', 'scroll'=>'entreprises'),
+				(object)array('href'=>'profil', 'class'=>'aAnchor', 'title'=>'Voir les spécialisations', 'inner'=>'Spécialisations', 'scroll'=>'specialisations')
 			),
 			'promotion, promotions' => array(
 				(object)array('href'=>'promotion', 'class'=>'aPromo', 'title'=>'Voir sa et les promotions', 'inner'=>'Promotions'),

@@ -185,7 +185,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 <?php }
 ?>
 	</section>
-	<section id="specialisation">
+	<section id="specialisations">
 		<?php if($_SESSION['syntheseUser']->getId() == $ancien->getId() || $_SESSION['user_auth']['write'])
 			echo '<a class="edit" href="profil-editer/'.$ancien->getId().'#specialisations" title="Éditer le profil...">Éditer...</a>';
 		?>
