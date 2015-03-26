@@ -125,8 +125,10 @@ function selectAll() {
     var checkbox = document.getElementById("selectAll");
     
     if (checkbox.checked) {
+       
         checkAll = true;
         revalidateChecks(true);
+        document.getElementById('infosCheck').value = 1+'-';
     } else {
         checkAll = false;
         revalidateChecks(false);
