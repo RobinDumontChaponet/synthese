@@ -13,12 +13,6 @@ if(isset($_POST['selectionne']) || isset($_POST['destinataire']) || isset($_POST
     if(isset($_POST['selectionne']))
     {
         //On recupere les adresses mail
-       /* foreach($_POST['selectionne'] as $check)
-        {
-            $ancien = AncienDAO::getById($check);
-            array_push($anciens, $ancien);
-            $chaine_mails .= $ancien->getNomPatronymique().' '.$ancien->getPrenom().'; ';
-        }*/
         
         $anciens = getFromSelection();
         foreach($anciens as $ancien)
