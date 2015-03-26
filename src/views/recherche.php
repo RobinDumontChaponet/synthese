@@ -107,18 +107,20 @@
 					<th>Spécialisation</th>
 					<th>Diplômes post-DUT</th>
 					<th>Etablissements</th>
-					<th>Travail</th>
+					<th>Travail actuel</th>
 					<th>Profil</th>
 				</tr>
 			</thead>
 			<tbody>
 			</tbody>
 		</table>
+        <section><label for="selectAll">Sélectionner tout le monde</label><input type="checkbox" id="selectAll" onclick="selectAll();" /></section>
 		<nav class="pagination"></nav>
 	</section>
     <section id="actions">
         <form method="POST" action="message-ecrire" id="send_message">
             <input type="submit" value="Envoyer un message" />
+            <input type="hidden" id="infosCheck" name="infosCheck" /> 
         </form>
         <?php if(isset($msgErrAdresse)){ echo $msgErrAdresse;} ?>
     </section>
