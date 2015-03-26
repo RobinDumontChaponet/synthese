@@ -1,10 +1,25 @@
 var currentPage;
-
+var checkAll = false;
+var checkOnes = new Array();
+var nonCheckedOnes = new Array();
 function link_ajax(page) {
 	page = isNaN(page) ? 0 : page;
 	currentPage = page;
 
-	var xhr = getXMLHttpRequest();
+    var xhr;
+	//Si explorer, gestion <6 et >6
+    if (window.ActiveXObject) {
+        try {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+    } else if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        alert("Vous devez activer JAVASCRIPT");
+    }  
+    
 	if ((xhr != null) && (xhr != false)) {
 		if (xhr.readyState == 0 || xhr.readyState == 4) {
 			var form = document.forms['search'],
@@ -22,13 +37,33 @@ function affichageResultat() {
 	if (this.readyState == 4) if (this.status == 200) {
 		//console.log(this.responseText);
 
+        var lastEtab, lastPostDut;
+
+        var defaultCheck = '';
+        
+        
+        
 		var resp   = JSON.parse(this.responseText),
 			data   = resp['data'],
 			table  = '';
+        
+        if (checkAll)
+          for (var i = 0, l = data.length; i < l; i++)
+            checkOnes.push(data[i]['idProfil']);
+        
+      
 		for (var i = 0, l = data.length; i < l; i++) {
-			var it = data[i];
+             
+            var it = data[i];
+            
+            if (checkOnes.indexOf(parseInt(it['idProfil'])) != -1)
+                defaultCheck = 'checked';
+            else
+                defaultCheck = '';
+            
+            
 			table += '<tr>';
-			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne[]" form="send_message" /></td>';
+			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne[]" form="send_message" '+defaultCheck+' onclick="updateDestList(this, '+it['idProfil']+');" /></td>';
 			table += '<td class="nomPatronymique">' + it['nom'] + '</td>';
 			table += '<td>' + it['prenom'] + '</td>';
 			table += '<td>' + it['promotion'] + '</td>';
@@ -36,12 +71,12 @@ function affichageResultat() {
 			table += '<td>' + it['typeSpecialisation'] + '</td>';
 			table += '<td>' + it['specialisation'] + '</td>';
 			table += '<td>';
-			for (var j = 0, ll = it['diplomesPostDUT'].length; j < ll; j++)
-				table += it['diplomesPostDUT'][j] + ' ';
+            lastPostDut = it['diplomesPostDUT'].length - 1;
+            table += (it['diplomesPostDUT'][lastPostDut] == null)?' ':it['diplomesPostDUT'][lastPostDut];
 			table += '</td>';
 			table += '<td>';
-			for (var j = 0, ll = it['etablissementsPostDUT'].length; j < ll; j++)
-				table += it['etablissementsPostDUT'][j] + ' ';
+            lastEtab = it['etablissementsPostDUT'].length -1;
+			table += (it['etablissementsPostDUT'][lastEtab] == null)?' ':it['etablissementsPostDUT'][lastEtab];
 			table += '</td>';
 			if (it['travailActuel'])
 				table += '<td>' + it['travailActuel'] + '</td>';
@@ -84,4 +119,72 @@ function decocherAutre(indicater) {
         document.getElementById('NtravailActuel').checked = false;
     else
         document.getElementById('travailActuel').checked = false;
+}
+
+function selectAll() {
+    var checkbox = document.getElementById("selectAll");
+    
+    if (checkbox.checked) {
+        checkAll = true;
+        revalidateChecks(true);
+    } else {
+        checkAll = false;
+        revalidateChecks(false);
+    }
+    
+    
+
+}
+
+function revalidateChecks(makeChecked) {
+    var currentPageRows = document.getElementsByTagName("tr");
+    for (var i = 1, l = currentPageRows.length; i < l; i++) {
+        currentPageRows[i].getElementsByTagName('td')[0].getElementsByTagName('input')[0].checked = makeChecked;
+    }
+}
+
+function updateDestList(checkBox, idSelectionne) {
+    
+    if (checkAll && !checkBox.checked) {   
+        addNonChecked(idSelectionne);   
+    } else if (checkAll && checkBox.checked) {
+        removeNonChecked(idSelectionne);
+    } else if (checkBox.checked) {
+        checkOnes.push(idSelectionne);
+        document.getElementById('infosCheck').value = 0+'-';
+        updateChecked();
+        
+    } else if (!checkBox.checked) {
+        document.getElementById('infosCheck').value = 0+'-';
+        var index = checkOnes.indexOf(idSelectionne);
+        checkOnes.splice(index, 1);
+        updateChecked();
+    }
+    
+    
+}
+
+
+
+function addNonChecked(idSelectionne) {
+    nonCheckedOnes.push(idSelectionne);
+    document.getElementById('infosCheck').value = 1+'-';
+    for (var i = 0, l = nonCheckedOnes.length; i < l; i++)
+        document.getElementById('infosCheck').value += nonCheckedOnes[i]+'-';
+}
+
+
+function removeNonChecked(idSelectionne) {
+    var index = nonCheckedOnes.indexOf(idSelectionne);
+    nonCheckedOnes.splice(index, 1);
+    
+    document.getElementById('infosCheck').value = 1+'-';
+    for (var i = 0, l = nonCheckedOnes.length; i < l; i++)
+        document.getElementById('infosCheck').value += nonCheckedOnes[i]+'-';
+}
+
+
+function updateChecked() {
+    for (var i = 0, l = checkOnes.length; i < l; i++)
+        document.getElementById('infosCheck').value += checkOnes[i]+'-';
 }
