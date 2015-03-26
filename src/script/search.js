@@ -2,6 +2,7 @@ var currentPage;
 var checkAll = false;
 var checkOnes = new Array();
 var nonCheckedOnes = new Array();
+var defaultCheck;
 function link_ajax(page) {
 	page = isNaN(page) ? 0 : page;
 	currentPage = page;
@@ -39,7 +40,6 @@ function affichageResultat() {
 
         var lastEtab, lastPostDut;
 
-        var defaultCheck = '';
         
         
         
@@ -47,20 +47,18 @@ function affichageResultat() {
 			data   = resp['data'],
 			table  = '';
         
-        if (checkAll)
-          for (var i = 0, l = data.length; i < l; i++)
-            checkOnes.push(data[i]['idProfil']);
-        
+        selectAll();
       
 		for (var i = 0, l = data.length; i < l; i++) {
              
             var it = data[i];
             
-            if (checkOnes.indexOf(parseInt(it['idProfil'])) != -1)
-                defaultCheck = 'checked';
-            else
-                defaultCheck = '';
-            
+            if (!checkAll) {
+                if (checkOnes.indexOf(parseInt(it['idProfil'])) != -1)
+                    defaultCheck = 'checked';
+                else
+                    defaultCheck = '';
+            }
             
 			table += '<tr>';
 			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne[]" form="send_message" '+defaultCheck+' onclick="updateDestList(this, '+it['idProfil']+');" /></td>';
@@ -125,8 +123,8 @@ function selectAll() {
     var checkbox = document.getElementById("selectAll");
     
     if (checkbox.checked) {
-       
         checkAll = true;
+        defaultCheck = 'checked';
         revalidateChecks(true);
         document.getElementById('infosCheck').value = 1+'-';
     } else {
@@ -165,7 +163,6 @@ function updateDestList(checkBox, idSelectionne) {
     
     
 }
-
 
 
 function addNonChecked(idSelectionne) {
