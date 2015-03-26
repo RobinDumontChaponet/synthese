@@ -43,13 +43,13 @@ function affichageResultat() {
         
         
         
-		var resp   = JSON.parse(this.responseText),
-			data   = resp['data'],
-			table  = '';
+	var resp   = JSON.parse(this.responseText),
+		data   = resp['data'],
+		table  = '';
         
         selectAll();
       
-		for (var i = 0, l = data.length; i < l; i++) {
+	for (var i = 0, l = data.length; i < l; i++) {
              
             var it = data[i];
             
