@@ -3,7 +3,7 @@
 	<h1>Types d'évènements</h1>
 	<?php if ($_SESSION['user_auth']['write'])
 		echo '<a class="add" href="typeEvent-ajouter">Ajouter un type d\'évènement</a>
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>';
+		<script>backButton()</script>';
 	?>
 
 	<section>

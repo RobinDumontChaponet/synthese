@@ -13,7 +13,7 @@
 				</dl>
 			</article>
 			<input type="submit" value="Ajouter le type de spécialisation" />
-			<a class="getback "href="javascript:history.go(-1)">Retour</a>
+			<script>backButton()</script>
 		</form>
 		<?php } ?>
 	</div>

@@ -28,6 +28,6 @@
 	</form>
 	<?php } else {?>
 		<p class="warning">Aucun id étudiant n'a été renseigné ou ancien non trouvé</p>
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>
+		<script>backButton()</script>
 	<?php } ?>
 </div>

@@ -10,11 +10,11 @@
 			</dl>
 		</article>
 		<input type="submit" value="Enregistrer les modifications" />
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>
+		<script>backButton()</script>
 	</form>
 <?php
 } else { ?>
-	<a class="getback "href="javascript:history.go(-1)">Retour</a>
+	<script>backButton()</script>
 	<p class="warning">Ce type d'évènement ne peut être modifié car il n'existe pas</p>
 <?php } ?>
 </div>

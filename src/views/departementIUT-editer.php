@@ -16,7 +16,7 @@
 					</dl>
 				</article>
 				<input type="submit" value="Editer" />
-				<a class="getback "href="javascript:history.go(-1)">Retour</a>
+				<script>backButton()</script>
 			</form>
 			<?php } else {
 				echo 'Aucun département trouvé avec cet ID';

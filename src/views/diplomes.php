@@ -2,7 +2,7 @@
 <div id="content">
 	<h1>Diplômes</h1>
 	<a class="add" href="diplome-ajouter">Ajouter un diplôme</a>
-	<a class="getback "href="javascript:history.go(-1)">Retour</a>
+	<script>backButton()</script>
 	<section>
 	<?php
 	if($diplomes != NULL) {

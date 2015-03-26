@@ -56,6 +56,6 @@
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter l'entreprise" />
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>
+		<script>backButton()</script>
 	</form>
 </div>

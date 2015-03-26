@@ -8,7 +8,7 @@
 			<input id="poste" name="poste" type="text" placeholder="Pas de libelle..." value="<?php echo $poste->getLibelle(); ?>" autofocus/>
 		</article>
 		<input type="submit" value="Enregistrer les modifications" />
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>
+		<script>backButton()</script>
 	</form>
 	<?php } else {?>
 	<p class="warning">Ce poste n'existe pas</p>

@@ -53,7 +53,7 @@ include('datas.transit.inc.php');
 preg_match('/<\!--meta\s*(.*)-->/i', $inc, $matches);
 if($matches[1]) {
 	$link=''; $script=''; $meta=''; $onload='';
-	preg_match_all("/(\\S+)=[\"']?((?:.(?![\"']?\\s+(?:\\S+)=|[\"']))+.)[\"']?/", $matches[1], $tag);
+	preg_match_all("/(\\S+)=[\"]?((?:.(?![\"]?\\s+(?:\\S+)=|[\"]))+.)[\"]?/", $matches[1], $tag);
 	$tag=rearrange($tag);
 	if($tag)
 	foreach($tag as $rule) {

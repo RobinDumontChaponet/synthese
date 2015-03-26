@@ -3,7 +3,7 @@
 <?php if ($postes != NULL) { ?>
 	<h1>Postes</h1>
 	<a class="add" href="poste-ajouter">Ajouter un nouveau poste</a>
-	<a class="getback "href="javascript:history.go(-1)">Retour</a>
+	<script>backButton()</script>
 	<section>
 		<ul>
 			<?php foreach ($postes as $poste) {
@@ -19,7 +19,7 @@
 <?php
 } else { ?>
 	<a class="add" href="poste-ajouter">Ajouter un nouveau poste</a>
-	<a class="getback "href="javascript:history.go(-1)">Retour</a>
+	<script>backButton()</script>
 	<p class="warning">Aucun postes</p>
 <?php } ?>
 </div>

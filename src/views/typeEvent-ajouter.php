@@ -9,6 +9,6 @@
 			</dl>
 		</article>
 		<input type="submit" value="Ajouter le type d'évènement" />
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>
+		<script>backButton()</script>
 	</form>
 </div>

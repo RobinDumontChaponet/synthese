@@ -1,4 +1,4 @@
-function toggleHelp() {
+function toggleHelp () {
 	document.body.classList.toggle('show-help');
 	var xhr = new XMLHttpRequest();
 	var state=document.body.classList.contains('show-help');

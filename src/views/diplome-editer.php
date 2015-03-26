@@ -13,10 +13,10 @@
 			</dl>
 		</article>
 		<input type="submit" value="Enregistrer les modifications" />
-		<a class="getback "href="javascript:history.go(-1)">Retour</a>
+		<script>backButton()</script>
 	</form>
 	<?php } else {?>
 	<p class="warning">Ce diplôme n'existe pas</p>
-	<a class="getback "href="javascript:history.go(-1)">Retour</a>
+	<script>backButton()</script>
 	<?php }?>
 </div>
