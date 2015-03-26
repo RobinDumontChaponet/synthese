@@ -213,7 +213,8 @@ class AncienDAO {
         }
 		$req=$select." ".$from." ".$where;
 
-		$req.=" LIMIT ".$binf.",".$nb."";
+		if($nb != null)
+			$req.=" LIMIT ".$binf.",".$nb."";
 
 
 		//var_dump($req);
