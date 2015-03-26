@@ -181,7 +181,7 @@
 						<?php } ?>
 							<dt class="periode">Période</dt>
 							<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
-							<dd>Du <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateDebut()));?> à <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateFin()));?></dd>
+							<dd>Du <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateDebut()));?> au <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateFin()));?></dd>
 						</dl>
 					</li>
 					<?php }
