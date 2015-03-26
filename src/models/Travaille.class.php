@@ -65,7 +65,10 @@ class Travaille {
 	}
 
 	public function setDateEmbaucheFin($date) {
-		$this->dateEmbaucheFin = $date; //Pas de vérification, la dateFin peut être nulle
+        if ( preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $date) )
+            $this->dateEmbaucheFin = $date;
+        else
+            $this->dateEmbaucheFin = null;
 	}
 
 	// TO STRING
