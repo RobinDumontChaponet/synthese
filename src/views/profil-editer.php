@@ -181,6 +181,7 @@
 						<?php } ?>
 							<dt class="periode">Période</dt>
 							<dd><?php echo substr($diplomePost->getDateDebut(), 0, 4);?> - <?php echo substr($diplomePost->getDateFin(), 0, 4);?></dd>
+							<dd>Du <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateDebut()));?> à <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateFin()));?></dd>
 						</dl>
 					</li>
 					<?php }
@@ -196,13 +197,14 @@
 				<?php if($entreprises != NULL) { // Il faudra faire quelque chose pour pouvoir les modifiers, soit là, soit sur une autre page
 					foreach($entreprises as $entreprise) {?>
 					<li>
-						<a class="edit" href="entreprise-modifier/<?php echo $entreprise->getEntreprise()->getId();?>">Éditer</a><a class="delete" href="index.php?requ=entreprise-selectionner-supprimer&idEntreprise=<?php echo $entreprise->getEntreprise()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>&idPoste=<?php echo $entreprise->getPoste()->getId(); ?>&dateDebut=<?php echo $entreprise->getDateEmbaucheDeb(); ?>">Supprimer</a>
+						<a class="edit" href="entreprise-modifier/<?php echo $ancien->getId(); ?>&<?php echo $entreprise->getEntreprise()->getId();?>&<?php echo $entreprise->getDateEmbaucheDeb()?>&<?php echo $entreprise->getDateEmbaucheFin()?>&<?php echo $entreprise->getPoste()->getId();?>">Éditer</a><a class="delete" href="index.php?requ=entreprise-selectionner-supprimer&idEntreprise=<?php echo $entreprise->getEntreprise()->getId();?>&idAncien=<?php echo $ancien->getId(); ?>&idPoste=<?php echo $entreprise->getPoste()->getId(); ?>&dateDebut=<?php echo $entreprise->getDateEmbaucheDeb(); ?>">Supprimer</a>
 						<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 						<dl>
 							<dt class="poste">Poste</dt>
 							<dd><?php echo $entreprise->getPoste()->getLibelle();?></dd>
 							<dt class="periode">Période</dt>
 							<dd><?php echo $entreprise->getDateEmbaucheDeb()?> à <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'maintenant'; else echo $entreprise->getDateEmbaucheFin()?></dd>
+							<dd>Du <?php echo strftime('%A %d %B %Y', strtotime($entreprise->getDateEmbaucheDeb()));?> <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'à maintenant'; else echo 'au '.strftime('%A %d %B %Y', strtotime($entreprise->getDateEmbaucheFin())) ?></dd>
 						</dl>
 					</li>
 					<?php }

@@ -3,13 +3,14 @@ if ($_GET['idAncien'] != NULL) {
 	$ancien = AncienDAO::getById($_GET['idAncien']);
 	if ($_SESSION['user_auth']['write'] || $_SESSION['syntheseUser']->getId() == $ancien->getId()) {
 		if (isset($_GET) && $_GET['idAncien'] != NULL && $_GET['idDiplomePost'] != NULL && $_GET['idEtablissement'] != NULL) {
-			$diplomeAncien = DiplomePostDUTDAO::getById($_GET['idDiplomePost']); // Diplomes not have
+			$diplomeAncien = DiplomePostDUTDAO::getById($_GET['idDiplomePost']);
 			$etablissementAncien = EtablissementDAO::getById($_GET['idEtablissement']);
 			$etablissements = EtablissementDAO::getAll();
 			$diplomes = DiplomePostDUTDAO::getDiplomePostDutNotHave($ancien);
 			$possedeAncien = new Possede($ancien, $etablissementAncien, $diplomeAncien, NULL, NULL, NULL);
 			$possede = PossedeDAO::getByPossede($possedeAncien);
 			if (isset($_POST) && $_POST != NULL) {
+				var_dump($_POST);;
 				if ($_POST['diplome'] != NULL && $_POST['etablissement'] != NULL) {
 					$possede->setResultat($_POST['resultat']);
 					$diplPostNew = DiplomePostDUTDAO::getById($_POST['diplome']);

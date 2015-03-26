@@ -15,7 +15,7 @@
 					<dt><label for="diplome">Diplôme</label></dt>
 					<dd class="diplome">
 						<select name="diplome">
-							<option></option>
+							<option value="<?php echo $diplomeAncien->getId(); ?>"><?php echo $diplomeAncien->getLibelle();?></option>
 							<?php if ($diplomes != NULL) {
 								foreach($diplomes as $diplome) {?>
 									<option value="<?php echo $diplome->getId();?>"><?php echo $diplome->getLibelle();?></option>
@@ -29,7 +29,7 @@
 					<dt><label for="etablissement">Etablissement</label></dt>
 					<dd class="etablissement">
 						<select name="etablissement">
-							<option></option>
+							<option value="<?php echo $etablissementAncien->getId(); ?>"><?php echo $etablissementAncien->getNom();?></option>
 							<?php if ($etablissements != NULL) {
 								foreach($etablissements as $etablissement)
 									echo '<option value="'.$etablissement->getId().'">'.$etablissement->getNom().' ('.$etablissement->getVille().'/'.$etablissement->getPays().')</option>'; // Je sais pas comment l'afficher

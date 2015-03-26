@@ -1,4 +1,3 @@
-
 <?php
 if ($_GET['idAncien'] != NULL) {
 	$ancien = AncienDAO::getById($_GET['idAncien']);
