@@ -36,10 +36,10 @@ FileETag None
 
 <IfModule mod_expires.c>
 	ExpiresActive on
-	ExpiresDefault                                      "access plus 1 month"
+	ExpiresDefault                                      "access plus 0 month"
 
 ##### CSS
-	ExpiresByType text/css                              "access plus 1 year"
+	ExpiresByType text/css                              "access plus 0 year"
 
 ##### Data interchange
 	ExpiresByType application/atom+xml                  "access plus 1 hour"
@@ -98,7 +98,7 @@ FileETag None
 	ExpiresByType application/font-woff2                "access plus 1 month"
 
 ##### Other
-	ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+	ExpiresByType text/x-cross-domain-policy            "access plus 0 week"
 </IfModule>
 
 
