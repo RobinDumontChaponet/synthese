@@ -184,9 +184,8 @@ class AncienDAO {
 			$args[]=$diplome;
 		}
 		if($spe!=null) {
-			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.libelle LIKE ? ";
+			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe ";
 			$from.=" , `estSpecialise` Spe, `specialisation` Special";
-			$args[]='%'.$spe.'%';
 		}
 		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
