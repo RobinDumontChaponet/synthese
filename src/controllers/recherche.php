@@ -15,6 +15,8 @@ $typesSpecialisation = TypeSpecialisationDAO::getAll();
 //Pour la liste des diplomes post dut
 $diplomesPostDut = DiplomePostDUTDAO::getAll();
 
+//Pour la liste de travaux
+$travail = PosteDAO::getAll();
 
 include(VIEWS_INC.'recherche.php');
 
