@@ -60,7 +60,7 @@ if ($_SESSION["syntheseUser"]) {
         if($_GET['promotionSup'] == ''){ $_GET['promotionSup'] = null;}
 
         $nbTotal = 0;
-        $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'],$_GET['typeSpecialisation'], $_GET['diplomePostDut'], $_GET['etabPostDUT'], ($_GET['travailActuel']=='true')?true:false, ($_GET['NtravailActuel']=='true')?true:false,($_GET['page']*LINES_PAGE), LINES_PAGE, $nbTotal);
+        $suggestions = AncienDAO::search($_GET['nom'], $_GET['prenom'], array($_GET['promotionInf'], $_GET['promotionSup']), $_GET['diplome'], $_GET['specialisation'],$_GET['typeSpecialisation'], $_GET['diplomePostDut'], $_GET['etabPostDUT'], $_GET['travail'], ($_GET['travailActuel']=='true')?true:false, ($_GET['NtravailActuel']=='true')?true:false,($_GET['page']*LINES_PAGE), LINES_PAGE, $nbTotal);
 
 		$array = array();
 
