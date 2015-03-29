@@ -205,6 +205,11 @@ class AncienDAO {
 			$from.=", `etablissement` etab";
 			$args[]='%'.$etabPostDut.'%';
 		}
+		if ($travail!=null) {
+        		$where.=" AND P.idPersonne=trav.idPersonne AND trav.idPoste=? ";
+            		if(!$trav){$from.=", `travaille` trav";}
+			$args[]=$travail;
+        	}
 		if($trav==true) {
 			$where.=" AND trav.idPersonne=P.idPersonne AND trav.dateEmbaucheFin is NULL";
 			$from.=" , `travaille` trav";
