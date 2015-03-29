@@ -149,7 +149,7 @@ class AncienDAO {
 	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav, $nTrav, $binf,$nb,&$nbTotal) {
 		$lst=array();
 		$args=array();
-		$select="SELECT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
+		$select="SELECT DISTINCT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
 		$from="FROM `ancien` A, `personne` P";
 		$where="WHERE P.idPersonne=A.idPersonne";
 
@@ -184,8 +184,9 @@ class AncienDAO {
 			$args[]=$diplome;
 		}
 		if($spe!=null) {
-			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe ";
+			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=? ";
 			$from.=" , `estSpecialise` Spe, `specialisation` Special";
+			$args[]=$spe;
 		}
 		if($typeSpe!=null) {
 			$where.=" AND P.idPersonne=Spe.idPersonne AND Spe.idSpe=Special.idSpe AND Special.idTypeSpe=? ";
