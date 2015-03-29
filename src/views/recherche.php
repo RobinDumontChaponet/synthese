@@ -85,6 +85,16 @@
 				</fieldset>
 				<fieldset>
 					<div>
+						<label for="travail">Travail</label>
+						<select id="travail" name="travail">
+                            				<option value=""></option>
+							<?php
+							foreach($travail as $trv)
+								echo '<option value="'.$trv->getId().'">'.$trv->getLibelle().'</option>'; 
+							?>
+						</select>
+					</div>
+					<div>
 						<label for="travailActuel">Travaille</label>
 						<input type="checkbox" id="travailActuel" value="true" name="travailActuel" onclick="decocherAutre(0)" />
                     	<label for="NtravailActuel">Ne travaille pas</label>
