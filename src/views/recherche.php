@@ -71,7 +71,7 @@
 					<div>
 						<label for="diplomePostDUT">Diplôme post-DUT</label>
 						<select id="diplomePostDut" name="diplomePostDut">
-                            <option value=""></option>
+                        			<option value=""></option>
 							<?php
 							foreach($diplomesPostDut as $dpd)
 								echo '<option value="'.$dpd->getId().'">'.$dpd->getLibelle().'</option>';
