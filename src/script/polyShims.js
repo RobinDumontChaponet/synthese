@@ -163,7 +163,13 @@ if(document.getElementsByClassName==undefined){
 }
 
 function getXMLHttpRequest() {
-	if (window.XMLHttpRequest) {
+	if (window.ActiveXObject) {
+        try {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+    } else if (window.XMLHttpRequest) {
 		return new XMLHttpRequest();
 	}
 	try {

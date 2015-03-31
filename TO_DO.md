@@ -2,6 +2,7 @@
 
 - Styler la page : departementIUT-editer
 
+faire liste des faits/non-faits
 
 _(SUPPRIMER CE QUI EST FAIT)_
 

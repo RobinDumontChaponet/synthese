@@ -7,20 +7,8 @@ function link_ajax(page) {
 	page = isNaN(page) ? 0 : page;
 	currentPage = page;
 
-    var xhr;
-	//Si explorer, gestion <6 et >6
-    if (window.ActiveXObject) {
-        try {
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (e) {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP");
-        }
-    } else if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-    } else {
-        alert("Vous devez activer JAVASCRIPT");
-    }  
-    
+    var xhr = getXMLHttpRequest();
+
 	if ((xhr != null) && (xhr != false)) {
 		if (xhr.readyState == 0 || xhr.readyState == 4) {
 			var form = document.forms['search'],
@@ -40,26 +28,26 @@ function affichageResultat() {
 
         var lastEtab, lastPostDut;
 
-        
-        
-        
+
+
+
 	var resp   = JSON.parse(this.responseText),
 		data   = resp['data'],
 		table  = '';
-        
+
         selectAll();
-      
+
 	for (var i = 0, l = data.length; i < l; i++) {
-             
+
             var it = data[i];
-            
+
             if (!checkAll) {
                 if (checkOnes.indexOf(parseInt(it['idProfil'])) != -1)
                     defaultCheck = 'checked';
                 else
                     defaultCheck = '';
             }
-            
+
 			table += '<tr>';
 			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne[]" form="send_message" '+defaultCheck+' onclick="updateDestList(this, '+it['idProfil']+');" /></td>';
 			table += '<td class="nomPatronymique">' + it['nom'] + '</td>';
@@ -121,7 +109,7 @@ function decocherAutre(indicater) {
 
 function selectAll() {
     var checkbox = document.getElementById("selectAll");
-    
+
     if (checkbox.checked) {
         checkAll = true;
         defaultCheck = 'checked';
@@ -131,8 +119,8 @@ function selectAll() {
         checkAll = false;
         revalidateChecks(false);
     }
-    
-    
+
+
 
 }
 
@@ -144,24 +132,24 @@ function revalidateChecks(makeChecked) {
 }
 
 function updateDestList(checkBox, idSelectionne) {
-    
-    if (checkAll && !checkBox.checked) {   
-        addNonChecked(idSelectionne);   
+
+    if (checkAll && !checkBox.checked) {
+        addNonChecked(idSelectionne);
     } else if (checkAll && checkBox.checked) {
         removeNonChecked(idSelectionne);
     } else if (checkBox.checked) {
         checkOnes.push(idSelectionne);
         document.getElementById('infosCheck').value = 0+'-';
         updateChecked();
-        
+
     } else if (!checkBox.checked) {
         document.getElementById('infosCheck').value = 0+'-';
         var index = checkOnes.indexOf(idSelectionne);
         checkOnes.splice(index, 1);
         updateChecked();
     }
-    
-    
+
+
 }
 
 
@@ -176,7 +164,7 @@ function addNonChecked(idSelectionne) {
 function removeNonChecked(idSelectionne) {
     var index = nonCheckedOnes.indexOf(idSelectionne);
     nonCheckedOnes.splice(index, 1);
-    
+
     document.getElementById('infosCheck').value = 1+'-';
     for (var i = 0, l = nonCheckedOnes.length; i < l; i++)
         document.getElementById('infosCheck').value += nonCheckedOnes[i]+'-';
