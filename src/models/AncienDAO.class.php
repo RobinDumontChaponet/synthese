@@ -146,7 +146,7 @@ class AncienDAO {
 	 * @param   Boolean $nbTotal        return : nombre d'éléments total;
 	 * @returns Object   [[Description]]
 	 */
-	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $trav, $nTrav, $binf,$nb,&$nbTotal) {
+	public static function search($nom, $prn, $promo, $diplome, $spe, $typeSpe, $PostDut, $etabPostDut, $travail, $trav, $nTrav, $binf,$nb,&$nbTotal) {
 		$lst=array();
 		$args=array();
 		$select="SELECT DISTINCT A.idPersonne, A.`adresse1`, A.`adresse2`, A.`codePostal`, A.`ville`, A.`pays`, A.`mobile`, A.`telephone`, `imageProfil`, `imageTrombi`,`nomUsage`,`nomPatronymique`,`prenom`, `mail`,`sexe`,`idParent`,`dateNaissance` ";
