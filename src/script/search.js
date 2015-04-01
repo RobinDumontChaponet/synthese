@@ -1,3 +1,5 @@
+//change
+
 var currentPage;
 var checkAll = false;
 var checkOnes = new Array();
@@ -28,26 +30,30 @@ function affichageResultat() {
 
         var lastEtab, lastPostDut;
 
-
-
-
-	var resp   = JSON.parse(this.responseText),
-		data   = resp['data'],
-		table  = '';
-
+        
+        
+        
+		var resp   = JSON.parse(this.responseText),
+			data   = resp['data'],
+			table  = '';
+        
         selectAll();
-
-	for (var i = 0, l = data.length; i < l; i++) {
-
+      
+		for (var i = 0, l = data.length; i < l; i++) {
+             
             var it = data[i];
-
+            
             if (!checkAll) {
                 if (checkOnes.indexOf(parseInt(it['idProfil'])) != -1)
                     defaultCheck = 'checked';
                 else
                     defaultCheck = '';
+            } else if (checkAll) {
+                defaultCheck = 'checked';
+                if (nonCheckedOnes.indexOf(parseInt(it['idProfil'])) != -1)
+                    defaultCheck = '';
             }
-
+            
 			table += '<tr>';
 			table += '<td><input type="checkbox" value="' + it['idProfil'] + '" name="selectionne[]" form="send_message" '+defaultCheck+' onclick="updateDestList(this, '+it['idProfil']+');" /></td>';
 			table += '<td class="nomPatronymique">' + it['nom'] + '</td>';
@@ -109,18 +115,40 @@ function decocherAutre(indicater) {
 
 function selectAll() {
     var checkbox = document.getElementById("selectAll");
-
+    
     if (checkbox.checked) {
         checkAll = true;
         defaultCheck = 'checked';
         revalidateChecks(true);
         document.getElementById('infosCheck').value = 1+'-';
+        var form = document.forms['search'],
+		elements = form.elements;
+        for (var i = 1, l = (elements.length - 2); i < l; i++) {
+            var el = elements[i];
+            if ( (el.value == '') || (el.value == null))
+                document.getElementById('infosCheck').value += 'null-';
+            else
+                document.getElementById('infosCheck').value += el.value+'-';
+        }
+        
+        if (document.getElementById('travailActuel').checked) document.getElementById('infosCheck').value += true+'-';
+        else document.getElementById('infosCheck').value += false+'-';
+        
+        if (document.getElementById('NtravailActuel').checked) document.getElementById('infosCheck').value += true+'-';
+        else document.getElementById('infosCheck').value += false+'-';
+        
+       
+        if (checkAll)
+            for (var i = 0, l = nonCheckedOnes.length; i < l; i++)
+                document.getElementById('infosCheck').value += nonCheckedOnes[i]+'-';
+            
+        
     } else {
         checkAll = false;
         revalidateChecks(false);
     }
-
-
+    
+    
 
 }
 
@@ -132,30 +160,29 @@ function revalidateChecks(makeChecked) {
 }
 
 function updateDestList(checkBox, idSelectionne) {
-
-    if (checkAll && !checkBox.checked) {
-        addNonChecked(idSelectionne);
+    
+    if (checkAll && !checkBox.checked) {   
+        addNonChecked(idSelectionne);   
     } else if (checkAll && checkBox.checked) {
         removeNonChecked(idSelectionne);
     } else if (checkBox.checked) {
         checkOnes.push(idSelectionne);
         document.getElementById('infosCheck').value = 0+'-';
         updateChecked();
-
+        
     } else if (!checkBox.checked) {
         document.getElementById('infosCheck').value = 0+'-';
         var index = checkOnes.indexOf(idSelectionne);
         checkOnes.splice(index, 1);
         updateChecked();
     }
-
-
+    
+    
 }
 
 
 function addNonChecked(idSelectionne) {
     nonCheckedOnes.push(idSelectionne);
-    document.getElementById('infosCheck').value = 1+'-';
     for (var i = 0, l = nonCheckedOnes.length; i < l; i++)
         document.getElementById('infosCheck').value += nonCheckedOnes[i]+'-';
 }
@@ -164,7 +191,7 @@ function addNonChecked(idSelectionne) {
 function removeNonChecked(idSelectionne) {
     var index = nonCheckedOnes.indexOf(idSelectionne);
     nonCheckedOnes.splice(index, 1);
-
+    
     document.getElementById('infosCheck').value = 1+'-';
     for (var i = 0, l = nonCheckedOnes.length; i < l; i++)
         document.getElementById('infosCheck').value += nonCheckedOnes[i]+'-';
