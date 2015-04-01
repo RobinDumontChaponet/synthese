@@ -1,5 +1,3 @@
-//change
-
 var currentPage;
 var checkAll = false;
 var checkOnes = new Array();
