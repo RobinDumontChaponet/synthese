@@ -130,7 +130,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($diplomesPost as $diplomePost) {
 ?>
 			<li>
-				<span class="date">Du <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateDebut()));?> au <?php echo strftime('%A %d %B %Y', strtotime($diplomePost->getDateFin()));?></span>
+				<span class="date">Du <?php echo strftime('%d %B %Y', strtotime($diplomePost->getDateDebut()));?> au <?php echo strftime('%d %B %Y', strtotime($diplomePost->getDateFin()));?></span>
 				<h3 class="diplome"><a href="diplome/<?php echo $diplomePost->getDiplomePostDUT()->getId();?>"><?php echo $diplomePost->getDiplomePostDUT()->getLibelle();?></a> (<?php echo $diplomePost->getDiplomePostDUT()->getDomaine()->getLibelle();?>)</h3>
 				<dl>
 					<dt class="etablissement">Établissement</dt>
@@ -165,7 +165,7 @@ if (isset($ancien) && $ancien != NULL) {?>
 		foreach($entreprises as $entreprise) {
 ?>
 			<li>
-				<span class="date">Du <?php echo strftime('%A %d %B %Y', strtotime($entreprise->getDateEmbaucheDeb()));?> <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'à maintenant'; else echo 'au '.strftime('%A %d %B %Y', strtotime($entreprise->getDateEmbaucheFin())) ?></span>
+				<span class="date">Du <?php echo strftime('%d %B %Y', strtotime($entreprise->getDateEmbaucheDeb()));?> <?php if($entreprise->getDateEmbaucheFin() == NULL || $entreprise->getDateEmbaucheFin() == 0000-00-00) echo 'à maintenant'; else echo 'au '.strftime('%d %B %Y', strtotime($entreprise->getDateEmbaucheFin())) ?></span>
 				<h3 class="entreprise"><a href="entreprise/<?php echo $entreprise->getEntreprise()->getId()?>"><?php echo $entreprise->getEntreprise()->getNom();?></a></h3>
 				<dl>
 					<dt class="poste">Poste</dt>
