@@ -76,8 +76,21 @@ function getFromSelection() {
     $ids = explode("-", $_POST['infosCheck']);
     array_pop($ids);
     if ($ids[0] == 1) {
-        $ids[0] = -1;
-        $all = AncienDAO::getAll();
+        
+        $all = AncienDAO::search(($ids[1] == 'null')?null:$ids[1], ($ids[2] == 'null')?null:$ids[2],
+                                 array(($ids[4] == 'null')?null:$ids[4], ($ids[5] == 'null')?null:$ids[5]),
+                                 ($ids[6] == 'null')?null:$ids[6], ($ids[8] == 'null')?null:$ids[8],
+                                 ($ids[9] == 'null')?null:$ids[9], ($ids[11] == 'null')?null:$ids[11],
+                                 ($ids[12] == 'null')?null:$ids[12], ($ids[14] == 'null')?null:$ids[14],
+                                 ($ids[15] == 'true')?true:false, ($ids[16] == 'true')?true:false,
+                                 null,null,$nbTotal);
+        
+        
+        
+        for ($i = 0; $i < 17; $i++)
+            $ids[$i] = -1;
+        
+        
         for ($i = 0, $l = count($all); $i < $l; $i++) {
             if (!in_array($all[$i]->getId(), $ids))
                 array_push($listComplete, $all[$i]);
