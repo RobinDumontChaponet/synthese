@@ -24,9 +24,7 @@ function link_ajax() {
     if ((xhr != null) && (xhr != false)) {
         if ((xhr.readyState == 0) || (xhr.readyState == 4)) {
             //Get destinataire
-            // ///////////////////////////////////////////////////////////////////////////////////////
-            // Prochaine MàJ -> choisir le dernier destinataire entre ===> choix du separateur ?    //
-            // ///////////////////////////////////////////////////////////////////////////////////////
+            
             var ignoredTextSize = (getImportantText().length == 0)?0:getImportantText().length + 2; // +2 pour le ; et le \s
             var args = document.getElementById("destinataire").value.substr(ignoredTextSize);
             var destinataire = "dest="+args;
