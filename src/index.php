@@ -75,26 +75,29 @@ if($matches[1]) {
 <!--[if IE 8]>   <html class="lt-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <!--[if gt IE 8]><html class="get-ie9" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
 <head>
-    <meta charset="UTF-8">
-    <base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>">
-    <title>connectIT!<?php if(!empty($title)) echo ' | '.$title; ?></title>
-    <link rel="author" href="humans.txt" />
-    <!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
-    <link rel="icon" href="style/favicon-96.png">
-    <meta name="msapplication-TileColor" content="#FFF">
-    <meta name="msapplication-TileImage" content="style/favicon-144.png">
-    <?php echo $meta; ?>
-    <link rel="apple-touch-icon" href="style/favicon-152.png">
-    <link rel="stylesheet" type="text/css" href="style/reset.min.css">
-    <link rel="stylesheet" type="text/css" href="style/style.combined.css">
-    <link rel="stylesheet" type="text/css" href="style/animations.css">
-    <?php echo $link; ?>
-    <?php if(defined('JS_DEBUG')) echo '<script>var DEBUG="'.constant('JS_DEBUG').'";</script>'; ?>
-    <script type="text/javascript" src="script/console.transit.js"></script>
-    <!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script type="text/javascript" src="script/script.combined.js"></script>
-    <script type="text/javascript" src="script/help.js" async defer></script>
-    <?php echo $script; ?>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-language" content="fr" />
+	<meta name="language" content="fr" />
+	<base href="<?php echo dirname($_SERVER['PHP_SELF']).'/' ?>">
+	<title>connectIT!<?php if(!empty($title)) echo ' | '.$title; ?></title>
+	<link rel="author" href="humans.txt" />
+	<!--[if IE]><link rel="shortcut icon" href="style/favicon-32.ico"><![endif]-->
+	<link rel="icon" href="style/favicon-96.png">
+	<meta name="msapplication-TileColor" content="#FFF">
+	<meta name="msapplication-TileImage" content="style/favicon-144.png">
+	<?php echo $meta; ?>
+	<link rel="apple-touch-icon" href="style/favicon-152.png">
+	<link rel="stylesheet" type="text/css" href="style/reset.min.css">
+	<link rel="stylesheet" type="text/css" href="style/style.combined.css">
+	<link rel="stylesheet" type="text/css" href="style/animations.css">
+	<?php echo $link; ?>
+	<?php if(defined('JS_DEBUG')) echo '<script>var DEBUG="'.constant('JS_DEBUG').'";</script>'; ?>
+	<script type="text/javascript" src="script/console.transit.js"></script>
+	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script type="text/javascript" src="script/script.combined.js"></script>
+	<script>if (!window.JSON) document.write('<script src="script/json2.min.js"><\/script>');</script>
+	<script type="text/javascript" src="script/help.js" async defer></script>
+	<?php echo $script; ?>
 </head>
 <body<?php if(isset($_SESSION['help']) && $_SESSION['help']) echo ' class="show-help"';?>>
 	<?php include('menu.inc.php');?>

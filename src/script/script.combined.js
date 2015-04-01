@@ -7,6 +7,10 @@ if(isset($_GET['minify']) || !file_exists('generated/'.basename(__FILE__))) {
 	//include('../includes/minify.transit.inc.php');
 	//ob_start(/*"minify"*/);
 
+	include('better-dom.min.js');
+	include('better-i18n-plugin.js');
+	include('better-dateinput-polyfill.js');
+	include('better-dateinput-polyfill.fr.js');
 	include('polyShims.js');
 	include('smooth-scroll.min.js');
 	include('utils.transit.js');
