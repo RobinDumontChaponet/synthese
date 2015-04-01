@@ -57,7 +57,7 @@
 				</dl>
 			</article>
 			<a class="getback" href="profil-editer/<?php echo $_GET['idAncien']?>#entreprises">Retour au profil</a>
-			<input type="submit" value="Ajouter l'entreprise" />
+			<input type="submit" value="Modifier" />
 
 		</form>
 		<?php } else if ($_GET['id'] == NULL) {

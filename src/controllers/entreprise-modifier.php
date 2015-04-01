@@ -15,8 +15,14 @@ if ($_GET['idAncien'] != NULL) {
 						if ($_POST['periode1'] != NULL) {
 							if ($_POST['periode1'] >= '1900-01-01') {
 								if ($_POST['periode2'] == NULL || $_POST['periode2'] >= $_POST['periode1']) {
-									$exTravaille = new Travaille($exEntreprise, $exPoste, $ancien, $_GET['periode1'], $_GET['periode2']);
-									$newTravaille = new Travaille($newEntreprise, $newPoste, $ancien, $_POST['periode1'], $_POST['periode2']);
+									if ($_GET['periode2'] == 0000-00-00)
+										$exTravaille = new Travaille($exEntreprise, $exPoste, $ancien, $_GET['periode1'], '0000-00-00');
+									else
+										$exTravaille = new Travaille($exEntreprise, $exPoste, $ancien, $_GET['periode1'], $_GET['periode2']);
+									if ($_POST['periode2'] == NULL)
+										$newTravaille = new Travaille($newEntreprise, $newPoste, $ancien, $_POST['periode1'], '0000-00-00');
+									else
+										$newTravaille = new Travaille($newEntreprise, $newPoste, $ancien, $_POST['periode1'], $_POST['periode2']);
 									TravailleDAO::update($exTravaille, $newTravaille);
 									header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#entreprises');
 								} else {

@@ -24,7 +24,10 @@ if ($_SESSION['user_auth']['write']) {
 							} else
 								$errorPeriodes = true;
 						} else {
-							$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], $_POST['periode2']);
+							if ($_POST['periode2'] == NULL)
+								$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], '0000-00-00');
+							else
+								$travaille = new Travaille($entreprise, $poste, $ancien, $_POST['periode1'], $_POST['periode2']);
 							TravailleDAO::create($travaille);
 							header('Location: '.SELF.'profil-editer/'.$ancien->getId().'#entreprise');
 						}
