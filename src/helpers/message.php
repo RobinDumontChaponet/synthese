@@ -9,11 +9,11 @@
     $false = false;
 	$listeFinale = array();
 
-    $listeChoixNom = AncienDAO::search($_GET['dest'], null, null, null, null, null, null, null, $false, $false, null, null, $nbTotal);
+    $listeChoixNom = AncienDAO::search($_GET['dest'], null, null, null, null, null, null, null, null, $false, $false, null, null, $nbTotal);
 	for ($i = 0, $l = count($listeChoixNom); $i < $l; $i++)
 		addAncien($listeFinale, $listeChoixNom[$i]);
 	
-    $listeChoixPrenom = AncienDAO::search(null, $_GET['dest'], null, null, null, null, null, null, $false, $false, null, null, $nbTotal);
+    $listeChoixPrenom = AncienDAO::search(null, $_GET['dest'], null, null, null, null, null, null, null, $false, $false, null, null, $nbTotal);
 	for ($i = 0, $l = count($listeChoixPrenom); $i < $l; $i++) 
 		addAncien($listeFinale, $listeChoixPrenom[$i]);
 
