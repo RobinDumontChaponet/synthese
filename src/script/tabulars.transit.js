@@ -54,7 +54,7 @@ var csvColName = [
 		{key:'codeAPE', value:'Code APE'},
 		{key:'fonction', value:'Fonction'},
 		{key:'telEntreprise', value:'Téléphone entreprise'},
-		{key:'codePost', value:'Code postal entreprise'},
+		{key:'codePostEntreprise', value:'Code postal entreprise'},
 		{key:'villeEntreprise', value:'Ville entreprise'},
 		{key:'paysEntreprise', value:'Pays entreprise'},
 		{key:'adresse1Entreprise', value:'Adresse 1 entreprise'},

@@ -10,31 +10,10 @@ if($_SESSION['user_auth']['write']) { // user can write
 
 	if(!empty($_POST)) {
 
-		/*
-echo 'POST : ';
-		var_dump($_POST);
-		echo '<br /><br />GET : ';
-		var_dump($_GET);
-		echo '<br /><br />';
-*/
-
 		$in=$_POST;
 		if(isset($_POST['submitFinal'])) {
 			$in=$_GET;
-			/*
-echo '<p class="warning">submitFinal, $in = ';
-			var_dump($in);
-			echo '</p>';
-*/
-		}/*
- else {
-			echo '<p class="warning">NOTsubmitFinal, $in = ';
-			var_dump($in);
-			echo '</p>';
 		}
-*/
-
-		// echo '<br /><br /><br/>';
 
 		$valid = array();
 
@@ -62,14 +41,6 @@ echo '<p class="warning">submitFinal, $in = ';
 			}
 		}
 
-		/*
-echo 'departement : ';
-		var_dump($departement);
-		echo '<br /><br />promotion : ';
-		var_dump($promotion);
-		echo '<br /><br />';
-*/
-
 		if($departement!=NULL && $promotion!=NULL) {
 
 			$order = array();
@@ -82,68 +53,6 @@ echo 'departement : ';
 					if(strpos($key, 'type_') === 0)
 						$order[$value]=substr($key, 5);
 			}
-
-
-			/*
-echo '<br />order : ';
-			var_dump($order);
-			echo '<br />';
-
-			echo '<br /><br />csv : ';
-			var_dump($csv);
-			echo '<br />';
-*/
-
-			/**
-			 * valeurs possibles :
-			 * [
-				{key:'Ancien', value: [
-					{key:'nomPat', value:'Nom'},
-					{key:'nomUsage', value:'Nom d\'usage'},
-					{key:'prenom', value:'Prénom'},
-					{key:'dateNais', value:'Date de naissance'},
-					{key:'mail', value:'E-mail'},
-					{key:'telMob', value:'Téléphone mobile'},
-					{key:'telFix', value:'Téléphone fixe'},
-					{key:'sexe', value:'Sexe'},
-					{key:'adresse1', value:'Adresse 1'},
-					{key:'adresse2', value:'Adresse 2'},
-					{key:'codePost', value:'Code postal'},
-					{key:'ville', value:'Ville'},
-					{key:'pays', value:'Pays'},
-					{key:'situation', value:'Situation actuelle'}
-				]},
-				{key:'Formation', value: [
-					{key:'diplomePostDUT', value:'Diplôme post-DUT'},
-					{key:'formationPostDUT', value:'Formation Post-DUT'},
-					{key:'formationEnCours', value:'Formation en cours'},
-					{key:'ecole', value:'École'},
-					{key:'diplomePrepare', value:'Diplôme préparé'}
-				]},
-				{key:'Entreprise', value: [
-					{key:'entreprise', value:'Raison sociale'},
-					{key:'codeAPE', value:'Code APE'},
-					{key:'fonction', value:'Fonction'},
-					{key:'telEntreprise', value:'Téléphone entreprise'},
-					{key:'codePostEntreprise', value:'Code postal entreprise'},
-					{key:'villeEntreprise', value:'Ville entreprise'},
-					{key:'paysEntreprise', value:'Pays entreprise'},
-					{key:'adresse1Entreprise', value:'Adresse 1 entreprise'},
-					{key:'adresse2Entreprise', value:'Adresse 2 entreprise'},
-					{key:'cedex', value:'Cedex'}
-				]},
-				{key:'Parents', value: [
-					{key:'adresse1Parents', value:'Adresse 1 parents'},
-					{key:'adresse2Parents', value:'Adresse 2 parents'},
-					{key:'codePostParents', value:'Code postal parents'},
-					{key:'villeParents', value:'Ville parents'},
-					{key:'paysParents', value:'Pays parents'},
-					{key:'situationParents', value:'Situation actuelle parents'},
-					{key:'telMobParents', value:'Téléphone mobile parents'},
-					{key:'telFixParents', value:'Téléphone fixe parents'}
-				]}
-			]
-			**/
 
 			function fillVal($value) {
 				return ($value)?$value:'';
@@ -208,17 +117,6 @@ echo '<br />order : ';
 					if($count<2)
 						continue;
 
-// 				echo $count.'<br />';
-
-					/*
-echo '<br />line : ';
-					var_dump($line);
-					echo '<br /><br />nomPat : '.fillVal($line[$order['nomPat']]).'<br /><br />';
-					echo '<br /><br />';
-*/
-
-
-
 						/*
 							echo '<td>'.$line[$order['nomPat']].'</td>';
 							echo '<td>'.$line[$order['nomUsage']].'</td>';
@@ -244,8 +142,6 @@ echo '<br />line : ';
 							echo '<td>'.$line[$order['telMobParents']].'</td>';
 						*/
 
-
-
 					$sexe = strtolower(fillVal($line[$order['sexe']]));
 					if($sexe=='feminin' || $sexe=='fminin' || strrpos($sexe, 'f', -strlen($sexe)) !== FALSE)
 						$sexe = 'f';
@@ -264,16 +160,7 @@ echo '<br />line : ';
 
 					$login = Compte::personne2LoginStr($ancien);
 
-					/*
-var_dump($ancien);
-					echo '<br />';
-*/
-
 					$account = new Compte($idAncien, $typeProfile, $ancien, $login, randomPassword());
-					/*
-echo '	Login -> '.$login;
-					echo '<br />';
-*/
 
 					CompteDAO::create($account);
 
@@ -281,6 +168,25 @@ echo '	Login -> '.$login;
 						$aEtudie = new AEtudie($ancien, $diplomeDUT, $departement, $promotion);
 						AEtudieDAO::create($aEtudie);
 					}
+
+					$entreprise=null;
+					$poste=null;
+					$travail=null;
+					if(trim($line[$order['entreprise']])!='') {
+						$entreprise = new Entreprise(0, fillVal($line[$order['entreprise']]), fillVal($line[$order['adresse1Entreprise']]), '', fillVal($line[$order['codePostEntreprise']]), fillVal($line[$order['villeEntreprise']]), fillVal($line[$order['cedex']]), fillVal($line[$order['paysEntreprise']]), fillVal($line[$order['telEntreprise']]), $ape);
+						EntrepriseDAO::create($entreprise);
+					}
+
+					if(trim($line[$order['fonction']])!='') {
+						$poste = new Poste(0, fillVal($line[$order['fonction']]));
+						PosteDAO::create($poste);
+					}
+
+					if($entreprise!=null && $poste!=null) {
+						$travail = new Travaille($entreprise, $poste, $ancien, 0, 0);
+						TravailleDAO::create($travail);
+					}
+
 				}
 				include(VIEWS_INC.'csv-imported.php');
 			}

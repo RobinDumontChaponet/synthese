@@ -1,6 +1,8 @@
 <?php
-class Entreprise
-{
+
+include_once 'validate.transit.inc.php';
+
+class Entreprise {
 //	VARIABLES
 
 	private $id;
@@ -82,7 +84,7 @@ class Entreprise
 	public function setAdresse1($adresse1) {
 		$this->adresse1 = trim($adresse1);
 	}
-	
+
 	public function setAdresse2($adresse2) {
 		$this->adresse2 = trim($adresse2);
 	}
@@ -104,7 +106,7 @@ class Entreprise
 	}
 
 	public function setTelephone($telephone) {
-		if (preg_match("/^\+?\d+$/", $telephone) || $telephone == "")
+		if (is_valid_phoneNumber ($telephone) || $telephone == "" || $_POST['requ']='csv-import')
 			$this->telephone = $telephone;
 		else
 			throw new Exception('Entreprise.class.php : Numéro de telephone invalide : '.$telephone);
