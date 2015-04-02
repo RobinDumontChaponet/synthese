@@ -65,7 +65,7 @@ class Travaille {
 	}
 
 	public function setDateEmbaucheFin($date) {
-        if ( preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $date) )
+        if ( (preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $date)) && ($date != '0000-00-00') )
             $this->dateEmbaucheFin = $date;
         else
             $this->dateEmbaucheFin = null;
