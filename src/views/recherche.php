@@ -90,7 +90,7 @@
                             				<option value=""></option>
 							<?php
 							foreach($travail as $trv)
-								echo '<option value="'.$trv->getId().'">'.$trv->getLibelle().'</option>'; 
+								echo '<option value="'.$trv->getId().'">'.$trv->getLibelle().'</option>';
 							?>
 						</select>
 					</div>
@@ -117,7 +117,7 @@
 					<th>Spécialisation</th>
 					<th>Diplômes post-DUT</th>
 					<th>Etablissements</th>
-					<th>Travail actuel</th>
+					<th>Travail</th>
 					<th>Profil</th>
 				</tr>
 			</thead>
@@ -130,7 +130,7 @@
     <section id="actions">
         <form method="POST" action="message-ecrire" id="send_message">
             <input type="submit" value="Envoyer un message" />
-            <input type="hidden" id="infosCheck" name="infosCheck" /> 
+            <input type="hidden" id="infosCheck" name="infosCheck" />
         </form>
         <?php if(isset($msgErrAdresse)){ echo $msgErrAdresse;} ?>
     </section>
