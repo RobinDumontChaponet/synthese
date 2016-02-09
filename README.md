@@ -1,73 +1,28 @@
+# Projet de synthèse 2014-2015
 
-<a href="https://infodb2.iut.univ-metz.fr/~dumont28u/synthese/src">Lien</a>
-
-
-
-
-
+## But
+Réaliser un "réseau social" permettant aux anciens de l'IUT de Metz de se retrouver.
+Les anciens sont automatiquement ajoutés à ce site ce qui permet également d'avoir une base de données de tout les anciens consultable par les professeurs de l'école.
 
 
+<a href="https://infodb2.iut.univ-metz.fr/~dumont28u/synthese/src">Lien du site au moment du projet (probablement mort)</a>
 
+Ce projet a été fournit par Mme Mely, professeur de réseau à l'IUT de Metz, à 4 étudiants :
+- Robin Dumont-Chaponet https://github.com/RobinDumontChaponet
+- Victor Jozwicki https://github.com/JozwickiVictor
+- Youssef Fadili https://github.com/fadiliyoussef
+- Mathieu Pister https://github.com/lmaginot
 
+## Etude fonctionnelle
+Une étude fonctionnelle complète à été réalisé par Victor Jozwicki, se basant sur des études fonctionnelles d'entreprises existantes.
+https://github.com/RobinDumontChaponet/synthese/wiki/Etude-Fonctionnelle
 
-###BackLog
-- BdD [fait]
-- Pojo [presque fait]
-- DAO [presque fait]
-- CSV [presque fait]
+## Proposition de noms
+- ITBooks
+- IUTBooks
+- Ancien d'avant
+- Easy recontact
+- ContactIT!
 
-###BackLog pour la prochaine fois
-- [finir les "presques fait"]
-- rapport intermédiaire
-
-
-###Première concertation sur le projet
-
-
-Semblant de plan
-
-	- Analyse du travail des anciens
-	- 1ere etape : BdD
-	- 2eme etape  : csv (créer l'algoithme)
-	- 3eme etape : images
-	- 4eme etape :  analyse fonctionnelle (diagrammes)
-	- 5eme etape : création des vues
-
-Technologies à utiliser
-
-	HTML : Pages web
-	CSS : mise en page
-	JAVASCRIPT (AJAX) : Application dynamique
-
-
-
-Questions pour le client
-
-	- Les points qui ont plu dans la base de données N-2
-	- demander s'il  y a un nom en particulier
-
-
-
-Points importants à voir
-
-	- séparation de notre travail en couche pour assurer une évolutivité de notre programme sans soucis d'interdépendance.
-
-	-Bien faire la différence entre ce que peut faire un administrateur et un utilisateur “normal”.
-
-	-Permettre à certains étudiants d'envoyer des invitations à d'autre pour une meilleure diffusion de notre application. Dans le cas où on n'a pas les adresses mail de certains etudiants, d'autres pourront les contacter.
-
-Moyen de communication
-
-	- Utilisation de l'svn github.
- 	adresse : https://github.com/RobinDumontChaponet/synthese/blob/master/README.md
-
-
-Idées de nom pour l'application
-
-Proposition de noms
-
-	- ITBooks
-	- IUTBooks
-	- ancien d'avant
-	- Easy recontact
-	- contactIT!
+## Futur du projet
+Ce projet a été redonné à des étudiants de la promotion 2015-2016, les 4 étudiants ayant commencé ce projet ont offert d'aider les nouveaux à reprendre le flambeau.
