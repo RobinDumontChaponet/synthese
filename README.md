@@ -5,7 +5,7 @@ Réaliser un "réseau social" permettant aux anciens de l'IUT de Metz de se retr
 Les anciens sont automatiquement ajoutés à ce site ce qui permet également d'avoir une base de données de tout les anciens consultable par les professeurs de l'école.
 
 
-<a href="https://infodb2.iut.univ-metz.fr/~dumont28u/synthese/src">Lien du site au moment du projet (probablement mort)</a>
+<a href="https://infodb2.iut.univ-metz.fr/~dumont28u/synthese/src">Lien du site au moment du projet</a>
 
 Ce projet a été fournit par Mme Mely, professeur de réseau à l'IUT de Metz, à 4 étudiants :
 - Robin Dumont-Chaponet https://github.com/RobinDumontChaponet
